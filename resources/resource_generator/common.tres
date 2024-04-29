@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://cwi6vc07ew5xr"]
+
+[ext_resource type="Script" path="res://resources/resource_generator/resource_generator.gd" id="1_e4tkj"]
+
+[resource]
+script = ExtResource("1_e4tkj")
+id = "common"
+amount = 2
+cooldown = 0.5
+cost = {}
+label = "Button1"
+title = "Button One"
+flavor = "Go on an adventure for common resources."

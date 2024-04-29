@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://ceswj5mrcbhti"]
+
+[ext_resource type="Script" path="res://resources/resource_generator/resource_generator.gd" id="1_2gmhq"]
+
+[resource]
+script = ExtResource("1_2gmhq")
+id = "worker"
+amount = 1
+cooldown = 3.0
+cost = {
+"common": 10,
+"rare": 3
+}
+label = "Buy Worker"
+title = "Cheap Slave"
+flavor = "Will work day and night."

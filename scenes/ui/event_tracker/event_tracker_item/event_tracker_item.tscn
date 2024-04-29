@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://d362a3u5u0np5"]
+
+[ext_resource type="Script" path="res://scenes/ui/event_tracker/event_tracker_item/event_tracker_item.gd" id="1_5qgqd"]
+
+[node name="EventTrackerItem" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_5qgqd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LineLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "[001]"
+
+[node name="EventLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "The world is dark and empty..."
+autowrap_mode = 2

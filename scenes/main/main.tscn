@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://k0aqit1ex0lc"]
+
+[ext_resource type="Theme" uid="uid://be30ymqku7twp" path="res://resources/theme/theme.tres" id="1_ckx3g"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_u1kx3"]
+[ext_resource type="PackedScene" uid="uid://1m8qthsffnq4" path="res://scenes/controller/worker_controller/worker_controller.tscn" id="2_i5w2f"]
+[ext_resource type="PackedScene" uid="uid://wp81uow6jtqm" path="res://scenes/manager/resource_manager/resource_manager.tscn" id="2_kjpbe"]
+[ext_resource type="PackedScene" uid="uid://bhk1hwatentfr" path="res://scenes/manager/event_manager/event_manager.tscn" id="3_3xmx2"]
+[ext_resource type="PackedScene" uid="uid://bke6i6lrn5qq2" path="res://scenes/manager/worker_manager/worker_manager.tscn" id="3_yhe1y"]
+[ext_resource type="PackedScene" uid="uid://ct7wm7cco1cpm" path="res://scenes/ui/event_tracker/event_tracker.tscn" id="4_cyhi7"]
+[ext_resource type="PackedScene" uid="uid://bp8ipef04gxux" path="res://scenes/screen/world_screen/world_screen.tscn" id="4_xbehd"]
+[ext_resource type="PackedScene" uid="uid://dgdndojko6mlf" path="res://scenes/screen/managment_screen/managment_screen.tscn" id="5_oa073"]
+[ext_resource type="PackedScene" uid="uid://4xkxivqhae3h" path="res://scenes/ui/resource_tracker/resource_tracker.tscn" id="5_y2bgo"]
+[ext_resource type="PackedScene" uid="uid://bkkan07rftdv8" path="res://scenes/screen/unknown_screen/unknown_screen.tscn" id="6_1rr1e"]
+[ext_resource type="PackedScene" uid="uid://bauwua6x5pgjh" path="res://scenes/ui/info_container/info_container.tscn" id="10_unxkl"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_u1kx3")
+
+[node name="Controllers" type="Node" parent="."]
+
+[node name="WorkerController" parent="Controllers" instance=ExtResource("2_i5w2f")]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="ResourceManager" parent="Managers" instance=ExtResource("2_kjpbe")]
+
+[node name="WorkerManager" parent="Managers" instance=ExtResource("3_yhe1y")]
+
+[node name="EventManager" parent="Managers" instance=ExtResource("3_3xmx2")]
+
+[node name="Screens" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_ckx3g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderMarginContainer" type="MarginContainer" parent="Screens/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="Panel" type="Panel" parent="Screens/VBoxContainer/HeaderMarginContainer"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="Screens/VBoxContainer/HeaderMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tab_count = 3
+tab_0/title = "World"
+tab_1/title = "Managment"
+tab_2/title = "Unknown"
+
+[node name="BodyMarginContainer" type="MarginContainer" parent="Screens/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/VBoxContainer/BodyMarginContainer"]
+layout_mode = 2
+
+[node name="BorderMarginContainer" type="MarginContainer" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="EventTracker" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="WorldScreen" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_xbehd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ManagmentScreen" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_oa073")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UnknownScreen" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("6_1rr1e")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResourceTracker" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_right = 4
+
+[node name="FooterMarginContainer" parent="Screens/VBoxContainer" instance=ExtResource("10_unxkl")]
+layout_mode = 2

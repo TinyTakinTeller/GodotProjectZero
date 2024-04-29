@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://b3v0qdx4fg7y7"]
+
+[ext_resource type="Script" path="res://resources/worker_role/worker_role.gd" id="1_nxfvo"]
+
+[resource]
+script = ExtResource("1_nxfvo")
+id = "vanderer"
+produce = {
+"common": 1
+}
+consume = {}

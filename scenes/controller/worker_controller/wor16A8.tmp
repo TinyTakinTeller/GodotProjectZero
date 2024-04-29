@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1m8qthsffnq4"]
+
+[ext_resource type="Script" path="res://scenes/controller/worker_controller/worker_controller.gd" id="1_4omds"]
+
+[node name="WorkerController" type="Node"]
+script = ExtResource("1_4omds")
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgdndojko6mlf"]
+
+[ext_resource type="Texture2D" uid="uid://dlgwuxqqspyle" path="res://assets/image/icon/icon.svg" id="1_2i7xr"]
+[ext_resource type="Script" path="res://scenes/screen/managment_screen/managment_screen.gd" id="1_q5dij"]
+[ext_resource type="PackedScene" uid="uid://84qyu2m2h55y" path="res://scenes/ui/manager_button/manager_button.tscn" id="2_5bcli"]
+
+[node name="ManagmentScreen" type="MarginContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_q5dij")
+manager_button_scene = ExtResource("2_5bcli")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer/MarginContainer"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+texture = ExtResource("1_2i7xr")
+
+[node name="ManagerButton" parent="MarginContainer/GridContainer" instance=ExtResource("2_5bcli")]
+layout_mode = 2

@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpbn8h60hhit6"]
+
+[ext_resource type="Script" path="res://scenes/ui/resource_tracker/resource_tracker_item/resource_tracker_item.gd" id="1_xdit4"]
+
+[node name="ResourceTrackerItem" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdit4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "item rare: 0
+"
+
+[node name="PassiveIncomeLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "+1"

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bkkan07rftdv8"]
+
+[node name="UnknownScreen" type="MarginContainer"]
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2

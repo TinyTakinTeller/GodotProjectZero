@@ -1,0 +1,54 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[addons]
+
+resources_spreadsheet_view/array_color_tint=100.0
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=32.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
+resources_spreadsheet_view/context_menu_on_leftclick=false
+
+[application]
+
+config/name="Base Project"
+run/main_scene="res://scenes/main/main.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://assets/image/icon/icon.svg"
+
+[autoload]
+
+SignalBus="*res://global/autoload/signal_bus.gd"
+SaveFile="*res://global/autoload/save_file.gd"
+Resources="*res://global/autoload/resources.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

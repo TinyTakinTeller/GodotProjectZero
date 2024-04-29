@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://4xkxivqhae3h"]
+
+[ext_resource type="Script" path="res://scenes/ui/resource_tracker/resource_tracker.gd" id="1_llbdt"]
+[ext_resource type="PackedScene" uid="uid://cpbn8h60hhit6" path="res://scenes/ui/resource_tracker/resource_tracker_item/resource_tracker_item.tscn" id="1_tjr5p"]
+
+[node name="ResourceTracker" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_llbdt")
+resource_item_scene = ExtResource("1_tjr5p")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 1
+text = "Resource Storage "
+
+[node name="ResourceVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResourceTrackerItem1" parent="MarginContainer/VBoxContainer/ResourceVBoxContainer" instance=ExtResource("1_tjr5p")]
+layout_mode = 2
+
+[node name="ResourceTrackerItem2" parent="MarginContainer/VBoxContainer/ResourceVBoxContainer" instance=ExtResource("1_tjr5p")]
+layout_mode = 2

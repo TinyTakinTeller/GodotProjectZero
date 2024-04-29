@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://84qyu2m2h55y"]
+
+[ext_resource type="Script" path="res://scenes/ui/manager_button/manager_button.gd" id="1_w1awn"]
+
+[node name="ManagerButton" type="MarginContainer"]
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+script = ExtResource("1_w1awn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DelMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="DelButton" type="Button" parent="HBoxContainer/DelMarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_type_variation = &"ManagerButton"
+text = "-"
+
+[node name="AmountMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+
+[node name="Panel" type="Panel" parent="HBoxContainer/AmountMarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AmountMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer/AmountMarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="AddMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="HBoxContainer/AddMarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_type_variation = &"ManagerButton"
+text = "+"
+
+[node name="InfoMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/InfoMarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoMarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="InfoLabel" type="Label" parent="HBoxContainer/InfoMarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Worker
+"
