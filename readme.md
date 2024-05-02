@@ -1,3 +1,5 @@
-## Godot Project Zero: The Best Game Ever
+# Godot Project Zero: The Best Game Ever
 
-DEVLOG: https://www.reddit.com/user/TinyTakinTeller/
+WEEKLY DEVLOG: https://tinytakinteller.itch.io/
+
+
