@@ -27,13 +27,14 @@ config/icon="res://assets/image/icon/icon.svg"
 
 [autoload]
 
-SignalBus="*res://global/autoload/signal_bus.gd"
-SaveFile="*res://global/autoload/save_file.gd"
 Resources="*res://global/autoload/resources.gd"
+SignalBus="*res://global/autoload/signal_bus.gd"
+SaveFile="*res://global/autoload/save_file/save_file.tscn"
 
 [debug]
 
 gdscript/warnings/untyped_declaration=1
+gdscript/warnings/integer_division=0
 
 [display]
 
@@ -52,3 +53,5 @@ enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg", "res://addon
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
+2d/snap/snap_2d_transforms_to_pixel=true

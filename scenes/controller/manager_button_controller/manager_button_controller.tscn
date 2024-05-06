@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsv77qs6o0g1j"]
+
+[ext_resource type="Script" path="res://scenes/controller/manager_button_controller/manager_button_controller.gd" id="1_qtc8e"]
+
+[node name="ManagerButtonController" type="Node"]
+script = ExtResource("1_qtc8e")

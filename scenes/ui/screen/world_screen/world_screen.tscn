@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp8ipef04gxux"]
+
+[ext_resource type="Texture2D" uid="uid://dlgwuxqqspyle" path="res://assets/image/icon/icon.svg" id="1_i5ayl"]
+[ext_resource type="Script" path="res://scenes/ui/screen/world_screen/world_screen.gd" id="1_k268v"]
+[ext_resource type="PackedScene" uid="uid://bjroqyyfrvx70" path="res://scenes/ui/progress_button/progress_button.tscn" id="2_74b0p"]
+
+[node name="WorldScreen" type="MarginContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_k268v")
+progress_button_scene = ExtResource("2_74b0p")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+texture = ExtResource("1_i5ayl")
+
+[node name="ProgressButton1" parent="MarginContainer/GridContainer" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ProgressButton2" parent="MarginContainer/GridContainer" instance=ExtResource("2_74b0p")]
+layout_mode = 2

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc1dbypa7wkta"]
+
+[ext_resource type="Script" path="res://scenes/ui/tab_tracker/tab_tracker_item/tab_tracker_item.gd" id="1_wf3dl"]
+
+[node name="TabTrackerItem" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wf3dl")

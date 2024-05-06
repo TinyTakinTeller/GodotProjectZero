@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://dn4d67y7ci8cx"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_0bdy5"]
+
+[resource]
+script = ExtResource("1_0bdy5")
+id = "automation"
+text = "Passive production of all resources is increasing! The age of automation is upon us."
+vars = Array[String]([])
+color = Color(1, 0.643137, 0.588235, 1)

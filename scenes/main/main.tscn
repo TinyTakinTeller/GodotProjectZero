@@ -1,24 +1,44 @@
-[gd_scene load_steps=13 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=23 format=3 uid="uid://k0aqit1ex0lc"]
 
-[ext_resource type="Theme" uid="uid://be30ymqku7twp" path="res://resources/theme/theme.tres" id="1_ckx3g"]
+[ext_resource type="Theme" uid="uid://be30ymqku7twp" path="res://resources/theme/debug/debug.tres" id="1_ckx3g"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_u1kx3"]
+[ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
 [ext_resource type="PackedScene" uid="uid://1m8qthsffnq4" path="res://scenes/controller/worker_controller/worker_controller.tscn" id="2_i5w2f"]
 [ext_resource type="PackedScene" uid="uid://wp81uow6jtqm" path="res://scenes/manager/resource_manager/resource_manager.tscn" id="2_kjpbe"]
 [ext_resource type="PackedScene" uid="uid://bhk1hwatentfr" path="res://scenes/manager/event_manager/event_manager.tscn" id="3_3xmx2"]
+[ext_resource type="PackedScene" uid="uid://bsv77qs6o0g1j" path="res://scenes/controller/manager_button_controller/manager_button_controller.tscn" id="3_h1qmp"]
+[ext_resource type="PackedScene" uid="uid://c0b0inprunl4n" path="res://scenes/controller/event_controller/event_controller.tscn" id="3_q3mwm"]
 [ext_resource type="PackedScene" uid="uid://bke6i6lrn5qq2" path="res://scenes/manager/worker_manager/worker_manager.tscn" id="3_yhe1y"]
 [ext_resource type="PackedScene" uid="uid://ct7wm7cco1cpm" path="res://scenes/ui/event_tracker/event_tracker.tscn" id="4_cyhi7"]
-[ext_resource type="PackedScene" uid="uid://bp8ipef04gxux" path="res://scenes/screen/world_screen/world_screen.tscn" id="4_xbehd"]
-[ext_resource type="PackedScene" uid="uid://dgdndojko6mlf" path="res://scenes/screen/managment_screen/managment_screen.tscn" id="5_oa073"]
+[ext_resource type="PackedScene" uid="uid://bp8ipef04gxux" path="res://scenes/ui/screen/world_screen/world_screen.tscn" id="4_xbehd"]
+[ext_resource type="PackedScene" uid="uid://dgdndojko6mlf" path="res://scenes/ui/screen/managment_screen/managment_screen.tscn" id="5_oa073"]
 [ext_resource type="PackedScene" uid="uid://4xkxivqhae3h" path="res://scenes/ui/resource_tracker/resource_tracker.tscn" id="5_y2bgo"]
-[ext_resource type="PackedScene" uid="uid://bkkan07rftdv8" path="res://scenes/screen/unknown_screen/unknown_screen.tscn" id="6_1rr1e"]
+[ext_resource type="PackedScene" uid="uid://bkkan07rftdv8" path="res://scenes/ui/screen/unknown_screen/unknown_screen.tscn" id="6_1rr1e"]
+[ext_resource type="PackedScene" uid="uid://3iqi2w4katso" path="res://scenes/controller/unlock_controller/unlock_controller.tscn" id="6_albwn"]
+[ext_resource type="PackedScene" uid="uid://ctmnwgwxqwhd4" path="res://scenes/manager/tab_manager/tab_manager.tscn" id="7_0dsj8"]
+[ext_resource type="PackedScene" uid="uid://b7v7qyfc1edkj" path="res://scenes/controller/settings_controller/settings_controller.tscn" id="7_tu3ij"]
+[ext_resource type="PackedScene" uid="uid://dq0ehpx6uoiux" path="res://scenes/manager/screen_manager/screen_manager.tscn" id="8_q26bh"]
+[ext_resource type="PackedScene" uid="uid://c70gtxukmaco6" path="res://scenes/ui/tab_tracker/tab_tracker.tscn" id="8_vxtq8"]
 [ext_resource type="PackedScene" uid="uid://bauwua6x5pgjh" path="res://scenes/ui/info_container/info_container.tscn" id="10_unxkl"]
+[ext_resource type="PackedScene" uid="uid://o2s521j3hgp8" path="res://scenes/manager/setting_manager/setting_manager.tscn" id="13_yy02v"]
+[ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/settings_container/settings_container.tscn" id="20_ynkq3"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_u1kx3")
 
 [node name="Controllers" type="Node" parent="."]
 
+[node name="ProgressButtonController" parent="Controllers" instance=ExtResource("2_fcqyg")]
+
+[node name="ManagerButtonController" parent="Controllers" instance=ExtResource("3_h1qmp")]
+
 [node name="WorkerController" parent="Controllers" instance=ExtResource("2_i5w2f")]
+
+[node name="EventController" parent="Controllers" instance=ExtResource("3_q3mwm")]
+
+[node name="UnlockController" parent="Controllers" instance=ExtResource("6_albwn")]
+
+[node name="SettingsController" parent="Controllers" instance=ExtResource("7_tu3ij")]
 
 [node name="Managers" type="Node" parent="."]
 
@@ -28,7 +48,13 @@ script = ExtResource("1_u1kx3")
 
 [node name="EventManager" parent="Managers" instance=ExtResource("3_3xmx2")]
 
-[node name="Screens" type="Control" parent="."]
+[node name="TabManager" parent="Managers" instance=ExtResource("7_0dsj8")]
+
+[node name="ScreenManager" parent="Managers" instance=ExtResource("8_q26bh")]
+
+[node name="SettingManager" parent="Managers" instance=ExtResource("13_yy02v")]
+
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +64,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_ckx3g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Screens"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,55 +72,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HeaderMarginContainer" type="MarginContainer" parent="Screens/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-
-[node name="Panel" type="Panel" parent="Screens/VBoxContainer/HeaderMarginContainer"]
-layout_mode = 2
-
-[node name="TabBar" type="TabBar" parent="Screens/VBoxContainer/HeaderMarginContainer"]
+[node name="TabTracker" parent="UI/VBoxContainer" instance=ExtResource("8_vxtq8")]
 unique_name_in_owner = true
 layout_mode = 2
-tab_count = 3
-tab_0/title = "World"
-tab_1/title = "Managment"
-tab_2/title = "Unknown"
 
-[node name="BodyMarginContainer" type="MarginContainer" parent="Screens/VBoxContainer"]
+[node name="BodyMarginContainer" type="MarginContainer" parent="UI/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Screens/VBoxContainer/BodyMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/BodyMarginContainer"]
 layout_mode = 2
 
-[node name="BorderMarginContainer" type="MarginContainer" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+[node name="BorderMarginContainer" type="MarginContainer" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="EventTracker" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
-unique_name_in_owner = true
+[node name="EventTracker" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="WorldScreen" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_xbehd")]
-unique_name_in_owner = true
+[node name="ScreenMarginContainer" type="MarginContainer" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WorldScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
 layout_mode = 2
 
-[node name="ManagmentScreen" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_oa073")]
-unique_name_in_owner = true
+[node name="ManagmentScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("5_oa073")]
+visible = false
 layout_mode = 2
 
-[node name="UnknownScreen" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("6_1rr1e")]
-unique_name_in_owner = true
+[node name="UnknownScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
+visible = false
 layout_mode = 2
 
-[node name="ResourceTracker" parent="Screens/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
-unique_name_in_owner = true
+[node name="ResourceTracker" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 4
 
-[node name="FooterMarginContainer" parent="Screens/VBoxContainer" instance=ExtResource("10_unxkl")]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer"]
 layout_mode = 2
+
+[node name="InfoContainer" parent="UI/VBoxContainer/HBoxContainer" instance=ExtResource("10_unxkl")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_constants/margin_right = 0
+
+[node name="SettingsContainer" parent="UI/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
+layout_mode = 2
+theme_override_constants/margin_left = 0

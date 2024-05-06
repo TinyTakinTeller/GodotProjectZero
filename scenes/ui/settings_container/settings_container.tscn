@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6hcp4hfxyic"]
+
+[ext_resource type="Script" path="res://scenes/ui/settings_container/settings_container.gd" id="1_wrevx"]
+[ext_resource type="PackedScene" uid="uid://dic246sx4xjf6" path="res://scenes/ui/settings_container/toggle_button/toggle_button.tscn" id="2_pyn51"]
+
+[node name="SettingsContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_wrevx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ThemeToggleButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_pyn51")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ManagerButton"
+_id = "theme"
+_toggle_ids = Array[String](["debug", "dark"])
+_toggle_id_index = 0

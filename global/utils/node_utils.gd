@@ -18,3 +18,17 @@ static func remove_oldest(parent: Node) -> void:
 	var oldest_child: Node = parent.get_child(parent.get_child_count() - 1)
 	parent.remove_child(oldest_child)
 	oldest_child.queue_free()
+
+
+static func add_child_front(child: Node, parent: Node) -> void:
+	parent.add_child(child)
+	parent.move_child(child, 0)
+
+
+static func add_child_sorted(child: Node, parent: Node, compare_func: Callable) -> void:
+	parent.add_child(child)
+	var children: Array[Node] = parent.get_children()
+	if children.size() == 0:
+		return
+	var position: int = children.bsearch_custom(child, compare_func)
+	parent.move_child(child, position)

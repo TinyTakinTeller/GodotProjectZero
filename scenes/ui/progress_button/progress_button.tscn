@@ -1,27 +1,31 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjroqyyfrvx70"]
 
-[ext_resource type="Theme" uid="uid://be30ymqku7twp" path="res://resources/theme/theme.tres" id="1_6hpyo"]
+[ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/animation/new_unlock_tween/new_unlock_tween.tscn" id="2_bv2yr"]
 [ext_resource type="Script" path="res://scenes/ui/progress_button/progress_button.gd" id="2_rp5nm"]
 
 [node name="ProgressButton" type="MarginContainer"]
-offset_right = 62.0
-offset_bottom = 31.0
+anchors_preset = -1
+anchor_bottom = 0.001
+offset_right = 70.0
+offset_bottom = 40.46
 size_flags_horizontal = 0
 size_flags_vertical = 8
 mouse_filter = 2
-theme = ExtResource("1_6hpyo")
-theme_override_constants/margin_left = 2
+theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 6
 script = ExtResource("2_rp5nm")
 
 [node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"ProgressButton"
 text = "Button
 "
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 mouse_filter = 2
@@ -29,8 +33,13 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="RedColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 1)
+
+[node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_bv2yr")]
+unique_name_in_owner = true
+target = NodePath("..")

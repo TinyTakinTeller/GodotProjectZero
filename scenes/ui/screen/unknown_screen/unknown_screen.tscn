@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkkan07rftdv8"]
+
+[ext_resource type="Script" path="res://scenes/ui/screen/unknown_screen/unknown_screen.gd" id="1_cwm6a"]
+
+[node name="UnknownScreen" type="MarginContainer"]
+offset_right = 16.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+script = ExtResource("1_cwm6a")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2

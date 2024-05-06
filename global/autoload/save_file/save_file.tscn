@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://i5jhxm31q0bs"]
+
+[ext_resource type="Script" path="res://global/autoload/save_file/save_file.gd" id="1_ibldh"]
+
+[node name="SaveFile" type="Node"]
+script = ExtResource("1_ibldh")
+
+[node name="AutosaveTimer" type="Timer" parent="."]
+unique_name_in_owner = true

@@ -17,6 +17,7 @@ layout_mode = 2
 
 [node name="LineLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -26,7 +27,7 @@ text = "[001]"
 
 [node name="EventLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(225, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12

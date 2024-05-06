@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TabData" load_steps=2 format=3 uid="uid://dtv88rxe77bb3"]
+
+[ext_resource type="Script" path="res://resources/game_data/tab_data/tab_data.gd" id="1_tw4qd"]
+
+[resource]
+script = ExtResource("1_tw4qd")
+id = "unknown"
+titles = Array[String](["Unknown"])

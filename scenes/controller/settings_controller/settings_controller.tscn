@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7v7qyfc1edkj"]
+
+[ext_resource type="Script" path="res://scenes/controller/settings_controller/settings_controller.gd" id="1_tuvy3"]
+
+[node name="SettingsController" type="Node"]
+script = ExtResource("1_tuvy3")

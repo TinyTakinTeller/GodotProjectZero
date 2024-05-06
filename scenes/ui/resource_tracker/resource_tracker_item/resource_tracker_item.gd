@@ -2,30 +2,35 @@ extends MarginContainer
 class_name ResourceTrackerItem
 
 @onready var amount_label: Label = %AmountLabel
-@onready var passive_income_label: Label = %PassiveIncomeLabel
+@onready var income_label: Label = %IncomeLabel
 
-var _id: String
+var _resource_id: String
 
 
 func _ready() -> void:
 	amount_label.text = ""
-	passive_income_label.text = ""
+	income_label.text = ""
 	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
 
 
-func set_resource(id: String, amount: int) -> void:
-	_id = id
-	amount_label.text = "{id}: {amount}".format({"id": id, "amount": amount})
+func set_resource(resource_id: String) -> void:
+	_resource_id = resource_id
+
+
+func display_resource(amount: int) -> void:
+	amount_label.text = "{id}: {amount}".format({"id": _resource_id, "amount": amount})
 
 
 func set_passive(amount: int) -> void:
 	if amount > 0:
-		passive_income_label.text = "+{amount}".format({"amount": amount})
+		income_label.text = "+{amount}".format({"amount": amount})
+		income_label.modulate = Color(0.392, 0.878, 0, 1)
 	elif amount < 0:
-		passive_income_label.text = "{amount}".format({"amount": amount})
+		income_label.text = "{amount}".format({"amount": amount})
+		income_label.modulate = Color(0.878, 0, 0.392, 1)
 	else:
-		passive_income_label.text = ""
+		income_label.text = ""
 
 
 func _on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
-	set_passive(efficiencies.get(_id, 0))
+	set_passive(efficiencies.get(_resource_id, 0))

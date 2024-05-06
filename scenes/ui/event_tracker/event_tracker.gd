@@ -1,6 +1,7 @@
 extends MarginContainer
 
 @onready var event_v_box_container: VBoxContainer = %EventVBoxContainer
+@onready var scroll_container: ScrollContainer = %ScrollContainer
 
 @export var event_item_scene: PackedScene
 @export var PAGE_SIZE: int = 20
@@ -9,14 +10,26 @@ var _total_lines: int = 0
 
 
 func _ready() -> void:
-	_clear_items()
+	_load_from_save_file()
 	SignalBus.event_saved.connect(_on_event_saved)
+	_disable_scrollbars()
 
 
-## add line(s) and keep only {PAGE_SIZE} newest lines by deleting oldest line(s)
-func add_event(content: String, index: int) -> void:
+func _load_from_save_file() -> void:
+	_clear_items()
+	var next_index: int = SaveFile.event_log.size()
+	for index: int in range(min(PAGE_SIZE, next_index)):
+		var event_log_index: int = index + 1
+		var event_log: Dictionary = SaveFile.event_log[str(event_log_index)]
+		var event_data_id: String = event_log["event_data"]
+		var event_data: EventData = Resources.event_datas[event_data_id]
+		var vals: Array = event_log["vals"]
+		_add_event(event_data, vals, event_log_index)
+
+
+func _add_event(event_data: EventData, vals: Array, index: int) -> void:
 	var event_item: EventTrackerItem = _add_item()
-	event_item.set_content(content, index)
+	event_item.set_content(event_data, vals, index)
 	_total_lines += 1
 	while _total_lines > PAGE_SIZE:
 		NodeUtils.remove_oldest(event_v_box_container)
@@ -25,8 +38,7 @@ func add_event(content: String, index: int) -> void:
 
 func _add_item() -> EventTrackerItem:
 	var event_item: EventTrackerItem = event_item_scene.instantiate() as EventTrackerItem
-	event_v_box_container.add_child(event_item)
-	event_v_box_container.move_child(event_item, 0)
+	NodeUtils.add_child_front(event_item, event_v_box_container)
 	return event_item
 
 
@@ -35,5 +47,14 @@ func _clear_items() -> void:
 	NodeUtils.clear_children(event_v_box_container)
 
 
-func _on_event_saved(content: String, index: int) -> void:
-	add_event(content, index)
+func _on_event_saved(event_data: EventData, vals: Array, index: int) -> void:
+	_add_event(event_data, vals, index)
+
+
+func _disable_scrollbars() -> void:
+	var invisible_scrollbar_theme: Theme = Theme.new()
+	var empty_stylebox: StyleBoxEmpty = StyleBoxEmpty.new()
+	invisible_scrollbar_theme.set_stylebox("scroll", "VScrollBar", empty_stylebox)
+	invisible_scrollbar_theme.set_stylebox("scroll", "HScrollBar", empty_stylebox)
+	scroll_container.get_h_scroll_bar().theme = invisible_scrollbar_theme
+	scroll_container.get_v_scroll_bar().theme = invisible_scrollbar_theme

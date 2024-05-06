@@ -13,7 +13,12 @@ script = ExtResource("1_xdit4")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="AmountLabel" type="Label" parent="HBoxContainer"]
+[node name="AmountMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer/AmountMarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
@@ -22,7 +27,15 @@ size_flags_vertical = 1
 text = "item rare: 0
 "
 
-[node name="PassiveIncomeLabel" type="Label" parent="HBoxContainer"]
+[node name="IncomeMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+
+[node name="IncomeLabel" type="Label" parent="HBoxContainer/IncomeMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

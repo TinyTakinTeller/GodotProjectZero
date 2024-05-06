@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://dpwly1u8b1x6n"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_kig6h"]
+
+[resource]
+script = ExtResource("1_kig6h")
+id = "recruiter"
+produce = {
+"worker": 1
+}
+consume = {
+"common": 12,
+"rare": 3
+}
