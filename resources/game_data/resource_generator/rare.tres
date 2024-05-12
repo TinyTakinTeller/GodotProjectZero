@@ -4,12 +4,18 @@
 
 [resource]
 script = ExtResource("1_5wcg6")
-sort_value = 2
+sort_value = -9
 id = "rare"
 amount = 1
 cooldown = 1.5
 costs = {}
 cost_scales = {}
+random_drops = {}
 label = "Button2"
 title = "Button Two"
 flavor = "Explore the world for rare resources."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

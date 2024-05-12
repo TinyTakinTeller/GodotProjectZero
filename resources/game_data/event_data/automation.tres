@@ -6,5 +6,5 @@
 script = ExtResource("1_0bdy5")
 id = "automation"
 text = "Passive production of all resources is increasing! The age of automation is upon us."
-vars = Array[String]([])
-color = Color(1, 0.643137, 0.588235, 1)
+vars = []
+color = Color(0.878431, 0, 0.392157, 1)

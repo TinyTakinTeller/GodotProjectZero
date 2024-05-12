@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpbn8h60hhit6"]
+[gd_scene load_steps=3 format=3 uid="uid://cpbn8h60hhit6"]
 
 [ext_resource type="Script" path="res://scenes/ui/resource_tracker/resource_tracker_item/resource_tracker_item.gd" id="1_xdit4"]
+[ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_yqp0t"]
 
 [node name="ResourceTrackerItem" type="MarginContainer"]
 anchors_preset = 15
@@ -41,3 +42,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 12
 text = "+1"
+
+[node name="ModulateRedSimpleTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_yqp0t")]
+unique_name_in_owner = true
+target = NodePath("..")
+duration = 0.5
+call_method = "_modulate_red_simple_tween_method"

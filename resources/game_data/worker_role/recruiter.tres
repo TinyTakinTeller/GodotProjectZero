@@ -4,7 +4,10 @@
 
 [resource]
 script = ExtResource("1_kig6h")
+sort_value = -3
 id = "recruiter"
+title = ""
+flavor = ""
 produce = {
 "worker": 1
 }
@@ -12,3 +15,4 @@ consume = {
 "common": 12,
 "rare": 3
 }
+default = false

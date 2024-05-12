@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_gkdxq")
 id = "manager"
-titles = Array[String](["Manager"])
+titles = ["Population"]

@@ -1,7 +1,7 @@
 extends Node
 
 const AUTOSAVE_SECONDS: int = Game.params["autosave_seconds"]
-const SAVE_SLOT: String = "_0"
+const SAVE_SLOT: String = "_w3_d7_0"
 const FILE_NAME: String = "save_data" + SAVE_SLOT + ".json"
 
 @onready var timer: Timer = %AutosaveTimer
@@ -10,8 +10,8 @@ var resources: Dictionary = {}
 var workers: Dictionary = {}
 var events: Dictionary = {}
 var event_log: Dictionary = {}
-var resource_generator_unlocks: Array = ["common", "rare"]
-var worker_role_unlocks: Array = ["wanderer", "explorer"]
+var resource_generator_unlocks: Array = ["land"]
+var worker_role_unlocks: Array = []
 var tab_unlocks: Array = ["world"]
 var tab_levels: Dictionary = {"world": 0}
 var settings: Dictionary = {"theme": "dark"}
@@ -26,6 +26,11 @@ func _ready() -> void:
 		timer.wait_time = AUTOSAVE_SECONDS
 		timer.timeout.connect(_on_timeout)
 		timer.start()
+	
+	if Game.params["debug_logs"]:
+		print("_READY: " + "SaveFile" + " | " + self.get_name())
+		print("save_data: ")
+		print(_get_save_data())
 
 
 func autosave() -> void:

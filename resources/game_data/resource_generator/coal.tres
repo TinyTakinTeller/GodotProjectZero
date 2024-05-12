@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://b0w7cvwr1mxpi"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_n13cb"]
+
+[resource]
+script = ExtResource("1_n13cb")
+sort_value = 11
+id = "coal"
+amount = 1
+cooldown = 0.0
+costs = {}
+cost_scales = {}
+random_drops = {}
+label = "-"
+title = "-"
+flavor = "-"
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

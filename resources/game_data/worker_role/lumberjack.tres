@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://dgpqxx4kwt7ee"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_nx7rx"]
+
+[resource]
+script = ExtResource("1_nx7rx")
+sort_value = 1
+id = "lumberjack"
+title = ""
+flavor = "The big trees will not clear themselves."
+produce = {
+"wood": 1
+}
+consume = {
+"food": 1
+}
+default = false
+column = 0

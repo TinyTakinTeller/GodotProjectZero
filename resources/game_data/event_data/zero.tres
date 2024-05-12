@@ -7,4 +7,4 @@ script = ExtResource("1_eskfw")
 id = "zero"
 text = "The world is dark and empty..."
 vars = []
-color = Color(0.392157, 0.878431, 0, 1)
+color = Color(0.878431, 0, 0.392157, 1)

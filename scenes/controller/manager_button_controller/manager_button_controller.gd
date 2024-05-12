@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _get_workers() -> int:
-	return SaveFile.resources.get(Game.WORKER_RESOURCE_ID, 0)
+	return SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0)
 
 
 func _handle_add(worker_role: WorkerRole) -> void:

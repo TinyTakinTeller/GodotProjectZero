@@ -55,6 +55,7 @@ script = ExtResource("1_u1kx3")
 [node name="SettingManager" parent="Managers" instance=ExtResource("13_yy02v")]
 
 [node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,9 +98,10 @@ size_flags_horizontal = 3
 [node name="WorldScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
 layout_mode = 2
 
-[node name="ManagmentScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("5_oa073")]
+[node name="ManagmentScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
 visible = false
 layout_mode = 2
+worker_controller = NodePath("../../../../../../Controllers/WorkerController")
 
 [node name="UnknownScreen" parent="UI/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
 visible = false

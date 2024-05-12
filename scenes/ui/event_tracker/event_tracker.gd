@@ -12,28 +12,33 @@ var _total_lines: int = 0
 func _ready() -> void:
 	_load_from_save_file()
 	SignalBus.event_saved.connect(_on_event_saved)
-	_disable_scrollbars()
+	if Game.params["debug_no_scrollbar"]:
+		_disable_scrollbars()
 
 
 func _load_from_save_file() -> void:
 	_clear_items()
 	var next_index: int = SaveFile.event_log.size()
-	for index: int in range(min(PAGE_SIZE, next_index)):
+	var load_range: int = next_index
+	if Game.params["debug_no_scrollbar"]:
+		load_range = min(PAGE_SIZE, next_index)
+	for index: int in range(load_range):
 		var event_log_index: int = index + 1
 		var event_log: Dictionary = SaveFile.event_log[str(event_log_index)]
 		var event_data_id: String = event_log["event_data"]
 		var event_data: EventData = Resources.event_datas[event_data_id]
 		var vals: Array = event_log["vals"]
-		_add_event(event_data, vals, event_log_index)
+		_add_event(event_data, vals, event_log_index, false)
 
 
-func _add_event(event_data: EventData, vals: Array, index: int) -> void:
+func _add_event(event_data: EventData, vals: Array, index: int, new: bool) -> void:
 	var event_item: EventTrackerItem = _add_item()
-	event_item.set_content(event_data, vals, index)
+	event_item.set_content(event_data, vals, index, new)
 	_total_lines += 1
-	while _total_lines > PAGE_SIZE:
-		NodeUtils.remove_oldest(event_v_box_container)
-		_total_lines -= 1
+	if Game.params["debug_no_scrollbar"]:
+		while _total_lines > PAGE_SIZE:
+			NodeUtils.remove_oldest(event_v_box_container)
+			_total_lines -= 1
 
 
 func _add_item() -> EventTrackerItem:
@@ -48,7 +53,7 @@ func _clear_items() -> void:
 
 
 func _on_event_saved(event_data: EventData, vals: Array, index: int) -> void:
-	_add_event(event_data, vals, index)
+	_add_event(event_data, vals, index, true)
 
 
 func _disable_scrollbars() -> void:

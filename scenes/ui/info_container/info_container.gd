@@ -35,7 +35,7 @@ func _on_manager_button_hover(worker_role: WorkerRole) -> void:
 	_handle_hover(worker_role.get_title(), worker_role.get_info())
 
 
-func _on_resource_updated(id: String, _total: int, _amount: int) -> void:
+func _on_resource_updated(id: String, _total: int, _amount: int, _source_id: String) -> void:
 	if id == info_id:
 		var resource_generator: ResourceGenerator = Resources.resource_generators[id]
 		_on_progress_button_hover(resource_generator)

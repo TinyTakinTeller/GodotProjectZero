@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://7jxqko2b2kal"]
+
+[ext_resource type="Script" path="res://scenes/component/effect/label_effect_queue/label_effect/label_effect.gd" id="1_1mfsl"]
+
+[sub_resource type="Curve" id="Curve_b55cx"]
+_data = [Vector2(0.0725076, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6e37s"]
+curve = SubResource("Curve_b55cx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oymyb"]
+particle_flag_disable_z = true
+direction = Vector3(1, -0.5, 0)
+spread = 10.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+alpha_curve = SubResource("CurveTexture_6e37s")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fgbql"]
+viewport_path = NodePath("SubViewport")
+
+[node name="LabelEffect" type="Node2D"]
+z_index = 1000
+script = ExtResource("1_1mfsl")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(100, 25)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 66.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+theme_type_variation = &"label_shadow"
+theme_override_constants/shadow_outline_size = 8
+text = "  +1 wood"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_oymyb")
+texture = SubResource("ViewportTexture_fgbql")
+lifetime = 2.0

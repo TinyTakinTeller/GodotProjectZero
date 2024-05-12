@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn8u84h8wjtm8"]
+
+[ext_resource type="Script" path="res://scenes/component/tween/typing_text_tween/typing_text_tween.gd" id="1_racp6"]
+
+[node name="TypedOutTextTween" type="Node"]
+script = ExtResource("1_racp6")

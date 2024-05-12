@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://b234hpq66yx5k"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_gd6sx"]
+
+[resource]
+script = ExtResource("1_gd6sx")
+sort_value = 105
+id = "compass"
+amount = 1
+cooldown = 100.0
+costs = {
+"iron": 1,
+"leather": 1
+}
+cost_scales = {}
+random_drops = {}
+label = "Craft Compass"
+title = "Compass"
+flavor = "Naviagte beyond the forest, the world awaits."
+hidden = true
+max_amount = 1
+max_flavor = "Naviagte beyond the forest, the world awaits."
+column = 1
+display_name = ""

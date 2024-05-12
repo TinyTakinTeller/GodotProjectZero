@@ -4,3 +4,8 @@
 
 [node name="UnlockController" type="Node"]
 script = ExtResource("1_ve3qf")
+
+[node name="FirepitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HouseTimer" type="Timer" parent="."]

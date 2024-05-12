@@ -4,10 +4,14 @@
 
 [resource]
 script = ExtResource("1_kig6h")
+sort_value = -1
 id = "explorer"
+title = ""
+flavor = ""
 produce = {
 "rare": 1
 }
 consume = {
 "common": 1
 }
+default = false

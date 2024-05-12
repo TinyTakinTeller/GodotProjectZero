@@ -24,41 +24,37 @@ func _set_resources(resources: Dictionary) -> void:
 		_add_resource(id, resources[id])
 
 
-func _add_resource(id: String, amount: int) -> void:
+func _add_resource(id: String, amount: int) -> ResourceTrackerItem:
+	var resource_generator: ResourceGenerator = Resources.resource_generators[id]
+	if resource_generator.hidden:
+		return
+
 	var resource_item: ResourceTrackerItem = (
 		resource_item_scene.instantiate() as ResourceTrackerItem
 	)
-	resource_item.set_resource(id)
-	NodeUtils.add_child_sorted(resource_item, resource_v_box_container, ResourceTracker.before_than)
+	resource_item.set_resource(resource_generator)
+	NodeUtils.add_child_sorted(
+		resource_item, resource_v_box_container, ResourceTrackerItem.before_than
+	)
 	resource_item.display_resource(amount)
+	return resource_item
 
 
-func _update_resources(resources: Dictionary) -> void:
-	for id: String in resources:
-		_update_resource(id, resources[id])
-
-
-func _update_resource(id: String, amount: int) -> void:
+func _update_resource(id: String, amount: int, change: int, source_id: String) -> void:
 	for updated_resource: ResourceTrackerItem in resource_v_box_container.get_children():
-		if updated_resource._resource_id == id:
+		if updated_resource.get_id() == id:
 			updated_resource.display_resource(amount)
+			if change > 0:
+				SignalBus.resource_ui_updated.emit(updated_resource, amount, change, source_id)
 			return
-	_add_resource(id, amount)
+	var new_resource: ResourceTrackerItem = _add_resource(id, amount)
+	if new_resource != null and change > 0:
+		SignalBus.resource_ui_updated.emit(new_resource, amount, change, source_id)
 
 
 func _clear_items() -> void:
 	NodeUtils.clear_children(resource_v_box_container)
 
 
-func _on_resource_updated(id: String, total: int, _amount: int) -> void:
-	_update_resource(id, total)
-
-
-static func before_than(a: ResourceTrackerItem, b: ResourceTrackerItem) -> bool:
-	var sort_a: ResourceGenerator = Resources.resource_generators.get(a._resource_id, null)
-	var sort_b: ResourceGenerator = Resources.resource_generators.get(b._resource_id, null)
-	if sort_a == null:
-		return true
-	if sort_b == null:
-		return false
-	return sort_a.sort_value < sort_b.sort_value
+func _on_resource_updated(id: String, total: int, amount: int, source_id: String) -> void:
+	_update_resource(id, total, amount, source_id)

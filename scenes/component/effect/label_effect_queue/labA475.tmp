@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://k6nmnw4kjwjq"]
+
+[ext_resource type="Script" path="res://scenes/component/2D/label_effect_queue/label_effect_queue.gd" id="1_f44et"]
+
+[node name="LabelEffectQueue" type="Node2D"]
+script = ExtResource("1_f44et")

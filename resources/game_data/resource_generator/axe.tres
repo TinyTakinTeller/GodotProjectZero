@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://c4vmlv4y4c21m"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_bnvkb"]
+
+[resource]
+script = ExtResource("1_bnvkb")
+sort_value = 101
+id = "axe"
+amount = 1
+cooldown = 100.0
+costs = {
+"fiber": 1,
+"stone": 3,
+"wood": 5
+}
+cost_scales = {}
+random_drops = {}
+label = "Craft Axe"
+title = "Axe"
+flavor = "A very sharp object, do not play with it."
+hidden = true
+max_amount = 1
+max_flavor = "Trees are in hiding now, fearing for their life."
+column = 1
+display_name = ""

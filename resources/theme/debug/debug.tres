@@ -135,3 +135,5 @@ ManagerButton/styles/pressed = SubResource("StyleBoxFlat_p7ij1")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_vb51h")
 TabBar/styles/tab_focus = SubResource("StyleBoxEmpty_gsonx")
 TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_ncl5g")
+label_shadow/base_type = &"Label"
+label_shadow/colors/font_shadow_color = Color(0.156863, 0.156863, 0.156863, 1)

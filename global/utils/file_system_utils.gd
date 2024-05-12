@@ -12,6 +12,11 @@ static func get_resources(resource_path: String, recursive: bool) -> Dictionary:
 	var path: String = "res://resources/" + resource_path + "/"
 	var resources: Dictionary = {}
 	for file: String in DirAccess.get_files_at(path):
+		if Game.params["debug_logs"]:
+			print("READ_FILE")
+			print(path + file)
+		if file.ends_with(".remap"):
+			file = file.trim_suffix(".remap")
 		if file.ends_with(".tres"):
 			var resource: Resource = load(path + file) as Resource
 			if resource != null:

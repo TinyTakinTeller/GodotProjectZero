@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://dwdnkgmxuy248"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_dpkbf"]
+
+[resource]
+script = ExtResource("1_dpkbf")
+sort_value = -2
+id = "FOREST"
+amount = 1
+cooldown = 10.0
+costs = {}
+cost_scales = {}
+random_drops = {
+"fiber": 30,
+"food": 10,
+"wood": 60
+}
+label = "Scavange"
+title = "Scavange the Forest"
+flavor = "Things are waiting to be found within."
+hidden = true
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

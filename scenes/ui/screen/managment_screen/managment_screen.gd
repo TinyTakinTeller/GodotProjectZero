@@ -2,12 +2,22 @@ extends MarginContainer
 
 const TAB_DATA_ID: String = "manager"
 
-@onready var grid_container: GridContainer = %GridContainer
+@onready var h_box_container: HBoxContainer = %HBoxContainer
+@onready var progress_bar: ProgressBar = %ProgressBar
 
 @export var manager_button_scene: PackedScene
+@export var worker_controller: WorkerController
+
+var grid_containers: Array[GridContainer] = []
+
+
+func _process(_delta: float) -> void:
+	if worker_controller != null:
+		progress_bar.value = worker_controller.timer.time_left / Game.params["cycle_seconds"]
 
 
 func _ready() -> void:
+	_initialize()
 	_load_from_save_file()
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
@@ -26,19 +36,29 @@ func _load_manager_button(worker_role_id: String) -> void:
 
 
 func _add_manager_button(worker_role: WorkerRole, amount: int) -> ManagerButton:
-	var manager_button_item: ManagerButton = _add_item()
-	manager_button_item.set_worker_role(worker_role, amount)
-	return manager_button_item
-
-
-func _add_item() -> ManagerButton:
 	var manager_button_item: ManagerButton = manager_button_scene.instantiate() as ManagerButton
-	grid_container.add_child(manager_button_item)
+	manager_button_item.set_worker_role(worker_role)
+	NodeUtils.add_child_sorted(
+		manager_button_item, grid_containers[worker_role.column], ManagerButton.before_than
+	)
+	manager_button_item.display_worker_role(amount)
 	return manager_button_item
 
 
 func _clear_items() -> void:
-	NodeUtils.clear_children_of(grid_container, ManagerButton)
+	for grid_container: GridContainer in grid_containers:
+		NodeUtils.clear_children_of(grid_container, ManagerButton)
+
+
+func _initialize() -> void:
+	for node: Node in h_box_container.get_children():
+		if is_instance_of(node, GridContainer):
+			grid_containers.append(node as GridContainer)
+
+	if worker_controller != null:
+		progress_bar.visible = true
+	else:
+		progress_bar.visible = false
 
 
 func _on_tab_changed(tab_data: TabData) -> void:

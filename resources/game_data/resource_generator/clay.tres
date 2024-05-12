@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://cl32v5i25kgls"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qn7uo"]
+
+[resource]
+script = ExtResource("1_qn7uo")
+sort_value = 5
+id = "clay"
+amount = 3
+cooldown = 20.0
+costs = {}
+cost_scales = {}
+random_drops = {}
+label = "Dig Clay"
+title = "Dig Clay"
+flavor = "Pierce the muddy waters for their essence."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

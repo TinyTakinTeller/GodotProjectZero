@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://djg1e8uwkn188"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_ceyl4"]
+
+[resource]
+script = ExtResource("1_ceyl4")
+sort_value = 3
+id = "wood"
+amount = 3
+cooldown = 20.0
+costs = {}
+cost_scales = {}
+random_drops = {}
+label = "Chop Wood"
+title = "Chop Wood"
+flavor = "Deforestation is a small price to pay for a few extra wood."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

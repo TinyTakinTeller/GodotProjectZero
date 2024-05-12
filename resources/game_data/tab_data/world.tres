@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_e54ak")
 id = "world"
-titles = Array[String](["World", "Forest", "Camp"])
+titles = ["World", "Forest", "Forest Camp", "Forest Village", "Forest Town"]

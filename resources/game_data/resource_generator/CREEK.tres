@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://c6dbmnrtj7nr7"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qto8u"]
+
+[resource]
+script = ExtResource("1_qto8u")
+sort_value = -1
+id = "CREEK"
+amount = 1
+cooldown = 10.0
+costs = {}
+cost_scales = {}
+random_drops = {
+"clay": 30,
+"flint": 20,
+"stone": 50
+}
+label = "Dredge"
+title = "Dredge the Creek"
+flavor = "The bottom of the shallow creek is ready for picking."
+hidden = true
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

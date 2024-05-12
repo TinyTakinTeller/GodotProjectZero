@@ -1,23 +1,26 @@
-[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://bs8c8it6f6cs8"]
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://bs8c8it6f6cs8"]
 
-[ext_resource type="Resource" uid="uid://bi672vq7s2a5f" path="res://resources/game_data/resource_generator/cost_function/linear/linear.tres" id="1_mxjtx"]
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_t0567"]
-[ext_resource type="Resource" uid="uid://cn8t1hgpe163k" path="res://resources/game_data/resource_generator/cost_function/identity/identity.tres" id="2_oqcfq"]
 
 [resource]
 script = ExtResource("1_t0567")
-sort_value = 4
+sort_value = 1001
 id = "house"
 amount = 1
-cooldown = 5.0
+cooldown = 40.0
 costs = {
-"common": 20,
-"rare": 5
+"brick": 10,
+"land": 2,
+"stone": 5,
+"wood": 20
 }
-cost_scales = {
-"common": ExtResource("1_mxjtx"),
-"rare": ExtResource("2_oqcfq")
-}
+cost_scales = {}
+random_drops = {}
 label = "Build a House"
-title = "Worker House"
-flavor = "Make your workers feel nice and happy."
+title = "House"
+flavor = "A simple house can hold quite a few extra people."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 2
+display_name = ""

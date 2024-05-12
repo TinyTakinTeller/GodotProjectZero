@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://d1vodxlboh7s8"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_hmyit"]
+
+[resource]
+script = ExtResource("1_hmyit")
+sort_value = -9
+id = "-"
+amount = 1
+cooldown = 0.0
+costs = {}
+cost_scales = {}
+label = "-"
+title = "-"
+flavor = "-"
+random_drops = {}
+hidden = false

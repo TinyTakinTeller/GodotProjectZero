@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://dxhn7gatg7p04"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_2gk1a"]
+
+[resource]
+script = ExtResource("1_2gk1a")
+sort_value = 5
+id = "smelter"
+title = ""
+flavor = "Sits next to firepit to take out bricks."
+produce = {
+"brick": 1
+}
+consume = {
+"clay": 1
+}
+default = false

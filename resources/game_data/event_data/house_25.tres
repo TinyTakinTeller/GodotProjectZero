@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://bg4hs3tclojlw"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_6510x"]
+
+[resource]
+script = ExtResource("1_6510x")
+id = "house_25"
+text = "The forest village grew into a forest town."
+vars = []
+color = Color(0, 0, 0, 1)

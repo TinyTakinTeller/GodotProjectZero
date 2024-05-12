@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bp8ipef04gxux"]
 
-[ext_resource type="Texture2D" uid="uid://dlgwuxqqspyle" path="res://assets/image/icon/icon.svg" id="1_i5ayl"]
 [ext_resource type="Script" path="res://scenes/ui/screen/world_screen/world_screen.gd" id="1_k268v"]
 [ext_resource type="PackedScene" uid="uid://bjroqyyfrvx70" path="res://scenes/ui/progress_button/progress_button.tscn" id="2_74b0p"]
+[ext_resource type="PackedScene" uid="uid://cwnnlumhu3hx6" path="res://scenes/npc/cat/cat.tscn" id="3_e0cun"]
 
 [node name="WorldScreen" type="MarginContainer"]
 size_flags_horizontal = 3
@@ -19,23 +19,52 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GridContainer"]
+[node name="GridContainer1" type="GridContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer/MarginContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 0
-texture = ExtResource("1_i5ayl")
-
-[node name="ProgressButton1" parent="MarginContainer/GridContainer" instance=ExtResource("2_74b0p")]
+[node name="ProgressButton1" parent="MarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ProgressButton2" parent="MarginContainer/GridContainer" instance=ExtResource("2_74b0p")]
+[node name="ProgressButton2" parent="MarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
 layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+
+[node name="GridContainer2" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressButton1" parent="MarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ProgressButton2" parent="MarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+
+[node name="GridContainer3" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressButton1" parent="MarginContainer/HBoxContainer/GridContainer3" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ProgressButton2" parent="MarginContainer/HBoxContainer/GridContainer3" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NPC" type="Node2D" parent="."]
+
+[node name="Cat" parent="NPC" instance=ExtResource("3_e0cun")]
+unique_name_in_owner = true
+position = Vector2(333, 52)

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://bpfjhcuseuwwj"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_56wys"]
+
+[resource]
+script = ExtResource("1_56wys")
+sort_value = 100
+id = "firepit"
+amount = 1
+cooldown = 100.0
+costs = {
+"fiber": 1,
+"flint": 1,
+"land": 1,
+"stone": 2,
+"wood": 3
+}
+cost_scales = {}
+random_drops = {}
+label = "Craft Firepit"
+title = "Firepit"
+flavor = "Warm and safe, must be nice to have."
+hidden = true
+max_amount = 1
+max_flavor = "It burns nice and warm, a light in the darkness."
+column = 1
+display_name = ""

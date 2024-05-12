@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://coqnyelmupvq3"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_sghl4"]
+
+[resource]
+script = ExtResource("1_sghl4")
+id = "land_6"
+text = "There is a lake nearby, extending along a muddy beach."
+vars = []
+color = Color(0, 0, 0, 1)

@@ -32,3 +32,13 @@ static func add_child_sorted(child: Node, parent: Node, compare_func: Callable) 
 		return
 	var position: int = children.bsearch_custom(child, compare_func)
 	parent.move_child(child, position)
+
+
+static func get_inherited_theme(control: Node) -> Resource:
+	var theme: Resource = null
+	while control != null && "theme" in control:
+		theme = control.theme
+		if theme != null:
+			break
+		control = control.get_parent()
+	return theme

@@ -4,15 +4,18 @@
 
 [resource]
 script = ExtResource("1_2gmhq")
-sort_value = 3
+sort_value = 0
 id = "worker"
 amount = 1
-cooldown = 3.0
-costs = {
-"common": 10,
-"rare": 3
-}
+cooldown = 0.0
+costs = {}
 cost_scales = {}
-label = "Buy Worker"
-title = "Cheap Slave"
-flavor = "Will work day and night."
+random_drops = {}
+label = "-"
+title = "-"
+flavor = "-"
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = "population"

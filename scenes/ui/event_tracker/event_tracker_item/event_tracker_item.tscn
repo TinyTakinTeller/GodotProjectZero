@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d362a3u5u0np5"]
+[gd_scene load_steps=3 format=3 uid="uid://d362a3u5u0np5"]
 
 [ext_resource type="Script" path="res://scenes/ui/event_tracker/event_tracker_item/event_tracker_item.gd" id="1_5qgqd"]
+[ext_resource type="PackedScene" uid="uid://cn8u84h8wjtm8" path="res://scenes/component/tween/typing_text_tween/typing_text_tween.tscn" id="2_x1nui"]
 
 [node name="EventTrackerItem" type="MarginContainer"]
 anchors_preset = 15
@@ -33,3 +34,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "The world is dark and empty..."
 autowrap_mode = 2
+
+[node name="TypingTextTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_x1nui")]
+unique_name_in_owner = true
+target = NodePath("../HBoxContainer/EventLabel")

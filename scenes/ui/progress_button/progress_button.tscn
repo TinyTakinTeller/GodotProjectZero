@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjroqyyfrvx70"]
+[gd_scene load_steps=6 format=3 uid="uid://bjroqyyfrvx70"]
 
-[ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/animation/new_unlock_tween/new_unlock_tween.tscn" id="2_bv2yr"]
+[ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_gumta"]
 [ext_resource type="Script" path="res://scenes/ui/progress_button/progress_button.gd" id="2_rp5nm"]
+[ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_v7ecv"]
+[ext_resource type="PackedScene" uid="uid://d4a6sfsyw5jie" path="res://scenes/component/effect/line_effect/line_effect.tscn" id="3_aqdv6"]
+[ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="4_ybk84"]
 
 [node name="ProgressButton" type="MarginContainer"]
 anchors_preset = -1
@@ -12,9 +15,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_bottom = 4
 script = ExtResource("2_rp5nm")
 
 [node name="Button" type="Button" parent="."]
@@ -33,6 +36,11 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
+[node name="ProgressBarSimpleTween" parent="ProgressBar" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
+unique_name_in_owner = true
+target = NodePath("../..")
+call_method = "_cooldown_tween_method"
+
 [node name="RedColorRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
@@ -40,6 +48,21 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
-[node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_bv2yr")]
+[node name="RedColorRectSimpleTween" parent="RedColorRect" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
+unique_name_in_owner = true
+target = NodePath("../..")
+duration = 0.3
+call_method = "_red_color_rect_simple_tween_method"
+
+[node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_gumta")]
 unique_name_in_owner = true
 target = NodePath("..")
+
+[node name="LineEffect" parent="." instance=ExtResource("3_aqdv6")]
+unique_name_in_owner = true
+color = Color(0.282353, 0.282353, 0.282353, 1)
+offset_a_x = 1
+offset_b_x = -14
+
+[node name="LabelEffectQueue" parent="." instance=ExtResource("4_ybk84")]
+unique_name_in_owner = true

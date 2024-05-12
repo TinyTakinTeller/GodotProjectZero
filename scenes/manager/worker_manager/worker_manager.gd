@@ -7,12 +7,10 @@ func _ready() -> void:
 
 
 func _assign_worker(id: String, amount: int) -> void:
-	SaveFile.resources[Game.WORKER_RESOURCE_ID] = (
-		SaveFile.resources.get(Game.WORKER_RESOURCE_ID, 0) - amount
-	)
-	SignalBus.resource_updated.emit(
-		Game.WORKER_RESOURCE_ID, SaveFile.resources[Game.WORKER_RESOURCE_ID], -amount
-	)
+	var wid: String = Game.WORKER_RESOURCE_ID
+	if id != wid:
+		SaveFile.workers[wid] = (SaveFile.workers.get(wid, 0) - amount)
+		SignalBus.worker_updated.emit(wid, SaveFile.workers[wid], amount)
 	SaveFile.workers[id] = SaveFile.workers.get(id, 0) + amount
 	SignalBus.worker_updated.emit(id, SaveFile.workers[id], amount)
 

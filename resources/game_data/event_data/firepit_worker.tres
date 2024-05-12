@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://ii6sbvor34os"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_i6iul"]
+
+[resource]
+script = ExtResource("1_i6iul")
+id = "firepit_worker"
+text = "A stranger saw the firepit. The lost peasant wanted shelter and offered to work in return."
+vars = []
+color = Color(0, 0.392157, 0.956863, 1)

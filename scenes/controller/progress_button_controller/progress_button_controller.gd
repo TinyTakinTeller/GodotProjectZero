@@ -12,25 +12,27 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> v
 	if !_can_pay(cost):
 		SignalBus.progress_button_unpaid.emit(resource_generator)
 		return
-	_pay_resources(cost)
+	_pay_resources(cost, resource_generator)
 	SignalBus.progress_button_paid.emit(resource_generator)
 
-	var amount: int = resource_generator.get_amount()
-	SignalBus.resource_generated.emit(id, amount)
+	var generate: Dictionary = resource_generator.generate()
+	for gen_id: String in generate:
+		var amount: int = generate[gen_id]
+		SignalBus.resource_generated.emit(gen_id, amount, resource_generator.id)
 
 
 func _can_pay(costs: Dictionary) -> bool:
-	for id: String in costs.keys():
+	for id: String in costs:
 		var cost: int = costs[id]
 		if SaveFile.resources.get(id, 0) < cost:
 			return false
 	return true
 
 
-func _pay_resources(costs: Dictionary) -> void:
-	for id: String in costs.keys():
-		var cost: int = costs[id]
-		SignalBus.resource_generated.emit(id, -cost)
+func _pay_resources(costs: Dictionary, resource_generator: ResourceGenerator) -> void:
+	for gen_id: String in costs:
+		var cost: int = costs[gen_id]
+		SignalBus.resource_generated.emit(gen_id, -cost, resource_generator.id)
 
 
 func _on_progress_button_pressed(resource_generator: ResourceGenerator) -> void:

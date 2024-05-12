@@ -5,7 +5,7 @@
 
 [node name="TabTracker" type="MarginContainer"]
 offset_right = 960.0
-offset_bottom = 31.0
+offset_bottom = 43.0
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_bottom = 4
 script = ExtResource("1_fqp6t")
@@ -24,6 +24,7 @@ layout_mode = 2
 [node name="TabContainer" type="TabContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+tab_alignment = 1
 tab_focus_mode = 0
 
 [node name="TabTrackerItem1" parent="TabContainer" instance=ExtResource("2_6i4ca")]

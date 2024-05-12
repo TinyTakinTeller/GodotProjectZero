@@ -1,24 +1,7 @@
-[gd_resource type="Theme" load_steps=73 format=3 uid="uid://d276arnrjws3i"]
+[gd_resource type="Theme" load_steps=72 format=3 uid="uid://d276arnrjws3i"]
 
 [ext_resource type="FontFile" uid="uid://bxjeqgijqycqp" path="res://resources/theme/dark/OpenSans-Regular.ttf" id="1_cnjs4"]
 [ext_resource type="Texture2D" uid="uid://bvpjbal72ck7r" path="res://resources/theme/dark/icons.svg" id="2_plspm"]
-
-[sub_resource type="FontFile" id="21"]
-fallbacks = Array[Font]([ExtResource("1_cnjs4")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/8/0 = Vector2(0, 0)
-cache/0/8/0/ascent = 0.0
-cache/0/8/0/descent = 0.0
-cache/0/8/0/underline_position = 0.0
-cache/0/8/0/underline_thickness = 0.0
-cache/0/8/0/scale = 1.0
-cache/0/8/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/8/0/kerning_overrides/8/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ymaf"]
 bg_color = Color(0, 0, 0, 1)
@@ -59,6 +42,23 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="FontFile" id="21"]
+fallbacks = Array[Font]([ExtResource("1_cnjs4")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/8/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/8/0 = Vector2(0, 0)
 
 [sub_resource type="AtlasTexture" id="22"]
 atlas = ExtResource("2_plspm")
@@ -275,15 +275,6 @@ expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
-
-[sub_resource type="FontFile" id="FontFile_l0442"]
-fallbacks = Array[Font]([ExtResource("1_cnjs4")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njrop"]
 bg_color = Color(0, 0, 0, 1)
@@ -506,13 +497,13 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [resource]
-default_font = SubResource("21")
+default_font = ExtResource("1_cnjs4")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
 Button/colors/font_color_hover = Color(0.94, 0.94, 0.94, 1)
 Button/colors/font_color_pressed = Color(1, 1, 1, 1)
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource("21")
+Button/fonts/font = ExtResource("1_cnjs4")
 Button/styles/disabled = SubResource("StyleBoxFlat_1ymaf")
 Button/styles/focus = SubResource("StyleBoxFlat_r5gq2")
 Button/styles/hover = SubResource("StyleBoxFlat_5c4s2")
@@ -621,7 +612,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_75tr5")
 ProgressButton/base_type = &"Button"
 ProgressButton/constants/h_separation = 4
 ProgressButton/constants/hseparation = 2
-ProgressButton/fonts/font = SubResource("FontFile_l0442")
+ProgressButton/fonts/font = ExtResource("1_cnjs4")
 ProgressButton/styles/disabled = SubResource("StyleBoxFlat_njrop")
 ProgressButton/styles/focus = SubResource("StyleBoxFlat_0jagi")
 ProgressButton/styles/hover = SubResource("StyleBoxFlat_hxxig")
@@ -635,7 +626,7 @@ TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/label_valign_fg = 0
 TabContainer/constants/side_margin = 8
 TabContainer/constants/top_margin = 24
-TabContainer/fonts/font = SubResource("21")
+TabContainer/fonts/font = ExtResource("1_cnjs4")
 TabContainer/icons/decrement = null
 TabContainer/icons/decrement_highlight = null
 TabContainer/icons/increment = null
@@ -743,3 +734,5 @@ VSlider/icons/tick = null
 VSlider/styles/grabber_area = SubResource("18")
 VSlider/styles/grabber_area_highlight = SubResource("19")
 VSlider/styles/slider = SubResource("20")
+label_shadow/base_type = &"Label"
+label_shadow/colors/font_shadow_color = Color(0, 0, 0, 1)

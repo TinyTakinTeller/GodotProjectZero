@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://bp1j1xyufxeyh"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_l1yee"]
+
+[resource]
+script = ExtResource("1_l1yee")
+sort_value = 2
+id = "stone_miner"
+title = ""
+flavor = "One rock, two rocks, here we go."
+produce = {
+"stone": 1
+}
+consume = {
+"food": 1
+}
+default = false
