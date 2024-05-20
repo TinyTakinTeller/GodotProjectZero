@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn5m0e406mpe"]
+
+[ext_resource type="Script" path="res://scenes/ui/save_file_tracker/save_file_item/save_file_item.gd" id="1_1rx2f"]
+[ext_resource type="PackedScene" uid="uid://deb5cv2ckp6lg" path="res://scenes/ui/save_file_tracker/save_file_item/save_file_item_section/save_file_item_section.tscn" id="2_yn2ry"]
+
+[node name="SaveFileItem" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_1rx2f")
+save_file_item_section_scene = ExtResource("2_yn2ry")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SectionHBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SaveFileItemSection1" parent="HBoxContainer/SectionHBoxContainer" instance=ExtResource("2_yn2ry")]
+layout_mode = 2
+
+[node name="SaveFileItemSection2" parent="HBoxContainer/SectionHBoxContainer" instance=ExtResource("2_yn2ry")]
+layout_mode = 2
+
+[node name="SaveFileItemSection3" parent="HBoxContainer/SectionHBoxContainer" instance=ExtResource("2_yn2ry")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoadMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="LoadButton" type="Button" parent="HBoxContainer/LoadMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.392157, 0.878431, 0, 1)
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+text = "Load"
+
+[node name="NewMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="NewButton" type="Button" parent="HBoxContainer/NewMarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+text = "New Game"
+
+[node name="DeleteMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="DeleteButton" type="Button" parent="HBoxContainer/DeleteMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0, 0.392157, 1)
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+text = "Delete"

@@ -30,14 +30,15 @@ theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 0
 
 [node name="Panel" type="Panel" parent="HBoxContainer/AmountMarginContainer"]
+visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AmountMarginContainer"]
+[node name="AmountLabelMarginContainer" type="MarginContainer" parent="HBoxContainer/AmountMarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="AmountLabel" type="Label" parent="HBoxContainer/AmountMarginContainer/MarginContainer"]
+[node name="AmountLabel" type="Label" parent="HBoxContainer/AmountMarginContainer/AmountLabelMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -57,15 +58,16 @@ text = "+"
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="HBoxContainer/InfoMarginContainer"]
+visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoMarginContainer"]
+[node name="InfoLabelMarginContainer" type="MarginContainer" parent="HBoxContainer/InfoMarginContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="InfoLabel" type="Label" parent="HBoxContainer/InfoMarginContainer/MarginContainer"]
+[node name="InfoLabel" type="Label" parent="HBoxContainer/InfoMarginContainer/InfoLabelMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

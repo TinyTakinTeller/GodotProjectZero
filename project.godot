@@ -22,7 +22,7 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 
 config/name="The Best Game Ever"
 config/version="0.0.week-3"
-run/main_scene="res://scenes/main/main.tscn"
+run/main_scene="res://scenes/autostart/save_file_picker/save_file_picker.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/image/icon/icon.svg"

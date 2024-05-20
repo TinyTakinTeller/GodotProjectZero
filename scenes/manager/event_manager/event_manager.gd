@@ -1,9 +1,18 @@
 extends Node
 class_name EventManager
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
-	SignalBus.event_triggered.connect(_on_event_triggered)
+	_connect_signals()
+
+
+##############
+## handlers ##
+##############
 
 
 func _add_event(event_data: EventData, vals: Array) -> void:
@@ -12,6 +21,15 @@ func _add_event(event_data: EventData, vals: Array) -> void:
 	var index: int = SaveFile.event_log.size() + 1
 	SaveFile.event_log[str(index)] = {"event_data": event_data_id, "vals": vals}
 	SignalBus.event_saved.emit(event_data, vals, index)
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.event_triggered.connect(_on_event_triggered)
 
 
 func _on_event_triggered(event_data: EventData, vals: Array) -> void:

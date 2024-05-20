@@ -10,6 +10,10 @@ const TAB_DATA_ID: String = "manager"
 
 var grid_containers: Array[GridContainer] = []
 
+###############
+## overrides ##
+###############
+
 
 func _process(_delta: float) -> void:
 	if worker_controller != null:
@@ -19,8 +23,12 @@ func _process(_delta: float) -> void:
 func _ready() -> void:
 	_initialize()
 	_load_from_save_file()
-	SignalBus.tab_changed.connect(_on_tab_changed)
-	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
+	_connect_signals()
+
+
+#############
+## helpers ##
+#############
 
 
 func _load_from_save_file() -> void:
@@ -59,6 +67,16 @@ func _initialize() -> void:
 		progress_bar.visible = true
 	else:
 		progress_bar.visible = false
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.tab_changed.connect(_on_tab_changed)
+	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:

@@ -31,3 +31,15 @@ theme_type_variation = &"ManagerButton"
 _id = "theme"
 _toggle_ids = Array[String](["debug", "dark"])
 _toggle_id_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "pre-alpha
+week 4"
+horizontal_alignment = 1

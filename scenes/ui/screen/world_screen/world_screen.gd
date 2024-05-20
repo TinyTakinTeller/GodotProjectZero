@@ -3,23 +3,31 @@ extends MarginContainer
 const TAB_DATA_ID: String = "world"
 
 @onready var h_box_container: HBoxContainer = %HBoxContainer
-@onready var cat: Sprite2D = %Cat
 
 @export var progress_button_scene: PackedScene
 
 var grid_containers: Array[GridContainer] = []
 
-
-func _process(_delta: float) -> void:
-	cat.position.x = self.get_rect().size.x - cat.get_rect().size.x / 2 - 20
-	cat.position.y = self.get_rect().size.y - cat.get_rect().size.y / 2 - 20
+###############
+## overrides ##
+###############
 
 
 func _ready() -> void:
 	_initialize()
 	_load_from_save_file()
-	SignalBus.tab_changed.connect(_on_tab_changed)
-	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
+	_connect_signals()
+
+
+#############
+## helpers ##
+#############
+
+
+func _initialize() -> void:
+	for node: Node in h_box_container.get_children():
+		if is_instance_of(node, GridContainer):
+			grid_containers.append(node as GridContainer)
 
 
 func _load_from_save_file() -> void:
@@ -48,10 +56,14 @@ func _clear_items() -> void:
 		NodeUtils.clear_children_of(grid_container, ProgressButton)
 
 
-func _initialize() -> void:
-	for node: Node in h_box_container.get_children():
-		if is_instance_of(node, GridContainer):
-			grid_containers.append(node as GridContainer)
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.tab_changed.connect(_on_tab_changed)
+	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:

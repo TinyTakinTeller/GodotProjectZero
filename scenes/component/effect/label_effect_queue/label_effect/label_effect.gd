@@ -4,7 +4,7 @@ class_name LabelEffect
 signal task_finished(text: String)
 
 @onready var sub_viewport: SubViewport = $SubViewport
-@onready var label: Label = $SubViewport/Label
+@onready var label: Label = %Label
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
 var finished: bool = true

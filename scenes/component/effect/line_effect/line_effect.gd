@@ -10,7 +10,17 @@ class_name LineEffect
 @export var offset_a_x: int = 0
 @export var offset_b_x: int = 0
 
+var _tween: Tween
 var _alpha: float = 0.0
+
+
+func play_animation() -> void:
+	_prepare_animation()
+	if _tween != null:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.tween_method(_tween_method, 0.0, max_alpha, duration)
+	_tween.tween_callback(_on_animation_end)
 
 
 func _target_animation() -> void:
@@ -29,13 +39,6 @@ func _prepare_animation() -> void:
 	_alpha = max_alpha
 	self.set_width(line_width)
 	visible = true
-
-
-func play_animation() -> void:
-	_prepare_animation()
-	var tween: Tween = self.create_tween()
-	tween.tween_method(_tween_method, 0.0, max_alpha, duration)
-	tween.tween_callback(_on_animation_end)
 
 
 func _tween_method(animation_percent: float) -> void:

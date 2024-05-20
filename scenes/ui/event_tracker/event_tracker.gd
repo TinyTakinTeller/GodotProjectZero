@@ -8,12 +8,22 @@ extends MarginContainer
 
 var _total_lines: int = 0
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
 	_load_from_save_file()
-	SignalBus.event_saved.connect(_on_event_saved)
+	_connect_signals()
+
 	if Game.params["debug_no_scrollbar"]:
-		_disable_scrollbars()
+		ScrollContainerUtils.disable_scrollbars(scroll_container)
+
+
+#############
+## helpers ##
+#############
 
 
 func _load_from_save_file() -> void:
@@ -52,14 +62,14 @@ func _clear_items() -> void:
 	NodeUtils.clear_children(event_v_box_container)
 
 
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.event_saved.connect(_on_event_saved)
+
+
 func _on_event_saved(event_data: EventData, vals: Array, index: int) -> void:
 	_add_event(event_data, vals, index, true)
-
-
-func _disable_scrollbars() -> void:
-	var invisible_scrollbar_theme: Theme = Theme.new()
-	var empty_stylebox: StyleBoxEmpty = StyleBoxEmpty.new()
-	invisible_scrollbar_theme.set_stylebox("scroll", "VScrollBar", empty_stylebox)
-	invisible_scrollbar_theme.set_stylebox("scroll", "HScrollBar", empty_stylebox)
-	scroll_container.get_h_scroll_bar().theme = invisible_scrollbar_theme
-	scroll_container.get_v_scroll_bar().theme = invisible_scrollbar_theme

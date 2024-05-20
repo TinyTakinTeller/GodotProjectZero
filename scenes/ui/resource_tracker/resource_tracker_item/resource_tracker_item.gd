@@ -7,15 +7,24 @@ class_name ResourceTrackerItem
 
 var _resource_generator: ResourceGenerator
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
-	amount_label.text = ""
-	income_label.text = ""
-	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
-	SignalBus.progress_button_unpaid.connect(_on_progress_button_unpaid)
+	_initialize()
+	_connect_signals()
+
+
+###########
+## setup ##
+###########
 
 
 func get_id() -> String:
+	if _resource_generator == null:
+		return ""
 	return _resource_generator.id
 
 
@@ -28,7 +37,26 @@ func display_resource(amount: int) -> void:
 	amount_label.text = "{name}: {amount}".format({"name": resource_name, "amount": amount})
 
 
-func set_passive(amount: int) -> void:
+###############
+## animation ##
+###############
+
+
+func play_modulate_red_simple_tween_animation() -> void:
+	modulate_red_simple_tween.play_animation()
+
+
+#############
+## helpers ##
+#############
+
+
+func _initialize() -> void:
+	amount_label.text = ""
+	income_label.text = ""
+
+
+func _set_passive(amount: int) -> void:
 	if amount > 0:
 		income_label.text = "+{amount}".format({"amount": amount})
 		income_label.modulate = Color(0.392, 0.878, 0, 1)
@@ -39,20 +67,41 @@ func set_passive(amount: int) -> void:
 		income_label.text = ""
 
 
-func _modulate_red_simple_tween_method(animation_percent: float) -> void:
-	amount_label.modulate = Color(1, animation_percent, animation_percent, 1)
+##############
+## handlers ##
+##############
+
+
+func _handle_on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
+	var id: String = get_id()
+	_set_passive(efficiencies.get(id, 0))
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
 
 
 func _on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
-	var id: String = get_id()
-	set_passive(efficiencies.get(id, 0))
+	_handle_on_worker_efficiency_updated(efficiencies)
 
 
-func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
-	var id: String = get_id()
-	if resource_generator.costs.has(id):
-		if SaveFile.resources.get(id, 0) < resource_generator.costs[id]:
-			modulate_red_simple_tween.play_animation()
+############
+## export ##
+############
+
+
+func __modulate_red_simple_tween_method(animation_percent: float) -> void:
+	amount_label.modulate = Color(1, animation_percent, animation_percent, 1)
+
+
+############
+## static ##
+############
 
 
 static func before_than(a: ResourceTrackerItem, b: ResourceTrackerItem) -> bool:

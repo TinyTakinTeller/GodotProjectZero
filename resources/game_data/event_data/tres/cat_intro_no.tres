@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://cm5naonw3bkhs"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_8oc0q"]
+
+[resource]
+script = ExtResource("1_8oc0q")
+id = "cat_intro_no"
+text = "The forest is dark, but It feels like home. I feel the cat will remember that answer..."
+vars = []
+color = Color(0.878431, 0, 0.392157, 1)

@@ -5,18 +5,27 @@ const CYCLE_SECONDS: int = Game.params["cycle_seconds"]
 
 @onready var timer: Timer = $Timer
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
+	_initialize()
+	_connect_signals()
+
+
+#############
+## helpers ##
+#############
+
+
+func _initialize() -> void:
 	timer.wait_time = CYCLE_SECONDS
-	timer.timeout.connect(_on_timeout)
 	timer.start()
 
 
-func get_cycle_time_left() -> float:
-	return timer.time_left
-
-
-func _on_timeout() -> void:
+func _generate_resources_from_workers(generate: bool = true) -> void:
 	var efficiencies: Dictionary = {}
 	for worker_role_id: String in SaveFile.workers:
 		var worker_count: int = SaveFile.workers[worker_role_id]
@@ -27,17 +36,43 @@ func _on_timeout() -> void:
 		)
 		if efficiency == 0:
 			continue
-		_execute(-efficiency, consumes, efficiencies)
-		_execute(efficiency, produces, efficiencies)
+		_execute(-efficiency, consumes, efficiencies, generate)
+		_execute(efficiency, produces, efficiencies, generate)
 	SignalBus.worker_efficiency_updated.emit(efficiencies)
 
 
-func _execute(efficiency: int, target_resources: Dictionary, efficiencies: Dictionary) -> void:
+func _execute(
+	efficiency: int, target_resources: Dictionary, efficiencies: Dictionary, generate: bool = true
+) -> void:
 	for resource_id: String in target_resources:
 		var base_amount: int = target_resources[resource_id]
 		var total_amount: int = efficiency * base_amount
-		SignalBus.resource_generated.emit(resource_id, total_amount, self.name)
+		if generate:
+			SignalBus.resource_generated.emit(resource_id, total_amount, self.name)
 		efficiencies[resource_id] = efficiencies.get(resource_id, 0) + total_amount
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	timer.timeout.connect(_on_timeout)
+	owner.ready.connect(_on_owner_ready)
+
+
+func _on_timeout() -> void:
+	_generate_resources_from_workers()
+
+
+func _on_owner_ready() -> void:
+	_generate_resources_from_workers(false)
+
+
+############
+## static ##
+############
 
 
 static func _get_efficiency(worker_count: int, consumes: Dictionary, resources: Dictionary) -> int:

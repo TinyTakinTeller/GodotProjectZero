@@ -21,15 +21,17 @@ theme_override_constants/margin_bottom = -4
 [node name="Panel" type="Panel" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-tab_alignment = 1
-tab_focus_mode = 0
 
-[node name="TabTrackerItem1" parent="TabContainer" instance=ExtResource("2_6i4ca")]
-visible = true
+[node name="TabTrackerItem1" parent="TabMarginContainer/HBoxContainer" instance=ExtResource("2_6i4ca")]
 layout_mode = 2
 
-[node name="TabTrackerItem2" parent="TabContainer" instance=ExtResource("2_6i4ca")]
+[node name="TabTrackerItem2" parent="TabMarginContainer/HBoxContainer" instance=ExtResource("2_6i4ca")]
 layout_mode = 2

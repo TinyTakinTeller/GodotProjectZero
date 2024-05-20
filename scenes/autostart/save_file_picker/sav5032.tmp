@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1aukxlmjun2b"]
+
+[ext_resource type="Script" path="res://scenes/autostart/save_file_picker/save_file_picker.gd" id="1_kcqmi"]
+[ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="2_844rj"]
+[ext_resource type="PackedScene" uid="uid://k0aqit1ex0lc" path="res://scenes/autostart/main/main.tscn" id="2_xpoda"]
+[ext_resource type="PackedScene" uid="uid://cacyvnvhq6xau" path="res://scenes/ui/save_file_tracker/save_file_tracker.tscn" id="3_yhfy1"]
+
+[node name="SaveFilePicker" type="Node"]
+script = ExtResource("1_kcqmi")
+main_scene = ExtResource("2_xpoda")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_844rj")
+
+[node name="SaveFileTracker" parent="UI" instance=ExtResource("3_yhfy1")]
+unique_name_in_owner = true
+layout_mode = 1

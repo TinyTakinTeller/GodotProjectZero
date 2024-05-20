@@ -1,16 +1,19 @@
 extends Node
 
+signal animation_end
+
 @export var target: Node
 
-
-func _ready() -> void:
-	pass
+var _tween: Tween
 
 
 func play_animation(duration: float) -> void:
-	var tween: Tween = target.create_tween()
-	tween.tween_method(tween_method, 0.0, 1.0, duration)
-	tween.tween_callback(on_animation_end)
+	target.visible_ratio = 0
+	if _tween != null:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.tween_method(tween_method, 0.0, 1.0, duration)
+	_tween.tween_callback(on_animation_end)
 
 
 func tween_method(animation_percent: float) -> void:
@@ -19,3 +22,4 @@ func tween_method(animation_percent: float) -> void:
 
 func on_animation_end() -> void:
 	target.visible_ratio = 1
+	animation_end.emit()

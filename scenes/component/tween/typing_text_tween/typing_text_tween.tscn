@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scenes/component/tween/typing_text_tween/typing_text_tween.gd" id="1_racp6"]
 
-[node name="TypedOutTextTween" type="Node"]
+[node name="TypingTextTween" type="Node"]
 script = ExtResource("1_racp6")

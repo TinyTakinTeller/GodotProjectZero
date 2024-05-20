@@ -20,6 +20,10 @@ static func remove_oldest(parent: Node) -> void:
 	oldest_child.queue_free()
 
 
+static func add_child(child: Node, parent: Node) -> void:
+	parent.add_child(child)
+
+
 static func add_child_front(child: Node, parent: Node) -> void:
 	parent.add_child(child)
 	parent.move_child(child, 0)

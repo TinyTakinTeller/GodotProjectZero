@@ -1,19 +1,19 @@
 extends Node
 
-var theme: Dictionary = FileSystemUtis.get_resources("theme", true)
-var resource_generators: Dictionary = FileSystemUtis.get_resources(
-	"game_data/resource_generator", false
-)
-var worker_roles: Dictionary = FileSystemUtis.get_resources("game_data/worker_role", false)
-var event_datas: Dictionary = FileSystemUtis.get_resources("game_data/event_data", false)
-var tab_datas: Dictionary = FileSystemUtis.get_resources("game_data/tab_data", false)
+const RESOURCE_GENERATOR: String = "game_data/resource_generator/tres"
+const WORKER_ROLE: String = "game_data/worker_role/tres"
+const EVENT_DATA: String = "game_data/event_data/tres"
+const TAB_DATA: String = "game_data/tab_data/tres"
+const NPC_EVENT: String = "game_data/npc_event/tres"
+
+var theme: Dictionary = FileSystemUtils.get_resources("theme", true)
+var resource_generators: Dictionary = FileSystemUtils.get_resources(RESOURCE_GENERATOR, false)
+var worker_roles: Dictionary = FileSystemUtils.get_resources(WORKER_ROLE, false)
+var event_datas: Dictionary = FileSystemUtils.get_resources(EVENT_DATA, false)
+var tab_datas: Dictionary = FileSystemUtils.get_resources(TAB_DATA, false)
+var npc_events: Dictionary = FileSystemUtils.get_resources(NPC_EVENT, false)
 
 
 func _ready() -> void:
 	if Game.params["debug_logs"]:
-		print("_READY: " + "Resources" + " | " + self.get_name())
-		print(theme)
-		print(resource_generators)
-		print(worker_roles)
-		print(event_datas)
-		print(tab_datas)
+		print("_AUTOLOAD _READY: " + self.get_name())

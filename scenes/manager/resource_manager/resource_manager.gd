@@ -1,12 +1,21 @@
 extends Node
 class_name ResourceManager
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
-	SignalBus.resource_generated.connect(_on_resource_generated)
+	_connect_signals()
 
 
-func _add_resource(id: String, amount: int, source_id: String) -> void:
+##############
+## handlers ##
+##############
+
+
+func _handle_on_resource_generated(id: String, amount: int, source_id: String) -> void:
 	SaveFile.resources[id] = SaveFile.resources.get(id, 0) + amount
 	if amount < 0:
 		var spent_id: String = ResourceManager._spent_id(id)
@@ -21,12 +30,22 @@ func _add_resource(id: String, amount: int, source_id: String) -> void:
 		return
 
 
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.resource_generated.connect(_on_resource_generated)
+
+
 func _on_resource_generated(id: String, amount: int, source_id: String) -> void:
-	_add_resource(id, amount, source_id)
+	_handle_on_resource_generated(id, amount, source_id)
 
 
-static func _spent_id(id: String) -> String:
-	return "spent_" + id
+############
+## static ##
+############
 
 
 static func is_max_amount_reached(id: String) -> bool:
@@ -37,3 +56,7 @@ static func is_max_amount_reached(id: String) -> bool:
 
 static func get_total_generated(id: String) -> int:
 	return SaveFile.resources.get(id, 0) + SaveFile.resources.get(ResourceManager._spent_id(id), 0)
+
+
+static func _spent_id(id: String) -> String:
+	return "spent_" + id

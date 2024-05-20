@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=24 format=3 uid="uid://k0aqit1ex0lc"]
 
-[ext_resource type="Theme" uid="uid://be30ymqku7twp" path="res://resources/theme/debug/debug.tres" id="1_ckx3g"]
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_u1kx3"]
+[ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
 [ext_resource type="PackedScene" uid="uid://1m8qthsffnq4" path="res://scenes/controller/worker_controller/worker_controller.tscn" id="2_i5w2f"]
 [ext_resource type="PackedScene" uid="uid://wp81uow6jtqm" path="res://scenes/manager/resource_manager/resource_manager.tscn" id="2_kjpbe"]
@@ -21,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://c70gtxukmaco6" path="res://scenes/ui/tab_tracker/tab_tracker.tscn" id="8_vxtq8"]
 [ext_resource type="PackedScene" uid="uid://bauwua6x5pgjh" path="res://scenes/ui/info_container/info_container.tscn" id="10_unxkl"]
 [ext_resource type="PackedScene" uid="uid://o2s521j3hgp8" path="res://scenes/manager/setting_manager/setting_manager.tscn" id="13_yy02v"]
+[ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="14_45bu4"]
+[ext_resource type="PackedScene" uid="uid://dt8uyfjegwwqf" path="res://scenes/manager/npc_manager/npc_manager.tscn" id="14_hfr4p"]
 [ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/settings_container/settings_container.tscn" id="20_ynkq3"]
 
 [node name="Main" type="Node"]
@@ -54,6 +55,8 @@ script = ExtResource("1_u1kx3")
 
 [node name="SettingManager" parent="Managers" instance=ExtResource("13_yy02v")]
 
+[node name="NpcManager" parent="Managers" instance=ExtResource("14_hfr4p")]
+
 [node name="UI" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -63,7 +66,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_ckx3g")
+theme = ExtResource("14_45bu4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 layout_mode = 1

@@ -1,18 +1,22 @@
 extends Node
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
-	SignalBus.manager_button_add.connect(_on_manager_button_add)
-	SignalBus.manager_button_del.connect(_on_manager_button_del)
+	_connect_signals()
 
 
-func _get_workers() -> int:
-	return SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0)
+##############
+## handlers ##
+##############
 
 
 func _handle_add(worker_role: WorkerRole) -> void:
 	var id: String = worker_role.id
-	if _get_workers() == 0:
+	if SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0) == 0:
 		return
 	SignalBus.worker_allocated.emit(id, 1)
 
@@ -22,6 +26,16 @@ func _handle_del(worker_role: WorkerRole) -> void:
 	if SaveFile.workers.get(id, 0) == 0:
 		return
 	SignalBus.worker_allocated.emit(id, -1)
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.manager_button_add.connect(_on_manager_button_add)
+	SignalBus.manager_button_del.connect(_on_manager_button_del)
 
 
 func _on_manager_button_add(worker_role: WorkerRole) -> void:

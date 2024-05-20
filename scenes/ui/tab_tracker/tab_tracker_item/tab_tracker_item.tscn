@@ -1,13 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc1dbypa7wkta"]
+[gd_scene load_steps=3 format=3 uid="uid://dc1dbypa7wkta"]
 
 [ext_resource type="Script" path="res://scenes/ui/tab_tracker/tab_tracker_item/tab_tracker_item.gd" id="1_wf3dl"]
+[ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_4406c"]
 
-[node name="TabTrackerItem" type="Control"]
-visible = false
-layout_mode = 3
+[node name="TabTrackerItem" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 script = ExtResource("1_wf3dl")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "TabButton"
+
+[node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_4406c")]
+unique_name_in_owner = true
+target = NodePath("..")

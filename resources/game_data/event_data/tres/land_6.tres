@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_sghl4")
 id = "land_6"
-text = "There is a lake nearby, extending along a muddy beach."
+text = "There is a lake not far away, extending along a muddy beach."
 vars = []
 color = Color(0, 0, 0, 1)

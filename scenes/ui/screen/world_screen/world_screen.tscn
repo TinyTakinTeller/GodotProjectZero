@@ -2,69 +2,71 @@
 
 [ext_resource type="Script" path="res://scenes/ui/screen/world_screen/world_screen.gd" id="1_k268v"]
 [ext_resource type="PackedScene" uid="uid://bjroqyyfrvx70" path="res://scenes/ui/progress_button/progress_button.tscn" id="2_74b0p"]
-[ext_resource type="PackedScene" uid="uid://cwnnlumhu3hx6" path="res://scenes/npc/cat/cat.tscn" id="3_e0cun"]
+[ext_resource type="PackedScene" uid="uid://bn70fimjb1ac0" path="res://scenes/ui/npc_dialog/npc_dialog.tscn" id="3_q75w7"]
 
 [node name="WorldScreen" type="MarginContainer"]
-size_flags_horizontal = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_k268v")
 progress_button_scene = ExtResource("2_74b0p")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ProgressButtonMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ProgressButtonMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="GridContainer1" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+[node name="GridContainer1" type="GridContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressButton1" parent="MarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
+[node name="ProgressButton1" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ProgressButton2" parent="MarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
+[node name="ProgressButton2" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
 layout_mode = 2
 
-[node name="MarginContainer1" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+[node name="MarginContainer1" type="MarginContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 
-[node name="GridContainer2" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+[node name="GridContainer2" type="GridContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressButton1" parent="MarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ProgressButton2" parent="MarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
+[node name="ProgressButton1" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+[node name="ProgressButton2" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 
-[node name="GridContainer3" type="GridContainer" parent="MarginContainer/HBoxContainer"]
+[node name="GridContainer3" type="GridContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressButton1" parent="MarginContainer/HBoxContainer/GridContainer3" instance=ExtResource("2_74b0p")]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ProgressButton2" parent="MarginContainer/HBoxContainer/GridContainer3" instance=ExtResource("2_74b0p")]
+[node name="ProgressButton1" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer3" instance=ExtResource("2_74b0p")]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="NPC" type="Node2D" parent="."]
+[node name="ProgressButton2" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer3" instance=ExtResource("2_74b0p")]
+layout_mode = 2
+size_flags_vertical = 4
 
-[node name="Cat" parent="NPC" instance=ExtResource("3_e0cun")]
-unique_name_in_owner = true
-position = Vector2(333, 52)
+[node name="NpcDialog" parent="." instance=ExtResource("3_q75w7")]
+layout_mode = 2
+_npc_id = "cat"

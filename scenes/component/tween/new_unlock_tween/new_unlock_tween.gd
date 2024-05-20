@@ -7,6 +7,8 @@ extends Node
 @export var base_change: float = 0
 @export var max_change: float = 0.1
 
+var _tween: Tween
+
 
 func _ready() -> void:
 	if on_ready:
@@ -14,9 +16,11 @@ func _ready() -> void:
 
 
 func play_animation() -> void:
-	var tween: Tween = target.create_tween()
-	tween.tween_method(tween_method, 0.0, 1.0, duration)
-	tween.tween_callback(on_animation_end)
+	if _tween != null:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.tween_method(tween_method, 0.0, 1.0, duration)
+	_tween.tween_callback(on_animation_end)
 
 
 func tween_method(animation_percent: float) -> void:

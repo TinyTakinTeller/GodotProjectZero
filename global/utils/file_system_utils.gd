@@ -1,20 +1,24 @@
-class_name FileSystemUtis
+class_name FileSystemUtils
+
+const USER_PATH: String = "user://"
+const RESOURCES_PATH: String = "res://resources/"
 
 
-static func get_files(path: String) -> Array:
-	var files: Array = []
+static func get_user_files() -> Array[String]:
+	return get_files(FileSystemUtils.USER_PATH)
+
+
+static func get_files(path: String) -> Array[String]:
+	var files: Array[String] = []
 	for file: String in DirAccess.get_files_at(path):
-		files.append(path + file)
+		files.append(file)
 	return files
 
 
 static func get_resources(resource_path: String, recursive: bool) -> Dictionary:
-	var path: String = "res://resources/" + resource_path + "/"
+	var path: String = FileSystemUtils.RESOURCES_PATH + resource_path + "/"
 	var resources: Dictionary = {}
 	for file: String in DirAccess.get_files_at(path):
-		if Game.params["debug_logs"]:
-			print("READ_FILE")
-			print(path + file)
 		if file.ends_with(".remap"):
 			file = file.trim_suffix(".remap")
 		if file.ends_with(".tres"):

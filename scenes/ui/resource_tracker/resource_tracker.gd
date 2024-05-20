@@ -5,10 +5,19 @@ class_name ResourceTracker
 
 @export var resource_item_scene: PackedScene
 
+###############
+## overrides ##
+###############
+
 
 func _ready() -> void:
 	_load_from_save_file()
-	SignalBus.resource_updated.connect(_on_resource_updated)
+	_connect_signals()
+
+
+#############
+## helpers ##
+#############
 
 
 func _load_from_save_file() -> void:
@@ -25,7 +34,9 @@ func _set_resources(resources: Dictionary) -> void:
 
 
 func _add_resource(id: String, amount: int) -> ResourceTrackerItem:
-	var resource_generator: ResourceGenerator = Resources.resource_generators[id]
+	var resource_generator: ResourceGenerator = Resources.resource_generators.get(id, null)
+	if resource_generator == null:
+		return
 	if resource_generator.hidden:
 		return
 
@@ -52,9 +63,45 @@ func _update_resource(id: String, amount: int, change: int, source_id: String) -
 		SignalBus.resource_ui_updated.emit(new_resource, amount, change, source_id)
 
 
+func _play_blink_red_animation(resource_generator_id: String) -> void:
+	for resource_tracker_item: ResourceTrackerItem in resource_v_box_container.get_children():
+		if resource_tracker_item.get_id() == resource_generator_id:
+			resource_tracker_item.play_modulate_red_simple_tween_animation()
+			return
+	var new_resource_tracker_item: ResourceTrackerItem = _add_resource(resource_generator_id, 0)
+	if new_resource_tracker_item != null:
+		new_resource_tracker_item.play_modulate_red_simple_tween_animation()
+
+
 func _clear_items() -> void:
 	NodeUtils.clear_children(resource_v_box_container)
 
 
+##############
+## handlers ##
+##############
+
+
+func _handle_on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
+	for resource_generator_id: String in resource_generator.costs:
+		var cost: int = resource_generator.costs[resource_generator_id]
+		if SaveFile.resources.get(resource_generator_id, 0) < cost:
+			_play_blink_red_animation(resource_generator_id)
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.resource_updated.connect(_on_resource_updated)
+	SignalBus.progress_button_unpaid.connect(_on_progress_button_unpaid)
+
+
 func _on_resource_updated(id: String, total: int, amount: int, source_id: String) -> void:
 	_update_resource(id, total, amount, source_id)
+
+
+func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
+	_handle_on_progress_button_unpaid(resource_generator)

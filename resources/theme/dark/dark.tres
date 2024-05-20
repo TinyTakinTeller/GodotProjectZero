@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=72 format=3 uid="uid://d276arnrjws3i"]
+[gd_resource type="Theme" load_steps=77 format=3 uid="uid://d276arnrjws3i"]
 
 [ext_resource type="FontFile" uid="uid://bxjeqgijqycqp" path="res://resources/theme/dark/OpenSans-Regular.ttf" id="1_cnjs4"]
 [ext_resource type="Texture2D" uid="uid://bvpjbal72ck7r" path="res://resources/theme/dark/icons.svg" id="2_plspm"]
@@ -336,6 +336,66 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bk0b"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yny4y"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwv5c"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.282353, 0.282353, 0.282353, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcf0y"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.282353, 0.282353, 0.282353, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnjux"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.282353, 0.282353, 0.282353, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h8dom"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -618,6 +678,13 @@ ProgressButton/styles/focus = SubResource("StyleBoxFlat_0jagi")
 ProgressButton/styles/hover = SubResource("StyleBoxFlat_hxxig")
 ProgressButton/styles/normal = SubResource("StyleBoxFlat_eshwk")
 ProgressButton/styles/pressed = SubResource("StyleBoxFlat_0duc8")
+TabButton/base_type = &"ProgressButton"
+TabButton/colors/font_disabled_color = Color(1, 1, 1, 1)
+TabButton/styles/disabled = SubResource("StyleBoxFlat_7bk0b")
+TabButton/styles/focus = SubResource("StyleBoxFlat_yny4y")
+TabButton/styles/hover = SubResource("StyleBoxFlat_xwv5c")
+TabButton/styles/normal = SubResource("StyleBoxFlat_mcf0y")
+TabButton/styles/pressed = SubResource("StyleBoxFlat_pnjux")
 TabContainer/colors/font_color_bg = Color(0.69, 0.69, 0.69, 1)
 TabContainer/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
 TabContainer/colors/font_color_fg = Color(0.94, 0.94, 0.94, 1)

@@ -39,7 +39,7 @@ show_percentage = false
 [node name="ProgressBarSimpleTween" parent="ProgressBar" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
 unique_name_in_owner = true
 target = NodePath("../..")
-call_method = "_cooldown_tween_method"
+call_method = "__progress_bar_simple_tween_method"
 
 [node name="RedColorRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -52,7 +52,7 @@ color = Color(1, 0, 0, 1)
 unique_name_in_owner = true
 target = NodePath("../..")
 duration = 0.3
-call_method = "_red_color_rect_simple_tween_method"
+call_method = "__red_color_rect_simple_tween_method"
 
 [node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_gumta")]
 unique_name_in_owner = true
