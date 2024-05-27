@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_kig6h")
-sort_value = -3
+sort_value = -100
 id = "recruiter"
 title = ""
 flavor = ""
@@ -16,3 +16,4 @@ consume = {
 "rare": 3
 }
 default = false
+column = 0

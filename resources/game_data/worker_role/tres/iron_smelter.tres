@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://jy4go6yfbnn8"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_j5qx1"]
+
+[resource]
+script = ExtResource("1_j5qx1")
+sort_value = 15
+id = "iron_smelter"
+title = ""
+flavor = "Just provide materials and a small fur payment."
+produce = {
+"iron": 1
+}
+consume = {
+"coal": 1,
+"fur": 2,
+"iron_ore": 1
+}
+worker_consume = {}
+default = false
+column = 1

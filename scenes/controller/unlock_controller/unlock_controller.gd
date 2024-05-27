@@ -1,7 +1,6 @@
 extends Node
 
 @onready var firepit_timer: Timer = $FirepitTimer
-@onready var house_timer: Timer = $HouseTimer
 @onready var cat_intro_timer: Timer = $CatIntroTimer
 
 ###############
@@ -21,36 +20,9 @@ func _ready() -> void:
 
 func _handle_on_resource_increased(observed_id: String, observed_total: int) -> void:
 	if observed_id == "land":
-		if ResourceManager.get_total_generated(observed_id) >= 1:
-			_trigger_unique_unlock_event("land_1")
-			_unlock_resource_generator_if("FOREST")
-			_level_up_tab("world", 1)
-		if ResourceManager.get_total_generated(observed_id) >= 2:
-			_trigger_unique_unlock_event("land_2")
-			_unlock_resource_generator_if("CREEK")
-		if ResourceManager.get_total_generated(observed_id) >= 3:
-			_trigger_unique_unlock_event("cat_watching")
-			_trigger_unique_unlock_npc_event("cat", "cat_peek")
-			cat_intro_timer.start()
-		if ResourceManager.get_total_generated(observed_id) >= 3 + 1:
-			_trigger_unique_unlock_event("land_3")
-			_unlock_resource_generator_if("firepit")
-		if ResourceManager.get_total_generated(observed_id) >= 4 + 1:
-			_trigger_unique_unlock_event("land_4")
-			_unlock_resource_generator_if("axe")
-			_debug_gift()
-		if ResourceManager.get_total_generated(observed_id) >= 5 + 1:
-			_trigger_unique_unlock_event("land_5")
-			_unlock_resource_generator_if("pickaxe")
-		if ResourceManager.get_total_generated(observed_id) >= 6 + 1:
-			_trigger_unique_unlock_event("land_6")
-			_unlock_resource_generator_if("shovel")
-		if ResourceManager.get_total_generated(observed_id) >= 7 + 1:
-			_trigger_unique_unlock_event("land_7")
-			_unlock_resource_generator_if("spear")
-		if ResourceManager.get_total_generated(observed_id) >= 8 + 1:
-			_trigger_unique_unlock_event("land_8")
-			_unlock_resource_generator_if("compass")
+		_handle_land_event(observed_id)
+	if observed_id == "house":
+		_handle_house_event(observed_total)
 
 	if observed_id == "firepit" and observed_total == 1:
 		_unlock_resource_generator_if("brick")
@@ -59,36 +31,42 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		firepit_timer.start()
 	if observed_id == "axe" and observed_total == 1:
 		_unlock_resource_generator_if("wood")
+		_unlock_worker_role_if("lumberjack")
 	if observed_id == "pickaxe" and observed_total == 1:
 		_unlock_resource_generator_if("stone")
+		_unlock_worker_role_if("stone_miner")
 	if observed_id == "shovel" and observed_total == 1:
 		_unlock_resource_generator_if("clay")
+		_unlock_worker_role_if("clay_digger")
 	if observed_id == "spear" and observed_total == 1:
 		_unlock_resource_generator_if("WILD")
+		_unlock_worker_role_if("hunter")
+		_unlock_worker_role_if("tanner")
 
 	if observed_id == "brick" and observed_total >= 1:
 		_unlock_resource_generator_if("house")
-	if observed_id == "house":
-		if observed_total >= 1:
-			_trigger_unique_unlock_event("house_1")
-		if observed_total >= 4:
-			_level_up_tab("world", 3)
-			_trigger_unique_unlock_event("house_4")
-		if observed_total >= 25:
-			_level_up_tab("world", 4)
 
 	if observed_id == "worker":
 		if ResourceManager.get_total_generated(observed_id) >= 1:
 			_unlock_tab_if("manager")
-			_unlock_worker_role_if("lumberjack")
-			_unlock_worker_role_if("stone_miner")
-			_unlock_worker_role_if("clay_digger")
 			_unlock_worker_role_if("smelter")
-			_unlock_worker_role_if("hunter")
-			_unlock_worker_role_if("tanner")
 			## _unlock_worker_role_if("FLINT_GENERATOR")
 			## _unlock_worker_role_if("FIBER_GENERATOR")
 			## _unlock_worker_role_if("tailor")
+
+	if observed_id == "compass" and observed_total == 1:
+		_trigger_unique_unlock_event("enemy_screen")
+		_unlock_tab_if("enemy")
+		_unlock_resource_generator_if("sword")
+
+	if observed_id == "sword" and observed_total >= 1:
+		_unlock_resource_generator_if("swordsman")
+		_unlock_worker_role_if("swordsmith")
+
+	if observed_id == "swordsman" and observed_total >= 1:
+		_unlock_worker_role_if("swordsman")
+		_unlock_worker_role_if("sergeant")
+		_unlock_worker_role_if("mason")
 
 
 func _handle_worker_updated(_observed_id: String, _observed_total: int) -> void:
@@ -104,16 +82,91 @@ func _handle_npc_event_interacted(npc_id: String, npc_event_id: String, option: 
 				_trigger_unique_unlock_event("cat_intro_no")
 
 
+func _handle_land_event(observed_id: String) -> void:
+	if ResourceManager.get_total_generated(observed_id) >= 1:
+		_trigger_unique_unlock_event("land_1")
+		_unlock_resource_generator_if("FOREST")
+		_level_up_tab("world", 1)
+	if ResourceManager.get_total_generated(observed_id) >= 2:
+		_trigger_unique_unlock_event("land_2")
+		_unlock_resource_generator_if("CREEK")
+	if ResourceManager.get_total_generated(observed_id) >= 3:
+		_trigger_unique_unlock_event("cat_watching")
+		if _trigger_unique_unlock_npc_event("cat", "cat_peek"):
+			cat_intro_timer.start()
+	if ResourceManager.get_total_generated(observed_id) >= 3 + 1:
+		_trigger_unique_unlock_event("land_3")
+		_unlock_resource_generator_if("firepit")
+	if ResourceManager.get_total_generated(observed_id) >= 4 + 1:
+		_trigger_unique_unlock_event("land_4")
+		_unlock_resource_generator_if("axe")
+		_debug_gift()
+	if ResourceManager.get_total_generated(observed_id) >= 5 + 1:
+		_trigger_unique_unlock_event("land_5")
+		_unlock_resource_generator_if("pickaxe")
+	if ResourceManager.get_total_generated(observed_id) >= 6 + 1:
+		_trigger_unique_unlock_event("land_6")
+		_unlock_resource_generator_if("shovel")
+	if ResourceManager.get_total_generated(observed_id) >= 7 + 1:
+		_trigger_unique_unlock_event("land_7")
+		_unlock_resource_generator_if("spear")
+	if ResourceManager.get_total_generated(observed_id) >= 8 + 1:
+		_trigger_unique_unlock_event("land_8")
+		_unlock_resource_generator_if("compass")
+	if ResourceManager.get_total_generated(observed_id) >= 9 + 1:
+		_trigger_unique_unlock_event("land_9")
+		_unlock_worker_role_if("explorer")
+		_unlock_resource_generator_if("torch")
+	if ResourceManager.get_total_generated(observed_id) >= 10 + 1:
+		_trigger_unique_unlock_event("land_10")
+		_unlock_worker_role_if("coal_miner")
+		_unlock_worker_role_if("torch_man")
+	if ResourceManager.get_total_generated(observed_id) >= 11 + 1:
+		_trigger_unique_unlock_event("land_11")
+		_unlock_worker_role_if("iron_miner")
+		_unlock_worker_role_if("iron_smelter")
+
+
+func _handle_house_event(observed_total: int) -> void:
+	if observed_total >= 1:
+		_trigger_unique_unlock_event("house_1")
+	if observed_total >= 4:
+		_trigger_unique_unlock_event("house_4")
+	if observed_total >= 25:
+		_trigger_unique_unlock_event("house_25")
+		_level_up_tab("world", 3)
+	if observed_total >= 100:
+		_trigger_unique_unlock_event("house_100")
+		_level_up_tab("world", 4)
+	if observed_total >= 1000:
+		_trigger_unique_unlock_event("house_town")
+		_level_up_tab("world", 5)
+	if observed_total >= 10000:
+		_trigger_unique_unlock_event("house_city")
+		_level_up_tab("world", 6)
+	if observed_total >= 100000:
+		_trigger_unique_unlock_event("house_capital")
+		_level_up_tab("world", 7)
+	if observed_total >= 1000000:
+		_trigger_unique_unlock_event("house_metropolis")
+		_level_up_tab("world", 8)
+	if observed_total >= 10000000:
+		_trigger_unique_unlock_event("house_megalopolis")
+		_level_up_tab("world", 9)
+	if observed_total >= 100000000:
+		_trigger_unique_unlock_event("house_kingdom")
+		_level_up_tab("world", 10)
+	if observed_total >= 1000000000:
+		_trigger_unique_unlock_event("house_empire")
+		_level_up_tab("world", 11)
+
+
 #############
 ## helpers ##
 #############
 
 
 func _load_timers() -> void:
-	house_timer.wait_time = Game.params["timer_house_seconds"]
-	house_timer.one_shot = false
-	house_timer.start()
-
 	firepit_timer.wait_time = Game.params["timer_firepit_seconds"]
 	firepit_timer.one_shot = true
 	if SaveFile.resources.get("firepit", 0) == 1:
@@ -168,22 +221,22 @@ func _unlock_tab_if(unlock_id: String) -> void:
 		SignalBus.tab_unlock.emit(tab_data)
 
 
-func _gift_resource(gen_id: String, amount: int, source: String) -> void:
-	SignalBus.resource_generated.emit(gen_id, amount, source)
+func _gift_resource(gen_id: String, amount: int, source_id: String) -> void:
+	SignalBus.resource_generated.emit(gen_id, amount, source_id)
 
 
 func _debug_gift() -> void:
 	if Game.params["debug_gift"]:
 		if _trigger_unique_unlock_event("land_debug"):
-			_gift_resource("food", 100, name)
-			_gift_resource("wood", 100, name)
-			_gift_resource("stone", 100, name)
-			_gift_resource("clay", 100, name)
-			_gift_resource("brick", 100, name)
-			_gift_resource("fiber", 100, name)
-			_gift_resource("flint", 100, name)
-			_gift_resource("fur", 100, name)
-			_gift_resource("leather", 100, name)
+			_gift_resource("food", 1000, name)
+			_gift_resource("wood", 1000, name)
+			_gift_resource("stone", 1000, name)
+			_gift_resource("clay", 1000, name)
+			_gift_resource("brick", 1000, name)
+			_gift_resource("fiber", 1000, name)
+			_gift_resource("flint", 1000, name)
+			_gift_resource("fur", 1000, name)
+			_gift_resource("leather", 1000, name)
 
 
 #############
@@ -195,7 +248,6 @@ func _connect_signals() -> void:
 	SignalBus.resource_updated.connect(_on_resource_updated)
 	SignalBus.worker_updated.connect(_on_worker_updated)
 	SignalBus.npc_event_interacted.connect(_on_npc_event_interacted)
-	house_timer.timeout.connect(_on_house_timer_timeout)
 	cat_intro_timer.timeout.connect(_on_timer_cat_timeout)
 	firepit_timer.timeout.connect(_on_firepit_timer_timeout)
 
@@ -211,12 +263,6 @@ func _on_worker_updated(id: String, total: int, _amount: int) -> void:
 
 func _on_npc_event_interacted(npc_id: String, npc_event_id: String, option: int) -> void:
 	_handle_npc_event_interacted(npc_id, npc_event_id, option)
-
-
-func _on_house_timer_timeout() -> void:
-	var max_workers: int = Game.params["house_workers"] * SaveFile.resources.get("house", 0)
-	if SaveFile.resources.get("worker", 0) < max_workers:
-		_gift_resource("worker", 1, "house")
 
 
 func _on_firepit_timer_timeout() -> void:

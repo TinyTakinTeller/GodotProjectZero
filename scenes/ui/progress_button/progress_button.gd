@@ -37,6 +37,8 @@ func _ready() -> void:
 
 
 func get_id() -> String:
+	if _resource_generator == null:
+		return ""
 	return _resource_generator.id
 
 
@@ -139,7 +141,7 @@ func _on_resized() -> void:
 	_update_pivot()
 
 
-## calling _on_mouse_entered() because mobile users don't have mouse_entered signal
+## calling _on_mouse_entered() here because mobile users don't have mouse_entered signal
 func _on_button_up() -> void:
 	_on_mouse_entered()
 	_handle_button_up()

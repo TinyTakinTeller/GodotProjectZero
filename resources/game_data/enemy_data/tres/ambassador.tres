@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://oj2nev8s0qx5"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_01jkl"]
+
+[resource]
+script = ExtResource("1_01jkl")
+id = "ambassador"
+title = "The Ambassador Of Darkness"
+health_points = 1000000000
+enemy_image_id = "gustavo_256_256"
+info = "This ancient colossal beast blocks the way towards the edge of the forest."

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://ctx463hstqw68"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_a25lh"]
+
+[resource]
+script = ExtResource("1_a25lh")
+sort_value = 13
+id = "torch_man"
+title = ""
+flavor = "Will prepare supplies for miners and explorers."
+produce = {
+"torch": 1
+}
+consume = {
+"coal": 1,
+"fur": 1,
+"wood": 1
+}
+worker_consume = {}
+default = false
+column = 1

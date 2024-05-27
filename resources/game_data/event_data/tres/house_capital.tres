@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://btl3nkuwx3g34"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_y6tdw"]
+
+[resource]
+script = ExtResource("1_y6tdw")
+id = "house_capital"
+text = "I hereby declare this settlement the capital of the forest."
+vars = []
+color = Color(0, 0, 0, 1)

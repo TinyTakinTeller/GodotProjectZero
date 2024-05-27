@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://dqhaft7lkw10n"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_xmemq"]
+
+[resource]
+script = ExtResource("1_xmemq")
+sort_value = -100
+id = "explorer"
+title = ""
+flavor = ""
+produce = {
+"rare": 1
+}
+consume = {
+"common": 1
+}
+default = false
+column = -1

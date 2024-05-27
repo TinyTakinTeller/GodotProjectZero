@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_jyyft")
 id = "house_4"
-text = "The brisk forest village is getting more lively by the day."
+text = "The brisk forest camp is getting more lively by the day."
 vars = []
 color = Color(0, 0, 0, 1)

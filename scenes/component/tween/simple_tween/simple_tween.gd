@@ -9,6 +9,8 @@ signal animation_end
 @export var loop: bool = false
 @export var autostart: bool = false
 
+var finished: bool = true
+
 var _tween: Tween
 
 
@@ -17,11 +19,16 @@ func _ready() -> void:
 		play_animation()
 
 
+func is_finished() -> bool:
+	return finished
+
+
 func play_animation() -> void:
 	play_animation_(0)
 
 
 func play_animation_(override_duration: float) -> void:
+	finished = false
 	if _tween != null:
 		_tween.kill()
 	_tween = create_tween()
@@ -39,3 +46,5 @@ func on_animation_end() -> void:
 	animation_end.emit()
 	if loop:
 		play_animation()
+	else:
+		finished = true

@@ -1,22 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://7jxqko2b2kal"]
+[gd_scene load_steps=4 format=3 uid="uid://7jxqko2b2kal"]
 
 [ext_resource type="Script" path="res://scenes/component/effect/label_effect_queue/label_effect/label_effect.gd" id="1_1mfsl"]
-
-[sub_resource type="Curve" id="Curve_b55cx"]
-_data = [Vector2(0.0725076, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_6e37s"]
-curve = SubResource("Curve_b55cx")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oymyb"]
-particle_flag_disable_z = true
-direction = Vector3(1, -0.5, 0)
-spread = 10.0
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-gravity = Vector3(0, 98, 0)
-alpha_curve = SubResource("CurveTexture_6e37s")
+[ext_resource type="Material" uid="uid://bipuwgonuukev" path="res://resources/particle/resource_acquired_particle.tres" id="2_kw0de"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fgbql"]
 viewport_path = NodePath("SubViewport")
@@ -45,7 +30,8 @@ theme_override_constants/shadow_outline_size = 8
 text = "  +1 wood"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(0.991233, 1)
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_oymyb")
+process_material = ExtResource("2_kw0de")
 texture = SubResource("ViewportTexture_fgbql")
 lifetime = 2.0

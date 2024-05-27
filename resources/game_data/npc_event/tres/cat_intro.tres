@@ -7,4 +7,4 @@ script = ExtResource("1_4buif")
 sort_value = 0
 npc_id = "cat"
 id = "cat_intro"
-text = "I smell you from a far. Are you lost?"
+text = "I smell you from afar. Are you lost?"

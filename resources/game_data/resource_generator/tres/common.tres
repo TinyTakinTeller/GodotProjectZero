@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_e4tkj")
-sort_value = -9
+sort_value = -100
 id = "common"
 amount = 2
 cooldown = 0.5

@@ -4,14 +4,19 @@
 
 [resource]
 script = ExtResource("1_hmyit")
-sort_value = -9
-id = "-"
+sort_value = -100
+id = "null"
 amount = 1
 cooldown = 0.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
+random_drops = {}
 label = "-"
 title = "-"
 flavor = "-"
-random_drops = {}
 hidden = false
+max_amount = -1
+max_flavor = ""
+column = 0
+display_name = ""

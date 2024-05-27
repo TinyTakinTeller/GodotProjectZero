@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://d1ir63oua3upm"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_tdnr2"]
+
+[resource]
+script = ExtResource("1_tdnr2")
+id = "house_metropolis"
+text = "Millions of people●are now sharing the urban citiyscape."
+vars = []
+color = Color(0, 0, 0, 1)

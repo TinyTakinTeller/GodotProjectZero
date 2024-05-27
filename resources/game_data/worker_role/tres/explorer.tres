@@ -4,14 +4,16 @@
 
 [resource]
 script = ExtResource("1_kig6h")
-sort_value = -1
+sort_value = 17
 id = "explorer"
 title = ""
-flavor = ""
+flavor = "The journey is long, but they know the way."
 produce = {
-"rare": 1
+"land": 1
 }
 consume = {
-"common": 1
+"food": 3,
+"torch": 1
 }
 default = false
+column = 1

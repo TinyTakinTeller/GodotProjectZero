@@ -1,6 +1,7 @@
 extends MarginContainer
 
 @onready var theme_toggle_button: MarginContainer = %ThemeToggleButton
+@onready var version_label: Label = %VersionLabel
 
 ###############
 ## overrides ##
@@ -18,6 +19,8 @@ func _ready() -> void:
 
 
 func _load_from_save_file() -> void:
+	version_label.text = Game.VERSION_MAJOR + "\n" + Game.VERSION_MINOR
+
 	var theme_toggle_id: String = SaveFile.settings.get("theme", null)
 	if theme_toggle_id != null:
 		theme_toggle_button.set_from_toggle_id(theme_toggle_id)

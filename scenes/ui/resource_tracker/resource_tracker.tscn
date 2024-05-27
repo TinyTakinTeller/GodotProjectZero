@@ -26,21 +26,29 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_constants/outline_size = 1
-text = "Resource Storage "
+text = "Resource Storage"
 
-[node name="ResourceVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ResourceVBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ResourceTrackerItem1" parent="MarginContainer/VBoxContainer/ResourceVBoxContainer" instance=ExtResource("1_tjr5p")]
+[node name="ResourceTrackerItem1" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ResourceVBoxContainer" instance=ExtResource("1_tjr5p")]
 layout_mode = 2
 
-[node name="ResourceTrackerItem2" parent="MarginContainer/VBoxContainer/ResourceVBoxContainer" instance=ExtResource("1_tjr5p")]
+[node name="ResourceTrackerItem2" parent="MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ResourceVBoxContainer" instance=ExtResource("1_tjr5p")]
 layout_mode = 2

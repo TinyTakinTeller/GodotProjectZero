@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://dc2quq7ifwlox"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_hdvxk"]
+
+[resource]
+script = ExtResource("1_hdvxk")
+sort_value = 12
+id = "coal_miner"
+title = ""
+flavor = "It takes a keen eye to spot some surface coal ore."
+produce = {
+"coal": 1
+}
+consume = {
+"food": 1
+}
+default = false
+column = 1

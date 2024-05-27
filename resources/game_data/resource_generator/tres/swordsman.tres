@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://3qv8owwmpsj1"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_eyud3"]
+
+[resource]
+script = ExtResource("1_eyud3")
+sort_value = -1
+id = "swordsman"
+amount = 1
+cooldown = 60.0
+costs = {
+"sword": 1
+}
+cost_scales = {}
+worker_costs = {
+"worker": 1
+}
+random_drops = {}
+label = "Train a Swordsman"
+title = "Swordsman"
+flavor = "Will fight against The Darkness for you."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 2
+display_name = ""

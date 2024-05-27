@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://crb5hnd5ou37q"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_xsanl"]
+
+[resource]
+script = ExtResource("1_xsanl")
+id = "house_town"
+text = "Taking a stroll through the streets, thousands of people greet my presence."
+vars = []
+color = Color(0, 0, 0, 1)

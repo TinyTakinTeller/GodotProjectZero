@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://fup8ux1itksr"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_emro8"]
+
+[resource]
+script = ExtResource("1_emro8")
+sort_value = 1101
+id = "torch"
+amount = 1
+cooldown = 2.0
+costs = {
+"coal": 1,
+"wood": 1
+}
+cost_scales = {}
+worker_costs = {}
+random_drops = {}
+label = "Make a Torch"
+title = "Torch"
+flavor = "Will guide the way during the night."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 2
+display_name = ""

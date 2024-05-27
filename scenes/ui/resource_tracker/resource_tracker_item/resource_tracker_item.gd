@@ -32,11 +32,6 @@ func set_resource(resource_generator: ResourceGenerator) -> void:
 	_resource_generator = resource_generator
 
 
-func display_resource(amount: int) -> void:
-	var resource_name: String = _resource_generator.get_display_name()
-	amount_label.text = "{name}: {amount}".format({"name": resource_name, "amount": amount})
-
-
 ###############
 ## animation ##
 ###############
@@ -56,12 +51,22 @@ func _initialize() -> void:
 	income_label.text = ""
 
 
+func display_resource(amount: int = 0) -> void:
+	if Game.WORKER_ROLE_RESOURCE.has(_resource_generator.id):
+		amount = SaveFile.workers.get(_resource_generator.id, 0)
+
+	var resource_name: String = _resource_generator.get_display_name()
+	var amount_string: String = NumberUtils.format_number_scientific(amount)
+	amount_label.text = "{name}: {amount}".format({"name": resource_name, "amount": amount_string})
+
+
 func _set_passive(amount: int) -> void:
+	var amount_string: String = NumberUtils.format_number_scientific(amount)
 	if amount > 0:
-		income_label.text = "+{amount}".format({"amount": amount})
+		income_label.text = "+{amount}".format({"amount": amount_string})
 		income_label.modulate = Color(0.392, 0.878, 0, 1)
 	elif amount < 0:
-		income_label.text = "{amount}".format({"amount": amount})
+		income_label.text = "{amount}".format({"amount": amount_string})
 		income_label.modulate = Color(0.878, 0, 0.392, 1)
 	else:
 		income_label.text = ""
@@ -74,7 +79,7 @@ func _set_passive(amount: int) -> void:
 
 func _handle_on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
 	var id: String = get_id()
-	_set_passive(efficiencies.get(id, 0))
+	_set_passive(efficiencies["resources"].get(id, 0) + efficiencies["workers"].get(id, 0))
 
 
 #############
@@ -84,10 +89,16 @@ func _handle_on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
 
 func _connect_signals() -> void:
 	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
+	SignalBus.worker_updated.connect(_on_worker_updated)
 
 
-func _on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
+func _on_worker_efficiency_updated(efficiencies: Dictionary, _generated: bool) -> void:
 	_handle_on_worker_efficiency_updated(efficiencies)
+
+
+func _on_worker_updated(_id: String, _total: int, _amount: int) -> void:
+	if Game.WORKER_ROLE_RESOURCE.has(_resource_generator.id):
+		display_resource()
 
 
 ############

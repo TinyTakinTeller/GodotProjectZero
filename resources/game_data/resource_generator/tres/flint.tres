@@ -4,12 +4,13 @@
 
 [resource]
 script = ExtResource("1_abucg")
-sort_value = 8
+sort_value = 10008
 id = "flint"
 amount = 1
 cooldown = 0.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
 label = "-"
 title = "-"

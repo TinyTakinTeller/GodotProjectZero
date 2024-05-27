@@ -18,14 +18,14 @@ func _handle_add(worker_role: WorkerRole) -> void:
 	var id: String = worker_role.id
 	if SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0) == 0:
 		return
-	SignalBus.worker_allocated.emit(id, 1)
+	SignalBus.worker_allocated.emit(id, 1, self.name)
 
 
 func _handle_del(worker_role: WorkerRole) -> void:
 	var id: String = worker_role.id
 	if SaveFile.workers.get(id, 0) == 0:
 		return
-	SignalBus.worker_allocated.emit(id, -1)
+	SignalBus.worker_allocated.emit(id, -1, self.name)
 
 
 #############

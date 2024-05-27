@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_nxfvo")
-sort_value = -2
+sort_value = -100
 id = "wanderer"
 title = ""
 flavor = ""
@@ -13,3 +13,4 @@ produce = {
 }
 consume = {}
 default = false
+column = -1

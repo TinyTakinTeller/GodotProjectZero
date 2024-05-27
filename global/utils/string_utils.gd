@@ -49,3 +49,7 @@ static func increment_int_suffix(text: String, forbidden: Array) -> String:
 		output = text_prefix + str(int_suffix_value + increment)
 
 	return output
+
+
+static func humanify_string(s: String) -> String:
+	return s.capitalize().replace("_", " ")

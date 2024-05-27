@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://cwn5mjnhg2c5o"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_b5d4v"]
+
+[resource]
+script = ExtResource("1_b5d4v")
+sort_value = 16
+id = "swordsmith"
+title = ""
+flavor = "Yes we use fur as a currency."
+produce = {
+"sword": 1
+}
+consume = {
+"food": 1,
+"fur": 3,
+"iron": 3,
+"leather": 1,
+"wood": 2
+}
+default = false
+column = 1

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://biko4xrug7kwf"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_npv04"]
+
+[resource]
+script = ExtResource("1_npv04")
+sort_value = 18
+id = "mason"
+title = ""
+flavor = "Skilled craftsmen."
+produce = {
+"house": 1
+}
+consume = {
+"brick": 10,
+"fur": 5,
+"land": 2,
+"stone": 5,
+"wood": 20
+}
+default = false
+column = 1

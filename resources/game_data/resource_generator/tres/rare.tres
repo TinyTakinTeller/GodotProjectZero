@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_5wcg6")
-sort_value = -9
+sort_value = -100
 id = "rare"
 amount = 1
 cooldown = 1.5

@@ -10,6 +10,7 @@ amount = 1
 cooldown = 0.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
 label = "-"
 title = "-"

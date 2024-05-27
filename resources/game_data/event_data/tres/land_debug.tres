@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_5mss0")
 id = "land_debug"
-text = "Gods have gifted one hundred pieces of all resources to help you in this showcase."
+text = "Gods have gifted a bunch of resources to help you in this showcase."
 vars = []
 color = Color(0.392157, 0.878431, 0, 1)

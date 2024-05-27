@@ -4,12 +4,13 @@
 
 [resource]
 script = ExtResource("1_xmp7b")
-sort_value = -3
+sort_value = 1
 id = "land"
 amount = 1
 cooldown = 30.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
 label = "Explore"
 title = "Explore the Unknown"

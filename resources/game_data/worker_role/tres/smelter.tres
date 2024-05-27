@@ -6,7 +6,7 @@
 script = ExtResource("1_2gk1a")
 sort_value = 5
 id = "smelter"
-title = ""
+title = "Clay Smelter"
 flavor = "Sits next to firepit to take out bricks."
 produce = {
 "brick": 1
@@ -15,3 +15,4 @@ consume = {
 "clay": 1
 }
 default = false
+column = 0

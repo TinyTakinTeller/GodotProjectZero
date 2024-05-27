@@ -22,6 +22,16 @@ func _ready() -> void:
 	gpu_particles_2d.finished.connect(_on_finished)
 
 
+func set_lifetime(lifetime: float) -> void:
+	gpu_particles_2d.lifetime = lifetime
+
+
+func set_particle(particle_id: String) -> void:
+	var particle: Resource = Resources.particle.get(particle_id, null)
+	if particle != null:
+		gpu_particles_2d.process_material = particle
+
+
 func restart(text: String) -> void:
 	task = text
 	finished = false
@@ -38,6 +48,11 @@ func stop() -> void:
 
 func set_theme(theme: Resource) -> void:
 	label.theme = theme
+
+
+func set_color_theme_override(color: Color) -> void:
+	if color != null and color != Color.BLACK:
+		label.modulate = color
 
 
 func _on_finished() -> void:

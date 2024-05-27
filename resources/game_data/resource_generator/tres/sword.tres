@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://c13qt2v558c84"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_2ikhk"]
+
+[resource]
+script = ExtResource("1_2ikhk")
+sort_value = 1102
+id = "sword"
+amount = 1
+cooldown = 5.0
+costs = {
+"iron": 3,
+"leather": 1,
+"wood": 2
+}
+cost_scales = {}
+worker_costs = {}
+random_drops = {}
+label = "Make a Sword"
+title = "Sword"
+flavor = "Not as good as the one held by the black swordsman, but it will do."
+hidden = false
+max_amount = -1
+max_flavor = ""
+column = 2
+display_name = ""

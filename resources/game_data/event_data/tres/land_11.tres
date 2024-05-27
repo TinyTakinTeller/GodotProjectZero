@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://ca5ls7mt0nvwq"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_2e0g6"]
+
+[resource]
+script = ExtResource("1_2e0g6")
+id = "land_11"
+text = "Other side of the mountain reveals an abandoned mining operation. I wonder who was here before..."
+vars = []
+color = Color(0, 0, 0, 1)

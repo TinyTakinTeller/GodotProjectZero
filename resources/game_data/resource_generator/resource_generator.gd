@@ -7,6 +7,7 @@ class_name ResourceGenerator
 @export var cooldown: float = 1
 @export var costs: Dictionary
 @export var cost_scales: Dictionary
+@export var worker_costs: Dictionary
 @export var random_drops: Dictionary
 @export var label: String
 @export var title: String
@@ -20,14 +21,15 @@ class_name ResourceGenerator
 var _random_drops_sum: int = -1
 
 
-func get_display_increment(n: int) -> String:
-	return " +{n} {text} ".format({"n": str(n), "text": get_display_name()})
+func get_display_increment(display_amount: int) -> String:
+	var amount_string: String = NumberUtils.format_number(display_amount)
+	return " + {amount} {text} ".format({"amount": str(amount_string), "text": get_display_name()})
 
 
 func get_display_name() -> String:
 	if display_name != null and display_name.length() > 1:
 		return display_name
-	return id
+	return StringUtils.humanify_string(id)
 
 
 func distinct_generation_count() -> int:
@@ -88,6 +90,10 @@ func get_scaled_cost(cost_id: String, level: int) -> int:
 	return cost_function.get_cost(base_cost, level)
 
 
+func get_worker_costs() -> Dictionary:
+	return worker_costs
+
+
 func get_label() -> String:
 	return label
 
@@ -101,10 +107,19 @@ func get_info(level: int) -> String:
 		return max_flavor
 
 	var scaled_costs: Dictionary = get_scaled_costs(level)
-	if scaled_costs.size() == 0:
+	if scaled_costs.size() == 0 and worker_costs.size() == 0:
 		return flavor
+
 	var info: String = "Cost: "
-	info += ("%s " + (", %s ".join(scaled_costs.keys()))) % scaled_costs.values()
+	if scaled_costs.size() > 0:
+		var display_names: Array = ResourceGenerator.get_display_names_of(scaled_costs.keys())
+		info += ("%s " + (", %s ".join(display_names))) % scaled_costs.values()
+		if worker_costs.size() > 0:
+			info += ", "
+	if worker_costs.size() > 0:
+		var worker_display_names: Array = WorkerRole.get_display_names_of(worker_costs.keys())
+		info += ("%s " + (", %s ".join(worker_display_names))) % worker_costs.values()
+
 	if flavor.length() > 1:
 		info += " - " + flavor
 	return info
@@ -125,3 +140,14 @@ func _cache_random_clear() -> void:
 
 func _cache_random_is_empty() -> bool:
 	return _random_drops_sum == -1
+
+
+static func get_display_name_of(rid: String) -> String:
+	var resource_generator: ResourceGenerator = Resources.resource_generators.get(rid, null)
+	if resource_generator == null:
+		return StringUtils.humanify_string(rid)
+	return resource_generator.get_display_name()
+
+
+static func get_display_names_of(ids: Array) -> Array:
+	return ids.map(func(rid: String) -> String: return ResourceGenerator.get_display_name_of(rid))

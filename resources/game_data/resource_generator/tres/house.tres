@@ -15,6 +15,7 @@ costs = {
 "wood": 20
 }
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
 label = "Build a House"
 title = "House"

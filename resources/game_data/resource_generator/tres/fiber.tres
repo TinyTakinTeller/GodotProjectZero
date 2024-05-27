@@ -4,12 +4,13 @@
 
 [resource]
 script = ExtResource("1_qt4nk")
-sort_value = 7
+sort_value = 10007
 id = "fiber"
 amount = 1
 cooldown = 0.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
 label = "-"
 title = "-"

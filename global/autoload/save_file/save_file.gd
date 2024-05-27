@@ -17,6 +17,7 @@ var tab_unlocks: Array = ["world"]
 var tab_levels: Dictionary = {"world": 0}
 var settings: Dictionary = {"theme": "dark"}
 var npc_events: Dictionary = {}
+var enemy: Dictionary = {"level": "ambassador", "ambassador": {"damage": 0}}
 var metadata: Dictionary = {}
 
 @onready var timer: Timer = %AutosaveTimer
@@ -33,9 +34,15 @@ func _ready() -> void:
 		print("_AUTOLOAD _READY: " + self.get_name())
 
 
-###########
-## setup ##
-###########
+#############
+## getters ##
+#############
+
+
+func get_enemy_damage(enemy_id: String) -> int:
+	var enemy_progression: Dictionary = SaveFile.enemy.get(enemy_id, {})
+	var enemy_damage: int = enemy_progression.get("damage", 0)
+	return enemy_damage
 
 
 func get_settings_theme(save_file_name: String) -> Resource:
@@ -49,6 +56,18 @@ func get_settings_theme(save_file_name: String) -> Resource:
 	return Resources.theme.get(theme_id, null)
 
 
+#############
+## setters ##
+#############
+
+
+func add_enemy_damage(damage: int) -> int:
+	var active_enemy_id: String = SaveFile.enemy["level"]
+	var enemy_progression: Dictionary = SaveFile.enemy.get(active_enemy_id, {})
+	enemy_progression["damage"] = enemy_progression.get("damage", 0) + damage
+	return enemy_progression["damage"]
+
+
 func set_metadata_name(save_file_name: String, value: String) -> void:
 	if !SAVE_DATAS.has(save_file_name):
 		return
@@ -56,6 +75,11 @@ func set_metadata_name(save_file_name: String, value: String) -> void:
 	var save_data: Dictionary = SAVE_DATAS[save_file_name]
 	var _metadata: Dictionary = save_data.get("metadata", {})
 	_metadata["save_file_name"] = value
+
+
+###########
+## setup ##
+###########
 
 
 func initialize(save_file_name: String, metadata_name: String) -> void:
@@ -70,7 +94,7 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 		if save_data != null and !save_data.is_empty():
 			_import_save_data(save_data)
 	elif metadata_name.length() > 0:
-		metadata["metadata"] = metadata_name
+		metadata["save_file_name"] = metadata_name
 
 	_connect_signals()
 
@@ -130,6 +154,7 @@ func _export_save_data() -> Dictionary:
 	save_data["tab_levels"] = tab_levels
 	save_data["settings"] = settings
 	save_data["npc_events"] = npc_events
+	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
 	return save_data
 
@@ -145,6 +170,7 @@ func _import_save_data(save_data: Dictionary) -> void:
 	tab_levels = _get_tab_levels(save_data)
 	settings = _get_settings(save_data)
 	npc_events = _get_npc_events(save_data)
+	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
 
 
@@ -186,6 +212,10 @@ func _get_settings(save_data: Dictionary) -> Dictionary:
 
 func _get_npc_events(save_data: Dictionary) -> Dictionary:
 	return save_data.get("npc_events", npc_events)
+
+
+func _get_enemy(save_data: Dictionary) -> Dictionary:
+	return save_data.get("enemy", enemy)
 
 
 func _get_metadata(save_data: Dictionary) -> Dictionary:
