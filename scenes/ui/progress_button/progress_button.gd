@@ -217,4 +217,5 @@ static func before_than(a: ProgressButton, b: ProgressButton) -> bool:
 		return true
 	if sort_b == null:
 		return false
-	return sort_a.sort_value < sort_b.sort_value
+
+	return sort_a.get_sort_value() < sort_b.get_sort_value()

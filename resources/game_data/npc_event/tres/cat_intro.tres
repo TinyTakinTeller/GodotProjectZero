@@ -8,3 +8,5 @@ sort_value = 0
 npc_id = "cat"
 id = "cat_intro"
 text = "I smell you from afar. Are you lost?"
+options = Array[String](["Yes", "No"])
+next_npc_event_id = Array[String](["cat_talk_A1", "cat_talk_B1"])

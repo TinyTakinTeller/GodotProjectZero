@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8f0hhmmpiqli"]
+
+[ext_resource type="Script" path="res://scenes/ui/manager_settings_container/scale_button/scale_button.gd" id="1_lwd84"]
+
+[node name="ScaleButton" type="MarginContainer"]
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+script = ExtResource("1_lwd84")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "1"

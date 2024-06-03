@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=29 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bkkan07rftdv8" path="res://scenes/ui/screen/unknown_screen/unknown_screen.tscn" id="6_1rr1e"]
 [ext_resource type="PackedScene" uid="uid://3iqi2w4katso" path="res://scenes/controller/unlock_controller/unlock_controller.tscn" id="6_albwn"]
 [ext_resource type="PackedScene" uid="uid://ctmnwgwxqwhd4" path="res://scenes/manager/tab_manager/tab_manager.tscn" id="7_0dsj8"]
-[ext_resource type="PackedScene" uid="uid://b7v7qyfc1edkj" path="res://scenes/controller/settings_controller/settings_controller.tscn" id="7_tu3ij"]
+[ext_resource type="PackedScene" uid="uid://b7v7qyfc1edkj" path="res://scenes/controller/setting_controller/setting_controller.tscn" id="7_jgdlg"]
+[ext_resource type="PackedScene" uid="uid://dnnw7tt0fonnw" path="res://scenes/controller/npc_controller/npc_controller.tscn" id="8_4fvsv"]
 [ext_resource type="PackedScene" uid="uid://bltskwx6etd24" path="res://scenes/controller/enemy_controller/enemy_controller.tscn" id="8_337st"]
 [ext_resource type="PackedScene" uid="uid://dq0ehpx6uoiux" path="res://scenes/manager/screen_manager/screen_manager.tscn" id="8_q26bh"]
 [ext_resource type="PackedScene" uid="uid://c70gtxukmaco6" path="res://scenes/ui/tab_tracker/tab_tracker.tscn" id="8_vxtq8"]
@@ -43,7 +44,9 @@ script = ExtResource("1_u1kx3")
 
 [node name="UnlockController" parent="Controllers" instance=ExtResource("6_albwn")]
 
-[node name="SettingsController" parent="Controllers" instance=ExtResource("7_tu3ij")]
+[node name="SettingController" parent="Controllers" instance=ExtResource("7_jgdlg")]
+
+[node name="NpcController" parent="Controllers" instance=ExtResource("8_4fvsv")]
 
 [node name="EnemyController" parent="Controllers" instance=ExtResource("8_337st")]
 

@@ -56,9 +56,17 @@ func get_settings_theme(save_file_name: String) -> Resource:
 	return Resources.theme.get(theme_id, null)
 
 
+func get_settings_population_scale() -> int:
+	return settings.get("population_scale", 1)
+
+
 #############
 ## setters ##
 #############
+
+
+func set_settings_population_scale(scale_: int) -> void:
+	settings["population_scale"] = scale_
 
 
 func add_enemy_damage(damage: int) -> int:
@@ -101,7 +109,9 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 
 func delete(save_file_name: String) -> void:
 	var file_name: String = save_file_name + SAVE_FILE_EXTENSION
-	DirAccess.remove_absolute(FileSystemUtils.USER_PATH + file_name)
+	var error: Error = DirAccess.remove_absolute(FileSystemUtils.USER_PATH + file_name)
+	if Game.params["debug_logs"]:
+		print("Delete save file '" + save_file_name + "' response: " + str(error))
 	SAVE_DATAS.erase(save_file_name)
 
 
@@ -133,6 +143,7 @@ func _load_save_files() -> void:
 		if !file_name.ends_with(SAVE_FILE_EXTENSION):
 			continue
 		var save_data: Dictionary = __read(file_name)
+		_check_backward_compatibility(save_data)
 		if Game.params["debug_logs"]:
 			print("__LOAD_SAVE_DATA: " + file_name)
 			print(save_data)
@@ -247,6 +258,24 @@ func _update_metadata() -> void:
 func _sanitize_timezone(timezone: Dictionary) -> void:
 	timezone["bias"] = int(timezone["bias"])
 	timezone["name"] = StringUtils.sanitize_text(timezone.get("name", ""), StringUtils.ASCII)
+
+
+func _check_backward_compatibility(save_data: Dictionary) -> void:
+	_check_backward_week_5(save_data)
+
+
+## cat dialogue tree was extended in week 6, this resets the last answer so dialogue can continue
+func _check_backward_week_5(save_data: Dictionary) -> void:
+	var target_version: Array[String] = ["week 4", "week 5"]
+	var last_version: String = _get_metadata(save_data).get("last_version_minor", "")
+	if !target_version.has(last_version):
+		return
+
+	var cat_events: Dictionary = _get_npc_events(save_data).get("cat", {})
+	if cat_events.get("cat_intro", 0) != 0:
+		cat_events["cat_intro"] = -1
+
+	_get_metadata(save_data)["last_version_minor"] = Game.VERSION_MINOR
 
 
 ##############

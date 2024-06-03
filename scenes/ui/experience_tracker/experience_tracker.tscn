@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy8l70tvpbis8"]
+[gd_scene load_steps=3 format=3 uid="uid://cy8l70tvpbis8"]
 
 [ext_resource type="Script" path="res://scenes/ui/experience_tracker/experience_tracker.gd" id="1_ummuh"]
+[ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_dnavx"]
 
 [node name="ExperienceTracker" type="MarginContainer"]
 size_flags_horizontal = 0
@@ -15,3 +16,11 @@ script = ExtResource("1_ummuh")
 unique_name_in_owner = true
 layout_mode = 2
 text = "Experience: 123"
+
+[node name="Tween" type="Node" parent="."]
+
+[node name="UpdatedSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_dnavx")]
+unique_name_in_owner = true
+target = NodePath("../..")
+duration = 0.5
+call_method = "__updated_simple_tween_method"

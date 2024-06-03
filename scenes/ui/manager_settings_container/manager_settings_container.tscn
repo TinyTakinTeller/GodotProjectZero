@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://sovytoworxpp"]
+
+[ext_resource type="Script" path="res://scenes/ui/manager_settings_container/manager_settings_container.gd" id="1_pt1de"]
+[ext_resource type="PackedScene" uid="uid://c8f0hhmmpiqli" path="res://scenes/ui/manager_settings_container/scale_button/scale_button.tscn" id="2_1pyn1"]
+
+[node name="ManagerSettingsContainer" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -15.5
+offset_right = 13.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_pt1de")
+scale_button_scene = ExtResource("2_1pyn1")
+
+[node name="ManagerScaleSettingContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ManagerScaleSettingContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ScaleMarginContainer1" parent="ManagerScaleSettingContainer/HBoxContainer" instance=ExtResource("2_1pyn1")]
+layout_mode = 2
+
+[node name="ManagerAutoSettingContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ManagerAutoSettingContainer"]
+layout_mode = 2
+
+[node name="AutoAssignButton" type="Button" parent="ManagerAutoSettingContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_type_variation = &"ProgressButton"
+text = "Auto Assign"
+
+[node name="MarginContainer" type="MarginContainer" parent="ManagerAutoSettingContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="Label" type="Label" parent="ManagerAutoSettingContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Off"

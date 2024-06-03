@@ -1,16 +1,20 @@
 extends MarginContainer
 class_name NpcDialog
 
+const PEEK_ALPHA: Array[float] = [0, 0.1, 1.0]
+
 @onready var dialog_label: Label = %DialogLabel
 @onready var yes_button: Button = %YesButton
 @onready var no_button: Button = %NoButton
 @onready var npc_margin_container: MarginContainer = %NpcMarginContainer
 @onready var npc_texture_rect: TextureRect = %NpcTextureRect
+@onready var npc_button: Button = %NpcButton
 @onready var typing_text_tween: Node = %TypingTextTween
 @onready var enter_simple_tween: SimpleTween = %EnterSimpleTween
 
 @export var _npc_id: String
 
+var _peek_state: int = 0
 var _next_text: String = ""
 var _target_id: String = ""
 
@@ -33,23 +37,24 @@ func is_event_active() -> bool:
 	return _target_id.length() != 0 and _next_text.length() != 0
 
 
-func peek(alpha: float, hide_ui: bool = true) -> void:
-	if hide_ui:
-		_hide_ui()
-	npc_texture_rect.modulate.a = alpha
+func peek(peek_state: int) -> void:
+	_peek_state = peek_state
+	npc_texture_rect.modulate.a = PEEK_ALPHA[peek_state]
 
-
-func play_enter_animation() -> void:
-	enter_simple_tween.play_animation()
+	if peek_state == 0:
+		visible = false
+	else:
+		visible = true
 
 
 func play_typing_animation(on_load: bool = false) -> void:
 	if !is_event_active():
-		peek(0.1)
+		peek(1)
+		_hide_ui()
 		return
 
-	if npc_texture_rect.modulate.a != 1.0 and !on_load:
-		play_enter_animation()
+	if _peek_state != 2 and !on_load:
+		enter_simple_tween.play_animation()
 		return
 
 	dialog_label.text = _next_text
@@ -59,7 +64,7 @@ func play_typing_animation(on_load: bool = false) -> void:
 		var duration: float = dialog_label.text.length() * Game.params["animation_speed_diary"]
 		typing_text_tween.play_animation(duration)
 	else:
-		peek(1, false)
+		peek(2)
 		_show_and_enable_buttons()
 
 
@@ -69,10 +74,11 @@ func play_typing_animation(on_load: bool = false) -> void:
 
 
 func _initialize() -> void:
+	_hide_ui()
 	if _npc_id == null:
 		peek(0)
 		return
-	_load_next_active_event()
+	_load_next_active_event(true)
 
 
 func _clear_active_event() -> void:
@@ -80,24 +86,31 @@ func _clear_active_event() -> void:
 	_target_id = ""
 
 
-func _load_next_active_event() -> void:
+func _load_next_active_event(on_load: bool = false) -> void:
 	_clear_active_event()
 
 	var npc_events: Dictionary = SaveFile.npc_events.get(_npc_id, {})
 	if npc_events.size() == 0:
 		peek(0)
+		_hide_ui()
 		return
-	peek(0.1)
 
 	for npc_event_id: String in npc_events:
 		var npc_event_value: int = npc_events[npc_event_id]
-		if npc_event_value == 0:
+		if npc_event_value == -1:
 			var npc_event: NpcEvent = Resources.npc_events[npc_event_id]
-			if npc_event.is_a_question():
+			if npc_event.is_interactable():
+				yes_button.text = npc_event.options[0]
+				if npc_event.options.size() > 1:
+					no_button.text = npc_event.options[1]
+				else:
+					no_button.text = ""
 				_next_text = npc_event.get_text()
 				_target_id = npc_event_id
-				play_typing_animation(true)
+				play_typing_animation(on_load)
 				return
+	peek(1)
+	_hide_ui()
 
 
 func _hide_ui() -> void:
@@ -117,9 +130,10 @@ func _hide_buttons() -> void:
 
 func _show_and_enable_buttons() -> void:
 	yes_button.visible = true
-	no_button.visible = true
 	yes_button.disabled = false
-	no_button.disabled = false
+	if no_button.text.length() > 0:
+		no_button.visible = true
+		no_button.disabled = false
 
 
 #############
@@ -133,6 +147,9 @@ func _connect_signals() -> void:
 	yes_button.button_down.connect(_on_yes_button_down)
 	no_button.button_down.connect(_on_no_button_down)
 	SignalBus.npc_event_saved.connect(_on_npc_event_saved)
+	npc_button.mouse_entered.connect(_on_npc_hover)
+	npc_button.mouse_exited.connect(_on_npc_hover_stop)
+	npc_button.pressed.connect(_on_npc_button_pressed)
 
 
 func _on_typing_text_tween_animation_end() -> void:
@@ -140,6 +157,7 @@ func _on_typing_text_tween_animation_end() -> void:
 
 
 func _on_enter_simple_tween_animation_end() -> void:
+	_peek_state = 2
 	npc_texture_rect.modulate.a = 1.0
 	npc_margin_container.add_theme_constant_override("margin_bottom", 20)
 	play_typing_animation()
@@ -147,13 +165,13 @@ func _on_enter_simple_tween_animation_end() -> void:
 
 func _on_yes_button_down() -> void:
 	_hide_ui()
-	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 1)
+	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 0)
 	_load_next_active_event()
 
 
 func _on_no_button_down() -> void:
 	_hide_ui()
-	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 2)
+	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 1)
 	_load_next_active_event()
 
 
@@ -164,6 +182,21 @@ func _on_npc_event_saved(npc_event: NpcEvent) -> void:
 		_next_text = npc_event.get_text()
 		_target_id = npc_event.get_id()
 		play_typing_animation()
+
+
+func _on_npc_hover() -> void:
+	SignalBus.info_hover.emit(Info.get_npc_hover_title(_npc_id), Info.get_npc_hover_info(_npc_id))
+
+
+func _on_npc_hover_stop() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_npc_button_pressed() -> void:
+	SignalBus.info_hover_shader.emit(
+		Info.get_npc_click_title(_npc_id), Info.get_npc_click_info(_npc_id)
+	)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 ############

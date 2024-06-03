@@ -8,9 +8,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4lkeg"]
 shader = ExtResource("2_3tdww")
-shader_parameter/Strength = 0.7
+shader_parameter/Strength = 0.75
 shader_parameter/RandomOffset = 0.0
 shader_parameter/offset = 0.0
+shader_parameter/enabled = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_32d3w"]
 
@@ -106,6 +107,11 @@ theme_override_constants/margin_bottom = 20
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_8yoqs")
+
+[node name="NpcButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/NpcVBoxContainer/NpcMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="Tween" type="Node" parent="."]
 

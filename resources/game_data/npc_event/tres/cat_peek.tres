@@ -8,3 +8,5 @@ sort_value = 0
 npc_id = "cat"
 id = "cat_peek"
 text = ""
+options = Array[String]([])
+next_npc_event_id = ""

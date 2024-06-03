@@ -4,7 +4,7 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "pre-alpha"
-const VERSION_MINOR: String = "week 5"
+const VERSION_MINOR: String = "week 6"
 
 const params: Dictionary = params_prod  #params_prod  #params_debug
 
@@ -27,7 +27,7 @@ const params_debug: Dictionary = {
 	"debug_resource_generated_event": false,
 	"debug_line_effect": false,
 	"debug_no_scrollbar": false,
-	"debug_logs": true,
+	"debug_logs": false,  #true
 	"default_theme": "dark"
 }
 

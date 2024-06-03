@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_t0567")
 sort_value = 1001
+sort_value_override = 0.0
 id = "house"
 amount = 1
 cooldown = 40.0

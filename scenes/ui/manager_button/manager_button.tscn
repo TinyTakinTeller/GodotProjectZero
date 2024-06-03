@@ -16,6 +16,7 @@ layout_mode = 2
 
 [node name="DelMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_right = -2
 
 [node name="DelButton" type="Button" parent="HBoxContainer/DelMarginContainer"]
 unique_name_in_owner = true
@@ -47,6 +48,7 @@ text = "0"
 
 [node name="AddMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = -2
 
 [node name="AddButton" type="Button" parent="HBoxContainer/AddMarginContainer"]
 unique_name_in_owner = true

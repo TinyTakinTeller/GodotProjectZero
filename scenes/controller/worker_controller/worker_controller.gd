@@ -44,7 +44,7 @@ func _generate(generate: bool = true) -> void:
 			var amount: int = generated_workers[worker_id]
 			SignalBus.worker_generated.emit(worker_id, amount, self.name)
 
-	SignalBus.worker_efficiency_updated.emit(efficiencies, generate)
+	SignalBus.worker_efficiency_set.emit(efficiencies, generate)
 
 
 func _calculate_generated_worker_resource_from_houses() -> int:

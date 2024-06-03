@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_emro8")
 sort_value = 1101
+sort_value_override = 0.0
 id = "torch"
 amount = 1
 cooldown = 2.0

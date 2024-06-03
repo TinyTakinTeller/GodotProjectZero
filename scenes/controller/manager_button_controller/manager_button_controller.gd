@@ -9,23 +9,39 @@ func _ready() -> void:
 	_connect_signals()
 
 
+#############
+## helpers ##
+#############
+
+
+func _get_settings_population_scale(id: String) -> int:
+	var workers: int = SaveFile.workers.get(id, 0)
+	var amount: int = SaveFile.get_settings_population_scale()
+	if amount < 0:
+		amount = workers
+	amount = min(amount, workers)
+	return amount
+
+
 ##############
 ## handlers ##
 ##############
 
 
 func _handle_add(worker_role: WorkerRole) -> void:
-	var id: String = worker_role.id
-	if SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0) == 0:
+	var amount: int = _get_settings_population_scale(Game.WORKER_RESOURCE_ID)
+	if amount == 0:
 		return
-	SignalBus.worker_allocated.emit(id, 1, self.name)
+	var id: String = worker_role.id
+	SignalBus.worker_allocated.emit(id, amount, self.name)
 
 
 func _handle_del(worker_role: WorkerRole) -> void:
 	var id: String = worker_role.id
-	if SaveFile.workers.get(id, 0) == 0:
+	var amount: int = _get_settings_population_scale(id)
+	if amount == 0:
 		return
-	SignalBus.worker_allocated.emit(id, -1, self.name)
+	SignalBus.worker_allocated.emit(id, -amount, self.name)
 
 
 #############

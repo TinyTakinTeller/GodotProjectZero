@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://bgwjhi5p0h553"]
+
+[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_g4sd6"]
+
+[resource]
+script = ExtResource("1_g4sd6")
+sort_value = 0
+npc_id = "cat"
+id = "cat_talk_B4_2"
+text = "Really? You are a... interesting one. I will keep my eye on you..."
+options = Array[String](["Bye"])
+next_npc_event_id = Array[String]([])

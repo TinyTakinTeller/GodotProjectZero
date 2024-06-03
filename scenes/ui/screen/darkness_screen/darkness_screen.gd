@@ -121,11 +121,11 @@ func _update_pivot() -> void:
 
 
 func _play_click_damage_effect(damage: int) -> void:
-	click_label_effect_queue.add_task("- %s" % NumberUtils.format_number(damage))
+	click_label_effect_queue.add_task("- %s" % NumberUtils.format_number_scientific(damage))
 
 
 func _play_damage_effect(damage: int) -> void:
-	passive_label_effect_queue.add_task("- %s" % NumberUtils.format_number(damage))
+	passive_label_effect_queue.add_task("- %s" % NumberUtils.format_number_scientific(damage))
 
 
 func _play_burst_damage_effect(damage: int, burst: int) -> void:

@@ -2,6 +2,7 @@ extends Resource
 class_name ResourceGenerator
 
 @export var sort_value: int = 0
+@export var sort_value_override: float = 0.0
 @export var id: String
 @export var amount: int = 1
 @export var cooldown: float = 1
@@ -21,8 +22,14 @@ class_name ResourceGenerator
 var _random_drops_sum: int = -1
 
 
+func get_sort_value() -> float:
+	if sort_value_override != 0.0:
+		return sort_value_override
+	return sort_value
+
+
 func get_display_increment(display_amount: int) -> String:
-	var amount_string: String = NumberUtils.format_number(display_amount)
+	var amount_string: String = NumberUtils.format_number_scientific(display_amount)
 	return " + {amount} {text} ".format({"amount": str(amount_string), "text": get_display_name()})
 
 

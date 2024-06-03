@@ -5,6 +5,8 @@ class_name NpcEvent
 @export var npc_id: String
 @export var id: String
 @export var text: String
+@export var options: Array[String] = []
+@export var next_npc_event_id: Array[String] = []
 
 
 func get_sort_value() -> int:
@@ -23,5 +25,5 @@ func get_text() -> String:
 	return text
 
 
-func is_a_question() -> bool:
+func is_interactable() -> bool:
 	return text.length() != 0

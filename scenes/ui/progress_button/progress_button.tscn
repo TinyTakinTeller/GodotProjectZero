@@ -36,11 +36,6 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="ProgressBarSimpleTween" parent="ProgressBar" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
-unique_name_in_owner = true
-target = NodePath("../..")
-call_method = "__progress_bar_simple_tween_method"
-
 [node name="RedColorRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
@@ -48,21 +43,30 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
-[node name="RedColorRectSimpleTween" parent="RedColorRect" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
+[node name="Tween" type="Node" parent="."]
+
+[node name="ProgressBarSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
+unique_name_in_owner = true
+target = NodePath("../..")
+call_method = "__progress_bar_simple_tween_method"
+
+[node name="RedColorRectSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
 unique_name_in_owner = true
 target = NodePath("../..")
 duration = 0.3
 call_method = "__red_color_rect_simple_tween_method"
 
-[node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_gumta")]
+[node name="NewUnlockTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_gumta")]
 unique_name_in_owner = true
-target = NodePath("..")
+target = NodePath("../..")
 
-[node name="LineEffect" parent="." instance=ExtResource("3_aqdv6")]
+[node name="Effect" type="Node2D" parent="."]
+
+[node name="LineEffect" parent="Effect" instance=ExtResource("3_aqdv6")]
 unique_name_in_owner = true
 color = Color(0.282353, 0.282353, 0.282353, 1)
 offset_a_x = 1
 offset_b_x = -14
 
-[node name="LabelEffectQueue" parent="." instance=ExtResource("4_ybk84")]
+[node name="LabelEffectQueue" parent="Effect" instance=ExtResource("4_ybk84")]
 unique_name_in_owner = true

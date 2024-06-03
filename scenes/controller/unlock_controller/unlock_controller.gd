@@ -50,9 +50,8 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		if ResourceManager.get_total_generated(observed_id) >= 1:
 			_unlock_tab_if("manager")
 			_unlock_worker_role_if("smelter")
-			## _unlock_worker_role_if("FLINT_GENERATOR")
-			## _unlock_worker_role_if("FIBER_GENERATOR")
-			## _unlock_worker_role_if("tailor")
+			# _unlock_worker_role_if("FLINT_GENERATOR")
+			# _unlock_worker_role_if("FIBER_GENERATOR")
 
 	if observed_id == "compass" and observed_total == 1:
 		_trigger_unique_unlock_event("enemy_screen")
@@ -76,10 +75,16 @@ func _handle_worker_updated(_observed_id: String, _observed_total: int) -> void:
 func _handle_npc_event_interacted(npc_id: String, npc_event_id: String, option: int) -> void:
 	if npc_id == "cat":
 		if npc_event_id == "cat_intro":
-			if option == 1:
+			if option == 0:
 				_trigger_unique_unlock_event("cat_intro_yes")
-			elif option == 2:
+			elif option == 1:
 				_trigger_unique_unlock_event("cat_intro_no")
+		elif npc_event_id == "cat_talk_A4":
+			if option == 0:
+				_gift_double()
+		elif npc_event_id == "cat_talk_B4":
+			if option == 0:
+				_gift_double()  # _gift_scam()
 
 
 func _handle_land_event(observed_id: String) -> void:
@@ -100,7 +105,7 @@ func _handle_land_event(observed_id: String) -> void:
 	if ResourceManager.get_total_generated(observed_id) >= 4 + 1:
 		_trigger_unique_unlock_event("land_4")
 		_unlock_resource_generator_if("axe")
-		_debug_gift()
+		_gift_debug()
 	if ResourceManager.get_total_generated(observed_id) >= 5 + 1:
 		_trigger_unique_unlock_event("land_5")
 		_unlock_resource_generator_if("pickaxe")
@@ -111,17 +116,23 @@ func _handle_land_event(observed_id: String) -> void:
 		_trigger_unique_unlock_event("land_7")
 		_unlock_resource_generator_if("spear")
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 1:
+		_trigger_unique_unlock_event_values("gift_flint_fiber", ["2", "1", "5", "3"])
+		_gift_resource("fiber", 2, self.name)
+		_gift_resource("flint", 1, self.name)
+		_gift_resource("wood", 5, self.name)
+		_gift_resource("stone", 3, self.name)
+	if ResourceManager.get_total_generated(observed_id) >= 8 + 2:
 		_trigger_unique_unlock_event("land_8")
 		_unlock_resource_generator_if("compass")
-	if ResourceManager.get_total_generated(observed_id) >= 9 + 1:
+	if ResourceManager.get_total_generated(observed_id) >= 9 + 2:
 		_trigger_unique_unlock_event("land_9")
 		_unlock_worker_role_if("explorer")
 		_unlock_resource_generator_if("torch")
-	if ResourceManager.get_total_generated(observed_id) >= 10 + 1:
+	if ResourceManager.get_total_generated(observed_id) >= 10 + 2:
 		_trigger_unique_unlock_event("land_10")
 		_unlock_worker_role_if("coal_miner")
 		_unlock_worker_role_if("torch_man")
-	if ResourceManager.get_total_generated(observed_id) >= 11 + 1:
+	if ResourceManager.get_total_generated(observed_id) >= 11 + 2:
 		_trigger_unique_unlock_event("land_11")
 		_unlock_worker_role_if("iron_miner")
 		_unlock_worker_role_if("iron_smelter")
@@ -192,6 +203,14 @@ func _trigger_unique_unlock_event(event_id: String) -> bool:
 	return false
 
 
+func _trigger_unique_unlock_event_values(event_id: String, vals: Array) -> bool:
+	if SaveFile.events.get(event_id, 0) == 0:
+		var event_data: EventData = Resources.event_datas[event_id]
+		SignalBus.event_triggered.emit(event_data, vals)
+		return true
+	return false
+
+
 func _trigger_unique_unlock_npc_event(npc_id: String, npc_event_id: String) -> bool:
 	var npc_events: Dictionary = SaveFile.npc_events.get(npc_id, {})
 	if npc_events.get(npc_event_id, -1) == -1:
@@ -222,10 +241,11 @@ func _unlock_tab_if(unlock_id: String) -> void:
 
 
 func _gift_resource(gen_id: String, amount: int, source_id: String) -> void:
-	SignalBus.resource_generated.emit(gen_id, amount, source_id)
+	if amount != 0:
+		SignalBus.resource_generated.emit(gen_id, amount, source_id)
 
 
-func _debug_gift() -> void:
+func _gift_debug() -> void:
 	if Game.params["debug_gift"]:
 		if _trigger_unique_unlock_event("land_debug"):
 			_gift_resource("food", 1000, name)
@@ -237,6 +257,38 @@ func _debug_gift() -> void:
 			_gift_resource("flint", 1000, name)
 			_gift_resource("fur", 1000, name)
 			_gift_resource("leather", 1000, name)
+
+
+func _gift_double() -> void:
+	if _trigger_unique_unlock_event("cat_gift"):
+		_gift_resource("food", SaveFile.resources.get("food", 0), name)
+		_gift_resource("wood", SaveFile.resources.get("wood", 0), name)
+		_gift_resource("stone", SaveFile.resources.get("stone", 0), name)
+		_gift_resource("clay", SaveFile.resources.get("clay", 0), name)
+		_gift_resource("brick", SaveFile.resources.get("brick", 0), name)
+		_gift_resource("fur", SaveFile.resources.get("fur", 0), name)
+		_gift_resource("leather", SaveFile.resources.get("leather", 0), name)
+		_gift_resource("coal", SaveFile.resources.get("coal", 0), name)
+		_gift_resource("iron_ore", SaveFile.resources.get("iron_ore", 0), name)
+		_gift_resource("iron", SaveFile.resources.get("iron", 0), name)
+		_gift_resource("fiber", SaveFile.resources.get("fiber", 0), name)
+		_gift_resource("flint", SaveFile.resources.get("flint", 0), name)
+
+
+func _gift_scam() -> void:
+	if _trigger_unique_unlock_event("cat_scam"):
+		_gift_resource("food", -SaveFile.resources.get("food", 0), name)
+		_gift_resource("wood", -SaveFile.resources.get("wood", 0), name)
+		_gift_resource("stone", -SaveFile.resources.get("stone", 0), name)
+		_gift_resource("clay", -SaveFile.resources.get("clay", 0), name)
+		_gift_resource("brick", -SaveFile.resources.get("brick", 0), name)
+		_gift_resource("fur", -SaveFile.resources.get("fur", 0), name)
+		_gift_resource("leather", -SaveFile.resources.get("leather", 0), name)
+		_gift_resource("coal", -SaveFile.resources.get("coal", 0), name)
+		_gift_resource("iron_ore", -SaveFile.resources.get("iron_ore", 0), name)
+		_gift_resource("iron", -SaveFile.resources.get("iron", 0), name)
+		_gift_resource("fiber", -SaveFile.resources.get("fiber", 0), name)
+		_gift_resource("flint", -SaveFile.resources.get("flint", 0), name)
 
 
 #############

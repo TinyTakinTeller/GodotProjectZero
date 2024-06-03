@@ -16,10 +16,7 @@ var tabs: Dictionary = {}
 
 func _ready() -> void:
 	_load_from_save_file()
-	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
-	SignalBus.tab_leveled_up.connect(_on_tab_leveled_up)
-	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
-	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
+	_connect_signals()
 
 
 #############
@@ -106,6 +103,13 @@ func _handle_on_unlocked(tab_index: int) -> void:
 #############
 ## signals ##
 #############
+
+
+func _connect_signals() -> void:
+	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
+	SignalBus.tab_leveled_up.connect(_on_tab_leveled_up)
+	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
+	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 
 
 func _on_tab_clicked(tab_data: TabData) -> void:

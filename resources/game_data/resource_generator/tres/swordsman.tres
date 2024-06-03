@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_eyud3")
 sort_value = -1
+sort_value_override = 1103.0
 id = "swordsman"
 amount = 1
 cooldown = 60.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn6hcp4hfxyic"]
+[gd_scene load_steps=4 format=3 uid="uid://dn6hcp4hfxyic"]
 
 [ext_resource type="Script" path="res://scenes/ui/settings_container/settings_container.gd" id="1_wrevx"]
-[ext_resource type="PackedScene" uid="uid://dic246sx4xjf6" path="res://scenes/ui/settings_container/toggle_button/toggle_button.tscn" id="2_pyn51"]
+[ext_resource type="PackedScene" uid="uid://dic246sx4xjf6" path="res://scenes/ui/settings_container/toggle_button/toggle_button.tscn" id="2_x8wem"]
+[ext_resource type="AudioStream" uid="uid://c3ep4wqqo17ex" path="res://assets/audio/fart/short-definite-fart.wav" id="3_r6b6m"]
 
 [node name="SettingsContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -24,7 +25,7 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="ThemeToggleButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_pyn51")]
+[node name="ThemeToggleButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_x8wem")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"ManagerButton"
@@ -36,6 +37,11 @@ _toggle_id_index = 0
 layout_mode = 2
 theme_override_constants/margin_right = 8
 
+[node name="AudioButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "fart"
+
 [node name="VersionLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -44,3 +50,6 @@ theme_override_font_sizes/font_size = 12
 text = "pre-alpha
 week 4"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_r6b6m")

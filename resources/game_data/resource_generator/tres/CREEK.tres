@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1_qto8u")
 sort_value = -1
+sort_value_override = 1.2
 id = "CREEK"
 amount = 1
 cooldown = 10.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {
 "clay": 30,
 "flint": 20,

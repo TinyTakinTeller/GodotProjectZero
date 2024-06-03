@@ -22,6 +22,8 @@ func _handle_on_worker_allocated(id: String, amount: int) -> void:
 
 
 func _handle_on_worker_generated(id: String, amount: int) -> void:
+	amount = Limits.check_global_max_amount(SaveFile.workers.get(id, 0), amount)
+
 	SaveFile.workers[id] = SaveFile.workers.get(id, 0) + amount
 	SignalBus.worker_updated.emit(id, SaveFile.workers[id], amount)
 
@@ -34,6 +36,7 @@ func _handle_on_worker_generated(id: String, amount: int) -> void:
 func _connect_signals() -> void:
 	SignalBus.worker_allocated.connect(_on_worker_allocated)
 	SignalBus.worker_generated.connect(_on_worker_generated)
+	SignalBus.worker_efficiency_set.connect(_on_worker_efficiency_set)
 
 
 func _on_worker_allocated(id: String, amount: int, _source: String) -> void:
@@ -42,3 +45,7 @@ func _on_worker_allocated(id: String, amount: int, _source: String) -> void:
 
 func _on_worker_generated(id: String, amount: int, _source: String) -> void:
 	_handle_on_worker_generated(id, amount)
+
+
+func _on_worker_efficiency_set(efficiencies: Dictionary, generate: bool) -> void:
+	SignalBus.worker_efficiency_updated.emit(efficiencies, generate)
