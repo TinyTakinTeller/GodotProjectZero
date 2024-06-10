@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_2gk1a")
+order = 2
 sort_value = 5
 id = "smelter"
-title = "Clay Smelter"
+title = "Clay Baker"
 flavor = "Sits next to firepit to take out bricks."
 produce = {
 "brick": 1
@@ -14,5 +15,6 @@ produce = {
 consume = {
 "clay": 1
 }
+worker_consume = {}
 default = false
 column = 0

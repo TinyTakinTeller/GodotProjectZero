@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_npv04")
+order = 4
 sort_value = 18
 id = "mason"
 title = ""
@@ -18,5 +19,6 @@ consume = {
 "stone": 5,
 "wood": 20
 }
+worker_consume = {}
 default = false
 column = 1

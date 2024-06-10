@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://43r78i5njgjv"]
+
+[ext_resource type="Script" path="res://global/autoload/locale/locale.gd" id="1_f1lat"]
+
+[node name="Locale" type="Node"]
+script = ExtResource("1_f1lat")

@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_m14yy")
 sort_value = 6
+sort_value_override = 0.0
 id = "brick"
 amount = 1
 cooldown = 5.0
@@ -12,10 +13,11 @@ costs = {
 "clay": 1
 }
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
-label = "Smelt Clay"
-title = "Smelt Clay"
-flavor = "Smelted hopefully not melted."
+label = "Bake Clay"
+title = "Bake Clay"
+flavor = "Excuse me, this is not a bakery."
 hidden = false
 max_amount = -1
 max_flavor = ""

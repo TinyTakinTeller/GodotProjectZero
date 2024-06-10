@@ -32,7 +32,7 @@ func _toggle_wiggle_shader(enabled: bool) -> void:
 
 
 func _initialize() -> void:
-	_handle_on_hover("   ", "   ")
+	_handle_on_hover("  ", "  ")
 
 
 func _handle_on_hover(title: String, info: String) -> void:
@@ -65,7 +65,7 @@ func _on_progress_button_hover(resource_generator: ResourceGenerator) -> void:
 	_toggle_wiggle_shader(false)
 
 
-func _on_manager_button_hover(worker_role: WorkerRole) -> void:
+func _on_manager_button_hover(worker_role: WorkerRole, _node: Node) -> void:
 	var id: String = worker_role.id
 	info_id = id
 	info_type = "worker"

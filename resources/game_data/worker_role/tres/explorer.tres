@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_kig6h")
+order = 3
 sort_value = 17
 id = "explorer"
 title = ""
@@ -15,5 +16,6 @@ consume = {
 "food": 3,
 "torch": 1
 }
+worker_consume = {}
 default = false
 column = 1

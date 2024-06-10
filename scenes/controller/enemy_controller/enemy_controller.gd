@@ -42,7 +42,12 @@ func _get_damage() -> int:
 
 func _connect_signals() -> void:
 	timer.timeout.connect(_on_timeout)
+	SignalBus.deaths_door.connect(_on_deaths_door)
 
 
 func _on_timeout() -> void:
 	_generate()
+
+
+func _on_deaths_door(enemy_data: EnemyData, option: int) -> void:
+	SignalBus.deaths_door_decided.emit(enemy_data, option)

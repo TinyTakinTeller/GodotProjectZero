@@ -56,7 +56,7 @@ func _set_title_label(text: String) -> void:
 
 
 func _set_value_label(text: String = "") -> void:
-	if text.length() > 0:
+	if StringUtils.is_not_empty(text):
 		_input_text = text
 		_previous_input_text = _input_text
 	value_label.text = _input_text
@@ -66,7 +66,7 @@ func _set_value_label(text: String = "") -> void:
 
 
 func _set_input_label(text: String = "") -> void:
-	if text.length() > 0:
+	if StringUtils.is_not_empty(text):
 		_input_text = text
 		_previous_input_text = _input_text
 	line_edit.text = _input_text

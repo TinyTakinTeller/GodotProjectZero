@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_b5d4v")
+order = 5
 sort_value = 16
 id = "swordsmith"
 title = ""
@@ -18,5 +19,6 @@ consume = {
 "leather": 1,
 "wood": 2
 }
+worker_consume = {}
 default = false
 column = 1

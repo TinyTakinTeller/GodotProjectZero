@@ -47,5 +47,7 @@ func _on_worker_generated(id: String, amount: int, _source: String) -> void:
 	_handle_on_worker_generated(id, amount)
 
 
-func _on_worker_efficiency_set(efficiencies: Dictionary, generate: bool) -> void:
+func _on_worker_efficiency_set(
+	efficiencies: Dictionary, generate: bool
+) -> void:
 	SignalBus.worker_efficiency_updated.emit(efficiencies, generate)

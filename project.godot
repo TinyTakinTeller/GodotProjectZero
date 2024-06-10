@@ -32,6 +32,7 @@ config/icon="res://assets/image/icon/icon.svg"
 Resources="*res://global/autoload/resources.gd"
 SignalBus="*res://global/autoload/signal_bus.gd"
 SaveFile="*res://global/autoload/save_file/save_file.tscn"
+Locale="*res://global/autoload/locale/locale.tscn"
 
 [debug]
 

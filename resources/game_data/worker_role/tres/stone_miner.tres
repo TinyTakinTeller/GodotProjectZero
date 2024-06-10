@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_l1yee")
+order = 1
 sort_value = 2
 id = "stone_miner"
 title = ""
@@ -14,4 +15,6 @@ produce = {
 consume = {
 "food": 1
 }
+worker_consume = {}
 default = false
+column = 0

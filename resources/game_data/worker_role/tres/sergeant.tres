@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_xaq0c")
+order = 6
 sort_value = 19
 id = "sergeant"
 title = ""

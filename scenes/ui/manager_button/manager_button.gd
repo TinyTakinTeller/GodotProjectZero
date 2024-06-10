@@ -158,34 +158,43 @@ func _handle_worker_efficiency_updated(efficiencies: Dictionary, generate: bool)
 
 func _connect_signals() -> void:
 	self.resized.connect(_on_resized)
-	self.mouse_entered.connect(_on_mouse_entered)
-	del_button.mouse_entered.connect(_on_mouse_entered)
-	add_button.mouse_entered.connect(_on_mouse_entered)
+	self.mouse_entered.connect(_on_mouse_entered.bind(self))
+	del_button.mouse_entered.connect(_on_mouse_entered.bind(del_button))
+	add_button.mouse_entered.connect(_on_mouse_entered.bind(add_button))
+	self.mouse_exited.connect(_on_mouse_exited.bind(self))
+	del_button.mouse_exited.connect(_on_mouse_exited.bind(del_button))
+	add_button.mouse_exited.connect(_on_mouse_exited.bind(add_button))
 	add_button.button_up.connect(_on_add_button_up)
 	del_button.button_up.connect(_on_del_button_up)
 	SignalBus.worker_updated.connect(_on_worker_updated)
 	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
+	SignalBus.resource_storage_hover.connect(_on_resource_storage_hover)
+	SignalBus.resource_storage_unhover.connect(_on_resource_storage_unhover)
 
 
 func _on_resized() -> void:
 	_update_pivot()
 
 
-func _on_mouse_entered() -> void:
-	SignalBus.manager_button_hover.emit(_worker_role)
+func _on_mouse_entered(node: Node) -> void:
+	SignalBus.manager_button_hover.emit(_worker_role, node)
 	stop_unlock_animation()
+
+
+func _on_mouse_exited(node: Node) -> void:
+	SignalBus.manager_button_unhover.emit(_worker_role, node)
 
 
 ## calling _on_mouse_entered() here because mobile users don't have mouse_entered signal
 func _on_add_button_up() -> void:
-	_on_mouse_entered()
+	_on_mouse_entered(null)
 	SignalBus.manager_button_add.emit(_worker_role)
 	add_button.release_focus()
 
 
 ## calling _on_mouse_entered() here because mobile users don't have mouse_entered signal
 func _on_del_button_up() -> void:
-	_on_mouse_entered()
+	_on_mouse_entered(null)
 	SignalBus.manager_button_del.emit(_worker_role)
 	del_button.release_focus()
 
@@ -215,6 +224,20 @@ func _on_worker_efficient(worker_role_id: String) -> void:
 		return
 	modulate.g = 1
 	modulate.b = 1
+
+
+func _on_resource_storage_hover(resource: ResourceGenerator) -> void:
+	var id: String = resource.id
+	if _worker_role.get_consume().has(id) or _worker_role.get_worker_consume().has(id):
+		info_label.modulate = Color(0.878, 0, 0.392, 1)
+	elif _worker_role.get_produce().has(id):
+		info_label.modulate = Color(0.392, 0.878, 0, 1)
+	else:
+		info_label.modulate = Color.WHITE
+
+
+func _on_resource_storage_unhover(_resource: ResourceGenerator) -> void:
+	info_label.modulate = Color.WHITE
 
 
 ############

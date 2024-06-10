@@ -4,14 +4,14 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "pre-alpha"
-const VERSION_MINOR: String = "week 6"
+const VERSION_MINOR: String = "week 8"
 
 const params: Dictionary = params_prod  #params_prod  #params_debug
 
 const params_debug: Dictionary = {
 	"cycle_seconds": 2,
 	"enemy_cycle_seconds": 3,
-	"enemy_click_damage": 10000000,
+	"enemy_click_damage": 100000000,
 	"house_workers": 4,
 	"save_system_enabled": true,
 	"autosave_enabled": true,
@@ -27,8 +27,10 @@ const params_debug: Dictionary = {
 	"debug_resource_generated_event": false,
 	"debug_line_effect": false,
 	"debug_no_scrollbar": false,
-	"debug_logs": false,  #true
-	"default_theme": "dark"
+	"debug_logs": true,
+	"default_theme": "dark",
+	"population_uses_resources_in_same_cycle": true,
+	"resource_storage_info": false
 }
 
 const params_prod: Dictionary = {
@@ -50,6 +52,8 @@ const params_prod: Dictionary = {
 	"debug_resource_generated_event": false,
 	"debug_line_effect": false,
 	"debug_no_scrollbar": false,
-	"debug_logs": true,  #false
-	"default_theme": "dark"
+	"debug_logs": false,
+	"default_theme": "dark",
+	"population_uses_resources_in_same_cycle": true,
+	"resource_storage_info": false
 }

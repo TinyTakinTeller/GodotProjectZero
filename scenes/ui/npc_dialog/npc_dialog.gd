@@ -34,7 +34,7 @@ func _ready() -> void:
 
 
 func is_event_active() -> bool:
-	return _target_id.length() != 0 and _next_text.length() != 0
+	return StringUtils.is_not_empty(_target_id) and StringUtils.is_not_empty(_next_text)
 
 
 func peek(peek_state: int) -> void:
@@ -100,9 +100,9 @@ func _load_next_active_event(on_load: bool = false) -> void:
 		if npc_event_value == -1:
 			var npc_event: NpcEvent = Resources.npc_events[npc_event_id]
 			if npc_event.is_interactable():
-				yes_button.text = npc_event.options[0]
-				if npc_event.options.size() > 1:
-					no_button.text = npc_event.options[1]
+				yes_button.text = npc_event.get_options(0)
+				if npc_event.get_options_size() > 1:
+					no_button.text = npc_event.get_options(1)
 				else:
 					no_button.text = ""
 				_next_text = npc_event.get_text()
@@ -131,7 +131,7 @@ func _hide_buttons() -> void:
 func _show_and_enable_buttons() -> void:
 	yes_button.visible = true
 	yes_button.disabled = false
-	if no_button.text.length() > 0:
+	if StringUtils.is_not_empty(no_button.text):
 		no_button.visible = true
 		no_button.disabled = false
 
@@ -185,7 +185,9 @@ func _on_npc_event_saved(npc_event: NpcEvent) -> void:
 
 
 func _on_npc_hover() -> void:
-	SignalBus.info_hover.emit(Info.get_npc_hover_title(_npc_id), Info.get_npc_hover_info(_npc_id))
+	SignalBus.info_hover.emit(
+		Locale.get_npc_hover_title(_npc_id), Locale.get_npc_hover_info(_npc_id)
+	)
 
 
 func _on_npc_hover_stop() -> void:
@@ -194,7 +196,7 @@ func _on_npc_hover_stop() -> void:
 
 func _on_npc_button_pressed() -> void:
 	SignalBus.info_hover_shader.emit(
-		Info.get_npc_click_title(_npc_id), Info.get_npc_click_info(_npc_id)
+		Locale.get_npc_click_title(_npc_id), Locale.get_npc_click_info(_npc_id)
 	)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 

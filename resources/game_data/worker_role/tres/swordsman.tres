@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_3tije")
+order = 10
 sort_value = -1
 id = "swordsman"
 title = ""

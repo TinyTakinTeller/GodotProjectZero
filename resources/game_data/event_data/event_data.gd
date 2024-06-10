@@ -2,13 +2,13 @@ extends Resource
 class_name EventData
 
 @export var id: String
-@export var text: String
 @export var vars: Array = []
 @export var color: Color = Color.BLACK
 
 
 func get_text(vals: Array) -> String:
 	var args: Dictionary = EventData.get_args(vals)
+	var text: String = Locale.get_event_data_text(id)
 	return text.format(args)
 
 

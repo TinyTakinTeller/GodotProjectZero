@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_xmemq")
+order = -100
 sort_value = -100
 id = "explorer"
 title = ""
@@ -14,5 +15,6 @@ produce = {
 consume = {
 "common": 1
 }
+worker_consume = {}
 default = false
 column = -1

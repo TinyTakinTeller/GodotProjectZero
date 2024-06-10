@@ -82,9 +82,13 @@ func _handle_npc_event_interacted(npc_id: String, npc_event_id: String, option: 
 		elif npc_event_id == "cat_talk_A4":
 			if option == 0:
 				_gift_double()
+			else:
+				_trigger_unique_unlock_event("cat_no_gift")
 		elif npc_event_id == "cat_talk_B4":
 			if option == 0:
 				_gift_double()  # _gift_scam()
+			else:
+				_trigger_unique_unlock_event("cat_no_gift")
 
 
 func _handle_land_event(observed_id: String) -> void:
@@ -116,11 +120,11 @@ func _handle_land_event(observed_id: String) -> void:
 		_trigger_unique_unlock_event("land_7")
 		_unlock_resource_generator_if("spear")
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 1:
-		_trigger_unique_unlock_event_values("gift_flint_fiber", ["2", "1", "5", "3"])
-		_gift_resource("fiber", 2, self.name)
-		_gift_resource("flint", 1, self.name)
-		_gift_resource("wood", 5, self.name)
-		_gift_resource("stone", 3, self.name)
+		if _trigger_unique_unlock_event_values("gift_flint_fiber", ["2", "1", "5", "3"]):
+			_gift_resource("fiber", 2, self.name)
+			_gift_resource("flint", 1, self.name)
+			_gift_resource("wood", 5, self.name)
+			_gift_resource("stone", 3, self.name)
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 2:
 		_trigger_unique_unlock_event("land_8")
 		_unlock_resource_generator_if("compass")

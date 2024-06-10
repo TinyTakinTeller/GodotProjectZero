@@ -3,6 +3,7 @@ extends MarginContainer
 @onready var event_v_box_container: VBoxContainer = %EventVBoxContainer
 @onready var scroll_container: ScrollContainer = %ScrollContainer
 
+@onready var title_label: Label = %TitleLabel
 @export var event_item_scene: PackedScene
 @export var PAGE_SIZE: int = 20
 
@@ -14,6 +15,7 @@ var _total_lines: int = 0
 
 
 func _ready() -> void:
+	_set_ui_labels()
 	_load_from_save_file()
 	_connect_signals()
 
@@ -24,6 +26,11 @@ func _ready() -> void:
 #############
 ## helpers ##
 #############
+
+
+func _set_ui_labels() -> void:
+	var ui_dear_diary: String = Locale.get_ui_label("dear_diary")
+	title_label.text = ui_dear_diary
 
 
 func _load_from_save_file() -> void:

@@ -5,7 +5,8 @@ signal progress_button_hover(resource_generator: ResourceGenerator)
 signal progress_button_unhover(resource_generator: ResourceGenerator)
 signal progress_button_pressed(resource_generator: ResourceGenerator)
 signal progress_button_disabled(id: String)
-signal manager_button_hover(worker_role: WorkerRole)
+signal manager_button_hover(worker_role: WorkerRole, node: Node)
+signal manager_button_unhover(worker_role: WorkerRole, node: Node)
 signal manager_button_add(worker_role: WorkerRole)
 signal manager_button_del(worker_role: WorkerRole)
 signal npc_event_interacted(npc_id: String, npc_event_id: String, option: int)
@@ -18,6 +19,9 @@ signal resource_ui_updated(
 )
 signal info_hover(title: String, into: String)
 signal info_hover_shader(title: String, into: String)
+signal resource_storage_hover(resource: ResourceGenerator)
+signal resource_storage_unhover(resource: ResourceGenerator)
+signal deaths_door(enemy_data: EnemyData, option: int)
 
 ## CONTROLLER
 signal progress_button_paid(resource_generator: ResourceGenerator)
@@ -37,6 +41,7 @@ signal enemy_damage(damage: int, source_id: String)
 signal set_ui_theme(theme: Resource)
 signal toggle_button(id: String, toggle_id: String)
 signal toggle_scale(scale_: int)
+signal deaths_door_decided(enemy_data: EnemyData, option: int)
 
 ## MANAGER
 signal resource_updated(id: String, total: int, amount: int, source_id: String)
@@ -50,6 +55,7 @@ signal tab_unlocked(tab_data: TabData)
 signal tab_leveled_up(tab_data: TabData)
 signal worker_efficiency_updated(efficiencies: Dictionary, generate: bool)
 signal enemy_damaged(total_damage: int, damage: int, source_id: String)
+signal deaths_door_resolved(enemy_data: EnemyData, option: int)
 
 
 func _ready() -> void:

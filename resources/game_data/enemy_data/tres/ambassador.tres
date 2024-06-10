@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_01jkl")
 id = "ambassador"
-title = "The Ambassador Of Darkness"
 health_points = 1000000000
 enemy_image_id = "gustavo_256_256"
-info = "This ancient colossal beast blocks the way towards the edge of the forest."
+next_enemy_id = "ambassador"

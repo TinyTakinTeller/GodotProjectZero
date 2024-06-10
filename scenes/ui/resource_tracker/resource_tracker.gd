@@ -3,6 +3,7 @@ class_name ResourceTracker
 
 @onready var resource_v_box_container: VBoxContainer = %ResourceVBoxContainer
 
+@onready var title_label: Label = %TitleLabel
 @export var resource_item_scene: PackedScene
 
 ###############
@@ -11,6 +12,7 @@ class_name ResourceTracker
 
 
 func _ready() -> void:
+	_set_ui_labels()
 	_load_from_save_file()
 	_connect_signals()
 
@@ -18,6 +20,11 @@ func _ready() -> void:
 #############
 ## helpers ##
 #############
+
+
+func _set_ui_labels() -> void:
+	var ui_resource_storage: String = Locale.get_ui_label("resource_storage")
+	title_label.text = ui_resource_storage
 
 
 func _load_from_save_file() -> void:

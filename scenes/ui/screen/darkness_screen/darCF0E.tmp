@@ -249,6 +249,7 @@ delay = 0.15
 
 [node name="ClickLabelEffectQueue" parent="Effect" instance=ExtResource("6_q4ifr")]
 unique_name_in_owner = true
+visible = false
 delay = 0.1
 
 [node name="ClickDamageBufferTimer" type="Timer" parent="Effect"]

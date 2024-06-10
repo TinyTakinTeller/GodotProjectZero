@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_kig6h")
+order = -100
 sort_value = -100
 id = "recruiter"
 title = ""
@@ -15,5 +16,6 @@ consume = {
 "common": 12,
 "rare": 3
 }
+worker_consume = {}
 default = false
 column = 0

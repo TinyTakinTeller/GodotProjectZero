@@ -7,6 +7,10 @@ const SPECIAL: String = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 const ASCII: String = COMMON + SPECIAL
 
 
+static func is_not_empty(string: String) -> bool:
+	return string != null and string.length() != 0
+
+
 static func trim_end(text: String, max_length: int) -> String:
 	return text.substr(0, min(text.length(), max_length))
 
@@ -17,7 +21,7 @@ static func sanitize_text(
 	text = StringUtils.sanitize(text, allowed)
 	if max_length > -1:
 		text = StringUtils.trim_end(text, max_length)
-	if text.length() < 1:
+	if text.length() == 0:
 		text = default_empty
 	return text
 

@@ -78,7 +78,7 @@ func _handle_on_scale_button_up(button: Button, scale_: int) -> void:
 
 func _handle_on_scale_button_hover(scale_: int) -> void:
 	var title: String = "[%s]" % NumberUtils.format_number(scale_)
-	var info: String = Info.get_scale_settings_info(scale_)
+	var info: String = Locale.get_scale_settings_info(scale_)
 	SignalBus.info_hover.emit(title, info)
 
 

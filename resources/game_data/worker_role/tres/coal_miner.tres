@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_hdvxk")
+order = 1
 sort_value = 12
 id = "coal_miner"
 title = ""
@@ -14,5 +15,6 @@ produce = {
 consume = {
 "food": 1
 }
+worker_consume = {}
 default = false
 column = 1

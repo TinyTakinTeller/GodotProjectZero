@@ -56,18 +56,22 @@ func set_data(metadata: Dictionary, save_file_name: String, new: bool) -> void:
 
 
 func display_sections(metadata: Dictionary) -> void:
+	var ui_name: String = Locale.get_ui_label("name")
+	var ui_playtime: String = Locale.get_ui_label("playtime")
+	var ui_last_played: String = Locale.get_ui_label("last_played")
+
 	var metadata_name: String = metadata.get("save_file_name", _save_file_name)
-	name_section = _add_section("Name:", metadata_name, SECTION_1_WIDTH_PX, true)
+	name_section = _add_section(ui_name, metadata_name, SECTION_1_WIDTH_PX, true)
 	name_section.new_input_set.connect(_on_new_input_set)
 
 	if _new:
-		_add_section("Playtime", "---", SECTION_2_WIDTH_PX)
-		_add_section("Last played", "---", SECTION_3_WIDTH_PX)
+		_add_section(ui_playtime, "---", SECTION_2_WIDTH_PX)
+		_add_section(ui_last_played, "---", SECTION_3_WIDTH_PX)
 
 	else:
 		var seconds: int = int(metadata.get("total_autosave_seconds", str(0)))
 		var playtime: String = DateTimeUtils.format_seconds(seconds)
-		_add_section("Playtime", playtime, SECTION_2_WIDTH_PX)
+		_add_section(ui_playtime, playtime, SECTION_2_WIDTH_PX)
 
 		var now: Dictionary = Time.get_datetime_dict_from_system(true)
 		var timezone: Dictionary = Time.get_time_zone_from_system()
@@ -75,7 +79,7 @@ func display_sections(metadata: Dictionary) -> void:
 		var last_timezone: Dictionary = metadata.get("last_timezone", timezone)
 		var last_time: Dictionary = DateTimeUtils.with_timezone(last_utc_time, last_timezone)
 		var last_played: String = DateTimeUtils.format_datetime(last_time)
-		_add_section("Last played", last_played, SECTION_3_WIDTH_PX)
+		_add_section(ui_last_played, last_played, SECTION_3_WIDTH_PX)
 
 	_display_new(_new)
 
@@ -86,8 +90,18 @@ func display_sections(metadata: Dictionary) -> void:
 
 
 func _initialize() -> void:
+	_set_ui_labels()
 	_clear_sections()
 	_display_delete_counter()
+
+
+func _set_ui_labels() -> void:
+	var ui_load: String = Locale.get_ui_label("load")
+	var ui_delete: String = Locale.get_ui_label("delete")
+	var ui_new_game: String = Locale.get_ui_label("new_game")
+	load_button.text = ui_load
+	delete_button.text = ui_delete
+	new_button.text = ui_new_game
 
 
 func _add_section(
@@ -118,8 +132,9 @@ func _display_new(new: bool) -> void:
 
 
 func _display_delete_counter() -> void:
+	var ui_delete: String = Locale.get_ui_label("delete")
 	if __delete_counter == 0:
-		delete_button.text = "Delete"
+		delete_button.text = ui_delete
 	else:
 		delete_button.text = "(" + str(Game.params["delete_counter"] + 1 - __delete_counter) + ")"
 

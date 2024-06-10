@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_2jv70")
+order = -10
 sort_value = -10
 id = "experience"
 title = ""

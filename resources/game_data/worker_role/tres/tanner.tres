@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_d7acq")
+order = 1
 sort_value = 11
 id = "tanner"
 title = ""
@@ -14,4 +15,6 @@ produce = {
 consume = {
 "fur": 2
 }
+worker_consume = {}
 default = false
+column = 0

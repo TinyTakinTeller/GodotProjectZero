@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_nxfvo")
+order = -100
 sort_value = -100
 id = "wanderer"
 title = ""
@@ -12,5 +13,6 @@ produce = {
 "common": 1
 }
 consume = {}
+worker_consume = {}
 default = false
 column = -1

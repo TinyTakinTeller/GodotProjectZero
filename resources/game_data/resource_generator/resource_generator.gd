@@ -10,14 +10,9 @@ class_name ResourceGenerator
 @export var cost_scales: Dictionary
 @export var worker_costs: Dictionary
 @export var random_drops: Dictionary
-@export var label: String
-@export var title: String
-@export var flavor: String
 @export var hidden: bool = false
 @export var max_amount: int = -1
-@export var max_flavor: String
 @export var column: int = 0
-@export var display_name: String
 
 var _random_drops_sum: int = -1
 
@@ -34,9 +29,16 @@ func get_display_increment(display_amount: int) -> String:
 
 
 func get_display_name() -> String:
-	if display_name != null and display_name.length() > 1:
+	var display_name: String = Locale.get_resource_generator_display_name(id)
+	if StringUtils.is_not_empty(display_name):
 		return display_name
 	return StringUtils.humanify_string(id)
+
+
+func get_display_info(total: String, eff: String) -> String:
+	return "{total}, {eff} / {seconds} seconds".format(
+		{"total": total, "eff": eff, "seconds": Game.params["cycle_seconds"]}
+	)
 
 
 func distinct_generation_count() -> int:
@@ -102,17 +104,21 @@ func get_worker_costs() -> Dictionary:
 
 
 func get_label() -> String:
+	var label: String = Locale.get_resource_generator_label(id)
 	return label
 
 
 func get_title() -> String:
+	var title: String = Locale.get_resource_generator_title(id)
 	return title
 
 
 func get_info(level: int) -> String:
-	if ResourceManager.is_max_amount_reached(id) and max_flavor != null:
+	var max_flavor: String = Locale.get_resource_generator_max_flavor(id)
+	if ResourceManager.is_max_amount_reached(id) and StringUtils.is_not_empty(max_flavor):
 		return max_flavor
 
+	var flavor: String = Locale.get_resource_generator_flavor(id)
 	var scaled_costs: Dictionary = get_scaled_costs(level)
 	if scaled_costs.size() == 0 and worker_costs.size() == 0:
 		return flavor
@@ -127,7 +133,7 @@ func get_info(level: int) -> String:
 		var worker_display_names: Array = WorkerRole.get_display_names_of(worker_costs.keys())
 		info += ("%s " + (", %s ".join(worker_display_names))) % worker_costs.values()
 
-	if flavor.length() > 1:
+	if StringUtils.is_not_empty(flavor):
 		info += " - " + flavor
 	return info
 

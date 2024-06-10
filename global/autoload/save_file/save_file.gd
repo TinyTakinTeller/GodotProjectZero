@@ -19,6 +19,7 @@ var settings: Dictionary = {"theme": "dark"}
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "ambassador", "ambassador": {"damage": 0}}
 var metadata: Dictionary = {}
+var LOCALE: String = "en"
 
 @onready var timer: Timer = %AutosaveTimer
 
@@ -69,6 +70,31 @@ func set_settings_population_scale(scale_: int) -> void:
 	settings["population_scale"] = scale_
 
 
+func set_enemy(enemy_id: String, option: int) -> void:
+	var active_enemy_id: String = SaveFile.enemy["level"]
+
+	SaveFile.enemy[active_enemy_id] = SaveFile.enemy.get(active_enemy_id, {})
+	var enemy_progression: Dictionary = SaveFile.enemy[active_enemy_id]
+
+	enemy_progression["option"] = enemy_progression.get("option", {})
+	var options: Dictionary = enemy_progression["option"]
+
+	options[str(option)] = options.get(str(option), 0) + 1
+
+	SaveFile.enemy["level"] = enemy_id
+	set_enemy_damage(0)
+
+
+func set_enemy_damage(damage: int) -> int:
+	var active_enemy_id: String = SaveFile.enemy["level"]
+
+	SaveFile.enemy[active_enemy_id] = SaveFile.enemy.get(active_enemy_id, {})
+	var enemy_progression: Dictionary = SaveFile.enemy[active_enemy_id]
+
+	enemy_progression["damage"] = damage
+	return enemy_progression["damage"]
+
+
 func add_enemy_damage(damage: int) -> int:
 	var active_enemy_id: String = SaveFile.enemy["level"]
 	var enemy_progression: Dictionary = SaveFile.enemy.get(active_enemy_id, {})
@@ -101,7 +127,7 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 		var save_data: Dictionary = SAVE_DATAS[save_file_name]
 		if save_data != null and !save_data.is_empty():
 			_import_save_data(save_data)
-	elif metadata_name.length() > 0:
+	elif StringUtils.is_not_empty(metadata_name):
 		metadata["save_file_name"] = metadata_name
 
 	_connect_signals()
@@ -167,6 +193,7 @@ func _export_save_data() -> Dictionary:
 	save_data["npc_events"] = npc_events
 	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
+	save_data["LOCALE"] = LOCALE
 	return save_data
 
 
@@ -183,6 +210,7 @@ func _import_save_data(save_data: Dictionary) -> void:
 	npc_events = _get_npc_events(save_data)
 	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
+	LOCALE = _get_locale(save_data)
 
 
 func _get_resources(save_data: Dictionary) -> Dictionary:
@@ -231,6 +259,10 @@ func _get_enemy(save_data: Dictionary) -> Dictionary:
 
 func _get_metadata(save_data: Dictionary) -> Dictionary:
 	return save_data.get("metadata", metadata)
+
+
+func _get_locale(save_data: Dictionary) -> String:
+	return save_data.get("LOCALE", LOCALE)
 
 
 func _update_metadata() -> void:

@@ -1,10 +1,9 @@
 extends Resource
 class_name WorkerRole
 
+@export var order: int = 0
 @export var sort_value: int = 0
 @export var id: String
-@export var title: String
-@export var flavor: String
 @export var produce: Dictionary
 @export var consume: Dictionary
 @export var worker_consume: Dictionary
@@ -25,12 +24,14 @@ func get_worker_consume() -> Dictionary:
 
 
 func get_title() -> String:
-	if title != null and title.length() > 1:
+	var title: String = Locale.get_worker_role_title(id)
+	if StringUtils.is_not_empty(title):
 		return title
 	return StringUtils.humanify_string(id)
 
 
 func get_info() -> String:
+	var flavor: String = Locale.get_worker_role_flavor(id)
 	if produce.size() == 0:
 		return flavor
 
@@ -48,7 +49,7 @@ func get_info() -> String:
 		info += (", -%s " + (", -%s ".join(worker_names))) % worker_consume.values()
 
 	info += " / %s seconds" % Game.params["cycle_seconds"]
-	if flavor.length() > 1:
+	if StringUtils.is_not_empty(flavor):
 		info += " - " + flavor
 	return info
 
@@ -57,8 +58,16 @@ static func get_display_name_of(wid: String) -> String:
 	var worker_role: WorkerRole = Resources.worker_roles.get(wid, null)
 	if worker_role == null:
 		return StringUtils.humanify_string(wid)
-	return worker_role.get_title()
+	return Locale.get_worker_role_title(wid)
 
 
 static func get_display_names_of(ids: Array) -> Array:
 	return ids.map(func(wid: String) -> String: return WorkerRole.get_display_name_of(wid))
+
+
+static func order_less_than(a: WorkerRole, b: WorkerRole) -> bool:
+	return a.order < b.order
+
+
+static func order_greater_than(a: WorkerRole, b: WorkerRole) -> bool:
+	return a.order > b.order

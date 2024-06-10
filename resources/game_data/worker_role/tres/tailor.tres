@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_nc461")
+order = 2
 sort_value = 6
 id = "tailor"
 title = ""
@@ -14,5 +15,6 @@ produce = {
 consume = {
 "fiber": 1
 }
+worker_consume = {}
 default = false
 column = -1

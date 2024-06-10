@@ -52,8 +52,9 @@ func _initialize() -> void:
 
 
 func display_resource(amount: int = 0) -> void:
-	if Game.WORKER_ROLE_RESOURCE.has(_resource_generator.id):
-		amount = SaveFile.workers.get(_resource_generator.id, 0)
+	var id: String = get_id()
+	if Game.WORKER_ROLE_RESOURCE.has(id):
+		amount = SaveFile.workers.get(id, 0)
 
 	var resource_name: String = _resource_generator.get_display_name()
 	var amount_string: String = NumberUtils.format_number_scientific(amount)
@@ -79,7 +80,14 @@ func _set_passive(amount: int) -> void:
 
 func _handle_on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
 	var id: String = get_id()
-	_set_passive(efficiencies["resources"].get(id, 0) + efficiencies["workers"].get(id, 0))
+	var delta: int = efficiencies["resources"].get(id, 0) + efficiencies["workers"].get(id, 0)
+	var total_eff: int = efficiencies["total_efficiency"].get(id, 0)
+	var amount: int = SaveFile.resources.get(id, 0)
+
+	_set_passive(delta)
+	if total_eff < 0 and amount < (total_eff * -1):
+		income_label.text = "NA"
+		income_label.modulate = Color(0.878, 0, 0.392, 1)
 
 
 #############
@@ -90,6 +98,10 @@ func _handle_on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
 func _connect_signals() -> void:
 	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
 	SignalBus.worker_updated.connect(_on_worker_updated)
+	self.mouse_entered.connect(_on_mouse_entered)
+	self.mouse_exited.connect(_on_mouse_exited)
+	SignalBus.manager_button_hover.connect(_on_manager_button_hover)
+	SignalBus.manager_button_unhover.connect(_on_manager_button_unhover)
 
 
 func _on_worker_efficiency_updated(efficiencies: Dictionary, _generated: bool) -> void:
@@ -97,8 +109,40 @@ func _on_worker_efficiency_updated(efficiencies: Dictionary, _generated: bool) -
 
 
 func _on_worker_updated(_id: String, _total: int, _amount: int) -> void:
-	if Game.WORKER_ROLE_RESOURCE.has(_resource_generator.id):
+	var id: String = get_id()
+	if Game.WORKER_ROLE_RESOURCE.has(id):
 		display_resource()
+
+
+func _on_mouse_entered() -> void:
+	SignalBus.resource_storage_hover.emit(_resource_generator)
+	if Game.params["resource_storage_info"]:
+		SignalBus.info_hover.emit(
+			_resource_generator.get_display_name(),
+			_resource_generator.get_display_info(amount_label.text, income_label.text)
+		)
+
+
+func _on_mouse_exited() -> void:
+	SignalBus.resource_storage_unhover.emit(_resource_generator)
+
+
+func _on_manager_button_hover(worker_role: WorkerRole, node: Node) -> void:
+	if !is_instance_of(node, Button):
+		return
+	var id: String = get_id()
+	if worker_role.get_consume().has(id) or worker_role.get_worker_consume().has(id):
+		amount_label.modulate = Color(0.878, 0, 0.392, 1)
+	elif worker_role.get_produce().has(id):
+		amount_label.modulate = Color(0.392, 0.878, 0, 1)
+	else:
+		amount_label.modulate = Color.WHITE
+
+
+func _on_manager_button_unhover(_worker_role: WorkerRole, node: Node) -> void:
+	if !is_instance_of(node, Button):
+		return
+	amount_label.modulate = Color.WHITE
 
 
 ############

@@ -29,10 +29,6 @@ func _initialize() -> void:
 
 func _generate(generate: bool = true) -> void:
 	var efficiencies: Dictionary = _calculate_generated_amounts()
-	var new_workers: int = _calculate_generated_worker_resource_from_houses()
-	efficiencies["resources"][Game.WORKER_RESOURCE_ID] = (
-		efficiencies["resources"].get(Game.WORKER_RESOURCE_ID, 0) + new_workers
-	)
 
 	if generate:
 		var generated_resources: Dictionary = efficiencies["resources"]
@@ -62,12 +58,17 @@ func _calculate_generated_amounts() -> Dictionary:
 	var resources: Dictionary = SaveFile.resources.duplicate(true)
 	var generated_resources: Dictionary = {}
 	var generated_workers: Dictionary = {}
+	var total_eff: Dictionary = {}
 
-	for worker_role_id: String in SaveFile.workers:
+	var worker_roles: Array = SaveFile.workers.keys().map(
+		func(id: String) -> WorkerRole: return Resources.worker_roles[id]
+	)
+	worker_roles.sort_custom(WorkerRole.order_less_than)
+
+	for worker_role: WorkerRole in worker_roles:
+		var worker_role_id: String = worker_role.id
 		var count: int = SaveFile.workers[worker_role_id]
-		if count == 0:
-			continue
-		var worker_role: WorkerRole = Resources.worker_roles[worker_role_id]
+
 		var r_consume: Dictionary = worker_role.get_consume()
 		var w_consume: Dictionary = worker_role.get_worker_consume()
 		var produces: Dictionary = worker_role.get_produce()
@@ -75,23 +76,39 @@ func _calculate_generated_amounts() -> Dictionary:
 		var resources_eff: int = WorkerController._get_efficiency(count, r_consume, resources)
 		var workers_eff: int = WorkerController._get_efficiency(count, w_consume, SaveFile.workers)
 		var efficiency: int = min(resources_eff, workers_eff)
-		if efficiency == 0:
-			continue
-		_generate_from(resources, -efficiency, generated_resources, r_consume)
-		_generate_from(resources, -efficiency, generated_workers, w_consume)
-		_generate_from(resources, efficiency, generated_resources, produces)
 
-	return {"resources": generated_resources, "workers": generated_workers}
+		_generate_from(resources, -efficiency, generated_resources, r_consume, -count, total_eff)
+		_generate_from(resources, -efficiency, generated_workers, w_consume, -count, total_eff)
+		_generate_from(resources, efficiency, generated_resources, produces, count, total_eff)
+
+	var resource_id: String = Game.WORKER_RESOURCE_ID
+	var new_workers: int = _calculate_generated_worker_resource_from_houses()
+	generated_resources[resource_id] = (generated_resources.get(resource_id, 0) + new_workers)
+	total_eff[resource_id] = (total_eff.get(resource_id, 0) + new_workers)
+
+	return {
+		"resources": generated_resources,
+		"workers": generated_workers,
+		"total_efficiency": total_eff
+	}
 
 
 func _generate_from(
-	resources: Dictionary, eff: int, generated: Dictionary, ids: Dictionary
+	resources: Dictionary,
+	eff: int,
+	generated: Dictionary,
+	ids: Dictionary,
+	count: int,
+	total_eff: Dictionary
 ) -> void:
 	for id: String in ids:
 		var base_amount: int = ids[id]
 		var amount: int = eff * base_amount
 		generated[id] = generated.get(id, 0) + amount
-		resources[id] = resources.get(id, 0) + amount
+		if Game.params["population_uses_resources_in_same_cycle"]:
+			resources[id] = resources.get(id, 0) + amount
+		var max_amount: int = count * base_amount
+		total_eff[id] = total_eff.get(id, 0) + max_amount
 
 
 #############
@@ -107,6 +124,8 @@ func _connect_signals() -> void:
 
 func _on_timeout() -> void:
 	_generate()
+	_generate(false)
+	_generate(false)
 
 
 func _on_owner_ready() -> void:
