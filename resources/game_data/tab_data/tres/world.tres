@@ -5,4 +5,3 @@
 [resource]
 script = ExtResource("1_e54ak")
 id = "world"
-titles = ["World", "Forest", "Forest Camp", "Forest Hamlet", "Forest Village", "Forest Town", "Forest City", "Forest Capital", "Forest Metropolis", "Forest Megalopolis", "Forest Kingdom", "Forest Empire"]

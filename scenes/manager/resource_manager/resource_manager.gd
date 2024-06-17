@@ -25,7 +25,7 @@ func _handle_on_resource_generated(id: String, amount: int, source_id: String) -
 	SignalBus.resource_updated.emit(id, SaveFile.resources.get(id, 0), amount, source_id)
 
 	if Game.WORKER_ROLE_RESOURCE.has(id):
-		SignalBus.worker_generated.emit(id, amount, self.name)
+		SignalBus.worker_generated.emit(id, amount, name)
 
 	if ResourceManager.is_max_amount_reached(id):
 		SignalBus.progress_button_disabled.emit(id)

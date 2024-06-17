@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cr8pa2vvkaj13"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_gx752"]
+
+[resource]
+script = ExtResource("1_gx752")
+order = 4
+id = "void"
+health_points = 10000000
+enemy_image_id = "void_256_256"
+enemy_icon_id = "void_64_64"
+next_enemy_id = "spider"
+column = 0

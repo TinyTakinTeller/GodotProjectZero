@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnh5vhg0xefn6"]
+
+[ext_resource type="Script" path="res://scenes/ui/screen/soul_screen/soul_screen.gd" id="1_iswd8"]
+[ext_resource type="PackedScene" uid="uid://dawlpy0isv1rv" path="res://scenes/ui/substance_button/substance_button.tscn" id="2_f3ue6"]
+
+[node name="SoulScreen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_iswd8")
+substance_button_scene = ExtResource("2_f3ue6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="ScreenHBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SoulsVBoxContainer1" type="VBoxContainer" parent="MarginContainer/ScreenHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SoulMarginContainer" parent="MarginContainer/ScreenHBoxContainer/SoulsVBoxContainer1" instance=ExtResource("2_f3ue6")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScreenHBoxContainer"]
+layout_mode = 2
+
+[node name="SoulsVBoxContainer2" type="VBoxContainer" parent="MarginContainer/ScreenHBoxContainer"]
+layout_mode = 2
+
+[node name="SoulMarginContainer" parent="MarginContainer/ScreenHBoxContainer/SoulsVBoxContainer2" instance=ExtResource("2_f3ue6")]
+layout_mode = 2

@@ -28,7 +28,7 @@ func _initialize() -> void:
 	_add_scale_button(1, scale_)
 	max_scale = max(1, ArrayUtils.max_element(SaveFile.workers.values() + [0]) / 10)
 	var button_scale: int = min_scale
-	while button_scale <= max_scale and h_box_container.get_child_count() < 12:
+	while button_scale <= max_scale and h_box_container.get_child_count() < 11:
 		button_scale *= 10
 		_add_scale_button(button_scale, scale_)
 
@@ -61,7 +61,7 @@ func _handle_on_worker_updated(total: int) -> void:
 	if total > max_scale:
 		var count: int = h_box_container.get_child_count()
 		var exponent: int = max(0, count - 1)
-		if total > NumberUtils.pow10(exponent):
+		if total > PowUtils.pow_(10, exponent):
 			_initialize()
 		max_scale = total
 

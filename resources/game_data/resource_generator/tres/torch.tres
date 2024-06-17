@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_emro8")
+color = Color(0, 0, 0, 1)
 sort_value = 1101
 sort_value_override = 0.0
 id = "torch"

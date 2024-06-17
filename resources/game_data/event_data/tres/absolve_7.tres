@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://dov6nb08x65gq"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_26cgi"]
+
+[resource]
+script = ExtResource("1_26cgi")
+id = "absolve_7"
+vars = []
+color = Color(0.392157, 0.878431, 0, 1)

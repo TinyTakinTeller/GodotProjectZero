@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://b61k3gtwsncst"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_nyrnl"]
+
+[resource]
+script = ExtResource("1_nyrnl")
+order = 1
+id = "rabbit"
+health_points = 10000
+enemy_image_id = "rabbit_256_256"
+enemy_icon_id = "rabbit_64_64"
+next_enemy_id = "bird"
+column = 0

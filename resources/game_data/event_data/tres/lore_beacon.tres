@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://bf54ry7wdpldw"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_4anmj"]
+
+[resource]
+script = ExtResource("1_4anmj")
+id = "lore_beacon"
+vars = []
+color = Color(0, 0.392157, 0.956863, 1)

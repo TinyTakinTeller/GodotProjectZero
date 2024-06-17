@@ -80,6 +80,7 @@ func _connect_signals() -> void:
 	button.button_down.connect(_on_button_down)
 	button.button_up.connect(_on_button_up)
 	button.mouse_entered.connect(_on_mouse_entered)
+	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 
 
 func _on_resized() -> void:
@@ -96,3 +97,10 @@ func _on_button_up() -> void:
 
 func _on_mouse_entered() -> void:
 	pass
+
+
+func _on_deaths_door_resolved(
+	enemy_data: EnemyData, _new_enemy_data: EnemyData, _option: int
+) -> void:
+	if _tab_data != null and _tab_data.id == "soul" and !enemy_data.is_last():
+		start_unlock_animation()

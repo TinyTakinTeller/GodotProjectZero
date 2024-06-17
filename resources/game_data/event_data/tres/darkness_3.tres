@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://bus3yha851mqf"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_sggo6"]
+
+[resource]
+script = ExtResource("1_sggo6")
+id = "darkness_3"
+vars = []
+color = Color(0.878431, 0.878431, 0.392157, 1)

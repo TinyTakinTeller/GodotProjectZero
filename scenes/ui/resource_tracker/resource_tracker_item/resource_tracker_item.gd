@@ -6,6 +6,7 @@ class_name ResourceTrackerItem
 @onready var modulate_red_simple_tween: SimpleTween = %ModulateRedSimpleTween
 
 var _resource_generator: ResourceGenerator
+var _hovering: bool = false
 
 ###############
 ## overrides ##
@@ -51,6 +52,15 @@ func _initialize() -> void:
 	income_label.text = ""
 
 
+func get_default_color() -> Color:
+	if _resource_generator == null:
+		return Color.WHITE
+	if _resource_generator.is_colored():
+		return _resource_generator.get_color()
+	else:
+		return Color.WHITE
+
+
 func display_resource(amount: int = 0) -> void:
 	var id: String = get_id()
 	if Game.WORKER_ROLE_RESOURCE.has(id):
@@ -59,6 +69,9 @@ func display_resource(amount: int = 0) -> void:
 	var resource_name: String = _resource_generator.get_display_name()
 	var amount_string: String = NumberUtils.format_number_scientific(amount)
 	amount_label.text = "{name}: {amount}".format({"name": resource_name, "amount": amount_string})
+
+	if !_hovering:
+		amount_label.modulate = get_default_color()
 
 
 func _set_passive(amount: int) -> void:
@@ -130,19 +143,21 @@ func _on_mouse_exited() -> void:
 func _on_manager_button_hover(worker_role: WorkerRole, node: Node) -> void:
 	if !is_instance_of(node, Button):
 		return
+	_hovering = true
 	var id: String = get_id()
 	if worker_role.get_consume().has(id) or worker_role.get_worker_consume().has(id):
 		amount_label.modulate = Color(0.878, 0, 0.392, 1)
 	elif worker_role.get_produce().has(id):
 		amount_label.modulate = Color(0.392, 0.878, 0, 1)
 	else:
-		amount_label.modulate = Color.WHITE
+		amount_label.modulate = get_default_color()
 
 
 func _on_manager_button_unhover(_worker_role: WorkerRole, node: Node) -> void:
 	if !is_instance_of(node, Button):
 		return
-	amount_label.modulate = Color.WHITE
+	_hovering = false
+	amount_label.modulate = get_default_color()
 
 
 ############
@@ -151,7 +166,9 @@ func _on_manager_button_unhover(_worker_role: WorkerRole, node: Node) -> void:
 
 
 func __modulate_red_simple_tween_method(animation_percent: float) -> void:
-	amount_label.modulate = Color(1, animation_percent, animation_percent, 1)
+	var c: Color = get_default_color()
+	var offset: float = 1 - animation_percent
+	amount_label.modulate = Color(c.r, c.g - offset, c.b - offset)
 
 
 ############

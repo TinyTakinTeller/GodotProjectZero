@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TabData" load_steps=2 format=3 uid="uid://d3g5435g33ni5"]
+
+[ext_resource type="Script" path="res://resources/game_data/tab_data/tab_data.gd" id="1_6tflp"]
+
+[resource]
+script = ExtResource("1_6tflp")
+id = "soul"

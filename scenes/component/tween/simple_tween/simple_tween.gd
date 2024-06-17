@@ -40,10 +40,11 @@ func play_animation_(override_duration: float, reverse: bool = false) -> void:
 	_tween = create_tween()
 	if override_duration == 0:
 		override_duration = duration
+	var percent_delay: float = end_delay / override_duration
 	if not reverse:
-		_tween.tween_method(tween_method, 0.0, 1.0 + end_delay, override_duration + end_delay)
+		_tween.tween_method(tween_method, 0.0, 1.0 + percent_delay, override_duration + end_delay)
 	else:
-		_tween.tween_method(tween_method, 1.0 + end_delay, 0.0, override_duration + end_delay)
+		_tween.tween_method(tween_method, 1.0 + percent_delay, 0.0, override_duration + end_delay)
 	_tween.tween_callback(on_animation_end)
 
 

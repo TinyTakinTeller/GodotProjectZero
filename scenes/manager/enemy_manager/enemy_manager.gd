@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _handle_on_enemy_damage(damage: int, source_id: String) -> void:
-	damage = Limits.check_global_max_amount(SaveFile.add_enemy_damage(damage), damage)
+	damage = Limits.check_global_max_amount(SaveFile.get_enemy_damage(), damage)
 
 	var total_damage: int = SaveFile.add_enemy_damage(damage)
 	SignalBus.enemy_damaged.emit(total_damage, damage, source_id)
@@ -29,7 +29,7 @@ func _handle_on_deaths_door_decided(enemy_data: EnemyData, option: int) -> void:
 	var new_enemy_data: EnemyData = Resources.enemy_datas.get(enemy_id, null)
 	if new_enemy_data == null:
 		return
-	SignalBus.deaths_door_resolved.emit(new_enemy_data, option)
+	SignalBus.deaths_door_resolved.emit(enemy_data, new_enemy_data, option)
 
 
 #############

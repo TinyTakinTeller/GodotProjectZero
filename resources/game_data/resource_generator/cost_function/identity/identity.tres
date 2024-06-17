@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="CostFunction" load_steps=2 format=3 uid="uid://cn8t1hgpe163k"]
-
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/cost_function/identity/identity.gd" id="1_m3in0"]
-
-[resource]
-script = ExtResource("1_m3in0")

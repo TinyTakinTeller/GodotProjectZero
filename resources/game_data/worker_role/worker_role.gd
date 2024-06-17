@@ -35,7 +35,8 @@ func get_info() -> String:
 	if produce.size() == 0:
 		return flavor
 
-	var info: String = "Produce: "
+	var ui_produce: String = Locale.get_ui_label("produce")
+	var info: String = ui_produce + ": "
 	var produce_display_names: Array = ResourceGenerator.get_display_names_of(produce.keys())
 	info += ("+%s " + (", +%s ".join(produce_display_names))) % produce.values()
 

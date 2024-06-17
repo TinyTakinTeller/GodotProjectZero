@@ -5,13 +5,21 @@ const RESOURCES_PATH: String = "res://resources/"
 const IMAGE_RESOURCES_PATH: String = "res://assets/image/"
 
 
+static func get_files_at(path: String) -> PackedStringArray:
+	var files: PackedStringArray = DirAccess.get_files_at(path)
+	if Game.params["debug_logs"]:
+		print("CALL get_files: " + path)
+		print(files)
+	return files
+
+
 static func get_user_files() -> Array[String]:
 	return get_files(FileSystemUtils.USER_PATH)
 
 
 static func get_files(path: String) -> Array[String]:
 	var files: Array[String] = []
-	for file: String in DirAccess.get_files_at(path):
+	for file: String in get_files_at(path):
 		files.append(file)
 	return files
 
@@ -33,9 +41,8 @@ static func get_resources(
 ) -> Dictionary:
 	var path: String = root + resource_path + "/"
 	var resources: Dictionary = {}
-	for file: String in DirAccess.get_files_at(path):
-		if file.ends_with(".remap"):
-			file = file.trim_suffix(".remap")
+	for file: String in get_files_at(path):
+		file = fix_web_build_file_extension(file)
 		if file.ends_with(extension):
 			var resource: Resource = load(path + file) as Resource
 			if resource != null:
@@ -48,3 +55,17 @@ static func get_resources(
 			)
 			resources.merge(resources_dir)
 	return resources
+
+
+static func fix_web_build_file_extension(file: String, force_one_extension: bool = true) -> String:
+	if file.ends_with(".remap"):
+		file = file.trim_suffix(".remap")
+	if file.ends_with(".import"):
+		file = file.trim_suffix(".import")
+	if force_one_extension:
+		var file_split: PackedStringArray = file.split(".")
+		if file_split.size() > 2:
+			if Game.params["debug_logs"]:
+				print("!! FORCE ONE EXTENSION: " + file)
+			file = file.split(".")[0] + "." + file.split(".")[1]
+	return file

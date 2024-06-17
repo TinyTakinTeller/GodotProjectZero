@@ -35,10 +35,10 @@ func _generate(generate: bool = true) -> void:
 		var generated_workers: Dictionary = efficiencies["workers"]
 		for resource_id: String in generated_resources:
 			var amount: int = generated_resources[resource_id]
-			SignalBus.resource_generated.emit(resource_id, amount, self.name)
+			SignalBus.resource_generated.emit(resource_id, amount, name)
 		for worker_id: String in generated_workers:
 			var amount: int = generated_workers[worker_id]
-			SignalBus.worker_generated.emit(worker_id, amount, self.name)
+			SignalBus.worker_generated.emit(worker_id, amount, name)
 
 	SignalBus.worker_efficiency_set.emit(efficiencies, generate)
 

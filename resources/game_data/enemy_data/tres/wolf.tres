@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://qqtmo73dignw"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_arnlr"]
+
+[resource]
+script = ExtResource("1_arnlr")
+order = 3
+id = "wolf"
+health_points = 1000000
+enemy_image_id = "wolf_256_256"
+enemy_icon_id = "wolf_64_64"
+next_enemy_id = "void"
+column = 0

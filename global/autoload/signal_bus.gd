@@ -21,6 +21,7 @@ signal info_hover(title: String, into: String)
 signal info_hover_shader(title: String, into: String)
 signal resource_storage_hover(resource: ResourceGenerator)
 signal resource_storage_unhover(resource: ResourceGenerator)
+signal deaths_door_open(enemy_data: EnemyData)
 signal deaths_door(enemy_data: EnemyData, option: int)
 
 ## CONTROLLER
@@ -55,7 +56,7 @@ signal tab_unlocked(tab_data: TabData)
 signal tab_leveled_up(tab_data: TabData)
 signal worker_efficiency_updated(efficiencies: Dictionary, generate: bool)
 signal enemy_damaged(total_damage: int, damage: int, source_id: String)
-signal deaths_door_resolved(enemy_data: EnemyData, option: int)
+signal deaths_door_resolved(enemy_data: EnemyData, new_enemy_data: EnemyData, option: int)
 
 
 func _ready() -> void:

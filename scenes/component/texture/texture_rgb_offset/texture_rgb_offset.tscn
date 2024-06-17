@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://3aw0ib2j5hx5"]
+
+[ext_resource type="Shader" path="res://resources/shader/chromatic_vignette/chromatic_vignette.gdshader" id="1_h7emd"]
+[ext_resource type="Script" path="res://scenes/component/texture/texture_rgb_offset/texture_rgb_offset.gd" id="2_iyg7k"]
+[ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="3_0gxpb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0aj7"]
+shader = ExtResource("1_h7emd")
+shader_parameter/r_displacement = Vector2(8, 8)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(0, 0)
+shader_parameter/height = 0.7
+shader_parameter/width = 0.5
+shader_parameter/fade = 0.7
+shader_parameter/enabled = 1
+
+[node name="TextureRgbOffset" type="TextureRect"]
+material = SubResource("ShaderMaterial_i0aj7")
+script = ExtResource("2_iyg7k")
+
+[node name="SimpleTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_0gxpb")]
+unique_name_in_owner = true
+target = NodePath("..")
+call_method = "_shader_simple_tween"

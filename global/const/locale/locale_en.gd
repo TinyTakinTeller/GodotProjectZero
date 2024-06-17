@@ -9,6 +9,7 @@ const en: Dictionary = {
 	"scale_settings_info": LocaleEn.scale_settings_info,
 	"enemy_data_title": LocaleEn.enemy_data_title,
 	"enemy_data_info": LocaleEn.enemy_data_info,
+	"enemy_data_option_title": LocaleEn.enemy_data_option_title,
 	"resource_generator_label": LocaleEn.resource_generator_label,
 	"resource_generator_title": LocaleEn.resource_generator_title,
 	"resource_generator_flavor": LocaleEn.resource_generator_flavor,
@@ -31,6 +32,9 @@ const ui_label: Dictionary = {
 	"new_game": "New Game",
 	"dear_diary": "Dear Diary",
 	"resource_storage": "Resource Storage",
+	"upgrade": "Upgrade",
+	"cost": "Cost",
+	"produce": "Produce",
 	"deaths_door": "DEATH'S DOOR",
 	"deaths_door_title": "Knocking on Death's Door",
 	"deaths_door_info":
@@ -57,10 +61,62 @@ const npc_click_info: Dictionary = {
 	"cat": "I do not want to do that... all my senses, are screaming... Do. Not. Click. Her."
 }
 
-const enemy_data_title: Dictionary = {"ambassador": "The Ambassador Of Darkness"}
+const enemy_data_title: Dictionary = {
+	"ambassador": "The Ambassador Of Darkness",
+	"rabbit": "A Child Of Darkness",
+	"bird": "The Messenger Of Darkness",
+	"wolf": "Soldier Of The Dark Forest",
+	"void": "Lost Souls Of The Dark Forest",
+	"spider": "Warden Of The Dark Forest",
+	"dragon": "High Guardian Of Darkness",
+	"dino": "Ambassador Of Darkness",
+	"skeleton": "Acolyte Of Darkness",
+	"slime": "Slime, Prince Of Darkness",
+	"angel": "The Angel Of Death, Vessel Of Darkness"
+}
+
+const enemy_data_option_title: Dictionary = {
+	"rabbit-2": "Soul Of Child",
+	"bird-2": "Soul Of Messenger",
+	"wolf-2": "Soul Of Beast",
+	"void-2": "Soul Of Void",
+	"spider-2": "Soul of Warden",
+	"dragon-2": "Soul of Guardian",
+	"dino-2": "Soul Of Ambassador",
+	"skeleton-2": "Soul Of Acolyte",
+	"slime-2": "Soul Of Prince",
+	"angel-2": "Soul Of Death",
+	"rabbit-1": "Essence Of Child",
+	"bird-1": "Essence Of Messenger",
+	"wolf-1": "Essence Of Beast",
+	"void-1": "Essence Of Void",
+	"spider-1": "Essence of Warden",
+	"dragon-1": "Essence of Guardian",
+	"dino-1": "Essence Of Ambassador",
+	"skeleton-1": "Essence Of Acolyte",
+	"slime-1": "Essence Of Prince",
+	"angel-1": "Essence Of Death",
+	"null-2": "+10% swordsman speed",
+	"null-1": "+20% swordsman to click"
+}
 
 const enemy_data_info: Dictionary = {
-	"ambassador": "This ancient colossal beast blocks the way towards the edge of the forest."
+	"ambassador": "This ancient colossal beast blocks the way towards the edge of the forest.",
+	"rabbit":
+	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
+	"bird":
+	'An ominous bird with inky black feathers, echoing haunting cries: "Stop thisSs cruSsade at once... human."',
+	"wolf": "A ferocious guardian with a sleek, silver coat... protecting the forest's secrets.",
+	"void": "Ethereal entities drifting aimlessly, fused remnants of those who dared to trespass.",
+	"spider":
+	"Humongous spider weaving the forest walls, ensuring no light intrudes upon these eternal dark lands.",
+	"dragon":
+	"Majestic and terrifying beast, shimmering scales. Protects the high keep castle gates.",
+	"dino":
+	"Towering, colossal behemoth. It comes offering a dark alliance if you step NO further...",
+	"skeleton": "Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
+	"slime": 'Gelatinous entity with a fluid, changing form. - "LetsSs dance... my friend."',
+	"angel": "Celestial being, a conduit for everything that was and will be. It remainsSs silent."
 }
 
 const resource_generator_label: Dictionary = {
@@ -73,6 +129,7 @@ const resource_generator_label: Dictionary = {
 	"coal": "",
 	"common": "Button1",
 	"compass": "Craft Compass",
+	"beacon": "Craft Beacon",
 	"experience": "",
 	"fiber": "",
 	"firepit": "Craft Firepit",
@@ -108,6 +165,7 @@ const resource_generator_title: Dictionary = {
 	"coal": "",
 	"common": "Button One",
 	"compass": "Compass",
+	"beacon": "Starbright Beacon",
 	"experience": "",
 	"fiber": "",
 	"firepit": "Firepit",
@@ -143,6 +201,7 @@ const resource_generator_flavor: Dictionary = {
 	"coal": "",
 	"common": "Go on an adventure for common resources.",
 	"compass": "Navigate beyond the forest, the world awaits.",
+	"beacon": "Blueprints emerge from the mist of memory. This needs... a soulstone?",
 	"experience": "",
 	"fiber": "",
 	"firepit": "Warm and safe, must be nice to have.",
@@ -177,7 +236,9 @@ const resource_generator_max_flavor: Dictionary = {
 	"clay": "",
 	"coal": "",
 	"common": "",
-	"compass": "Navigate beyond the forest, the world awaits.",
+	"compass": "Navigate beyond the forest... beyond? The Darkness envelops the edgesSs...",
+	"beacon":
+	"Emitting radiant light, it cuts through the gloom. Seems to call out to distant realms...",
 	"experience": "",
 	"fiber": "",
 	"firepit": "It burns nice and warm, a light in the darkness.",
@@ -289,22 +350,25 @@ const worker_role_flavor: Dictionary = {
 const tab_data_titles: Dictionary = {
 	"world":
 	[
-		"World",
-		"Forest",
-		"Forest Camp",
-		"Forest Hamlet",
-		"Forest Village",
-		"Forest Town",
-		"Forest City",
-		"Forest Capital",
-		"Forest Metropolis",
-		"Forest Megalopolis",
-		"Forest Kingdom",
-		"Forest Empire"
+		" World ",
+		" Forest ",
+		" Forest Camp ",
+		" Forest Hamlet ",
+		" Forest Village ",
+		" Forest Town ",
+		" Forest City ",
+		" Forest Capital ",
+		" Forest Metropolis ",
+		" Forest Megalopolis ",
+		" Forest Kingdom ",
+		" Forest Empire ",
+		" Forest Imperium "
 	],
-	"manager": ["Population"],
-	"enemy": ["The Darkness"],
-	"unknown": ["Unknown"]
+	"manager": [" Population "],
+	"enemy": [" Darkness "],
+	"unknown": [" Unknown "],
+	"soul": [" Substance "],
+	"starway": ["       ???       "]
 }
 
 const event_data_text: Dictionary = {
@@ -335,6 +399,8 @@ const event_data_text: Dictionary = {
 	"house_capital": "I hereby declare this settlement the capital of the forest.",
 	"house_city": "The forest town has gotten quite large, I might need help in managing all this.",
 	"house_empire": "People of the world have bestowed me the title of their emperor.",
+	"house_imperium":
+	"Today, I reflect upon the immense responsibility bestowed upon me by tens of billions of people, as the Emperor of the Forest Imperium.",
 	"house_kingdom":
 	"I declare myself the king of these vast lands. Let us conquer and grow together.",
 	"house_megalopolis": "From the darkness, a massive megalopolis has risen.",
@@ -356,7 +422,59 @@ const event_data_text: Dictionary = {
 	"It is exhausting to explore on my own. Sending some people instead sounds like an idea.",
 	"land_debug": "Gods have gifted a bunch of resources to help you in this showcase.",
 	"resource_generated": "You generated {0} {1}.",
-	"zero": "The world is dark and empty..."
+	"zero": "The world is dark and empty...",
+	"darkness_1":
+	"Moving deeper into the darkness, I notice my people behind me... they never had a face. Just blank figurines...",
+	"darkness_2":
+	"As I move farther than ever before, my people are always one step behind me. It is almost as if... time and space, have no meaning here.",
+	"darkness_3":
+	"Conquering the wolf beast was exhausting. This is weird... I never felt hunger nor thirst in these woods.",
+	"darkness_4":
+	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things... afraid?",
+	"darkness_5":
+	"The dark forest paths lead me in circles. What... or who... is this maze keeping lost in here?",
+	"darkness_6":
+	"The dragon was guarding the hidden castle gates. In the great hall, a colossal beast stretches into the infinite ceiling void.",
+	"darkness_7":
+	"This was... too easy? Nothing seems to... fight back. It is only a matter of time until... I arrive. But, where?",
+	"darkness_8":
+	"Countless creatures gather along as I move towards the throne room. They seem... to recognize me? To know, something.",
+	"darkness_9":
+	'The defeated slime smiles: "You don\'t remember? Too long, you have been stuck... in this... form."',
+	"darkness_10":
+	"I struck down Death itself, witnessing its ethereal form regenerate right before my eyes. It left behind a shimmering... Soulstone? I need... more.",
+	"execute_1": "I feel a power rush flowing through my body as I absorb the dark essence...",
+	"execute_2":
+	"Eating the Messenger essence granted me flight. Even now, the dark mist prevents me from navigating clearly.",
+	"execute_3":
+	"Devouring the Beast essence made me stronger and faster. I can cover more ground, but always end up at the same place...",
+	"execute_4":
+	"I absorbed countless fractured spirits into my essence. I can hear their whispers... inside me.",
+	"execute_5":
+	"Consuming the Warden essence gave me more limbs than fingers. I can feel... so much now.",
+	"execute_6":
+	"Devouring the Dragon essence was... spicy. But, the more I try to burn down my obstacles, the stronger they regrow...",
+	"execute_7":
+	"The essence of the colossal creature contained so much... knowledge. Yet, I still do no recall my own name.",
+	"execute_8": "As I feed on the essences of darkness, my mind begins to fade away...",
+	"execute_9":
+	"A royal essence of a prince grants me visions of the noble bloodline. But, I am as lost as ever...",
+	"absolve_1":
+	"The decaying flesh of the little rabbit reveals a beautiful friend. They follow my steps.",
+	"absolve_2":
+	"From the carcass of the fallen bird, a new ally rises. They scout the paths ahead.",
+	"absolve_3": "The spared wolfs body regenerates into a loyal, warm servant.",
+	"absolve_4":
+	"As I released the numerous spirits from the tormented cage, their true forms gather around me... innocent children.",
+	"absolve_5":
+	"The absolved spider soul follows me forward, patching up the treacherous path ahead.",
+	"absolve_6":
+	"I spare the dragon. In return, it is clearing our path ahead. But, the vegetation regrows thicker than ever before.",
+	"absolve_7":
+	"I made peace with the towering beast. The colossal creature lifts me towards the throne room.",
+	"absolve_8": "The released soul of the undead humaonid wants to... play?",
+	"absolve_9": "The prince laughs at my mercy. Still, he agrees to follow along.",
+	"lore_beacon": "The lit beacon pierces the dark sky. For the first time, I can see the stars..."
 }
 const npc_event_text: Dictionary = {
 	"cat_intro": "I smell you from afar. Are you lost?",
@@ -371,7 +489,7 @@ const npc_event_text: Dictionary = {
 	"cat_talk_B2": "The ForesSst... does not give rise to creatures like you.",
 	"cat_talk_B3": "Since you are so confident... I will make you a proposSsition.",
 	"cat_talk_B4": "Give me all your raw resources in exchange for a... gift.",
-	"cat_talk_B4_1": "Your gift isSs... a lesson about liars and trust.",
+	"cat_talk_B4_1": "Your gift isSs... a lesson about trust.",
 	"cat_talk_B4_1_2": "You will thank me later... until then, I will be nearby...",
 	"cat_talk_B4_2": "Really? You are a... interesting one. I will keep my eye on you...",
 	"cat_talk_C0": "You really defeated it by yoursSself... I underestimated you."
@@ -397,7 +515,7 @@ const npc_event_options: Dictionary = {
 }
 
 const scale_settings_info: Dictionary = {
-	-1: "How did we get here?",
+	-1: "... How did we get here?",
 	1: "One by one.",
 	10: "Huh, that's quite the crowd. I have never seen these men in my life.",
 	100: "Three clicks for three hundred men. Children, gather round!",
@@ -408,6 +526,6 @@ const scale_settings_info: Dictionary = {
 	10000000: "A small loan of a couple million...",
 	100000000: "Are you sure this is enough people?  ¯\\_( ツ )_/¯",
 	1000000000: "They Are Billions! Can the humanity survive?",
-	10000000000: "Okay stop overplaying this game, please. YES YOU.",
-	100000000000: "How did we get here?"
+	#10000000000: "Okay stop overplaying this game, please. YES YOU.",
+	10000000000: "... How did we get here?"
 }

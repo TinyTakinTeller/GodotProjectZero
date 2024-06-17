@@ -21,13 +21,18 @@ func _ready() -> void:
 
 
 func _initialize() -> void:
-	timer.wait_time = ENEMY_CYCLE_SECONDS
-	timer.start()
+	_start_timer()
+
+
+func _start_timer() -> void:
+	var essence_count: int = SaveFile.get_enemy_ids_for_option(2).size()
+	var factor: float = 1.0 - (essence_count * 0.1)
+	timer.start(ENEMY_CYCLE_SECONDS * factor)
 
 
 func _generate() -> void:
 	var damage: int = _get_damage()
-	SignalBus.enemy_damage.emit(damage, self.name)
+	SignalBus.enemy_damage.emit(damage, name)
 
 
 func _get_damage() -> int:
@@ -43,6 +48,7 @@ func _get_damage() -> int:
 func _connect_signals() -> void:
 	timer.timeout.connect(_on_timeout)
 	SignalBus.deaths_door.connect(_on_deaths_door)
+	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 
 
 func _on_timeout() -> void:
@@ -51,3 +57,9 @@ func _on_timeout() -> void:
 
 func _on_deaths_door(enemy_data: EnemyData, option: int) -> void:
 	SignalBus.deaths_door_decided.emit(enemy_data, option)
+
+
+func _on_deaths_door_resolved(
+	_enemy_data: EnemyData, _new_enemy_data: EnemyData, _option: int
+) -> void:
+	_start_timer()

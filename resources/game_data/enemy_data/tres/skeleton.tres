@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cth3dmltkjtig"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_5up6e"]
+
+[resource]
+script = ExtResource("1_5up6e")
+order = 8
+id = "skeleton"
+health_points = 100000000000
+enemy_image_id = "skeleton_256_256"
+enemy_icon_id = "skeleton_64_64"
+next_enemy_id = "slime"
+column = 1

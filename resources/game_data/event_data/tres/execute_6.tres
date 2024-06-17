@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://dbe508ciblilk"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_k1ww6"]
+
+[resource]
+script = ExtResource("1_k1ww6")
+id = "execute_6"
+vars = []
+color = Color(0.878431, 0, 0.392157, 1)

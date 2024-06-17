@@ -17,7 +17,7 @@ var tab_unlocks: Array = ["world"]
 var tab_levels: Dictionary = {"world": 0}
 var settings: Dictionary = {"theme": "dark"}
 var npc_events: Dictionary = {}
-var enemy: Dictionary = {"level": "ambassador", "ambassador": {"damage": 0}}
+var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
 var metadata: Dictionary = {}
 var LOCALE: String = "en"
 
@@ -40,7 +40,30 @@ func _ready() -> void:
 #############
 
 
-func get_enemy_damage(enemy_id: String) -> int:
+func get_enemy_option(id: String) -> int:
+	var first: int = enemy[id].get("option", {}).get("1", 0)
+	var second: int = enemy[id].get("option", {}).get("2", 0)
+	if first == 0 and second == 0:
+		return 0
+	return 1 if first > second else 2
+
+
+func get_enemy_ids() -> Array:
+	return enemy.keys().filter(
+		func(id: String) -> bool: return id != "level" and get_enemy_option(id) > 0
+	)
+
+
+func get_enemy_ids_for_option(option: int) -> Array:
+	return enemy.keys().filter(
+		func(id: String) -> bool: return id != "level" and get_enemy_option(id) == option
+	)
+
+
+func get_enemy_damage(enemy_id: String = "") -> int:
+	if enemy_id == "":
+		enemy_id = SaveFile.enemy.get("level", "NULL")
+
 	var enemy_progression: Dictionary = SaveFile.enemy.get(enemy_id, {})
 	var enemy_damage: int = enemy_progression.get("damage", 0)
 	return enemy_damage
@@ -294,11 +317,12 @@ func _sanitize_timezone(timezone: Dictionary) -> void:
 
 func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_5(save_data)
+	_check_backward_week_7(save_data)
 
 
 ## cat dialogue tree was extended in week 6, this resets the last answer so dialogue can continue
 func _check_backward_week_5(save_data: Dictionary) -> void:
-	var target_version: Array[String] = ["week 4", "week 5"]
+	var target_version: Array[String] = ["week 3", "week 4", "week 5"]
 	var last_version: String = _get_metadata(save_data).get("last_version_minor", "")
 	if !target_version.has(last_version):
 		return
@@ -308,6 +332,13 @@ func _check_backward_week_5(save_data: Dictionary) -> void:
 		cat_events["cat_intro"] = -1
 
 	_get_metadata(save_data)["last_version_minor"] = Game.VERSION_MINOR
+
+
+## version week 7 (and before) had a temporary enemy or no enemy
+func _check_backward_week_7(save_data: Dictionary) -> void:
+	var check_enemy: String = save_data.get("enemy", {}).get("level", "")
+	if check_enemy == "" or check_enemy == "ambassador":
+		save_data["enemy"] = {"level": "rabbit", "rabbit": {"damage": 0}}
 
 
 ##############

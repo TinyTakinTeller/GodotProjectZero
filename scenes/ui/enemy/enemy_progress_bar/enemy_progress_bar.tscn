@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://j5lcc7v7q03g"]
+
+[ext_resource type="Script" path="res://scenes/ui/enemy/enemy_progress_bar/enemy_progress_bar.gd" id="1_5wyxl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogm0g"]
+
+[node name="EnemyProgressBar" type="MarginContainer"]
+size_flags_vertical = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_5wyxl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="ProgressBarLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0, 0.392157, 1)
+material = SubResource("ShaderMaterial_ogm0g")
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 12
+text = "923,456"
+
+[node name="ProgressBarMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PanelMarginContainer" type="MarginContainer" parent="VBoxContainer/ProgressBarMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ProgressBarMarginContainer/PanelMarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ProgressBarMarginContainer"]
+layout_mode = 2
+
+[node name="LeftMarginContainer" type="MarginContainer" parent="VBoxContainer/ProgressBarMarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = -1
+
+[node name="ProgressBarLeft" type="ProgressBar" parent="VBoxContainer/ProgressBarMarginContainer/HBoxContainer/LeftMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0, 0.392157, 1)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+value = 0.8
+fill_mode = 1
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ProgressBarMarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -1
+
+[node name="ProgressBarRight" type="ProgressBar" parent="VBoxContainer/ProgressBarMarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0, 0.392157, 1)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+value = 0.8
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ProgressBarMarginContainer"]
+visible = false
+custom_minimum_size = Vector2(2, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.878431, 0, 0.392157, 0.784314)

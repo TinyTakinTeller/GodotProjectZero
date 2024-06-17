@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://n1e7nceywdpr"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_oj2os"]
+
+[resource]
+script = ExtResource("1_oj2os")
+sort_value = -3
+sort_value_override = 0.0
+id = "soulstone"
+amount = 1
+cooldown = 0.0
+costs = {}
+cost_scales = {}
+worker_costs = {}
+random_drops = {}
+hidden = false
+max_amount = -1
+column = 0
+color = Color(0.878431, 0.878431, 0.392157, 1)

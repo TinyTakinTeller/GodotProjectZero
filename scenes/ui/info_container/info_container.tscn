@@ -5,14 +5,14 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u84p6"]
 shader = ExtResource("2_84ui8")
-shader_parameter/Strength = 0.6
+shader_parameter/Strength = 0.8
 shader_parameter/RandomOffset = 8.0
 shader_parameter/offset = 0.0
 shader_parameter/enabled = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1fki"]
 shader = ExtResource("2_84ui8")
-shader_parameter/Strength = 0.6
+shader_parameter/Strength = 0.8
 shader_parameter/RandomOffset = 7.0
 shader_parameter/offset = 0.0
 shader_parameter/enabled = 0

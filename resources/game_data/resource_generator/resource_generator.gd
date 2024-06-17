@@ -1,6 +1,7 @@
 extends Resource
 class_name ResourceGenerator
 
+@export var color: Color = Color.BLACK
 @export var sort_value: int = 0
 @export var sort_value_override: float = 0.0
 @export var id: String
@@ -15,6 +16,14 @@ class_name ResourceGenerator
 @export var column: int = 0
 
 var _random_drops_sum: int = -1
+
+
+func is_colored() -> bool:
+	return color != Color.BLACK
+
+
+func get_color() -> Color:
+	return color
 
 
 func get_sort_value() -> float:
@@ -123,15 +132,18 @@ func get_info(level: int) -> String:
 	if scaled_costs.size() == 0 and worker_costs.size() == 0:
 		return flavor
 
-	var info: String = "Cost: "
+	var ui_cost: String = Locale.get_ui_label("cost")
+	var info: String = ui_cost + ": "
 	if scaled_costs.size() > 0:
+		var display_values: Array = NumberUtils.format_number_scientific_list(scaled_costs.values())
 		var display_names: Array = ResourceGenerator.get_display_names_of(scaled_costs.keys())
-		info += ("%s " + (", %s ".join(display_names))) % scaled_costs.values()
+		info += ("%s " + (", %s ".join(display_names))) % display_values
 		if worker_costs.size() > 0:
 			info += ", "
 	if worker_costs.size() > 0:
-		var worker_display_names: Array = WorkerRole.get_display_names_of(worker_costs.keys())
-		info += ("%s " + (", %s ".join(worker_display_names))) % worker_costs.values()
+		var display_values: Array = NumberUtils.format_number_scientific_list(worker_costs.values())
+		var display_names: Array = WorkerRole.get_display_names_of(worker_costs.keys())
+		info += ("%s " + (", %s ".join(display_names))) % display_values
 
 	if StringUtils.is_not_empty(flavor):
 		info += " - " + flavor

@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://dawlpy0isv1rv"]
+
+[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/enemy/64/rabbit_64_64.png" id="1_f56cv"]
+[ext_resource type="Script" path="res://scenes/ui/substance_button/substance_button.gd" id="1_gu8as"]
+
+[node name="SubstanceButton" type="MarginContainer"]
+custom_minimum_size = Vector2(230, 0)
+scale = Vector2(1.00164, 1)
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+script = ExtResource("1_gu8as")
+
+[node name="PanelMarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Panel" type="Panel" parent="PanelMarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/TextureMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/TextureMarginContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_f56cv")
+
+[node name="ButtonMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ButtonMarginContainer"]
+layout_mode = 2
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="HBoxContainer/ButtonMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/ButtonMarginContainer/VBoxContainer/TitleMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Soul of Rabbit"
+
+[node name="ButtonMarginContainer" type="MarginContainer" parent="HBoxContainer/ButtonMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ButtonMarginContainer/VBoxContainer/ButtonMarginContainer"]
+layout_mode = 2
+
+[node name="EffectLabel" type="Label" parent="HBoxContainer/ButtonMarginContainer/VBoxContainer/ButtonMarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "??? "
+
+[node name="Button" type="Button" parent="HBoxContainer/ButtonMarginContainer/VBoxContainer/ButtonMarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+theme_override_font_sizes/font_size = 12
+text = "Upgrade"

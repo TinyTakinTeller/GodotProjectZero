@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://c8w7x2pn16e5e"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_8at1w"]
+
+[resource]
+script = ExtResource("1_8at1w")
+order = 6
+id = "dragon"
+health_points = 1000000000
+enemy_image_id = "dragon_256_256"
+enemy_icon_id = "dragon_64_64"
+next_enemy_id = "dino"
+column = 1

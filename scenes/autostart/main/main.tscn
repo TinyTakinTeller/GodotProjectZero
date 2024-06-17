@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=31 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://dv3bfta8ir0t" path="res://scenes/manager/enemy_manager/enemy_manager.tscn" id="16_6q8rb"]
 [ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/settings_container/settings_container.tscn" id="20_ynkq3"]
 [ext_resource type="PackedScene" uid="uid://ch7uxqklej1h6" path="res://scenes/ui/screen/darkness_screen/darkness_screen.tscn" id="21_324w1"]
+[ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
+[ext_resource type="PackedScene" uid="uid://br1a46uikyubt" path="res://scenes/ui/screen/starway_screen/starway_screen.tscn" id="27_d2ak1"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_u1kx3")
@@ -120,6 +122,9 @@ size_flags_horizontal = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="UnknownScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
+layout_mode = 2
+
 [node name="WorldScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
 visible = false
 layout_mode = 2
@@ -129,10 +134,15 @@ visible = false
 layout_mode = 2
 worker_controller = NodePath("../../../../../../../../Controllers/WorkerController")
 
-[node name="UnknownScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
+[node name="DarknessScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("21_324w1")]
+visible = false
 layout_mode = 2
 
-[node name="DarknessScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("21_324w1")]
+[node name="SoulScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("26_pehc6")]
+visible = false
+layout_mode = 2
+
+[node name="StarwayScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
 visible = false
 layout_mode = 2
 

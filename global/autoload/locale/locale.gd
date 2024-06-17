@@ -38,6 +38,10 @@ func get_enemy_data_info(enemy_id: String) -> String:
 	return locale[SaveFile.LOCALE]["enemy_data_info"].get(enemy_id, "")
 
 
+func get_enemy_data_option_title(enemy_id: String, option: int) -> String:
+	return locale[SaveFile.LOCALE]["enemy_data_option_title"].get(enemy_id + "-" + str(option), "?")
+
+
 func get_enemy_data_title(enemy_id: String) -> String:
 	return locale[SaveFile.LOCALE]["enemy_data_title"].get(
 		enemy_id, StringUtils.humanify_string(enemy_id)

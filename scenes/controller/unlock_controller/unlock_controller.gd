@@ -67,6 +67,10 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		_unlock_worker_role_if("sergeant")
 		_unlock_worker_role_if("mason")
 
+	if observed_id == "beacon" and observed_total == 1:
+		_unlock_tab_if("starway")
+		_trigger_unique_unlock_event("lore_beacon")
+
 
 func _handle_worker_updated(_observed_id: String, _observed_total: int) -> void:
 	pass  #_unlock_manager_button_if("recruiter", observed_id == "explorer", observed_total >= 1)
@@ -121,10 +125,10 @@ func _handle_land_event(observed_id: String) -> void:
 		_unlock_resource_generator_if("spear")
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 1:
 		if _trigger_unique_unlock_event_values("gift_flint_fiber", ["2", "1", "5", "3"]):
-			_gift_resource("fiber", 2, self.name)
-			_gift_resource("flint", 1, self.name)
-			_gift_resource("wood", 5, self.name)
-			_gift_resource("stone", 3, self.name)
+			_gift_resource("fiber", 2, name)
+			_gift_resource("flint", 1, name)
+			_gift_resource("wood", 5, name)
+			_gift_resource("stone", 3, name)
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 2:
 		_trigger_unique_unlock_event("land_8")
 		_unlock_resource_generator_if("compass")
@@ -174,11 +178,37 @@ func _handle_house_event(observed_total: int) -> void:
 	if observed_total >= 1000000000:
 		_trigger_unique_unlock_event("house_empire")
 		_level_up_tab("world", 11)
+	if observed_total >= 10000000000:
+		_trigger_unique_unlock_event("house_imperium")
+		_level_up_tab("world", 12)
+
+
+func _handle_on_deaths_door_resolved(enemy_data: EnemyData, option: int) -> void:
+	_unlock_tab_if("soul")
+	_unlock_resource_generator_if("beacon")
+	if option == 0:
+		return
+	_deaths_door_event(option, enemy_data.order)
+
+
+func _handle_on_deaths_door_open(enemy_data: EnemyData) -> void:
+	if enemy_data.order <= 10:
+		_deaths_door_lore(enemy_data.order)
 
 
 #############
 ## helpers ##
 #############
+
+
+func _deaths_door_event(option: int, level: int) -> void:
+	var event_id: String = ("execute_" if option == 1 else "absolve_") + str(level)
+	_trigger_unique_unlock_event(event_id)
+
+
+func _deaths_door_lore(level: int) -> void:
+	var event_id: String = "darkness_" + str(level)
+	_trigger_unique_unlock_event(event_id)
 
 
 func _load_timers() -> void:
@@ -265,6 +295,7 @@ func _gift_debug() -> void:
 
 func _gift_double() -> void:
 	if _trigger_unique_unlock_event("cat_gift"):
+		_gift_resource("soulstone", SaveFile.resources.get("soulstone", 0), name)
 		_gift_resource("food", SaveFile.resources.get("food", 0), name)
 		_gift_resource("wood", SaveFile.resources.get("wood", 0), name)
 		_gift_resource("stone", SaveFile.resources.get("stone", 0), name)
@@ -281,6 +312,7 @@ func _gift_double() -> void:
 
 func _gift_scam() -> void:
 	if _trigger_unique_unlock_event("cat_scam"):
+		_gift_resource("soulstone", -SaveFile.resources.get("soulstone", 0), name)
 		_gift_resource("food", -SaveFile.resources.get("food", 0), name)
 		_gift_resource("wood", -SaveFile.resources.get("wood", 0), name)
 		_gift_resource("stone", -SaveFile.resources.get("stone", 0), name)
@@ -306,6 +338,8 @@ func _connect_signals() -> void:
 	SignalBus.npc_event_interacted.connect(_on_npc_event_interacted)
 	cat_intro_timer.timeout.connect(_on_timer_cat_timeout)
 	firepit_timer.timeout.connect(_on_firepit_timer_timeout)
+	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
+	SignalBus.deaths_door_open.connect(_on_deaths_door_open)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, _source_id: String) -> void:
@@ -330,3 +364,13 @@ func _on_firepit_timer_timeout() -> void:
 func _on_timer_cat_timeout() -> void:
 	if SaveFile.events.get("cat_watching", 0) == 1:
 		_trigger_unique_unlock_npc_event("cat", "cat_intro")
+
+
+func _on_deaths_door_resolved(
+	enemy_data: EnemyData, _new_enemy_data: EnemyData, option: int
+) -> void:
+	_handle_on_deaths_door_resolved(enemy_data, option)
+
+
+func _on_deaths_door_open(enemy_data: EnemyData) -> void:
+	_handle_on_deaths_door_open(enemy_data)

@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch7uxqklej1h6"]
+[gd_scene load_steps=7 format=3 uid="uid://ch7uxqklej1h6"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/darkness_screen.gd" id="1_1yww0"]
 [ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_pwkjq"]
-[ext_resource type="Texture2D" uid="uid://cei8s730hbexu" path="res://assets/image/enemy/ambassador/gustavo_256_256.png" id="3_vy3iw"]
-[ext_resource type="Shader" path="res://resources/shader/chromatic_vignette/chromatic_vignette.gdshader" id="4_d8iqr"]
-[ext_resource type="PackedScene" uid="uid://crps6q62tt20h" path="res://scenes/component/effect/texture_pixel_explosion/texture_pixel_explosion.tscn" id="5_bk0tv"]
-[ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="5_turhh"]
+[ext_resource type="PackedScene" uid="uid://d02um03stnk8y" path="res://scenes/ui/enemy/enemy_texture/enemy_texture.tscn" id="3_hlysm"]
+[ext_resource type="PackedScene" uid="uid://j5lcc7v7q03g" path="res://scenes/ui/enemy/enemy_progress_bar/enemy_progress_bar.tscn" id="4_jk10o"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="6_q4ifr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dwjo"]
@@ -14,25 +12,6 @@ shader_parameter/Strength = 1.5
 shader_parameter/RandomOffset = 1.0
 shader_parameter/offset = 0.0
 shader_parameter/enabled = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7iv2"]
-shader = ExtResource("2_pwkjq")
-shader_parameter/Strength = 1.1
-shader_parameter/RandomOffset = 1.0
-shader_parameter/offset = 0.0
-shader_parameter/enabled = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0aj7"]
-shader = ExtResource("4_d8iqr")
-shader_parameter/r_displacement = Vector2(8, 8)
-shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(0, 0)
-shader_parameter/height = 0.7
-shader_parameter/width = 0.5
-shader_parameter/fade = 0.7
-shader_parameter/enabled = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogm0g"]
 
 [node name="DarknessScreen" type="MarginContainer"]
 anchors_preset = 15
@@ -56,7 +35,7 @@ theme_override_constants/margin_bottom = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/margin_top = 24
+theme_override_constants/margin_top = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScreenMarginContainer/TitleMarginContainer"]
 layout_mode = 2
@@ -66,6 +45,7 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6dwjo")
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "The Ambassador Of Darkness"
@@ -73,45 +53,19 @@ text = "The Ambassador Of Darkness"
 [node name="LevelLabel" type="Label" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
+material = SubResource("ShaderMaterial_6dwjo")
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "★☆☆☆☆"
+text = "DCCCXXXVIII"
 
-[node name="TextureScrollContainer" type="ScrollContainer" parent="ScreenMarginContainer"]
+[node name="EnemyTexture" parent="ScreenMarginContainer" instance=ExtResource("3_hlysm")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureMarginContainer" type="MarginContainer" parent="ScreenMarginContainer/TextureScrollContainer"]
+[node name="EnemyProgressBar" parent="ScreenMarginContainer" instance=ExtResource("4_jk10o")]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
-[node name="TextureRect" type="TextureRect" parent="ScreenMarginContainer/TextureScrollContainer/TextureMarginContainer"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_e7iv2")
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("3_vy3iw")
-
-[node name="DamageShaderTextureRect" type="TextureRect" parent="ScreenMarginContainer/TextureScrollContainer/TextureMarginContainer"]
-unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_i0aj7")
-layout_mode = 2
-texture = ExtResource("3_vy3iw")
-
-[node name="TextureButton" type="Button" parent="ScreenMarginContainer/TextureScrollContainer/TextureMarginContainer"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="TexturePixelExplosion" parent="ScreenMarginContainer/TextureScrollContainer/TextureMarginContainer" instance=ExtResource("5_bk0tv")]
-unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="ChoiceHBoxContainer" type="HBoxContainer" parent="ScreenMarginContainer"]
@@ -149,98 +103,6 @@ layout_mode = 2
 theme_type_variation = &"ProgressButton"
 text = "Absolve"
 
-[node name="BossProgressBarMarginContainer" type="MarginContainer" parent="ScreenMarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 4
-
-[node name="ProgressBarLabel" type="Label" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/MarginContainer"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_ogm0g")
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.878431, 0, 0.392157, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 12
-text = "923,456"
-
-[node name="ProgressBarMarginContainer" type="MarginContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="PanelMarginContainer" type="MarginContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = -4
-theme_override_constants/margin_top = -4
-theme_override_constants/margin_right = -4
-theme_override_constants/margin_bottom = -4
-
-[node name="Panel" type="Panel" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer/PanelMarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer"]
-layout_mode = 2
-
-[node name="LeftMarginContainer" type="MarginContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_right = -1
-
-[node name="ProgressBarLeft" type="ProgressBar" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer/HBoxContainer/LeftMarginContainer"]
-unique_name_in_owner = true
-modulate = Color(0.878431, 0, 0.392157, 1)
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 1.0
-value = 0.8
-fill_mode = 1
-show_percentage = false
-
-[node name="MarginContainer" type="MarginContainer" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = -1
-
-[node name="ProgressBarRight" type="ProgressBar" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer/HBoxContainer/MarginContainer"]
-unique_name_in_owner = true
-modulate = Color(0.878431, 0, 0.392157, 1)
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 1.0
-value = 0.8
-show_percentage = false
-
-[node name="ColorRect" type="ColorRect" parent="ScreenMarginContainer/BossProgressBarMarginContainer/VBoxContainer/ProgressBarMarginContainer"]
-visible = false
-custom_minimum_size = Vector2(2, 8)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.878431, 0, 0.392157, 0.784314)
-
-[node name="Tween" type="Node" parent="."]
-
-[node name="ShaderSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("5_turhh")]
-unique_name_in_owner = true
-target = NodePath("../..")
-duration = 0.3
-call_method = "_shader_simple_tween"
-
 [node name="Effect" type="Node2D" parent="."]
 
 [node name="PassiveLabelEffectQueue" parent="Effect" instance=ExtResource("6_q4ifr")]
@@ -250,6 +112,12 @@ delay = 0.15
 [node name="ClickLabelEffectQueue" parent="Effect" instance=ExtResource("6_q4ifr")]
 unique_name_in_owner = true
 delay = 0.1
+
+[node name="SoulLabelEffectQueue" parent="Effect" instance=ExtResource("6_q4ifr")]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0.878431, 0.392157, 1)
+delay = 0.1
+lifetime = 3.0
 
 [node name="ClickDamageBufferTimer" type="Timer" parent="Effect"]
 unique_name_in_owner = true

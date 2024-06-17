@@ -28,6 +28,9 @@ void vertex() {
 }
 
 void fragment() {
+	vec4 tex = texture(TEXTURE, UV);
+	vec4 modulate = COLOR / tex;
+	
     // MOSAIC EFFECT
     const float pixel_step = 1.0;
     vec2 texure_size = 1.0 / TEXTURE_PIXEL_SIZE;
@@ -59,4 +62,7 @@ void fragment() {
     float dissolve = texture(dissolve_texture, uv).x;
     dissolve = step(progress * dissovle_weight, dissolve);
     COLOR.a *= dissolve;
+
+	// https://github.com/godotengine/godot/issues/49781#issuecomment-1458559843
+	COLOR.rgb *= modulate.rgb;
 }

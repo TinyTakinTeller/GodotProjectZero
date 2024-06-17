@@ -20,4 +20,4 @@ func _connect_signals() -> void:
 
 
 func _on_progress_button_paid(_resource_generator: ResourceGenerator) -> void:
-	SignalBus.resource_generated.emit("experience", 1, self.name)
+	SignalBus.resource_generated.emit("experience", 1, name)

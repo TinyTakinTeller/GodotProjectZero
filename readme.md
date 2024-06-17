@@ -4,7 +4,7 @@ PLAY THE GAME : https://tinytakinteller.itch.io/the-best-game-ever
 
 READ WEEKLY DEVLOG'S : https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
-Current Version - [ PRE-ALPHA : WEEK 7 ]
+Current Version - [ PRE-ALPHA : WEEK 8 ]
 
 *Gather Resources...*
 
@@ -20,64 +20,75 @@ Current Version - [ PRE-ALPHA : WEEK 7 ]
 
 *And More...*
 
-## TODO
-
-Quality Of Life
-```
-- add blueprints to allow auto-assigment mechanisms to automate new workers ?
-- resource storage list filter & sort ?
-- make game speed a setting (x1, x2, x5, ... ?)
-- save file import and export methods
-- make game run while offline (calculate progress when player returns)
-- make game run while web tab is not focused (use offline mode logic)
-```
+## TODO Whishlist
 
 Content
 ```
-- add Cat NPC dialog events that have game impacts (unlocks, quests, choices matter, ... ?)
-- add Cat NPC secret boss fight ? (bullet hell... ?)
-- add enemy death animation
-- add more enemies
-- add rewards for defeating enemies
-```
-
-Design
-```
-- think of a new tab to add with new style of gameplay (open world tab, ... ?)
-- think of ways to engage user (spawn random floating things on screen to click, ... ?)
-- think of ways to make farming all resource types meaningful
-- balance the resources somehow (limited resources ? storage upgrades ? ...)
-- think of some use for the experience resource
-- think of more diary events
-- think of new interactions between existing mechanics
-- design a prestige system (meta upgrades, ... ?)
+- more content after crafting the beacon
+- add distinct effects and upgrades to substances
+- more Cat NPC interactions (dialog events, ...)
+- more diary events (lore, milestones, ...)
 - add achievements
 - add secrets
+```
+
+Sound
+```
+- add sound effects
+- add music track(s)
 ```
 
 Visual
 ```
 - add custom loading screen (separate thread, ... ?)
 - animate screen (tab) transitions
-- find or create a good (pixel?) font
-- create more pixel art (npc, enemy, ... ?)
-```
-
-Sound
-```
-- add sound effects
-- add music track
+- find or create a good (pixel) font
+- add screen shader ? (crt, ... ?)
+- more visual content (cutscenes, ... ?)
 ```
 
 Accessibility 
 ```
-- add localization system and a another language
-- add credits
+- add credits screen
 - add settings screen
-- add resolution & fullscreen settings
-- add text speed settings (diary, cat npc, ...)
-- add settings for animations, sound & music, shaders, ...
+- settings for localization
+- settings for resolution & fullscreen 
+- settings for text speed (diary, cat npc, ...)
+- settings for animations, sound & music, shaders, ...
+- settings for color palette
 - refactor & document code to be readable, maintainable and extendable
+```
+
+Quality Of Life
+```
+- save file import and export methods
+- settings for game speed (x1, x2, x5, ...) ?
+- make game run while offline (calculate progress when player returns) ?
+- make game run while web tab is not focused (calculate progress when focus returns) ?
+- add blueprints to allow auto-assigment mechanisms to automate new workers ?
+- resource storage list filter & sort ? (allow custom re-ordering ?)
+```
+
+Design
+```
+- think of a new tab to add with new style of gameplay (open world tab, ... ?)
+- think of ways to engage user (spawn random floating things on screen to click, ... ?)
+- think of ways to make farming all resource types meaningful ?
+- balance the resources and growth (limited resources with storage upgrades, ... ?)
+- design new interactions between existing mechanics (experience, ... ?)
+- design a prestige system (meta upgrades, ... ?)
+```
+
+Idea
+```
+- the Cat NPC secret boss fight (bullet hell, ... ?) 
+- after max integer size (infinity), add a black hole resource (prestige the population, ... ?)
+- research tree ?
+```
+
+Juice
+```
+- make everything interacable ... ?
 ```
 
 Meta

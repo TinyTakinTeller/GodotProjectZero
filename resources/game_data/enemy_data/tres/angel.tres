@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://c5e2jg4qyf61q"]
+
+[ext_resource type="Script" path="res://resources/game_data/enemy_data/enemy_data.gd" id="1_o557x"]
+
+[resource]
+script = ExtResource("1_o557x")
+order = 10
+id = "angel"
+health_points = 10000000000000
+enemy_image_id = "angel_256_256"
+enemy_icon_id = "angel_64_64"
+next_enemy_id = "angel"
+column = 1

@@ -26,30 +26,6 @@ const SCIENTIFIC_MAGNITUDE: Array[int] = [
 	1000000000000000,
 ]
 
-const POWER_OF_TEN: Array[int] = [
-	1,
-	10,
-	100,
-	1000,
-	10000,
-	100000,
-	1000000,
-	10000000,
-	100000000,
-	1000000000,
-	10000000000,
-	100000000000,
-	1000000000000,
-	10000000000000,
-	100000000000000,
-	1000000000000000,
-	10000000000000000
-]
-
-
-static func pow10(exponent: int) -> int:
-	return POWER_OF_TEN[exponent]
-
 
 static func format_zero_padding(number: int, length: int) -> String:
 	return "%0*d" % [length, number]
@@ -108,3 +84,7 @@ static func format_number_scientific(number: int, length: int = 4) -> String:
 	if is_negative:
 		output = "-" + output
 	return output + suffix
+
+
+static func format_number_scientific_list(vals: Array, l: int = 4) -> Array:
+	return vals.map(func(val: int) -> String: return NumberUtils.format_number_scientific(val, l))

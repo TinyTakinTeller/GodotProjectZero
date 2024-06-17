@@ -39,7 +39,7 @@ func _can_pay_worker(worker_costs: Dictionary) -> bool:
 func _pay_workers(worker_costs: Dictionary, _id: String) -> void:
 	for gen_id: String in worker_costs:
 		var cost: int = worker_costs[gen_id]
-		SignalBus.worker_generated.emit(gen_id, -cost, self.name)
+		SignalBus.worker_generated.emit(gen_id, -cost, name)
 
 
 ##############
@@ -52,11 +52,13 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> v
 	var resource_amount: int = SaveFile.resources.get(id, 0) + 1
 	var resource_cost: Dictionary = resource_generator.get_scaled_costs(resource_amount)
 	var worker_cost: Dictionary = resource_generator.get_worker_costs()
-	if !_can_pay(resource_cost) or !_can_pay_worker(worker_cost):
-		SignalBus.progress_button_unpaid.emit(resource_generator)
-		return
-	_pay_resources(resource_cost, id)
-	_pay_workers(worker_cost, id)
+
+	if !Game.params["debug_free_resource_buttons"]:
+		if !_can_pay(resource_cost) or !_can_pay_worker(worker_cost):
+			SignalBus.progress_button_unpaid.emit(resource_generator)
+			return
+		_pay_resources(resource_cost, id)
+		_pay_workers(worker_cost, id)
 	SignalBus.progress_button_paid.emit(resource_generator)
 
 	var generate: Dictionary = resource_generator.generate()
