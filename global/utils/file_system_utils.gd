@@ -67,5 +67,5 @@ static func fix_web_build_file_extension(file: String, force_one_extension: bool
 		if file_split.size() > 2:
 			if Game.params["debug_logs"]:
 				print("!! FORCE ONE EXTENSION: " + file)
-			file = file.split(".")[0] + "." + file.split(".")[1]
+			file = file_split[0] + "." + file_split[1]
 	return file
