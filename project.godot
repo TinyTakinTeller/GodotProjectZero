@@ -47,6 +47,10 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[dotnet]
+
+project/assembly_name="The Best Game Ever"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
