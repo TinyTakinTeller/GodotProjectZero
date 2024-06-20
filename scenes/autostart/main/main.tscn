@@ -126,6 +126,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="WorldScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
+visible = false
 layout_mode = 2
 
 [node name="ManagmentScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
