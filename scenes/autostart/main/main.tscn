@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=32 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -26,6 +26,7 @@
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="14_45bu4"]
 [ext_resource type="PackedScene" uid="uid://dt8uyfjegwwqf" path="res://scenes/manager/npc_manager/npc_manager.tscn" id="14_hfr4p"]
 [ext_resource type="PackedScene" uid="uid://dv3bfta8ir0t" path="res://scenes/manager/enemy_manager/enemy_manager.tscn" id="16_6q8rb"]
+[ext_resource type="PackedScene" uid="uid://d1y5xyx63u3w0" path="res://scenes/ui/developer_console/developer_console.tscn" id="20_yijsf"]
 [ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/settings_container/settings_container.tscn" id="20_ynkq3"]
 [ext_resource type="PackedScene" uid="uid://ch7uxqklej1h6" path="res://scenes/ui/screen/darkness_screen/darkness_screen.tscn" id="21_324w1"]
 [ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
@@ -163,3 +164,7 @@ theme_override_constants/margin_right = 0
 [node name="SettingsContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
 layout_mode = 2
 theme_override_constants/margin_left = 0
+
+[node name="DeveloperConsole" parent="UI" instance=ExtResource("20_yijsf")]
+visible = false
+layout_mode = 1
