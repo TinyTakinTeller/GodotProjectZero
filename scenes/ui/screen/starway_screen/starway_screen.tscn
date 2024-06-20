@@ -33,6 +33,6 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
 modulate = Color(0, 0.392157, 0.956863, 1)
 layout_mode = 2
-text = "Comming Soon"
+text = "Coming Soon"
 horizontal_alignment = 1
 vertical_alignment = 1
