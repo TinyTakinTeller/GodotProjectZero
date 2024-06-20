@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource("1_uxr4n")
+order = 0
 sort_value = 0
 id = "worker"
-title = "Peasant"
-flavor = "Scavange and gather food wherever they can."
 produce = {
 "food": 1
 }
 consume = {}
+worker_consume = {}
 default = true
 column = 0
