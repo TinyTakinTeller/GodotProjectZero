@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
 .export/
+
+# Python
+venv/
+
+# VSCode
+.vscode/

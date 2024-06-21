@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_26111")
+history_limit = null
 
 [node name="BackgroundOverlay" type="ColorRect" parent="."]
 layout_mode = 1
