@@ -106,9 +106,7 @@ func _process_command(command_text: String) -> void:
 
 	if commands.has(command_name):
 		var command: Dictionary = commands[command_name]
-		if command["func"].call(command_args) == OK:
-			pass
-		else:
+		if command["func"].call(command_args) != OK:
 			_write_line("Usage: %s" % [command["usage"]])
 
 	else:
@@ -121,12 +119,14 @@ func _process_command(command_text: String) -> void:
 
 
 func _cmd_add_resource(args: PackedStringArray) -> Error:
+	if args.size() != 2:
+		return FAILED
 	var resource_id: String = args[0]
 	if resource_id not in Resources.resource_generators.keys():
 		return FAILED
 	if not args[1].is_valid_int():
 		return FAILED
-	var amount: int = int(args[1])
+	var amount: int = clamp(int(args[1]), 0, Limits.GLOBAL_MAX_AMOUNT)
 	SignalBus.resource_generated.emit(resource_id, amount, name)
 	return OK
 
