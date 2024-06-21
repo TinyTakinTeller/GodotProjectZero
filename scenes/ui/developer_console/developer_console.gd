@@ -1,15 +1,18 @@
 class_name DeveloperConsole extends Control
 
-@export var history_limit: int = 16
+@export var buffer_size: int = 16
 
-var command_history_pointer: int = -1
-var command_history: Array[String] = []
 var commands: Dictionary = {
 	&"add": {"func": _cmd_add_resource, "usage": "add [resource_id] [amount]"},
 	&"cls": {"func": _cmd_cls, "usage": "cls"}
 }
 
-@onready var command_log: RichTextLabel = %CommandLog
+var input_buffer: Array[String] = []
+var input_pointer: int = -1
+
+var output_buffer: Array[String] = []
+
+@onready var command_output: RichTextLabel = %CommandOutput
 @onready var command_input: LineEdit = %CommandInput
 
 ###############
@@ -43,38 +46,38 @@ func _input(event: InputEvent) -> void:
 ###############
 
 
-func _add_command_to_history(command_text: String) -> void:
-	if command_history.size() > 0 and command_history[-1] == command_text:
-		# Don't add consecutive command to history
+func _input_buffer_add_command(command_text: String) -> void:
+	if input_buffer.size() > 0 and input_buffer[-1] == command_text:
+		# Don't add consecutive command to input buffer
 		return
 
-	command_history.push_back(command_text)
-	if command_history.size() > history_limit:
-		command_history.pop_front()
-	command_history_pointer = -1
+	input_buffer.push_back(command_text)
+	if input_buffer.size() > buffer_size:
+		input_buffer.pop_front()
+	input_pointer = -1
 
 
 func _handle_input_previous_command() -> void:
-	if command_history.size() <= 0:
+	if input_buffer.size() <= 0:
 		return
 
-	if command_history_pointer < 0:
-		command_history_pointer = command_history.size() - 1
+	if input_pointer < 0:
+		input_pointer = input_buffer.size() - 1
 	else:
-		command_history_pointer = max(0, command_history_pointer - 1)
+		input_pointer = max(0, input_pointer - 1)
 
-	command_input.text = command_history[command_history_pointer]
+	command_input.text = input_buffer[input_pointer]
 
 
 func _handle_input_next_command() -> void:
-	if command_history.size() <= 0 or command_history_pointer < 0:
+	if input_buffer.size() <= 0 or input_pointer < 0:
 		return
 
-	if command_history_pointer == command_history.size() - 1:
+	if input_pointer == input_buffer.size() - 1:
 		command_input.clear()
 	else:
-		command_history_pointer = min(command_history.size() - 1, command_history_pointer + 1)
-		command_input.text = command_history[command_history_pointer]
+		input_pointer = min(input_buffer.size() - 1, input_pointer + 1)
+		command_input.text = input_buffer[input_pointer]
 
 
 func _handle_input_toggle() -> void:
@@ -82,11 +85,18 @@ func _handle_input_toggle() -> void:
 
 
 func _write_line(message: String) -> void:
-	command_log.text += "\n%s" % [message]
+	output_buffer.push_back(message)
+	if output_buffer.size() > buffer_size:
+		output_buffer.pop_front()
+	_flush_output()
 
 
 func _write_error(error_message: String) -> void:
 	_write_line("Error: %s" % [error_message])
+
+
+func _flush_output() -> void:
+	command_output.text = "\n".join(output_buffer)
 
 
 func _process_command(command_text: String) -> void:
@@ -124,7 +134,8 @@ func _cmd_add_resource(args: PackedStringArray) -> Error:
 func _cmd_cls(args: PackedStringArray) -> Error:
 	if args.size() > 0:
 		return FAILED
-	command_log.text = ""
+	output_buffer.clear()
+	_flush_output()
 	return OK
 
 
@@ -144,5 +155,5 @@ func _on_command_input_text_submitted(text: String) -> void:
 	if text != "":
 		command_input.clear()
 		_write_line("> %s" % [text])
-		_add_command_to_history(text)
+		_input_buffer_add_command(text)
 		_process_command(text)

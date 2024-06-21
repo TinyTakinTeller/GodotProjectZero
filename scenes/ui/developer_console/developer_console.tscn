@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_26111")
-history_limit = null
+buffer_size = null
 
 [node name="BackgroundOverlay" type="ColorRect" parent="."]
 layout_mode = 1
@@ -53,9 +53,8 @@ alignment = 2
 [node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CommandLog" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="CommandOutput" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
