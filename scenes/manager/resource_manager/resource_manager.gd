@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _handle_on_resource_generated(id: String, amount: int, source_id: String) -> void:
-	amount = Limits.check_global_max_amount(SaveFile.resources.get(id, 0), amount)
+	amount = Limits.safe_addition_factor(SaveFile.resources.get(id, 0), amount)
 
 	SaveFile.resources[id] = SaveFile.resources.get(id, 0) + amount
 	if amount < 0:

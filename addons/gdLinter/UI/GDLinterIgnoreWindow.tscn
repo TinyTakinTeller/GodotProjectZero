@@ -1,0 +1,261 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgk7hjif0ujw1"]
+
+[ext_resource type="Script" path="res://addons/gdLinter/UI/GDLinterIgnoreWindow.gd" id="1_71hhq"]
+[ext_resource type="Script" path="res://addons/gdLinter/UI/Name.gd" id="2_35t2j"]
+[ext_resource type="Script" path="res://addons/gdLinter/UI/Basic.gd" id="3_ijjp7"]
+[ext_resource type="Script" path="res://addons/gdLinter/UI/Class.gd" id="4_s2mg3"]
+[ext_resource type="Script" path="res://addons/gdLinter/UI/Design.gd" id="5_2ncqt"]
+[ext_resource type="Script" path="res://addons/gdLinter/UI/Format.gd" id="6_5fvrg"]
+[ext_resource type="Script" path="res://addons/gdLinter/UI/Misc.gd" id="7_l8gkb"]
+
+[node name="GdLinterIgnoreWindow" type="AcceptDialog"]
+disable_3d = true
+title = "GDLinter Ignore Settings"
+initial_position = 1
+size = Vector2i(480, 539)
+dialog_text = "fghgfdfggfd"
+script = ExtResource("1_71hhq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Name" type="MarginContainer" parent="PanelContainer/TabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_35t2j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Name"]
+layout_mode = 2
+
+[node name="FunctionName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Name"
+
+[node name="ClassName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Class Name"
+
+[node name="SubClassName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sub Class Name"
+
+[node name="SignalName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Signal Name"
+
+[node name="ClassVariableName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Class Variable Name"
+
+[node name="ClassLoadVariableName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Class Load Variable Name"
+
+[node name="FunctionVariableName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Variable Name"
+
+[node name="FunctionPreloadVariableName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Preload Variable Name"
+
+[node name="FunctionArgumentName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Argument Name"
+
+[node name="LoopVariableName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Loop Variable Name"
+
+[node name="EnumName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enum Name"
+
+[node name="EnumElementName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enum Element Name"
+
+[node name="ConstantName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Constant Name"
+
+[node name="LoadConstantName" type="CheckBox" parent="PanelContainer/TabContainer/Name/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Constant Name"
+
+[node name="Basic" type="MarginContainer" parent="PanelContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("3_ijjp7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Basic"]
+layout_mode = 2
+
+[node name="DuplicatedLoad" type="CheckBox" parent="PanelContainer/TabContainer/Basic/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Duplicated Load"
+
+[node name="ExpressionNotAssigned" type="CheckBox" parent="PanelContainer/TabContainer/Basic/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Expression Not Assigned"
+
+[node name="UnnecessaryPass" type="CheckBox" parent="PanelContainer/TabContainer/Basic/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unnecessary Pass"
+
+[node name="UnusedArgument" type="CheckBox" parent="PanelContainer/TabContainer/Basic/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unused Argument"
+
+[node name="ComparisionWithItself" type="CheckBox" parent="PanelContainer/TabContainer/Basic/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Comparision With Itself"
+
+[node name="Class" type="MarginContainer" parent="PanelContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("4_s2mg3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Class"]
+layout_mode = 2
+
+[node name="PrivateMethodCall" type="CheckBox" parent="PanelContainer/TabContainer/Class/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Private Method Call"
+
+[node name="ClassDefinitionOrder" type="CheckBox" parent="PanelContainer/TabContainer/Class/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Class Definition Order"
+
+[node name="Design" type="MarginContainer" parent="PanelContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("5_2ncqt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Design"]
+layout_mode = 2
+
+[node name="MaxPublicMethods" type="CheckBox" parent="PanelContainer/TabContainer/Design/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max Public Methods"
+
+[node name="FunctionArgumentNumber" type="CheckBox" parent="PanelContainer/TabContainer/Design/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Function Argument Number"
+
+[node name="Format" type="MarginContainer" parent="PanelContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("6_5fvrg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Format"]
+layout_mode = 2
+
+[node name="MaxFileLines" type="CheckBox" parent="PanelContainer/TabContainer/Format/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max File Lines"
+
+[node name="TrailingWhitespaceCheckBox" type="CheckBox" parent="PanelContainer/TabContainer/Format/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Trailing Whitespace"
+
+[node name="MaxLineLength" type="CheckBox" parent="PanelContainer/TabContainer/Format/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max Line Length"
+
+[node name="MixedTabsAndSpaces" type="CheckBox" parent="PanelContainer/TabContainer/Format/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mixed Tabs And Spaces"
+
+[node name="Misc" type="MarginContainer" parent="PanelContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("7_l8gkb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Misc"]
+layout_mode = 2
+
+[node name="NoElifReturn" type="CheckBox" parent="PanelContainer/TabContainer/Misc/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No Elif Return"
+
+[node name="NoElseReturn" type="CheckBox" parent="PanelContainer/TabContainer/Misc/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No Else Return"
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/FunctionName" to="PanelContainer/TabContainer/Name" method="_on_function_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/ClassName" to="PanelContainer/TabContainer/Name" method="_on_class_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/SubClassName" to="PanelContainer/TabContainer/Name" method="_on_sub_class_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/SignalName" to="PanelContainer/TabContainer/Name" method="_on_signal_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/ClassVariableName" to="PanelContainer/TabContainer/Name" method="_on_class_variable_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/ClassLoadVariableName" to="PanelContainer/TabContainer/Name" method="_on_class_load_variable_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/FunctionVariableName" to="PanelContainer/TabContainer/Name" method="_on_function_variable_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/FunctionPreloadVariableName" to="PanelContainer/TabContainer/Name" method="_on_function_preload_variable_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/FunctionArgumentName" to="PanelContainer/TabContainer/Name" method="_on_function_argument_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/LoopVariableName" to="PanelContainer/TabContainer/Name" method="_on_loop_variable_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/EnumName" to="PanelContainer/TabContainer/Name" method="_on_enum_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/EnumElementName" to="PanelContainer/TabContainer/Name" method="_on_enum_element_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/ConstantName" to="PanelContainer/TabContainer/Name" method="_on_constant_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Name/VBoxContainer/LoadConstantName" to="PanelContainer/TabContainer/Name" method="_on_load_constant_name_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Basic/VBoxContainer/DuplicatedLoad" to="PanelContainer/TabContainer/Basic" method="_on_duplicated_load_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Basic/VBoxContainer/ExpressionNotAssigned" to="PanelContainer/TabContainer/Basic" method="_on_expression_not_assigned_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Basic/VBoxContainer/UnnecessaryPass" to="PanelContainer/TabContainer/Basic" method="_on_unnecessary_pass_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Basic/VBoxContainer/UnusedArgument" to="PanelContainer/TabContainer/Basic" method="_on_unused_argument_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Basic/VBoxContainer/ComparisionWithItself" to="PanelContainer/TabContainer/Basic" method="_on_comparision_with_itself_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Class/VBoxContainer/PrivateMethodCall" to="PanelContainer/TabContainer/Class" method="_on_private_method_call_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Class/VBoxContainer/ClassDefinitionOrder" to="PanelContainer/TabContainer/Class" method="_on_class_definition_order_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Design/VBoxContainer/MaxPublicMethods" to="PanelContainer/TabContainer/Design" method="_on_max_public_methods_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Design/VBoxContainer/FunctionArgumentNumber" to="PanelContainer/TabContainer/Design" method="_on_function_argument_number_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Format/VBoxContainer/MaxFileLines" to="PanelContainer/TabContainer/Format" method="_on_max_file_lines_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Format/VBoxContainer/TrailingWhitespaceCheckBox" to="PanelContainer/TabContainer/Format" method="_on_trailing_whitespace_check_box_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Format/VBoxContainer/MaxLineLength" to="PanelContainer/TabContainer/Format" method="_on_max_line_length_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Format/VBoxContainer/MixedTabsAndSpaces" to="PanelContainer/TabContainer/Format" method="_on_mixed_tabs_and_spaces_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Misc/VBoxContainer/NoElifReturn" to="PanelContainer/TabContainer/Misc" method="_on_no_elif_return_toggled"]
+[connection signal="toggled" from="PanelContainer/TabContainer/Misc/VBoxContainer/NoElseReturn" to="PanelContainer/TabContainer/Misc" method="_on_no_else_return_toggled"]

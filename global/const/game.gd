@@ -30,7 +30,6 @@ const params_debug: Dictionary = {
 	"debug_logs": true,
 	"debug_free_resource_buttons": true,
 	"default_theme": "dark",
-	"population_uses_resources_in_same_cycle": true,
 	"resource_storage_info": false,
 	"deaths_door_no_info": true
 }
@@ -57,7 +56,6 @@ const params_prod: Dictionary = {
 	"debug_logs": true,
 	"debug_free_resource_buttons": false,
 	"default_theme": "dark",
-	"population_uses_resources_in_same_cycle": true,
 	"resource_storage_info": false,
 	"deaths_door_no_info": true
 }

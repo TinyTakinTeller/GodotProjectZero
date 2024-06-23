@@ -1,5 +1,5 @@
-extends Node
 class_name EnemyController
+extends Node
 
 const ENEMY_CYCLE_SECONDS: int = Game.params["enemy_cycle_seconds"]
 

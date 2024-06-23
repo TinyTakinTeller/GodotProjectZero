@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_ex3us")
 id = "enemy_screen"
-text = "Suspicious eyes started emerging in the dark. They surround the houses and scare the people."
 vars = []
-color = Color(0, 0.392157, 0.956863, 1)
+color = Color(0, 0.392, 0.878, 1)

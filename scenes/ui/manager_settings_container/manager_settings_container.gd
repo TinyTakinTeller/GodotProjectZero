@@ -1,11 +1,14 @@
+class_name ManagerSettingsContainer
 extends MarginContainer
 
-@onready var h_box_container: HBoxContainer = %HBoxContainer
+const MAX_SCALE_BUTTONS: int = 11
 
 @export var scale_button_scene: PackedScene
 
 var min_scale: int = 1
 var max_scale: int = 0
+
+@onready var h_box_container: HBoxContainer = %HBoxContainer
 
 ###############
 ## overrides ##
@@ -23,14 +26,17 @@ func _ready() -> void:
 
 
 func _initialize() -> void:
-	var scale_: int = SaveFile.get_settings_population_scale()
+	var scale_value: int = SaveFile.get_settings_population_scale()
 	_clear_items()
-	_add_scale_button(1, scale_)
 	max_scale = max(1, ArrayUtils.max_element(SaveFile.workers.values() + [0]) / 10)
 	var button_scale: int = min_scale
-	while button_scale <= max_scale and h_box_container.get_child_count() < 11:
+	var padding: int = MAX_SCALE_BUTTONS
+	while max_scale > PowUtils.pow_(10, padding):
+		padding += 1
 		button_scale *= 10
-		_add_scale_button(button_scale, scale_)
+	while button_scale <= max_scale and h_box_container.get_child_count() < MAX_SCALE_BUTTONS:
+		_add_scale_button(button_scale, scale_value)
+		button_scale *= 10
 
 
 func _add_scale_button(button_scale: int, active_scale: int) -> ScaleButton:
@@ -66,9 +72,9 @@ func _handle_on_worker_updated(total: int) -> void:
 		max_scale = total
 
 
-func _handle_on_scale_button_up(button: Button, scale_: int) -> void:
+func _handle_on_scale_button_up(button: Button, scale_value: int) -> void:
 	button.disabled = true
-	SignalBus.toggle_scale_pressed.emit(scale_)
+	SignalBus.toggle_scale_pressed.emit(scale_value)
 	button.release_focus()
 	for scale_button: ScaleButton in h_box_container.get_children():
 		var other_button: Button = scale_button.button
@@ -76,9 +82,9 @@ func _handle_on_scale_button_up(button: Button, scale_: int) -> void:
 			other_button.disabled = false
 
 
-func _handle_on_scale_button_hover(scale_: int) -> void:
-	var title: String = "[%s]" % NumberUtils.format_number(scale_)
-	var info: String = Locale.get_scale_settings_info(scale_)
+func _handle_on_scale_button_hover(scale_value: int) -> void:
+	var title: String = "[%s]" % NumberUtils.format_number(scale_value)
+	var info: String = Locale.get_scale_settings_info(scale_value)
 	SignalBus.info_hover.emit(title, info)
 
 
@@ -91,23 +97,23 @@ func _connect_signals() -> void:
 	SignalBus.worker_updated.connect(_on_worker_updated)
 
 
-func _connect_signal(button: Button, scale_: int) -> void:
-	button.button_up.connect(_on_scale_button_up.bind(button, scale_))
+func _connect_signal(button: Button, scale_value: int) -> void:
+	button.button_up.connect(_on_scale_button_up.bind(button, scale_value))
 	button.button_down.connect(_on_scale_button_down.bind(button))
-	button.mouse_entered.connect(_on_scale_button_hover.bind(scale_))
+	button.mouse_entered.connect(_on_scale_button_hover.bind(scale_value))
 
 
 func _on_worker_updated(_id: String, total: int, _amount: int) -> void:
 	_handle_on_worker_updated(total)
 
 
-func _on_scale_button_up(button: Button, scale_: int) -> void:
-	_handle_on_scale_button_up(button, scale_)
+func _on_scale_button_up(button: Button, scale_value: int) -> void:
+	_handle_on_scale_button_up(button, scale_value)
 
 
 func _on_scale_button_down(button: Button) -> void:
 	button.release_focus()
 
 
-func _on_scale_button_hover(scale_: int) -> void:
-	_handle_on_scale_button_hover(scale_)
+func _on_scale_button_hover(scale_value: int) -> void:
+	_handle_on_scale_button_hover(scale_value)

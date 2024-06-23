@@ -20,8 +20,8 @@ const TAB_DATA_ID: String = "enemy"
 @onready var enemy_progress_bar: EnemyProgressBar = %EnemyProgressBar
 
 ## effect params
-var label_color: Color = Color(0.878, 0, 0.392, 1)
-var soul_color: Color = Color(0.878, 0.878, 0.392, 1)
+var label_color: Color = ColorSwatches.RED
+var soul_color: Color = ColorSwatches.YELLOW
 var damage_buffer: int = 0
 var damage_buffer_time: float = 0.15
 var particle_id: String = "enemy_damage_particle"
@@ -125,7 +125,7 @@ func _deaths_door_enabled() -> void:
 		if _overkill > 1:
 			SignalBus.deaths_door.emit(_enemy_data, _deaths_door_option)
 			_load_enemy()
-			enemy_texture.modulate.a = 0.5  #Color(0.878, 0.878, 0.392, 1)  #Color(0.878, 0, 0.392, 1) #Color(0.392, 0, 0.878, 1)
+			enemy_texture.modulate.a = 0.5
 			enemy_progress_bar.set_display(0, 0)
 		else:
 			_handle_choice_button(0)

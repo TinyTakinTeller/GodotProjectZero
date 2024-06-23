@@ -36,16 +36,26 @@ static func format_zero_padding(number: int, length: int) -> String:
 static func format_number(number: int, separator: String = ",", group_size: int = 3) -> String:
 	if number >= Limits.GLOBAL_MAX_AMOUNT:
 		return "Infinity"
+	if number <= -Limits.GLOBAL_MAX_AMOUNT:
+		return "-Infinity"
+
+	var is_negative: bool = number < 0
+	if is_negative:
+		number *= -1
 
 	var input: String = str(number)
-	var output: Array[String] = []
+	var out: Array[String] = []
 	var length: int = input.length()
 	for i: int in length:
-		output.append(input[length - i - 1])
+		out.append(input[length - i - 1])
 		if i < length - 1 and (i + 1) % group_size == 0:
-			output.append(separator)
-	output.reverse()
-	return "".join(output)
+			out.append(separator)
+	out.reverse()
+
+	var output: String = "".join(out)
+	if is_negative:
+		output = "-" + output
+	return output
 
 
 ## converts number to maginute suffix: K = 10^3, M = 10^6, B = 10^9, t = 10^12, q = 10^15
@@ -53,6 +63,8 @@ static func format_number(number: int, separator: String = ",", group_size: int 
 static func format_number_scientific(number: int, length: int = 4) -> String:
 	if number >= Limits.GLOBAL_MAX_AMOUNT:
 		return "Infinity"
+	if number <= -Limits.GLOBAL_MAX_AMOUNT:
+		return "-Infinity"
 
 	var is_negative: bool = number < 0
 	if is_negative:

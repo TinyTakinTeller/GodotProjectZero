@@ -9,7 +9,7 @@ class_name ManagerButton
 @onready var label_effect_queue: LabelEffectQueue = %LabelEffectQueue
 
 ## effect params
-var label_color: Color = Color(0.392, 0.878, 0, 1)
+var label_color: Color = ColorSwatches.GREEN
 var particle_id: String = "resource_generated_particle"
 
 var _worker_role: WorkerRole
@@ -229,9 +229,9 @@ func _on_worker_efficient(worker_role_id: String) -> void:
 func _on_resource_storage_hover(resource: ResourceGenerator) -> void:
 	var id: String = resource.id
 	if _worker_role.get_consume().has(id) or _worker_role.get_worker_consume().has(id):
-		info_label.modulate = Color(0.878, 0, 0.392, 1)
+		info_label.modulate = ColorSwatches.RED
 	elif _worker_role.get_produce().has(id):
-		info_label.modulate = Color(0.392, 0.878, 0, 1)
+		info_label.modulate = ColorSwatches.GREEN
 	else:
 		info_label.modulate = Color.WHITE
 

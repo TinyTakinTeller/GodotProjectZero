@@ -7,8 +7,6 @@ script = ExtResource("1_a25lh")
 order = 2
 sort_value = 13
 id = "torch_man"
-title = ""
-flavor = "Will prepare supplies for miners and explorers."
 produce = {
 "torch": 1
 }
