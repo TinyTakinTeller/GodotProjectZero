@@ -3,7 +3,7 @@ class_name DeveloperConsole extends Control
 @export var buffer_size: int = 16
 
 var commands: Dictionary = {
-	&"add": {"func": _cmd_add_resource, "usage": "add [resource_id] [amount]"},
+	&"add": {"func": _cmd_add_resource, "usage": "add [resource_id] [amount >= 0]"},
 	&"cls": {"func": _cmd_cls, "usage": "cls"}
 }
 
@@ -119,14 +119,19 @@ func _process_command(command_text: String) -> void:
 
 
 func _cmd_add_resource(args: PackedStringArray) -> Error:
-	if args.size() != 2:
+	if args.size() != 2 or args[1].begins_with("-"):
 		return FAILED
+
 	var resource_id: String = args[0]
+	var amount_string: String = args[1]
+
 	if resource_id not in Resources.resource_generators.keys():
 		return FAILED
-	if not args[1].is_valid_int():
+
+	if not NumberUtils.is_valid_int_64(amount_string):
 		return FAILED
-	var amount: int = clamp(int(args[1]), 0, Limits.GLOBAL_MAX_AMOUNT)
+
+	var amount: int = amount_string.to_int()
 	SignalBus.resource_generated.emit(resource_id, amount, name)
 	return OK
 

@@ -88,3 +88,27 @@ static func format_number_scientific(number: int, length: int = 4) -> String:
 
 static func format_number_scientific_list(vals: Array, l: int = 4) -> Array:
 	return vals.map(func(val: int) -> String: return NumberUtils.format_number_scientific(val, l))
+
+
+static func is_valid_int_64(input_string: String) -> bool:
+	# The built-in function only checks for digits, not if
+	# the value will overflow a 64-bit integer
+	if not input_string.is_valid_int():
+		return false
+
+	var number_string: String = input_string.lstrip("0")
+	if number_string == "":
+		number_string = "0"
+
+	var max_int_string: String = str(Limits.GLOBAL_MAX_INT_64)
+	var min_int_string: String = str(Limits.GLOBAL_MIN_INT_64)
+
+	if number_string.length() > max_int_string.length():
+		return false
+	elif number_string.length() < max_int_string.length():
+		return true
+
+	if number_string.begins_with("-"):
+		return number_string >= min_int_string
+	else:
+		return number_string <= max_int_string
