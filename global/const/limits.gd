@@ -1,6 +1,7 @@
 class_name Limits
 
 const GLOBAL_MAX_INT_64: int = 9223372036854775807
+const GLOBAL_MIN_INT_64: int = -9223372036854775808
 const GLOBAL_MAX_AMOUNT: int = 1000000000000000000  # = 10^18 = 1Q = One Quintillion = 1000q
 
 
