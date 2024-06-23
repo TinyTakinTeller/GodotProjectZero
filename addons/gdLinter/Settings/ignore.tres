@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GDLinterIgnore" load_steps=2 format=3 uid="uid://6ip8eigu30by"]
+
+[ext_resource type="Script" path="res://addons/gdLinter/Settings/ignore.gd" id="1_8j37n"]
+
+[resource]
+script = ExtResource("1_8j37n")
+_function_name = false
+_class_name = false
+_sub_class_name = false
+_signal_name = false
+_class_variable_name = false
+_class_load_variable_name = false
+_function_variable_name = false
+_function_preload_variable_name = false
+_function_argument_name = false
+_loop_variable_name = false
+_enum_name = false
+_enum_element_name = false
+_constant_name = false
+_load_constant_name = false
+_duplicated_load = false
+_expression_not_assigned = false
+_unnecessary_pass = false
+_unused_argument = false
+_comparison_with_itself = false
+_private_method_call = false
+_class_definitions_order = false
+_max_public_methods = false
+_function_arguments_number = false
+_max_file_lines = false
+_trailing_whitespace = false
+_max_line_length = false
+_mixed_tabs_and_spaces = false
+_no_elif_return = false
+_no_else_return = false

@@ -48,4 +48,4 @@ text = "+1"
 unique_name_in_owner = true
 target = NodePath("..")
 duration = 0.5
-call_method = "__modulate_red_simple_tween_method"
+call_method = "_modulate_red_simple_tween_method"

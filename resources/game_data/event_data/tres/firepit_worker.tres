@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_i6iul")
 id = "firepit_worker"
-text = "A stranger saw the firepit. The lost peasant wanted shelter and offered to work in return."
 vars = []
-color = Color(0, 0.392157, 0.956863, 1)
+color = Color(0, 0.392, 0.878, 1)

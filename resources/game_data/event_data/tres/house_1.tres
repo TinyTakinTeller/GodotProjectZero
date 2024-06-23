@@ -6,4 +6,4 @@
 script = ExtResource("1_cyr0w")
 id = "house_1"
 vars = []
-color = Color(0, 0.392157, 0.956863, 1)
+color = Color(0, 0.392, 0.878, 1)

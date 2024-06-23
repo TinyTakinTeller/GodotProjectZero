@@ -515,7 +515,7 @@ const npc_event_options: Dictionary = {
 }
 
 const scale_settings_info: Dictionary = {
-	-1: "... How did we get here?",
+	-1: "???",
 	1: "One by one.",
 	10: "Huh, that's quite the crowd. I have never seen these men in my life.",
 	100: "Three clicks for three hundred men. Children, gather round!",
@@ -526,6 +526,12 @@ const scale_settings_info: Dictionary = {
 	10000000: "A small loan of a couple million...",
 	100000000: "Are you sure this is enough people?  ¯\\_( ツ )_/¯",
 	1000000000: "They Are Billions! Can the humanity survive?",
-	#10000000000: "Okay stop overplaying this game, please. YES YOU.",
-	10000000000: "... How did we get here?"
+	10000000000: "Okay stop overplaying this game, please. YES YOU.",
+	100000000000: "We will, we will...",
+	1000000000000: "World's first trillionaire.",
+	10000000000000: "T... Ten... Ten Tr.. TEN TRILLION!?",
+	100000000000000: "I am speechless...",
+	1000000000000000: "... How did we get here?",
+	10000000000000000: "To the infinity and beyond!",
+	100000000000000000: " \\(∞_∞)/ ",
 }

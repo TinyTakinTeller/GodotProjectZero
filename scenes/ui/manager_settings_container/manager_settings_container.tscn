@@ -29,7 +29,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ScaleMarginContainer1" parent="ManagerScaleSettingContainer/HBoxContainer" instance=ExtResource("2_1pyn1")]
+[node name="ScaleButton" parent="ManagerScaleSettingContainer/HBoxContainer" instance=ExtResource("2_1pyn1")]
 layout_mode = 2
 
 [node name="ManagerAutoSettingContainer" type="MarginContainer" parent="."]

@@ -37,9 +37,9 @@ func get_title() -> String:
 
 func get_color() -> Color:
 	if _enemy_option == 2:
-		return Color(0.392, 0.878, 0, 1)
+		return ColorSwatches.GREEN
 	elif _enemy_option == 1:
-		return Color(0.878, 0, 0.392, 1)
+		return ColorSwatches.RED
 	else:
 		return Color.WHITE
 
