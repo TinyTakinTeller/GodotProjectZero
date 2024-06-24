@@ -6,7 +6,7 @@ PLAY THE GAME : https://tinytakinteller.itch.io/the-best-game-ever
 
 READ WEEKLY DEVLOG'S : https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
-Current Version - [ PRE-ALPHA : WEEK 8 ]
+Current Version - [ PRE-ALPHA : WEEK 9 ]
 
 *Gather Resources...*
 
