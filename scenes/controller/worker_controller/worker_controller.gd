@@ -88,18 +88,12 @@ func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
 		_generate_from(resources, -efficiency, generated_workers, w_consume, -count, total_eff)
 		_generate_from(resources, efficiency, generated_resources, produces, count, total_eff)
 
-		# producing new workers (peasants) after building houses but before producing swordsmens
-		if worker_role_id == "mason":
-			var resource_id: String = Game.WORKER_RESOURCE_ID
-			var new_workers: int = _calculate_generated_worker_resource_from_houses(
-				resources, multiplier
-			)
-			generated_resources[resource_id] = Limits.safe_addition(
-				generated_resources.get(resource_id, 0), new_workers
-			)
-			total_eff[resource_id] = Limits.safe_addition(
-				total_eff.get(resource_id, 0), new_workers
-			)
+	var resource_id: String = Game.WORKER_RESOURCE_ID
+	var new_workers: int = _calculate_generated_worker_resource_from_houses(resources, multiplier)
+	generated_resources[resource_id] = Limits.safe_addition(
+		generated_resources.get(resource_id, 0), new_workers
+	)
+	total_eff[resource_id] = Limits.safe_addition(total_eff.get(resource_id, 0), new_workers)
 
 	return {
 		"resources": generated_resources,

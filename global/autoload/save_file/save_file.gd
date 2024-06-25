@@ -289,18 +289,6 @@ func _get_locale(save_data: Dictionary) -> String:
 
 
 func _update_metadata() -> void:
-	if Game.params["debug_logs"]:
-		print("Update Metadata [last_utc_time]")
-		var last_time: Dictionary = metadata["last_utc_time"]
-		var now_time: Dictionary = Time.get_datetime_dict_from_system(true)
-		print(last_time)
-		print(now_time)
-		var unix_delta: int = (
-			Time.get_unix_time_from_datetime_dict(now_time)
-			- Time.get_unix_time_from_datetime_dict(last_time)
-		)
-		print(DateTimeUtils.format_seconds(unix_delta))
-
 	metadata["last_utc_time"] = Time.get_datetime_dict_from_system(true)
 	metadata["last_timezone"] = Time.get_time_zone_from_system()
 	_sanitize_timezone(metadata["last_timezone"])
