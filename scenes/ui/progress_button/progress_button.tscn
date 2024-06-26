@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjroqyyfrvx70"]
+[gd_scene load_steps=9 format=3 uid="uid://bjroqyyfrvx70"]
 
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_gumta"]
 [ext_resource type="Script" path="res://scenes/ui/progress_button/progress_button.gd" id="2_rp5nm"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_v7ecv"]
+[ext_resource type="AudioStream" uid="uid://b72ckli2xxvhc" path="res://assets/audio/sfx/special/UI Simple 5_1.wav" id="2_vhftu"]
 [ext_resource type="PackedScene" uid="uid://d4a6sfsyw5jie" path="res://scenes/component/effect/line_effect/line_effect.tscn" id="3_aqdv6"]
+[ext_resource type="AudioStream" uid="uid://1iot3m76a6jf" path="res://assets/audio/sfx/special/UI Simple 2_1.wav" id="3_uqlvk"]
+[ext_resource type="AudioStream" uid="uid://fabtcepxsiqp" path="res://assets/audio/sfx/special/UI Simple 3_2.wav" id="4_u7md0"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="4_ybk84"]
 
 [node name="ProgressButton" type="MarginContainer"]
@@ -19,6 +22,9 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 script = ExtResource("2_rp5nm")
+sfx_button_down = ExtResource("2_vhftu")
+sfx_button_success = ExtResource("3_uqlvk")
+sfx_button_fail = ExtResource("4_u7md0")
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
@@ -48,13 +54,13 @@ color = Color(1, 0, 0, 1)
 [node name="ProgressBarSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
 unique_name_in_owner = true
 target = NodePath("../..")
-call_method = "__progress_bar_simple_tween_method"
+call_method = "_progress_bar_simple_tween_method"
 
 [node name="RedColorRectSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_v7ecv")]
 unique_name_in_owner = true
 target = NodePath("../..")
 duration = 0.3
-call_method = "__red_color_rect_simple_tween_method"
+call_method = "_red_color_rect_simple_tween_method"
 
 [node name="NewUnlockTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("2_gumta")]
 unique_name_in_owner = true

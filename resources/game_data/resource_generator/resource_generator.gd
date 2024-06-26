@@ -15,6 +15,9 @@ class_name ResourceGenerator
 @export var max_amount: int = -1
 @export var column: int = 0
 
+@export var sfx_generate: AudioStream
+@export var sfx_yield: AudioStream
+
 var _random_drops_sum: int = -1
 
 

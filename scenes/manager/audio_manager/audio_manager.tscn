@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp61l7vkkscuw"]
+
+[ext_resource type="AudioStream" uid="uid://dm1gfqtqypk11" path="res://assets/audio/music/forest_song.mp3" id="1_7benq"]
+[ext_resource type="Script" path="res://scenes/manager/audio_manager/audio_manager.gd" id="1_7i6rq"]
+[ext_resource type="Script" path="res://scenes/manager/audio_manager/audio_queue.gd" id="2_fuumq"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_7i6rq")
+
+[node name="AudioQueue" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_fuumq")
+stream_player_count = 8
+default_pitch_variance = 0.1
+bus = "SFX"
+
+[node name="SoundTracks" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundTracks"]
+stream = ExtResource("1_7benq")
