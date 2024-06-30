@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cknmluch23j"]
+
+[ext_resource type="Script" path="res://scenes/ui/screen/offline_screen/offline_screen.gd" id="1_m7kv1"]
+
+[node name="OfflineScreen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_m7kv1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 20
+
+[node name="LabelHead" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Happy Welcome Back!"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label1" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Happy Welcome Back!"
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Happy Welcome Back!
+Happy Welcome Back!
+Happy Welcome Back!
+Happy Welcome Back!"
+autowrap_mode = 2

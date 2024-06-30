@@ -45,16 +45,20 @@ func _update_tab_tracker_item(tab_data: TabData) -> void:
 
 
 func _add_tab_tracker_item(tab_data: TabData) -> TabTrackerItem:
-	var tab_tracker_item: TabTrackerItem = _add_item()
+	var tab_tracker_item: TabTrackerItem = tab_item_scene.instantiate() as TabTrackerItem
 	tab_tracker_item.set_tab_data(tab_data)
 	tab_tracker_item.click.connect(_on_tab_clicked)
+	NodeUtils.add_child_sorted(tab_tracker_item, h_box_container, TabTrackerItem.before_than)
+	tab_tracker_item.refresh_title()
+	tab_count += 1
+	tabs[tab_count - 1] = tab_tracker_item
 	tab_data.index = tab_count - 1
 	return tab_tracker_item
 
 
 func _add_item() -> TabTrackerItem:
 	var tab_tracker_item: TabTrackerItem = tab_item_scene.instantiate() as TabTrackerItem
-	h_box_container.add_child(tab_tracker_item)
+	NodeUtils.add_child_sorted(tab_tracker_item, h_box_container, TabTrackerItem.before_than)
 	tab_count += 1
 	tabs[tab_count - 1] = tab_tracker_item
 	return tab_tracker_item
@@ -106,6 +110,7 @@ func _handle_on_unlocked(tab_index: int) -> void:
 
 
 func _connect_signals() -> void:
+	SignalBus.tab_clicked.connect(_on_tab_clicked)
 	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
 	SignalBus.tab_leveled_up.connect(_on_tab_leveled_up)
 	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)

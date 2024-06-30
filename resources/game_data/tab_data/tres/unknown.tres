@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_tw4qd")
 id = "unknown"
-titles = Array[String](["Unknown"])
+sort_value = 9

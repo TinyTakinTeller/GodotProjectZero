@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ixechckh2n74"]
+
+[ext_resource type="Script" path="res://scenes/controller/offline_controller/offline_controller.gd" id="1_3y1i1"]
+
+[node name="OfflineController" type="Node"]
+script = ExtResource("1_3y1i1")

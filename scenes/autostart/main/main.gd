@@ -32,7 +32,10 @@ func _initialize() -> void:
 
 func _connect_signals() -> void:
 	SignalBus.set_ui_theme.connect(_on_set_ui_theme)
-
+	self.ready.connect(_on_ready)
 
 func _on_set_ui_theme(theme: Resource) -> void:
 	ui.theme = theme
+
+func _on_ready() -> void:
+	SignalBus.main_ready.emit()

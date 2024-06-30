@@ -4,14 +4,17 @@
 
 [resource]
 script = ExtResource("1_kn6uu")
+color = Color(0, 0, 0, 1)
 sort_value = 2
+sort_value_override = 0.0
 id = "food"
 amount = 1
 cooldown = 0.0
 costs = {}
 cost_scales = {}
-label = "-"
-title = "-"
-flavor = "-"
+worker_costs = {}
 random_drops = {}
 hidden = false
+max_amount = -1
+column = 0
+dynamic_efficiency_id = "worker"

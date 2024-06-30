@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_gkdxq")
 id = "manager"
-titles = ["Population"]
+sort_value = 2

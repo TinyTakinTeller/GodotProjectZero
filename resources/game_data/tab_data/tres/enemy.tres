@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_vn260")
 id = "enemy"
+sort_value = 3
