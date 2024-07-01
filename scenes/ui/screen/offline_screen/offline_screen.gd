@@ -52,10 +52,13 @@ func _on_tab_changed(tab_data: TabData) -> void:
 
 
 func _on_offline_progress_processed(
-	seconds_delta: int, worker_progress: Dictionary, _enemy_progress: Dictionary, factor: float
+	seconds_delta: int, worker_progress: Dictionary, enemy_progress: Dictionary, factor: float
 ) -> void:
+	if worker_progress.is_empty() or enemy_progress.is_empty():
+		return
+
 	var generated: Dictionary = worker_progress["generated"]
-	var decreasing_ids: Dictionary = worker_progress["decreasing_ids"]
+	var decreasing_ids: Array = worker_progress["decreasing_ids"]
 	# var damage: int = enemy_progress["damage"]
 	# var overkill_factor: float = enemy_progress["overkill_factor"]
 	var workers_are_happy: bool = decreasing_ids.is_empty()
@@ -84,7 +87,8 @@ func _on_offline_progress_processed(
 			+ Locale.get_ui_label("offline_4").format({"0": int(factor * 100)})
 		)
 
-		var split_index: int = (generated.size() + 1) / 2
+		var generated_size: int = generated.size()
+		var split_index: int = (generated_size + 1) / 2
 		var index: int = 0
 		var generated_info1: String = ""
 		var generated_info2: String = ""
@@ -93,6 +97,7 @@ func _on_offline_progress_processed(
 			var generated_amount: String = NumberUtils.format_number_scientific(
 				generated[resource_id]
 			)
+
 			var generated_info: String = "+{amount} {name} \n".format(
 				{"amount": generated_amount, "name": resource.get_display_name()}
 			)

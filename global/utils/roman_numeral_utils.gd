@@ -106,7 +106,7 @@ const symbol: Array[String] = [
 
 static func to_roman_numeral(n: int) -> String:
 	if n > 4 * value[value.size() - 1]:
-		return "§§§"
+		return ""
 
 	var out: String = ""
 	var i: int = value.size() - 1

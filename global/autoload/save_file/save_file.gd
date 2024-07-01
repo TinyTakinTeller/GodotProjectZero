@@ -181,14 +181,18 @@ func rename(save_file_name: String, new_text: String, old_text: String) -> void:
 
 func _save_entered() -> void:
 	var seconds_delta: int = _get_seconds_since_last_autosave()
-	SignalBus.save_entered.emit(seconds_delta, Game.params["autosave_seconds"])
+
+	SignalBus.save_entered.emit(seconds_delta, AUTOSAVE_SECONDS)
 
 	_update_metadata()
 
 
 func _autosave() -> void:
 	var seconds_delta: int = _get_seconds_since_last_autosave()
-	SignalBus.autosave.emit(seconds_delta, Game.params["autosave_seconds"])
+	if seconds_delta < AUTOSAVE_SECONDS:
+		return
+
+	SignalBus.autosave.emit(seconds_delta, AUTOSAVE_SECONDS)
 
 	var file_name: String = ACTIVE_FILE_NAME
 	_update_metadata()
@@ -316,7 +320,7 @@ func _update_metadata() -> void:
 	metadata["last_version_major"] = Game.VERSION_MAJOR
 	metadata["last_version_minor"] = Game.VERSION_MINOR
 	metadata["total_autosave_seconds"] = (
-		metadata.get("total_autosave_seconds", 0) + Game.params["autosave_seconds"]
+		metadata.get("total_autosave_seconds", 0) + AUTOSAVE_SECONDS
 	)
 	if metadata.get("first_utc_time", null) == null:
 		metadata["first_utc_time"] = Time.get_datetime_dict_from_system(true)
@@ -373,7 +377,7 @@ func _connect_signals() -> void:
 
 func _connect_autosave_timer() -> void:
 	if Game.params["autosave_enabled"]:
-		autosave_timer.wait_time = AUTOSAVE_SECONDS
+		autosave_timer.wait_time = 0.1
 		autosave_timer.timeout.connect(_on_timeout)
 		autosave_timer.start()
 

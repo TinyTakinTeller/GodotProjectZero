@@ -58,13 +58,13 @@ func _calculate_generated_worker_resource_from_houses(
 ) -> int:
 	var per_house: int = Game.params["house_workers"]
 	var resource_id: String = Game.WORKER_RESOURCE_ID
-	var max_workers: int = per_house * resources.get("house", 0)
+	var max_workers: int = per_house * resources.get("house", 0) + resources.get("firepit", 0)
 	var current_workers: int = resources.get(resource_id, 0)
 
 	var new_workers: int = 1 + int((max_workers - current_workers - 1) / per_house)
 	if multiplier != 1:
 		new_workers = Limits.safe_mult(new_workers, multiplier)
-	if new_workers > max_workers:
+	if current_workers + new_workers > max_workers:
 		new_workers = max_workers - current_workers
 	return new_workers
 
@@ -100,10 +100,11 @@ func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
 
 	var resource_id: String = Game.WORKER_RESOURCE_ID
 	var new_workers: int = _calculate_generated_worker_resource_from_houses(resources, multiplier)
-	generated_resources[resource_id] = Limits.safe_add(
-		generated_resources.get(resource_id, 0), new_workers
-	)
-	total_eff[resource_id] = Limits.safe_add(total_eff.get(resource_id, 0), new_workers)
+	if new_workers != 0:
+		generated_resources[resource_id] = Limits.safe_add(
+			generated_resources.get(resource_id, 0), new_workers
+		)
+		total_eff[resource_id] = Limits.safe_add(total_eff.get(resource_id, 0), new_workers)
 
 	return {
 		"storage": resources,

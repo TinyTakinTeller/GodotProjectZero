@@ -18,8 +18,7 @@ func _ready() -> void:
 #############
 
 
-## workers must be "happy" to work while not observed (none of the resources are decreasing)
-## TODO: how to implement "unhappy" workers working while not observed? (oscillating resources, ...)
+## Workers must be "happy" to work while not observed (none of the resources are decreasing).
 func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dictionary:
 	var total_efficiency: Dictionary = efficiencies["total_efficiency"]
 
@@ -54,7 +53,12 @@ func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dicti
 			var generate: int = Limits.safe_mult(id_eff, cycles)
 			generated[id] = Limits.safe_add(generated.get(id, 0), generate)
 
-	return {"decreasing_ids": {}, "generated": generated}
+	var nonzero_generated: Dictionary = {}
+	for id: String in generated:
+		if generated[id] != 0:
+			nonzero_generated[id] = generated[id]
+
+	return {"decreasing_ids": [], "generated": nonzero_generated}
 
 
 func _generate_resources(generated: Dictionary) -> bool:
@@ -113,6 +117,8 @@ func _handle_on_game_resumed(
 		efficiencies, worker_controller_cycles
 	)
 	var generated: Dictionary = worker_progress["generated"]
+	var decreasing_ids: Array = worker_progress["decreasing_ids"]
+	var workers_are_happy: bool = decreasing_ids.is_empty()
 
 	var enemy_id: String = SaveFile.enemy["level"]
 	var enemy_data: EnemyData = Resources.enemy_datas.get(enemy_id, null)
@@ -131,7 +137,7 @@ func _handle_on_game_resumed(
 	var is_generated: bool = _generate_resources(generated)
 	_trigger_enemy_controller(damage)
 
-	if is_generated:
+	if is_generated or !workers_are_happy:
 		SignalBus.offline_progress_processed.emit(
 			seconds_delta, worker_progress, enemy_progress, factor
 		)
