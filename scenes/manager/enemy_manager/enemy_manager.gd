@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _handle_on_enemy_damage(damage: int, source_id: String) -> void:
-	damage = Limits.safe_addition_factor(SaveFile.get_enemy_damage(), damage)
+	damage = Limits.safe_add_factor(SaveFile.get_enemy_damage(), damage)
 
 	var total_damage: int = SaveFile.add_enemy_damage(damage)
 	SignalBus.enemy_damaged.emit(total_damage, damage, source_id)

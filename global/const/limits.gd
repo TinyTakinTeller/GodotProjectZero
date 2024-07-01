@@ -6,30 +6,29 @@ const GLOBAL_MAX_AMOUNT: int = 1000000000000000000  # = 10^18 = 1Q = One Quintil
 
 
 ## return reduced additional amount so that current + additional does not exceed GLOBAL_MAX_AMOUNT
-static func safe_addition_factor(current: int, additional: int) -> int:
-	var safe_sum: int = safe_addition(current, additional)
+static func safe_add_factor(current: int, addition: int) -> int:
+	var safe_sum: int = safe_add(current, addition)
 	var safe_current: int = max(min(current, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
-	var safe_additional: int = safe_sum - safe_current
-	return safe_additional
+	var safe_addition: int = safe_sum - safe_current
+	return safe_addition
 
 
 ## return a + b except when it rounds to GLOBAL_MAX_AMOUNT (or negative sign) to prevent overflow
-static func safe_addition(a: int, b: int) -> int:
+static func safe_add(a: int, b: int) -> int:
 	a = max(min(a, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
 	b = max(min(b, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
-	var sum: int = max(min(a + b, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
-	return sum
+	return max(min(a + b, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
 
 
 ## returns a * b except when it rounds to GLOBAL_MAX_AMOUNT (or negative sign) to prevent overflow
-static func safe_multiplication(a: int, b: int) -> int:
+static func safe_mult(a: int, b: int) -> int:
 	var sgn: int = -1 if (a < 0 and b > 0) or (a > 0 and b < 0) else 1
 	a = abs(a)
 	b = abs(b)
 	var digits_limit: float = log(Limits.GLOBAL_MAX_AMOUNT)
 	var digits_a: float = log(a)
 	var digits_b: float = log(b)
-	var product: int = Limits.GLOBAL_MAX_AMOUNT
+
 	if (digits_a + digits_b) < digits_limit:
-		product = a * b
-	return product * sgn
+		return a * b * sgn
+	return Limits.GLOBAL_MAX_AMOUNT * sgn

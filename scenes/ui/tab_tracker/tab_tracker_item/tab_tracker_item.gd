@@ -22,13 +22,18 @@ func _ready() -> void:
 ###########
 
 
+func get_id() -> String:
+	if _tab_data == null:
+		return ""
+	return _tab_data.id
+
+
 func get_tab_data() -> TabData:
 	return _tab_data
 
 
 func set_tab_data(tab_data: TabData) -> void:
 	_tab_data = tab_data
-	refresh_title()
 
 
 func refresh_title() -> void:
@@ -104,3 +109,23 @@ func _on_deaths_door_resolved(
 ) -> void:
 	if _tab_data != null and _tab_data.id == "soul" and !enemy_data.is_last():
 		start_unlock_animation()
+
+
+############
+## static ##
+############
+
+
+static func before_than(a: TabTrackerItem, b: TabTrackerItem) -> bool:
+	var sort_a: TabData = Resources.tab_datas.get(a.get_id(), null)
+	var sort_b: TabData = Resources.tab_datas.get(b.get_id(), null)
+	if sort_a == null:
+		return true
+	if sort_b == null:
+		return false
+
+	return sort_a.get_sort_value() < sort_b.get_sort_value()
+
+
+static func after_than(a: TabTrackerItem, b: TabTrackerItem) -> bool:
+	return !before_than(a, b)

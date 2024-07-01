@@ -11,6 +11,7 @@ signal manager_button_add(worker_role: WorkerRole)
 signal manager_button_del(worker_role: WorkerRole)
 signal npc_event_interacted(npc_id: String, npc_event_id: String, option: int)
 signal enemy_hover(enemy_data: EnemyData)
+signal tab_clicked(tab_data: TabData)
 signal tab_changed(tab_data: TabData)
 signal toggle_button_pressed(id: String, toggle_id: String)
 signal toggle_scale_pressed(scale_: int)
@@ -25,6 +26,7 @@ signal deaths_door_open(enemy_data: EnemyData)
 signal deaths_door(enemy_data: EnemyData, option: int)
 
 ## CONTROLLER
+signal main_ready
 signal progress_button_paid(resource_generator: ResourceGenerator)
 signal progress_button_unpaid(resource_generator: ResourceGenerator)
 signal resource_generated(id: String, amount: int, source_id: String)
@@ -43,6 +45,11 @@ signal set_ui_theme(theme: Resource)
 signal toggle_button(id: String, toggle_id: String)
 signal toggle_scale(scale_: int)
 signal deaths_door_decided(enemy_data: EnemyData, option: int)
+signal save_entered(seconds_delta: int, seconds_delta_expected: int)
+signal autosave(seconds_delta: int, seconds_delta_expected: int)
+signal offline_progress_processed(
+	seconds_delta: int, worker_progress: Dictionary, enemy_progress: Dictionary, factor: float
+)
 
 ## MANAGER
 signal resource_updated(id: String, total: int, amount: int, source_id: String)

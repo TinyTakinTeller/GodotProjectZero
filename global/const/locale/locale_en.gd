@@ -46,7 +46,11 @@ const ui_label: Dictionary = {
 	"deaths_door_first_info":
 	"Destroy the creature, consuming the tormented Soul into your own essence.",
 	"deaths_door_second_info":
-	"Free the creature, releasing the Soul from the corrupted flesh prison."
+	"Free the creature, releasing the Soul from the corrupted flesh prison.",
+	"offline_1": "You were away for {0}. \n\n",
+	"offline_2": "Unhappy population will refuse to work while not observed. ",
+	"offline_3": "Make sure your resources are not decreasing to keep your population happy: ",
+	"offline_4": "Since your last activity, population generated: "
 }
 
 const npc_hover_title: Dictionary = {}

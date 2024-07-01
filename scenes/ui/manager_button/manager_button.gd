@@ -227,7 +227,10 @@ func _on_worker_efficient(worker_role_id: String) -> void:
 
 
 func _on_resource_storage_hover(resource: ResourceGenerator) -> void:
+	if _worker_role == null:
+		return
 	var id: String = resource.id
+
 	if _worker_role.get_consume().has(id) or _worker_role.get_worker_consume().has(id):
 		info_label.modulate = ColorSwatches.RED
 	elif _worker_role.get_produce().has(id):

@@ -21,7 +21,7 @@ var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
 var metadata: Dictionary = {}
 var LOCALE: String = "en"
 
-@onready var timer: Timer = %AutosaveTimer
+@onready var autosave_timer: Timer = %AutosaveTimer
 
 ###############
 ## overrides ##
@@ -30,6 +30,7 @@ var LOCALE: String = "en"
 
 func _ready() -> void:
 	_load_save_files()
+	_connect_signals()
 
 	if Game.params["debug_logs"]:
 		print("_AUTOLOAD _READY: " + self.get_name())
@@ -153,7 +154,7 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 	elif StringUtils.is_not_empty(metadata_name):
 		metadata["save_file_name"] = metadata_name
 
-	_connect_signals()
+	_connect_autosave_timer()
 
 
 func delete(save_file_name: String) -> void:
@@ -178,10 +179,34 @@ func rename(save_file_name: String, new_text: String, old_text: String) -> void:
 #############
 
 
+func _save_entered() -> void:
+	var seconds_delta: int = _get_seconds_since_last_autosave()
+
+	SignalBus.save_entered.emit(seconds_delta, AUTOSAVE_SECONDS)
+
+	_update_metadata()
+
+
 func _autosave() -> void:
+	var seconds_delta: int = _get_seconds_since_last_autosave()
+	if seconds_delta < AUTOSAVE_SECONDS:
+		return
+
+	SignalBus.autosave.emit(seconds_delta, AUTOSAVE_SECONDS)
+
 	var file_name: String = ACTIVE_FILE_NAME
 	_update_metadata()
 	__write(file_name)
+
+
+func _get_seconds_since_last_autosave() -> int:
+	var now_time: Dictionary = Time.get_datetime_dict_from_system(true)
+	var last_time: Dictionary = metadata.get("last_utc_time", now_time)
+	var unix_delta: int = (
+		Time.get_unix_time_from_datetime_dict(now_time)
+		- Time.get_unix_time_from_datetime_dict(last_time)
+	)
+	return unix_delta
 
 
 func _load_save_files() -> void:
@@ -295,7 +320,7 @@ func _update_metadata() -> void:
 	metadata["last_version_major"] = Game.VERSION_MAJOR
 	metadata["last_version_minor"] = Game.VERSION_MINOR
 	metadata["total_autosave_seconds"] = (
-		metadata.get("total_autosave_seconds", 0) + Game.params["autosave_seconds"]
+		metadata.get("total_autosave_seconds", 0) + AUTOSAVE_SECONDS
 	)
 	if metadata.get("first_utc_time", null) == null:
 		metadata["first_utc_time"] = Time.get_datetime_dict_from_system(true)
@@ -347,14 +372,22 @@ func _check_backward_week_7(save_data: Dictionary) -> void:
 
 
 func _connect_signals() -> void:
+	SignalBus.main_ready.connect(_on_main_ready)
+
+
+func _connect_autosave_timer() -> void:
 	if Game.params["autosave_enabled"]:
-		timer.wait_time = AUTOSAVE_SECONDS
-		timer.timeout.connect(_on_timeout)
-		timer.start()
+		autosave_timer.wait_time = 0.1
+		autosave_timer.timeout.connect(_on_timeout)
+		autosave_timer.start()
 
 
 func _on_timeout() -> void:
 	_autosave()
+
+
+func _on_main_ready() -> void:
+	_save_entered()
 
 
 ##############
@@ -416,8 +449,7 @@ func __parse(content: String, retry: bool = true) -> JSON:
 			if Game.params["debug_logs"]:
 				print("__READ_RETRY_PARSE_WITH_FORCE_ASCII_CONTENT: " + retry_content)
 			return __parse(retry_content, false)
-		else:
-			return null
+		return null
 	return json_object
 
 

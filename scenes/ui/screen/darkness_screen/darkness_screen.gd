@@ -101,6 +101,8 @@ func _update_health_bar(total_damage: int) -> void:
 	var health_points: int = _enemy_data.health_points
 	var value: int = max(0, health_points - total_damage)
 	_health = value
+
+	# check overkill & generate soulstone
 	_overkill = total_damage / health_points
 	if value == 0 and _enemy_data.is_last():
 		SignalBus.resource_generated.emit("soulstone", _overkill, name)
