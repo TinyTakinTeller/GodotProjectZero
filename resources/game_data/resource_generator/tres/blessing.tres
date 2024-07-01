@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://ble0xhmgputl2"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_jluef"]
+
+[resource]
+script = ExtResource("1_jluef")
+color = Color(0, 0, 0, 1)
+sort_value = 107
+sort_value_override = 0.0
+id = "blessing"
+amount = 1
+cooldown = 10.0
+costs = {}
+cost_scales = {}
+worker_costs = {}
+random_drops = {}
+hidden = false
+max_amount = -1
+column = 0
