@@ -117,8 +117,8 @@ func _handle_on_game_resumed(
 		efficiencies, worker_controller_cycles
 	)
 	var generated: Dictionary = worker_progress["generated"]
-	var decreasing_ids: Array = worker_progress["decreasing_ids"]
-	var workers_are_happy: bool = decreasing_ids.is_empty()
+	# var decreasing_ids: Array = worker_progress["decreasing_ids"]
+	# var workers_are_happy: bool = decreasing_ids.is_empty()
 
 	var enemy_id: String = SaveFile.enemy["level"]
 	var enemy_data: EnemyData = Resources.enemy_datas.get(enemy_id, null)
@@ -134,13 +134,12 @@ func _handle_on_game_resumed(
 	# var overkill_factor: float = enemy_progress["overkill_factor"]
 	DictionaryUtils.merge_sum_int(generated, enemy_progress["generated"])
 
-	var is_generated: bool = _generate_resources(generated)
+	_generate_resources(generated)
 	_trigger_enemy_controller(damage)
 
-	if is_generated or !workers_are_happy:
-		SignalBus.offline_progress_processed.emit(
-			seconds_delta, worker_progress, enemy_progress, factor
-		)
+	SignalBus.offline_progress_processed.emit(
+		seconds_delta, worker_progress, enemy_progress, factor
+	)
 
 	if Game.params["debug_logs"]:
 		prints("_handle_on_game_resumed", seconds_delta, seconds_delta_expected)

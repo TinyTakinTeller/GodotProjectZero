@@ -82,6 +82,9 @@ func _on_offline_progress_processed(
 		margin_container_2.visible = false
 
 	else:
+		if generated.is_empty():
+			return
+
 		label_head.text = (
 			Locale.get_ui_label("offline_1").format({"0": time})
 			+ Locale.get_ui_label("offline_4").format({"0": int(factor * 100)})
