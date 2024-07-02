@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_q6kuo")
 id = "starway"
+sort_value = 5

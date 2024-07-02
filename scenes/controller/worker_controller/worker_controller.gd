@@ -17,6 +17,15 @@ func _ready() -> void:
 	_connect_signals()
 
 
+############
+## public ##
+############
+
+
+func get_efficiencies() -> Dictionary:
+	return _calculate_generated_amounts()
+
+
 #############
 ## helpers ##
 #############
@@ -32,10 +41,11 @@ func _generate(generate: bool = true, multiplier: int = 1) -> void:
 
 	if generate:
 		var generated_resources: Dictionary = efficiencies["resources"]
-		var generated_workers: Dictionary = efficiencies["workers"]
 		for resource_id: String in generated_resources:
 			var amount: int = generated_resources[resource_id]
 			SignalBus.resource_generated.emit(resource_id, amount, name)
+
+		var generated_workers: Dictionary = efficiencies["workers"]
 		for worker_id: String in generated_workers:
 			var amount: int = generated_workers[worker_id]
 			SignalBus.worker_generated.emit(worker_id, amount, name)
@@ -48,13 +58,13 @@ func _calculate_generated_worker_resource_from_houses(
 ) -> int:
 	var per_house: int = Game.params["house_workers"]
 	var resource_id: String = Game.WORKER_RESOURCE_ID
-	var max_workers: int = per_house * resources.get("house", 0)
+	var max_workers: int = per_house * resources.get("house", 0) + resources.get("firepit", 0)
 	var current_workers: int = resources.get(resource_id, 0)
 
 	var new_workers: int = 1 + int((max_workers - current_workers - 1) / per_house)
 	if multiplier != 1:
-		new_workers = Limits.safe_multiplication(new_workers, multiplier)
-	if new_workers > max_workers:
+		new_workers = Limits.safe_mult(new_workers, multiplier)
+	if current_workers + new_workers > max_workers:
 		new_workers = max_workers - current_workers
 	return new_workers
 
@@ -74,7 +84,7 @@ func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
 		var worker_role_id: String = worker_role.id
 		var count: int = SaveFile.workers[worker_role_id]
 		if multiplier != 1:
-			count = Limits.safe_multiplication(count, multiplier)
+			count = Limits.safe_mult(count, multiplier)
 
 		var r_consume: Dictionary = worker_role.get_consume()
 		var w_consume: Dictionary = worker_role.get_worker_consume()
@@ -90,12 +100,14 @@ func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
 
 	var resource_id: String = Game.WORKER_RESOURCE_ID
 	var new_workers: int = _calculate_generated_worker_resource_from_houses(resources, multiplier)
-	generated_resources[resource_id] = Limits.safe_addition(
-		generated_resources.get(resource_id, 0), new_workers
-	)
-	total_eff[resource_id] = Limits.safe_addition(total_eff.get(resource_id, 0), new_workers)
+	if new_workers != 0:
+		generated_resources[resource_id] = Limits.safe_add(
+			generated_resources.get(resource_id, 0), new_workers
+		)
+		total_eff[resource_id] = Limits.safe_add(total_eff.get(resource_id, 0), new_workers)
 
 	return {
+		"storage": resources,
 		"resources": generated_resources,
 		"workers": generated_workers,
 		"total_efficiency": total_eff
@@ -112,11 +124,11 @@ func _generate_from(
 ) -> void:
 	for id: String in ids:
 		var base_amount: int = ids[id]
-		var amount: int = Limits.safe_multiplication(eff, base_amount)
-		generated[id] = Limits.safe_addition(generated.get(id, 0), amount)
-		resources[id] = Limits.safe_addition(resources.get(id, 0), amount)
-		var max_amount: int = Limits.safe_multiplication(count, base_amount)
-		total_eff[id] = Limits.safe_addition(total_eff.get(id, 0), max_amount)
+		var amount: int = Limits.safe_mult(eff, base_amount)
+		generated[id] = Limits.safe_add(generated.get(id, 0), amount)
+		resources[id] = Limits.safe_add(resources.get(id, 0), amount)
+		var max_amount: int = Limits.safe_mult(count, base_amount)
+		total_eff[id] = Limits.safe_add(total_eff.get(id, 0), max_amount)
 
 
 #############

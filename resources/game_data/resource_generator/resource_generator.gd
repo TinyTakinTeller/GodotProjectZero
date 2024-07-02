@@ -14,11 +14,17 @@ class_name ResourceGenerator
 @export var hidden: bool = false
 @export var max_amount: int = -1
 @export var column: int = 0
+@export var dynamic_efficiency_id: String
 
 @export var sfx_generate: AudioStream
 @export var sfx_yield: AudioStream
 
 var _random_drops_sum: int = -1
+
+
+## if idle production of this resource can be increasing, e.g. (mason -> house ->) worker -> food
+func is_dynamic_efficiency() -> bool:
+	return StringUtils.is_not_empty(dynamic_efficiency_id)
 
 
 func is_colored() -> bool:

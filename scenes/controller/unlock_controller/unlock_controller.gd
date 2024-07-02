@@ -30,7 +30,6 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		_unlock_resource_generator_if("brick")
 		_level_up_tab("world", 2)
 		_unlock_worker_role_if("worker")
-		firepit_timer.start()
 	if observed_id == "axe" and observed_total == 1:
 		_unlock_resource_generator_if("wood")
 		_unlock_worker_role_if("lumberjack")
@@ -50,6 +49,7 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 
 	if observed_id == "worker":
 		if ResourceManager.get_total_generated(observed_id) >= 1:
+			_trigger_unique_unlock_event("firepit_worker")
 			_unlock_tab_if("manager")
 			_unlock_worker_role_if("smelter")
 			# _unlock_worker_role_if("FLINT_GENERATOR")
@@ -216,11 +216,6 @@ func _deaths_door_lore(level: int) -> void:
 
 
 func _load_timers() -> void:
-	firepit_timer.wait_time = Game.params["timer_firepit_seconds"]
-	firepit_timer.one_shot = true
-	if SaveFile.resources.get("firepit", 0) == 1:
-		firepit_timer.start()
-
 	cat_intro_timer.wait_time = Game.params["timer_cat_intro_seconds"]
 	cat_intro_timer.one_shot = true
 	if SaveFile.events.get("cat_watching", 0) == 1:
@@ -341,7 +336,6 @@ func _connect_signals() -> void:
 	SignalBus.worker_updated.connect(_on_worker_updated)
 	SignalBus.npc_event_interacted.connect(_on_npc_event_interacted)
 	cat_intro_timer.timeout.connect(_on_timer_cat_timeout)
-	firepit_timer.timeout.connect(_on_firepit_timer_timeout)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 	SignalBus.deaths_door_open.connect(_on_deaths_door_open)
 
@@ -357,12 +351,6 @@ func _on_worker_updated(id: String, total: int, _amount: int) -> void:
 
 func _on_npc_event_interacted(npc_id: String, npc_event_id: String, option: int) -> void:
 	_handle_npc_event_interacted(npc_id, npc_event_id, option)
-
-
-func _on_firepit_timer_timeout() -> void:
-	if SaveFile.resources.get("firepit", 0) == 1:
-		if _trigger_unique_unlock_event("firepit_worker"):
-			_gift_resource("worker", 1, "firepit")
 
 
 func _on_timer_cat_timeout() -> void:

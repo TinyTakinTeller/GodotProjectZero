@@ -1,12 +1,12 @@
 # Godot Project Zero: A Dark Forest
 
-If you wish to contribute, join us in Discord (add `tiny_takin_teller` for invites) and Trello. 
+If you wish to contribute, join us in Trello and Discord (add `tiny_takin_teller` for invites).
 
 PLAY THE GAME : https://tinytakinteller.itch.io/the-best-game-ever
 
 READ WEEKLY DEVLOG'S : https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
-Current Version - [ PRE-ALPHA : WEEK 9 ]
+Current Version - [ PRE-ALPHA : WEEK 10 ]
 
 *Gather Resources...*
 

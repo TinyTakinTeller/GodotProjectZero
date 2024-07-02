@@ -143,6 +143,7 @@ func _connect_signals() -> void:
 	SignalBus.progress_button_paid.connect(_on_progress_button_paid)
 	SignalBus.progress_button_unpaid.connect(_on_progress_button_unpaid)
 	SignalBus.resource_ui_updated.connect(_on_resource_ui_updated)
+	SignalBus.offline_progress_processed.connect(_on_offline_progress_processed)
 
 
 func _on_resized() -> void:
@@ -170,6 +171,7 @@ func _on_mouse_exited() -> void:
 
 func _on_progress_bar_simple_tween_animation_end() -> void:
 	button.disabled = _disabled or _is_max_amount_reached()
+	progress_bar.value = 0.0
 
 
 func _on_red_color_rect_simple_tween_animation_end() -> void:
@@ -206,6 +208,16 @@ func _on_resource_ui_updated(
 	if !is_visible_in_tree():
 		return
 	_handle_resource_ui_updated(resource_tracker_item, change)
+
+
+func _on_offline_progress_processed(
+	seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
+) -> void:
+	_on_cooldown_skip(seconds_delta)
+
+
+func _on_cooldown_skip(skip: float) -> void:
+	progress_bar_simple_tween.progress_skip(skip)
 
 
 ############

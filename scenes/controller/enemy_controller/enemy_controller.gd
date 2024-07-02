@@ -1,7 +1,7 @@
 class_name EnemyController
 extends Node
 
-const ENEMY_CYCLE_SECONDS: int = Game.params["enemy_cycle_seconds"]
+const ENEMY_CYCLE_SECONDS: float = Game.params["enemy_cycle_seconds"]
 
 @onready var timer: Timer = $Timer
 
@@ -20,14 +20,23 @@ func _ready() -> void:
 #############
 
 
+func get_cycle_duration() -> float:
+	var essence_count: int = SaveFile.get_enemy_ids_for_option(2).size()
+	var factor: float = 1.0 - (essence_count * 0.1)
+	return ENEMY_CYCLE_SECONDS * factor
+
+
+#############
+## helpers ##
+#############
+
+
 func _initialize() -> void:
 	_start_timer()
 
 
 func _start_timer() -> void:
-	var essence_count: int = SaveFile.get_enemy_ids_for_option(2).size()
-	var factor: float = 1.0 - (essence_count * 0.1)
-	timer.start(ENEMY_CYCLE_SECONDS * factor)
+	timer.start(get_cycle_duration())
 
 
 func _generate() -> void:

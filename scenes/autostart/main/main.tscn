@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=35 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c70gtxukmaco6" path="res://scenes/ui/tab_tracker/tab_tracker.tscn" id="8_vxtq8"]
 [ext_resource type="PackedScene" uid="uid://btrjtbe8ch6vy" path="res://scenes/controller/experience_controller/experience_controller.tscn" id="9_wl1uy"]
 [ext_resource type="PackedScene" uid="uid://bauwua6x5pgjh" path="res://scenes/ui/info_container/info_container.tscn" id="10_unxkl"]
+[ext_resource type="PackedScene" uid="uid://ixechckh2n74" path="res://scenes/controller/offline_controller/offline_controller.tscn" id="11_7wnoe"]
 [ext_resource type="PackedScene" uid="uid://o2s521j3hgp8" path="res://scenes/manager/setting_manager/setting_manager.tscn" id="13_yy02v"]
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="14_45bu4"]
 [ext_resource type="PackedScene" uid="uid://dt8uyfjegwwqf" path="res://scenes/manager/npc_manager/npc_manager.tscn" id="14_hfr4p"]
@@ -32,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://ch7uxqklej1h6" path="res://scenes/ui/screen/darkness_screen/darkness_screen.tscn" id="21_324w1"]
 [ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
 [ext_resource type="PackedScene" uid="uid://br1a46uikyubt" path="res://scenes/ui/screen/starway_screen/starway_screen.tscn" id="27_d2ak1"]
+[ext_resource type="PackedScene" uid="uid://b5cknmluch23j" path="res://scenes/ui/screen/offline_screen/offline_screen.tscn" id="29_mta8x"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_u1kx3")
@@ -56,6 +58,10 @@ sfx_unlock = ExtResource("7_lojif")
 [node name="EnemyController" parent="Controllers" instance=ExtResource("8_337st")]
 
 [node name="ExperienceController" parent="Controllers" instance=ExtResource("9_wl1uy")]
+
+[node name="OfflineController" parent="Controllers" node_paths=PackedStringArray("worker_controller", "enemy_controller") instance=ExtResource("11_7wnoe")]
+worker_controller = NodePath("../WorkerController")
+enemy_controller = NodePath("../EnemyController")
 
 [node name="Managers" type="Node" parent="."]
 
@@ -146,6 +152,9 @@ layout_mode = 2
 
 [node name="StarwayScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
 visible = false
+layout_mode = 2
+
+[node name="OfflineScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
 layout_mode = 2
 
 [node name="ResourceTracker" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]

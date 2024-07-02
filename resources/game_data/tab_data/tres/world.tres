@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_e54ak")
 id = "world"
+sort_value = 1

@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_6tflp")
 id = "soul"
+sort_value = 4
