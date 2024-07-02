@@ -1,6 +1,5 @@
 class_name AudioManager extends Node
 
-# @onready var music: Node = %Music
 @onready var audio_queue: AudioQueue = %AudioQueue
 @onready var music_tracks: Node = %MusicTracks
 @onready var current_song: AudioStreamPlayer = %MusicTracks.get_child(0)
@@ -9,9 +8,9 @@ class_name AudioManager extends Node
 	set(value):
 		default_pitch_variance = clampf(value, 0.0, 1.0)
 
-
-func _on_song_finished() -> void:
-	pass
+#############
+## methods ##
+#############
 
 
 func play_music(song_stream: AudioStream) -> void:
@@ -36,3 +35,12 @@ func play_music(song_stream: AudioStream) -> void:
 
 func play_sfx(sfx_stream: AudioStream, pitch_variance: float = default_pitch_variance) -> void:
 	audio_queue.play(sfx_stream, pitch_variance)
+
+
+#############
+## signals ##
+#############
+
+
+func _on_song_finished() -> void:
+	pass

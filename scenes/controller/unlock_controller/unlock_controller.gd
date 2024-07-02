@@ -327,7 +327,7 @@ func _gift_scam() -> void:
 
 
 #############
-## signlas ##
+## signals ##
 #############
 
 
