@@ -1,7 +1,6 @@
 class_name AudioQueue extends Node
 
 @export var stream_player_count: int = 4
-@export var default_pitch_variance: float = 0.0
 @export_enum(&"Master", &"Music", &"SFX") var bus: String = &"Master"
 
 var available_stream_players: Array[AudioStreamPlayer] = []
@@ -21,7 +20,7 @@ func _on_stream_player_finished(stream_player: AudioStreamPlayer) -> void:
 	available_stream_players.append(stream_player)
 
 
-func play(stream: AudioStream, pitch_variance: float = default_pitch_variance) -> void:
+func play(stream: AudioStream, pitch_variance: float) -> void:
 	var pitch_scale: float = randf_range(1.0 - pitch_variance, 1.0 + pitch_variance)
 	audio_queue.append({"stream": stream, "pitch_scale": pitch_scale})
 

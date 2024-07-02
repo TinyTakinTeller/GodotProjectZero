@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=33 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://3iqi2w4katso" path="res://scenes/controller/unlock_controller/unlock_controller.tscn" id="6_albwn"]
 [ext_resource type="PackedScene" uid="uid://ctmnwgwxqwhd4" path="res://scenes/manager/tab_manager/tab_manager.tscn" id="7_0dsj8"]
 [ext_resource type="PackedScene" uid="uid://b7v7qyfc1edkj" path="res://scenes/controller/setting_controller/setting_controller.tscn" id="7_jgdlg"]
+[ext_resource type="AudioStream" uid="uid://c45r1h0snq0cs" path="res://assets/audio/sfx/special/piano_1.wav" id="7_lojif"]
 [ext_resource type="PackedScene" uid="uid://dnnw7tt0fonnw" path="res://scenes/controller/npc_controller/npc_controller.tscn" id="8_4fvsv"]
 [ext_resource type="PackedScene" uid="uid://bltskwx6etd24" path="res://scenes/controller/enemy_controller/enemy_controller.tscn" id="8_337st"]
 [ext_resource type="PackedScene" uid="uid://dq0ehpx6uoiux" path="res://scenes/manager/screen_manager/screen_manager.tscn" id="8_q26bh"]
@@ -46,6 +47,7 @@ script = ExtResource("1_u1kx3")
 [node name="EventController" parent="Controllers" instance=ExtResource("3_q3mwm")]
 
 [node name="UnlockController" parent="Controllers" instance=ExtResource("6_albwn")]
+sfx_unlock = ExtResource("7_lojif")
 
 [node name="SettingController" parent="Controllers" instance=ExtResource("7_jgdlg")]
 

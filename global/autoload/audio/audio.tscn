@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp61l7vkkscuw"]
+
+[ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
+[ext_resource type="Script" path="res://global/autoload/audio/audio_queue.gd" id="2_fuumq"]
+[ext_resource type="AudioStream" uid="uid://vyty2qldx3tv" path="res://assets/audio/sfx/ambience/dark_ambient_1.wav" id="3_3lyhg"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_7i6rq")
+
+[node name="AudioQueue" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_fuumq")
+stream_player_count = 8
+bus = "SFX"
+
+[node name="MusicTracks" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicTracks"]
+stream = ExtResource("3_3lyhg")
+autoplay = true

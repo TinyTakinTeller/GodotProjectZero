@@ -1,5 +1,7 @@
 extends Node
 
+@export var sfx_unlock: AudioStream
+
 @onready var firepit_timer: Timer = $FirepitTimer
 @onready var cat_intro_timer: Timer = $CatIntroTimer
 
@@ -96,6 +98,8 @@ func _handle_npc_event_interacted(npc_id: String, npc_event_id: String, option: 
 
 
 func _handle_land_event(observed_id: String) -> void:
+	if sfx_unlock:
+		Audio.play_sfx(sfx_unlock, 0.0)
 	if ResourceManager.get_total_generated(observed_id) >= 1:
 		_trigger_unique_unlock_event("land_1")
 		_unlock_resource_generator_if("FOREST")
