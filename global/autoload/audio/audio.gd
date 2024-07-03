@@ -1,4 +1,4 @@
-class_name AudioManager extends Node
+extends Node
 
 @onready var audio_queue: AudioQueue = %AudioQueue
 @onready var music_tracks: Node = %MusicTracks
@@ -15,16 +15,16 @@ class_name AudioManager extends Node
 
 func play_music(song_stream: AudioStream) -> void:
 	if current_song:
-		var current_song_tween := create_tween()
+		var current_song_tween: Tween = create_tween()
 		current_song_tween.finished.connect(current_song.queue_free)
 		current_song_tween.tween_property(current_song, "volume_db", -100, 2.0)
 
-	var next_song := AudioStreamPlayer.new()
+	var next_song: AudioStreamPlayer = AudioStreamPlayer.new()
 	next_song.stream = song_stream
 	next_song.volume_db = -100
 	next_song.bus = &"Music"
 
-	var next_song_tween := create_tween()
+	var next_song_tween: Tween = create_tween()
 	next_song_tween.tween_property(next_song, "volume_db", 0, 2.0)
 
 	music_tracks.add_child(next_song)

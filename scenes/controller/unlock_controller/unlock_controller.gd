@@ -98,8 +98,6 @@ func _handle_npc_event_interacted(npc_id: String, npc_event_id: String, option: 
 
 
 func _handle_land_event(observed_id: String) -> void:
-	if sfx_unlock:
-		Audio.play_sfx(sfx_unlock, 0.0)
 	if ResourceManager.get_total_generated(observed_id) >= 1:
 		_trigger_unique_unlock_event("land_1")
 		_unlock_resource_generator_if("FOREST")
@@ -273,6 +271,11 @@ func _unlock_tab_if(unlock_id: String) -> void:
 		SignalBus.tab_unlock.emit(tab_data)
 
 
+func _play_sfx_unlock() -> void:
+	if sfx_unlock:
+		Audio.play_sfx(sfx_unlock, 0.0)
+
+
 func _gift_resource(gen_id: String, amount: int, source_id: String) -> void:
 	if amount != 0:
 		SignalBus.resource_generated.emit(gen_id, amount, source_id)
@@ -338,6 +341,9 @@ func _connect_signals() -> void:
 	cat_intro_timer.timeout.connect(_on_timer_cat_timeout)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 	SignalBus.deaths_door_open.connect(_on_deaths_door_open)
+	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
+	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
+	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, _source_id: String) -> void:
@@ -366,3 +372,15 @@ func _on_deaths_door_resolved(
 
 func _on_deaths_door_open(enemy_data: EnemyData) -> void:
 	_handle_on_deaths_door_open(enemy_data)
+
+
+func _on_progress_button_unlocked(_resource_generator: ResourceGenerator) -> void:
+	_play_sfx_unlock()
+
+
+func _on_manager_button_unlocked(_worker_role: WorkerRole) -> void:
+	_play_sfx_unlock()
+
+
+func _on_tab_unlocked(_tab_data: TabData) -> void:
+	_play_sfx_unlock()
