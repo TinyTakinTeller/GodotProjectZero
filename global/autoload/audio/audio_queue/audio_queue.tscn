@@ -5,4 +5,3 @@
 [node name="AudioQueue" type="Node"]
 script = ExtResource("1_uuxwv")
 stream_player_count = 8
-bus = "SFX"

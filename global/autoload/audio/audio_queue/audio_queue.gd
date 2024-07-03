@@ -1,7 +1,7 @@
 class_name AudioQueue extends Node
 
 @export var stream_player_count: int = 4
-@export_enum(&"Master", &"Music", &"SFX") var bus: String = &"Master"
+@export_enum(&"Master", &"Music", &"SFX") var bus: String = &"SFX"
 
 var _available_stream_players: Array[AudioStreamPlayer] = []
 var _audio_queue: Array[AudioItem] = []
@@ -20,6 +20,7 @@ class AudioItem:
 func _ready() -> void:
 	for i in stream_player_count:
 		var stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
+		stream_player.bus = bus
 		add_child(stream_player)
 		stream_player.finished.connect(_on_stream_player_finished.bind(stream_player))
 		_available_stream_players.append(stream_player)

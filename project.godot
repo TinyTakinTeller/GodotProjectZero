@@ -27,6 +27,10 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/image/icon/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://resources/audio_settings/default_audio_bus_layout.tres"
+
 [autoload]
 
 Resources="*res://global/autoload/resources.gd"
