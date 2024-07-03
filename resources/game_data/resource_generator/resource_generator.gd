@@ -16,8 +16,8 @@ class_name ResourceGenerator
 @export var column: int = 0
 @export var dynamic_efficiency_id: String
 
-@export var sfx_generate: AudioStream
-@export var sfx_yield: AudioStream
+@export var sfx_button_down: AudioStream
+@export var sfx_button_success: AudioStream
 
 var _random_drops_sum: int = -1
 
