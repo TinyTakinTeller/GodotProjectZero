@@ -23,12 +23,12 @@ func _ready() -> void:
 #############
 
 
-func swap_crossfade_music(track: int) -> void:
+func swap_crossfade_music_next() -> void:
+	var track: int = (_track + 1) % music_tracks.get_child_count()
 	swap_crossfade_music_new(track, null)
 
 
-func swap_crossfade_music_next() -> void:
-	var track: int = (_track + 1) % music_tracks.get_child_count()
+func swap_crossfade_music(track: int) -> void:
 	swap_crossfade_music_new(track, null)
 
 

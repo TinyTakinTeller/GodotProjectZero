@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjroqyyfrvx70"]
 
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_gumta"]
-[ext_resource type="AudioStream" uid="uid://b72ckli2xxvhc" path="res://assets/audio/indie_friendly_sound_packs/UI Simple 5_1.wav" id="2_gvme8"]
+[ext_resource type="AudioStream" uid="uid://cljnal1s4pwpn" path="res://assets/audio/indie_friendly_sound_packs/indie_friendly_rpg_sounds/interface/ui_simple_5_1.wav" id="2_kppmn"]
 [ext_resource type="Script" path="res://scenes/ui/progress_button/progress_button.gd" id="2_rp5nm"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_v7ecv"]
 [ext_resource type="PackedScene" uid="uid://d4a6sfsyw5jie" path="res://scenes/component/effect/line_effect/line_effect.tscn" id="3_aqdv6"]
-[ext_resource type="AudioStream" uid="uid://1iot3m76a6jf" path="res://assets/audio/indie_friendly_sound_packs/UI Simple 2_1.wav" id="3_u8bdv"]
-[ext_resource type="AudioStream" uid="uid://fabtcepxsiqp" path="res://assets/audio/indie_friendly_sound_packs/UI Simple 3_2.wav" id="4_jp0ag"]
+[ext_resource type="AudioStream" uid="uid://df60q3he8t3i0" path="res://assets/audio/indie_friendly_sound_packs/indie_friendly_rpg_sounds/interface/ui_simple_2_1.wav" id="3_y5gva"]
+[ext_resource type="AudioStream" uid="uid://cvolj8504pgrr" path="res://assets/audio/indie_friendly_sound_packs/indie_friendly_rpg_sounds/interface/ui_simple_3_2.wav" id="4_3qpxi"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="4_ybk84"]
 
 [node name="ProgressButton" type="MarginContainer"]
@@ -22,9 +22,9 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 script = ExtResource("2_rp5nm")
-sfx_button_down = ExtResource("2_gvme8")
-sfx_button_success = ExtResource("3_u8bdv")
-sfx_button_fail = ExtResource("4_jp0ag")
+sfx_button_down = ExtResource("2_kppmn")
+sfx_button_success = ExtResource("3_y5gva")
+sfx_button_fail = ExtResource("4_3qpxi")
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true

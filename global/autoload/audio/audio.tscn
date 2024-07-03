@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
 [ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
-[ext_resource type="AudioStream" uid="uid://vyty2qldx3tv" path="res://assets/audio/indie_friendly_sound_packs/dark_ambient_1.wav" id="3_3lyhg"]
+[ext_resource type="AudioStream" uid="uid://dmbq3i7itcfr0" path="res://assets/audio/indie_friendly_sound_packs/indie_friendly_rpg_sounds/environment/dark_ambient_1.wav" id="3_3lyhg"]
 [ext_resource type="AudioStream" uid="uid://bpdnro1l17w15" path="res://assets/audio/music/20_axes_to_a_bed.mp3" id="3_87r06"]
 [ext_resource type="PackedScene" uid="uid://bg37hs706yk1o" path="res://global/autoload/audio/music_track/music_track.tscn" id="3_kqvc4"]
 [ext_resource type="AudioStream" uid="uid://dm1gfqtqypk11" path="res://assets/audio/music/forest_song.mp3" id="3_l5s51"]
@@ -19,7 +19,7 @@ unique_name_in_owner = true
 [node name="MusicTrack1" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
 unique_name_in_owner = true
 audio_stream = ExtResource("3_3lyhg")
-max_volume = 2.0
+max_volume = 3.0
 
 [node name="MusicTrack2" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
 unique_name_in_owner = true
