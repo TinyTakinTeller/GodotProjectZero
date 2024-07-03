@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
 [ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
-[ext_resource type="AudioStream" uid="uid://vyty2qldx3tv" path="res://assets/audio/indie_friendly_sound_packs/dark_ambient_1.wav" id="3_3lyhg"]
+[ext_resource type="AudioStream" uid="uid://dmbq3i7itcfr0" path="res://assets/audio/indie_friendly_sound_packs/indie_friendly_rpg_sounds/environment/dark_ambient_1.wav" id="3_gg3ip"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_7i6rq")
@@ -14,5 +14,5 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicTracks"]
-stream = ExtResource("3_3lyhg")
+stream = ExtResource("3_gg3ip")
 autoplay = true
