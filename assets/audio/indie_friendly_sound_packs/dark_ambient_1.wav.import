@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://vyty2qldx3tv"
-path="res://.godot/imported/dark_ambient_1.wav-80ca85f2053dc96c1175f592acdbbaba.sample"
+path="res://.godot/imported/dark_ambient_1.wav-1785d8c67750c0b4bacca02ac8172df3.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/ambience/dark_ambient_1.wav"
-dest_files=["res://.godot/imported/dark_ambient_1.wav-80ca85f2053dc96c1175f592acdbbaba.sample"]
+source_file="res://assets/audio/indie_friendly_sound_packs/dark_ambient_1.wav"
+dest_files=["res://.godot/imported/dark_ambient_1.wav-1785d8c67750c0b4bacca02ac8172df3.sample"]
 
 [params]
 

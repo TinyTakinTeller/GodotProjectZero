@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
 [ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
-[ext_resource type="AudioStream" uid="uid://vyty2qldx3tv" path="res://assets/audio/sfx/ambience/dark_ambient_1.wav" id="3_3lyhg"]
+[ext_resource type="AudioStream" uid="uid://vyty2qldx3tv" path="res://assets/audio/indie_friendly_sound_packs/dark_ambient_1.wav" id="3_3lyhg"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_7i6rq")

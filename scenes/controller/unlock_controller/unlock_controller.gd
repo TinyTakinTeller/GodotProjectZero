@@ -2,7 +2,6 @@ extends Node
 
 @export var sfx_unlock: AudioStream
 
-@onready var firepit_timer: Timer = $FirepitTimer
 @onready var cat_intro_timer: Timer = $CatIntroTimer
 
 ###############

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bkapi4fkjyixy"
-path="res://.godot/imported/wood_bundle_1.wav-ef0466f00c13b1346dde8bc7cf10aac6.sample"
+path="res://.godot/imported/wood_bundle_1.wav-56eabc4a3878f4874ea05dda06221b6d.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/foley/wood_bundle_1.wav"
-dest_files=["res://.godot/imported/wood_bundle_1.wav-ef0466f00c13b1346dde8bc7cf10aac6.sample"]
+source_file="res://assets/audio/indie_friendly_sound_packs/wood_bundle_1.wav"
+dest_files=["res://.godot/imported/wood_bundle_1.wav-56eabc4a3878f4874ea05dda06221b6d.sample"]
 
 [params]
 

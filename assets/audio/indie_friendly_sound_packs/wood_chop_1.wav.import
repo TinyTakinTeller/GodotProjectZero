@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://xibdk37s17hp"
-path="res://.godot/imported/wood_chop_1.wav-e5802b81e9bda9a1db95d8dd68df297e.sample"
+path="res://.godot/imported/wood_chop_1.wav-fa0226f2ab55b10c34ee21a58e3199d5.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/foley/wood_chop_1.wav"
-dest_files=["res://.godot/imported/wood_chop_1.wav-e5802b81e9bda9a1db95d8dd68df297e.sample"]
+source_file="res://assets/audio/indie_friendly_sound_packs/wood_chop_1.wav"
+dest_files=["res://.godot/imported/wood_chop_1.wav-fa0226f2ab55b10c34ee21a58e3199d5.sample"]
 
 [params]
 

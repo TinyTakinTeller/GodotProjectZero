@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://1iot3m76a6jf"
-path="res://.godot/imported/UI Simple 2_1.wav-ac775cbe69dfb0c3557098af0b510ec6.sample"
+path="res://.godot/imported/UI Simple 2_1.wav-7e91dc819b7e37a87992817aaf808935.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/special/UI Simple 2_1.wav"
-dest_files=["res://.godot/imported/UI Simple 2_1.wav-ac775cbe69dfb0c3557098af0b510ec6.sample"]
+source_file="res://assets/audio/indie_friendly_sound_packs/UI Simple 2_1.wav"
+dest_files=["res://.godot/imported/UI Simple 2_1.wav-7e91dc819b7e37a87992817aaf808935.sample"]
 
 [params]
 
