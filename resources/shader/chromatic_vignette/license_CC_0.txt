@@ -1,0 +1,14 @@
+Folder "res://resources/shader/chromatic_vignette/" contents attribution file.
+---
+Title: Chromatic Aberration Vignette
+Author: https://godotshaders.com/author/ructoon/
+Source: https://godotshaders.com/shader/chromatic-aberration-vignette/
+License: https://creativecommons.org/publicdomain/zero/1.0/
+---
+The original contents were modified by: https://tinytakinteller.itch.io/
+---
+TLDR:
+asset "Chromatic Aberration Vignette" (chromatic_vignette.gdshader)
+by ructoon (https://godotshaders.com/author/ructoon/) licensed under CC0 1.0
+---
+

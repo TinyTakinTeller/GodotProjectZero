@@ -11,11 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
 script = ExtResource("1_wrevx")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -26,6 +25,7 @@ layout_mode = 2
 
 [node name="ThemeToggleButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_x8wem")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_type_variation = &"ManagerButton"
 _id = "theme"
@@ -34,7 +34,8 @@ _toggle_id_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 12
 
 [node name="VersionButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true

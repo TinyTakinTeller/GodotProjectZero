@@ -17,9 +17,9 @@ var tab_unlocks: Array = ["world", "settings"]
 var tab_levels: Dictionary = {"world": 0}
 var settings: Dictionary = {"theme": "dark"}
 var audio_settings: Dictionary = {
-	"master": {"value": 1.0, "toggle": true},
-	"music": {"value": 1.0, "toggle": true},
-	"sfx": {"value": 1.0, "toggle": true}
+	"master": {"value": 1.00, "toggle": true},
+	"music": {"value": 0.80, "toggle": true},
+	"sfx": {"value": 0.50, "toggle": true}
 }
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}

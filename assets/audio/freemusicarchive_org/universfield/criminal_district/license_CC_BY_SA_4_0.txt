@@ -1,0 +1,10 @@
+Folder "res://assets/audio/freemusicarchive_org/universfield/criminal_district/" contents attribution file.
+---
+Title: UNIVERSFIELD Criminal District
+Author: https://freemusicarchive.org/music/universfield
+Source: https://freemusicarchive.org/music/universfield/dark-music/criminal-district/
+License: https://creativecommons.org/licenses/by-sa/4.0/
+---
+TLDR:
+asset "Criminal District" (criminal_district.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0
+---

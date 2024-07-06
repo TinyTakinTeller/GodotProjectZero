@@ -1,0 +1,10 @@
+Folder "res://assets/audio/freemusicarchive_org/universfield/serene_dreamscape/" contents attribution file.
+---
+Title: UNIVERSFIELD Serene Dreamscape
+Author: https://freemusicarchive.org/music/universfield
+Source: https://freemusicarchive.org/music/universfield/ambient-music/serene-dreamscape/
+License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+---
+TLDR:
+asset "Serene Dreamscape" (serene_dreamscape.mp3) by UNIVERSFIELD licensed under CC-BY-NC-SA 4.0
+---

@@ -34,3 +34,5 @@ func _connect_signals() -> void:
 
 func _on_event_triggered(event_data: EventData, vals: Array) -> void:
 	_add_event(event_data, vals)
+
+	Audio.play_sfx_id("diary_entry_" + str(randi() % 2 + 1))

@@ -81,6 +81,8 @@ func _handle_on_scale_button_up(button: Button, scale_value: int) -> void:
 		if other_button.text != button.text:
 			other_button.disabled = false
 
+	Audio.play_sfx_id("generic_click")
+
 
 func _handle_on_scale_button_hover(scale_value: int) -> void:
 	var title: String = "[%s]" % NumberUtils.format_number(scale_value)

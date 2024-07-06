@@ -1,5 +1,10 @@
-extends MarginContainer
-class_name ManagerButton
+class_name ManagerButton extends MarginContainer
+
+## effect params
+var label_color: Color = ColorSwatches.GREEN
+var particle_id: String = "resource_generated_particle"
+
+var _worker_role: WorkerRole
 
 @onready var del_button: Button = %DelButton
 @onready var add_button: Button = %AddButton
@@ -7,12 +12,6 @@ class_name ManagerButton
 @onready var amount_label: Label = %AmountLabel
 @onready var new_unlock_tween: Node = %NewUnlockTween
 @onready var label_effect_queue: LabelEffectQueue = %LabelEffectQueue
-
-## effect params
-var label_color: Color = ColorSwatches.GREEN
-var particle_id: String = "resource_generated_particle"
-
-var _worker_role: WorkerRole
 
 ###############
 ## overrides ##
@@ -166,8 +165,11 @@ func _connect_signals() -> void:
 	add_button.mouse_exited.connect(_on_mouse_exited.bind(add_button))
 	add_button.button_up.connect(_on_add_button_up)
 	del_button.button_up.connect(_on_del_button_up)
+	add_button.button_down.connect(_on_add_button_down)
+	del_button.button_down.connect(_on_del_button_down)
 	SignalBus.worker_updated.connect(_on_worker_updated)
 	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
+	SignalBus.worker_allocated.connect(_on_worker_allocated)
 	SignalBus.resource_storage_hover.connect(_on_resource_storage_hover)
 	SignalBus.resource_storage_unhover.connect(_on_resource_storage_unhover)
 
@@ -199,6 +201,14 @@ func _on_del_button_up() -> void:
 	del_button.release_focus()
 
 
+func _on_add_button_down() -> void:
+	pass
+
+
+func _on_del_button_down() -> void:
+	pass
+
+
 func _on_worker_updated(id: String, total: int, _amount: int) -> void:
 	if get_id() == id:
 		_set_amount(total)
@@ -208,6 +218,15 @@ func _on_worker_efficiency_updated(efficiencies: Dictionary, generate: bool) -> 
 	if !is_visible_in_tree():
 		return
 	_handle_worker_efficiency_updated(efficiencies, generate)
+
+
+func _on_worker_allocated(id: String, amount: int, _source_id: String) -> void:
+	if get_id() != id:
+		return
+	if amount != 0:
+		Audio.play_sfx_id("manager_button_allocated", 0.0)
+	else:
+		Audio.play_sfx_id("manager_button_zero", 0.0)
 
 
 func _on_worker_inefficient(

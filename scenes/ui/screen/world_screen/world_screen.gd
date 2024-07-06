@@ -19,7 +19,6 @@ func _ready() -> void:
 	_load_from_save_file()
 
 
-
 #############
 ## helpers ##
 #############
@@ -45,10 +44,6 @@ func _load_progress_button(resource_generator_id: String) -> void:
 func _add_progress_button(resource_generator: ResourceGenerator) -> ProgressButton:
 	var progress_button_item: ProgressButton = progress_button_scene.instantiate() as ProgressButton
 	progress_button_item.set_resource_generator(resource_generator)
-	if resource_generator.sfx_button_down:
-		progress_button_item.sfx_button_down = resource_generator.sfx_button_down
-	if resource_generator.sfx_button_success:
-		progress_button_item.sfx_button_success = resource_generator.sfx_button_success
 	NodeUtils.add_child_sorted(
 		progress_button_item, grid_containers[resource_generator.column], ProgressButton.before_than
 	)

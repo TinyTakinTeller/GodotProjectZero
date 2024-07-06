@@ -2,10 +2,6 @@ class_name ProgressButton extends MarginContainer
 
 const UNPAID_ANIMATION_LENGTH: float = 0.3
 
-@export var sfx_button_down: AudioStream
-@export var sfx_button_success: AudioStream
-@export var sfx_button_fail: AudioStream
-
 var _resource_generator: ResourceGenerator
 var _disabled: bool = false
 
@@ -112,8 +108,13 @@ func _handle_button_up() -> void:
 
 
 func _handle_button_down() -> void:
-	if sfx_button_down:
-		Audio.play_sfx(sfx_button_down)
+	if _resource_generator == null:
+		return
+
+	if _resource_generator.sfx_button_down:
+		Audio.play_sfx(_resource_generator.id, _resource_generator.sfx_button_down)
+	else:
+		Audio.play_sfx_id("progress_button_down")
 
 
 func _handle_resource_ui_updated(resource_tracker_item: ResourceTrackerItem, amount: int) -> void:
@@ -185,19 +186,23 @@ func _on_progress_button_disabled(id: String) -> void:
 
 
 func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
+	if _resource_generator == null:
+		return
+
 	if get_id() == resource_generator.id:
 		progress_bar_simple_tween.play_animation_(_resource_generator.get_cooldown())
 
-		if sfx_button_success:
-			Audio.play_sfx(sfx_button_success)
+		if _resource_generator.sfx_button_success:
+			Audio.play_sfx(_resource_generator.id, _resource_generator.sfx_button_success)
+		else:
+			Audio.play_sfx_id("progress_button_success")
 
 
 func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
 	if get_id() == resource_generator.id:
 		red_color_rect_simple_tween.play_animation()
 
-		if sfx_button_fail:
-			Audio.play_sfx(sfx_button_fail)
+		Audio.play_sfx_id("progress_button_fail")
 
 
 func _on_resource_ui_updated(

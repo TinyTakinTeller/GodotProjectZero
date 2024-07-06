@@ -2,13 +2,13 @@ extends MarginContainer
 
 const TAB_DATA_ID: String = "manager"
 
-@onready var h_box_container: HBoxContainer = %HBoxContainer
-@onready var progress_bar: ProgressBar = %ProgressBar
-
 @export var manager_button_scene: PackedScene
 @export var worker_controller: WorkerController
 
 var grid_containers: Array[GridContainer] = []
+
+@onready var h_box_container: HBoxContainer = %HBoxContainer
+@onready var progress_bar: ProgressBar = %ProgressBar
 
 ###############
 ## overrides ##
@@ -24,7 +24,6 @@ func _ready() -> void:
 	_initialize()
 	_connect_signals()
 	_load_from_save_file()
-
 
 
 #############
@@ -78,6 +77,7 @@ func _initialize() -> void:
 func _connect_signals() -> void:
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
+	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -90,3 +90,10 @@ func _on_tab_changed(tab_data: TabData) -> void:
 func _on_manager_button_unlocked(worker_role: WorkerRole) -> void:
 	var manager_button_item: ManagerButton = _add_manager_button(worker_role, 0)
 	manager_button_item.start_unlock_animation()
+
+
+func _on_worker_efficiency_updated(_efficiencies: Dictionary, generate: bool) -> void:
+	if !is_visible_in_tree():
+		return
+	if generate:
+		Audio.play_sfx_id("managment_screen_cycle")

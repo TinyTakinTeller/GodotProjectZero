@@ -2,29 +2,27 @@
 
 [ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
 [ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
-[ext_resource type="AudioStream" uid="uid://dmbq3i7itcfr0" path="res://assets/audio/indie_friendly_sound_packs/indie_friendly_rpg_sounds/environment/dark_ambient_1.wav" id="3_3lyhg"]
-[ext_resource type="AudioStream" uid="uid://bpdnro1l17w15" path="res://assets/audio/music/20_axes_to_a_bed.mp3" id="3_87r06"]
+[ext_resource type="PackedScene" uid="uid://bu2l4l0jhesyw" path="res://global/autoload/audio/sfx_map/sfx_map.tscn" id="3_4nox4"]
 [ext_resource type="PackedScene" uid="uid://bg37hs706yk1o" path="res://global/autoload/audio/music_track/music_track.tscn" id="3_kqvc4"]
-[ext_resource type="AudioStream" uid="uid://dm1gfqtqypk11" path="res://assets/audio/music/forest_song.mp3" id="3_l5s51"]
+[ext_resource type="AudioStream" uid="uid://blrw2u3jb1fbm" path="res://assets/audio/freemusicarchive_org/universfield/criminal_district/criminal_district.mp3" id="5_8j73o"]
+[ext_resource type="AudioStream" uid="uid://b44xi3ebx4ju3" path="res://assets/audio/freemusicarchive_org/universfield/corpse_rot/corpse_rot.mp3" id="6_jxnmc"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_7i6rq")
 
-[node name="AudioQueue" parent="." instance=ExtResource("2_bb4fe")]
+[node name="SfxQueue" parent="." instance=ExtResource("2_bb4fe")]
+unique_name_in_owner = true
+stream_player_count = 16
+
+[node name="SfxMap" parent="SfxQueue" instance=ExtResource("3_4nox4")]
 unique_name_in_owner = true
 
 [node name="MusicTracks" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="MusicTrack1" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
-unique_name_in_owner = true
-audio_stream = ExtResource("3_3lyhg")
+audio_stream = ExtResource("5_8j73o")
 max_volume = 3.0
 
 [node name="MusicTrack2" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
-unique_name_in_owner = true
-audio_stream = ExtResource("3_87r06")
-
-[node name="MusicTrack3" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
-unique_name_in_owner = true
-audio_stream = ExtResource("3_l5s51")
+audio_stream = ExtResource("6_jxnmc")

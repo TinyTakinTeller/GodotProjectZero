@@ -204,6 +204,8 @@ func _handle_on_deaths_door_open(enemy_data: EnemyData) -> void:
 
 func _deaths_door_event(option: int, level: int) -> void:
 	var event_id: String = ("execute_" if option == 1 else "absolve_") + str(level)
+	if level > 9:
+		return
 	_trigger_unique_unlock_event(event_id)
 
 
@@ -272,7 +274,7 @@ func _unlock_tab_if(unlock_id: String) -> void:
 
 func _play_sfx_unlock() -> void:
 	if sfx_unlock:
-		Audio.play_sfx(sfx_unlock, 0.0)
+		Audio.play_sfx_id("unlock_controller_unlock", 0.0)
 
 
 func _gift_resource(gen_id: String, amount: int, source_id: String) -> void:

@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func get_cycle_duration() -> float:
 	var essence_count: int = SaveFile.get_enemy_ids_for_option(2).size()
-	var factor: float = 1.0 - (essence_count * 0.1)
+	var factor: float = max(1.0 - (essence_count * 0.1), 0.1)
 	return ENEMY_CYCLE_SECONDS * factor
 
 

@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://bs8c8it6f6cs8"]
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://bs8c8it6f6cs8"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_t0567"]
+[ext_resource type="AudioStream" uid="uid://bg8hi346r4nnc" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/misc/gate_close_1_1.wav" id="2_br4up"]
+[ext_resource type="AudioStream" uid="uid://b5bpgo7pkycuj" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/misc/gate_close_3_2.wav" id="3_r1chq"]
 
 [resource]
 script = ExtResource("1_t0567")
@@ -23,3 +25,5 @@ hidden = false
 max_amount = -1
 column = 2
 dynamic_efficiency_id = ""
+sfx_button_down = ExtResource("2_br4up")
+sfx_button_success = ExtResource("3_r1chq")

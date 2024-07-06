@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://c13qt2v558c84"]
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://c13qt2v558c84"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_2ikhk"]
+[ext_resource type="AudioStream" uid="uid://b5wct5pvckphf" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/crafting/blacksmith_1_1.wav" id="2_xc5cr"]
+[ext_resource type="AudioStream" uid="uid://chnlm5qq8ko2k" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/crafting/blacksmith_2_1.wav" id="3_qppnt"]
 
 [resource]
 script = ExtResource("1_2ikhk")
@@ -22,3 +24,5 @@ hidden = false
 max_amount = -1
 column = 2
 dynamic_efficiency_id = ""
+sfx_button_down = ExtResource("2_xc5cr")
+sfx_button_success = ExtResource("3_qppnt")

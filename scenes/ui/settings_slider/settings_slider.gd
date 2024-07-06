@@ -74,6 +74,7 @@ func _connect_signals() -> void:
 	dec_button.button_up.connect(_on_dec_button_button_up)
 	inc_button.button_up.connect(_on_inc_button_button_up)
 	h_slider.value_changed.connect(_on_h_slider_value_changed)
+	h_slider.drag_ended.connect(_h_slider_drag_ended)
 
 
 func _on_mouse_release(node: Control) -> void:
@@ -85,11 +86,15 @@ func _on_toggle_button_button_up() -> void:
 	_toggle = not _toggle
 	_update_toggle_ui()
 
+	Audio.play_sfx_id("generic_click")
+
 
 func _on_dec_button_button_up() -> void:
 	_on_mouse_release(dec_button)
 	_value = max(0, _value - 0.01)
 	_update_value_ui()
+
+	Audio.play_sfx_id("generic_click")
 
 
 func _on_inc_button_button_up() -> void:
@@ -97,8 +102,15 @@ func _on_inc_button_button_up() -> void:
 	_value = min(1.0, _value + 0.01)
 	_update_value_ui()
 
+	Audio.play_sfx_id("generic_click")
+
 
 func _on_h_slider_value_changed(value: float) -> void:
 	_on_mouse_release(h_slider)
 	_value = value
 	_update_value_ui()
+
+
+func _h_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		Audio.play_sfx_id("generic_click")

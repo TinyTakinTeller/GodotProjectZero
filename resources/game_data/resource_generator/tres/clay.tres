@@ -1,21 +1,24 @@
-[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://cl32v5i25kgls"]
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://cl32v5i25kgls"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qn7uo"]
+[ext_resource type="AudioStream" uid="uid://b6hvwuonx5eby" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/matches_handle_1_1.wav" id="2_7mcfp"]
+[ext_resource type="AudioStream" uid="uid://bodr20c42can4" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/matches_handle_1_11.wav" id="3_5ut7v"]
 
 [resource]
 script = ExtResource("1_qn7uo")
+color = Color(0, 0, 0, 1)
 sort_value = 5
+sort_value_override = 0.0
 id = "clay"
 amount = 3
 cooldown = 20.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
-label = "Dig Clay"
-title = "Dig Clay"
-flavor = "Pierce the muddy waters for their essence."
 hidden = false
 max_amount = -1
-max_flavor = ""
 column = 0
-display_name = ""
+dynamic_efficiency_id = ""
+sfx_button_down = ExtResource("2_7mcfp")
+sfx_button_success = ExtResource("3_5ut7v")

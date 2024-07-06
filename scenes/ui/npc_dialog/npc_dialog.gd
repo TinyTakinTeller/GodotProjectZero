@@ -1,7 +1,12 @@
-extends MarginContainer
-class_name NpcDialog
+class_name NpcDialog extends MarginContainer
 
 const PEEK_ALPHA: Array[float] = [0, 0.1, 1.0]
+
+@export var _npc_id: String
+
+var _peek_state: int = 0
+var _next_text: String = ""
+var _target_id: String = ""
 
 @onready var dialog_label: Label = %DialogLabel
 @onready var yes_button: Button = %YesButton
@@ -11,12 +16,6 @@ const PEEK_ALPHA: Array[float] = [0, 0.1, 1.0]
 @onready var npc_button: Button = %NpcButton
 @onready var typing_text_tween: Node = %TypingTextTween
 @onready var enter_simple_tween: SimpleTween = %EnterSimpleTween
-
-@export var _npc_id: String
-
-var _peek_state: int = 0
-var _next_text: String = ""
-var _target_id: String = ""
 
 ###############
 ## overrides ##
@@ -63,6 +62,8 @@ func play_typing_animation(on_load: bool = false) -> void:
 		no_button.disabled = true
 		var duration: float = dialog_label.text.length() * Game.params["animation_speed_diary"]
 		typing_text_tween.play_animation(duration)
+
+		Audio.play_sfx_id("cat_talking", 0.0)
 	else:
 		peek(2)
 		_show_and_enable_buttons()
@@ -155,6 +156,8 @@ func _connect_signals() -> void:
 func _on_typing_text_tween_animation_end() -> void:
 	_show_and_enable_buttons()
 
+	Audio.stop_sfx_id("cat_talking")
+
 
 func _on_enter_simple_tween_animation_end() -> void:
 	_peek_state = 2
@@ -168,11 +171,15 @@ func _on_yes_button_down() -> void:
 	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 0)
 	_load_next_active_event()
 
+	Audio.play_sfx_id("generic_click")
+
 
 func _on_no_button_down() -> void:
 	_hide_ui()
 	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 1)
 	_load_next_active_event()
+
+	Audio.play_sfx_id("generic_click")
 
 
 func _on_npc_event_saved(npc_event: NpcEvent) -> void:
@@ -198,7 +205,10 @@ func _on_npc_button_pressed() -> void:
 	SignalBus.info_hover_shader.emit(
 		Locale.get_npc_click_title(_npc_id), Locale.get_npc_click_info(_npc_id)
 	)
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+		Audio.play_sfx_id("cat_click")
 
 
 ############
@@ -206,7 +216,7 @@ func _on_npc_button_pressed() -> void:
 ############
 
 
-func __enter_simple_tween_method(animation_percent: float) -> void:
+func _enter_simple_tween_method(animation_percent: float) -> void:
 	if int(animation_percent * 16) % 2 == 0:
 		npc_texture_rect.modulate.a = 0.2 + animation_percent * 0.8
 		npc_margin_container.add_theme_constant_override("margin_bottom", 20)

@@ -123,4 +123,4 @@ target = NodePath("../../MarginContainer/VBoxContainer/DialogMarginContainer/Dia
 unique_name_in_owner = true
 target = NodePath("../..")
 duration = 3.0
-call_method = "__enter_simple_tween_method"
+call_method = "_enter_simple_tween_method"

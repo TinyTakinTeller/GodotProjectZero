@@ -14,7 +14,6 @@ func _ready() -> void:
 	_load_from_save_file()
 
 
-
 #############
 ## helpers ##
 #############
@@ -43,4 +42,4 @@ func _on_owner_ready() -> void:
 
 
 func _on_version_button_down() -> void:
-	Audio.swap_crossfade_music_next()
+	pass

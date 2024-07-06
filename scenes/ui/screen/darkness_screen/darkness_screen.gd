@@ -1,6 +1,13 @@
-extends MarginContainer
+class_name DarknessScreen extends MarginContainer
 
 const TAB_DATA_ID: String = "enemy"
+
+## effect params
+var label_color: Color = ColorSwatches.RED
+var soul_color: Color = ColorSwatches.YELLOW
+var damage_buffer: int = 0
+var damage_buffer_time: float = 0.15
+var particle_id: String = "enemy_damage_particle"
 
 @onready var title_margin_container: MarginContainer = %TitleMarginContainer
 @onready var title_label: Label = %TitleLabel
@@ -18,13 +25,6 @@ const TAB_DATA_ID: String = "enemy"
 
 @onready var enemy_texture: EnemyTexture = %EnemyTexture
 @onready var enemy_progress_bar: EnemyProgressBar = %EnemyProgressBar
-
-## effect params
-var label_color: Color = ColorSwatches.RED
-var soul_color: Color = ColorSwatches.YELLOW
-var damage_buffer: int = 0
-var damage_buffer_time: float = 0.15
-var particle_id: String = "enemy_damage_particle"
 
 ## enemy params
 var _enemy_data: EnemyData
@@ -124,7 +124,7 @@ func _deaths_door_enabled() -> void:
 	choice_h_box_container.visible = true
 	title_label.text = Locale.get_ui_label("deaths_door")
 	if _enemy_data.is_last():
-		if _overkill > 1:
+		if _overkill >= 1:
 			SignalBus.deaths_door.emit(_enemy_data, _deaths_door_option)
 			_load_enemy()
 			enemy_texture.modulate.a = 0.5
@@ -221,16 +221,21 @@ func _handle_on_enemy_damaged(total_damage: int, damage: int, source_id: String)
 	enemy_texture.play_damage_animation()
 	_update_health_bar(total_damage)
 
-	if source_id == "EnemyController":
-		_play_damage_effect(damage)
-	else:
-		damage_buffer += damage
+	if is_visible_in_tree():
+		if source_id == "EnemyController":
+			_play_damage_effect(damage)
+
+			Audio.play_sfx_id("swordsmen_cycle_" + str(randi() % 3 + 1))
+		else:
+			damage_buffer += damage
 
 
 func _handle_on_click_damage_buffer_timer_timeout() -> void:
 	if damage_buffer != 0:
 		_play_click_damage_effect(damage_buffer)
 		damage_buffer = 0
+
+		Audio.play_sfx_id("enemy_click_" + str(randi() % 4 + 1))
 
 
 func _handle_choice_button(choice: int) -> void:
@@ -240,13 +245,20 @@ func _handle_choice_button(choice: int) -> void:
 	_explosion_state = 0
 	enemy_texture.play_explosion_animation()
 
+	if is_visible_in_tree():
+		Audio.play_sfx_id("enemy_explode")
+
 
 func _handle_on_on_deaths_door_resolved(enemy_data: EnemyData) -> void:
 	_enemy_data = enemy_data
 	_explosion_state = 1
 	var texture: Resource = _enemy_data.get_enemy_image_texture()
 	enemy_texture.set_enemy_texture(texture)
+
 	enemy_texture.play_reverse_explosion_animation()
+
+	if is_visible_in_tree() and !enemy_data.is_last():
+		Audio.play_sfx_id("enemy_implode")
 
 
 func _handle_on_texture_pixel_explosion_finished() -> void:

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp61l7vkkscuw"]
+
+[ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
+[ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
+[ext_resource type="PackedScene" uid="uid://bg37hs706yk1o" path="res://global/autoload/audio/music_track/music_track.tscn" id="3_kqvc4"]
+[ext_resource type="AudioStream" uid="uid://dikblk1fb3xb8" path="res://assets/audio/freemusicarchive_org/universfield/serene_dreamscape/serene_dreamscape.mp3" id="4_jyg1b"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_7i6rq")
+default_sfx_pitch_variance = null
+
+[node name="AudioQueue" parent="." instance=ExtResource("2_bb4fe")]
+unique_name_in_owner = true
+stream_player_count = 16
+
+[node name="MusicTracks" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="MusicTrack1" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
+unique_name_in_owner = true
+audio_stream = ExtResource("4_jyg1b")
+max_volume = 3.0

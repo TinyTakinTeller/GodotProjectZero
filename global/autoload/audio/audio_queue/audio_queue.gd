@@ -4,12 +4,14 @@ class_name AudioQueue extends Node
 @export_enum(&"Master", &"Music", &"SFX") var bus: String = &"SFX"
 
 var _available_stream_players: Array[AudioStreamPlayer] = []
+var _playing_stream_players: Dictionary = {}
 var _audio_queue: Array[AudioItem] = []
 
 
 class AudioItem:
 	var stream: AudioStream
 	var pitch_scale: float
+	var id: String
 
 
 ###############
@@ -31,12 +33,21 @@ func _ready() -> void:
 #############
 
 
-func play(stream: AudioStream, pitch_variance: float) -> void:
+func play(id: String, stream: AudioStream, pitch_variance: float) -> void:
 	var pitch_scale: float = randf_range(1.0 - pitch_variance, 1.0 + pitch_variance)
 	var audio_item: AudioItem = AudioItem.new()
 	audio_item.stream = stream
 	audio_item.pitch_scale = pitch_scale
+	audio_item.id = id
 	_enqueue_audio_item(audio_item)
+
+
+func stop(id: String) -> void:
+	var stream_player: AudioStreamPlayer = _playing_stream_players.get(id, null)
+	if stream_player == null:
+		return
+	stream_player.stop()
+	_playing_stream_players.erase(id)
 
 
 #############
@@ -56,6 +67,7 @@ func _play_audio_item(stream_player: AudioStreamPlayer, audio_item: AudioItem) -
 	stream_player.stream = audio_item.stream
 	stream_player.pitch_scale = audio_item.pitch_scale
 	stream_player.play()
+	_playing_stream_players[audio_item.id] = stream_player
 
 
 #############

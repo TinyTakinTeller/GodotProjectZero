@@ -81,6 +81,8 @@ func _handle_on_button_up() -> void:
 	click.emit(_tab_data)
 	button.release_focus()
 
+	Audio.play_sfx_id("generic_click")
+
 
 #############
 ## signals ##
@@ -94,6 +96,7 @@ func _connect_signals() -> void:
 	button.mouse_entered.connect(_on_mouse_entered)
 	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
+	SignalBus.deaths_door_open.connect(_on_deaths_door_open)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 
 
@@ -120,6 +123,11 @@ func _on_progress_button_unlocked(_resource_generator: ResourceGenerator) -> voi
 
 func _on_manager_button_unlocked(_worker_role: WorkerRole) -> void:
 	if _tab_data != null and _tab_data.id == "manager" and !_is_selected():
+		start_unlock_animation()
+
+
+func _on_deaths_door_open(enemy_data: EnemyData) -> void:
+	if _tab_data != null and _tab_data.id == "enemy" and !_is_selected() and !enemy_data.is_last():
 		start_unlock_animation()
 
 

@@ -30,8 +30,6 @@ func _get_settings_population_scale(id: String) -> int:
 
 func _handle_add(worker_role: WorkerRole) -> void:
 	var amount: int = _get_settings_population_scale(Game.WORKER_RESOURCE_ID)
-	if amount == 0:
-		return
 	var id: String = worker_role.id
 	SignalBus.worker_allocated.emit(id, amount, name)
 
@@ -39,8 +37,6 @@ func _handle_add(worker_role: WorkerRole) -> void:
 func _handle_del(worker_role: WorkerRole) -> void:
 	var id: String = worker_role.id
 	var amount: int = _get_settings_population_scale(id)
-	if amount == 0:
-		return
 	SignalBus.worker_allocated.emit(id, -amount, name)
 
 

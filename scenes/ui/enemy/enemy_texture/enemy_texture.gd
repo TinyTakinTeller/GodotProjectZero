@@ -1,5 +1,4 @@
-extends MarginContainer
-class_name EnemyTexture
+class_name EnemyTexture extends MarginContainer
 
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var texture_rgb_offset: TextureRgbOffset = %TextureRgbOffset

@@ -1,0 +1,14 @@
+Folder "res://resources/shader/pixelate/" contents attribution file.
+---
+Title: Pixels Shader
+Author: https://gamedev.stackexchange.com/users/10408/theraot
+Source: https://gamedev.stackexchange.com/a/207351
+License: https://creativecommons.org/licenses/by-sa/4.0/
+---
+The original contents were modified by: https://tinytakinteller.itch.io/
+---
+TLDR:
+asset "Pixelate" (pixelate.gdshader)
+by Theraot (https://gamedev.stackexchange.com/users/10408/theraot) licensed under CCBYSA4
+---
+

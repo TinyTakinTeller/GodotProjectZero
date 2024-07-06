@@ -16,6 +16,9 @@ func _ready() -> void:
 
 
 func _handle_on_worker_allocated(id: String, amount: int) -> void:
+	if amount == 0:
+		return
+
 	var wr_id: String = Game.WORKER_RESOURCE_ID
 	_handle_on_worker_generated(wr_id, -amount)
 	_handle_on_worker_generated(id, amount)

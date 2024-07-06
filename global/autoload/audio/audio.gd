@@ -6,7 +6,8 @@ extends Node
 
 var _track: int = 0
 
-@onready var audio_queue: AudioQueue = %AudioQueue
+@onready var sfx_queue: AudioQueue = %SfxQueue
+@onready var sfx_map: Node = %SfxMap
 @onready var music_tracks: Node = %MusicTracks
 
 ###############
@@ -15,6 +16,16 @@ var _track: int = 0
 
 
 func _ready() -> void:
+	_initalize()
+	_connect_signals()
+
+
+#############
+## helpers ##
+#############
+
+
+func _initalize() -> void:
 	music_tracks.get_child(_track).fade_in()
 
 
@@ -33,6 +44,9 @@ func swap_crossfade_music(track: int) -> void:
 
 
 func swap_crossfade_music_new(track: int, song_stream: AudioStream) -> void:
+	if _track == track:
+		return
+
 	var music_track_next: MusicTrack = music_tracks.get_child(track)
 	var music_track_previous: MusicTrack = music_tracks.get_child(_track)
 	_track = track
@@ -43,5 +57,33 @@ func swap_crossfade_music_new(track: int, song_stream: AudioStream) -> void:
 		music_track_next.swap(song_stream)
 
 
-func play_sfx(sfx_stream: AudioStream, pitch_variance: float = default_sfx_pitch_variance) -> void:
-	audio_queue.play(sfx_stream, pitch_variance)
+func play_sfx(
+	id: String, sfx_stream: AudioStream, pitch_variance: float = default_sfx_pitch_variance
+) -> void:
+	sfx_queue.play(id, sfx_stream, pitch_variance)
+
+
+func play_sfx_id(sfx_id: String, pitch_variance: float = default_sfx_pitch_variance) -> void:
+	var sfx_stream: AudioStream = sfx_map.SFX_ID.get(sfx_id, null)
+	if sfx_stream:
+		play_sfx(sfx_id, sfx_stream, pitch_variance)
+
+
+func stop_sfx_id(sfx_id: String) -> void:
+	sfx_queue.stop(sfx_id)
+
+
+###############
+## signals ##
+###############
+
+
+func _connect_signals() -> void:
+	SignalBus.tab_changed.connect(_on_tab_changed)
+
+
+func _on_tab_changed(tab_data: TabData) -> void:
+	if tab_data.id == DarknessScreen.TAB_DATA_ID:
+		Audio.swap_crossfade_music(1)
+	else:
+		Audio.swap_crossfade_music(0)

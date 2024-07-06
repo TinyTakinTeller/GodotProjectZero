@@ -1,21 +1,24 @@
-[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://dxgwetfdcf24b"]
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://dxgwetfdcf24b"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_w12dh"]
+[ext_resource type="AudioStream" uid="uid://6gkwor5oskx6" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/rock_impact_16.wav" id="2_i4f1b"]
+[ext_resource type="AudioStream" uid="uid://b3w1qp34jiy52" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/rock_impact_35.wav" id="3_1jdpt"]
 
 [resource]
 script = ExtResource("1_w12dh")
+color = Color(0, 0, 0, 1)
 sort_value = 4
+sort_value_override = 0.0
 id = "stone"
 amount = 3
 cooldown = 20.0
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
-label = "Mine Stone"
-title = "Mine Stone"
-flavor = "Pick off rocks from the rocky zones, just a couple."
 hidden = false
 max_amount = -1
-max_flavor = ""
 column = 0
-display_name = ""
+dynamic_efficiency_id = ""
+sfx_button_down = ExtResource("2_i4f1b")
+sfx_button_success = ExtResource("3_1jdpt")
