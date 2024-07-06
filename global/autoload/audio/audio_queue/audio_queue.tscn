@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://f1stqtkpi6rl"]
+
+[ext_resource type="Script" path="res://global/autoload/audio/audio_queue/audio_queue.gd" id="1_uuxwv"]
+
+[node name="AudioQueue" type="Node"]
+script = ExtResource("1_uuxwv")
+stream_player_count = 8

@@ -1,7 +1,13 @@
-extends MarginContainer
-class_name ProgressButton
+class_name ProgressButton extends MarginContainer
 
 const UNPAID_ANIMATION_LENGTH: float = 0.3
+
+@export var sfx_button_down: AudioStream
+@export var sfx_button_success: AudioStream
+@export var sfx_button_fail: AudioStream
+
+var _resource_generator: ResourceGenerator
+var _disabled: bool = false
 
 @onready var button: Button = %Button
 @onready var progress_bar: ProgressBar = %ProgressBar
@@ -11,10 +17,6 @@ const UNPAID_ANIMATION_LENGTH: float = 0.3
 @onready var new_unlock_tween: Node = %NewUnlockTween
 @onready var line_effect: LineEffect = %LineEffect
 @onready var label_effect_queue: Node2D = %LabelEffectQueue
-
-var _resource_generator: ResourceGenerator
-
-var _disabled: bool = false
 
 ###############
 ## overrides ##
@@ -109,6 +111,11 @@ func _handle_button_up() -> void:
 	button.release_focus()
 
 
+func _handle_button_down() -> void:
+	if sfx_button_down:
+		Audio.play_sfx(sfx_button_down)
+
+
 func _handle_resource_ui_updated(resource_tracker_item: ResourceTrackerItem, amount: int) -> void:
 	if Game.params["debug_line_effect"]:
 		line_effect.duration = _resource_generator.get_cooldown()
@@ -127,6 +134,7 @@ func _handle_resource_ui_updated(resource_tracker_item: ResourceTrackerItem, amo
 func _connect_signals() -> void:
 	self.resized.connect(_on_resized)
 	button.button_up.connect(_on_button_up)
+	button.button_down.connect(_on_button_down)
 	button.mouse_entered.connect(_on_mouse_entered)
 	button.mouse_exited.connect(_on_mouse_exited)
 	progress_bar_simple_tween.animation_end.connect(_on_progress_bar_simple_tween_animation_end)
@@ -146,6 +154,10 @@ func _on_resized() -> void:
 func _on_button_up() -> void:
 	_on_mouse_entered()
 	_handle_button_up()
+
+
+func _on_button_down() -> void:
+	_handle_button_down()
 
 
 func _on_mouse_entered() -> void:
@@ -176,10 +188,16 @@ func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
 	if get_id() == resource_generator.id:
 		progress_bar_simple_tween.play_animation_(_resource_generator.get_cooldown())
 
+		if sfx_button_success:
+			Audio.play_sfx(sfx_button_success)
+
 
 func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
 	if get_id() == resource_generator.id:
 		red_color_rect_simple_tween.play_animation()
+
+		if sfx_button_fail:
+			Audio.play_sfx(sfx_button_fail)
 
 
 func _on_resource_ui_updated(
@@ -207,13 +225,13 @@ func _on_cooldown_skip(skip: float) -> void:
 ############
 
 
-func __progress_bar_simple_tween_method(animation_percent: float) -> void:
+func _progress_bar_simple_tween_method(animation_percent: float) -> void:
 	if _disabled:
 		animation_percent = 1.0
 	progress_bar.value = 1 - animation_percent
 
 
-func __red_color_rect_simple_tween_method(animation_percent: float) -> void:
+func _red_color_rect_simple_tween_method(animation_percent: float) -> void:
 	red_color_rect.modulate.a = 1 - animation_percent
 
 
