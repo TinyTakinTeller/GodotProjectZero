@@ -15,8 +15,9 @@ var grid_containers: Array[GridContainer] = []
 
 func _ready() -> void:
 	_initialize()
-	_load_from_save_file()
 	_connect_signals()
+	_load_from_save_file()
+
 
 
 #############

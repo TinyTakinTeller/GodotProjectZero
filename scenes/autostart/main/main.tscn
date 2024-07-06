@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=36 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
 [ext_resource type="PackedScene" uid="uid://br1a46uikyubt" path="res://scenes/ui/screen/starway_screen/starway_screen.tscn" id="27_d2ak1"]
 [ext_resource type="PackedScene" uid="uid://b5cknmluch23j" path="res://scenes/ui/screen/offline_screen/offline_screen.tscn" id="29_mta8x"]
+[ext_resource type="PackedScene" uid="uid://w5y4su4adpf4" path="res://scenes/ui/screen/settings_screen/settings_screen.tscn" id="31_y1j6b"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_u1kx3")
@@ -155,6 +156,9 @@ visible = false
 layout_mode = 2
 
 [node name="OfflineScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
+layout_mode = 2
+
+[node name="SettingsScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("31_y1j6b")]
 layout_mode = 2
 
 [node name="ResourceTracker" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]

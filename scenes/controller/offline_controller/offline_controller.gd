@@ -93,10 +93,6 @@ func _progress_enemy_controller(
 	return {"overkill_factor": overkill_factor, "damage": damage, "generated": generated}
 
 
-func _trigger_enemy_controller(damage: int) -> void:
-	SignalBus.enemy_damage.emit(damage, name)
-
-
 ##############
 ## handlers ##
 ##############
@@ -135,7 +131,8 @@ func _handle_on_game_resumed(
 	DictionaryUtils.merge_sum_int(generated, enemy_progress["generated"])
 
 	_generate_resources(generated)
-	_trigger_enemy_controller(damage)
+	if !enemy_data.is_last():
+		SignalBus.enemy_damage.emit(damage, name)
 
 	SignalBus.offline_progress_processed.emit(
 		seconds_delta, worker_progress, enemy_progress, factor

@@ -1,12 +1,12 @@
-extends MarginContainer
-class_name TabTrackerItem
+class_name TabTrackerItem extends MarginContainer
 
 signal click(tab_data: TabData)
 
+var _tab_data: TabData
+var _tab_tracker: TabTracker
+
 @onready var button: Button = %Button
 @onready var new_unlock_tween: Node = %NewUnlockTween
-
-var _tab_data: TabData
 
 ###############
 ## overrides ##
@@ -32,8 +32,9 @@ func get_tab_data() -> TabData:
 	return _tab_data
 
 
-func set_tab_data(tab_data: TabData) -> void:
+func set_tab_data(tab_data: TabData, tab_tracker: TabTracker) -> void:
 	_tab_data = tab_data
+	_tab_tracker = tab_tracker
 
 
 func refresh_title() -> void:
@@ -57,6 +58,12 @@ func stop_unlock_animation() -> void:
 #############
 ## helpers ##
 #############
+
+
+func _is_selected() -> bool:
+	if _tab_tracker != null and _tab_data != null:
+		return _tab_tracker.tab_selected_id == _tab_data.id
+	return false
 
 
 func _update_pivot() -> void:
@@ -85,6 +92,8 @@ func _connect_signals() -> void:
 	button.button_down.connect(_on_button_down)
 	button.button_up.connect(_on_button_up)
 	button.mouse_entered.connect(_on_mouse_entered)
+	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
+	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 
 
@@ -104,10 +113,20 @@ func _on_mouse_entered() -> void:
 	pass
 
 
+func _on_progress_button_unlocked(_resource_generator: ResourceGenerator) -> void:
+	if _tab_data != null and _tab_data.id == "world" and !_is_selected():
+		start_unlock_animation()
+
+
+func _on_manager_button_unlocked(_worker_role: WorkerRole) -> void:
+	if _tab_data != null and _tab_data.id == "manager" and !_is_selected():
+		start_unlock_animation()
+
+
 func _on_deaths_door_resolved(
 	enemy_data: EnemyData, _new_enemy_data: EnemyData, _option: int
 ) -> void:
-	if _tab_data != null and _tab_data.id == "soul" and !enemy_data.is_last():
+	if _tab_data != null and _tab_data.id == "soul" and !enemy_data.is_last() and !_is_selected():
 		start_unlock_animation()
 
 

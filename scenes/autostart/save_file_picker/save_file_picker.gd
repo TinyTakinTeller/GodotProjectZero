@@ -27,6 +27,9 @@ func _initialize() -> void:
 	var save_file_name: String = save_file_tracker.get_last_played_save_file_name()
 	ui.theme = SaveFile.get_settings_theme(save_file_name)
 
+	var bus_index: int = AudioServer.get_bus_index(&"Master")
+	AudioServer.set_bus_mute(bus_index, true)
+
 
 func _change_scene_to_main_scene(save_file_name: String, metadata_name: String = "") -> void:
 	SaveFile.initialize(save_file_name, metadata_name)

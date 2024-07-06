@@ -11,8 +11,9 @@ const TAB_DATA_ID: String = "unknown"
 
 func _ready() -> void:
 	_initialize()
-	_load_from_save_file()
 	_connect_signals()
+	_load_from_save_file()
+
 
 
 #############

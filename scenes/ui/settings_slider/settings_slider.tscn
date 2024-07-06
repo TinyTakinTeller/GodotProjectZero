@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshtvp7cn4ns1"]
+
+[ext_resource type="Script" path="res://scenes/ui/settings_slider/settings_slider.gd" id="1_k8bx2"]
+
+[node name="SettingsSlider" type="MarginContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_k8bx2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ToggleMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+
+[node name="ToggleButton" type="Button" parent="HBoxContainer/ToggleMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "On"
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/TitleMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Audio"
+
+[node name="ValueMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="ValueLabel" type="Label" parent="HBoxContainer/ValueMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "80
+"
+
+[node name="DecButtonMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="DecButton" type="Button" parent="HBoxContainer/DecButtonMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "-"
+
+[node name="SliderMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/SliderMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="IncMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="IncButton" type="Button" parent="HBoxContainer/IncMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+"

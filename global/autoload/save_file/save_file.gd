@@ -13,9 +13,14 @@ var events: Dictionary = {}
 var event_log: Dictionary = {}
 var resource_generator_unlocks: Array = ["land"]
 var worker_role_unlocks: Array = []
-var tab_unlocks: Array = ["world"]
+var tab_unlocks: Array = ["world", "settings"]
 var tab_levels: Dictionary = {"world": 0}
 var settings: Dictionary = {"theme": "dark"}
+var audio_settings: Dictionary = {
+	"master": {"value": 1.0, "toggle": true},
+	"music": {"value": 1.0, "toggle": true},
+	"sfx": {"value": 1.0, "toggle": true}
+}
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
 var metadata: Dictionary = {}
@@ -88,10 +93,6 @@ func get_settings_population_scale() -> int:
 #############
 ## setters ##
 #############
-
-
-func set_settings_population_scale(scale_: int) -> void:
-	settings["population_scale"] = scale_
 
 
 func set_enemy(enemy_id: String, option: int) -> void:
@@ -238,6 +239,7 @@ func _export_save_data() -> Dictionary:
 	save_data["tab_unlocks"] = tab_unlocks
 	save_data["tab_levels"] = tab_levels
 	save_data["settings"] = settings
+	save_data["audio_settings"] = audio_settings
 	save_data["npc_events"] = npc_events
 	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
@@ -255,6 +257,7 @@ func _import_save_data(save_data: Dictionary) -> void:
 	tab_unlocks = _get_tab_unlocks(save_data)
 	tab_levels = _get_tab_levels(save_data)
 	settings = _get_settings(save_data)
+	audio_settings = _get_audio_settings(save_data)
 	npc_events = _get_npc_events(save_data)
 	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
@@ -295,6 +298,10 @@ func _get_tab_levels(save_data: Dictionary) -> Dictionary:
 
 func _get_settings(save_data: Dictionary) -> Dictionary:
 	return save_data.get("settings", settings)
+
+
+func _get_audio_settings(save_data: Dictionary) -> Dictionary:
+	return save_data.get("audio_settings", audio_settings)
 
 
 func _get_npc_events(save_data: Dictionary) -> Dictionary:
@@ -343,6 +350,20 @@ func _sanitize_timezone(timezone: Dictionary) -> void:
 func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_5(save_data)
 	_check_backward_week_7(save_data)
+	_check_backward_week_10(save_data)
+
+
+## version week 10 (and before) did not have settings tab
+func _check_backward_week_10(save_data: Dictionary) -> void:
+	if !save_data["tab_unlocks"].has("settings"):
+		save_data["tab_unlocks"].append("settings")
+
+
+## version week 7 (and before) had a temporary enemy or no enemy
+func _check_backward_week_7(save_data: Dictionary) -> void:
+	var check_enemy: String = save_data.get("enemy", {}).get("level", "")
+	if check_enemy == "" or check_enemy == "ambassador":
+		save_data["enemy"] = {"level": "rabbit", "rabbit": {"damage": 0}}
 
 
 ## cat dialogue tree was extended in week 6, this resets the last answer so dialogue can continue
@@ -357,13 +378,6 @@ func _check_backward_week_5(save_data: Dictionary) -> void:
 		cat_events["cat_intro"] = -1
 
 	_get_metadata(save_data)["last_version_minor"] = Game.VERSION_MINOR
-
-
-## version week 7 (and before) had a temporary enemy or no enemy
-func _check_backward_week_7(save_data: Dictionary) -> void:
-	var check_enemy: String = save_data.get("enemy", {}).get("level", "")
-	if check_enemy == "" or check_enemy == "ambassador":
-		save_data["enemy"] = {"level": "rabbit", "rabbit": {"damage": 0}}
 
 
 ##############

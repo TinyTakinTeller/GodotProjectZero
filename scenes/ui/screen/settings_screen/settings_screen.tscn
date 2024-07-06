@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://w5y4su4adpf4"]
+
+[ext_resource type="Script" path="res://scenes/ui/screen/settings_screen/settings_screen.gd" id="1_xqlsa"]
+[ext_resource type="PackedScene" uid="uid://cshtvp7cn4ns1" path="res://scenes/ui/settings_slider/settings_slider.tscn" id="2_usuby"]
+
+[node name="SettingsScreen" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xqlsa")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TitleMarginContainer"]
+visible = false
+layout_mode = 2
+text = "Settings"
+
+[node name="MasterSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MusicSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SFXSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer5"]
+layout_mode = 2
+text = "Language [ HR ] [ EN ] [ DE ] [ XY ] "
+
+[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer6"]
+layout_mode = 2
+text = "Text Typing Speed 0.1 [+] [-]"
+
+[node name="MarginContainer7" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer7"]
+layout_mode = 2
+text = "Enemy Shake Effect 0.1 [+] [-]"
+
+[node name="MarginContainer8" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer8"]
+layout_mode = 2
+text = "Text Shake Effect 0.1 [+] [-]"
+
+[node name="MarginContainer9" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer9"]
+layout_mode = 2
+text = "Enemy RGB Effect  0.1 [+] [-]"

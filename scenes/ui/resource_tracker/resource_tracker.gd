@@ -13,8 +13,9 @@ class_name ResourceTracker
 
 func _ready() -> void:
 	_set_ui_labels()
-	_load_from_save_file()
 	_connect_signals()
+	_load_from_save_file()
+
 
 
 #############

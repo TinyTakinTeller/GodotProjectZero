@@ -34,10 +34,10 @@ buses/default_bus_layout="res://resources/audio_settings/default_audio_bus_layou
 [autoload]
 
 Resources="*res://global/autoload/resources.gd"
-SignalBus="*res://global/autoload/signal_bus.gd"
 SaveFile="*res://global/autoload/save_file/save_file.tscn"
 Locale="*res://global/autoload/locale/locale.tscn"
 Audio="*res://global/autoload/audio/audio.tscn"
+SignalBus="*res://global/autoload/signal_bus/signal_bus.tscn"
 
 [debug]
 

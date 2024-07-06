@@ -50,7 +50,10 @@ const ui_label: Dictionary = {
 	"offline_1": "You were away for {0}. \n\n",
 	"offline_2": "Unhappy population will refuse to work while not observed. ",
 	"offline_3": "Make sure your resources are not decreasing to keep your population happy: ",
-	"offline_4": "Since your last activity, population generated: "
+	"offline_4": "Since your last activity, population generated: ",
+	"master": "Master",
+	"music": "Music",
+	"sfx": "SFX"
 }
 
 const npc_hover_title: Dictionary = {}
@@ -372,7 +375,8 @@ const tab_data_titles: Dictionary = {
 	"enemy": [" Darkness "],
 	"unknown": [" Unknown "],
 	"soul": [" Substance "],
-	"starway": ["       ???       "]
+	"starway": ["       ???       "],
+	"settings": [" @ "]
 }
 
 const event_data_text: Dictionary = {

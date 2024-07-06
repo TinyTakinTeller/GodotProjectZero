@@ -364,5 +364,5 @@ func _on_texture_pixel_explosion_finished() -> void:
 
 
 func _on_resource_generated(id: String, amount: int, _source_id: String) -> void:
-	if id == "soulstone":
+	if self.visible and id == "soulstone":
 		_play_soulstone_effect(amount)

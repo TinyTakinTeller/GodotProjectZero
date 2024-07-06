@@ -16,8 +16,8 @@ var _total_lines: int = 0
 
 func _ready() -> void:
 	_set_ui_labels()
-	_load_from_save_file()
 	_connect_signals()
+	_load_from_save_file()
 
 	if Game.params["debug_no_scrollbar"]:
 		ScrollContainerUtils.disable_scrollbars(scroll_container)
