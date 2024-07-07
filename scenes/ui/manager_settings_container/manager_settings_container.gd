@@ -28,7 +28,7 @@ func _ready() -> void:
 func _initialize() -> void:
 	var scale_value: int = SaveFile.get_settings_population_scale()
 	_clear_items()
-	max_scale = max(1, ArrayUtils.max_element(SaveFile.workers.values() + [0]) / 10)
+	max_scale = max(1, ArrayUtils.max_element(SaveFile.workers.values() + [0]))
 	var button_scale: int = min_scale
 	var padding: int = MAX_SCALE_BUTTONS
 	while max_scale > PowUtils.pow_(10, padding):

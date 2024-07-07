@@ -26,7 +26,6 @@ func _handle_on_worker_allocated(id: String, amount: int) -> void:
 
 func _handle_on_worker_generated(id: String, amount: int) -> void:
 	amount = Limits.safe_add_factor(SaveFile.workers.get(id, 0), amount)
-
 	SaveFile.workers[id] = SaveFile.workers.get(id, 0) + amount
 	SignalBus.worker_updated.emit(id, SaveFile.workers[id], amount)
 

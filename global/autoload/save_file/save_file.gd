@@ -188,12 +188,13 @@ func _save_entered() -> void:
 	_update_metadata()
 
 
-func _autosave() -> void:
+func _autosave(force: bool = false, silent: bool = false) -> void:
 	var seconds_delta: int = _get_seconds_since_last_autosave()
-	if seconds_delta < AUTOSAVE_SECONDS:
+	if not force and seconds_delta < AUTOSAVE_SECONDS:
 		return
 
-	SignalBus.autosave.emit(seconds_delta, AUTOSAVE_SECONDS)
+	if not silent:
+		SignalBus.autosave.emit(seconds_delta, AUTOSAVE_SECONDS)
 
 	var file_name: String = ACTIVE_FILE_NAME
 	_update_metadata()
@@ -351,6 +352,48 @@ func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_5(save_data)
 	_check_backward_week_7(save_data)
 	_check_backward_week_10(save_data)
+	_check_backward_corrupt_worker_role(save_data)
+
+
+## [WORKAROUND] for #ADF-27 | https://trello.com/c/7VNXK6xW
+func _check_backward_corrupt_worker_role(save_data: Dictionary) -> void:
+	var max_worker_resource: int = (
+		Limits.GLOBAL_MAX_AMOUNT + save_data["resources"].get("swordsman", 0)
+	)
+	if save_data["resources"].get(Game.WORKER_RESOURCE_ID, 0) > max_worker_resource:
+		save_data["resources"][Game.WORKER_RESOURCE_ID] = max_worker_resource
+
+	var max_worker_role: int = Limits.GLOBAL_MAX_AMOUNT
+	if save_data["workers"].get(Game.WORKER_RESOURCE_ID, 0) > max_worker_role:
+		save_data["workers"][Game.WORKER_RESOURCE_ID] = max_worker_role
+
+	var total_roles: int = 0
+	for id: String in save_data["workers"]:
+		total_roles += save_data["workers"][id]
+	var worker_resources: int = save_data["resources"].get(Game.WORKER_RESOURCE_ID, 0)
+	var error: int = worker_resources - total_roles
+	if error != 0:
+		if Game.params["debug_logs"]:
+			print(
+				(
+					"[WORKAROUND] workers error: "
+					+ str(error)
+					+ " : "
+					+ str(total_roles)
+					+ " / "
+					+ str(worker_resources)
+					+ " at "
+					+ str(save_data["metadata"].get("save_file_name", "NULL"))
+				)
+			)
+		if error > 0:
+			save_data["workers"][Game.WORKER_RESOURCE_ID] = (
+				save_data["workers"].get(Game.WORKER_RESOURCE_ID, 0) + error
+			)
+		elif error < 0:
+			save_data["resources"][Game.WORKER_RESOURCE_ID] = (
+				save_data["resources"].get(Game.WORKER_RESOURCE_ID, 0) - error
+			)
 
 
 ## version week 10 (and before) did not have settings tab
@@ -387,6 +430,7 @@ func _check_backward_week_5(save_data: Dictionary) -> void:
 
 func _connect_signals() -> void:
 	SignalBus.main_ready.connect(_on_main_ready)
+	SignalBus.offline_progress_processed.connect(_on_offline_progress_processed)
 
 
 func _connect_autosave_timer() -> void:
@@ -404,6 +448,13 @@ func _on_main_ready() -> void:
 	_save_entered()
 
 
+func _on_offline_progress_processed(
+	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
+) -> void:
+	_autosave(true, true)
+	SignalBus.worker_updated.emit(Game.WORKER_RESOURCE_ID, workers[Game.WORKER_RESOURCE_ID], 0)
+
+
 ##############
 ## internal ##
 ##############
@@ -411,6 +462,9 @@ func _on_main_ready() -> void:
 
 func __write(file_name: String) -> void:
 	var save_data: Dictionary = _export_save_data()
+
+	_check_backward_corrupt_worker_role(save_data)
+
 	var content: String = JSON.stringify(save_data)
 	content += SIGNATURE
 

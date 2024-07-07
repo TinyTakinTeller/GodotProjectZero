@@ -55,8 +55,8 @@ func _initialize() -> void:
 func get_default_color() -> Color:
 	if _resource_generator == null:
 		return Color.WHITE
-	var amount: int = SaveFile.resources.get(get_id(), 0)
-	if amount >= Limits.GLOBAL_MAX_AMOUNT:
+	var total_amount: int = SaveFile.resources.get(get_id(), 0)
+	if total_amount >= Limits.GLOBAL_MAX_AMOUNT:
 		return ColorSwatches.BLUE
 	if _resource_generator.is_colored():
 		return _resource_generator.get_color()
@@ -77,6 +77,12 @@ func display_resource(amount: int = 0) -> void:
 
 
 func _set_passive(amount: int) -> void:
+	var total_amount: int = SaveFile.resources.get(get_id(), 0)
+	if not (amount < 0) and total_amount >= Limits.GLOBAL_MAX_AMOUNT:
+		income_label.text = "MAX"
+		income_label.modulate = ColorSwatches.BLUE
+		return
+
 	var amount_string: String = NumberUtils.format_number_scientific(amount)
 	if amount > 0:
 		income_label.text = "+{amount}".format({"amount": amount_string})

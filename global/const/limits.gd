@@ -14,10 +14,11 @@ static func safe_add_factor(current: int, addition: int) -> int:
 
 
 ## return a + b except when it rounds to GLOBAL_MAX_AMOUNT (or negative sign) to prevent overflow
-static func safe_add(a: int, b: int) -> int:
-	a = max(min(a, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
-	b = max(min(b, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
-	return max(min(a + b, Limits.GLOBAL_MAX_AMOUNT), -Limits.GLOBAL_MAX_AMOUNT)
+static func safe_add(a: int, b: int, extended_limit_quantity: int = 0) -> int:
+	var limit: int = extended_limit_quantity + Limits.GLOBAL_MAX_AMOUNT
+	a = max(min(a, limit), -limit)
+	b = max(min(b, limit), -limit)
+	return max(min(a + b, limit), -limit)
 
 
 ## returns a * b except when it rounds to GLOBAL_MAX_AMOUNT (or negative sign) to prevent overflow

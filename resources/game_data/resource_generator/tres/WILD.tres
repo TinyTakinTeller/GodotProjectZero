@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://bnvqgm3llr76f"]
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://bnvqgm3llr76f"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_t6wtb"]
-[ext_resource type="AudioStream" uid="uid://dfuc8qbrilclp" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/nail_wood_1_1.wav" id="2_kpj4b"]
-[ext_resource type="AudioStream" uid="uid://0v46esgcexyb" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/nail_wood_1_4.wav" id="3_mj3la"]
+[ext_resource type="AudioStream" uid="uid://wibc1vd82gix" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/combat/blood_&_gore_2_1.wav" id="2_neqhx"]
 
 [resource]
 script = ExtResource("1_t6wtb")
@@ -24,5 +23,4 @@ hidden = false
 max_amount = -1
 column = 0
 dynamic_efficiency_id = ""
-sfx_button_down = ExtResource("2_kpj4b")
-sfx_button_success = ExtResource("3_mj3la")
+sfx_button_success = ExtResource("2_neqhx")

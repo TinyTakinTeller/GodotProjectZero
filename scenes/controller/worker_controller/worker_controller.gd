@@ -1,5 +1,4 @@
-class_name WorkerController
-extends Node
+class_name WorkerController extends Node
 
 signal none
 
@@ -36,8 +35,8 @@ func _initialize() -> void:
 	timer.start()
 
 
-func _generate(generate: bool = true, multiplier: int = 1) -> void:
-	var efficiencies: Dictionary = _calculate_generated_amounts(multiplier)
+func _generate(generate: bool = true) -> void:
+	var efficiencies: Dictionary = _calculate_generated_amounts()
 
 	if generate:
 		var generated_resources: Dictionary = efficiencies["resources"]
@@ -53,23 +52,19 @@ func _generate(generate: bool = true, multiplier: int = 1) -> void:
 	SignalBus.worker_efficiency_set.emit(efficiencies, generate)
 
 
-func _calculate_generated_worker_resource_from_houses(
-	resources: Dictionary, multiplier: int = 1
-) -> int:
+func _calculate_generated_worker_resource_from_houses(resources: Dictionary) -> int:
 	var per_house: int = Game.params["house_workers"]
 	var resource_id: String = Game.WORKER_RESOURCE_ID
 	var max_workers: int = per_house * resources.get("house", 0) + resources.get("firepit", 0)
 	var current_workers: int = resources.get(resource_id, 0)
 
 	var new_workers: int = 1 + int((max_workers - current_workers - 1) / per_house)
-	if multiplier != 1:
-		new_workers = Limits.safe_mult(new_workers, multiplier)
 	if current_workers + new_workers > max_workers:
 		new_workers = max_workers - current_workers
 	return new_workers
 
 
-func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
+func _calculate_generated_amounts() -> Dictionary:
 	var resources: Dictionary = SaveFile.resources.duplicate(true)
 	var generated_resources: Dictionary = {}
 	var generated_workers: Dictionary = {}
@@ -83,8 +78,6 @@ func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
 	for worker_role: WorkerRole in worker_roles:
 		var worker_role_id: String = worker_role.id
 		var count: int = SaveFile.workers[worker_role_id]
-		if multiplier != 1:
-			count = Limits.safe_mult(count, multiplier)
 
 		var r_consume: Dictionary = worker_role.get_consume()
 		var w_consume: Dictionary = worker_role.get_worker_consume()
@@ -99,7 +92,7 @@ func _calculate_generated_amounts(multiplier: int = 1) -> Dictionary:
 		_generate_from(resources, efficiency, generated_resources, produces, count, total_eff)
 
 	var resource_id: String = Game.WORKER_RESOURCE_ID
-	var new_workers: int = _calculate_generated_worker_resource_from_houses(resources, multiplier)
+	var new_workers: int = _calculate_generated_worker_resource_from_houses(resources)
 	if new_workers != 0:
 		generated_resources[resource_id] = Limits.safe_add(
 			generated_resources.get(resource_id, 0), new_workers

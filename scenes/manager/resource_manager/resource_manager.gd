@@ -16,7 +16,13 @@ func _ready() -> void:
 
 
 func _handle_on_resource_generated(id: String, amount: int, source_id: String) -> void:
-	amount = Limits.safe_add_factor(SaveFile.resources.get(id, 0), amount)
+	# [WORKAROUND]
+	# worker resource represents total population, we want to apply the limit on peasant's instead
+	# (perhaps worker roles should have been just resources, to avoid edge cases like this one !!)
+	var total: int = SaveFile.resources.get(id, 0)
+	if id == Game.WORKER_RESOURCE_ID:
+		total = total - SaveFile.resources.get("swordsman", 0)
+	amount = Limits.safe_add_factor(total, amount)
 
 	SaveFile.resources[id] = SaveFile.resources.get(id, 0) + amount
 	if amount < 0:

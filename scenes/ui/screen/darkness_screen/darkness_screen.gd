@@ -9,6 +9,13 @@ var damage_buffer: int = 0
 var damage_buffer_time: float = 0.15
 var particle_id: String = "enemy_damage_particle"
 
+## enemy params
+var _enemy_data: EnemyData
+var _health: int
+var _deaths_door_option: int = 0
+var _explosion_state: int = 0
+var _overkill: int = 0
+
 @onready var title_margin_container: MarginContainer = %TitleMarginContainer
 @onready var title_label: Label = %TitleLabel
 @onready var level_label: Label = %LevelLabel
@@ -25,13 +32,6 @@ var particle_id: String = "enemy_damage_particle"
 
 @onready var enemy_texture: EnemyTexture = %EnemyTexture
 @onready var enemy_progress_bar: EnemyProgressBar = %EnemyProgressBar
-
-## enemy params
-var _enemy_data: EnemyData
-var _health: int
-var _deaths_door_option: int = 0
-var _explosion_state: int = 0
-var _overkill: int = 0
 
 ###############
 ## overrides ##
