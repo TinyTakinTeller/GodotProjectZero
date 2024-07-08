@@ -1,5 +1,6 @@
 extends Resource
 
+# gdlint:disable = max-line-length
 var error := {
 	#region Name Checks
 	"function-name": "Validates if function name conforms to snake_case, _private_snake_case, or _on_PascalCase_snake_case.",
