@@ -1,16 +1,16 @@
-extends MarginContainer
 class_name SaveFileTracker
-
-const DEFAULT_SAVE_FILE_NAME: String = "unnamed"
+extends MarginContainer
 
 signal load_save_file(save_file_name: String)
 signal delete_save_file(save_file_name: String)
 signal new_save_file(save_file_name: String)
 signal new_input_set(save_file_name: String, new_text: String, old_text: String)
 
-@onready var save_item_v_box_container: VBoxContainer = %SaveItemVBoxContainer
+const DEFAULT_SAVE_FILE_NAME: String = "unnamed"
 
 @export var save_file_item_scene: PackedScene
+
+@onready var save_item_v_box_container: VBoxContainer = %SaveItemVBoxContainer
 
 ###############
 ## overrides ##
@@ -43,7 +43,7 @@ func get_last_played_save_file_name() -> String:
 
 func _load_save_files() -> void:
 	_add_item({}, DEFAULT_SAVE_FILE_NAME, true)
-	var save_datas: Dictionary = SaveFile.SAVE_DATAS
+	var save_datas: Dictionary = SaveFile.save_datas
 	for save_file_name: String in save_datas:
 		var save_data: Dictionary = save_datas[save_file_name]
 		var metadata: Dictionary = save_data.get("metadata", {})
@@ -76,7 +76,7 @@ func _connect_item_signals(save_file_item: SaveFileItem) -> void:
 
 
 func _on_ready() -> void:
-	if SaveFile.SAVE_DATAS.is_empty():
+	if SaveFile.save_datas.is_empty():
 		new_save_file.emit(DEFAULT_SAVE_FILE_NAME)
 
 

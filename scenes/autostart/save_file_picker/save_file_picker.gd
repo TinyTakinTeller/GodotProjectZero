@@ -37,8 +37,8 @@ func _change_scene_to_main_scene(save_file_name: String, metadata_name: String =
 
 
 func _force_unique_save_file_name(save_file_name: String) -> String:
-	while SaveFile.SAVE_DATAS.has(save_file_name):
-		return StringUtils.increment_int_suffix(save_file_name, SaveFile.SAVE_DATAS.keys())
+	while SaveFile.save_datas.has(save_file_name):
+		return StringUtils.increment_int_suffix(save_file_name, SaveFile.save_datas.keys())
 	return save_file_name
 
 
