@@ -1,0 +1,52 @@
+## Code License (MIT)
+
+MIT License
+
+Copyright (c) 2024 TinyTakinTeller
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+## Resources License(s)
+
+SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "resources/" :
+- resource "Minimalistic UI Theme for Godot Games" (dark.tres) by azagaya licensed under CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- resource "Pixel Explosion Shader" (pixelate.gdshader) by Theraot licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+- resource "Chromatic Aberration Vignette" (chromatic_vignette.gdshader) by ructoon licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+- resource "Wiggle 2D" (wiggle.gdshader) by tanders licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+
+## Assets License(s)
+
+SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "assets/"
+- audio music track  "Corpse Rot" (corpse_rot.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+- audio music track "Criminal District" (criminal_district.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+- audio music tracks ["Forest Song 1", "20 Axes to a Bed", "There's a Strong Chill in the Air", "Lacrimosa (Requiem Abridged)"] by BurkeZerk licensed under  CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- audio SFX sounds "Indie Friendly Sounds Survival" & "Indie Friendly Sounds RPG Sounds Pack" by Place Holder Assets licensed under "for-purchasing-individuals" (contact creator for licensing)
+- audio SFX sound  "Keyboard Typing" by Trollarch2 licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
+- audio SFX sound  "Short, definite fart" by ycbcr licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
+
+
+## Addons License(s)
+
+SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "addons/" :
+- res://addons/resources_spreadsheet_view/ | (https://godotengine.org/asset-library/asset/1479) licensed under MIT License (https://opensource.org/license/mit)
+- res://addons/gdLinter/ | (https://godotengine.org/asset-library/asset/2520) licensed under MIT License (https://opensource.org/license/mit)
+- res://addons/format_on_save/ | (https://godotengine.org/asset-library/asset/2340) licensed under MIT License (https://opensource.org/license/mit)
+
