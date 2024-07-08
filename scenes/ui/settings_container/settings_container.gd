@@ -1,5 +1,7 @@
 extends MarginContainer
 
+@export var sfx_fart: AudioStream
+
 @onready var theme_toggle_button: MarginContainer = %ThemeToggleButton
 @onready var version_label: Label = %VersionLabel
 @onready var version_button: Button = %VersionButton
@@ -42,4 +44,4 @@ func _on_owner_ready() -> void:
 
 
 func _on_version_button_down() -> void:
-	pass
+	Audio.play_sfx("fart", sfx_fart)

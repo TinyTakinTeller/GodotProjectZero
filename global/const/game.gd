@@ -3,8 +3,8 @@ class_name Game
 const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
-const VERSION_MAJOR: String = "pre-alpha"
-const VERSION_MINOR: String = "week 10"
+const VERSION_MAJOR: String = "prototype"
+const VERSION_MINOR: String = "week 11"
 
 const params: Dictionary = params_prod  #params_prod  #params_debug
 

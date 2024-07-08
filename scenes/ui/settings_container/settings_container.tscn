@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn6hcp4hfxyic"]
+[gd_scene load_steps=4 format=3 uid="uid://dn6hcp4hfxyic"]
 
 [ext_resource type="Script" path="res://scenes/ui/settings_container/settings_container.gd" id="1_wrevx"]
+[ext_resource type="AudioStream" uid="uid://c3ep4wqqo17ex" path="res://assets/audio/freesound_org/fart/short_definite_fart.wav" id="2_ve0o0"]
 [ext_resource type="PackedScene" uid="uid://dic246sx4xjf6" path="res://scenes/ui/settings_container/toggle_button/toggle_button.tscn" id="2_x8wem"]
 
 [node name="SettingsContainer" type="MarginContainer"]
@@ -12,6 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_wrevx")
+sfx_fart = ExtResource("2_ve0o0")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
