@@ -2,6 +2,7 @@
 class_name FormatOnSave extends EditorPlugin
 
 const SUCCESS: int = 0
+# gdlint:ignore = max-line-length
 const AUTO_RELOAD_SETTING: String = "text_editor/behavior/files/auto_reload_scripts_on_external_change"
 var original_auto_reload_setting: bool
 
@@ -18,6 +19,18 @@ func _exit_tree():
 
 
 # CALLED WHEN A SCRIPT IS SAVED
+func _get_gdformat_executable():
+	if OS.get_name() == "Windows":
+		# A (hacky) way to get the executable in the venv directory in the project root
+		var venv_gdformat_executable := ProjectSettings.globalize_path(
+			"res://venv/Scripts/gdformat.exe"
+		)
+		if FileAccess.file_exists(venv_gdformat_executable):
+			return venv_gdformat_executable
+
+	return "gdformat"
+
+
 func on_resource_saved(resource: Resource):
 	if resource is Script:
 		var script: Script = resource
@@ -28,10 +41,11 @@ func on_resource_saved(resource: Resource):
 
 		# Prevents other unsaved scripts from overwriting the active one
 		if current_script == script:
+			var gdformat_executable = _get_gdformat_executable()
 			var filepath: String = ProjectSettings.globalize_path(resource.resource_path)
 
 			# Run gdformat
-			var exit_code = OS.execute("gdformat", [filepath])
+			var exit_code = OS.execute(gdformat_executable, [filepath])
 
 			# Replace source_code with formatted source_code
 			if exit_code == SUCCESS:
