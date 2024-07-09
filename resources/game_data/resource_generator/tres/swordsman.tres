@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://3qv8owwmpsj1"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_eyud3"]
-[ext_resource type="AudioStream" uid="uid://plbtyfaaxfj7" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/mining_1_1.wav" id="3_dca41"]
+[ext_resource type="AudioStream" uid="uid://plbtyfaaxfj7" path="res://assets/audio/indie_friendly_sounds_survival/_resource/mining_1_1.wav" id="2_uiagb"]
 
 [resource]
 script = ExtResource("1_eyud3")
@@ -23,4 +23,4 @@ hidden = false
 max_amount = -1
 column = 2
 dynamic_efficiency_id = ""
-sfx_button_success = ExtResource("3_dca41")
+sfx_button_success = ExtResource("2_uiagb")
