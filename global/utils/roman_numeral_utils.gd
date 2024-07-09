@@ -1,6 +1,6 @@
 class_name RomanNumeralUtils
 
-const value: Array[int] = [
+const VALUE: Array[int] = [
 	1,
 	4,
 	5,
@@ -51,7 +51,7 @@ const value: Array[int] = [
 	900000000000,
 	1000000000000
 ]
-const symbol: Array[String] = [
+const SYMBOL: Array[String] = [
 	"I",
 	"IV",
 	"V",
@@ -105,16 +105,16 @@ const symbol: Array[String] = [
 
 
 static func to_roman_numeral(n: int) -> String:
-	if n > 4 * value[value.size() - 1]:
+	if n > 4 * VALUE[VALUE.size() - 1]:
 		return ""
 
 	var out: String = ""
-	var i: int = value.size() - 1
+	var i: int = VALUE.size() - 1
 	while n:
-		var div: int = n / value[i]
-		n %= value[i]
+		var div: int = n / VALUE[i]
+		n %= VALUE[i]
 		while div:
-			out += symbol[i]
+			out += SYMBOL[i]
 			div -= 1
 		i -= 1
 	return out

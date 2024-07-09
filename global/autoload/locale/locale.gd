@@ -1,6 +1,6 @@
 extends Node
 
-const LOCALE: Dictionary = {"en": LocaleEn.en}
+const LOCALE: Dictionary = {"en": LocaleEn.EN}
 const LOCALE_NAME: Dictionary = {"en": "English"}
 
 

@@ -1,6 +1,6 @@
 class_name PowUtils
 
-const pows: Dictionary = {
+const POWS: Dictionary = {
 	2:
 	{
 		0: 1,
@@ -202,7 +202,7 @@ const pows: Dictionary = {
 }
 
 
-static func pow_(base: int, exponent: int) -> int:
+static func pow_int(base: int, exponent: int) -> int:
 	if base == 0:
 		return 0
 	if base == 1:
@@ -210,4 +210,4 @@ static func pow_(base: int, exponent: int) -> int:
 	if base > 10 or exponent > 18:
 		var zero: int = 0
 		return zero / zero
-	return pows[base][exponent]
+	return POWS[base][exponent]

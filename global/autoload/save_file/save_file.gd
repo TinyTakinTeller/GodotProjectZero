@@ -244,7 +244,7 @@ func _export_save_data() -> Dictionary:
 	save_data["npc_events"] = npc_events
 	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
-	save_data["locale"] = locale
+	save_data["LOCALE"] = locale
 	return save_data
 
 
@@ -318,7 +318,7 @@ func _get_metadata(save_data: Dictionary) -> Dictionary:
 
 
 func _get_locale(save_data: Dictionary) -> String:
-	return save_data.get("locale", locale)
+	return save_data.get("LOCALE", locale)
 
 
 func _update_metadata() -> void:
