@@ -31,7 +31,7 @@ func _initialize() -> void:
 	max_scale = max(1, ArrayUtils.max_element(SaveFile.workers.values() + [0]))
 	var button_scale: int = min_scale
 	var padding: int = MAX_SCALE_BUTTONS
-	while max_scale > PowUtils.pow_(10, padding):
+	while max_scale > PowUtils.pow_int(10, padding):
 		padding += 1
 		button_scale *= 10
 	while button_scale <= max_scale and h_box_container.get_child_count() < MAX_SCALE_BUTTONS:
@@ -67,7 +67,7 @@ func _handle_on_worker_updated(total: int) -> void:
 	if total > max_scale:
 		var count: int = h_box_container.get_child_count()
 		var exponent: int = max(0, count - 1)
-		if total > PowUtils.pow_(10, exponent):
+		if total > PowUtils.pow_int(10, exponent):
 			_initialize()
 		max_scale = total
 

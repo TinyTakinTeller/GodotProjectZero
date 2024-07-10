@@ -28,7 +28,9 @@ func init() -> void:
 	class_variable_name.button_pressed = _owner.ignore.get("_class_variable_name")
 	class_load_variable_name.button_pressed = _owner.ignore.get("_class_load_variable_name")
 	function_variable_name.button_pressed = _owner.ignore.get("_function_variable_name")
-	function_preload_variable_name.button_pressed = _owner.ignore.get("_function_preload_variable_name")
+	function_preload_variable_name.button_pressed = _owner.ignore.get(
+		"_function_preload_variable_name"
+	)
 	function_argument_name.button_pressed = _owner.ignore.get("_function_argument_name")
 	loop_variable_name.button_pressed = _owner.ignore.get("_loop_variable_name")
 	enum_name.button_pressed = _owner.ignore.get("_enum_name")

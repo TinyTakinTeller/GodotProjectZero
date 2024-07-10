@@ -7,3 +7,6 @@ venv/
 
 # VSCode
 .vscode/
+
+# Jetbrains (Rider)
+.idea/

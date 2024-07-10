@@ -24,6 +24,9 @@ const SFX_ID: Dictionary = {
 	"cat_talking": KEYBOARD_TYPING
 }
 
+# we're expecting long file paths here, so don't check for line length
+# gdlint:disable = max-line-length
+
 const KEYBOARD_TYPING = preload(
 	"res://assets/audio/freesound_org/keyboard_typing/keyboard_typing.mp3"
 )

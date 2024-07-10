@@ -6,9 +6,9 @@ const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 const VERSION_MAJOR: String = "prototype"
 const VERSION_MINOR: String = "week 11"
 
-const params: Dictionary = params_prod  #params_prod  #params_debug
+const params: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
-const params_debug: Dictionary = {
+const PARAMS_DEBUG: Dictionary = {
 	"cycle_seconds": 2,
 	"enemy_cycle_seconds": 3,
 	"enemy_click_damage": -10,
@@ -34,7 +34,7 @@ const params_debug: Dictionary = {
 	"deaths_door_no_info": true
 }
 
-const params_prod: Dictionary = {
+const PARAMS_PROD: Dictionary = {
 	"cycle_seconds": 5,
 	"enemy_cycle_seconds": 3,
 	"enemy_click_damage": 0,

@@ -4,8 +4,8 @@ const SIGNATURE = "$$$"
 const SAVE_FILE_EXTENSION = ".json"
 const AUTOSAVE_SECONDS: int = Game.params["autosave_seconds"]
 
-var ACTIVE_FILE_NAME: String = "default"
-var SAVE_DATAS: Dictionary = {}
+var active_file_name: String = "default"
+var save_datas: Dictionary = {}
 
 var resources: Dictionary = {}
 var workers: Dictionary = {}
@@ -24,7 +24,7 @@ var audio_settings: Dictionary = {
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
 var metadata: Dictionary = {}
-var LOCALE: String = "en"
+var locale: String = "en"
 
 @onready var autosave_timer: Timer = %AutosaveTimer
 
@@ -77,12 +77,12 @@ func get_enemy_damage(enemy_id: String = "") -> int:
 
 func get_settings_theme(save_file_name: String) -> Resource:
 	var theme_id: String = Game.params["default_theme"]
-	if !SAVE_DATAS.has(save_file_name):
+	if !save_datas.has(save_file_name):
 		return Resources.theme.get(theme_id, null)
 
-	var save_data: Dictionary = SAVE_DATAS[save_file_name]
-	var _settings: Dictionary = save_data.get("settings", {})
-	theme_id = _settings.get("theme", "")
+	var save_data: Dictionary = save_datas[save_file_name]
+	var saved_settings: Dictionary = save_data.get("settings", {})
+	theme_id = saved_settings.get("theme", "")
 	return Resources.theme.get(theme_id, null)
 
 
@@ -128,12 +128,12 @@ func add_enemy_damage(damage: int) -> int:
 
 
 func set_metadata_name(save_file_name: String, value: String) -> void:
-	if !SAVE_DATAS.has(save_file_name):
+	if !save_datas.has(save_file_name):
 		return
 
-	var save_data: Dictionary = SAVE_DATAS[save_file_name]
-	var _metadata: Dictionary = save_data.get("metadata", {})
-	_metadata["save_file_name"] = value
+	var save_data: Dictionary = save_datas[save_file_name]
+	var saved_metadata: Dictionary = save_data.get("metadata", {})
+	saved_metadata["save_file_name"] = value
 
 
 ###########
@@ -146,10 +146,10 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 		return
 
 	var file_name: String = save_file_name + SAVE_FILE_EXTENSION
-	ACTIVE_FILE_NAME = file_name
+	active_file_name = file_name
 
-	if SAVE_DATAS.has(save_file_name):
-		var save_data: Dictionary = SAVE_DATAS[save_file_name]
+	if save_datas.has(save_file_name):
+		var save_data: Dictionary = save_datas[save_file_name]
 		if save_data != null and !save_data.is_empty():
 			_import_save_data(save_data)
 	elif StringUtils.is_not_empty(metadata_name):
@@ -163,16 +163,16 @@ func delete(save_file_name: String) -> void:
 	var error: Error = DirAccess.remove_absolute(FileSystemUtils.USER_PATH + file_name)
 	if Game.params["debug_logs"]:
 		print("Delete save file '" + save_file_name + "' response: " + str(error))
-	SAVE_DATAS.erase(save_file_name)
+	save_datas.erase(save_file_name)
 
 
 func rename(save_file_name: String, new_text: String, old_text: String) -> void:
 	set_metadata_name(save_file_name, new_text)
 
 	var file_name: String = save_file_name + SAVE_FILE_EXTENSION
-	var to_replace: String = __metadata_save_file_name_internal(old_text)
-	var to_set: String = __metadata_save_file_name_internal(new_text)
-	__replace(file_name, to_replace, to_set)
+	var to_replace: String = _metadata_save_file_name_internal(old_text)
+	var to_set: String = _metadata_save_file_name_internal(new_text)
+	_replace(file_name, to_replace, to_set)
 
 
 #############
@@ -196,9 +196,9 @@ func _autosave(force: bool = false, silent: bool = false) -> void:
 	if not silent:
 		SignalBus.autosave.emit(seconds_delta, AUTOSAVE_SECONDS)
 
-	var file_name: String = ACTIVE_FILE_NAME
+	var file_name: String = active_file_name
 	_update_metadata()
-	__write(file_name)
+	_write(file_name)
 
 
 func _get_seconds_since_last_autosave() -> int:
@@ -218,7 +218,7 @@ func _load_save_files() -> void:
 	for file_name: String in FileSystemUtils.get_user_files():
 		if !file_name.ends_with(SAVE_FILE_EXTENSION):
 			continue
-		var save_data: Dictionary = __read(file_name)
+		var save_data: Dictionary = _read(file_name)
 		_check_backward_compatibility(save_data)
 		if Game.params["debug_logs"]:
 			print("__LOAD_SAVE_DATA: " + file_name)
@@ -226,7 +226,7 @@ func _load_save_files() -> void:
 		if save_data == null or save_data.is_empty():
 			continue
 		var save_file_name: String = file_name.trim_suffix(SAVE_FILE_EXTENSION)
-		SAVE_DATAS[save_file_name] = save_data
+		save_datas[save_file_name] = save_data
 
 
 func _export_save_data() -> Dictionary:
@@ -244,7 +244,7 @@ func _export_save_data() -> Dictionary:
 	save_data["npc_events"] = npc_events
 	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
-	save_data["LOCALE"] = LOCALE
+	save_data["LOCALE"] = locale
 	return save_data
 
 
@@ -262,7 +262,7 @@ func _import_save_data(save_data: Dictionary) -> void:
 	npc_events = _get_npc_events(save_data)
 	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
-	LOCALE = _get_locale(save_data)
+	locale = _get_locale(save_data)
 
 
 func _get_resources(save_data: Dictionary) -> Dictionary:
@@ -318,7 +318,7 @@ func _get_metadata(save_data: Dictionary) -> Dictionary:
 
 
 func _get_locale(save_data: Dictionary) -> String:
-	return save_data.get("LOCALE", LOCALE)
+	return save_data.get("LOCALE", locale)
 
 
 func _update_metadata() -> void:
@@ -460,7 +460,7 @@ func _on_offline_progress_processed(
 ##############
 
 
-func __write(file_name: String) -> void:
+func _write(file_name: String) -> void:
 	var save_data: Dictionary = _export_save_data()
 
 	_check_backward_corrupt_worker_role(save_data)
@@ -474,7 +474,7 @@ func __write(file_name: String) -> void:
 	save_file.close()
 
 
-func __read(file_name: String) -> Dictionary:
+func _read(file_name: String) -> Dictionary:
 	var path: String = FileSystemUtils.USER_PATH + file_name
 	if Game.params["debug_logs"]:
 		print()
@@ -488,12 +488,12 @@ func __read(file_name: String) -> Dictionary:
 	var content: String = save_file.get_as_text()
 	save_file.close()
 
-	content = __handle_corrupt_end_of_file(content)
+	content = _handle_corrupt_end_of_file(content)
 	content = content.replace(SIGNATURE, "")
 	if Game.params["debug_logs"]:
 		print("__READ_CONTENT: " + content)
 
-	var json_object: JSON = __parse(content)
+	var json_object: JSON = _parse(content)
 	if json_object == null:
 		if Game.params["debug_logs"]:
 			print("__READ_PARSE_FAILED")
@@ -506,22 +506,22 @@ func __read(file_name: String) -> Dictionary:
 	return save_data
 
 
-func __parse(content: String, retry: bool = true) -> JSON:
+func _parse(content: String, retry: bool = true) -> JSON:
 	var json_object: JSON = JSON.new()
-	var _parse_err: Error = json_object.parse(content)
-	if _parse_err != Error.OK:
+	var parse_err: Error = json_object.parse(content)
+	if parse_err != Error.OK:
 		if Game.params["debug_logs"]:
-			print("__READ_PARSE_ERROR: " + str(_parse_err))
+			print("__READ_PARSE_ERROR: " + str(parse_err))
 		if retry:
 			var retry_content: String = StringUtils.sanitize_text(content, StringUtils.ASCII)
 			if Game.params["debug_logs"]:
 				print("__READ_RETRY_PARSE_WITH_FORCE_ASCII_CONTENT: " + retry_content)
-			return __parse(retry_content, false)
+			return _parse(retry_content, false)
 		return null
 	return json_object
 
 
-func __replace(file_name: String, old_text: String, new_text: String) -> void:
+func _replace(file_name: String, old_text: String, new_text: String) -> void:
 	var path: String = FileSystemUtils.USER_PATH + file_name
 	var save_file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if save_file == null:
@@ -529,7 +529,7 @@ func __replace(file_name: String, old_text: String, new_text: String) -> void:
 	var content: String = save_file.get_as_text()
 	save_file.close()
 
-	content = __handle_corrupt_end_of_file(content)
+	content = _handle_corrupt_end_of_file(content)
 	content = content.replace(old_text, new_text)
 
 	save_file = FileAccess.open(path, FileAccess.WRITE)
@@ -538,7 +538,7 @@ func __replace(file_name: String, old_text: String, new_text: String) -> void:
 
 
 ## removes corrupt excess data from end of save file (underlying OS can fail a FileAccess operation)
-func __handle_corrupt_end_of_file(content: String) -> String:
+func _handle_corrupt_end_of_file(content: String) -> String:
 	var signature_index: int = content.find(SIGNATURE)
 	if signature_index == -1:
 		return content
@@ -546,5 +546,5 @@ func __handle_corrupt_end_of_file(content: String) -> String:
 	return new_content
 
 
-func __metadata_save_file_name_internal(value: String) -> String:
+func _metadata_save_file_name_internal(value: String) -> String:
 	return '"' + "save_file_name" + '"' + ":" + '"' + str(value) + '"'

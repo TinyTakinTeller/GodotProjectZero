@@ -117,10 +117,10 @@ static func is_valid_int_64(input_string: String) -> bool:
 
 	if number_string.length() > max_int_string.length():
 		return false
-	elif number_string.length() < max_int_string.length():
+	if number_string.length() < max_int_string.length():
 		return true
 
 	if number_string.begins_with("-"):
 		return number_string >= min_int_string
-	else:
-		return number_string <= max_int_string
+
+	return number_string <= max_int_string

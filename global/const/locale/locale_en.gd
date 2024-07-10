@@ -1,29 +1,32 @@
 class_name LocaleEn
 
-const en: Dictionary = {
-	"ui_label": LocaleEn.ui_label,
-	"npc_hover_info": LocaleEn.npc_hover_info,
-	"npc_hover_title": LocaleEn.npc_hover_title,
-	"npc_click_info": LocaleEn.npc_click_info,
-	"npc_click_title": LocaleEn.npc_click_title,
-	"scale_settings_info": LocaleEn.scale_settings_info,
-	"enemy_data_title": LocaleEn.enemy_data_title,
-	"enemy_data_info": LocaleEn.enemy_data_info,
-	"enemy_data_option_title": LocaleEn.enemy_data_option_title,
-	"resource_generator_label": LocaleEn.resource_generator_label,
-	"resource_generator_title": LocaleEn.resource_generator_title,
-	"resource_generator_flavor": LocaleEn.resource_generator_flavor,
-	"resource_generator_max_flavor": LocaleEn.resource_generator_max_flavor,
-	"resource_generator_display_name": LocaleEn.resource_generator_display_name,
-	"worker_role_title": LocaleEn.worker_role_title,
-	"worker_role_flavor": LocaleEn.worker_role_flavor,
-	"tab_data_titles": LocaleEn.tab_data_titles,
-	"event_data_text": LocaleEn.event_data_text,
-	"npc_event_text": LocaleEn.npc_event_text,
-	"npc_event_options": LocaleEn.npc_event_options
+const EN: Dictionary = {
+	"ui_label": LocaleEn.UI_LABEL,
+	"npc_hover_info": LocaleEn.NPC_HOVER_INFO,
+	"npc_hover_title": LocaleEn.NPC_HOVER_TITLE,
+	"npc_click_info": LocaleEn.NPC_CLICK_INFO,
+	"npc_click_title": LocaleEn.NPC_CLICK_TITLE,
+	"scale_settings_info": LocaleEn.SCALE_SETTINGS_INFO,
+	"enemy_data_title": LocaleEn.ENEMY_DATA_TITLE,
+	"enemy_data_info": LocaleEn.ENEMY_DATA_INFO,
+	"enemy_data_option_title": LocaleEn.ENEMY_DATA_OPTION_TITLE,
+	"resource_generator_label": LocaleEn.RESOURCE_GENERATOR_LABEL,
+	"resource_generator_title": LocaleEn.RESOURCE_GENERATOR_TITLE,
+	"resource_generator_flavor": LocaleEn.RESOURCE_GENERATOR_FLAVOR,
+	"resource_generator_max_flavor": LocaleEn.RESOURCE_GENERATOR_MAX_FLAVOR,
+	"resource_generator_display_name": LocaleEn.RESOURCE_GENERATOR_DISPLAY_NAME,
+	"worker_role_title": LocaleEn.WORKER_ROLE_TITLE,
+	"worker_role_flavor": LocaleEn.WORKER_ROLE_FLAVOR,
+	"tab_data_titles": LocaleEn.TAB_DATA_TITLES,
+	"event_data_text": LocaleEn.EVENT_DATA_TEXT,
+	"npc_event_text": LocaleEn.NPC_EVENT_TEXT,
+	"npc_event_options": LocaleEn.NPC_EVENT_OPTIONS
 }
 
-const ui_label: Dictionary = {
+# File contains long labels that we don't want to lint
+# gdlint:disable = max-line-length
+
+const UI_LABEL: Dictionary = {
 	"name": "Name",
 	"playtime": "Playtime",
 	"last_played": "Last Played",
@@ -56,19 +59,19 @@ const ui_label: Dictionary = {
 	"sfx": "SFX"
 }
 
-const npc_hover_title: Dictionary = {}
+const NPC_HOVER_TITLE: Dictionary = {}
 
-const npc_hover_info: Dictionary = {
+const NPC_HOVER_INFO: Dictionary = {
 	"cat": "Suspicious looking creature, somehow able to produce human speech."
 }
 
-const npc_click_title: Dictionary = {"cat": "Click The Cat ??"}
+const NPC_CLICK_TITLE: Dictionary = {"cat": "Click The Cat ??"}
 
-const npc_click_info: Dictionary = {
+const NPC_CLICK_INFO: Dictionary = {
 	"cat": "I do not want to do that... all my senses, are screaming... Do. Not. Click. Her."
 }
 
-const enemy_data_title: Dictionary = {
+const ENEMY_DATA_TITLE: Dictionary = {
 	"ambassador": "The Ambassador Of Darkness",
 	"rabbit": "A Child Of Darkness",
 	"bird": "The Messenger Of Darkness",
@@ -82,7 +85,7 @@ const enemy_data_title: Dictionary = {
 	"angel": "The Angel Of Death, Vessel Of Darkness"
 }
 
-const enemy_data_option_title: Dictionary = {
+const ENEMY_DATA_OPTION_TITLE: Dictionary = {
 	"rabbit-2": "Soul Of Child",
 	"bird-2": "Soul Of Messenger",
 	"wolf-2": "Soul Of Beast",
@@ -107,7 +110,7 @@ const enemy_data_option_title: Dictionary = {
 	"null-1": "+20% swordsman to click"
 }
 
-const enemy_data_info: Dictionary = {
+const ENEMY_DATA_INFO: Dictionary = {
 	"ambassador": "This ancient colossal beast blocks the way towards the edge of the forest.",
 	"rabbit":
 	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
@@ -126,7 +129,7 @@ const enemy_data_info: Dictionary = {
 	"angel": "Celestial being, a conduit for everything that was and will be. It remainsSs silent."
 }
 
-const resource_generator_label: Dictionary = {
+const RESOURCE_GENERATOR_LABEL: Dictionary = {
 	"CREEK": "Dredge",
 	"FOREST": "Scavenge",
 	"WILD": "Hunting Trip",
@@ -162,7 +165,7 @@ const resource_generator_label: Dictionary = {
 	"worker": ""
 }
 
-const resource_generator_title: Dictionary = {
+const RESOURCE_GENERATOR_TITLE: Dictionary = {
 	"CREEK": "Dredge the Creek",
 	"FOREST": "Scavenge the Forest",
 	"WILD": "Hunt the Wilderness",
@@ -198,7 +201,7 @@ const resource_generator_title: Dictionary = {
 	"worker": ""
 }
 
-const resource_generator_flavor: Dictionary = {
+const RESOURCE_GENERATOR_FLAVOR: Dictionary = {
 	"CREEK": "The bottom of the shallow creek is ready for picking.",
 	"FOREST": "Things are waiting to be found within.",
 	"WILD": "The deep forest howls and screeches.",
@@ -234,7 +237,7 @@ const resource_generator_flavor: Dictionary = {
 	"worker": ""
 }
 
-const resource_generator_max_flavor: Dictionary = {
+const RESOURCE_GENERATOR_MAX_FLAVOR: Dictionary = {
 	"CREEK": "",
 	"FOREST": "",
 	"WILD": "",
@@ -271,7 +274,7 @@ const resource_generator_max_flavor: Dictionary = {
 	"worker": ""
 }
 
-const resource_generator_display_name: Dictionary = {
+const RESOURCE_GENERATOR_DISPLAY_NAME: Dictionary = {
 	"CREEK": "",
 	"FOREST": "",
 	"WILD": "",
@@ -306,7 +309,7 @@ const resource_generator_display_name: Dictionary = {
 	"worker": "Peasant"
 }
 
-const worker_role_title: Dictionary = {
+const WORKER_ROLE_TITLE: Dictionary = {
 	"clay_digger": "",
 	"coal_miner": "",
 	"experience": "",
@@ -330,7 +333,7 @@ const worker_role_title: Dictionary = {
 	"worker": "Peasant"
 }
 
-const worker_role_flavor: Dictionary = {
+const WORKER_ROLE_FLAVOR: Dictionary = {
 	"clay_digger": "The muddy lake keeps her secrets, for now.",
 	"coal_miner": "It takes a keen eye to spot some surface coal ore.",
 	"experience": "",
@@ -354,7 +357,7 @@ const worker_role_flavor: Dictionary = {
 	"worker": "Scavenge and gather food wherever they can."
 }
 
-const tab_data_titles: Dictionary = {
+const TAB_DATA_TITLES: Dictionary = {
 	"world":
 	[
 		" World ",
@@ -379,7 +382,7 @@ const tab_data_titles: Dictionary = {
 	"settings": [" @ "]
 }
 
-const event_data_text: Dictionary = {
+const EVENT_DATA_TEXT: Dictionary = {
 	"automation":
 	"Passive production of all resources is increasing! The age of automation is upon us.",
 	"cat_gift":
@@ -484,7 +487,7 @@ const event_data_text: Dictionary = {
 	"absolve_9": "The prince laughs at my mercy. Still, he agrees to follow along.",
 	"lore_beacon": "The lit beacon pierces the dark sky. For the first time, I can see the stars..."
 }
-const npc_event_text: Dictionary = {
+const NPC_EVENT_TEXT: Dictionary = {
 	"cat_intro": "I smell you from afar. Are you lost?",
 	"cat_peek": "",
 	"cat_talk_A1": "I thought so. You are different... not from the ForesSst.",
@@ -503,7 +506,7 @@ const npc_event_text: Dictionary = {
 	"cat_talk_C0": "You really defeated it by yoursSself... I underestimated you."
 }
 
-const npc_event_options: Dictionary = {
+const NPC_EVENT_OPTIONS: Dictionary = {
 	"cat_intro": ["Yes", "No"],
 	"cat_peek": [],
 	"cat_talk_A1": ["?"],
@@ -522,7 +525,7 @@ const npc_event_options: Dictionary = {
 	"cat_talk_C0": [":)"]
 }
 
-const scale_settings_info: Dictionary = {
+const SCALE_SETTINGS_INFO: Dictionary = {
 	-1: "???",
 	1: "One by one.",
 	10: "Huh, that's quite the crowd. I have never seen these men in my life.",
