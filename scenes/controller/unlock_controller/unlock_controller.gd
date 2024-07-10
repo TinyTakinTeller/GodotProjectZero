@@ -150,6 +150,9 @@ func _handle_land_event(observed_id: String) -> void:
 func _handle_house_event(observed_total: int) -> void:
 	if observed_total >= 1:
 		_trigger_unique_unlock_event("house_1")
+		_unlock_worker_role_if("clay_digger")
+		_unlock_worker_role_if("lumberjack")
+		_unlock_worker_role_if("stone_miner")
 	if observed_total >= 4:
 		_trigger_unique_unlock_event("house_4")
 	if observed_total >= 25:
