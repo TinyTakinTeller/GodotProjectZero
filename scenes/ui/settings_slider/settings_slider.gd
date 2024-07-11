@@ -2,6 +2,8 @@ class_name SettingsSlider extends MarginContainer
 
 signal data_changed(toggle: bool, value: float)
 
+@export var toggle_button_ui: bool = true
+
 var _toggle: bool
 var _value: float
 
@@ -33,6 +35,10 @@ func set_data(toggle: bool, value: float) -> void:
 	_update_ui()
 
 
+func get_title_label() -> Label:
+	return title_label
+
+
 #############
 ## helpers ##
 #############
@@ -42,6 +48,9 @@ func _initialize() -> void:
 	_toggle = true
 	_value = 1.0
 	_update_ui(false)
+
+	if !toggle_button_ui:
+		toggle_button.visible = false
 
 
 func _update_toggle_ui(user_input: bool = true) -> void:

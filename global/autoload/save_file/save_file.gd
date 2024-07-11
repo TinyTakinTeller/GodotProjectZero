@@ -15,11 +15,16 @@ var resource_generator_unlocks: Array = ["land"]
 var worker_role_unlocks: Array = []
 var tab_unlocks: Array = ["world", "settings"]
 var tab_levels: Dictionary = {"world": 0}
-var settings: Dictionary = {"theme": "dark"}
+var settings: Dictionary = {
+	"theme": "dark", "display_mode": "windowed", "display_resolution": [960, 540]
+}
 var audio_settings: Dictionary = {
 	"master": {"value": 1.00, "toggle": true},
 	"music": {"value": 0.80, "toggle": true},
 	"sfx": {"value": 0.50, "toggle": true}
+}
+var effect_settings: Dictionary = {
+	"shake": {"value": 0.20, "toggle": true}, "typing": {"value": 1.00, "toggle": true}
 }
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
@@ -241,6 +246,7 @@ func _export_save_data() -> Dictionary:
 	save_data["tab_levels"] = tab_levels
 	save_data["settings"] = settings
 	save_data["audio_settings"] = audio_settings
+	save_data["effect_settings"] = effect_settings
 	save_data["npc_events"] = npc_events
 	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
@@ -259,6 +265,7 @@ func _import_save_data(save_data: Dictionary) -> void:
 	tab_levels = _get_tab_levels(save_data)
 	settings = _get_settings(save_data)
 	audio_settings = _get_audio_settings(save_data)
+	effect_settings = _get_effect_settings(save_data)
 	npc_events = _get_npc_events(save_data)
 	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
@@ -303,6 +310,10 @@ func _get_settings(save_data: Dictionary) -> Dictionary:
 
 func _get_audio_settings(save_data: Dictionary) -> Dictionary:
 	return save_data.get("audio_settings", audio_settings)
+
+
+func _get_effect_settings(save_data: Dictionary) -> Dictionary:
+	return save_data.get("effect_settings", effect_settings)
 
 
 func _get_npc_events(save_data: Dictionary) -> Dictionary:
@@ -353,6 +364,14 @@ func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_7(save_data)
 	_check_backward_week_10(save_data)
 	_check_backward_corrupt_worker_role(save_data)
+	_check_backward_week_11(save_data)
+
+
+func _check_backward_week_11(save_data: Dictionary) -> void:
+	if !save_data["settings"].has("display_mode"):
+		save_data["settings"]["display_mode"] = settings["display_mode"]
+	if !save_data["settings"].has("display_resolution"):
+		save_data["settings"]["display_resolution"] = settings["display_resolution"]
 
 
 ## [WORKAROUND] for #ADF-27 | https://trello.com/c/7VNXK6xW

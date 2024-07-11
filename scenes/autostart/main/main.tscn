@@ -82,7 +82,9 @@ enemy_controller = NodePath("../EnemyController")
 
 [node name="EnemyManager" parent="Managers" instance=ExtResource("16_6q8rb")]
 
-[node name="UI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -93,7 +95,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("14_45bu4")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,84 +103,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/UI/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TabTracker" parent="UI/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_vxtq8")]
+[node name="TabTracker" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_vxtq8")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BodyMarginContainer" type="MarginContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="BodyMarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer"]
 layout_mode = 2
 
-[node name="BorderMarginContainer" type="MarginContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+[node name="BorderMarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="EventTracker" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
+[node name="EventTracker" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ScreenMarginContainer" type="MarginContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+[node name="ScreenMarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnknownScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
+[node name="UnknownScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
 layout_mode = 2
 
-[node name="WorldScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
+[node name="WorldScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
 layout_mode = 2
 
-[node name="ManagmentScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
+[node name="ManagmentScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
 visible = false
 layout_mode = 2
-worker_controller = NodePath("../../../../../../../../Controllers/WorkerController")
+worker_controller = NodePath("../../../../../../../../../Controllers/WorkerController")
 
-[node name="DarknessScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("21_324w1")]
-visible = false
-layout_mode = 2
-
-[node name="SoulScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("26_pehc6")]
+[node name="DarknessScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("21_324w1")]
 visible = false
 layout_mode = 2
 
-[node name="StarwayScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
+[node name="SoulScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("26_pehc6")]
 visible = false
 layout_mode = 2
 
-[node name="OfflineScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
+[node name="StarwayScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
+visible = false
 layout_mode = 2
 
-[node name="SettingsScreen" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("31_y1j6b")]
+[node name="OfflineScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
 layout_mode = 2
 
-[node name="ResourceTracker" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
+[node name="SettingsScreen" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("31_y1j6b")]
+layout_mode = 2
+
+[node name="ResourceTracker" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="InfoContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("10_unxkl")]
+[node name="InfoContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("10_unxkl")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_constants/margin_right = 0
 
-[node name="SettingsContainer" parent="UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
+[node name="SettingsContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 
-[node name="DeveloperConsole" parent="UI" instance=ExtResource("20_yijsf")]
+[node name="DeveloperConsole" parent="CanvasLayer/UI" instance=ExtResource("20_yijsf")]
 visible = false
 layout_mode = 1

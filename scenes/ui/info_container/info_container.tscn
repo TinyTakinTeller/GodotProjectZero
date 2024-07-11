@@ -1,21 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bauwua6x5pgjh"]
+[gd_scene load_steps=3 format=3 uid="uid://bauwua6x5pgjh"]
 
 [ext_resource type="Script" path="res://scenes/ui/info_container/info_container.gd" id="1_6ywel"]
-[ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_84ui8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u84p6"]
-shader = ExtResource("2_84ui8")
-shader_parameter/Strength = 0.8
-shader_parameter/RandomOffset = 8.0
-shader_parameter/offset = 0.0
-shader_parameter/enabled = 0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1fki"]
-shader = ExtResource("2_84ui8")
-shader_parameter/Strength = 0.8
-shader_parameter/RandomOffset = 7.0
-shader_parameter/offset = 0.0
-shader_parameter/enabled = 0
+[ext_resource type="PackedScene" uid="uid://cveqixklho80c" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_rsr25"]
 
 [node name="InfoContainer" type="MarginContainer"]
 size_flags_vertical = 8
@@ -36,16 +22,14 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TitleLabel" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_u84p6")
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/outline_size = 1
 text = "Rare Title"
 
-[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="InfoLabel" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_t1fki")
 layout_mode = 2
 text = "Venture on a hunt for some rare resources!"

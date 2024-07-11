@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch7uxqklej1h6"]
+[gd_scene load_steps=8 format=3 uid="uid://ch7uxqklej1h6"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/darkness_screen.gd" id="1_1yww0"]
+[ext_resource type="PackedScene" uid="uid://cveqixklho80c" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_juuhi"]
 [ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_pwkjq"]
 [ext_resource type="PackedScene" uid="uid://d02um03stnk8y" path="res://scenes/ui/enemy/enemy_texture/enemy_texture.tscn" id="3_hlysm"]
 [ext_resource type="PackedScene" uid="uid://j5lcc7v7q03g" path="res://scenes/ui/enemy/enemy_progress_bar/enemy_progress_bar.tscn" id="4_jk10o"]
@@ -40,9 +41,8 @@ theme_override_constants/margin_top = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="ScreenMarginContainer/TitleMarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer"]
+[node name="TitleLabel" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer" instance=ExtResource("2_juuhi")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_6dwjo")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -50,7 +50,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "The Ambassador Of Darkness"
 
-[node name="LevelLabel" type="Label" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer"]
+[node name="LevelLabel" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer" instance=ExtResource("2_juuhi")]
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_6dwjo")

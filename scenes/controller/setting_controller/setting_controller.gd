@@ -38,6 +38,7 @@ func _connect_signals() -> void:
 	SignalBus.toggle_button_pressed.connect(_on_toggle_button_pressed)
 	SignalBus.toggle_scale_pressed.connect(_on_toggle_scale_pressed)
 	SignalBus.audio_settings_update.connect(_on_audio_settings_update)
+	SignalBus.effect_settings_update.connect(_on_effect_settings_update)
 
 
 func _on_toggle_button_pressed(id: String, toggle_id: String) -> void:
@@ -56,3 +57,7 @@ func _on_audio_settings_update(toggle: bool, value: float, id: String) -> void:
 	AudioServer.set_bus_mute(bus_index, not toggle)
 
 	SignalBus.audio_settings_updated.emit(toggle, value, id)
+
+
+func _on_effect_settings_update(toggle: bool, value: float, id: String) -> void:
+	SignalBus.effect_settings_updated.emit(toggle, value, id)

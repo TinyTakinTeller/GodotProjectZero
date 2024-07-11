@@ -2,9 +2,16 @@ extends MarginContainer
 
 const TAB_DATA_ID: String = "settings"
 
+@export var shake_shader_component_scene: PackedScene
+
 @onready var master_settings_slider: SettingsSlider = %MasterSettingsSlider
 @onready var music_settings_slider: SettingsSlider = %MusicSettingsSlider
 @onready var sfx_settings_slider: SettingsSlider = %SFXSettingsSlider
+@onready var shake_settings_slider: SettingsSlider = %ShakeSettingsSlider
+@onready var typing_settings_slider: SettingsSlider = %TypingSettingsSlider
+@onready var display_mode_button: Button = %DisplayModeButton
+@onready var display_resolution_button: Button = %DisplayResolutionButton
+@onready var display_language_button: Button = %DisplayLanguageButton
 
 ###############
 ## overrides ##
@@ -23,9 +30,31 @@ func _ready() -> void:
 
 
 func _initialize() -> void:
+	_set_ui_labels()
+	_apply_effects()
+
+
+func _set_ui_labels() -> void:
 	master_settings_slider.title_label.text = Locale.get_ui_label("master")
 	music_settings_slider.title_label.text = Locale.get_ui_label("music")
 	sfx_settings_slider.title_label.text = Locale.get_ui_label("sfx")
+
+	shake_settings_slider.title_label.text = Locale.get_ui_label("shake")
+	typing_settings_slider.title_label.text = Locale.get_ui_label("typing")
+
+	display_mode_button.text = "?"
+	display_resolution_button.text = "?"
+
+	## TODO: ADF-24 | Localization
+	display_language_button.text = Locale.LOCALE_NAME[SaveFile.locale]
+	display_language_button.disabled = true
+
+
+func _apply_effects() -> void:
+	var shake_shader_component: ShakeShaderComponent = (
+		shake_shader_component_scene.instantiate() as ShakeShaderComponent
+	)
+	shake_settings_slider.get_title_label().add_child(shake_shader_component)
 
 
 func _load_from_save_file() -> void:
@@ -39,6 +68,18 @@ func _load_from_save_file() -> void:
 		SaveFile.audio_settings["sfx"]["toggle"], SaveFile.audio_settings["sfx"]["value"]
 	)
 
+	shake_settings_slider.set_data(
+		SaveFile.effect_settings["shake"]["toggle"], SaveFile.effect_settings["shake"]["value"]
+	)
+	typing_settings_slider.set_data(
+		SaveFile.effect_settings["typing"]["toggle"], SaveFile.effect_settings["typing"]["value"]
+	)
+
+	display_mode_button.text = Locale.get_ui_label(SaveFile.settings["display_mode"])
+	var a: int = SaveFile.settings["display_resolution"][0]
+	var b: int = SaveFile.settings["display_resolution"][1]
+	display_resolution_button.text = "{a} x {b}".format({"a": a, "b": b})
+
 
 #############
 ## signals ##
@@ -47,9 +88,17 @@ func _load_from_save_file() -> void:
 
 func _connect_signals() -> void:
 	SignalBus.tab_changed.connect(_on_tab_changed)
-	master_settings_slider.data_changed.connect(_on_data_changed.bind("master"))
-	music_settings_slider.data_changed.connect(_on_data_changed.bind("music"))
-	sfx_settings_slider.data_changed.connect(_on_data_changed.bind("sfx"))
+
+	master_settings_slider.data_changed.connect(_on_audio_data_changed.bind("master"))
+	music_settings_slider.data_changed.connect(_on_audio_data_changed.bind("music"))
+	sfx_settings_slider.data_changed.connect(_on_audio_data_changed.bind("sfx"))
+
+	shake_settings_slider.data_changed.connect(_on_effect_data_changed.bind("shake"))
+	typing_settings_slider.data_changed.connect(_on_effect_data_changed.bind("typing"))
+
+	display_mode_button.button_up.connect(_on_display_mode_button_up)
+	display_resolution_button.button_up.connect(_on_display_resolution_button_up)
+	display_language_button.button_up.connect(_on_display_language_button_up)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -59,5 +108,22 @@ func _on_tab_changed(tab_data: TabData) -> void:
 		visible = false
 
 
-func _on_data_changed(toggle: bool, value: float, id: String) -> void:
+func _on_audio_data_changed(toggle: bool, value: float, id: String) -> void:
 	SignalBus.audio_settings_update.emit(toggle, value, id)
+
+
+func _on_effect_data_changed(toggle: bool, value: float, id: String) -> void:
+	SignalBus.effect_settings_update.emit(toggle, value, id)
+	## TODO typing effect
+
+
+func _on_display_mode_button_up() -> void:
+	pass  ## TODO
+
+
+func _on_display_resolution_button_up() -> void:
+	pass  ## TODO
+
+
+func _on_display_language_button_up() -> void:
+	pass  ## TODO

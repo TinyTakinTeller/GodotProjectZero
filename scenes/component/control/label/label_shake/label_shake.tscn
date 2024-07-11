@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cveqixklho80c"]
+
+[ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="1_3e364"]
+
+[node name="LabelShake" type="Label"]
+
+[node name="ShakeShaderComponent" parent="." instance=ExtResource("1_3e364")]

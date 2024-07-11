@@ -25,6 +25,7 @@ signal resource_storage_unhover(resource: ResourceGenerator)
 signal deaths_door_open(enemy_data: EnemyData)
 signal deaths_door(enemy_data: EnemyData, option: int)
 signal audio_settings_update(toggle: bool, value: float, id: String)
+signal effect_settings_update(toggle: bool, value: float, id: String)
 
 ## CONTROLLER
 signal main_ready
@@ -52,6 +53,7 @@ signal offline_progress_processed(
 	seconds_delta: int, worker_progress: Dictionary, enemy_progress: Dictionary, factor: float
 )
 signal audio_settings_updated(toggle: bool, value: float, id: String)
+signal effect_settings_updated(toggle: bool, value: float, id: String)
 
 ## MANAGER
 signal resource_updated(id: String, total: int, amount: int, source_id: String)

@@ -56,7 +56,11 @@ const UI_LABEL: Dictionary = {
 	"offline_4": "Since your last activity, population generated: ",
 	"master": "Master",
 	"music": "Music",
-	"sfx": "SFX"
+	"sfx": "SFX",
+	"shake": "Shake",
+	"typing": "Typing",
+	"windowed": "Windowed",
+	"fullscreen": "Fullscreen"
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}

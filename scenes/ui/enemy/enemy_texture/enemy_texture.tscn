@@ -1,34 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://d02um03stnk8y"]
+[gd_scene load_steps=5 format=3 uid="uid://d02um03stnk8y"]
 
-[ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="1_lwimw"]
 [ext_resource type="Script" path="res://scenes/ui/enemy/enemy_texture/enemy_texture.gd" id="1_odbx0"]
-[ext_resource type="PackedScene" uid="uid://3aw0ib2j5hx5" path="res://scenes/component/texture/texture_rgb_offset/texture_rgb_offset.tscn" id="2_re61i"]
-[ext_resource type="PackedScene" uid="uid://crps6q62tt20h" path="res://scenes/component/texture/texture_pixel_explosion/texture_pixel_explosion.tscn" id="3_856ww"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7iv2"]
-shader = ExtResource("1_lwimw")
-shader_parameter/Strength = 1.55
-shader_parameter/RandomOffset = 1.0
-shader_parameter/offset = 0.69
-shader_parameter/enabled = 1
+[ext_resource type="PackedScene" uid="uid://dfvvkc01me6hk" path="res://scenes/component/control/texture/texture_shake/texture_shake.tscn" id="2_4vkcw"]
+[ext_resource type="PackedScene" uid="uid://3aw0ib2j5hx5" path="res://scenes/component/control/texture/texture_rgb_offset/texture_rgb_offset.tscn" id="3_mnpv7"]
+[ext_resource type="PackedScene" uid="uid://crps6q62tt20h" path="res://scenes/component/control/texture/texture_pixel_explosion/texture_pixel_explosion.tscn" id="4_7rtxw"]
 
 [node name="EnemyTexture" type="MarginContainer"]
 size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_odbx0")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_e7iv2")
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRgbOffset" parent="." instance=ExtResource("2_re61i")]
+[node name="TextureRect" parent="." instance=ExtResource("2_4vkcw")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TexturePixelExplosion" parent="." instance=ExtResource("3_856ww")]
+[node name="TextureRgbOffset" parent="." instance=ExtResource("3_mnpv7")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TexturePixelExplosion" parent="." instance=ExtResource("4_7rtxw")]
 unique_name_in_owner = true
 layout_mode = 2
 
