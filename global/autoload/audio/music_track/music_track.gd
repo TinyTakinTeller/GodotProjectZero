@@ -22,7 +22,6 @@ func _ready() -> void:
 	audio_stream_player.stream = audio_stream
 	if autoplay:
 		audio_stream_player.play()
-	_connect_signals()
 
 
 #############
@@ -78,16 +77,3 @@ func _fade_out_callback(pause: bool) -> void:
 	if pause:
 		_playback_position = audio_stream_player.get_playback_position()
 		audio_stream_player.stop()
-
-
-#############
-## signals ##
-#############
-
-
-func _connect_signals() -> void:
-	audio_stream_player.finished.connect(_on_song_finished)
-
-
-func _on_song_finished() -> void:
-	audio_stream_player.play()
