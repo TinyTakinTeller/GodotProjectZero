@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://bnvqgm3llr76f"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_t6wtb"]
-[ext_resource type="AudioStream" uid="uid://wibc1vd82gix" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/combat/blood_&_gore_2_1.wav" id="2_neqhx"]
+[ext_resource type="AudioStream" uid="uid://wibc1vd82gix" path="res://assets/audio/indie_friendly_sounds_survival/_resource/blood_&_gore_2_1.wav" id="2_q21vp"]
 
 [resource]
 script = ExtResource("1_t6wtb")
@@ -23,4 +23,4 @@ hidden = false
 max_amount = -1
 column = 0
 dynamic_efficiency_id = ""
-sfx_button_success = ExtResource("2_neqhx")
+sfx_button_success = ExtResource("2_q21vp")
