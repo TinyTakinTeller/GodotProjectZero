@@ -1,10 +1,10 @@
 extends MarginContainer
 
-@onready var button: Button = %Button
-
 @export var _id: String
 @export var _toggle_ids: Array[String] = []
 @export var _toggle_id_index: int = -1
+
+@onready var button: Button = %Button
 
 
 func _ready() -> void:

@@ -1,10 +1,10 @@
 extends MarginContainer
 
-@onready var title_label: Label = %TitleLabel
-@onready var info_label: Label = %InfoLabel
-
 var info_id: String
 var info_type: String
+
+@onready var title_label: Label = %TitleLabel
+@onready var info_label: Label = %InfoLabel
 
 ###############
 ## overrides ##

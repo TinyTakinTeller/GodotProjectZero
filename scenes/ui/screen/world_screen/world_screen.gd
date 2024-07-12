@@ -2,11 +2,11 @@ extends MarginContainer
 
 const TAB_DATA_ID: String = "world"
 
-@onready var h_box_container: HBoxContainer = %HBoxContainer
-
 @export var progress_button_scene: PackedScene
 
 var grid_containers: Array[GridContainer] = []
+
+@onready var h_box_container: HBoxContainer = %HBoxContainer
 
 ###############
 ## overrides ##

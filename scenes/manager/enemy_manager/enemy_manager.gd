@@ -1,5 +1,5 @@
-extends Node
 class_name EnemyManager
+extends Node
 
 ###############
 ## overrides ##

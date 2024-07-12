@@ -1,14 +1,14 @@
-extends MarginContainer
 class_name SubstanceButton
+extends MarginContainer
+
+var _enemy_data: EnemyData
+var _enemy_option: int
 
 @onready var texture_margin_container: MarginContainer = %TextureMarginContainer
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var title_label: Label = %TitleLabel
 @onready var button: Button = %Button
 @onready var effect_label: Label = %EffectLabel
-
-var _enemy_data: EnemyData
-var _enemy_option: int
 
 ###############
 ## overrides ##
@@ -38,10 +38,9 @@ func get_title() -> String:
 func get_color() -> Color:
 	if _enemy_option == 2:
 		return ColorSwatches.GREEN
-	elif _enemy_option == 1:
+	if _enemy_option == 1:
 		return ColorSwatches.RED
-	else:
-		return Color.WHITE
+	return Color.WHITE
 
 
 func set_data(enemy_data: EnemyData) -> void:

@@ -1,5 +1,5 @@
-extends Node
 class_name NpcManager
+extends Node
 
 ###############
 ## overrides ##
