@@ -83,7 +83,7 @@ func _connect_signals() -> void:
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
-	# if tab_data.id == DarknessScreen.TAB_DATA_ID:
-	# 	Audio.swap_crossfade_music(1)
-	# else:
-	Audio.swap_crossfade_music(0)
+	if tab_data.id == DarknessScreen.TAB_DATA_ID:
+		Audio.swap_crossfade_music(1)
+	else:
+		Audio.swap_crossfade_music(0)
