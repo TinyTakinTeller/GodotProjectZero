@@ -1,5 +1,5 @@
-extends Resource
 class_name EnemyData
+extends Resource
 
 @export var order: int = 0
 @export var id: String

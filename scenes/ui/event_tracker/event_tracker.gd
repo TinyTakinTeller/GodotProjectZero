@@ -1,13 +1,13 @@
 extends MarginContainer
 
-@onready var event_v_box_container: VBoxContainer = %EventVBoxContainer
-@onready var scroll_container: ScrollContainer = %ScrollContainer
-
-@onready var title_label: Label = %TitleLabel
 @export var event_item_scene: PackedScene
-@export var PAGE_SIZE: int = 20
+@export var page_size: int = 20
 
 var _total_lines: int = 0
+
+@onready var event_v_box_container: VBoxContainer = %EventVBoxContainer
+@onready var scroll_container: ScrollContainer = %ScrollContainer
+@onready var title_label: Label = %TitleLabel
 
 ###############
 ## overrides ##
@@ -19,7 +19,7 @@ func _ready() -> void:
 	_connect_signals()
 	_load_from_save_file()
 
-	if Game.params["debug_no_scrollbar"]:
+	if Game.PARAMS["debug_no_scrollbar"]:
 		ScrollContainerUtils.disable_scrollbars(scroll_container)
 
 
@@ -37,8 +37,8 @@ func _load_from_save_file() -> void:
 	_clear_items()
 	var next_index: int = SaveFile.event_log.size()
 	var load_range: int = next_index
-	if Game.params["debug_no_scrollbar"]:
-		load_range = min(PAGE_SIZE, next_index)
+	if Game.PARAMS["debug_no_scrollbar"]:
+		load_range = min(page_size, next_index)
 	for index: int in range(load_range):
 		var event_log_index: int = index + 1
 		var event_log: Dictionary = SaveFile.event_log[str(event_log_index)]
@@ -52,8 +52,8 @@ func _add_event(event_data: EventData, vals: Array, index: int, new: bool) -> vo
 	var event_item: EventTrackerItem = _add_item()
 	event_item.set_content(event_data, vals, index, new)
 	_total_lines += 1
-	if Game.params["debug_no_scrollbar"]:
-		while _total_lines > PAGE_SIZE:
+	if Game.PARAMS["debug_no_scrollbar"]:
+		while _total_lines > page_size:
 			NodeUtils.remove_oldest(event_v_box_container)
 			_total_lines -= 1
 

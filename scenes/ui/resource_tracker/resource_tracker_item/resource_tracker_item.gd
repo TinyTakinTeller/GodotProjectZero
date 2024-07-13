@@ -137,7 +137,7 @@ func _on_worker_updated(_id: String, _total: int, _amount: int) -> void:
 
 func _on_mouse_entered() -> void:
 	SignalBus.resource_storage_hover.emit(_resource_generator)
-	if Game.params["resource_storage_info"]:
+	if Game.PARAMS["resource_storage_info"]:
 		SignalBus.info_hover.emit(
 			_resource_generator.get_display_name(),
 			_resource_generator.get_display_info(amount_label.text, income_label.text)

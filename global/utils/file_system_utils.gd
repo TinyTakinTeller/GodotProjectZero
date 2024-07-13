@@ -7,7 +7,7 @@ const IMAGE_RESOURCES_PATH: String = "res://assets/image/"
 
 static func get_files_at(path: String) -> PackedStringArray:
 	var files: PackedStringArray = DirAccess.get_files_at(path)
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("CALL get_files: " + path)
 		print(files)
 	return files
@@ -65,7 +65,7 @@ static func fix_web_build_file_extension(file: String, force_one_extension: bool
 	if force_one_extension:
 		var file_split: PackedStringArray = file.split(".")
 		if file_split.size() > 2:
-			if Game.params["debug_logs"]:
+			if Game.PARAMS["debug_logs"]:
 				print("!! FORCE ONE EXTENSION: " + file)
 			file = file_split[0] + "." + file_split[1]
 	return file

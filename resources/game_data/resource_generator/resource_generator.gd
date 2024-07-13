@@ -1,5 +1,5 @@
-extends Resource
 class_name ResourceGenerator
+extends Resource
 
 @export var color: Color = Color.BLACK
 @export var sort_value: int = 0
@@ -55,7 +55,7 @@ func get_display_name() -> String:
 
 func get_display_info(total: String, eff: String) -> String:
 	return "{total}, {eff} / {seconds} seconds".format(
-		{"total": total, "eff": eff, "seconds": Game.params["cycle_seconds"]}
+		{"total": total, "eff": eff, "seconds": Game.PARAMS["cycle_seconds"]}
 	)
 
 
@@ -90,8 +90,8 @@ func get_amount() -> int:
 
 
 func get_cooldown() -> float:
-	if Game.params["debug_cooldown"] != 0:
-		return Game.params["debug_cooldown"]
+	if Game.PARAMS["debug_cooldown"] != 0:
+		return Game.PARAMS["debug_cooldown"]
 	return cooldown
 
 

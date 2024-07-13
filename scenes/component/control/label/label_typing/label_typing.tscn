@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://r18rsehjlpjl"]
+[gd_scene load_steps=3 format=3 uid="uid://ccm0lefdpacby"]
 
 [ext_resource type="PackedScene" uid="uid://cn8u84h8wjtm8" path="res://scenes/component/tween/typing_text_tween/typing_text_tween.tscn" id="1_fxbux"]
 [ext_resource type="Script" path="res://scenes/component/control/label/label_typing/label_typing.gd" id="1_sms58"]

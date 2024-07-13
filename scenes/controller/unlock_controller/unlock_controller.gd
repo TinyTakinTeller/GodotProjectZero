@@ -150,6 +150,9 @@ func _handle_land_event(observed_id: String) -> void:
 func _handle_house_event(observed_total: int) -> void:
 	if observed_total >= 1:
 		_trigger_unique_unlock_event("house_1")
+		_unlock_worker_role_if("clay_digger")
+		_unlock_worker_role_if("lumberjack")
+		_unlock_worker_role_if("stone_miner")
 	if observed_total >= 4:
 		_trigger_unique_unlock_event("house_4")
 	if observed_total >= 25:
@@ -215,7 +218,7 @@ func _deaths_door_lore(level: int) -> void:
 
 
 func _load_timers() -> void:
-	cat_intro_timer.wait_time = Game.params["timer_cat_intro_seconds"]
+	cat_intro_timer.wait_time = Game.PARAMS["timer_cat_intro_seconds"]
 	cat_intro_timer.one_shot = true
 	if SaveFile.events.get("cat_watching", 0) == 1:
 		cat_intro_timer.start()
@@ -283,7 +286,7 @@ func _gift_resource(gen_id: String, amount: int, source_id: String) -> void:
 
 
 func _gift_debug() -> void:
-	if Game.params["debug_gift"]:
+	if Game.PARAMS["debug_gift"]:
 		if _trigger_unique_unlock_event("land_debug"):
 			_gift_resource("food", 1000, name)
 			_gift_resource("wood", 1000, name)

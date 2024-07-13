@@ -1,5 +1,5 @@
-extends Node
 class_name WorkerManager
+extends Node
 
 ###############
 ## overrides ##

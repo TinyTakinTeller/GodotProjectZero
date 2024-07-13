@@ -1,13 +1,13 @@
-extends TextureRect
 class_name TexturePixelExplosion
-
-@onready var simple_tween: SimpleTween = %SimpleTween
+extends TextureRect
 
 ## tween params
 var death_animation_duration: float = 1.0
 var death_animation_end_delay: float = 0.3
 var death_animation_duration_fast: float = 0.8
 var death_animation_end_delay_fast: float = 0.2
+
+@onready var simple_tween: SimpleTween = %SimpleTween
 
 ###############
 ## overrides ##

@@ -3,8 +3,17 @@ class_name DeveloperConsole extends Control
 @export var buffer_size: int = 16
 
 var commands: Dictionary = {
-	&"add": {"func": _cmd_add_resource, "usage": "add [resource_id] [amount >= 0]"},
-	&"cls": {"func": _cmd_cls, "usage": "cls"}
+	&"add":
+	{
+		"func": _cmd_add_resource,
+		"description": "Add player resource by ID",
+		"usage": "add [resource_id] [amount >= 0]"
+	},
+	&"help":
+	{"func": _cmd_help, "description": "Display a list of helpful commands", "usage": "help"},
+	&"cls": {"func": _cmd_cls, "description": "Clear the console screen", "usage": "cls"},
+	&"env":
+	{"func": _cmd_env, "description": "Displays the current build environment", "usage": "env"}
 }
 
 var input_buffer: Array[String] = []
@@ -118,6 +127,18 @@ func _process_command(command_text: String) -> void:
 ###############
 
 
+func _cmd_help(args: PackedStringArray) -> Error:
+	if args.size() > 0:
+		return FAILED
+
+	_write_line("Commands")
+	for command: StringName in commands:
+		_write_line("\t%s" % command)
+		_write_line("\t\tDescription: %s" % [commands[command]["description"]])
+		_write_line("\t\tUsage: %s" % [commands[command]["usage"]])
+	return OK
+
+
 func _cmd_add_resource(args: PackedStringArray) -> Error:
 	if args.size() != 2 or args[1].begins_with("-"):
 		return FAILED
@@ -141,6 +162,19 @@ func _cmd_cls(args: PackedStringArray) -> Error:
 		return FAILED
 	output_buffer.clear()
 	_flush_output()
+	return OK
+
+
+func _cmd_env(args: PackedStringArray) -> Error:
+	if args.size() > 0:
+		return FAILED
+
+	var game_env: StringName = &"prod"
+	if OS.is_debug_build():
+		game_env = &"debug"
+
+	_write_line("Environment: %s" % game_env)
+
 	return OK
 
 

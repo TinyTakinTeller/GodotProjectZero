@@ -1,7 +1,7 @@
 class_name EnemyController
 extends Node
 
-const ENEMY_CYCLE_SECONDS: float = Game.params["enemy_cycle_seconds"]
+const ENEMY_CYCLE_SECONDS: float = Game.PARAMS["enemy_cycle_seconds"]
 
 @onready var timer: Timer = $Timer
 

@@ -1,5 +1,5 @@
-extends MarginContainer
 class_name EnemyProgressBar
+extends MarginContainer
 
 @onready var progress_bar_left: ProgressBar = %ProgressBarLeft
 @onready var progress_bar_right: ProgressBar = %ProgressBarRight

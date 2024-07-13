@@ -23,4 +23,4 @@ text = "Experience: 123"
 unique_name_in_owner = true
 target = NodePath("../..")
 duration = 0.5
-call_method = "__updated_simple_tween_method"
+call_method = "_updated_simple_tween_method"

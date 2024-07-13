@@ -1,5 +1,5 @@
-extends Node
 class_name EventController
+extends Node
 
 ###############
 ## overrides ##
@@ -43,7 +43,7 @@ func _retrigger_resource_generated_event(resource_generator: ResourceGenerator) 
 
 
 func _handle_on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
-	if Game.params["debug_resource_generated_event"]:
+	if Game.PARAMS["debug_resource_generated_event"]:
 		_retrigger_resource_generated_event(resource_generator)
 
 

@@ -21,5 +21,5 @@ var enemy_image: Dictionary = FileSystemUtils.get_image_resources("enemy", true)
 
 
 func _ready() -> void:
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("_AUTOLOAD _READY: " + self.get_name())

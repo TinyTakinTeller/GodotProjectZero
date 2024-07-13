@@ -1,5 +1,5 @@
-extends Resource
 class_name WorkerRole
+extends Resource
 
 @export var order: int = 0
 @export var sort_value: int = 0
@@ -49,7 +49,7 @@ func get_info() -> String:
 		var worker_names: Array = WorkerRole.get_display_names_of(worker_consume.keys())
 		info += (", -%s " + (", -%s ".join(worker_names))) % worker_consume.values()
 
-	info += " / %s seconds" % Game.params["cycle_seconds"]
+	info += " / %s seconds" % Game.PARAMS["cycle_seconds"]
 	if StringUtils.is_not_empty(flavor):
 		info += " - " + flavor
 	return info

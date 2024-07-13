@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bauwua6x5pgjh"]
 
 [ext_resource type="Script" path="res://scenes/ui/info_container/info_container.gd" id="1_6ywel"]
-[ext_resource type="PackedScene" uid="uid://cveqixklho80c" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_rsr25"]
+[ext_resource type="PackedScene" uid="uid://ccpod48fjrcy1" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_rsr25"]
 
 [node name="InfoContainer" type="MarginContainer"]
 size_flags_vertical = 8

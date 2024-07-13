@@ -1,14 +1,23 @@
-extends MarginContainer
 class_name SaveFileItem
-
-const SECTION_1_WIDTH_PX: int = 180
-const SECTION_2_WIDTH_PX: int = 140
-const SECTION_3_WIDTH_PX: int = 170
+extends MarginContainer
 
 signal load_button_click(save_file_name: String)
 signal delete_button_click(save_file_name: String)
 signal new_button_click(save_file_name: String)
 signal new_input_set(save_file_name: String, new_text: String, old_text: String)
+
+const SECTION_1_WIDTH_PX: int = 180
+const SECTION_2_WIDTH_PX: int = 140
+const SECTION_3_WIDTH_PX: int = 170
+
+@export var save_file_item_section_scene: PackedScene
+
+var name_section: SaveFileItemSection
+
+var _save_file_name: String
+var _new: bool
+var _sort_value: int
+var _delete_counter: int = 0
 
 @onready var load_button: Button = %LoadButton
 @onready var delete_button: Button = %DeleteButton
@@ -17,15 +26,6 @@ signal new_input_set(save_file_name: String, new_text: String, old_text: String)
 @onready var delete_margin_container: MarginContainer = %DeleteMarginContainer
 @onready var new_margin_container: MarginContainer = %NewMarginContainer
 @onready var section_h_box_container: HBoxContainer = %SectionHBoxContainer
-
-@export var save_file_item_section_scene: PackedScene
-
-var _save_file_name: String
-var _new: bool
-var _sort_value: int
-var __delete_counter: int = 0
-
-var name_section: SaveFileItemSection
 
 ###############
 ## overrides ##
@@ -133,10 +133,10 @@ func _display_new(new: bool) -> void:
 
 func _display_delete_counter() -> void:
 	var ui_delete: String = Locale.get_ui_label("delete")
-	if __delete_counter == 0:
+	if _delete_counter == 0:
 		delete_button.text = ui_delete
 	else:
-		delete_button.text = "(" + str(Game.params["delete_counter"] + 1 - __delete_counter) + ")"
+		delete_button.text = "(" + str(Game.PARAMS["delete_counter"] + 1 - _delete_counter) + ")"
 
 
 ##############
@@ -145,11 +145,11 @@ func _display_delete_counter() -> void:
 
 
 func _handle_on_delete_button() -> void:
-	if __delete_counter >= Game.params["delete_counter"]:
+	if _delete_counter >= Game.PARAMS["delete_counter"]:
 		delete_button_click.emit(_save_file_name)
 		queue_free()
 	else:
-		__delete_counter += 1
+		_delete_counter += 1
 		_display_delete_counter()
 	delete_button.release_focus()
 
@@ -179,7 +179,7 @@ func _on_delete_button() -> void:
 
 
 func _on_delete_reset() -> void:
-	__delete_counter = 0
+	_delete_counter = 0
 	_display_delete_counter()
 
 

@@ -1,5 +1,5 @@
-extends Resource
 class_name NpcEvent
+extends Resource
 
 @export var sort_value: int = 0
 @export var npc_id: String

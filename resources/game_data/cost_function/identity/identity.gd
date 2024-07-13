@@ -1,5 +1,5 @@
-extends Resource
 class_name CostFunction
+extends Resource
 
 
 func get_cost(base_cost: int, _level: int) -> int:

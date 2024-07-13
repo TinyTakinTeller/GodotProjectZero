@@ -1,17 +1,17 @@
-extends MarginContainer
 class_name SaveFileItemSection
+extends MarginContainer
 
 signal new_input_set(new_text: String, old_text: String)
+
+var _input_enabled: bool = false
+var _input_text: String = ""
+var _previous_input_text: String = ""
 
 @onready var title_label: Label = %TitleLabel
 @onready var value_label: Label = %ValueLabel
 @onready var input_margin_container: MarginContainer = %InputMarginContainer
 @onready var line_edit: LineEdit = %LineEdit
 @onready var scroll_container: ScrollContainer = %ScrollContainer
-
-var _input_enabled: bool = false
-var _input_text: String = ""
-var _previous_input_text: String = ""
 
 ###############
 ## overrides ##
@@ -47,7 +47,7 @@ func _initialize() -> void:
 	set_focus_mode(FOCUS_CLICK)
 	_set_input_label("Title")
 	_set_value_label("value")
-	line_edit.max_length = Game.params["max_file_name_length"]
+	line_edit.max_length = Game.PARAMS["max_file_name_length"]
 	ScrollContainerUtils.disable_scrollbars(scroll_container)
 
 

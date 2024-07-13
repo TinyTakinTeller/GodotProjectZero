@@ -1,5 +1,5 @@
-extends Resource
 class_name TabData
+extends Resource
 
 @export var id: String
 @export var sort_value: int = 0

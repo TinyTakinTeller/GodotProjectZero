@@ -1,5 +1,5 @@
-extends Line2D
 class_name LineEffect
+extends Line2D
 
 @export var max_alpha: float = 1.0
 @export var duration: float = 1.0

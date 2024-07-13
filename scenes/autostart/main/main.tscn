@@ -184,3 +184,4 @@ theme_override_constants/margin_left = 0
 [node name="DeveloperConsole" parent="CanvasLayer/UI" instance=ExtResource("20_yijsf")]
 visible = false
 layout_mode = 1
+buffer_size = 16

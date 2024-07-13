@@ -71,5 +71,5 @@ signal deaths_door_resolved(enemy_data: EnemyData, new_enemy_data: EnemyData, op
 
 
 func _ready() -> void:
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("_AUTOLOAD _READY: " + self.get_name())

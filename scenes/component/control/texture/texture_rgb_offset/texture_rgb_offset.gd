@@ -1,13 +1,13 @@
-extends TextureRect
 class_name TextureRgbOffset
-
-@onready var simple_tween: SimpleTween = %SimpleTween
+extends TextureRect
 
 ## tween params
 var shader_simple_tween_duration: float = 0.5
 var rl_max: float = 6
 var rx_max: float = rl_max
 var ry_max: float = rl_max
+
+@onready var simple_tween: SimpleTween = %SimpleTween
 
 ###############
 ## overrides ##
@@ -30,7 +30,7 @@ func get_simple_tween() -> SimpleTween:
 func play_animation(duration: float = shader_simple_tween_duration) -> void:
 	if simple_tween.is_finished():
 		_randomize_shader_simple_tween_direction()
-		simple_tween.play_animation_(duration)
+		simple_tween.play_animation_during(duration)
 
 
 func _randomize_shader_simple_tween_direction() -> void:

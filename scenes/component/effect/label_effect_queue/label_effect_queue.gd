@@ -1,8 +1,5 @@
-extends Node2D
 class_name LabelEffectQueue
-
-@onready var queue: Node2D = %Queue
-@onready var timer: Timer = $Timer
+extends Node2D
 
 @export var label_effect_scene: PackedScene
 @export var delay: float = 0.5
@@ -13,6 +10,9 @@ var _color_theme_override: Color
 var _particle_id: String
 var _tasks: Array[String] = []
 var _last_task: String = ""
+
+@onready var queue: Node2D = %Queue
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:

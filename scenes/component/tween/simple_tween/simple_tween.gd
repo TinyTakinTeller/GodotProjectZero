@@ -1,5 +1,5 @@
-extends Node
 class_name SimpleTween
+extends Node
 
 signal animation_end
 signal animation_finished
@@ -33,10 +33,10 @@ func is_finished() -> bool:
 
 
 func play_animation(reverse: bool = false) -> void:
-	play_animation_(0, reverse)
+	play_animation_during(0, reverse)
 
 
-func play_animation_(override_duration: float, reverse: bool = false) -> void:
+func play_animation_during(override_duration: float, reverse: bool = false) -> void:
 	_reversed_flag = reverse
 	finished = false
 	if _tween != null:

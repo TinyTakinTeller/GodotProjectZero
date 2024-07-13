@@ -12,7 +12,7 @@ func _ready() -> void:
 	_initialize()
 	_connect_signals()
 
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("_READY: " + self.get_name())
 
 

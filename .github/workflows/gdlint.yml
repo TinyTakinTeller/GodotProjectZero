@@ -1,0 +1,56 @@
+﻿# Workflow to automatically lint gdscript code
+name: gdlint on push
+
+on:
+  [push, pull_request]
+
+jobs:
+  gdlint:
+    name: gdlint code
+    runs-on: ubuntu-latest
+    
+    # workaround for locally running 'act -j gdlint' : https://github.com/nektos/act/issues/1856#issuecomment-1679427871
+    #container:
+    # image: ghcr.io/catthehacker/ubuntu:act-latest
+
+    # The allowed amount of linter problems
+    env:
+      PROBLEMS_THRESHOLD: 0
+
+    steps:
+      # Check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      #- name: LSB
+      #  run: apt-get update && apt-get install -y lsb-release && apt-get clean all
+
+      # Ensure python is installed
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # Install gdtoolkit
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'gdtoolkit==4.*'
+
+      # Lint all the code directories (except addons) and capture the output
+      # "|| true" make sure the github action doesn't stop when there are problems
+      - name: Lint code
+        run: |
+          gdlint assets global resources scenes > gdlint_output.txt 2>&1 || true
+          cat gdlint_output.txt
+
+      # Parse the output and compare with the threshold
+      - name: Check linter results
+        run: |
+          PROBLEMS=$(grep -oP 'Failure: \K\d+' gdlint_output.txt || echo "0")
+          echo "Problems found: $PROBLEMS"
+          echo "Problems found: $PROBLEMS, threshold is: $PROBLEMS_THRESHOLD"
+          if [ "$PROBLEMS" -gt "$PROBLEMS_THRESHOLD" ]; then
+            echo "Too many linter problems!"
+            exit 1
+          fi

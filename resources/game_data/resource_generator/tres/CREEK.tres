@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://c6dbmnrtj7nr7"]
 
 [ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qto8u"]
-[ext_resource type="AudioStream" uid="uid://cqxgeasmdb2o0" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/water_splash_1_1.wav" id="2_yudo7"]
-[ext_resource type="AudioStream" uid="uid://c83k2tsvr8050" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_rpg_sounds/environment/water_drop_01.wav" id="3_0jqmm"]
+[ext_resource type="AudioStream" uid="uid://cqxgeasmdb2o0" path="res://assets/audio/indie_friendly_sounds_survival/_resource/water_splash_1_1.wav" id="2_h2auj"]
+[ext_resource type="AudioStream" uid="uid://c83k2tsvr8050" path="res://assets/audio/indie_friendly_sounds_survival/_resource/water_drop_01.wav" id="3_vhuw2"]
 
 [resource]
 script = ExtResource("1_qto8u")
@@ -24,5 +24,5 @@ hidden = false
 max_amount = -1
 column = 0
 dynamic_efficiency_id = ""
-sfx_button_down = ExtResource("2_yudo7")
-sfx_button_success = ExtResource("3_0jqmm")
+sfx_button_down = ExtResource("2_h2auj")
+sfx_button_success = ExtResource("3_vhuw2")

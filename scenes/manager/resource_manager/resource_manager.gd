@@ -1,5 +1,5 @@
-extends Node
 class_name ResourceManager
+extends Node
 
 ###############
 ## overrides ##
@@ -26,7 +26,7 @@ func _handle_on_resource_generated(id: String, amount: int, source_id: String) -
 
 	SaveFile.resources[id] = SaveFile.resources.get(id, 0) + amount
 	if amount < 0:
-		var spent_id: String = ResourceManager._spent_id(id)
+		var spent_id: String = ResourceManager.make_spent_id(id)
 		SaveFile.resources[spent_id] = SaveFile.resources.get(spent_id, 0) - amount
 	SignalBus.resource_updated.emit(id, SaveFile.resources.get(id, 0), amount, source_id)
 
@@ -63,8 +63,10 @@ static func is_max_amount_reached(id: String) -> bool:
 
 
 static func get_total_generated(id: String) -> int:
-	return SaveFile.resources.get(id, 0) + SaveFile.resources.get(ResourceManager._spent_id(id), 0)
+	return (
+		SaveFile.resources.get(id, 0) + SaveFile.resources.get(ResourceManager.make_spent_id(id), 0)
+	)
 
 
-static func _spent_id(id: String) -> String:
+static func make_spent_id(id: String) -> String:
 	return "spent_" + id
