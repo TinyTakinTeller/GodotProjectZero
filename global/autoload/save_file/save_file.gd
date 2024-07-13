@@ -24,7 +24,7 @@ var audio_settings: Dictionary = {
 	"sfx": {"value": 0.50, "toggle": true}
 }
 var effect_settings: Dictionary = {
-	"shake": {"value": 0.20, "toggle": true}, "typing": {"value": 1.00, "toggle": true}
+	"shake": {"value": 0.20, "toggle": true}, "typing": {"value": 0.40, "toggle": true}
 }
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
@@ -93,6 +93,13 @@ func get_settings_theme(save_file_name: String) -> Resource:
 
 func get_settings_population_scale() -> int:
 	return settings.get("population_scale", 1)
+
+
+func is_typing_effect_enabled() -> bool:
+	return (
+		effect_settings.get("typing", {}).get("toggle", false)
+		and effect_settings.get("typing", {}).get("value", 0.0) > 0.0
+	)
 
 
 #############

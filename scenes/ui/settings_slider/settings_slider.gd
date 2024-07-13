@@ -8,7 +8,7 @@ var _toggle: bool
 var _value: float
 
 @onready var toggle_button: Button = %ToggleButton
-@onready var title_label: Label = %TitleLabel
+@onready var title_label: LabelTyping = %TitleLabel
 @onready var value_label: Label = %ValueLabel
 @onready var dec_button: Button = %DecButton
 @onready var h_slider: HSlider = %HSlider
@@ -35,7 +35,7 @@ func set_data(toggle: bool, value: float) -> void:
 	_update_ui()
 
 
-func get_title_label() -> Label:
+func get_title_label() -> LabelTyping:
 	return title_label
 
 

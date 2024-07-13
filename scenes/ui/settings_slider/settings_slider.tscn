@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cshtvp7cn4ns1"]
+[gd_scene load_steps=3 format=3 uid="uid://cshtvp7cn4ns1"]
 
 [ext_resource type="Script" path="res://scenes/ui/settings_slider/settings_slider.gd" id="1_k8bx2"]
+[ext_resource type="PackedScene" uid="uid://r18rsehjlpjl" path="res://scenes/component/control/label/label_typing/label_typing.tscn" id="2_vnjch"]
 
 [node name="SettingsSlider" type="MarginContainer"]
 size_flags_horizontal = 4
@@ -20,14 +21,17 @@ layout_mode = 2
 text = "On"
 
 [node name="TitleMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="HBoxContainer/TitleMarginContainer"]
+[node name="TitleLabel" parent="HBoxContainer/TitleMarginContainer" instance=ExtResource("2_vnjch")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Audio"
+autowrap_mode = 0
 
 [node name="ValueMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)

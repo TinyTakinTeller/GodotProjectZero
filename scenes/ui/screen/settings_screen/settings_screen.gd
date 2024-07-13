@@ -3,6 +3,7 @@ extends MarginContainer
 const TAB_DATA_ID: String = "settings"
 
 @export var shake_shader_component_scene: PackedScene
+@export var label_typing_scene: PackedScene
 
 @onready var master_settings_slider: SettingsSlider = %MasterSettingsSlider
 @onready var music_settings_slider: SettingsSlider = %MusicSettingsSlider
@@ -30,17 +31,17 @@ func _ready() -> void:
 
 
 func _initialize() -> void:
-	_set_ui_labels()
 	_apply_effects()
+	_set_ui_labels()
 
 
 func _set_ui_labels() -> void:
-	master_settings_slider.title_label.text = Locale.get_ui_label("master")
-	music_settings_slider.title_label.text = Locale.get_ui_label("music")
-	sfx_settings_slider.title_label.text = Locale.get_ui_label("sfx")
+	master_settings_slider.get_title_label().text = Locale.get_ui_label("master")
+	music_settings_slider.get_title_label().text = Locale.get_ui_label("music")
+	sfx_settings_slider.get_title_label().text = Locale.get_ui_label("sfx")
 
-	shake_settings_slider.title_label.text = Locale.get_ui_label("shake")
-	typing_settings_slider.title_label.text = Locale.get_ui_label("typing")
+	shake_settings_slider.get_title_label().text = Locale.get_ui_label("shake")
+	typing_settings_slider.get_title_label().text = Locale.get_ui_label("typing")
 
 	display_mode_button.text = "?"
 	display_resolution_button.text = "?"
@@ -55,6 +56,8 @@ func _apply_effects() -> void:
 		shake_shader_component_scene.instantiate() as ShakeShaderComponent
 	)
 	shake_settings_slider.get_title_label().add_child(shake_shader_component)
+
+	typing_settings_slider.get_title_label().play_typing_animation(true)
 
 
 func _load_from_save_file() -> void:

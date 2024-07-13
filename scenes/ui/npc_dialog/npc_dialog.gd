@@ -8,13 +8,12 @@ var _peek_state: int = 0
 var _next_text: String = ""
 var _target_id: String = ""
 
-@onready var dialog_label: Label = %DialogLabel
+@onready var dialog_label: LabelTyping = %DialogLabel
 @onready var yes_button: Button = %YesButton
 @onready var no_button: Button = %NoButton
 @onready var npc_margin_container: MarginContainer = %NpcMarginContainer
 @onready var npc_texture_rect: TextureRect = %NpcTextureRect
 @onready var npc_button: Button = %NpcButton
-@onready var typing_text_tween: Node = %TypingTextTween
 @onready var enter_simple_tween: SimpleTween = %EnterSimpleTween
 
 ###############
@@ -60,10 +59,10 @@ func play_typing_animation(on_load: bool = false) -> void:
 	if !on_load:
 		yes_button.disabled = true
 		no_button.disabled = true
-		var duration: float = dialog_label.text.length() * Game.params["animation_speed_diary"]
-		typing_text_tween.play_animation(duration)
+		dialog_label.play_typing_animation()
 
-		Audio.play_sfx_id("cat_talking", 0.0)
+		if SaveFile.is_typing_effect_enabled():
+			Audio.play_sfx_id("cat_talking", 0.0)
 	else:
 		peek(2)
 		_show_and_enable_buttons()
@@ -143,7 +142,7 @@ func _show_and_enable_buttons() -> void:
 
 
 func _connect_signals() -> void:
-	typing_text_tween.animation_end.connect(_on_typing_text_tween_animation_end)
+	dialog_label.typing_animation_end.connect(_on_typing_animation_end)
 	enter_simple_tween.animation_end.connect(_on_enter_simple_tween_animation_end)
 	yes_button.button_down.connect(_on_yes_button_down)
 	no_button.button_down.connect(_on_no_button_down)
@@ -153,7 +152,7 @@ func _connect_signals() -> void:
 	npc_button.pressed.connect(_on_npc_button_pressed)
 
 
-func _on_typing_text_tween_animation_end() -> void:
+func _on_typing_animation_end() -> void:
 	_show_and_enable_buttons()
 
 	Audio.stop_sfx_id("cat_talking")

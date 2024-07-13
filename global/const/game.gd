@@ -6,7 +6,7 @@ const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 const VERSION_MAJOR: String = "prototype"
 const VERSION_MINOR: String = "week 11"
 
-const params: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
+const params: Dictionary = PARAMS_DEBUG  #PARAMS_PROD  #PARAMS_DEBUG
 
 const PARAMS_DEBUG: Dictionary = {
 	"cycle_seconds": 2,

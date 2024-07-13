@@ -1,10 +1,12 @@
 extends MarginContainer
 
-@onready var title_label: Label = %TitleLabel
-@onready var info_label: Label = %InfoLabel
-
 var info_id: String
 var info_type: String
+
+@onready var title_label_shake: Label = %TitleLabelShake
+@onready var info_label_shake: Label = %InfoLabelShake
+@onready var title_label: Label = %TitleLabel
+@onready var info_label: Label = %InfoLabel
 
 ###############
 ## overrides ##
@@ -22,8 +24,23 @@ func _ready() -> void:
 
 
 func _toggle_wiggle_shader(enabled: bool) -> void:
-	title_label.material.set_shader_parameter("enabled", enabled)
-	info_label.material.set_shader_parameter("enabled", enabled)
+	if enabled:
+		title_label_shake.visible = true
+		info_label_shake.visible = true
+		title_label.visible = false
+		info_label.visible = false
+	else:
+		title_label_shake.visible = false
+		info_label_shake.visible = false
+		title_label.visible = true
+		info_label.visible = true
+
+
+func _set_text(title: String, info: String) -> void:
+	title_label_shake.text = title
+	info_label_shake.text = info
+	title_label.text = title
+	info_label.text = info
 
 
 ##############
@@ -33,13 +50,13 @@ func _toggle_wiggle_shader(enabled: bool) -> void:
 
 func _initialize() -> void:
 	_handle_on_hover("  ", "  ")
+	_toggle_wiggle_shader(false)
 
 
 func _handle_on_hover(title: String, info: String) -> void:
 	if title.length() < 2 or info.length() < 2:
 		return
-	title_label.text = title
-	info_label.text = info
+	_set_text(title, info)
 
 
 #############

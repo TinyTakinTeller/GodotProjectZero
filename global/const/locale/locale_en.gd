@@ -58,7 +58,7 @@ const UI_LABEL: Dictionary = {
 	"music": "Music",
 	"sfx": "SFX",
 	"shake": "Shake",
-	"typing": "Typing",
+	"typing": " Typing ",
 	"windowed": "Windowed",
 	"fullscreen": "Fullscreen"
 }
