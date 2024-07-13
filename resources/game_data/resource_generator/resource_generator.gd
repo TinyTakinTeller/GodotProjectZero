@@ -1,5 +1,5 @@
-extends Resource
 class_name ResourceGenerator
+extends Resource
 
 @export var color: Color = Color.BLACK
 @export var sort_value: int = 0

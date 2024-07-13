@@ -1,14 +1,14 @@
-extends Node2D
 class_name LabelEffect
+extends Node2D
 
 signal task_finished(text: String)
+
+var finished: bool = true
+var task: String
 
 @onready var sub_viewport: SubViewport = $SubViewport
 @onready var label: Label = %Label
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
-
-var finished: bool = true
-var task: String
 
 
 func _process(_delta: float) -> void:

@@ -190,7 +190,7 @@ func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
 		return
 
 	if get_id() == resource_generator.id:
-		progress_bar_simple_tween.play_animation_(_resource_generator.get_cooldown())
+		progress_bar_simple_tween.play_animation_during(_resource_generator.get_cooldown())
 
 		if _resource_generator.sfx_button_success:
 			Audio.play_sfx(_resource_generator.id, _resource_generator.sfx_button_success)

@@ -1,9 +1,9 @@
 extends Node
 
+@export var main_scene: PackedScene
+
 @onready var ui: Control = %UI
 @onready var save_file_tracker: SaveFileTracker = %SaveFileTracker
-
-@export var main_scene: PackedScene
 
 ###############
 ## overrides ##

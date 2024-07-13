@@ -1,13 +1,13 @@
-extends MarginContainer
 class_name EventTrackerItem
-
-@onready var line_label: Label = %LineLabel
-@onready var event_label: Label = %EventLabel
-@onready var typing_text_tween: Node = %TypingTextTween
+extends MarginContainer
 
 var _event_data: EventData
 var _vals: Array
 var _index: int
+
+@onready var line_label: Label = %LineLabel
+@onready var event_label: Label = %EventLabel
+@onready var typing_text_tween: Node = %TypingTextTween
 
 
 func _ready() -> void:

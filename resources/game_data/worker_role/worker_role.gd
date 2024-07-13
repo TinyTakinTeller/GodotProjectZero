@@ -1,5 +1,5 @@
-extends Resource
 class_name WorkerRole
+extends Resource
 
 @export var order: int = 0
 @export var sort_value: int = 0

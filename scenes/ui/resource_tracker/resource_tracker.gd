@@ -1,10 +1,10 @@
-extends MarginContainer
 class_name ResourceTracker
+extends MarginContainer
+
+@export var resource_item_scene: PackedScene
 
 @onready var resource_v_box_container: VBoxContainer = %ResourceVBoxContainer
-
 @onready var title_label: Label = %TitleLabel
-@export var resource_item_scene: PackedScene
 
 ###############
 ## overrides ##
@@ -15,7 +15,6 @@ func _ready() -> void:
 	_set_ui_labels()
 	_connect_signals()
 	_load_from_save_file()
-
 
 
 #############

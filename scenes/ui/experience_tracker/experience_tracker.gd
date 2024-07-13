@@ -1,5 +1,5 @@
-extends MarginContainer
 class_name ExperienceTracker
+extends MarginContainer
 
 @onready var experience_label: Label = %ExperienceLabel
 @onready var updated_simple_tween: SimpleTween = %UpdatedSimpleTween
@@ -48,6 +48,6 @@ func _connect_signals() -> void:
 ############
 
 
-func __updated_simple_tween_method(animation_percent: float) -> void:
+func _updated_simple_tween_method(animation_percent: float) -> void:
 	self.modulate.r = animation_percent
 	self.modulate.g = animation_percent

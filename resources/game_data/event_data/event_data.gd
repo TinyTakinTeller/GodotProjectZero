@@ -1,5 +1,5 @@
-extends Resource
 class_name EventData
+extends Resource
 
 @export var id: String
 @export var vars: Array = []

@@ -2,11 +2,11 @@ extends MarginContainer
 
 const TAB_DATA_ID: String = "soul"
 
-@onready var screen_h_box_container: HBoxContainer = %ScreenHBoxContainer
-
 @export var substance_button_scene: PackedScene
 
 var vbox_containers: Array[VBoxContainer] = []
+
+@onready var screen_h_box_container: HBoxContainer = %ScreenHBoxContainer
 
 ###############
 ## overrides ##
@@ -17,7 +17,6 @@ func _ready() -> void:
 	_initialize()
 	_connect_signals()
 	_load_from_save_file()
-
 
 
 #############

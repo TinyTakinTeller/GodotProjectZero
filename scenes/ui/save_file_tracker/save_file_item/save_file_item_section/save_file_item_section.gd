@@ -1,17 +1,17 @@
-extends MarginContainer
 class_name SaveFileItemSection
+extends MarginContainer
 
 signal new_input_set(new_text: String, old_text: String)
+
+var _input_enabled: bool = false
+var _input_text: String = ""
+var _previous_input_text: String = ""
 
 @onready var title_label: Label = %TitleLabel
 @onready var value_label: Label = %ValueLabel
 @onready var input_margin_container: MarginContainer = %InputMarginContainer
 @onready var line_edit: LineEdit = %LineEdit
 @onready var scroll_container: ScrollContainer = %ScrollContainer
-
-var _input_enabled: bool = false
-var _input_text: String = ""
-var _previous_input_text: String = ""
 
 ###############
 ## overrides ##
