@@ -45,9 +45,11 @@ func _set_ui_labels() -> void:
 
 	display_mode_button.text = "?"
 	display_resolution_button.text = "?"
+	## TODO: replace resolution setting with a different one
+	display_resolution_button.disabled = true
 
-	## TODO: ADF-24 | Localization
 	display_language_button.text = Locale.LOCALE_NAME[SaveFile.locale]
+	## TODO: ADF-24 | Localization
 	display_language_button.disabled = true
 
 
@@ -79,9 +81,9 @@ func _load_from_save_file() -> void:
 	)
 
 	display_mode_button.text = Locale.get_ui_label(SaveFile.settings["display_mode"])
-	var a: int = SaveFile.settings["display_resolution"][0]
-	var b: int = SaveFile.settings["display_resolution"][1]
-	display_resolution_button.text = "{a} x {b}".format({"a": a, "b": b})
+	var width: int = SaveFile.settings["display_resolution"][0]
+	var height: int = SaveFile.settings["display_resolution"][1]
+	display_resolution_button.text = "{a} x {b}".format({"a": width, "b": height})
 
 
 #############
@@ -103,6 +105,9 @@ func _connect_signals() -> void:
 	display_resolution_button.button_up.connect(_on_display_resolution_button_up)
 	display_language_button.button_up.connect(_on_display_language_button_up)
 
+	SignalBus.display_mode_settings_updated.connect(_on_display_mode_settings_updated)
+	SignalBus.display_resolution_settings_updated.connect(_on_display_resolution_settings_updated)
+
 
 func _on_tab_changed(tab_data: TabData) -> void:
 	if tab_data.id == TAB_DATA_ID:
@@ -117,16 +122,30 @@ func _on_audio_data_changed(toggle: bool, value: float, id: String) -> void:
 
 func _on_effect_data_changed(toggle: bool, value: float, id: String) -> void:
 	SignalBus.effect_settings_update.emit(toggle, value, id)
-	## TODO typing effect
 
 
 func _on_display_mode_button_up() -> void:
-	pass  ## TODO
+	SignalBus.display_mode_settings_toggle.emit()
+	display_mode_button.release_focus()
 
 
 func _on_display_resolution_button_up() -> void:
-	pass  ## TODO
+	SignalBus.display_resolution_settings_toggle.emit()
+	display_resolution_button.release_focus()
 
 
 func _on_display_language_button_up() -> void:
-	pass  ## TODO
+	pass  ## TODO: ADF-24 | Localization
+
+
+func _on_display_mode_settings_updated(display_mode: String) -> void:
+	display_mode_button.text = Locale.get_ui_label(display_mode)
+
+
+func _on_display_resolution_settings_updated(width: int, height: int) -> void:
+	## TODO: replace resolution setting with a different one
+	display_resolution_button.text = "{a} x {b}".format({"a": width, "b": height})
+
+
+func _on_display_language_updated() -> void:
+	pass  ## TODO: ADF-24 | Localization

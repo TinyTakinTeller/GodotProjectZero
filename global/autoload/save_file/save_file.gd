@@ -478,7 +478,9 @@ func _on_offline_progress_processed(
 	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
 ) -> void:
 	_autosave(true, true)
-	SignalBus.worker_updated.emit(Game.WORKER_RESOURCE_ID, workers[Game.WORKER_RESOURCE_ID], 0)
+	SignalBus.worker_updated.emit(
+		Game.WORKER_RESOURCE_ID, workers.get(Game.WORKER_RESOURCE_ID, 0), 0
+	)
 
 
 ##############
