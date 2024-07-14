@@ -2,7 +2,7 @@ extends Node
 
 const SIGNATURE = "$$$"
 const SAVE_FILE_EXTENSION = ".json"
-const AUTOSAVE_SECONDS: int = Game.params["autosave_seconds"]
+const AUTOSAVE_SECONDS: int = Game.PARAMS["autosave_seconds"]
 
 var active_file_name: String = "default"
 var save_datas: Dictionary = {}
@@ -15,11 +15,16 @@ var resource_generator_unlocks: Array = ["land"]
 var worker_role_unlocks: Array = []
 var tab_unlocks: Array = ["world", "settings"]
 var tab_levels: Dictionary = {"world": 0}
-var settings: Dictionary = {"theme": "dark"}
+var settings: Dictionary = {
+	"theme": "dark", "display_mode": "windowed", "display_resolution": [960, 540]
+}
 var audio_settings: Dictionary = {
 	"master": {"value": 1.00, "toggle": true},
 	"music": {"value": 0.80, "toggle": true},
 	"sfx": {"value": 0.50, "toggle": true}
+}
+var effect_settings: Dictionary = {
+	"shake": {"value": 0.20, "toggle": true}, "typing": {"value": 0.40, "toggle": true}
 }
 var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
@@ -37,7 +42,7 @@ func _ready() -> void:
 	_load_save_files()
 	_connect_signals()
 
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("_AUTOLOAD _READY: " + self.get_name())
 
 
@@ -76,7 +81,7 @@ func get_enemy_damage(enemy_id: String = "") -> int:
 
 
 func get_settings_theme(save_file_name: String) -> Resource:
-	var theme_id: String = Game.params["default_theme"]
+	var theme_id: String = Game.PARAMS["default_theme"]
 	if !save_datas.has(save_file_name):
 		return Resources.theme.get(theme_id, null)
 
@@ -88,6 +93,13 @@ func get_settings_theme(save_file_name: String) -> Resource:
 
 func get_settings_population_scale() -> int:
 	return settings.get("population_scale", 1)
+
+
+func is_typing_effect_enabled() -> bool:
+	return (
+		effect_settings.get("typing", {}).get("toggle", false)
+		and effect_settings.get("typing", {}).get("value", 0.0) > 0.0
+	)
 
 
 #############
@@ -142,7 +154,7 @@ func set_metadata_name(save_file_name: String, value: String) -> void:
 
 
 func initialize(save_file_name: String, metadata_name: String) -> void:
-	if !Game.params["save_system_enabled"]:
+	if !Game.PARAMS["save_system_enabled"]:
 		return
 
 	var file_name: String = save_file_name + SAVE_FILE_EXTENSION
@@ -161,7 +173,7 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 func delete(save_file_name: String) -> void:
 	var file_name: String = save_file_name + SAVE_FILE_EXTENSION
 	var error: Error = DirAccess.remove_absolute(FileSystemUtils.USER_PATH + file_name)
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("Delete save file '" + save_file_name + "' response: " + str(error))
 	save_datas.erase(save_file_name)
 
@@ -212,7 +224,7 @@ func _get_seconds_since_last_autosave() -> int:
 
 
 func _load_save_files() -> void:
-	if !Game.params["save_system_enabled"]:
+	if !Game.PARAMS["save_system_enabled"]:
 		return
 
 	for file_name: String in FileSystemUtils.get_user_files():
@@ -220,7 +232,7 @@ func _load_save_files() -> void:
 			continue
 		var save_data: Dictionary = _read(file_name)
 		_check_backward_compatibility(save_data)
-		if Game.params["debug_logs"]:
+		if Game.PARAMS["debug_logs"]:
 			print("__LOAD_SAVE_DATA: " + file_name)
 			print(save_data)
 		if save_data == null or save_data.is_empty():
@@ -241,6 +253,7 @@ func _export_save_data() -> Dictionary:
 	save_data["tab_levels"] = tab_levels
 	save_data["settings"] = settings
 	save_data["audio_settings"] = audio_settings
+	save_data["effect_settings"] = effect_settings
 	save_data["npc_events"] = npc_events
 	save_data["enemy"] = enemy
 	save_data["metadata"] = metadata
@@ -259,6 +272,7 @@ func _import_save_data(save_data: Dictionary) -> void:
 	tab_levels = _get_tab_levels(save_data)
 	settings = _get_settings(save_data)
 	audio_settings = _get_audio_settings(save_data)
+	effect_settings = _get_effect_settings(save_data)
 	npc_events = _get_npc_events(save_data)
 	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
@@ -303,6 +317,10 @@ func _get_settings(save_data: Dictionary) -> Dictionary:
 
 func _get_audio_settings(save_data: Dictionary) -> Dictionary:
 	return save_data.get("audio_settings", audio_settings)
+
+
+func _get_effect_settings(save_data: Dictionary) -> Dictionary:
+	return save_data.get("effect_settings", effect_settings)
 
 
 func _get_npc_events(save_data: Dictionary) -> Dictionary:
@@ -353,6 +371,14 @@ func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_7(save_data)
 	_check_backward_week_10(save_data)
 	_check_backward_corrupt_worker_role(save_data)
+	_check_backward_week_11(save_data)
+
+
+func _check_backward_week_11(save_data: Dictionary) -> void:
+	if !save_data["settings"].has("display_mode"):
+		save_data["settings"]["display_mode"] = settings["display_mode"]
+	if !save_data["settings"].has("display_resolution"):
+		save_data["settings"]["display_resolution"] = settings["display_resolution"]
 
 
 ## [WORKAROUND] for #ADF-27 | https://trello.com/c/7VNXK6xW
@@ -373,7 +399,7 @@ func _check_backward_corrupt_worker_role(save_data: Dictionary) -> void:
 	var worker_resources: int = save_data["resources"].get(Game.WORKER_RESOURCE_ID, 0)
 	var error: int = worker_resources - total_roles
 	if error != 0:
-		if Game.params["debug_logs"]:
+		if Game.PARAMS["debug_logs"]:
 			print(
 				(
 					"[WORKAROUND] workers error: "
@@ -434,7 +460,7 @@ func _connect_signals() -> void:
 
 
 func _connect_autosave_timer() -> void:
-	if Game.params["autosave_enabled"]:
+	if Game.PARAMS["autosave_enabled"]:
 		autosave_timer.wait_time = 0.1
 		autosave_timer.timeout.connect(_on_timeout)
 		autosave_timer.start()
@@ -452,7 +478,9 @@ func _on_offline_progress_processed(
 	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
 ) -> void:
 	_autosave(true, true)
-	SignalBus.worker_updated.emit(Game.WORKER_RESOURCE_ID, workers[Game.WORKER_RESOURCE_ID], 0)
+	SignalBus.worker_updated.emit(
+		Game.WORKER_RESOURCE_ID, workers.get(Game.WORKER_RESOURCE_ID, 0), 0
+	)
 
 
 ##############
@@ -476,13 +504,13 @@ func _write(file_name: String) -> void:
 
 func _read(file_name: String) -> Dictionary:
 	var path: String = FileSystemUtils.USER_PATH + file_name
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print()
 		print("__READ_FILE: " + file_name)
 
 	var save_file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	if save_file == null:
-		if Game.params["debug_logs"]:
+		if Game.PARAMS["debug_logs"]:
 			print("__READ_NULL")
 		return {}
 	var content: String = save_file.get_as_text()
@@ -490,17 +518,17 @@ func _read(file_name: String) -> Dictionary:
 
 	content = _handle_corrupt_end_of_file(content)
 	content = content.replace(SIGNATURE, "")
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("__READ_CONTENT: " + content)
 
 	var json_object: JSON = _parse(content)
 	if json_object == null:
-		if Game.params["debug_logs"]:
+		if Game.PARAMS["debug_logs"]:
 			print("__READ_PARSE_FAILED")
 		return {}
 	var save_data: Dictionary = json_object.get_data()
 
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("__READ_DONE")
 
 	return save_data
@@ -510,11 +538,11 @@ func _parse(content: String, retry: bool = true) -> JSON:
 	var json_object: JSON = JSON.new()
 	var parse_err: Error = json_object.parse(content)
 	if parse_err != Error.OK:
-		if Game.params["debug_logs"]:
+		if Game.PARAMS["debug_logs"]:
 			print("__READ_PARSE_ERROR: " + str(parse_err))
 		if retry:
 			var retry_content: String = StringUtils.sanitize_text(content, StringUtils.ASCII)
-			if Game.params["debug_logs"]:
+			if Game.PARAMS["debug_logs"]:
 				print("__READ_RETRY_PARSE_WITH_FORCE_ASCII_CONTENT: " + retry_content)
 			return _parse(retry_content, false)
 		return null

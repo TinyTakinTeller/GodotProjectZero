@@ -17,7 +17,7 @@ var grid_containers: Array[GridContainer] = []
 
 func _process(_delta: float) -> void:
 	if worker_controller != null:
-		progress_bar.value = worker_controller.timer.time_left / Game.params["cycle_seconds"]
+		progress_bar.value = worker_controller.timer.time_left / Game.PARAMS["cycle_seconds"]
 
 
 func _ready() -> void:

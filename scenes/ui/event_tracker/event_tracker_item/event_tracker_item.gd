@@ -1,13 +1,11 @@
-class_name EventTrackerItem
-extends MarginContainer
+class_name EventTrackerItem extends MarginContainer
 
 var _event_data: EventData
 var _vals: Array
 var _index: int
 
 @onready var line_label: Label = %LineLabel
-@onready var event_label: Label = %EventLabel
-@onready var typing_text_tween: Node = %TypingTextTween
+@onready var event_label: LabelTyping = %EventLabel
 
 
 func _ready() -> void:
@@ -31,5 +29,4 @@ func _refresh_content() -> void:
 
 
 func play_typing_animation() -> void:
-	var animation_length: float = event_label.text.length() * Game.params["animation_speed_diary"]
-	typing_text_tween.play_animation(animation_length)
+	event_label.play_typing_animation()

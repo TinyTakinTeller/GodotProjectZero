@@ -1,17 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn70fimjb1ac0"]
+[gd_scene load_steps=8 format=3 uid="uid://bn70fimjb1ac0"]
 
 [ext_resource type="Script" path="res://scenes/ui/npc_dialog/npc_dialog.gd" id="1_urym8"]
-[ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_3tdww"]
 [ext_resource type="Texture2D" uid="uid://cpwmy667e4xpa" path="res://assets/image/npc/cat/cat_90_100.png" id="2_8yoqs"]
+[ext_resource type="PackedScene" uid="uid://ccm0lefdpacby" path="res://scenes/component/control/label/label_typing/label_typing.tscn" id="2_55et7"]
+[ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="3_uxbm3"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="4_v2a86"]
-[ext_resource type="PackedScene" uid="uid://cn8u84h8wjtm8" path="res://scenes/component/tween/typing_text_tween/typing_text_tween.tscn" id="5_2mmuw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lkeg"]
-shader = ExtResource("2_3tdww")
-shader_parameter/Strength = 0.75
-shader_parameter/RandomOffset = 0.0
-shader_parameter/offset = 0.0
-shader_parameter/enabled = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_32d3w"]
 
@@ -47,13 +40,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="DialogLabel" type="Label" parent="MarginContainer/VBoxContainer/DialogMarginContainer"]
+[node name="DialogLabel" parent="MarginContainer/VBoxContainer/DialogMarginContainer" instance=ExtResource("2_55et7")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_4lkeg")
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
+size_flags_horizontal = 1
 text = "I smelled you from a far. You look lost... "
-autowrap_mode = 2
+
+[node name="ShakeShaderComponent" parent="MarginContainer/VBoxContainer/DialogMarginContainer/DialogLabel" instance=ExtResource("3_uxbm3")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -114,10 +108,6 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="Tween" type="Node" parent="."]
-
-[node name="TypingTextTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("5_2mmuw")]
-unique_name_in_owner = true
-target = NodePath("../../MarginContainer/VBoxContainer/DialogMarginContainer/DialogLabel")
 
 [node name="EnterSimpleTween" parent="Tween" node_paths=PackedStringArray("target") instance=ExtResource("4_v2a86")]
 unique_name_in_owner = true

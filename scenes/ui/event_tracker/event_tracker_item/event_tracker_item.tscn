@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d362a3u5u0np5"]
 
 [ext_resource type="Script" path="res://scenes/ui/event_tracker/event_tracker_item/event_tracker_item.gd" id="1_5qgqd"]
-[ext_resource type="PackedScene" uid="uid://cn8u84h8wjtm8" path="res://scenes/component/tween/typing_text_tween/typing_text_tween.tscn" id="2_x1nui"]
+[ext_resource type="PackedScene" uid="uid://ccm0lefdpacby" path="res://scenes/component/control/label/label_typing/label_typing.tscn" id="2_h3nnf"]
 
 [node name="EventTrackerItem" type="MarginContainer"]
 anchors_preset = 15
@@ -27,15 +27,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "[001]"
 
-[node name="EventLabel" type="Label" parent="HBoxContainer"]
+[node name="EventLabel" parent="HBoxContainer" instance=ExtResource("2_h3nnf")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
-text = "The world is dark and empty..."
-autowrap_mode = 2
-
-[node name="TypingTextTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_x1nui")]
-unique_name_in_owner = true
-target = NodePath("../HBoxContainer/EventLabel")

@@ -25,7 +25,7 @@ func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dicti
 	# normalize "house -> worker" production
 	if total_efficiency.has("house"):
 		var worker_inc: int = Limits.safe_mult(
-			Game.params["house_workers"], total_efficiency.get("house", 0)
+			Game.PARAMS["house_workers"], total_efficiency.get("house", 0)
 		)
 		total_efficiency["worker"] = worker_inc
 	else:
@@ -138,7 +138,7 @@ func _handle_on_game_resumed(
 		seconds_delta, worker_progress, enemy_progress, factor
 	)
 
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		prints("_handle_on_game_resumed", seconds_delta, seconds_delta_expected)
 		prints("_generate_resources", worker_controller_cycles, worker_progress)
 		prints("_trigger_enemy_controller", enemy_controller_cycles, enemy_progress)

@@ -19,7 +19,7 @@ func _ready() -> void:
 	_connect_signals()
 	_load_from_save_file()
 
-	if Game.params["debug_no_scrollbar"]:
+	if Game.PARAMS["debug_no_scrollbar"]:
 		ScrollContainerUtils.disable_scrollbars(scroll_container)
 
 
@@ -37,7 +37,7 @@ func _load_from_save_file() -> void:
 	_clear_items()
 	var next_index: int = SaveFile.event_log.size()
 	var load_range: int = next_index
-	if Game.params["debug_no_scrollbar"]:
+	if Game.PARAMS["debug_no_scrollbar"]:
 		load_range = min(page_size, next_index)
 	for index: int in range(load_range):
 		var event_log_index: int = index + 1
@@ -52,7 +52,7 @@ func _add_event(event_data: EventData, vals: Array, index: int, new: bool) -> vo
 	var event_item: EventTrackerItem = _add_item()
 	event_item.set_content(event_data, vals, index, new)
 	_total_lines += 1
-	if Game.params["debug_no_scrollbar"]:
+	if Game.PARAMS["debug_no_scrollbar"]:
 		while _total_lines > page_size:
 			NodeUtils.remove_oldest(event_v_box_container)
 			_total_lines -= 1

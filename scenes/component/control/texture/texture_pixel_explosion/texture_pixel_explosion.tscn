@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://crps6q62tt20h"]
 
 [ext_resource type="Shader" path="res://resources/shader/pixelate/pixelate.gdshader" id="1_84y1t"]
-[ext_resource type="Script" path="res://scenes/component/texture/texture_pixel_explosion/texture_pixel_explosion.gd" id="2_1fsl4"]
+[ext_resource type="Script" path="res://scenes/component/control/texture/texture_pixel_explosion/texture_pixel_explosion.gd" id="2_1fsl4"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="3_1n0lx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0ilrp"]

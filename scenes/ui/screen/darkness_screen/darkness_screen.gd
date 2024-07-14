@@ -202,10 +202,10 @@ func _handle_on_texture_button_down() -> void:
 		return
 	var damage: int = SaveFile.resources.get("experience", 0)
 
-	if Game.params["enemy_click_damage"] > 0:
-		damage = Game.params["enemy_click_damage"]
-	elif Game.params["enemy_click_damage"] < 0:
-		damage = _enemy_data.health_points / (Game.params["enemy_click_damage"] * -1)
+	if Game.PARAMS["enemy_click_damage"] > 0:
+		damage = Game.PARAMS["enemy_click_damage"]
+	elif Game.PARAMS["enemy_click_damage"] < 0:
+		damage = _enemy_data.health_points / (Game.PARAMS["enemy_click_damage"] * -1)
 	else:
 		var essence_count: int = SaveFile.get_enemy_ids_for_option(1).size()
 		var swordsman_count: int = SaveFile.workers.get("swordsman", 0)
@@ -313,7 +313,7 @@ func _on_tab_changed(tab_data: TabData) -> void:
 
 
 func _on_mouse_entered() -> void:
-	if !Game.params["deaths_door_no_info"] and _health == 0:
+	if !Game.PARAMS["deaths_door_no_info"] and _health == 0:
 		SignalBus.info_hover_shader.emit(
 			Locale.get_ui_label("deaths_door_title"), Locale.get_ui_label("deaths_door_info")
 		)

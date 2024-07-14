@@ -2,7 +2,7 @@ class_name WorkerController extends Node
 
 signal none
 
-const CYCLE_SECONDS: int = Game.params["cycle_seconds"]
+const CYCLE_SECONDS: int = Game.PARAMS["cycle_seconds"]
 
 @onready var timer: Timer = $Timer
 
@@ -53,7 +53,7 @@ func _generate(generate: bool = true) -> void:
 
 
 func _calculate_generated_worker_resource_from_houses(resources: Dictionary) -> int:
-	var per_house: int = Game.params["house_workers"]
+	var per_house: int = Game.PARAMS["house_workers"]
 	var resource_id: String = Game.WORKER_RESOURCE_ID
 	var max_workers: int = per_house * resources.get("house", 0) + resources.get("firepit", 0)
 	var current_workers: int = resources.get(resource_id, 0)

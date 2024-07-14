@@ -118,7 +118,7 @@ func _handle_button_down() -> void:
 
 
 func _handle_resource_ui_updated(resource_tracker_item: ResourceTrackerItem, amount: int) -> void:
-	if Game.params["debug_line_effect"]:
+	if Game.PARAMS["debug_line_effect"]:
 		line_effect.duration = _resource_generator.get_cooldown()
 		line_effect.target_a = self
 		line_effect.target_b = resource_tracker_item

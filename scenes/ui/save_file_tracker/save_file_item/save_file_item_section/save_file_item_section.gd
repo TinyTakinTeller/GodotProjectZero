@@ -47,7 +47,7 @@ func _initialize() -> void:
 	set_focus_mode(FOCUS_CLICK)
 	_set_input_label("Title")
 	_set_value_label("value")
-	line_edit.max_length = Game.params["max_file_name_length"]
+	line_edit.max_length = Game.PARAMS["max_file_name_length"]
 	ScrollContainerUtils.disable_scrollbars(scroll_container)
 
 

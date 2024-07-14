@@ -18,14 +18,14 @@ void vertex()
 		VERTEX_OFFSET.x += (
 			random(
 				( trunc( VERTEX_OFFSET.y))
-			+	TIME
+			+	mod(TIME, 60.0)
 			) - offset
 		) * Strength ;
 
 		VERTEX_OFFSET.y += (
 			random(
 				( trunc( VERTEX_OFFSET.x))
-			+	TIME
+			+	mod(TIME, 60.0)
 			) - offset
 		) * Strength;
 		

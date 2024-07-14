@@ -136,7 +136,7 @@ func _display_delete_counter() -> void:
 	if _delete_counter == 0:
 		delete_button.text = ui_delete
 	else:
-		delete_button.text = "(" + str(Game.params["delete_counter"] + 1 - _delete_counter) + ")"
+		delete_button.text = "(" + str(Game.PARAMS["delete_counter"] + 1 - _delete_counter) + ")"
 
 
 ##############
@@ -145,7 +145,7 @@ func _display_delete_counter() -> void:
 
 
 func _handle_on_delete_button() -> void:
-	if _delete_counter >= Game.params["delete_counter"]:
+	if _delete_counter >= Game.PARAMS["delete_counter"]:
 		delete_button_click.emit(_save_file_name)
 		queue_free()
 	else:

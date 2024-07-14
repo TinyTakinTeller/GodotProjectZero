@@ -38,6 +38,9 @@ func _connect_signals() -> void:
 	SignalBus.toggle_button_pressed.connect(_on_toggle_button_pressed)
 	SignalBus.toggle_scale_pressed.connect(_on_toggle_scale_pressed)
 	SignalBus.audio_settings_update.connect(_on_audio_settings_update)
+	SignalBus.effect_settings_update.connect(_on_effect_settings_update)
+	SignalBus.display_mode_settings_toggle.connect(_on_display_mode_settings_toggle)
+	SignalBus.display_resolution_settings_toggle.connect(_on_display_resolution_settings_toggle)
 
 
 func _on_toggle_button_pressed(id: String, toggle_id: String) -> void:
@@ -56,3 +59,28 @@ func _on_audio_settings_update(toggle: bool, value: float, id: String) -> void:
 	AudioServer.set_bus_mute(bus_index, not toggle)
 
 	SignalBus.audio_settings_updated.emit(toggle, value, id)
+
+
+func _on_effect_settings_update(toggle: bool, value: float, id: String) -> void:
+	SignalBus.effect_settings_updated.emit(toggle, value, id)
+
+
+func _on_display_mode_settings_toggle() -> void:
+	var display_mode: String = SaveFile.settings["display_mode"]
+	if display_mode == "windowed":
+		display_mode = "fullscreen"
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		display_mode = "windowed"
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+	SignalBus.display_mode_settings_updated.emit(display_mode)
+
+
+func _on_display_resolution_settings_toggle() -> void:
+	var width: int = SaveFile.settings["display_resolution"][0]
+	var height: int = SaveFile.settings["display_resolution"][1]
+	## TODO: replace resolution setting with a different one
+
+	SignalBus.display_resolution_settings_updated.emit(width, height)

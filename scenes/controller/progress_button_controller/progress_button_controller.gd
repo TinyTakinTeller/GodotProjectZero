@@ -53,7 +53,7 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> v
 	var resource_cost: Dictionary = resource_generator.get_scaled_costs(resource_amount)
 	var worker_cost: Dictionary = resource_generator.get_worker_costs()
 
-	if !Game.params["debug_free_resource_buttons"]:
+	if !Game.PARAMS["debug_free_resource_buttons"]:
 		if !_can_pay(resource_cost) or !_can_pay_worker(worker_cost):
 			SignalBus.progress_button_unpaid.emit(resource_generator)
 			return

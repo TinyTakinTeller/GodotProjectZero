@@ -14,7 +14,7 @@ func _ready() -> void:
 	_initialize()
 	_connect_signals()
 
-	if Game.params["debug_logs"]:
+	if Game.PARAMS["debug_logs"]:
 		print("_READY: " + self.get_name())
 
 
@@ -48,7 +48,7 @@ func _force_unique_save_file_name(save_file_name: String) -> String:
 
 
 func _handle_on_new_save_file(save_file_name: String) -> void:
-	var max_length: int = Game.params["max_file_name_length"]
+	var max_length: int = Game.PARAMS["max_file_name_length"]
 
 	var metadata_name: String = StringUtils.sanitize_text(
 		save_file_name, StringUtils.ASCII, max_length, "0"
@@ -61,7 +61,7 @@ func _handle_on_new_save_file(save_file_name: String) -> void:
 
 
 func _handle_on_new_input_set(save_file_name: String, new_text: String, old_text: String) -> void:
-	var max_length: int = Game.params["max_file_name_length"]
+	var max_length: int = Game.PARAMS["max_file_name_length"]
 
 	var metadata_name: String = StringUtils.sanitize_text(
 		new_text, StringUtils.ASCII, max_length, "0"

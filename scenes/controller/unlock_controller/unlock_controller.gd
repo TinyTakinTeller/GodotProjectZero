@@ -218,7 +218,7 @@ func _deaths_door_lore(level: int) -> void:
 
 
 func _load_timers() -> void:
-	cat_intro_timer.wait_time = Game.params["timer_cat_intro_seconds"]
+	cat_intro_timer.wait_time = Game.PARAMS["timer_cat_intro_seconds"]
 	cat_intro_timer.one_shot = true
 	if SaveFile.events.get("cat_watching", 0) == 1:
 		cat_intro_timer.start()
@@ -286,7 +286,7 @@ func _gift_resource(gen_id: String, amount: int, source_id: String) -> void:
 
 
 func _gift_debug() -> void:
-	if Game.params["debug_gift"]:
+	if Game.PARAMS["debug_gift"]:
 		if _trigger_unique_unlock_event("land_debug"):
 			_gift_resource("food", 1000, name)
 			_gift_resource("wood", 1000, name)
