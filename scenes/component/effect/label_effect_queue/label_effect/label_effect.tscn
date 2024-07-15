@@ -13,19 +13,20 @@ script = ExtResource("1_1mfsl")
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(200, 30)
+size_2d_override_stretch = true
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport"]
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CanvasLayer"]
 custom_minimum_size = Vector2(200, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 300.0
-offset_right = -300.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="SubViewport/MarginContainer"]
+[node name="Label" type="Label" parent="SubViewport/CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
