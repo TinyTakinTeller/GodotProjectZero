@@ -9,7 +9,6 @@
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_7i6rq")
-default_sfx_pitch_variance = null
 
 [node name="SfxQueue" parent="." instance=ExtResource("2_bb4fe")]
 unique_name_in_owner = true
