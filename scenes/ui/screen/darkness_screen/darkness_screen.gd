@@ -124,6 +124,7 @@ func _deaths_door_enabled() -> void:
 	choice_h_box_container.visible = true
 	title_label.text = Locale.get_ui_label("deaths_door")
 	if _enemy_data.is_last():
+		_deaths_door_option = -1
 		if _overkill >= 1:
 			SignalBus.deaths_door.emit(_enemy_data, _deaths_door_option)
 			_load_enemy()
@@ -209,8 +210,13 @@ func _handle_on_texture_button_down() -> void:
 	else:
 		var essence_count: int = SaveFile.get_enemy_ids_for_option(1).size()
 		var swordsman_count: int = SaveFile.workers.get("swordsman", 0)
-		var substance_damage: int = (essence_count * swordsman_count) / 5
+		var substance_damage: int = Limits.safe_mult(essence_count, swordsman_count / 5)
 		damage += substance_damage
+		if damage >= Limits.GLOBAL_MAX_AMOUNT:
+			var soulstone: int = (swordsman_count / _enemy_data.health_points) / 5 * essence_count
+			SignalBus.resource_generated.emit("soulstone", soulstone, self.name)
+			Audio.play_sfx_id("enemy_click_" + str(randi() % 4 + 1))
+			return
 
 	SignalBus.enemy_damage.emit(damage, name)
 
