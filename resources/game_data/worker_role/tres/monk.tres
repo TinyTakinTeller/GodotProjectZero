@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://bc4jukm4i3o5n"]
+
+[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_opf40"]
+
+[resource]
+script = ExtResource("1_opf40")
+order = 7
+sort_value = 20
+id = "monk"
+produce = {
+"blessing": 1
+}
+consume = {
+"food": 3,
+"fur": 1,
+"torch": 1
+}
+worker_consume = {}
+default = false
+column = 1

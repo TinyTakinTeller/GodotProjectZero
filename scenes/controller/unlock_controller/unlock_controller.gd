@@ -42,6 +42,12 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		_unlock_resource_generator_if("WILD")
 		_unlock_worker_role_if("hunter")
 		_unlock_worker_role_if("tanner")
+	if observed_id == "altar" and observed_total == 1:
+		_unlock_resource_generator_if("blessing")
+		_unlock_worker_role_if("monk")
+
+	if observed_id == "stone" and observed_total >= 1:
+		_unlock_resource_generator_if("altar")
 
 	if observed_id == "brick" and observed_total >= 1:
 		_unlock_resource_generator_if("house")
