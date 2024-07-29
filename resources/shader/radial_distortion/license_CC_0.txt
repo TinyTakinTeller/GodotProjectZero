@@ -9,6 +9,6 @@ The original contents were modified by: https://tinytakinteller.itch.io/
 ---
 TLDR:
 asset "2D Radial Distortion – Fisheye/Barrel" (radial_distortion.gdshader)
-by jamesfrize (https://godotshaders.com/author/tanders/) licensed under CC0 1.0
+by jamesfrize (https://godotshaders.com/author/jamesfrize/) licensed under CC0 1.0
 ---
 

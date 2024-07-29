@@ -18,7 +18,7 @@ void fragment(){
 	COLOR.rgb = vec3(0.0,0.0,0.0);
 	vec2 offset = (UV - vec2(0.5))*vec2(1,-1);
 	for(int i = 0; i < levels; i++){
-		float t = 2.0*float(i)/float(levels-1); // range 0.0->2.0
+		float t = 2.0*float(i)/max(float(levels-1),0.001);
 		vec3 slice = vec3(1.0-t, 1.0 - abs(t - 1.0), t - 1.0);
 		slice = max(slice, slice_factor);
 		sum += slice;
