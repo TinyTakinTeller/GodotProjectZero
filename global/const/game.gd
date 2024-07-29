@@ -9,7 +9,7 @@ const VERSION_MINOR: String = "week 14"
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
 const PARAMS_DEBUG: Dictionary = {
-	"heart_screen_shader": StreamPeerBuffer,
+	"heart_screen_shader": true,
 	"essence_bonus": 3,
 	"spirit_bonus": 2,
 	"cycle_seconds": 2,
