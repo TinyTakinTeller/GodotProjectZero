@@ -76,15 +76,9 @@ const UI_LABEL: Dictionary = {
 	"heart_yes": "I Am Ready",
 	"heart_no": "Not Yet",
 	"heart_prestige_info_1":
-	"""You will be reborn.
-
-You will convert each "Infinite"
-resource into a Singularity.""",
+	"""You will be reborn.\n\nYou will convert each "Infinite"\nresource into a Singularity.""",
 	"heart_prestige_info_2":
-	"""Your will leave this world.
-
-You will keep only the divine:
-Substance, Soulstone, Singularity."""
+	"""Your will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity."""
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}

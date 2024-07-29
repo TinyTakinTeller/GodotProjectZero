@@ -21,7 +21,6 @@ func _ready() -> void:
 	_load_from_save_file()
 
 
-
 #############
 ## helpers ##
 #############
@@ -118,4 +117,5 @@ func _on_offline_progress_processed(
 		margin_container_1.visible = true
 		margin_container_2.visible = true
 
+	SignalBus.prestige_cancel.emit()
 	SignalBus.tab_clicked.emit(offlline_tab_data)
