@@ -64,7 +64,8 @@ func _connect_signals() -> void:
 func _on_tab_changed(tab_data: TabData) -> void:
 	if tab_data.id == StarwayScreen.TAB_DATA_ID:
 		prestige_ui.visible = true
-		heart_overlay.visible = true
+		if Game.PARAMS["heart_screen_shader"]:
+			heart_overlay.visible = true
 	else:
 		prestige_ui.visible = false
 		heart_overlay.visible = false
@@ -94,7 +95,8 @@ func _on_switch_from_prestige_simple_tween_end() -> void:
 func _on_prestige_cancel() -> void:
 	_reset_prestige_ui()
 	prestige_ui.visible = true
-	heart_overlay.visible = true
+	if Game.PARAMS["heart_screen_shader"]:
+		heart_overlay.visible = true
 	switch_from_prestige_simple_tween.play_animation()
 
 	Audio.play_sfx_id("generic_click")

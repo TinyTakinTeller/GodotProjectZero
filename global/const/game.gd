@@ -9,6 +9,7 @@ const VERSION_MINOR: String = "week 14"
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
 const PARAMS_DEBUG: Dictionary = {
+	"heart_screen_shader": false,
 	"essence_bonus": 3,
 	"spirit_bonus": 2,
 	"cycle_seconds": 2,
@@ -37,6 +38,7 @@ const PARAMS_DEBUG: Dictionary = {
 }
 
 const PARAMS_PROD: Dictionary = {
+	"heart_screen_shader": false,
 	"essence_bonus": 3,
 	"spirit_bonus": 2,
 	"cycle_seconds": 5,

@@ -212,6 +212,7 @@ layout_mode = 1
 
 [node name="HeartOverlay" type="ColorRect" parent="CanvasLayer/MainControl"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_pgw6q")
 layout_mode = 1
 anchors_preset = 15
