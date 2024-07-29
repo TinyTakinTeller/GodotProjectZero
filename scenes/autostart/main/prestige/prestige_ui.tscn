@@ -158,7 +158,7 @@ theme_override_constants/margin_bottom = 78
 
 [node name="Label" type="Label" parent="MarginContainer/HeartContent/CommingSoonInfo"]
 layout_mode = 2
-text = "Comming Soon !"
+text = "Coming Soon !"
 
 [node name="HeartColorRect" type="ColorRect" parent="MarginContainer"]
 unique_name_in_owner = true
