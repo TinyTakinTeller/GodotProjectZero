@@ -31,6 +31,7 @@ func _enter_normal_mode() -> void:
 	heart_texture.material.set_shader_parameter("period2", 4.161)
 	SignalBus.heart_unclick.emit()
 	_clicked = false
+	SaveFile.prestige_dialog = false
 
 
 func _enter_fast_mode() -> void:
@@ -38,6 +39,7 @@ func _enter_fast_mode() -> void:
 	heart_texture.material.set_shader_parameter("period2", 8.322)
 	SignalBus.heart_click.emit()
 	_clicked = true
+	SaveFile.prestige_dialog = true
 
 
 #############
@@ -63,6 +65,7 @@ func _on_heart_clicked() -> void:
 	_enter_fast_mode()
 
 	Audio.play_sfx_id("cat_click", 0.5, 2.0)
+
 
 func _on_prestige_cancel() -> void:
 	_enter_normal_mode()

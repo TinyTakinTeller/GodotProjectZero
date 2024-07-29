@@ -4,6 +4,8 @@ const SIGNATURE = "$$$"
 const SAVE_FILE_EXTENSION = ".json"
 const AUTOSAVE_SECONDS: int = Game.PARAMS["autosave_seconds"]
 
+var prestige_dialog: bool = false
+
 var active_file_name: String = "default"
 var save_datas: Dictionary = {}
 

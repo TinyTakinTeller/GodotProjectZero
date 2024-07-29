@@ -78,7 +78,7 @@ const UI_LABEL: Dictionary = {
 	"heart_prestige_info_1":
 	"""You will be reborn.\n\nYou will convert each "Infinite"\nresource into a Singularity.""",
 	"heart_prestige_info_2":
-	"""Your will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity."""
+	"""You will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity."""
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}
