@@ -48,6 +48,11 @@ func _pay_workers(worker_costs: Dictionary, _id: String) -> void:
 
 
 func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> void:
+	## TODO: game ending
+	if resource_generator == null or resource_generator.id == "soul":
+		SignalBus.progress_button_unpaid.emit(resource_generator)
+		return
+
 	var id: String = resource_generator.id
 	var resource_amount: int = SaveFile.resources.get(id, 0) + 1
 	var resource_cost: Dictionary = resource_generator.get_scaled_costs(resource_amount)

@@ -72,6 +72,13 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		_unlock_tab_if("starway")
 		_trigger_unique_unlock_event("lore_beacon")
 
+	if observed_id == "soulstone" and observed_total >= 1:
+		_unlock_resource_generator_if("soul")
+
+	if observed_id == "soul" and observed_total == 1:
+		# TODO: game ending
+		pass
+
 
 func _handle_worker_updated(_observed_id: String, _observed_total: int) -> void:
 	pass  #_unlock_manager_button_if("recruiter", observed_id == "explorer", observed_total >= 1)
@@ -198,6 +205,13 @@ func _handle_on_deaths_door_resolved(enemy_data: EnemyData, option: int) -> void
 func _handle_on_deaths_door_open(enemy_data: EnemyData) -> void:
 	if enemy_data.order <= 10:
 		_deaths_door_lore(enemy_data.order)
+
+
+func _handle_on_tab_changed(tab_data: TabData) -> void:
+	var id: String = tab_data.id
+	if id == StarwayScreen.TAB_DATA_ID:
+		_level_up_tab(tab_data.id, 1)
+		_trigger_unique_unlock_event("heart_reveal")
 
 
 #############
@@ -348,6 +362,7 @@ func _connect_signals() -> void:
 	SignalBus.progress_button_unlocked.connect(_on_progress_button_unlocked)
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
+	SignalBus.tab_changed.connect(_on_tab_changed)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, _source_id: String) -> void:
@@ -388,3 +403,7 @@ func _on_manager_button_unlocked(_worker_role: WorkerRole) -> void:
 
 func _on_tab_unlocked(_tab_data: TabData) -> void:
 	_play_sfx_unlock()
+
+
+func _on_tab_changed(tab_data: TabData) -> void:
+	_handle_on_tab_changed(tab_data)

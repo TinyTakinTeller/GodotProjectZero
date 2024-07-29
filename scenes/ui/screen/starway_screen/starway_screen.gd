@@ -1,8 +1,6 @@
-extends MarginContainer
+class_name StarwayScreen extends MarginContainer
 
 const TAB_DATA_ID: String = "starway"
-
-@onready var grid_container: GridContainer = %GridContainer
 
 ###############
 ## overrides ##
@@ -13,7 +11,6 @@ func _ready() -> void:
 	_initialize()
 	_connect_signals()
 	_load_from_save_file()
-
 
 
 #############

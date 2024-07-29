@@ -21,9 +21,7 @@ func _ready() -> void:
 
 
 func get_cycle_duration() -> float:
-	var essence_count: int = SaveFile.get_enemy_ids_for_option(2).size()
-	var factor: float = max(1.0 - (essence_count * 0.1), 0.1)
-	return ENEMY_CYCLE_SECONDS * factor
+	return ENEMY_CYCLE_SECONDS
 
 
 #############
@@ -45,7 +43,13 @@ func _generate() -> void:
 
 
 func _get_damage() -> int:
-	var swordsman_damage: int = 1 * SaveFile.workers.get("swordsman", 0)
+	var ratio: int = Game.PARAMS["spirit_bonus"]
+	var spirit_count: int = SaveFile.get_enemy_ids_for_option(2).size()
+	var swordsman: int = SaveFile.workers.get("swordsman", 0)
+	var swordsman_damage: int = max(
+		Limits.safe_mult(swordsman, spirit_count + ratio) / ratio,
+		Limits.safe_mult(swordsman, max(1, (spirit_count + ratio) / ratio))
+	)
 	return swordsman_damage
 
 

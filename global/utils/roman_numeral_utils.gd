@@ -105,8 +105,8 @@ const SYMBOL: Array[String] = [
 
 
 static func to_roman_numeral(n: int) -> String:
-	if n > 4 * VALUE[VALUE.size() - 1]:
-		return ""
+	if n > 4000000:  #4 * VALUE[VALUE.size() - 1]:
+		return "∞"
 
 	var out: String = ""
 	var i: int = VALUE.size() - 1

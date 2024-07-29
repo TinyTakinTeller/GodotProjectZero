@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://gxqgvpbi2jx7"]
+
+[ext_resource type="Shader" path="res://resources/shader/radial_distortion/radial_distortion.gdshader" id="1_oex4w"]
+[ext_resource type="Script" path="res://scenes/component/control/texture/texture_heart/texture_heart.gd" id="1_r458w"]
+[ext_resource type="Texture2D" uid="uid://x0uaxjbfb55b" path="res://assets/image/heart/heart_256_256.png" id="2_tt4yi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wv8it"]
+shader = ExtResource("1_oex4w")
+shader_parameter/amp = 0.3
+shader_parameter/period = 4.161
+shader_parameter/aspect_base = 1.0
+shader_parameter/amp2 = 0.05
+shader_parameter/period2 = 4.161
+shader_parameter/distortion_base = 0.3
+shader_parameter/radius = 1.0
+shader_parameter/alpha = 1.0
+shader_parameter/crop = 1.0
+shader_parameter/crop_color = Vector4(0, 0, 0, 1)
+
+[node name="TextureHeart" type="MarginContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_r458w")
+
+[node name="HeartTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_wv8it")
+layout_mode = 2
+texture = ExtResource("2_tt4yi")
+
+[node name="HeartButton" type="Button" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2

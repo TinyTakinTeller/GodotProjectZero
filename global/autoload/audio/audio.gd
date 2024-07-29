@@ -10,6 +10,8 @@ var _track: int = 0
 @onready var sfx_map: Node = %SfxMap
 @onready var music_tracks: Node = %MusicTracks
 
+@onready var music_track_2_heart: MusicTrack = %MusicTrack2Heart
+
 ###############
 ## overrides ##
 ###############
@@ -58,15 +60,20 @@ func swap_crossfade_music_new(track: int, song_stream: AudioStream) -> void:
 
 
 func play_sfx(
-	id: String, sfx_stream: AudioStream, pitch_variance: float = default_sfx_pitch_variance
+	id: String,
+	sfx_stream: AudioStream,
+	pitch_variance: float = default_sfx_pitch_variance,
+	volume: float = 1.0
 ) -> void:
-	sfx_queue.play(id, sfx_stream, pitch_variance)
+	sfx_queue.play(id, sfx_stream, pitch_variance, volume)
 
 
-func play_sfx_id(sfx_id: String, pitch_variance: float = default_sfx_pitch_variance) -> void:
+func play_sfx_id(
+	sfx_id: String, pitch_variance: float = default_sfx_pitch_variance, volume: float = 1.0
+) -> void:
 	var sfx_stream: AudioStream = sfx_map.SFX_ID.get(sfx_id, null)
 	if sfx_stream:
-		play_sfx(sfx_id, sfx_stream, pitch_variance)
+		play_sfx(sfx_id, sfx_stream, pitch_variance, volume)
 
 
 func stop_sfx_id(sfx_id: String) -> void:
@@ -80,10 +87,24 @@ func stop_sfx_id(sfx_id: String) -> void:
 
 func _connect_signals() -> void:
 	SignalBus.tab_changed.connect(_on_tab_changed)
+	SignalBus.heart_click.connect(_on_heart_click)
+	SignalBus.heart_unclick.connect(_on_heart_unclick)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
 	if tab_data.id == DarknessScreen.TAB_DATA_ID:
 		Audio.swap_crossfade_music(1)
+	elif tab_data.id == StarwayScreen.TAB_DATA_ID:
+		Audio.swap_crossfade_music(2)
+	elif tab_data.id == "unknown":
+		Audio.swap_crossfade_music(3)
 	else:
 		Audio.swap_crossfade_music(0)
+
+
+func _on_heart_click() -> void:
+	music_track_2_heart.audio_stream_player.pitch_scale = 2.0
+
+
+func _on_heart_unclick() -> void:
+	music_track_2_heart.audio_stream_player.pitch_scale = 1.0

@@ -207,7 +207,7 @@ func _on_npc_button_pressed() -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-		Audio.play_sfx_id("cat_click")
+		Audio.play_sfx_id("cat_click", 0.5, 2.0)
 
 
 ############

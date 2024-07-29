@@ -11,3 +11,7 @@ func set_display(percent: float, health: int) -> void:
 	progress_bar_left.value = percent
 	progress_bar_right.value = percent
 	progress_bar_label.text = NumberUtils.format_number(health)
+	if percent == 0:
+		progress_bar_label.visible = false
+	else:
+		progress_bar_label.visible = true

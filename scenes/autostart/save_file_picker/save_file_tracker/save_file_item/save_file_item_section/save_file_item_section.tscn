@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://deb5cv2ckp6lg"]
 
-[ext_resource type="Script" path="res://scenes/ui/save_file_tracker/save_file_item/save_file_item_section/save_file_item_section.gd" id="1_7vp85"]
+[ext_resource type="Script" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_item/save_file_item_section/save_file_item_section.gd" id="1_7vp85"]
 
 [node name="SaveFileItemSection" type="MarginContainer"]
 size_flags_horizontal = 3

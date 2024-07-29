@@ -1,0 +1,14 @@
+Folder "res://resources/shader/chromatic_abberation_radial/" contents attribution file.
+---
+Title: Chromatic Aberration
+Author: https://godotshaders.com/author/hayden/
+Source: https://godotshaders.com/shader/chromatic-abberation/
+License: https://creativecommons.org/publicdomain/zero/1.0/
+---
+The original contents were modified by: https://tinytakinteller.itch.io/
+---
+TLDR:
+asset "Chromatic Aberration" (chromatic_abberation_radial.gdshader)
+by hayden (https://godotshaders.com/author/hayden/) licensed under CC0 1.0
+---
+

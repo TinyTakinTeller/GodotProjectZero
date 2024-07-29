@@ -49,14 +49,15 @@ func _set_text(title: String, info: String) -> void:
 
 
 func _initialize() -> void:
-	_handle_on_hover("  ", "  ")
-	_toggle_wiggle_shader(false)
+	if _handle_on_hover("  ", "  "):
+		_toggle_wiggle_shader(false)
 
 
-func _handle_on_hover(title: String, info: String) -> void:
+func _handle_on_hover(title: String, info: String) -> bool:
 	if title.length() < 2 or info.length() < 2:
-		return
+		return false
 	_set_text(title, info)
+	return true
 
 
 #############
@@ -70,42 +71,47 @@ func _connect_signals() -> void:
 	SignalBus.enemy_hover.connect(_on_enemy_hover)
 	SignalBus.info_hover.connect(_on_info_hover)
 	SignalBus.info_hover_shader.connect(_on_info_hover_shader)
+	SignalBus.info_hover_tab.connect(_on_info_hover_tab)
 	SignalBus.resource_updated.connect(_on_resource_updated)
 
 
 func _on_progress_button_hover(resource_generator: ResourceGenerator) -> void:
 	var id: String = resource_generator.id
 	var level: int = SaveFile.resources.get(id, 0) + 1
-	info_id = id
-	info_type = "resource"
-	_handle_on_hover(resource_generator.get_title(), resource_generator.get_info(level))
-	_toggle_wiggle_shader(false)
+	if _handle_on_hover(resource_generator.get_title(), resource_generator.get_info(level)):
+		info_id = id
+		info_type = "resource"
+		_toggle_wiggle_shader(false)
 
 
 func _on_manager_button_hover(worker_role: WorkerRole, _node: Node) -> void:
-	var id: String = worker_role.id
-	info_id = id
-	info_type = "worker"
-	_handle_on_hover(worker_role.get_title(), worker_role.get_info())
-	_toggle_wiggle_shader(false)
+	if _handle_on_hover(worker_role.get_title(), worker_role.get_info()):
+		info_id = worker_role.id
+		info_type = "worker"
+		_toggle_wiggle_shader(false)
 
 
 func _on_enemy_hover(enemy_data: EnemyData) -> void:
-	var id: String = enemy_data.id
-	info_id = id
-	info_type = "enemy"
-	_handle_on_hover(enemy_data.get_title(), enemy_data.get_info())
-	_toggle_wiggle_shader(true)
+	if _handle_on_hover(enemy_data.get_title(), enemy_data.get_info()):
+		info_id = enemy_data.id
+		info_type = "enemy"
+		_toggle_wiggle_shader(true)
 
 
 func _on_info_hover(title: String, info: String, shader: bool = false) -> void:
-	info_type = "general"
-	_handle_on_hover(title, info)
-	_toggle_wiggle_shader(shader)
+	if _handle_on_hover(title, info):
+		info_type = "general"
+		_toggle_wiggle_shader(shader)
 
 
 func _on_info_hover_shader(title: String, info: String) -> void:
 	_on_info_hover(title, info, true)
+
+
+func _on_info_hover_tab(tab_data: TabData) -> void:
+	if _handle_on_hover(tab_data.get_title(), tab_data.get_info()):
+		info_type = "tab"
+		_toggle_wiggle_shader(false)
 
 
 ## edge case when you reach the max amount on a progress button which then can have different info

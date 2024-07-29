@@ -81,15 +81,26 @@ func _generate_resources(generated: Dictionary) -> bool:
 func _progress_enemy_controller(
 	swordsman_storage: int, swordsman_eff: int, cycles: int, enemy_data: EnemyData
 ) -> Dictionary:
+	var ratio: int = Game.PARAMS["spirit_bonus"]
+	var spirit_count: int = SaveFile.get_enemy_ids_for_option(2).size()
+
 	var enemy_health: int = enemy_data.health_points
 	var overkill_factor: float = MathUtils.dual_sum_normalized(
 		swordsman_storage, swordsman_eff, cycles, enemy_health
 	)
 	var damage: int = MathUtils.safe_dual_sum(swordsman_storage, swordsman_eff, cycles)
+	damage = max(
+		Limits.safe_mult(damage, spirit_count + ratio) / ratio,
+		Limits.safe_mult(damage, max(1, (spirit_count + ratio) / ratio))
+	)
 
 	var generated: Dictionary = {}
 	if enemy_data.is_last() && overkill_factor >= 1.0:
-		generated["soulstone"] = int(overkill_factor)
+		generated["soulstone"] = max(
+			Limits.safe_mult(int(overkill_factor), spirit_count + ratio) / ratio,
+			Limits.safe_mult(int(overkill_factor), max(1, (spirit_count + ratio) / ratio)),
+		)
+
 	return {"overkill_factor": overkill_factor, "damage": damage, "generated": generated}
 
 

@@ -42,6 +42,9 @@ func _load_substance_button(enemy_id: String) -> void:
 
 
 func _add_substance_button(enemy_data: EnemyData) -> SubstanceButton:
+	if enemy_data.is_last():
+		return
+
 	var substance_button: SubstanceButton = substance_button_scene.instantiate() as SubstanceButton
 	substance_button.set_data(enemy_data)
 	NodeUtils.add_child_sorted(
@@ -76,5 +79,4 @@ func _on_tab_changed(tab_data: TabData) -> void:
 func _on_deaths_door_resolved(
 	enemy_data: EnemyData, _new_enemy_data: EnemyData, _option: int
 ) -> void:
-	if !enemy_data.is_last():
-		_add_substance_button(enemy_data)
+	_add_substance_button(enemy_data)

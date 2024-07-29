@@ -14,7 +14,7 @@ var _enemy_data: EnemyData
 var _health: int
 var _deaths_door_option: int = 0
 var _explosion_state: int = 0
-var _overkill: int = 0
+var _death: bool = false
 
 @onready var title_margin_container: MarginContainer = %TitleMarginContainer
 @onready var title_label: Label = %TitleLabel
@@ -101,11 +101,7 @@ func _update_health_bar(total_damage: int) -> void:
 	var health_points: int = _enemy_data.health_points
 	var value: int = max(0, health_points - total_damage)
 	_health = value
-
-	# check overkill & generate soulstone
-	_overkill = total_damage / health_points
-	if value == 0 and _enemy_data.is_last():
-		SignalBus.resource_generated.emit("soulstone", _overkill, name)
+	_death = value == 0
 
 	var percent: float = (_health as float) / (health_points as float)
 	enemy_progress_bar.set_display(percent, _health)
@@ -125,7 +121,7 @@ func _deaths_door_enabled() -> void:
 	title_label.text = Locale.get_ui_label("deaths_door")
 	if _enemy_data.is_last():
 		_deaths_door_option = -1
-		if _overkill >= 1:
+		if _death:
 			SignalBus.deaths_door.emit(_enemy_data, _deaths_door_option)
 			_load_enemy()
 			enemy_texture.modulate.a = 0.5
@@ -208,15 +204,14 @@ func _handle_on_texture_button_down() -> void:
 	elif Game.PARAMS["enemy_click_damage"] < 0:
 		damage = _enemy_data.health_points / (Game.PARAMS["enemy_click_damage"] * -1)
 	else:
+		var ratio: int = Game.PARAMS["essence_bonus"]
 		var essence_count: int = SaveFile.get_enemy_ids_for_option(1).size()
 		var swordsman_count: int = SaveFile.workers.get("swordsman", 0)
-		var substance_damage: int = Limits.safe_mult(essence_count, swordsman_count / 5)
-		damage += substance_damage
-		if damage >= Limits.GLOBAL_MAX_AMOUNT:
-			var soulstone: int = (swordsman_count / _enemy_data.health_points) / 5 * essence_count
-			SignalBus.resource_generated.emit("soulstone", soulstone, self.name)
-			Audio.play_sfx_id("enemy_click_" + str(randi() % 4 + 1))
-			return
+		var substance_damage: int = max(
+			Limits.safe_mult(swordsman_count, essence_count + 0) / ratio,
+			Limits.safe_mult(swordsman_count, max(0, (essence_count + 0) / ratio))
+		)
+		damage = Limits.safe_add(damage, substance_damage)
 
 	SignalBus.enemy_damage.emit(damage, name)
 
@@ -230,10 +225,33 @@ func _handle_on_enemy_damaged(total_damage: int, damage: int, source_id: String)
 	if is_visible_in_tree():
 		if source_id == "EnemyController":
 			_play_damage_effect(damage)
-
 			Audio.play_sfx_id("swordsmen_cycle_" + str(randi() % 3 + 1))
-		else:
+
+		elif source_id == "DarknessScreen":
 			damage_buffer += damage
+
+	_generate_soulstone(total_damage, source_id)
+
+
+func _generate_soulstone(total_damage: int, source_id: String) -> void:
+	var health_points: int = _enemy_data.health_points
+	if _enemy_data.is_last() and total_damage >= health_points:
+		var ratio: int = 0
+		var ratio_count: int = 0
+		if source_id == "EnemyController":
+			ratio = Game.PARAMS["spirit_bonus"]
+			ratio_count = SaveFile.get_enemy_ids_for_option(2).size()
+		elif source_id == "DarknessScreen":
+			ratio = Game.PARAMS["essence_bonus"]
+			ratio_count = SaveFile.get_enemy_ids_for_option(1).size()
+
+		var swordsman_count: int = SaveFile.workers.get("swordsman", 0)
+		var soulstone: int = max(
+			Limits.safe_mult((swordsman_count / health_points) / ratio, ratio_count),
+			total_damage / health_points
+		)
+		if soulstone > 0:
+			SignalBus.resource_generated.emit("soulstone", soulstone, self.name)
 
 
 func _handle_on_click_damage_buffer_timer_timeout() -> void:

@@ -4,11 +4,13 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "week 12"
+const VERSION_MINOR: String = "week 14"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
 const PARAMS_DEBUG: Dictionary = {
+	"essence_bonus": 3,
+	"spirit_bonus": 2,
 	"cycle_seconds": 2,
 	"enemy_cycle_seconds": 3,
 	"enemy_click_damage": -10,
@@ -35,6 +37,8 @@ const PARAMS_DEBUG: Dictionary = {
 }
 
 const PARAMS_PROD: Dictionary = {
+	"essence_bonus": 3,
+	"spirit_bonus": 2,
 	"cycle_seconds": 5,
 	"enemy_cycle_seconds": 3,
 	"enemy_click_damage": 0,

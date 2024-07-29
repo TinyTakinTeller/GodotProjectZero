@@ -27,6 +27,14 @@ const EN: Dictionary = {
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"tab_info_unknown": "",
+	"tab_info_offline": "",
+	"tab_info_settings": "",
+	"tab_info_world": "",
+	"tab_info_manager": "",
+	"tab_info_enemy": "",
+	"tab_info_soul": "",
+	"tab_info_starway": "",
 	"name": "Name",
 	"playtime": "Playtime",
 	"last_played": "Last Played",
@@ -47,9 +55,9 @@ const UI_LABEL: Dictionary = {
 	"deaths_door_first_title": "Execution",
 	"deaths_door_second_title": "Absolution",
 	"deaths_door_first_info":
-	"Destroy the creature, consuming the tormented Soul into your own essence.",
+	"Destroy the creature, consuming the tormented spirit into your own essence.",
 	"deaths_door_second_info":
-	"Free the creature, releasing the Soul from the corrupted flesh prison.",
+	"Free the creature, releasing the spirit from the corrupted flesh prison.",
 	"offline_1": "You were away for {0}. \n\n",
 	"offline_2": "Unhappy population will refuse to work while not observed. ",
 	"offline_3": "Make sure your resources are not decreasing to keep your population happy: ",
@@ -60,7 +68,23 @@ const UI_LABEL: Dictionary = {
 	"shake": "Shake",
 	"typing": " Typing ",
 	"windowed": "Windowed",
-	"fullscreen": "Fullscreen"
+	"fullscreen": "Fullscreen",
+	"heart_title": "Heart Of The Dark Forest",
+	"heart_info":
+	"Occult force pulses with a sinister rhythm... I feel it like my own... No... Y... Yes?",
+	"heart_dialog": "Destroy The Heart",
+	"heart_yes": "I Am Ready",
+	"heart_no": "Not Yet",
+	"heart_prestige_info_1":
+	"""You will be reborn.
+
+You will convert each "Infinite"
+resource into a Singularity.""",
+	"heart_prestige_info_2":
+	"""Your will leave this world.
+
+You will keep only the divine:
+Substance, Soulstone, Singularity."""
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}
@@ -90,16 +114,16 @@ const ENEMY_DATA_TITLE: Dictionary = {
 }
 
 const ENEMY_DATA_OPTION_TITLE: Dictionary = {
-	"rabbit-2": "Soul Of Child",
-	"bird-2": "Soul Of Messenger",
-	"wolf-2": "Soul Of Beast",
-	"void-2": "Soul Of Void",
-	"spider-2": "Soul of Warden",
-	"dragon-2": "Soul of Guardian",
-	"dino-2": "Soul Of Ambassador",
-	"skeleton-2": "Soul Of Acolyte",
-	"slime-2": "Soul Of Prince",
-	"angel-2": "Soul Of Death",
+	"rabbit-2": "Spirit of Child",
+	"bird-2": "Spirit of Messenger",
+	"wolf-2": "Spirit of Beast",
+	"void-2": "Spirit of Void",
+	"spider-2": "Spirit of Warden",
+	"dragon-2": "Spirit of Guardian",
+	"dino-2": "Spirit of Ambassador",
+	"skeleton-2": "Spirit of Acolyte",
+	"slime-2": "Spirit of Prince",
+	"angel-2": "Spirit of Death",
 	"rabbit-1": "Essence Of Child",
 	"bird-1": "Essence Of Messenger",
 	"wolf-1": "Essence Of Beast",
@@ -110,8 +134,8 @@ const ENEMY_DATA_OPTION_TITLE: Dictionary = {
 	"skeleton-1": "Essence Of Acolyte",
 	"slime-1": "Essence Of Prince",
 	"angel-1": "Essence Of Death",
-	"null-2": "+10% swordsman speed",
-	"null-1": "+20% swordsman to click"
+	"null-2": "+50% swordsman damage",
+	"null-1": "+33% swordsman to click"
 }
 
 const ENEMY_DATA_INFO: Dictionary = {
@@ -144,6 +168,7 @@ const RESOURCE_GENERATOR_LABEL: Dictionary = {
 	"common": "Button1",
 	"compass": "Craft Compass",
 	"beacon": "Craft Beacon",
+	"soul": "Craft Soul",
 	"experience": "",
 	"fiber": "",
 	"firepit": "Craft Firepit",
@@ -180,6 +205,7 @@ const RESOURCE_GENERATOR_TITLE: Dictionary = {
 	"common": "Button One",
 	"compass": "Compass",
 	"beacon": "Starbright Beacon",
+	"soul": "A Soul",
 	"experience": "",
 	"fiber": "",
 	"firepit": "Firepit",
@@ -216,6 +242,7 @@ const RESOURCE_GENERATOR_FLAVOR: Dictionary = {
 	"common": "Go on an adventure for common resources.",
 	"compass": "Navigate beyond the forest, the world awaits.",
 	"beacon": "Blueprints emerge from the mist of memory. This needs... a soulstone?",
+	"soul": "",
 	"experience": "",
 	"fiber": "",
 	"firepit": "Warm and safe, must be nice to have.",
@@ -252,7 +279,8 @@ const RESOURCE_GENERATOR_MAX_FLAVOR: Dictionary = {
 	"common": "",
 	"compass": "Navigate beyond the forest... beyond? The Darkness envelops the edgesSs...",
 	"beacon":
-	"Emitting radiant light, it cuts through the gloom. Seems to call out to distant realms...",
+	"Emitting radiant light, it cuts through the gloom. Seems to unveil the forbidden parts of the forest...",
+	"soul": "I am... ready to be reborn.",
 	"experience": "",
 	"fiber": "",
 	"firepit": "It burns nice and warm, a light in the darkness.",
@@ -382,7 +410,7 @@ const TAB_DATA_TITLES: Dictionary = {
 	"enemy": [" Darkness "],
 	"unknown": [" Unknown "],
 	"soul": [" Substance "],
-	"starway": ["       ???       "],
+	"starway": [" ??? ", " Heart "],
 	"settings": [" @ "]
 }
 
@@ -482,14 +510,16 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"absolve_4":
 	"As I released the numerous spirits from the tormented cage, their true forms gather around me... innocent children.",
 	"absolve_5":
-	"The absolved spider soul follows me forward, patching up the treacherous path ahead.",
+	"The absolved spider spirit follows me forward, patching up the treacherous path ahead.",
 	"absolve_6":
 	"I spare the dragon. In return, it is clearing our path ahead. But, the vegetation regrows thicker than ever before.",
 	"absolve_7":
 	"I made peace with the towering beast. The colossal creature lifts me towards the throne room.",
-	"absolve_8": "The released soul of the undead humaonid wants to... play?",
+	"absolve_8": "The released spirit of the undead humaonid wants to... play?",
 	"absolve_9": "The prince laughs at my mercy. Still, he agrees to follow along.",
-	"lore_beacon": "The lit beacon pierces the dark sky. For the first time, I can see the stars..."
+	"lore_beacon":
+	"The lit beacon pierces the dark sky. For the first time, I can see the stars...",
+	"heart_reveal": "Starlight illuminates the heart of the forest, revealing its rhythmic pulse..."
 }
 const NPC_EVENT_TEXT: Dictionary = {
 	"cat_intro": "I smell you from afar. Are you lost?",

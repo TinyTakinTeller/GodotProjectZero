@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/autostart/save_file_picker/save_file_picker.gd" id="1_kcqmi"]
 [ext_resource type="PackedScene" uid="uid://k0aqit1ex0lc" path="res://scenes/autostart/main/main.tscn" id="2_xpoda"]
-[ext_resource type="PackedScene" uid="uid://cacyvnvhq6xau" path="res://scenes/ui/save_file_tracker/save_file_tracker.tscn" id="3_yhfy1"]
+[ext_resource type="PackedScene" uid="uid://cacyvnvhq6xau" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_tracker.tscn" id="3_yhfy1"]
 
 [node name="SaveFilePicker" type="Node"]
 script = ExtResource("1_kcqmi")

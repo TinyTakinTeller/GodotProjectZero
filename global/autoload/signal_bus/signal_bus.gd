@@ -20,6 +20,7 @@ signal resource_ui_updated(
 )
 signal info_hover(title: String, into: String)
 signal info_hover_shader(title: String, into: String)
+signal info_hover_tab(tab_data: TabData)
 signal resource_storage_hover(resource: ResourceGenerator)
 signal resource_storage_unhover(resource: ResourceGenerator)
 signal deaths_door_open(enemy_data: EnemyData)
@@ -28,6 +29,9 @@ signal audio_settings_update(toggle: bool, value: float, id: String)
 signal effect_settings_update(toggle: bool, value: float, id: String)
 signal display_mode_settings_toggle
 signal display_resolution_settings_toggle
+signal heart_click
+signal heart_unclick
+signal prestige_cancel
 
 ## CONTROLLER
 signal main_ready

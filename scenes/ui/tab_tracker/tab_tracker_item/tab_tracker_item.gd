@@ -113,7 +113,7 @@ func _on_button_up() -> void:
 
 
 func _on_mouse_entered() -> void:
-	pass
+	SignalBus.info_hover_tab.emit(_tab_data)
 
 
 func _on_progress_button_unlocked(_resource_generator: ResourceGenerator) -> void:

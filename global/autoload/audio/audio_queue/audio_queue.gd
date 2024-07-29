@@ -12,6 +12,7 @@ class AudioItem:
 	var stream: AudioStream
 	var pitch_scale: float
 	var id: String
+	var volume: float
 
 
 ###############
@@ -33,12 +34,13 @@ func _ready() -> void:
 #############
 
 
-func play(id: String, stream: AudioStream, pitch_variance: float) -> void:
+func play(id: String, stream: AudioStream, pitch_variance: float, volume: float = 1.0) -> void:
 	var pitch_scale: float = randf_range(1.0 - pitch_variance, 1.0 + pitch_variance)
 	var audio_item: AudioItem = AudioItem.new()
 	audio_item.stream = stream
 	audio_item.pitch_scale = pitch_scale
 	audio_item.id = id
+	audio_item.volume = volume
 	_enqueue_audio_item(audio_item)
 
 
@@ -64,6 +66,7 @@ func _enqueue_audio_item(audio_item: AudioItem) -> void:
 
 
 func _play_audio_item(stream_player: AudioStreamPlayer, audio_item: AudioItem) -> void:
+	stream_player.volume_db = linear_to_db(audio_item.volume)
 	stream_player.stream = audio_item.stream
 	stream_player.pitch_scale = audio_item.pitch_scale
 	stream_player.play()

@@ -52,6 +52,9 @@ func _ready() -> void:
 
 
 func get_enemy_option(id: String) -> int:
+	if id == "angel":
+		return 0
+
 	var first: int = enemy[id].get("option", {}).get("1", 0)
 	var second: int = enemy[id].get("option", {}).get("2", 0)
 	if first == 0 and second == 0:
@@ -234,7 +237,7 @@ func _load_save_files() -> void:
 		_check_backward_compatibility(save_data)
 		if Game.PARAMS["debug_logs"]:
 			print("__LOAD_SAVE_DATA: " + file_name)
-			print(save_data)
+			# print(save_data)
 		if save_data == null or save_data.is_empty():
 			continue
 		var save_file_name: String = file_name.trim_suffix(SAVE_FILE_EXTENSION)
@@ -518,13 +521,13 @@ func _read(file_name: String) -> Dictionary:
 
 	content = _handle_corrupt_end_of_file(content)
 	content = content.replace(SIGNATURE, "")
-	if Game.PARAMS["debug_logs"]:
-		print("__READ_CONTENT: " + content)
+	#if Game.PARAMS["debug_logs"]:
+	#	print("__READ_CONTENT: " + content)
 
 	var json_object: JSON = _parse(content)
 	if json_object == null:
 		if Game.PARAMS["debug_logs"]:
-			print("__READ_PARSE_FAILED")
+			prints("__READ_PARSE_FAILED", content)
 		return {}
 	var save_data: Dictionary = json_object.get_data()
 
@@ -543,7 +546,7 @@ func _parse(content: String, retry: bool = true) -> JSON:
 		if retry:
 			var retry_content: String = StringUtils.sanitize_text(content, StringUtils.ASCII)
 			if Game.PARAMS["debug_logs"]:
-				print("__READ_RETRY_PARSE_WITH_FORCE_ASCII_CONTENT: " + retry_content)
+				prints("__READ_RETRY_PARSE_WITH_FORCE_ASCII_CONTENT: ", retry_content)
 			return _parse(retry_content, false)
 		return null
 	return json_object
