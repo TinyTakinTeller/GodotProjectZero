@@ -465,7 +465,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"darkness_2":
 	"The faceless follow me silently through the forest. Loyal they may be, but what desire rests in their empty hearts?”,
 	"darkness_3":
-	"The darkness spreads, enveloping everything in its  vicinity. That wolf wasn't the first, and it won't be the last.",
+	"The darkness spreads, enveloping everything in its vicinity. That wolf wasn't the first, and it won't be the last.",
 	"darkness_4":
 	"Shapeless creatures wail, mourning for their newly deceased. It's a macabre sight indeed.",
 	"darkness_5":
