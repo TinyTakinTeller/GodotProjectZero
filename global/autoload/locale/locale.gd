@@ -1,3 +1,4 @@
+#gdlint:ignore = max-public-methods
 extends Node
 
 const LOCALE: Dictionary = {"en": LocaleEn.EN}

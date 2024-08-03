@@ -62,7 +62,7 @@ func _on_heart_hover() -> void:
 ## calling _on_heart_hover() here because mobile users don't have mouse_entered signal
 func _on_heart_clicked() -> void:
 	_on_heart_hover()
-	
+
 	if _clicked:
 		return
 	_enter_fast_mode()
