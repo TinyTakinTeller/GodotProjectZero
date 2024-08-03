@@ -6,7 +6,7 @@ const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 const VERSION_MAJOR: String = "prototype"
 const VERSION_MINOR: String = "week 14"
 
-const PARAMS: Dictionary = PARAMS_DEBUG  #PARAMS_PROD  #PARAMS_DEBUG
+const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
 const PARAMS_DEBUG: Dictionary = {
 	"heart_screen_shader": StreamPeerBuffer,
