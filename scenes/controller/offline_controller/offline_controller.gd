@@ -82,7 +82,7 @@ func _progress_enemy_controller(
 	swordsman_storage: int, swordsman_eff: int, cycles: int, enemy_data: EnemyData
 ) -> Dictionary:
 	var ratio: int = Game.PARAMS["spirit_bonus"]
-	var spirit_count: int = SaveFile.get_enemy_ids_for_option(2).size()
+	var spirit_count: int = SaveFile.get_spirit_substance_count()
 
 	var enemy_health: int = enemy_data.health_points
 	var overkill_factor: float = MathUtils.dual_sum_normalized(

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=77 format=3 uid="uid://d276arnrjws3i"]
+[gd_resource type="Theme" load_steps=78 format=3 uid="uid://d276arnrjws3i"]
 
 [ext_resource type="FontFile" uid="uid://bxjeqgijqycqp" path="res://resources/theme/dark/OpenSans-Regular.ttf" id="1_cnjs4"]
 [ext_resource type="Texture2D" uid="uid://bvpjbal72ck7r" path="res://resources/theme/dark/icons.svg" id="2_plspm"]
@@ -258,6 +258,14 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5q5d"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.784314, 0.784314, 0.784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="30"]
 bg_color = Color(0.282353, 0.282353, 0.282353, 1)
@@ -678,6 +686,8 @@ LineEdit/styles/focus = SubResource("27")
 LineEdit/styles/normal = SubResource("28")
 LineEdit/styles/read_only = SubResource("29")
 Panel/styles/panel = SubResource("1")
+PanelHighlight/base_type = &"Panel"
+PanelHighlight/styles/panel = SubResource("StyleBoxFlat_f5q5d")
 PopupMenu/colors/font_color = Color(0.88, 0.88, 0.88, 1)
 PopupMenu/colors/font_color_accel = Color(0.7, 0.7, 0.7, 0.8)
 PopupMenu/colors/font_color_disabled = Color(0.4, 0.4, 0.4, 0.8)

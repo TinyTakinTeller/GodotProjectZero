@@ -38,6 +38,7 @@ signal main_ready
 signal progress_button_paid(resource_generator: ResourceGenerator)
 signal progress_button_unpaid(resource_generator: ResourceGenerator)
 signal resource_generated(id: String, amount: int, source_id: String)
+signal substance_generated(id: String)
 signal worker_generated(id: String, amount: int, source_id: String)
 signal worker_allocated(id: String, amount: int, source_id: String)
 signal event_triggered(event_data: EventData, vals: Array)
@@ -65,6 +66,7 @@ signal display_resolution_settings_updated(width: int, height: int)
 
 ## MANAGER
 signal resource_updated(id: String, total: int, amount: int, source_id: String)
+signal substance_updated(id: String, total_amount: int)
 signal worker_updated(id: String, total: int, amount: int)
 signal event_saved(event_data: EventData, vals: Array, index: int)
 signal npc_event_saved(npc_event: NpcEvent)

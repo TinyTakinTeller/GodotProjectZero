@@ -29,6 +29,7 @@ func _handle_on_deaths_door_decided(enemy_data: EnemyData, option: int) -> void:
 	var new_enemy_data: EnemyData = Resources.enemy_datas.get(enemy_id, null)
 	if new_enemy_data == null:
 		return
+
 	SignalBus.deaths_door_resolved.emit(enemy_data, new_enemy_data, option)
 
 

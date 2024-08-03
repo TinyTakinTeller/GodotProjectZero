@@ -8,6 +8,7 @@ shader = ExtResource("2_ww0lg")
 shader_parameter/Strength = 5.0
 shader_parameter/RandomOffset = 1.0
 shader_parameter/offset = 0.0
+shader_parameter/offset_time = 0.0
 shader_parameter/enabled = 1
 
 [node name="ShakeShaderComponent" type="Node"]

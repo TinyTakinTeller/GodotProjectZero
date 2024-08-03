@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0iomctf5ruia"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/prestige/prestige_ui.gd" id="1_4gjvq"]
-[ext_resource type="PackedScene" uid="uid://gxqgvpbi2jx7" path="res://scenes/component/control/texture/texture_heart/texture_heart.tscn" id="2_64f0p"]
+[ext_resource type="PackedScene" uid="uid://gxqgvpbi2jx7" path="res://scenes/autostart/main/prestige/texture_heart/texture_heart.tscn" id="2_64f0p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_32d3w"]
 

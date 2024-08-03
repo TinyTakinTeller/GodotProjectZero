@@ -1,3 +1,4 @@
+class_name NewUnlockTween
 extends Node
 
 @export var target: Node

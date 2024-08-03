@@ -1,5 +1,4 @@
-class_name SubstanceButton
-extends MarginContainer
+class_name SubstanceButton extends MarginContainer
 
 var _enemy_data: EnemyData
 var _enemy_option: int

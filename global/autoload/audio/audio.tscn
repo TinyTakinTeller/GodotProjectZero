@@ -31,5 +31,6 @@ audio_stream = ExtResource("6_jxnmc")
 [node name="MusicTrack2Heart" parent="MusicTracks" instance=ExtResource("3_kqvc4")]
 unique_name_in_owner = true
 audio_stream = ExtResource("7_uympl")
+max_volume = 1.25
 
 [node name="MusicTrack3None" parent="MusicTracks" instance=ExtResource("3_kqvc4")]

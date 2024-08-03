@@ -205,7 +205,7 @@ func _handle_on_texture_button_down() -> void:
 		damage = _enemy_data.health_points / (Game.PARAMS["enemy_click_damage"] * -1)
 	else:
 		var ratio: int = Game.PARAMS["essence_bonus"]
-		var essence_count: int = SaveFile.get_enemy_ids_for_option(1).size()
+		var essence_count: int = SaveFile.get_essence_substance_count()
 		var swordsman_count: int = SaveFile.workers.get("swordsman", 0)
 		var substance_damage: int = max(
 			Limits.safe_mult(swordsman_count, essence_count + 0) / ratio,
@@ -240,10 +240,10 @@ func _generate_soulstone(total_damage: int, source_id: String) -> void:
 		var ratio_count: int = 0
 		if source_id == "EnemyController":
 			ratio = Game.PARAMS["spirit_bonus"]
-			ratio_count = SaveFile.get_enemy_ids_for_option(2).size()
+			ratio_count = SaveFile.get_spirit_substance_count()
 		elif source_id == "DarknessScreen":
 			ratio = Game.PARAMS["essence_bonus"]
-			ratio_count = SaveFile.get_enemy_ids_for_option(1).size()
+			ratio_count = SaveFile.get_essence_substance_count()
 
 		var swordsman_count: int = SaveFile.workers.get("swordsman", 0)
 		var soulstone: int = max(

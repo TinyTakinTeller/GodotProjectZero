@@ -1,3 +1,4 @@
+#gdlint:ignore = max-public-methods
 extends Node
 
 const LOCALE: Dictionary = {"en": LocaleEn.EN}
@@ -98,3 +99,7 @@ func get_npc_event_text(event_id: String) -> String:
 
 func get_npc_event_options(event_id: String) -> Array:
 	return LOCALE[SaveFile.locale]["npc_event_options"].get(event_id, [])
+
+
+func get_substance_text(id: String) -> String:
+	return LOCALE[SaveFile.locale]["substance_text"].get(id, "")

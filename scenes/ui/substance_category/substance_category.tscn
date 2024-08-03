@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://1t6m1ktx2tri"]
+
+[ext_resource type="PackedScene" uid="uid://yopnoeejc2om" path="res://scenes/ui/substance_item/substance_item.tscn" id="1_1uicg"]
+[ext_resource type="Script" path="res://scenes/ui/substance_category/substance_category.gd" id="1_g47r6"]
+
+[node name="SubstanceCategory" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_g47r6")
+substance_item_scene = ExtResource("1_1uicg")
+
+[node name="Category1VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Category1VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Category1VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="Category1VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="TitleLabel" type="Label" parent="Category1VBoxContainer/MarginContainer/HBoxContainer/MarginContainer1"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Spirits"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Category1VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="CountLabel" type="Label" parent="Category1VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x3"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Category1VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="EffectLabel" type="Label" parent="Category1VBoxContainer/MarginContainer/HBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+150% swordsman damage"
+
+[node name="ScreenHBoxContainer" type="GridContainer" parent="Category1VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 5
+
+[node name="SubstanceItem" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem2" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem3" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem4" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem5" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem6" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem7" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem8" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2
+
+[node name="SubstanceItem9" parent="Category1VBoxContainer/ScreenHBoxContainer" instance=ExtResource("1_1uicg")]
+layout_mode = 2

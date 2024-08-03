@@ -15,11 +15,11 @@ func get_sort_value() -> int:
 
 
 func get_enemy_image_texture() -> Resource:
-	return Resources.enemy_image.get(enemy_image_id, null)
+	return Resources.image.get(enemy_image_id, null)
 
 
 func get_enemy_icon_texture() -> Resource:
-	return Resources.enemy_image.get(enemy_icon_id, null)
+	return Resources.image.get(enemy_icon_id, null)
 
 
 func get_title() -> String:

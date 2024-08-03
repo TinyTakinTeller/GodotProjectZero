@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c12aqe07ifofk"
-path="res://.godot/imported/wolf_64_64.png-43e50fced20dfadea56b579d1c0179fe.ctex"
+uid="uid://x0uaxjbfb55b"
+path="res://.godot/imported/heart_256_256.png-2a846db9a5b39edd27df164b9b4a44a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/enemy/64/wolf_64_64.png"
-dest_files=["res://.godot/imported/wolf_64_64.png-43e50fced20dfadea56b579d1c0179fe.ctex"]
+source_file="res://assets/image/heart/256/heart_256_256.png"
+dest_files=["res://.godot/imported/heart_256_256.png-2a846db9a5b39edd27df164b9b4a44a4.ctex"]
 
 [params]
 

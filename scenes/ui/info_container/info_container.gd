@@ -49,7 +49,9 @@ func _set_text(title: String, info: String) -> void:
 
 
 func _initialize() -> void:
-	if _handle_on_hover("  ", "  "):
+	if _handle_on_hover(
+		Locale.get_ui_label("dark_forest_title"), Locale.get_ui_label("dark_forest_info")
+	):
 		_toggle_wiggle_shader(false)
 
 

@@ -195,7 +195,7 @@ func _handle_house_event(observed_total: int) -> void:
 
 
 func _handle_on_deaths_door_resolved(enemy_data: EnemyData, option: int) -> void:
-	_unlock_tab_if("soul")
+	_unlock_tab_if("substance")
 	_unlock_resource_generator_if("beacon")
 	if option == 0:
 		return
@@ -313,9 +313,12 @@ func _gift_debug() -> void:
 			_gift_resource("leather", 1000, name)
 
 
+## ... except peasant, swordsman, house, torch, sword
 func _gift_double() -> void:
 	if _trigger_unique_unlock_event("cat_gift"):
+		_gift_resource("singularity", SaveFile.resources.get("singularity", 0), name)
 		_gift_resource("soulstone", SaveFile.resources.get("soulstone", 0), name)
+		_gift_resource("land", SaveFile.resources.get("land", 0), name)
 		_gift_resource("food", SaveFile.resources.get("food", 0), name)
 		_gift_resource("wood", SaveFile.resources.get("wood", 0), name)
 		_gift_resource("stone", SaveFile.resources.get("stone", 0), name)
@@ -328,23 +331,6 @@ func _gift_double() -> void:
 		_gift_resource("iron", SaveFile.resources.get("iron", 0), name)
 		_gift_resource("fiber", SaveFile.resources.get("fiber", 0), name)
 		_gift_resource("flint", SaveFile.resources.get("flint", 0), name)
-
-
-func _gift_scam() -> void:
-	if _trigger_unique_unlock_event("cat_scam"):
-		_gift_resource("soulstone", -SaveFile.resources.get("soulstone", 0), name)
-		_gift_resource("food", -SaveFile.resources.get("food", 0), name)
-		_gift_resource("wood", -SaveFile.resources.get("wood", 0), name)
-		_gift_resource("stone", -SaveFile.resources.get("stone", 0), name)
-		_gift_resource("clay", -SaveFile.resources.get("clay", 0), name)
-		_gift_resource("brick", -SaveFile.resources.get("brick", 0), name)
-		_gift_resource("fur", -SaveFile.resources.get("fur", 0), name)
-		_gift_resource("leather", -SaveFile.resources.get("leather", 0), name)
-		_gift_resource("coal", -SaveFile.resources.get("coal", 0), name)
-		_gift_resource("iron_ore", -SaveFile.resources.get("iron_ore", 0), name)
-		_gift_resource("iron", -SaveFile.resources.get("iron", 0), name)
-		_gift_resource("fiber", -SaveFile.resources.get("fiber", 0), name)
-		_gift_resource("flint", -SaveFile.resources.get("flint", 0), name)
 
 
 #############
