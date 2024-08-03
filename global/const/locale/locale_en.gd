@@ -20,13 +20,18 @@ const EN: Dictionary = {
 	"tab_data_titles": LocaleEn.TAB_DATA_TITLES,
 	"event_data_text": LocaleEn.EVENT_DATA_TEXT,
 	"npc_event_text": LocaleEn.NPC_EVENT_TEXT,
-	"npc_event_options": LocaleEn.NPC_EVENT_OPTIONS
+	"npc_event_options": LocaleEn.NPC_EVENT_OPTIONS,
+	"substance_text": LocaleEn.SUBSTANCE_TEXT
 }
 
 # File contains long labels that we don't want to lint
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"dark_forest_title": "The Dark Forest",
+	"dark_forest_info": "We have awakened once more ... . . .",
+	"spirit_effect": "swordsman passive damage",
+	"essence_effect": "swordsman as click damage",
 	"tab_info_unknown": "",
 	"tab_info_offline": "",
 	"tab_info_settings": "",
@@ -72,13 +77,14 @@ const UI_LABEL: Dictionary = {
 	"heart_title": "Heart Of The Dark Forest",
 	"heart_info":
 	"Occult force pulses with a sinister rhythm... I feel it like my own... No... Y... Yes?",
-	"heart_dialog": "Destroy The Heart",
+	"heart_dialog": " Destroy The Heart ",
 	"heart_yes": "I Am Ready",
 	"heart_no": "Not Yet",
 	"heart_prestige_info_1":
 	"""You will be reborn.\n\nYou will convert each "Infinite"\nresource into a Singularity.""",
 	"heart_prestige_info_2":
-	"""You will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity."""
+	"""You will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity.""",
+	"craft": "Craft"
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}
@@ -405,7 +411,8 @@ const TAB_DATA_TITLES: Dictionary = {
 	"unknown": [" Unknown "],
 	"soul": [" Substance "],
 	"starway": [" ??? ", " Heart "],
-	"settings": [" @ "]
+	"settings": [" @ "],
+	"substance": [" Substance "]
 }
 
 const EVENT_DATA_TEXT: Dictionary = {
@@ -573,4 +580,71 @@ const SCALE_SETTINGS_INFO: Dictionary = {
 	1000000000000000: "... How did we get here?",
 	10000000000000000: "To the infinity and beyond!",
 	100000000000000000: " \\(∞_∞)/ ",
+}
+
+const SUBSTANCE_TEXT: Dictionary = {
+	"spirit_rabbit_title": "Spirit of Child",
+	"spirit_bird_title": "Spirit of Messenger",
+	"spirit_wolf_title": "Spirit of Beast",
+	"spirit_void_title": "Spirit of Void",
+	"spirit_spider_title": "Spirit of Warden",
+	"spirit_dragon_title": "Spirit of Guardian",
+	"spirit_dino_title": "Spirit of Ambassador",
+	"spirit_skeleton_title": "Spirit of Acolyte",
+	"spirit_slime_title": "Spirit of Prince",
+	"spirit_angel_title": "Spirit of Death",
+	"essence_rabbit_title": "Essence Of Child",
+	"essence_bird_title": "Essence Of Messenger",
+	"essence_wolf_title": "Essence Of Beast",
+	"essence_void_title": "Essence Of Void",
+	"essence_spider_title": "Essence of Warden",
+	"essence_dragon_title": "Essence of Guardian",
+	"essence_dino_title": "Essence Of Ambassador",
+	"essence_skeleton_title": "Essence Of Acolyte",
+	"essence_slime_title": "Essence Of Prince",
+	"essence_angel_title": "Essence Of Death",
+	"spirit_ambassador_info":
+	"This ancient colossal beast blocks the way towards the edge of the forest.",
+	"essence_ambassador_info":
+	"This ancient colossal beast blocks the way towards the edge of the forest.",
+	"spirit_rabbit_info":
+	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
+	"essence_rabbit_info":
+	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
+	"spirit_bird_info":
+	'An ominous bird with inky black feathers, echoing haunting cries: "Stop thisSs cruSsade at once... human."',
+	"essence_bird_info":
+	'An ominous bird with inky black feathers, echoing haunting cries: "Stop thisSs cruSsade at once... human."',
+	"spirit_wolf_info":
+	"A ferocious guardian with a sleek, silver coat... protecting the forest's secrets.",
+	"essence_wolf_info":
+	"A ferocious guardian with a sleek, silver coat... protecting the forest's secrets.",
+	"spirit_void_info":
+	"Ethereal entities drifting aimlessly, fused remnants of those who dared to trespass.",
+	"essence_void_info":
+	"Ethereal entities drifting aimlessly, fused remnants of those who dared to trespass.",
+	"spirit_spider_info":
+	"Humongous spider weaving the forest walls, ensuring no light intrudes upon these eternal dark lands.",
+	"essence_spider_info":
+	"Humongous spider weaving the forest walls, ensuring no light intrudes upon these eternal dark lands.",
+	"spirit_dragon_info":
+	"Majestic and terrifying beast, shimmering scales. Protects the high keep castle gates.",
+	"essence_dragon_info":
+	"Majestic and terrifying beast, shimmering scales. Protects the high keep castle gates.",
+	"spirit_dino_info":
+	"Towering, colossal behemoth. It comes offering a dark alliance if you step NO further...",
+	"essence_dino_info":
+	"Towering, colossal behemoth. It comes offering a dark alliance if you step NO further...",
+	"spirit_skeleton_info":
+	"Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
+	"essence_skeleton_info":
+	"Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
+	"spirit_slime_info":
+	'Gelatinous entity with a fluid, changing form. - "LetsSs dance... my friend."',
+	"essence_slime_info":
+	'Gelatinous entity with a fluid, changing form. - "LetsSs dance... my friend."',
+	"spirit_angel_info":
+	"Celestial being, a conduit for everything that was and will be. It remainsSs silent.",
+	"essence_angel_info":
+	"Celestial being, a conduit for everything that was and will be. It remainsSs silent."
 }

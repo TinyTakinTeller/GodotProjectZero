@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wb81m2ajxuph"]
+
+[ext_resource type="Script" path="res://scenes/manager/substance_manager/substance_manager.gd" id="1_88wl0"]
+
+[node name="SubstanceManager" type="Node"]
+script = ExtResource("1_88wl0")

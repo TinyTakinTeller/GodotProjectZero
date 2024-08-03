@@ -39,7 +39,9 @@ static func get_resources(
 	root: String = FileSystemUtils.RESOURCES_PATH,
 	extension: String = ".tres"
 ) -> Dictionary:
-	var path: String = root + resource_path + "/"
+	var path: String = root
+	if StringUtils.is_not_empty(resource_path):
+		path += resource_path + "/"
 	var resources: Dictionary = {}
 	for file: String in get_files_at(path):
 		file = fix_web_build_file_extension(file)

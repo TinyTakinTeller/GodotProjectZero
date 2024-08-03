@@ -75,9 +75,14 @@ func _on_dialog_heart_button() -> void:
 
 
 func _on_heart_no_button() -> void:
+	Audio.play_sfx_id("generic_click")
+	
 	SignalBus.prestige_cancel.emit()
 
 
 func _on_heart_yes_button() -> void:
 	heart_yes_button.disabled = true
 	comming_soon_info.visible = true
+
+	Audio.play_sfx_id("generic_click")
+	

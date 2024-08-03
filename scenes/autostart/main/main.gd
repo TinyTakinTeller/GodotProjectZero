@@ -99,8 +99,6 @@ func _on_prestige_cancel() -> void:
 		heart_overlay.visible = true
 	switch_from_prestige_simple_tween.play_animation()
 
-	Audio.play_sfx_id("generic_click")
-
 
 ############
 ## export ##

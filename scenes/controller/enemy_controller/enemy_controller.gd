@@ -44,7 +44,7 @@ func _generate() -> void:
 
 func _get_damage() -> int:
 	var ratio: int = Game.PARAMS["spirit_bonus"]
-	var spirit_count: int = SaveFile.get_enemy_ids_for_option(2).size()
+	var spirit_count: int = SaveFile.get_spirit_substance_count()
 	var swordsman: int = SaveFile.workers.get("swordsman", 0)
 	var swordsman_damage: int = max(
 		Limits.safe_mult(swordsman, spirit_count + ratio) / ratio,
@@ -69,6 +69,10 @@ func _on_timeout() -> void:
 
 
 func _on_deaths_door(enemy_data: EnemyData, option: int) -> void:
+	if !enemy_data.is_last():
+		var substance_id: String = ("essence_" if option == 1 else "spirit_") + str(enemy_data.id)
+		SignalBus.substance_generated.emit(substance_id)
+
 	SignalBus.deaths_door_decided.emit(enemy_data, option)
 
 

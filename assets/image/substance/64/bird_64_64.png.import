@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd4l6by3d60hi"
-path="res://.godot/imported/skeleton_64_64.png-c87c1aef558baf22da2b3a34999e5a6f.ctex"
+uid="uid://c7hoas7kbhy0y"
+path="res://.godot/imported/bird_64_64.png-87abf8aef78c3cd56422591f3548162b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/enemy/64/skeleton_64_64.png"
-dest_files=["res://.godot/imported/skeleton_64_64.png-c87c1aef558baf22da2b3a34999e5a6f.ctex"]
+source_file="res://assets/image/substance/64/bird_64_64.png"
+dest_files=["res://.godot/imported/bird_64_64.png-87abf8aef78c3cd56422591f3548162b.ctex"]
 
 [params]
 

@@ -98,6 +98,7 @@ func _connect_signals() -> void:
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 	SignalBus.deaths_door_open.connect(_on_deaths_door_open)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
+	SignalBus.substance_updated.connect(_on_substance_updated)
 
 
 func _on_resized() -> void:
@@ -135,6 +136,11 @@ func _on_deaths_door_resolved(
 	enemy_data: EnemyData, _new_enemy_data: EnemyData, _option: int
 ) -> void:
 	if _tab_data != null and _tab_data.id == "soul" and !enemy_data.is_last() and !_is_selected():
+		start_unlock_animation()
+
+
+func _on_substance_updated(_id: String, _total_amount: int) -> void:
+	if _tab_data != null and _tab_data.id == "substance":
 		start_unlock_animation()
 
 

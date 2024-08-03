@@ -7,6 +7,13 @@ const SPECIAL: String = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 const ASCII: String = COMMON + SPECIAL
 
 
+func random_string(length: int, chars: String = COMMON) -> String:
+	var result: String = ""
+	for i: int in range(length):
+		result += chars[randi() % chars.length()]
+	return result
+
+
 static func is_not_empty(string: String) -> bool:
 	return string != null and string.length() != 0
 

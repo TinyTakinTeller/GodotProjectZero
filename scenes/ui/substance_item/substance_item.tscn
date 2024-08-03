@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://yopnoeejc2om"]
+
+[ext_resource type="Script" path="res://scenes/ui/substance_item/substance_item.gd" id="1_053xh"]
+[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/substance/64/rabbit_64_64.png" id="2_h5jnr"]
+[ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="3_gluuf"]
+[ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="4_knmcc"]
+
+[node name="SubstanceItem" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -75.5
+offset_right = 44.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_053xh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="IconMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 88)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelMarginContainer" type="MarginContainer" parent="VBoxContainer/IconMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Panel" type="Panel" parent="VBoxContainer/IconMarginContainer/PanelMarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PanelHighlight" type="Panel" parent="VBoxContainer/IconMarginContainer/PanelMarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"PanelHighlight"
+
+[node name="TextureMarginContainer" type="MarginContainer" parent="VBoxContainer/IconMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/IconMarginContainer/TextureMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_h5jnr")
+
+[node name="ShakeShaderComponent" parent="VBoxContainer/IconMarginContainer/TextureMarginContainer/TextureRect" instance=ExtResource("3_gluuf")]
+unique_shader_material = true
+
+[node name="TextureButton" type="Button" parent="VBoxContainer/IconMarginContainer/TextureMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="LabelMarginContainer" type="MarginContainer" parent="VBoxContainer/IconMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IconMarginContainer/LabelMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "?"
+
+[node name="CraftButtonMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CraftButton" type="Button" parent="VBoxContainer/CraftButtonMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Craft"
+
+[node name="CountMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="VBoxContainer/CountMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "x3"
+
+[node name="NewUnlockTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_knmcc")]
+unique_name_in_owner = true
+target = NodePath("../VBoxContainer/IconMarginContainer")

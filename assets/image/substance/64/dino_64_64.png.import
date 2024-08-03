@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtvlhe5o00xu5"
-path="res://.godot/imported/void_64_64.png-0ebc53c250d6adb96324a5c42d6682f2.ctex"
+uid="uid://wswcwpv2c1bw"
+path="res://.godot/imported/dino_64_64.png-f134427431ccae69d854b8c8e0d4b018.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/enemy/64/void_64_64.png"
-dest_files=["res://.godot/imported/void_64_64.png-0ebc53c250d6adb96324a5c42d6682f2.ctex"]
+source_file="res://assets/image/substance/64/dino_64_64.png"
+dest_files=["res://.godot/imported/dino_64_64.png-f134427431ccae69d854b8c8e0d4b018.ctex"]
 
 [params]
 

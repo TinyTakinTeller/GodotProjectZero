@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform float Strength : hint_range(0,20) = 5;
 uniform float RandomOffset = 1.0;
 uniform float offset : hint_range(0, 1) = 0;
+uniform float offset_time = 0.0;
 
 uniform int enabled: hint_range(0, 1, 1) = 1;
 
@@ -18,14 +19,14 @@ void vertex()
 		VERTEX_OFFSET.x += (
 			random(
 				( trunc( VERTEX_OFFSET.y))
-			+	mod(TIME, 60.0)
+			+	mod(TIME + offset_time, 60.0)
 			) - offset
 		) * Strength ;
 
 		VERTEX_OFFSET.y += (
 			random(
 				( trunc( VERTEX_OFFSET.x))
-			+	mod(TIME, 60.0)
+			+	mod(TIME + offset_time, 60.0)
 			) - offset
 		) * Strength;
 		

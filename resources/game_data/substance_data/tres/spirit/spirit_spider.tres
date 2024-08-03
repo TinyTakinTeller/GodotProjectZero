@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SubstanceData" load_steps=2 format=3 uid="uid://bk7bm7pm5o7dx"]
+
+[ext_resource type="Script" path="res://resources/game_data/substance_data/substance_data.gd" id="1_0jybr"]
+
+[resource]
+script = ExtResource("1_0jybr")
+color = Color(0.392157, 0.878431, 0, 1)
+order = 5
+id = "spirit_spider"
+image_id = "spider_64_64"
+resource_costs = {}
+category_id = "spirit"

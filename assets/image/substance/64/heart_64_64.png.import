@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://610j6b8vfw8n"
-path="res://.godot/imported/rabbit_64_64.png-ff8b7c30701c81781f099e66cf929d09.ctex"
+uid="uid://bobmv5pyoucjn"
+path="res://.godot/imported/heart_64_64.png-5f87239279c186d179a191da907e5b1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/enemy/64/rabbit_64_64.png"
-dest_files=["res://.godot/imported/rabbit_64_64.png-ff8b7c30701c81781f099e66cf929d09.ctex"]
+source_file="res://assets/image/substance/64/heart_64_64.png"
+dest_files=["res://.godot/imported/heart_64_64.png-5f87239279c186d179a191da907e5b1b.ctex"]
 
 [params]
 

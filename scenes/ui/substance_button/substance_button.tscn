@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dawlpy0isv1rv"]
 
-[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/enemy/64/rabbit_64_64.png" id="1_f56cv"]
 [ext_resource type="Script" path="res://scenes/ui/substance_button/substance_button.gd" id="1_gu8as"]
+[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/substance/64/rabbit_64_64.png" id="2_feech"]
 
 [node name="SubstanceButton" type="MarginContainer"]
 custom_minimum_size = Vector2(230, 0)
@@ -44,7 +44,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_f56cv")
+texture = ExtResource("2_feech")
 
 [node name="ButtonMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

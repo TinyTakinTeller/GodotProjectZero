@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5ks3wtjmnjis"
-path="res://.godot/imported/spider_64_64.png-949f23eb963fa3c878753d866114cd6d.ctex"
+path="res://.godot/imported/spider_64_64.png-eeaf3550368a8989244190632796d710.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/enemy/64/spider_64_64.png"
-dest_files=["res://.godot/imported/spider_64_64.png-949f23eb963fa3c878753d866114cd6d.ctex"]
+source_file="res://assets/image/substance/64/spider_64_64.png"
+dest_files=["res://.godot/imported/spider_64_64.png-eeaf3550368a8989244190632796d710.ctex"]
 
 [params]
 

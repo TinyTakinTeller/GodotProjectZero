@@ -1,5 +1,6 @@
 class_name ShakeShaderComponent extends Node
 
+@export var unique_shader_material: bool = false
 @export var max_shake_strength: float = 4.0
 @export var offset_shake_strength: float = 0.1
 @export var shake_shader: ShaderMaterial
@@ -21,6 +22,9 @@ func _ready() -> void:
 
 
 func _initialize() -> void:
+	if unique_shader_material:
+		shake_shader = shake_shader.duplicate()
+		shake_shader.set_shader_parameter("offset_time", randf() * 60.0)
 	get_parent().material = shake_shader
 
 

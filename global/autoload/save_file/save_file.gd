@@ -11,6 +11,7 @@ var save_datas: Dictionary = {}
 
 var resources: Dictionary = {}
 var workers: Dictionary = {}
+var substances: Dictionary = {}
 var events: Dictionary = {}
 var event_log: Dictionary = {}
 var resource_generator_unlocks: Array = ["land"]
@@ -53,26 +54,45 @@ func _ready() -> void:
 #############
 
 
-func get_enemy_option(id: String) -> int:
+func get_spirit_substance_count() -> int:
+	return get_substance_count_by_category("spirit")
+
+
+func get_essence_substance_count() -> int:
+	return get_substance_count_by_category("essence")
+
+
+func get_substance_count_by_category(category: String) -> int:
+	var count: int = 0
+	for substance_id: String in Resources.substance_datas:
+		var spirit_data: SubstanceData = Resources.substance_datas[substance_id]
+		if spirit_data.get_category_id() == category:
+			count += substances.get(substance_id, 0)
+	return count
+
+
+func get_enemy_option(id: String, save_file_enemy: Dictionary = enemy) -> int:
 	if id == "angel":
 		return 0
 
-	var first: int = enemy[id].get("option", {}).get("1", 0)
-	var second: int = enemy[id].get("option", {}).get("2", 0)
+	var first: int = save_file_enemy.get(id, {}).get("option", {}).get("1", 0)
+	var second: int = save_file_enemy.get(id, {}).get("option", {}).get("2", 0)
 	if first == 0 and second == 0:
 		return 0
 	return 1 if first > second else 2
 
 
-func get_enemy_ids() -> Array:
-	return enemy.keys().filter(
+func get_enemy_ids(save_file_enemy: Dictionary = enemy) -> Array:
+	return save_file_enemy.keys().filter(
 		func(id: String) -> bool: return id != "level" and get_enemy_option(id) > 0
 	)
 
 
-func get_enemy_ids_for_option(option: int) -> Array:
-	return enemy.keys().filter(
-		func(id: String) -> bool: return id != "level" and get_enemy_option(id) == option
+func get_enemy_ids_for_option(option: int, save_file_enemy: Dictionary = enemy) -> Array:
+	return save_file_enemy.keys().filter(
+		func(id: String) -> bool: return (
+			id != "level" and get_enemy_option(id, save_file_enemy) == option
+		)
 	)
 
 
@@ -250,6 +270,7 @@ func _export_save_data() -> Dictionary:
 	var save_data: Dictionary = {}
 	save_data["resources"] = resources
 	save_data["workers"] = workers
+	save_data["substances"] = substances
 	save_data["events"] = events
 	save_data["event_log"] = event_log
 	save_data["resource_generator_unlocks"] = resource_generator_unlocks
@@ -269,6 +290,7 @@ func _export_save_data() -> Dictionary:
 func _import_save_data(save_data: Dictionary) -> void:
 	resources = _get_resources(save_data)
 	workers = _get_workers(save_data)
+	substances = _get_substances(save_data)
 	events = _get_events(save_data)
 	event_log = _get_event_log(save_data)
 	resource_generator_unlocks = _get_resource_generator_unlocks(save_data)
@@ -290,6 +312,10 @@ func _get_resources(save_data: Dictionary) -> Dictionary:
 
 func _get_workers(save_data: Dictionary) -> Dictionary:
 	return save_data.get("workers", workers)
+
+
+func _get_substances(save_data: Dictionary) -> Dictionary:
+	return save_data.get("substances", substances)
 
 
 func _get_events(save_data: Dictionary) -> Dictionary:
@@ -371,12 +397,39 @@ func _sanitize_timezone(timezone: Dictionary) -> void:
 	timezone["name"] = StringUtils.sanitize_text(timezone.get("name", ""), StringUtils.ASCII)
 
 
+func _get_save_file_name(save_data: Dictionary) -> String:
+	return save_data["metadata"].get("save_file_name", "")
+
+
 func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_5(save_data)
 	_check_backward_week_7(save_data)
 	_check_backward_week_10(save_data)
 	_check_backward_corrupt_worker_role(save_data)
 	_check_backward_week_11(save_data)
+	_check_backward_week_15(save_data)
+
+
+## migrating Substances from enemies to proper substances
+## 1. replace soul tab with substance tab
+## 2. migrate enemy choices to proper substances
+func _check_backward_week_15(save_data: Dictionary) -> void:
+	var save_file_tab_unlocks: Array = save_data.get("tab_unlocks", {})
+	var index: int = save_file_tab_unlocks.find("soul")
+	if index != -1:
+		save_file_tab_unlocks[index] = "substance"
+		save_data["tab_unlocks"] = save_file_tab_unlocks
+
+	var save_file_enemy: Dictionary = save_data.get("enemy", {})
+	var save_file_substances: Dictionary = save_data.get("substances", {})
+	if save_file_substances.is_empty():
+		var spirits: Array = get_enemy_ids_for_option(2, save_file_enemy)
+		for spirit: String in spirits:
+			save_file_substances["spirit_" + spirit] = 1
+		var essences: Array = get_enemy_ids_for_option(1, save_file_enemy)
+		for essence: String in essences:
+			save_file_substances["essence_" + essence] = 1
+	save_data["substances"] = save_file_substances
 
 
 func _check_backward_week_11(save_data: Dictionary) -> void:
@@ -414,7 +467,7 @@ func _check_backward_corrupt_worker_role(save_data: Dictionary) -> void:
 					+ " / "
 					+ str(worker_resources)
 					+ " at "
-					+ str(save_data["metadata"].get("save_file_name", "NULL"))
+					+ _get_save_file_name(save_data)
 				)
 			)
 		if error > 0:
@@ -435,6 +488,11 @@ func _check_backward_week_10(save_data: Dictionary) -> void:
 
 ## version week 7 (and before) had a temporary enemy or no enemy
 func _check_backward_week_7(save_data: Dictionary) -> void:
+	var target_version: Array[String] = ["week 3", "week 4", "week 5", "week 6", "week 7"]
+	var last_version: String = save_data.get("metadata", {}).get("last_version_minor", "")
+	if !target_version.has(last_version):
+		return
+
 	var check_enemy: String = save_data.get("enemy", {}).get("level", "")
 	if check_enemy == "" or check_enemy == "ambassador":
 		save_data["enemy"] = {"level": "rabbit", "rabbit": {"damage": 0}}
@@ -443,15 +501,15 @@ func _check_backward_week_7(save_data: Dictionary) -> void:
 ## cat dialogue tree was extended in week 6, this resets the last answer so dialogue can continue
 func _check_backward_week_5(save_data: Dictionary) -> void:
 	var target_version: Array[String] = ["week 3", "week 4", "week 5"]
-	var last_version: String = _get_metadata(save_data).get("last_version_minor", "")
+	var last_version: String = save_data.get("metadata", {}).get("last_version_minor", "")
 	if !target_version.has(last_version):
 		return
 
-	var cat_events: Dictionary = _get_npc_events(save_data).get("cat", {})
+	var cat_events: Dictionary = save_data.get("npc_events", {}).get("cat", {})
 	if cat_events.get("cat_intro", 0) != 0:
 		cat_events["cat_intro"] = -1
 
-	_get_metadata(save_data)["last_version_minor"] = Game.VERSION_MINOR
+	save_data.get("metadata", {})["last_version_minor"] = Game.VERSION_MINOR
 
 
 ##############
