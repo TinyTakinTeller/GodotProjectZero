@@ -110,6 +110,7 @@ func _on_worker_updated(_id: String, total: int, _amount: int) -> void:
 
 
 func _on_scale_button_up(button: Button, scale_value: int) -> void:
+	_handle_on_scale_button_hover(scale_value)
 	_handle_on_scale_button_up(button, scale_value)
 
 

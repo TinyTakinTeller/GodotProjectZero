@@ -23,7 +23,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme_type_variation = &"ManagerButton"
-text = "-"
+text = "<"
 
 [node name="AmountMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -55,7 +55,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 theme_type_variation = &"ManagerButton"
-text = "+"
+text = ">"
 
 [node name="InfoMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

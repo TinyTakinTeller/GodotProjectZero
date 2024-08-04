@@ -54,7 +54,8 @@ script = ExtResource("1_u1kx3")
 
 [node name="ProgressButtonController" parent="Controllers" instance=ExtResource("2_fcqyg")]
 
-[node name="ManagerButtonController" parent="Controllers" instance=ExtResource("3_h1qmp")]
+[node name="ManagerButtonController" parent="Controllers" node_paths=PackedStringArray("worker_controller") instance=ExtResource("3_h1qmp")]
+worker_controller = NodePath("../WorkerController")
 
 [node name="WorkerController" parent="Controllers" instance=ExtResource("2_i5w2f")]
 

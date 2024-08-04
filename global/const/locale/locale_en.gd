@@ -29,7 +29,7 @@ const EN: Dictionary = {
 
 const UI_LABEL: Dictionary = {
 	"dark_forest_title": "The Dark Forest",
-	"dark_forest_info": "We have awakened once more ... . . .",
+	"dark_forest_info": "You have awakened once more. Be wary, The Dark Forest never sleeps...",
 	"spirit_effect": "swordsman passive damage",
 	"essence_effect": "swordsman as click damage",
 	"tab_info_unknown": "",
@@ -84,7 +84,12 @@ const UI_LABEL: Dictionary = {
 	"""You will be reborn.\n\nYou will convert each "Infinite"\nresource into a Singularity.""",
 	"heart_prestige_info_2":
 	"""You will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity.""",
-	"craft": "Craft"
+	"craft": "Craft",
+	"normal_mode_button": "Local Autonomy",
+	"smart_mode_button": "Absolute Rule",
+	"normal_mode_button_info": "Increment individual population roles.",
+	"smart_mode_button_info":
+	"Incrementing a population role will also increment all required roles automatically."
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}
@@ -526,7 +531,8 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"The great dragon repays my mercy in kindness every day. It burns the dark path, its arcane breath enriching the soil. Lush greenery rises amongst the smoke and mist.",
 	"absolve_7":
 	"I made peace with that towering beast. The newly gentle giant lifts me toward the throne room.",
-	"absolve_8": "That thing... it wants... to play? Why does it feel so familiar. Why? Why? Why?",
+	"absolve_8":
+	"That thing... the Acolyte... it wants... to play? Why does it feel so familiar? Why? Why? Why?",
 	"absolve_9":
 	"The prince snickers at my mercy, though it agrees to entertain my folly and follow along.",
 	"lore_beacon":

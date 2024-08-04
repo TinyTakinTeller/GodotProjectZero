@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgdndojko6mlf"]
+[gd_scene load_steps=5 format=3 uid="uid://dgdndojko6mlf"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/managment_screen.gd" id="1_q5dij"]
 [ext_resource type="PackedScene" uid="uid://84qyu2m2h55y" path="res://scenes/ui/manager_button/manager_button.tscn" id="2_5bcli"]
+[ext_resource type="PackedScene" uid="uid://dj262a5wao0t7" path="res://scenes/ui/manager_mode_container/margin_mode_container.tscn" id="3_7xtvm"]
 [ext_resource type="PackedScene" uid="uid://sovytoworxpp" path="res://scenes/ui/manager_settings_container/manager_settings_container.tscn" id="3_dfjmv"]
 
 [node name="ManagmentScreen" type="MarginContainer"]
+offset_right = 478.0
+offset_bottom = 125.0
 script = ExtResource("1_q5dij")
 manager_button_scene = ExtResource("2_5bcli")
 
@@ -50,7 +53,13 @@ theme_override_constants/margin_top = 6
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ManagerSettingsContainer" parent="VBoxContainer/QOLMarginContainer" instance=ExtResource("3_dfjmv")]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QOLMarginContainer"]
+layout_mode = 2
+
+[node name="MarginModeContainer" parent="VBoxContainer/QOLMarginContainer/VBoxContainer" instance=ExtResource("3_7xtvm")]
+layout_mode = 2
+
+[node name="ManagerSettingsContainer" parent="VBoxContainer/QOLMarginContainer/VBoxContainer" instance=ExtResource("3_dfjmv")]
 layout_mode = 2
 
 [node name="ProgressBarMarginContainer" type="MarginContainer" parent="VBoxContainer"]
