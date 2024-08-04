@@ -48,12 +48,18 @@ func _toggle_mode(mode: int) -> void:
 
 
 func _connect_signals() -> void:
+	SignalBus.event_saved.connect(_on_event_saved)
 	normal_mode_button.mouse_entered.connect(_on_normal_mode_button_hover)
 	smart_mode_button.mouse_entered.connect(_on_smart_mode_button_hover)
 	normal_mode_button.button_down.connect(_on_normal_mode_button_down)
 	smart_mode_button.button_down.connect(_on_smart_mode_button_down)
 	normal_mode_button.button_up.connect(_on_normal_mode_button_up)
 	smart_mode_button.button_up.connect(_on_smart_mode_button_up)
+
+
+func _on_event_saved(event_data: EventData, _vals: Array, _index: int) -> void:
+	if event_data.id == "house_kingdom":
+		self.visible = true
 
 
 func _on_normal_mode_button_hover() -> void:
