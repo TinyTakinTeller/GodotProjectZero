@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj262a5wao0t7"]
+
+[ext_resource type="Script" path="res://scenes/ui/manager_mode_container/margin_mode_container.gd" id="1_e5vou"]
+
+[node name="MarginModeContainer" type="MarginContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_e5vou")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NormalMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="NormalModeButton" type="Button" parent="HBoxContainer/NormalMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Local Authority"
+
+[node name="SmartMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="SmartModeButton" type="Button" parent="HBoxContainer/SmartMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Absolute Rule"

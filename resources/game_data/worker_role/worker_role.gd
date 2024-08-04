@@ -11,6 +11,14 @@ extends Resource
 @export var column: int = 0
 
 
+func get_first_produce() -> String:
+	if produce.is_empty():
+		return ""
+	if produce.size() > 1:
+		push_warning("wroker role id " + id + " produces multiple resources " + str(produce))
+	return produce.keys()[0]
+
+
 func get_produce() -> Dictionary:
 	return produce
 
@@ -43,8 +51,6 @@ func get_info() -> String:
 	if consume.size() > 0:
 		var resource_names: Array = ResourceGenerator.get_display_names_of(consume.keys())
 		info += (", -%s " + (", -%s ".join(resource_names))) % consume.values()
-		if worker_consume.size() > 0:
-			info += ", "
 	if worker_consume.size() > 0:
 		var worker_names: Array = WorkerRole.get_display_names_of(worker_consume.keys())
 		info += (", -%s " + (", -%s ".join(worker_names))) % worker_consume.values()

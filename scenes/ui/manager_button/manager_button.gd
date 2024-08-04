@@ -26,6 +26,7 @@ func _notification(what: int) -> void:
 func _ready() -> void:
 	_display_defaults()
 	_connect_signals()
+	_toggle_mode()
 
 
 ###########
@@ -76,6 +77,18 @@ func _emit_label_effect_particle(resource_id: String, amount: int) -> void:
 #############
 ## helpers ##
 #############
+
+
+func _toggle_mode(mode: int = -1) -> void:
+	if mode == -1:
+		mode = SaveFile.settings.get("manager_mode", 0)
+
+	if mode == 0:
+		del_button.text = "-"
+		add_button.text = "+"
+	elif mode == 1:
+		del_button.text = "<"
+		add_button.text = ">"
 
 
 func _display_defaults() -> void:
@@ -172,6 +185,7 @@ func _connect_signals() -> void:
 	SignalBus.worker_allocated.connect(_on_worker_allocated)
 	SignalBus.resource_storage_hover.connect(_on_resource_storage_hover)
 	SignalBus.resource_storage_unhover.connect(_on_resource_storage_unhover)
+	SignalBus.toggle_manager_mode.connect(_on_toggle_manager_mode)
 
 
 func _on_resized() -> void:
@@ -190,14 +204,26 @@ func _on_mouse_exited(node: Node) -> void:
 ## calling _on_mouse_entered() here because mobile users don't have mouse_entered signal
 func _on_add_button_up() -> void:
 	_on_mouse_entered(null)
-	SignalBus.manager_button_add.emit(_worker_role)
+
+	var mode: int = SaveFile.settings.get("manager_mode", 0)
+	if mode == 0:
+		SignalBus.manager_button_add.emit(_worker_role)
+	elif mode == 1:
+		SignalBus.manager_button_smart_add.emit(_worker_role)
+
 	add_button.release_focus()
 
 
 ## calling _on_mouse_entered() here because mobile users don't have mouse_entered signal
 func _on_del_button_up() -> void:
 	_on_mouse_entered(null)
-	SignalBus.manager_button_del.emit(_worker_role)
+
+	var mode: int = SaveFile.settings.get("manager_mode", 0)
+	if mode == 0:
+		SignalBus.manager_button_del.emit(_worker_role)
+	elif mode == 1:
+		SignalBus.manager_button_smart_del.emit(_worker_role)
+
 	del_button.release_focus()
 
 
@@ -260,6 +286,10 @@ func _on_resource_storage_hover(resource: ResourceGenerator) -> void:
 
 func _on_resource_storage_unhover(_resource: ResourceGenerator) -> void:
 	info_label.modulate = Color.WHITE
+
+
+func _on_toggle_manager_mode(mode: int) -> void:
+	_toggle_mode(mode)
 
 
 ############
