@@ -29,7 +29,7 @@ const EN: Dictionary = {
 
 const UI_LABEL: Dictionary = {
 	"dark_forest_title": "The Dark Forest",
-	"dark_forest_info": "You have awakened once more. Be wary, the dark forest never sleeps...",
+	"dark_forest_info": "You have awakened once more. Be wary, The Dark Forest never sleeps...",
 	"spirit_effect": "swordsman passive damage",
 	"essence_effect": "swordsman as click damage",
 	"tab_info_unknown": "",

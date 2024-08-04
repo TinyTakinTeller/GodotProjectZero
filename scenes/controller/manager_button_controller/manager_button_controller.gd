@@ -139,6 +139,19 @@ func _handle_smart_add(worker_role: WorkerRole) -> void:
 		SignalBus.worker_allocated.emit(id, 0, name)
 		return
 
+	# workarounds for rounding errors near 10^18 (q = 10^15)
+	var q: int = 1000000000000000
+	var workers: int = SaveFile.workers.get(id, 0)
+	# 1. workaround: round down mult to nearest multiple of 10^15
+	if mult > q:
+		var n: int = mult / q
+		mult = q * n
+		total_roles = roles * mult
+	# 2. workaround: do not allow assigments less than 10^15 if amount is already larger than 10^15
+	if workers > q and mult < q:
+		SignalBus.worker_allocated.emit(id, 0, name)
+		return
+
 	for req: String in required:
 		var amount: int = Limits.safe_mult(required[req], mult)
 		SignalBus.worker_allocated.emit(req, amount, name)
