@@ -64,7 +64,7 @@ const UI_LABEL: Dictionary = {
 	"deaths_door_second_info":
 	"Free the creature, releasing the spirit from the corrupted flesh prison.",
 	"offline_1": "You were away for {0}. \n\n",
-	"offline_2": "Unhappy population will refuse to work while not observed. ",
+	"offline_2": "Unhappy population will refuse to work while not observed.",
 	"offline_3": "Make sure your resources are not decreasing to keep your population happy: ",
 	"offline_4": "Since your last activity, population generated: ",
 	"master": "Master",
@@ -416,112 +416,129 @@ const TAB_DATA_TITLES: Dictionary = {
 }
 
 const EVENT_DATA_TEXT: Dictionary = {
-	"automation":
-	"Passive production of all resources is increasing! The age of automation is upon us.",
+	"automation": "Today, we herald the dawn of a new era... the age of automation!",
 	"cat_gift":
-	"The cat ran through the storage. It was a mess, but the quantity of the raw resources has doubled!",
+	"The frail cat wrought havoc in the storage. Somehow, after cleanup, we had a surplus of raw resources... twice as much.",
 	"cat_no_gift":
-	"The cat's offer seemed too suspicious... I dread to imagine what might have happened if I had accepted.",
+	"The cat's offer seemed too suspicious. I dread to imagine what might have happened if I had accepted.",
 	"cat_intro_no":
-	"The forest is dark, but It feels like home. I feel the cat will remember that answer...",
+	"Though this twisted forest is all I know; I dare to call it home? Am I deceiving myself? The cat meows mockingly at my response.",
 	"cat_intro_yes":
-	"I must admit that I am lost and afraid. I feel the cat will remember that answer...",
-	"cat_scam": "I had been scammed by a talking cat. This is... unsettling, to say the least.",
-	"cat_watching": "There is a cat figure lurking in the shadows...",
+	"I must admit that I am lost. The cat grinned before returning to its monotone face.",
+	"cat_scam": "Did that creature fool me? I-I'm speechless. Perhaps trust is a fickle resource.",
+	"cat_watching":
+	"There is a cat figure lurking in the shadows. It brings me great unease to gaze upon it.",
 	"enemy_screen":
-	"Suspicious eyes started emerging in the dark. They surround the houses and scare the people.",
+	"Suspicious eyes emerge from the darkness. Their stare brings fear to my people.",
 	"firepit_worker":
-	"A stranger saw the firepit. The lost peasant wanted shelter and offered to work in return.",
+	"A quaint stranger finds solace in the fire's warmth. The lost peasant wanted shelter and offered to work in return.",
 	"gift_flint_fiber":
-	"Found a burnt out campfire. The rubble contained: {0} fiber, {1} flint, {2} wood and {3} stone.",
+	"Stumbled upon a long extinguished campfire. A remanent of life, which inspires hope. The debris contained: {0} fiber, {1} flint, {2} wood and {3} stone.",
 	"house_1":
-	"People are emerging from the forest. They will work in exchange for a place to sleep.",
+	"Lost people emerge from the forest. They will work in exchange for a place to sleep.",
 	"house_100":
-	"The forest village is brewing with life, as the number of people continues to grow.",
-	"house_25": "The camp grew into a hamlet.",
-	"house_4": "The brisk forest camp is getting more lively by the day.",
-	"house_capital": "I hereby declare this settlement the capital of the forest.",
-	"house_city": "The forest town has gotten quite large, I might need help in managing all this.",
-	"house_empire": "People of the world have bestowed me the title of their emperor.",
+	"Life flourishes even in absolute darkness as the number of people continues to grow. Children laugh and frolic, while the forest listens in.",
+	"house_25": "This forest hamlet is far superior to our paltry camp.",
+	"house_4":
+	"I've left my mark deep within these trees, carving out a civilization. The brisk forest camp is getting more lively by the day.",
+	"house_capital":
+	"I declare this settlement the capital of the forest. Grow beyond this pestilent place and carve our name into this world.",
+	"house_city":
+	"My town has expanded faster than I would have imagined, I might need help in managing all this.",
+	"house_empire":
+	"People of the forest have bestowed me the title of their emperor. Things shall only continue to expand henceforth.",
 	"house_imperium":
-	"Today, I reflect upon the immense responsibility bestowed upon me by tens of billions of people, as the Emperor of the Forest Imperium.",
+	"Today, I reflect upon the immense responsibility bestowed upon me by tens of billions, as the Emperor of the Forest Imperium.",
 	"house_kingdom":
-	"I declare myself the king of these vast lands. Let us conquer and grow together.",
-	"house_megalopolis": "From the darkness, a massive megalopolis has risen.",
-	"house_metropolis": "Millions of people are now sharing the urban cityscape.",
-	"house_town": "Taking a stroll through the streets, thousands of people greet my presence.",
+	"I declare myself the king of these vast lands. Absolute power corrupts absolutely, they say?",
+	"house_megalopolis":
+	"Born from the womb of the void itself, a megalopolis has formed. It shall only grow basking in my golden light.",
+	"house_metropolis":
+	"Millions of people... faceless humanoids... stand beside me. A red carpet guiding me into oblivion...",
+	"house_town": "My people pray and bow as I stroll through the streets. This can't be right?",
 	"land_1": "There is a pleasant forest nearby, it smells like pine.",
 	"land_10":
 	"There is coal in the rocky mountain area. Fortune has placed it right next to our settlement.",
 	"land_11":
-	"Other side of the mountain reveals an abandoned mining operation. I wonder who was here before...",
-	"land_2": "Found a shallow creek that flows through the forest.",
-	"land_3": "Venturing deeper into the forest, the future is uncertain.",
-	"land_4": "The oaks and pines are standing tall. I should clear an area here.",
+	"An old mining operation on the other side of the mountain. I can only wonder what poor creature slaved away in those conditions.",
+	"land_2": "A shallow creek flows through the forest.",
+	"land_3": "My curiosity compels me to go deeper, and one day it shall lead to my downfall.",
+	"land_4": "The oaks and pines are standing tall. Shall I make a clearing here?",
 	"land_5": "A mountain range stretches near the forest. I wonder if I can exploit that.",
-	"land_6": "There is a lake not far away, extending along a muddy beach.",
-	"land_7": "Growling sounds emerge from the deep dense parts of the forest.",
+	"land_6": "There is a deep dark lake stretching along a muddy beach.",
+	"land_7":
+	"Growling sounds emerge from the deep dense parts of the forest. Nightmares weave deep inside my psyche.",
 	"land_8": "Vast lands stretch beyond the forest, but I will need a way to navigate them.",
 	"land_9":
-	"It is exhausting to explore on my own. Sending some people instead sounds like an idea.",
-	"land_debug": "Gods have gifted a bunch of resources to help you in this showcase.",
+	"It is exhausting to explore new lands on my own. Sending out some of them instead, sounds like an idea.",
+	"land_debug": "The Gods have gifted plenty of resources to help you in this showcase.",
 	"resource_generated": "You generated {0} {1}.",
 	"zero": "The world is dark and empty...",
 	"darkness_1":
-	"Moving deeper into the darkness, I notice my people behind me... they never had a face. Just blank figurines...",
+	"Moving deeper into the darkness, I notice my people behind me, faceless figurines... Did they ever bear any humanity?",
 	"darkness_2":
-	"As I move farther than ever before, my people are always one step behind me. It is almost as if... time and space, have no meaning here.",
+	"As I move farther than ever before, my people are always one step behind me. Time and space seem twisted.",
 	"darkness_3":
-	"Conquering the wolf beast was exhausting. This is weird... I never felt hunger nor thirst in these woods.",
+	"That wolf wasn't the first, and it won't be the last. Conquering it was exhausting, but I must go on.",
 	"darkness_4":
-	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things... afraid?",
+	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things, afraid?",
 	"darkness_5":
-	"The dark forest paths lead me in circles. What... or who... is this maze keeping lost in here?",
+	"My head twists and churns, my sight expands and contracts. The dark forest paths lead me in circles. What, or who, is this maze keeping lost in here?",
 	"darkness_6":
-	"The dragon was guarding the hidden castle gates. In the great hall, a colossal beast stretches into the infinite ceiling void.",
+	"The mighty dragon was acting as a guard dog of the castle gates. In the great hall, a colossal beast stretches into the infinite ceiling void.",
 	"darkness_7":
-	"This was... too easy? Nothing seems to... fight back. It is only a matter of time until... I arrive. But, where?",
+	"This has been too easy. No. There's something wrong, there must be. You...You are still here, aren't you?",
 	"darkness_8":
-	"Countless creatures gather along as I move towards the throne room. They seem... to recognize me? To know, something.",
+	"Countless creatures gather along as I move towards the throne room. They seem, to recognize me? The throne room awaits, my heart is about to burst.",
 	"darkness_9":
 	'The defeated slime smiles: "You don\'t remember? Too long, you have been stuck... in this... form."',
 	"darkness_10":
 	"I struck down Death itself, witnessing its ethereal form regenerate right before my eyes. It left behind a shimmering... Soulstone? I need... more.",
-	"execute_1": "I feel a power rush flowing through my body as I absorb the dark essence...",
+	"execute_1":
+	"I feel a power rush flowing through my body as I absorb the dark essence... it sears my flesh.",
 	"execute_2":
-	"Eating the Messenger essence granted me flight. Even now, the dark mist prevents me from navigating clearly.",
+	"I devoured the essence of the messenger. Bitter, chewy and somewhat rotten, it granted me flight nevertheless.",
 	"execute_3":
-	"Devouring the Beast essence made me stronger and faster. I can cover more ground, but always end up at the same place...",
+	"That blasted essence, of the wicked beast, granted me great speed. I can cover more ground, but always end up at the same place.",
 	"execute_4":
-	"I absorbed countless fractured spirits into my essence. I can hear their whispers... inside me.",
+	"I absorbed countless spirits into my essence. They wail inside me, their droning echoes drowning out my thoughts.",
 	"execute_5":
-	"Consuming the Warden essence gave me more limbs than fingers. I can feel... so much now.",
+	"The Warden falls, and I take what's rightfully mine. Consuming this essence gave me more limbs than fingers.",
 	"execute_6":
-	"Devouring the Dragon essence was... spicy. But, the more I try to burn down my obstacles, the stronger they regrow...",
+	"The essence of the dragon may singe the tongue with the flames of an inferno, but for its razing power, it's a worthy sacrifice.",
 	"execute_7":
-	"The essence of the colossal creature contained so much... knowledge. Yet, I still do no recall my own name.",
-	"execute_8": "As I feed on the essences of darkness, my mind begins to fade away...",
+	"Knowledge is power. The essence of that colossus has taught this, yet my own name remains a mystery that gnaws away at my sanity.",
+	"execute_8":
+	"As I feed on the essences of darkness... my mind... why does it feel so fragile yet so powerful?",
 	"execute_9":
-	"A royal essence of a prince grants me visions of the noble bloodline. But, I am as lost as ever...",
+	"The essence of the prince is too lost in the amalgamation. Visions of the noble bloodline cloud my mind.",
 	"absolve_1":
-	"The decaying flesh of the little rabbit reveals a beautiful friend. They follow my steps.",
+	"From the rotten rabbit's womb, a saccharine spirit forms. It follows my steps gleefully.",
 	"absolve_2":
 	"From the carcass of the fallen bird, a new ally rises. They scout the paths ahead.",
-	"absolve_3": "The spared wolfs body regenerates into a loyal, warm servant.",
+	"absolve_3":
+	"The wolf lies on the rickety path, rearing its head for scritches. An ally to guide the path forward.",
 	"absolve_4":
-	"As I released the numerous spirits from the tormented cage, their true forms gather around me... innocent children.",
+	"The spirits wail no longer, as reflections of them form upon patches of water. Children...",
 	"absolve_5":
-	"The absolved spider spirit follows me forward, patching up the treacherous path ahead.",
+	"The absolved spider spirit follows me forward, it's shimmering string lacing the path forward.",
 	"absolve_6":
-	"I spare the dragon. In return, it is clearing our path ahead. But, the vegetation regrows thicker than ever before.",
+	"The great dragon repays my mercy in kindness every day. It burns the dark path, its arcane breath enriching the soil. Lush greenery rises amongst the smoke and mist.",
 	"absolve_7":
-	"I made peace with the towering beast. The colossal creature lifts me towards the throne room.",
-	"absolve_8": "The released spirit of the undead humaonid wants to... play?",
-	"absolve_9": "The prince laughs at my mercy. Still, he agrees to follow along.",
+	"I made peace with that towering beast. The newly gentle giant lifts me toward the throne room.",
+	"absolve_8": "That thing... it wants... to play? Why does it feel so familiar. Why? Why? Why?",
+	"absolve_9":
+	"The prince snickers at my mercy, though it agrees to entertain my folly and follow along.",
 	"lore_beacon":
-	"The lit beacon pierces the dark sky. For the first time, I can see the stars...",
-	"heart_reveal": "Starlight illuminates the heart of the forest, revealing its rhythmic pulse..."
+	"The lit beacon pierces the dark sky. For the first time, I can see the stars... breaking through the abyss and past the canopy.",
+	"heart_reveal":
+	"Starlight illuminates the forbidden parts of the dark forest, revealing the source of the rhythmic pulse.",
+	"first_spirit":
+	"The unshackled spirit merges with the swordsmen, infusing them with dark power.",
+	"first_essence":
+	"The devoured essence allows me to siphon the lifeforce of my swordsmen, enhancing my own lethal prowess."
 }
+
 const NPC_EVENT_TEXT: Dictionary = {
 	"cat_intro": "I smell you from afar. Are you lost?",
 	"cat_peek": "",
@@ -570,7 +587,7 @@ const SCALE_SETTINGS_INFO: Dictionary = {
 	100000: "Hundred thousand years of war... wait, wrong game.",
 	1000000: "Who wants to be a million?",
 	10000000: "A small loan of a couple million...",
-	100000000: "Are you sure this is enough people?  ¯\\_( ツ )_/¯",
+	100000000: "Are you sure this is enough people? ¯\\_( ツ )_/¯",
 	1000000000: "They Are Billions! Can the humanity survive?",
 	10000000000: "Okay stop overplaying this game, please. YES YOU.",
 	100000000000: "We will, we will...",

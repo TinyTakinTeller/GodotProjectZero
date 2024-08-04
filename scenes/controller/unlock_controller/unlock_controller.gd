@@ -19,6 +19,16 @@ func _ready() -> void:
 ##############
 
 
+func _handle_on_substance_updated(observed_id: String, total_amount: int) -> void:
+	if total_amount >= 1:
+		var substance_data: SubstanceData = Resources.substance_datas.get(observed_id)
+		var category_id: String = substance_data.get_category_id()
+		if category_id == "essence":
+			_trigger_unique_unlock_event("first_essence")
+		if category_id == "spirit":
+			_trigger_unique_unlock_event("first_spirit")
+
+
 func _handle_on_resource_increased(observed_id: String, observed_total: int) -> void:
 	if observed_id == "land":
 		_handle_land_event(observed_id)
@@ -340,6 +350,7 @@ func _gift_double() -> void:
 
 func _connect_signals() -> void:
 	SignalBus.resource_updated.connect(_on_resource_updated)
+	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.worker_updated.connect(_on_worker_updated)
 	SignalBus.npc_event_interacted.connect(_on_npc_event_interacted)
 	cat_intro_timer.timeout.connect(_on_timer_cat_timeout)
@@ -354,6 +365,10 @@ func _connect_signals() -> void:
 func _on_resource_updated(id: String, total: int, amount: int, _source_id: String) -> void:
 	if amount > 0:
 		_handle_on_resource_increased(id, total)
+
+
+func _on_substance_updated(id: String, total_amount: int) -> void:
+	_handle_on_substance_updated(id, total_amount)
 
 
 func _on_worker_updated(id: String, total: int, _amount: int) -> void:
