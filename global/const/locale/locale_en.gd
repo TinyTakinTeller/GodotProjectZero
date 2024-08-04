@@ -413,7 +413,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"cat_gift":
 	"The frail cat wrought havoc in the storage. Somehow, after cleanup, we had a surplus of raw resources... twice as much.",
 	"cat_no_gift":
-	"The cat's offer seemed too suspicious... I dread to imagine what might have happened if I had accepted.",
+	"The cat's offer seemed too suspicious. I dread to imagine what might have happened if I had accepted.",
 	"cat_intro_no":
 	"Though this twisted forest is all I know; I dare to call it home? Am I deceiving myself? The cat meows mockingly at my response.",
 	"cat_intro_yes":
@@ -422,7 +422,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"cat_watching":
 	"There is a cat figure lurking in the shadows. It brings me great unease to gaze upon it.",
 	"enemy_screen":
-	"Suspicious eyes emerge from the darkness. Their stare brings fear to my people...",
+	"Suspicious eyes emerge from the darkness. Their stare brings fear to my people.",
 	"firepit_worker":
 	"A quaint stranger finds solace in the fire's warmth. The lost peasant wanted shelter and offered to work in return.",
 	"gift_flint_fiber":
@@ -430,10 +430,10 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"house_1":
 	"Lost people emerge from the forest. They will work in exchange for a place to sleep.",
 	"house_100":
-	"Life flourishes even in absolute darkness as the number of people continues to grow. Children laugh and frolic, while the forest listens in...",
+	"Life flourishes even in absolute darkness as the number of people continues to grow. Children laugh and frolic, while the forest listens in.",
 	"house_25": "This forest hamlet is far superior to our paltry camp.",
 	"house_4":
-	"I've left my mark deep within these trees, carving out a civilization... The brisk forest camp is getting more lively by the day.",
+	"I've left my mark deep within these trees, carving out a civilization. The brisk forest camp is getting more lively by the day.",
 	"house_capital":
 	"I declare this settlement the capital of the forest. Grow beyond this pestilent place and carve our name into this world.",
 	"house_city":
@@ -443,7 +443,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"house_imperium":
 	"Today, I reflect upon the immense responsibility bestowed upon me by tens of billions, as the Emperor of the Forest Imperium.",
 	"house_kingdom":
-	"I declare myself the king of these vast lands. Absolute power corrupts absolutely, they say... ?",
+	"I declare myself the king of these vast lands. Absolute power corrupts absolutely, they say?",
 	"house_megalopolis":
 	"Born from the womb of the void itself, a megalopolis has formed. It shall only grow basking in my golden light.",
 	"house_metropolis":
@@ -457,32 +457,32 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"land_2": "A shallow creek flows through the forest.",
 	"land_3": "My curiosity compels me to go deeper, and one day it shall lead to my downfall.",
 	"land_4": "The oaks and pines are standing tall. Shall I make a clearing here?",
-	"land_5": "A mountain range stretches near the forest. I wonder if I can exploit that...",
+	"land_5": "A mountain range stretches near the forest. I wonder if I can exploit that.",
 	"land_6": "There is a deep dark lake stretching along a muddy beach.",
 	"land_7":
 	"Growling sounds emerge from the deep dense parts of the forest. Nightmares weave deep inside my psyche.",
 	"land_8": "Vast lands stretch beyond the forest, but I will need a way to navigate them.",
 	"land_9":
-	"It is exhausting to explore new lands on my own. Sending out some of them instead, sounds like an idea...",
+	"It is exhausting to explore new lands on my own. Sending out some of them instead, sounds like an idea.",
 	"land_debug": "The Gods have gifted plenty of resources to help you in this showcase.",
 	"resource_generated": "You generated {0} {1}.",
 	"zero": "The world is dark and empty...",
 	"darkness_1":
-	"Moving deeper into the darkness, I notice my people behind me... faceless figurines... Did they ever bear any humanity?",
+	"Moving deeper into the darkness, I notice my people behind me, faceless figurines... Did they ever bear any humanity?",
 	"darkness_2":
-	"As I move farther than ever before, my people are always one step behind me. It is almost as if... time and space, have no meaning here.",
+	"As I move farther than ever before, my people are always one step behind me. Time and space seem twisted.",
 	"darkness_3":
 	"That wolf wasn't the first, and it won't be the last. Conquering it was exhausting, but I must go on.",
 	"darkness_4":
-	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things... afraid?",
+	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things, afraid?",
 	"darkness_5":
-	"My head twists and churns, my sight expands and contracts. The dark forest paths lead me in circles. What... or who... is this maze keeping lost in here?",
+	"My head twists and churns, my sight expands and contracts. The dark forest paths lead me in circles. What, or who, is this maze keeping lost in here?",
 	"darkness_6":
 	"The mighty dragon was acting as a guard dog of the castle gates. In the great hall, a colossal beast stretches into the infinite ceiling void.",
 	"darkness_7":
 	"This has been too easy. No. There's something wrong, there must be. You...You are still here, aren't you?",
 	"darkness_8":
-	"Countless creatures gather along as I move towards the throne room. They seem... to recognize me? The throne room awaits, my heart is about to burst...",
+	"Countless creatures gather along as I move towards the throne room. They seem, to recognize me? The throne room awaits, my heart is about to burst.",
 	"darkness_9":
 	'The defeated slime smiles: "You don\'t remember? Too long, you have been stuck... in this... form."',
 	"darkness_10":
@@ -492,11 +492,11 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"execute_2":
 	"I devoured the essence of the messenger. Bitter, chewy and somewhat rotten, it granted me flight nevertheless.",
 	"execute_3":
-	"That blasted essence, of the wicked beast, granted me great speed. I can cover more ground, but always end up at the same place...",
+	"That blasted essence, of the wicked beast, granted me great speed. I can cover more ground, but always end up at the same place.",
 	"execute_4":
-	"I absorbed countless spirits into my essence. They wail inside me, their droning echoes drowning out my thoughts...",
+	"I absorbed countless spirits into my essence. They wail inside me, their droning echoes drowning out my thoughts.",
 	"execute_5":
-	"The Warden falls, and I take what's rightfully mine. Consuming this essence gave me more limbs than fingers...",
+	"The Warden falls, and I take what's rightfully mine. Consuming this essence gave me more limbs than fingers.",
 	"execute_6":
 	"The essence of the dragon may singe the tongue with the flames of an inferno, but for its razing power, it's a worthy sacrifice.",
 	"execute_7":
@@ -504,7 +504,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"execute_8":
 	"As I feed on the essences of darkness... my mind... why does it feel so fragile yet so powerful?",
 	"execute_9":
-	"The essence of the prince is too lost in the amalgamation. Visions of the noble bloodline cloud my mind...",
+	"The essence of the prince is too lost in the amalgamation. Visions of the noble bloodline cloud my mind.",
 	"absolve_1":
 	"From the rotten rabbit's womb, a saccharine spirit forms. It follows my steps gleefully.",
 	"absolve_2":
@@ -525,7 +525,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"lore_beacon":
 	"The lit beacon pierces the dark sky. For the first time, I can see the stars... breaking through the abyss and past the canopy.",
 	"heart_reveal":
-	"Starlight illuminates the forbidden parts of the dark forest... revealing the source of the rhythmic pulse.",
+	"Starlight illuminates the forbidden parts of the dark forest, revealing the source of the rhythmic pulse.",
 	"first_spirit":
 	"The unshackled spirit merges with the swordsmen, infusing them with dark power.",
 	"first_essence":
