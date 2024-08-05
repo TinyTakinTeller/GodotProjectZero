@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dawlpy0isv1rv"]
 
-[ext_resource type="Script" path="res://scenes/ui/substance_button/substance_button.gd" id="1_gu8as"]
-[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/substance/64/rabbit_64_64.png" id="2_feech"]
+[ext_resource type="Script" path="res://scenes/ui/screen/soul_screen/substance_button/substance_button.gd" id="1_5rglu"]
+[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/substance/64/rabbit_64_64.png" id="2_q1owm"]
 
 [node name="SubstanceButton" type="MarginContainer"]
 custom_minimum_size = Vector2(230, 0)
@@ -9,7 +9,7 @@ scale = Vector2(1.00164, 1)
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 12
-script = ExtResource("1_gu8as")
+script = ExtResource("1_5rglu")
 
 [node name="PanelMarginContainer" type="MarginContainer" parent="."]
 visible = false
@@ -44,7 +44,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_feech")
+texture = ExtResource("2_q1owm")
 
 [node name="ButtonMarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2

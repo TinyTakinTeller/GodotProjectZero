@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://j5lcc7v7q03g"]
 
-[ext_resource type="Script" path="res://scenes/ui/enemy/enemy_progress_bar/enemy_progress_bar.gd" id="1_5wyxl"]
+[ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/enemy/enemy_progress_bar/enemy_progress_bar.gd" id="1_5wyxl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ogm0g"]
 

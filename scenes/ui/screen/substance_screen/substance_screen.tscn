@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c26sb3v1ws0t5"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/substance_screen/substance_screen.gd" id="1_vyrsh"]
-[ext_resource type="PackedScene" uid="uid://1t6m1ktx2tri" path="res://scenes/ui/substance_category/substance_category.tscn" id="3_h5gpe"]
+[ext_resource type="PackedScene" uid="uid://1t6m1ktx2tri" path="res://scenes/ui/screen/substance_screen/substance_category/substance_category.tscn" id="3_h5gpe"]
 
 [node name="SubstanceScreen" type="MarginContainer"]
 anchors_preset = 15

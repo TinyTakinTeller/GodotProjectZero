@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bn70fimjb1ac0"]
 
-[ext_resource type="Script" path="res://scenes/ui/npc_dialog/npc_dialog.gd" id="1_urym8"]
+[ext_resource type="Script" path="res://scenes/ui/screen/world_screen/npc_dialog/npc_dialog.gd" id="1_urym8"]
 [ext_resource type="Texture2D" uid="uid://cpwmy667e4xpa" path="res://assets/image/npc/cat/cat_90_100.png" id="2_8yoqs"]
 [ext_resource type="PackedScene" uid="uid://ccm0lefdpacby" path="res://scenes/component/control/label/label_typing/label_typing.tscn" id="2_55et7"]
 [ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="3_uxbm3"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp8ipef04gxux"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/world_screen/world_screen.gd" id="1_k268v"]
-[ext_resource type="PackedScene" uid="uid://bjroqyyfrvx70" path="res://scenes/ui/progress_button/progress_button.tscn" id="2_74b0p"]
-[ext_resource type="PackedScene" uid="uid://bn70fimjb1ac0" path="res://scenes/ui/npc_dialog/npc_dialog.tscn" id="3_q75w7"]
-[ext_resource type="PackedScene" uid="uid://cy8l70tvpbis8" path="res://scenes/ui/experience_tracker/experience_tracker.tscn" id="4_p5w24"]
+[ext_resource type="PackedScene" uid="uid://bjroqyyfrvx70" path="res://scenes/ui/screen/world_screen/progress_button/progress_button.tscn" id="2_74b0p"]
+[ext_resource type="PackedScene" uid="uid://bn70fimjb1ac0" path="res://scenes/ui/screen/world_screen/npc_dialog/npc_dialog.tscn" id="3_q75w7"]
+[ext_resource type="PackedScene" uid="uid://cy8l70tvpbis8" path="res://scenes/ui/screen/world_screen/experience_tracker/experience_tracker.tscn" id="4_p5w24"]
 
 [node name="WorldScreen" type="MarginContainer"]
 anchors_preset = 15

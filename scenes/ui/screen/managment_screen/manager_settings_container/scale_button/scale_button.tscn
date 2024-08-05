@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8f0hhmmpiqli"]
 
-[ext_resource type="Script" path="res://scenes/ui/manager_settings_container/scale_button/scale_button.gd" id="1_lwd84"]
+[ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/manager_settings_container/scale_button/scale_button.gd" id="1_lwd84"]
 
 [node name="ScaleButton" type="MarginContainer"]
 theme_override_constants/margin_left = 4

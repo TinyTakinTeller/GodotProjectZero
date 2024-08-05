@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://wb81m2ajxuph" path="res://scenes/manager/substance_manager/substance_manager.tscn" id="14_xfgdc"]
 [ext_resource type="PackedScene" uid="uid://dv3bfta8ir0t" path="res://scenes/manager/enemy_manager/enemy_manager.tscn" id="16_6q8rb"]
 [ext_resource type="PackedScene" uid="uid://d1y5xyx63u3w0" path="res://scenes/ui/developer_console/developer_console.tscn" id="20_yijsf"]
-[ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/settings_container/settings_container.tscn" id="20_ynkq3"]
+[ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/version_container/version_container.tscn" id="20_ynkq3"]
 [ext_resource type="PackedScene" uid="uid://ch7uxqklej1h6" path="res://scenes/ui/screen/darkness_screen/darkness_screen.tscn" id="21_324w1"]
 [ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
 [ext_resource type="PackedScene" uid="uid://br1a46uikyubt" path="res://scenes/ui/screen/starway_screen/starway_screen.tscn" id="27_d2ak1"]
@@ -205,7 +205,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_constants/margin_right = 0
 
-[node name="SettingsContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
+[node name="VersionContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 

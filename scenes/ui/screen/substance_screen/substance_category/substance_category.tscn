@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1t6m1ktx2tri"]
 
-[ext_resource type="PackedScene" uid="uid://yopnoeejc2om" path="res://scenes/ui/substance_item/substance_item.tscn" id="1_1uicg"]
-[ext_resource type="Script" path="res://scenes/ui/substance_category/substance_category.gd" id="1_g47r6"]
+[ext_resource type="PackedScene" uid="uid://yopnoeejc2om" path="res://scenes/ui/screen/substance_screen/substance_category/substance_item/substance_item.tscn" id="1_1uicg"]
+[ext_resource type="Script" path="res://scenes/ui/screen/substance_screen/substance_category/substance_category.gd" id="1_g47r6"]
 
 [node name="SubstanceCategory" type="MarginContainer"]
 anchors_preset = 15

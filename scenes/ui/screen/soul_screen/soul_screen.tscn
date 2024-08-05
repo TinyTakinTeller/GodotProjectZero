@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnh5vhg0xefn6"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/soul_screen/soul_screen.gd" id="1_iswd8"]
-[ext_resource type="PackedScene" uid="uid://dawlpy0isv1rv" path="res://scenes/ui/substance_button/substance_button.tscn" id="2_f3ue6"]
+[ext_resource type="PackedScene" uid="uid://dawlpy0isv1rv" path="res://scenes/ui/screen/soul_screen/substance_button/substance_button.tscn" id="2_f3ue6"]
 
 [node name="SoulScreen" type="MarginContainer"]
 anchors_preset = 15
