@@ -8,7 +8,7 @@ const TAB_DATA_ID: String = "manager"
 var grid_containers: Array[GridContainer] = []
 
 @onready var h_box_container: HBoxContainer = %HBoxContainer
-@onready var progress_bar: ProgressBar = %ProgressBar
+@onready var basic_progress_bar: BasicProgressBar = %BasicProgressBar
 
 ###############
 ## overrides ##
@@ -17,7 +17,8 @@ var grid_containers: Array[GridContainer] = []
 
 func _process(_delta: float) -> void:
 	if worker_controller != null:
-		progress_bar.value = worker_controller.timer.time_left / Game.PARAMS["cycle_seconds"]
+		var percent: float = worker_controller.timer.time_left / Game.PARAMS["cycle_seconds"]
+		basic_progress_bar.set_display(percent)
 
 
 func _ready() -> void:
@@ -62,11 +63,6 @@ func _initialize() -> void:
 	for node: Node in h_box_container.get_children():
 		if is_instance_of(node, GridContainer):
 			grid_containers.append(node as GridContainer)
-
-	if worker_controller != null:
-		progress_bar.visible = true
-	else:
-		progress_bar.visible = false
 
 
 #############

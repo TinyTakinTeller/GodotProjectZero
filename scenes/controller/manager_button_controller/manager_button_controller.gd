@@ -94,16 +94,12 @@ func _handle_del(worker_role: WorkerRole) -> void:
 	SignalBus.worker_allocated.emit(id, -amount, name)
 
 
-## add all required roles automatically (auto-add ONLY FOR resources ... sergeant requires peasants)
-func _handle_smart_add(worker_role: WorkerRole) -> void:
-	var id: String = worker_role.id
+func _get_max_mult(id: String, mult: int) -> int:
 	var required: Dictionary = requirements_map[id]
 	var roles: int = DictionaryUtils.sum(required) + 1
 
-	var mult: int = SaveFile.get_settings_population_scale()
-	var total_roles: int = Limits.safe_mult(roles, mult)
-
 	# cannot add more than global max, round down mult
+	var total_roles: int = Limits.safe_mult(roles, mult)
 	if total_roles >= Limits.GLOBAL_MAX_AMOUNT:
 		mult = Limits.GLOBAL_MAX_AMOUNT / roles
 		total_roles = roles * mult
@@ -112,17 +108,14 @@ func _handle_smart_add(worker_role: WorkerRole) -> void:
 	var peasants: int = SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0)
 	if total_roles > peasants:
 		mult = peasants / roles
-		total_roles = roles * mult
 
 	# cannot add more than food requirement
 	var food_eff: int = worker_controller.get_efficiencies().get("resources", {}).get("food", 0)
 	if food_eff < 0:
-		SignalBus.worker_allocated.emit(id, 0, name)
-		return
+		return 0
 	var max_mult: int = food_eff / roles
 	if mult > max_mult:
 		mult = max_mult
-		total_roles = roles * mult
 
 	# only sergeant has worker role (peasants) requirements and only masons produce worker role
 	if id == "sergeant":
@@ -133,24 +126,34 @@ func _handle_smart_add(worker_role: WorkerRole) -> void:
 		# cannot add more sergeant than peasant production, round down mult
 		if mult > population_production:
 			mult = population_production
-			total_roles = roles * mult
 
-	if total_roles <= 0:
+	return mult
+
+
+## add all required roles automatically (auto-add ONLY FOR resources ... sergeant requires peasants)
+func _handle_smart_add(worker_role: WorkerRole) -> void:
+	var id: String = worker_role.id
+	var required: Dictionary = requirements_map[id]
+
+	var mult: int = _get_max_mult(id, SaveFile.get_settings_population_scale())
+	if mult <= 0:
 		SignalBus.worker_allocated.emit(id, 0, name)
 		return
 
-	# workarounds for rounding errors near 10^18 (q = 10^15)
+	# workaround for rounding errors near 10^18 (q = 10^15)
 	var q: int = 1000000000000000
 	var workers: int = SaveFile.workers.get(id, 0)
-	# 1. workaround: round down mult to nearest multiple of 10^15
-	if mult > q:
-		var n: int = mult / q
-		mult = q * n
-		total_roles = roles * mult
-	# 2. workaround: do not allow assigments less than 10^15 if amount is already larger than 10^15
-	if workers > q and mult < q:
-		SignalBus.worker_allocated.emit(id, 0, name)
-		return
+	var result: int = workers + mult
+	if result > q:
+		var max_mult: int = _get_max_mult(id, Limits.GLOBAL_MAX_AMOUNT)
+		var max_result: int = workers + max_mult
+		var max_n: int = max_result / q
+		var rounded_max_result: int = max_n * q
+		if result >= rounded_max_result:
+			mult = max(rounded_max_result - workers, 0)
+			if mult <= 0:
+				SignalBus.worker_allocated.emit(id, 0, name)
+				return
 
 	for req: String in required:
 		var amount: int = Limits.safe_mult(required[req], mult)

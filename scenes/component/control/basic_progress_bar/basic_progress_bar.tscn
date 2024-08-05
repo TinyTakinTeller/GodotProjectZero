@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://3vcjyu7tgdii"]
+
+[ext_resource type="Script" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.gd" id="1_r6l1i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogm0g"]
+
+[node name="ProgressBarMarginContainer" type="MarginContainer"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_r6l1i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ProgressBarLabel" type="Label" parent="VBoxContainer/TitleMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0.392, 0.878, 1)
+material = SubResource("ShaderMaterial_ogm0g")
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 14
+text = "27.45% to next Infinity (3) "
+
+[node name="ProgressBarMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ProgressBarMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ProgressBarMarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/ProgressBarMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0.392, 0.878, 1)
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+value = 0.3
+show_percentage = false

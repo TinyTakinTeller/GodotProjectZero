@@ -81,7 +81,7 @@ const UI_LABEL: Dictionary = {
 	"heart_yes": "I Am Ready",
 	"heart_no": "Not Yet",
 	"heart_prestige_info_1":
-	"""You will be reborn.\n\nYou will convert each "Infinite"\nresource into a Singularity.""",
+	"""You will be reborn.\n\nYou will convert each "Infinity"\nresource into a Singularity.""",
 	"heart_prestige_info_2":
 	"""You will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity.""",
 	"craft": "Craft",
