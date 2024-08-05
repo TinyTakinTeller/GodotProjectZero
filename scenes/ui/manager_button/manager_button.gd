@@ -246,8 +246,11 @@ func _on_worker_efficiency_updated(efficiencies: Dictionary, generate: bool) -> 
 	_handle_worker_efficiency_updated(efficiencies, generate)
 
 
-func _on_worker_allocated(id: String, amount: int, _source_id: String) -> void:
+func _on_worker_allocated(id: String, amount: int, source_id: String) -> void:
 	if get_id() != id:
+		return
+
+	if source_id == "NO_SOUND":
 		return
 	if amount != 0:
 		Audio.play_sfx_id("manager_button_allocated", 0.0)

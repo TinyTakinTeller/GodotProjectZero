@@ -154,7 +154,7 @@ func _handle_smart_add(worker_role: WorkerRole) -> void:
 
 	for req: String in required:
 		var amount: int = Limits.safe_mult(required[req], mult)
-		SignalBus.worker_allocated.emit(req, amount, name)
+		SignalBus.worker_allocated.emit(req, amount, "NO_SOUND")
 	SignalBus.worker_allocated.emit(id, mult, name)
 
 
@@ -187,7 +187,7 @@ func _handle_smart_del(worker_role: WorkerRole) -> void:
 		var amount: int = Limits.safe_mult(required[req], mult)
 		var req_workers: int = SaveFile.workers.get(req, 0)
 		amount = min(amount, req_workers)
-		SignalBus.worker_allocated.emit(req, -amount, name)
+		SignalBus.worker_allocated.emit(req, -amount, "NO_SOUND")
 	SignalBus.worker_allocated.emit(id, -mult, name)
 
 
