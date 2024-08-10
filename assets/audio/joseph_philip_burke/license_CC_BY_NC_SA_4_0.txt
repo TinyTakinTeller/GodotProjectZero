@@ -10,5 +10,6 @@ Works currently licensed in this directory under this license:
 * "20 Axes to a Bed"
 * "There's a Strong Chill in the Air"
 * "Lacrimosa (Requiem Abridged)" [Originally Composed by W.A. Mozart, Public Domain Composition]
+* "Mars in Furs"
 
-Last License Update: 7/6/2024
+Last License Update: 8/10/2024
