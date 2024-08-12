@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SubstanceData" load_steps=2 format=3 uid="uid://b245ls6jurtk3"]
+
+[ext_resource type="Script" path="res://resources/game_data/substance_data/substance_data.gd" id="1_ikoi5"]
+
+[resource]
+script = ExtResource("1_ikoi5")
+color = Color(0.878431, 0.878431, 0.392157, 1)
+order = 10
+id = "temperance"
+image_id = "temperance_64_64"
+resource_costs = {
+"singularity": 10
+}
+category_id = "charm"
+hidden = true
+unlocked_by = "strength"

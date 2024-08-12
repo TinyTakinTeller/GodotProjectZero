@@ -55,7 +55,8 @@ func get_info() -> String:
 		var worker_names: Array = WorkerRole.get_display_names_of(worker_consume.keys())
 		info += (", -%s " + (", -%s ".join(worker_names))) % worker_consume.values()
 
-	info += " / %s seconds" % Game.PARAMS["cycle_seconds"]
+	var cycle_seconds: String = "%1.1f" % SaveFile.get_cycle_seconds()
+	info += " / %s seconds" % cycle_seconds
 	if StringUtils.is_not_empty(flavor):
 		info += " - " + flavor
 	return info

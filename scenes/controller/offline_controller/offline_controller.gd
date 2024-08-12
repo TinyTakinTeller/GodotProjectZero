@@ -3,6 +3,9 @@ extends Node
 
 @export var worker_controller: WorkerController
 @export var enemy_controller: EnemyController
+@export var manager_button_controller: ManagerButtonController
+
+@onready var auto_mason: AutoMason = $AutoMason
 
 ###############
 ## overrides ##
@@ -24,12 +27,11 @@ func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dicti
 
 	# normalize "house -> worker" production
 	if total_efficiency.has("house"):
-		var worker_inc: int = Limits.safe_mult(
-			Game.PARAMS["house_workers"], total_efficiency.get("house", 0)
-		)
-		total_efficiency["worker"] = worker_inc
+		var house_workers: int = SaveFile.get_house_workers()
+		var worker_inc: int = Limits.safe_mult(house_workers, total_efficiency.get("house", 0))
+		total_efficiency[Game.WORKER_RESOURCE_ID] = worker_inc
 	else:
-		total_efficiency["worker"] = 0
+		total_efficiency[Game.WORKER_RESOURCE_ID] = 0
 
 	# check for decreasing resources
 	var ids: Array = total_efficiency.keys()
@@ -57,6 +59,25 @@ func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dicti
 	for id: String in generated:
 		if generated[id] != 0:
 			nonzero_generated[id] = generated[id]
+
+	# the_hierophant effect
+	var has_the_hierophant: bool = SaveFile.substances.get("the_hierophant", 0) > 0
+	var mode: int = SaveFile.settings.get("manager_mode", 0)
+	var freemasonry: bool = has_the_hierophant and mode == 2
+	if freemasonry:
+		var storage: Dictionary = efficiencies["storage"]
+		var h: int = storage.get("house", 0)
+		var w: int = storage.get("worker")
+		var m: int = max(SaveFile.workers.get("mason", 0), 1)
+		var s: int = SaveFile.workers.get("sergeant", 0)
+		var mason_req: int = manager_button_controller.get_total_requirements_sum("mason")
+		var house_workers: int = SaveFile.get_house_workers()
+		var n: int = cycles
+		var per_cent: int = SaveFile.get_shadow_percent() + 100
+		auto_mason.clear_cache(h, m, house_workers, mason_req, w, s, per_cent)
+		var results: Dictionary = auto_mason.cycles(n)
+		nonzero_generated["house"] = max(results["h"], nonzero_generated.get("house", 0))
+		nonzero_generated["worker"] = max(results["p"], nonzero_generated.get("worker", 0))
 
 	return {"decreasing_ids": [], "generated": nonzero_generated}
 
@@ -117,8 +138,8 @@ func _handle_on_game_resumed(
 		return
 
 	var efficiencies: Dictionary = worker_controller.get_efficiencies()
-	var worker_controller_cycle: int = worker_controller.CYCLE_SECONDS
-	var worker_controller_cycles: int = seconds_delta / worker_controller_cycle
+	var worker_controller_cycle: float = SaveFile.get_cycle_seconds()
+	var worker_controller_cycles: int = int(float(seconds_delta) / worker_controller_cycle)
 	worker_controller_cycles = int(factor * worker_controller_cycles)
 	var worker_progress: Dictionary = _progress_worker_controller(
 		efficiencies, worker_controller_cycles
@@ -131,7 +152,7 @@ func _handle_on_game_resumed(
 	var enemy_data: EnemyData = Resources.enemy_datas.get(enemy_id, null)
 	var swordsman_storage: int = efficiencies.get("storage", {}).get("swordsman", 0)
 	var swordsman_eff: int = efficiencies.get("total_efficiency", {}).get("swordsman", 0)
-	var enemy_controller_cycle: float = enemy_controller.get_cycle_duration()
+	var enemy_controller_cycle: float = SaveFile.get_enemy_cycle_seconds()
 	var enemy_controller_cycles: int = int(float(seconds_delta) / enemy_controller_cycle)
 	enemy_controller_cycles = int(factor * enemy_controller_cycles)
 	var enemy_progress: Dictionary = _progress_enemy_controller(

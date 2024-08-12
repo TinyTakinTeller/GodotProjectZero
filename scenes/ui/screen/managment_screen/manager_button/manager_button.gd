@@ -86,9 +86,18 @@ func _toggle_mode(mode: int = -1) -> void:
 	if mode == 0:
 		del_button.text = "-"
 		add_button.text = "+"
+		del_button.visible = true
+		add_button.visible = true
 	elif mode == 1:
 		del_button.text = "<"
 		add_button.text = ">"
+		del_button.visible = true
+		add_button.visible = true
+	elif mode == 2:
+		del_button.text = ""
+		add_button.text = ""
+		del_button.visible = false
+		add_button.visible = false
 
 
 func _display_defaults() -> void:

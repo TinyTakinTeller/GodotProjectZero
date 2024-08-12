@@ -28,7 +28,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 14
-text = "27.45% to next Infinity (3) "
+text = "27.45% to next Infinity (3)"
 
 [node name="ProgressBarMarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

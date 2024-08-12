@@ -4,8 +4,10 @@ signal typing_animation_end
 
 var _typing_delay: float
 var _loop: bool = false
+var _end_delay: float = 0.0
 
-@onready var typing_text_tween: Node = %TypingTextTween
+@onready var typing_text_tween: TypingTextTween = %TypingTextTween
+@onready var end_delay_timer: Timer = %EndDelayTimer
 
 ###############
 ## overrides ##
@@ -42,6 +44,13 @@ func _normalize_typing_effect(value: float) -> float:
 #############
 
 
+func set_end_delay(end_delay: float) -> void:
+	_end_delay = end_delay
+	end_delay_timer.wait_time = _end_delay
+	if _end_delay != 0.0:
+		typing_text_tween.set_loop(false)
+
+
 func play_typing_animation(loop: bool = false) -> void:
 	_loop = loop
 	var animation_length: float = self.text.length() * _typing_delay
@@ -67,12 +76,21 @@ func update_typing_effect(toggle: bool, value: float) -> void:
 
 func _connect_signals() -> void:
 	typing_text_tween.animation_end.connect(_on_typing_text_tween_animation_end)
+	end_delay_timer.timeout.connect(_on_timeout)
 
 	SignalBus.effect_settings_updated.connect(_on_effect_settings_updated)
 
 
 func _on_typing_text_tween_animation_end() -> void:
+	if _end_delay == 0.0:
+		typing_animation_end.emit()
+	else:
+		end_delay_timer.start()
+
+
+func _on_timeout() -> void:
 	typing_animation_end.emit()
+	play_typing_animation()
 
 
 func _on_effect_settings_updated(toggle: bool, value: float, id: String) -> void:

@@ -5,6 +5,19 @@ const LOCALE: Dictionary = {"en": LocaleEn.EN}
 const LOCALE_NAME: Dictionary = {"en": "English"}
 
 
+## export csv(s)
+## TODO: part 1: function for importing csv(s) # or just ignore this todo and solve part 2 directly
+## TODO: part 2: refactor these nodes and use csv(s) directly with Godot out of the box localization
+func _ready() -> void:
+	if false:
+		var csv: String = LocaleEn.csv()
+
+		var my_file := FileAccess.open("res://csv_en.txt", FileAccess.WRITE)
+		assert(my_file.is_open())
+		my_file.store_string(csv)
+		my_file.close()
+
+
 func get_ui_label(id: String) -> String:
 	return LOCALE[SaveFile.locale]["ui_label"].get(id, "")
 
@@ -31,7 +44,7 @@ func get_npc_click_title(npc_id: String) -> String:
 
 func get_scale_settings_info(scale: int) -> String:
 	return LOCALE[SaveFile.locale]["scale_settings_info"].get(
-		scale, LOCALE[SaveFile.locale]["scale_settings_info"][-1]
+		str(scale), LOCALE[SaveFile.locale]["scale_settings_info"]["-1"]
 	)
 
 

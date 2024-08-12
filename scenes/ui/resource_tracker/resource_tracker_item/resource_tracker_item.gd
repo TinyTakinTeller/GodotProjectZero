@@ -56,10 +56,10 @@ func get_default_color() -> Color:
 	if _resource_generator == null:
 		return Color.WHITE
 	var total_amount: int = SaveFile.resources.get(get_id(), 0)
-	if total_amount >= Limits.GLOBAL_MAX_AMOUNT:
-		return ColorSwatches.BLUE
 	if _resource_generator.is_colored():
 		return _resource_generator.get_color()
+	if total_amount >= Limits.GLOBAL_MAX_AMOUNT:
+		return ColorSwatches.BLUE
 	return Color.WHITE
 
 
@@ -80,18 +80,17 @@ func _set_passive(amount: int) -> void:
 	var total_amount: int = SaveFile.resources.get(get_id(), 0)
 	if not (amount < 0) and total_amount >= Limits.GLOBAL_MAX_AMOUNT:
 		income_label.text = "MAX"
-		income_label.modulate = ColorSwatches.BLUE
-		return
-
-	var amount_string: String = NumberUtils.format_number_scientific(amount)
-	if amount > 0:
-		income_label.text = "+{amount}".format({"amount": amount_string})
-		income_label.modulate = ColorSwatches.GREEN
-	elif amount < 0:
-		income_label.text = "{amount}".format({"amount": amount_string})
-		income_label.modulate = ColorSwatches.RED
+		income_label.modulate = get_default_color()
 	else:
-		income_label.text = ""
+		var amount_string: String = NumberUtils.format_number_scientific(amount)
+		if amount > 0:
+			income_label.text = "+{amount}".format({"amount": amount_string})
+			income_label.modulate = ColorSwatches.GREEN
+		elif amount < 0:
+			income_label.text = "{amount}".format({"amount": amount_string})
+			income_label.modulate = ColorSwatches.RED
+		else:
+			income_label.text = ""
 
 
 ##############
@@ -105,6 +104,8 @@ func _handle_on_worker_efficiency_updated(efficiencies: Dictionary) -> void:
 	var total_eff: int = efficiencies["total_efficiency"].get(id, 0)
 	var amount: int = SaveFile.resources.get(id, 0)
 
+	if delta > 0:
+		delta = SaveFile.scale_by_shadows(id, delta)
 	_set_passive(delta)
 	if total_eff < 0 and amount < (total_eff * -1):
 		income_label.text = "NA"

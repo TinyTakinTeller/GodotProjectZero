@@ -70,3 +70,7 @@ offset_b_x = -14
 
 [node name="LabelEffectQueue" parent="Effect" instance=ExtResource("4_ybk84")]
 unique_name_in_owner = true
+
+[node name="SubstanceEffectQueue" parent="Effect" instance=ExtResource("4_ybk84")]
+unique_name_in_owner = true
+lifetime = 3.0

@@ -50,6 +50,7 @@ func stop(id: String) -> void:
 		return
 	stream_player.stop()
 	_playing_stream_players.erase(id)
+	_on_stream_player_finished(stream_player)
 
 
 #############

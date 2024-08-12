@@ -35,20 +35,20 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 	if observed_id == "house":
 		_handle_house_event(observed_total)
 
-	if observed_id == "firepit" and observed_total == 1:
+	if observed_id == "firepit" and observed_total >= 1:
 		_unlock_resource_generator_if("brick")
 		_level_up_tab("world", 2)
-		_unlock_worker_role_if("worker")
-	if observed_id == "axe" and observed_total == 1:
+		_unlock_worker_role_if(Game.WORKER_RESOURCE_ID)
+	if observed_id == "axe" and observed_total >= 1:
 		_unlock_resource_generator_if("wood")
 		_unlock_worker_role_if("lumberjack")
-	if observed_id == "pickaxe" and observed_total == 1:
+	if observed_id == "pickaxe" and observed_total >= 1:
 		_unlock_resource_generator_if("stone")
 		_unlock_worker_role_if("stone_miner")
-	if observed_id == "shovel" and observed_total == 1:
+	if observed_id == "shovel" and observed_total >= 1:
 		_unlock_resource_generator_if("clay")
 		_unlock_worker_role_if("clay_digger")
-	if observed_id == "spear" and observed_total == 1:
+	if observed_id == "spear" and observed_total >= 1:
 		_unlock_resource_generator_if("WILD")
 		_unlock_worker_role_if("hunter")
 		_unlock_worker_role_if("tanner")
@@ -56,7 +56,7 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 	if observed_id == "brick" and observed_total >= 1:
 		_unlock_resource_generator_if("house")
 
-	if observed_id == "worker":
+	if observed_id == Game.WORKER_RESOURCE_ID:
 		if ResourceManager.get_total_generated(observed_id) >= 1:
 			_trigger_unique_unlock_event("firepit_worker")
 			_unlock_tab_if("manager")
@@ -64,7 +64,7 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 			# _unlock_worker_role_if("FLINT_GENERATOR")
 			# _unlock_worker_role_if("FIBER_GENERATOR")
 
-	if observed_id == "compass" and observed_total == 1:
+	if observed_id == "compass" and observed_total >= 1:
 		_trigger_unique_unlock_event("enemy_screen")
 		_unlock_tab_if("enemy")
 		_unlock_resource_generator_if("sword")
@@ -78,14 +78,14 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		_unlock_worker_role_if("sergeant")
 		_unlock_worker_role_if("mason")
 
-	if observed_id == "beacon" and observed_total == 1:
+	if observed_id == "beacon" and observed_total >= 1:
 		_unlock_tab_if("starway")
 		_trigger_unique_unlock_event("lore_beacon")
 
 	if observed_id == "soulstone" and observed_total >= 1:
 		_unlock_resource_generator_if("soul")
 
-	if observed_id == "soul" and observed_total == 1:
+	if observed_id == "soul" and observed_total >= 1:
 		# TODO: game ending
 		pass
 
@@ -326,7 +326,7 @@ func _gift_debug() -> void:
 ## ... except peasant, swordsman, house, torch, sword
 func _gift_double() -> void:
 	if _trigger_unique_unlock_event("cat_gift"):
-		_gift_resource("singularity", SaveFile.resources.get("singularity", 0), name)
+		#_gift_resource("singularity", SaveFile.resources.get("singularity", 0), name)
 		_gift_resource("soulstone", SaveFile.resources.get("soulstone", 0), name)
 		_gift_resource("land", SaveFile.resources.get("land", 0), name)
 		_gift_resource("food", SaveFile.resources.get("food", 0), name)
@@ -367,7 +367,7 @@ func _on_resource_updated(id: String, total: int, amount: int, _source_id: Strin
 		_handle_on_resource_increased(id, total)
 
 
-func _on_substance_updated(id: String, total_amount: int) -> void:
+func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
 	_handle_on_substance_updated(id, total_amount)
 
 

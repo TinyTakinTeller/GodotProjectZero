@@ -12,6 +12,7 @@ shader = ExtResource("2_pwkjq")
 shader_parameter/Strength = 1.5
 shader_parameter/RandomOffset = 1.0
 shader_parameter/offset = 0.0
+shader_parameter/offset_time = 0.0
 shader_parameter/enabled = 1
 
 [node name="DarknessScreen" type="MarginContainer"]

@@ -11,7 +11,7 @@ id = "soul"
 amount = 1
 cooldown = 100.0
 costs = {
-"singularity": 10,
+"singularity": 9,
 "soulstone": 1000000000000000000
 }
 cost_scales = {}

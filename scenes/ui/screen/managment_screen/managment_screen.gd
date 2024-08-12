@@ -17,7 +17,7 @@ var grid_containers: Array[GridContainer] = []
 
 func _process(_delta: float) -> void:
 	if worker_controller != null:
-		var percent: float = worker_controller.timer.time_left / Game.PARAMS["cycle_seconds"]
+		var percent: float = worker_controller.timer.time_left / SaveFile.get_cycle_seconds()
 		basic_progress_bar.set_display(percent)
 
 

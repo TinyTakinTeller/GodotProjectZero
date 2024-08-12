@@ -16,6 +16,8 @@ func _ready() -> void:
 
 
 func _handle_on_resource_generated(id: String, amount: int, source_id: String) -> void:
+	amount = SaveFile.scale_by_shadows(id, amount)
+
 	# [WORKAROUND]
 	# worker resource represents total population, we want to apply the limit on peasant's instead
 	# (perhaps worker roles should have been just resources, to avoid edge cases like this one !!)

@@ -8,6 +8,7 @@ extends Resource
 @export var resource_costs: Dictionary
 @export var category_id: String = "special"
 @export var hidden: bool = true
+@export var unlocked_by: String = ""
 
 
 func is_color() -> bool:
@@ -57,7 +58,7 @@ func get_craft_title() -> String:
 	var craft_title: String = Locale.get_substance_text(id + "_craft_title")
 	if StringUtils.is_not_empty(craft_title):
 		return craft_title
-	return get_display_title()
+	return "Craft " + get_display_title()
 
 
 func get_craft_info() -> String:
@@ -65,10 +66,13 @@ func get_craft_info() -> String:
 
 	if resource_costs.size() > 0:
 		info += Locale.get_ui_label("cost") + ": "
+		var display_values: Array = NumberUtils.format_number_scientific_list(
+			resource_costs.values()
+		)
 		var resource_names: Array = ResourceGenerator.get_display_names_of(resource_costs.keys())
-		info += (", -%s " + (", -%s ".join(resource_names))) % resource_costs.values()
+		info += ("%s " + (", %s ".join(resource_names))) % display_values
 
-	var craft_info: String = Locale.get_substance_text(id + "_craft_info")
+	var craft_info: String = get_display_info()
 	if StringUtils.is_not_empty(craft_info):
 		info += " - " + craft_info
 
@@ -83,3 +87,23 @@ func get_category_id() -> String:
 
 func is_hidden() -> bool:
 	return hidden
+
+
+func is_unlocked() -> bool:
+	if StringUtils.is_not_empty(unlocked_by):
+		return SaveFile.substances.get(unlocked_by, 0) > 0
+	return true
+
+
+func get_craft_icon() -> String:
+	var icon: String = Locale.get_substance_text(id + "_craft_icon")
+	if StringUtils.is_not_empty(icon):
+		return icon
+	return "?"
+
+
+func get_display_increment(display_amount: int = 1) -> String:
+	var amount_string: String = NumberUtils.format_number_scientific(display_amount)
+	return " + {amount} {text} ".format(
+		{"amount": str(amount_string), "text": StringUtils.humanify_string(id)}
+	)

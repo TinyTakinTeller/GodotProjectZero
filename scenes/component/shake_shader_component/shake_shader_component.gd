@@ -25,7 +25,7 @@ func _initialize() -> void:
 	if unique_shader_material:
 		shake_shader = shake_shader.duplicate()
 		shake_shader.set_shader_parameter("offset_time", randf() * 60.0)
-	get_parent().material = shake_shader
+	enable()
 
 
 func _load_from_save_file() -> void:
@@ -41,6 +41,14 @@ func _normalize_shake_effect(value: float) -> float:
 #############
 ## methods ##
 #############
+
+
+func enable() -> void:
+	get_parent().material = shake_shader
+
+
+func disable() -> void:
+	get_parent().material = null
 
 
 func update_shake_effect(toggle: bool, value: float) -> void:

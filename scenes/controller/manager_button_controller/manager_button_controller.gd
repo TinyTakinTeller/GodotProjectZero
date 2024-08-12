@@ -1,3 +1,4 @@
+class_name ManagerButtonController
 extends Node
 
 @export var worker_controller: WorkerController
@@ -13,6 +14,15 @@ var requirements_map: Dictionary = {}
 func _ready() -> void:
 	_connect_signals()
 	_initialize()
+
+
+#############
+## methods ##
+#############
+
+
+func get_total_requirements_sum(worker_role_id: String) -> int:
+	return DictionaryUtils.sum(requirements_map[worker_role_id]) + 1
 
 
 #############
@@ -118,10 +128,11 @@ func _get_max_mult(id: String, mult: int) -> int:
 		mult = max_mult
 
 	# only sergeant has worker role (peasants) requirements and only masons produce worker role
-	if id == "sergeant":
+	if Game.PARAMS["smart_assign_restrict_sergeant"] and id == "sergeant":
 		var masons: int = SaveFile.workers.get("mason", 0)
 		var sergeants: int = SaveFile.workers.get("sergeant", 0)
-		var population_production: int = Game.PARAMS["house_workers"] * masons - sergeants
+		var house_workers: int = SaveFile.get_house_workers()
+		var population_production: int = house_workers * masons - sergeants
 
 		# cannot add more sergeant than peasant production, round down mult
 		if mult > population_production:
@@ -131,29 +142,37 @@ func _get_max_mult(id: String, mult: int) -> int:
 
 
 ## add all required roles automatically (auto-add ONLY FOR resources ... sergeant requires peasants)
-func _handle_smart_add(worker_role: WorkerRole) -> void:
+func _handle_smart_add(worker_role: WorkerRole, override_factor: int = -1) -> void:
 	var id: String = worker_role.id
 	var required: Dictionary = requirements_map[id]
 
-	var mult: int = _get_max_mult(id, SaveFile.get_settings_population_scale())
+	var factor: int = override_factor
+	if factor < 0:
+		factor = SaveFile.get_settings_population_scale()
+	var mult: int = _get_max_mult(id, factor)
 	if mult <= 0:
 		SignalBus.worker_allocated.emit(id, 0, name)
 		return
 
-	# workaround for rounding errors near 10^18 (q = 10^15)
-	var q: int = 1000000000000000
+	# workaround for rounding errors near 10^18
+	var q: int = 1000000000000000000  # (1000q = 10^18)
 	var workers: int = SaveFile.workers.get(id, 0)
 	var result: int = workers + mult
-	if result > q:
-		var max_mult: int = _get_max_mult(id, Limits.GLOBAL_MAX_AMOUNT)
-		var max_result: int = workers + max_mult
-		var max_n: int = max_result / q
-		var rounded_max_result: int = max_n * q
-		if result >= rounded_max_result:
-			mult = max(rounded_max_result - workers, 0)
-			if mult <= 0:
-				SignalBus.worker_allocated.emit(id, 0, name)
-				return
+	for round_level: int in range(10):
+		if result >= q:
+			var max_mult: int = _get_max_mult(id, Limits.GLOBAL_MAX_AMOUNT)
+			var max_result: int = workers + max_mult
+			var max_n: int = max_result / q
+			var rounded_max_result: int = max_n * q
+			if result >= rounded_max_result:
+				mult = max(rounded_max_result - workers, 0)
+				if mult <= 0:
+					SignalBus.worker_allocated.emit(id, 0, "NO_SOUND")
+					return
+		else:
+			q /= 10000
+			if q <= 1000:
+				break
 
 	for req: String in required:
 		var amount: int = Limits.safe_mult(required[req], mult)
@@ -204,6 +223,8 @@ func _connect_signals() -> void:
 	SignalBus.manager_button_del.connect(_on_manager_button_del)
 	SignalBus.manager_button_smart_add.connect(_on_manager_button_smart_add)
 	SignalBus.manager_button_smart_del.connect(_on_manager_button_smart_del)
+	SignalBus.worker_efficiency_set.connect(_on_worker_efficiency_set)
+	SignalBus.offline_progress_processed.connect(_on_offline_progress_processed)
 
 
 func _on_manager_button_add(worker_role: WorkerRole) -> void:
@@ -220,3 +241,17 @@ func _on_manager_button_smart_add(worker_role: WorkerRole) -> void:
 
 func _on_manager_button_smart_del(worker_role: WorkerRole) -> void:
 	_handle_smart_del(worker_role)
+
+
+func _on_worker_efficiency_set(_efficiencies: Dictionary, generate: bool) -> void:
+	var has_the_hierophant: bool = SaveFile.substances.get("the_hierophant", 0) > 0
+	var mode: int = SaveFile.settings.get("manager_mode", 0)
+	if generate and has_the_hierophant and mode == 2:
+		var mason_worker_role: WorkerRole = Resources.worker_roles.get("mason")
+		_handle_smart_add(mason_worker_role, Limits.GLOBAL_MAX_AMOUNT)
+
+
+func _on_offline_progress_processed(
+	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
+) -> void:
+	_on_worker_efficiency_set({}, true)

@@ -38,6 +38,7 @@ SaveFile="*res://global/autoload/save_file/save_file.tscn"
 Locale="*res://global/autoload/locale/locale.tscn"
 Audio="*res://global/autoload/audio/audio.tscn"
 SignalBus="*res://global/autoload/signal_bus/signal_bus.tscn"
+Scene="*res://global/autoload/scene/scene.tscn"
 
 [debug]
 

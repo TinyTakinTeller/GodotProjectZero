@@ -4,6 +4,7 @@ extends Node
 signal progress_button_hover(resource_generator: ResourceGenerator)
 signal progress_button_unhover(resource_generator: ResourceGenerator)
 signal progress_button_pressed(resource_generator: ResourceGenerator)
+signal substance_craft_button_pressed(substance_data: SubstanceData)
 signal progress_button_disabled(id: String)
 signal manager_button_hover(worker_role: WorkerRole, node: Node)
 signal manager_button_unhover(worker_role: WorkerRole, node: Node)
@@ -35,13 +36,17 @@ signal display_resolution_settings_toggle
 signal heart_click
 signal heart_unclick
 signal prestige_cancel
+signal prestige_yes
+signal prestige_reborn
 
 ## CONTROLLER
 signal main_ready
 signal progress_button_paid(resource_generator: ResourceGenerator)
 signal progress_button_unpaid(resource_generator: ResourceGenerator)
+signal substance_craft_button_paid(substance_data: SubstanceData)
+signal substance_craft_button_unpaid(substance_data: SubstanceData)
 signal resource_generated(id: String, amount: int, source_id: String)
-signal substance_generated(id: String)
+signal substance_generated(id: String, source_id: String)
 signal worker_generated(id: String, amount: int, source_id: String)
 signal worker_allocated(id: String, amount: int, source_id: String)
 signal event_triggered(event_data: EventData, vals: Array)
@@ -67,10 +72,14 @@ signal audio_settings_updated(toggle: bool, value: float, id: String)
 signal effect_settings_updated(toggle: bool, value: float, id: String)
 signal display_mode_settings_updated(display_mode: String)
 signal display_resolution_settings_updated(width: int, height: int)
+signal prestige_condition_fail
+signal prestige_condition_disabled
+signal prestige_condition_pass(infinity_count: int)
+signal soul
 
 ## MANAGER
 signal resource_updated(id: String, total: int, amount: int, source_id: String)
-signal substance_updated(id: String, total_amount: int)
+signal substance_updated(id: String, total_amount: int, source_id: String)
 signal worker_updated(id: String, total: int, amount: int)
 signal event_saved(event_data: EventData, vals: Array, index: int)
 signal npc_event_saved(npc_event: NpcEvent)

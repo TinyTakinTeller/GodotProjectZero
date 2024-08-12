@@ -14,6 +14,10 @@ var _substance_data: SubstanceData
 @onready var panel: Panel = %Panel
 @onready var panel_highlight: Panel = %PanelHighlight
 @onready var new_unlock_tween: NewUnlockTween = %NewUnlockTween
+@onready var red_color_rect_simple_tween: SimpleTween = %RedColorRectSimpleTween
+@onready var red_color_rect: ColorRect = %RedColorRect
+@onready var shake_shader_component: ShakeShaderComponent = %ShakeShaderComponent
+@onready var craft_label: Label = %CraftLabel
 
 ###############
 ## overrides ##
@@ -43,7 +47,6 @@ func set_data(substance_data: SubstanceData) -> void:
 func display_data() -> void:
 	refresh_image()
 	refresh_count()
-	refresh_craft_button()
 	refresh_color()
 	_update_pivot()
 
@@ -55,21 +58,33 @@ func refresh_image() -> void:
 
 
 func refresh_count() -> void:
-	var count: int = SaveFile.substances.get(get_id(), 0)
+	refresh_craft_button()
+
+	var count: int = SaveFile.substances.get(get_id(), 0)  # + 1
+
+	var is_unlocked: bool = _substance_data.is_unlocked()
+	var is_charm: bool = _substance_data.get_category_id() == "charm" and is_unlocked
+	if is_charm:
+		self.visible = true
 
 	if count > 0:
 		texture_margin_container.visible = true
 		label_margin_container.visible = false
 		self.visible = true
+
+		if is_charm:
+			craft_button.visible = false
 	else:
 		texture_margin_container.visible = false
 		label_margin_container.visible = true
-		if _substance_data.is_hidden():
+
+		var is_hidden: bool = _substance_data.is_hidden() and not is_charm
+		if is_hidden:
 			self.visible = false
 		panel.visible = true
 
 	if count > 1:
-		count_label.text = "x" + NumberUtils.format_number_scientific(count)
+		count_label.text = "x" + NumberUtils.format_number(count)
 		count_margin_container.visible = true
 	else:
 		count_label.text = ""
@@ -83,6 +98,8 @@ func refresh_craft_button() -> void:
 	else:
 		craft_button.disabled = true
 		craft_button_margin_container.visible = false
+
+	craft_label.text = _substance_data.get_craft_icon()
 
 
 func refresh_color() -> void:
@@ -130,6 +147,10 @@ func _connect_signals() -> void:
 	craft_button.mouse_entered.connect(_on_craft_button_hover)
 	texture_button.button_down.connect(_on_texture_button_down)
 	craft_button.button_down.connect(_on_craft_button_down)
+	craft_button.button_up.connect(_on_craft_button_up)
+	SignalBus.event_saved.connect(_on_event_saved)
+	SignalBus.substance_updated.connect(_on_substance_updated)
+	SignalBus.substance_craft_button_unpaid.connect(_on_substance_craft_button_unpaid)
 
 
 func _on_texture_button_unhover() -> void:
@@ -162,7 +183,47 @@ func _on_texture_button_down() -> void:
 
 func _on_craft_button_down() -> void:
 	_on_craft_button_hover()
+
+
+func _on_craft_button_up() -> void:
 	craft_button.release_focus()
+	if _substance_data != null:
+		SignalBus.substance_craft_button_pressed.emit(_substance_data)
+
+
+func _on_event_saved(event_data: EventData, _vals: Array, _index: int) -> void:
+	if (
+		_substance_data != null
+		and _substance_data.get_category_id() == "charm"
+		and event_data.id == "darkness_10"
+	):
+		refresh_count()
+
+		#play_unlock_animation()
+
+
+func _on_substance_updated(_id: String, _total_amount: int, _source_id: String) -> void:
+	if _substance_data != null:
+		refresh_count()
+
+		#if _substance_data.unlocked_by == id and total_amount == 1:
+		#	play_unlock_animation()
+
+
+func _on_substance_craft_button_unpaid(substance_data: SubstanceData) -> void:
+	if get_id() == substance_data.get_id():
+		red_color_rect_simple_tween.play_animation()
+
+		Audio.play_sfx_id("progress_button_fail")
+
+
+############
+## export ##
+############
+
+
+func _red_color_rect_simple_tween_method(animation_percent: float) -> void:
+	red_color_rect.modulate.a = 1 - animation_percent
 
 
 ############

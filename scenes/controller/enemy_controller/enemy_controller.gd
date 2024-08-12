@@ -1,8 +1,6 @@
 class_name EnemyController
 extends Node
 
-const ENEMY_CYCLE_SECONDS: float = Game.PARAMS["enemy_cycle_seconds"]
-
 @onready var timer: Timer = $Timer
 
 ###############
@@ -20,21 +18,13 @@ func _ready() -> void:
 #############
 
 
-func get_cycle_duration() -> float:
-	return ENEMY_CYCLE_SECONDS
-
-
-#############
-## helpers ##
-#############
-
-
 func _initialize() -> void:
-	_start_timer()
+	_reset_timer()
 
 
-func _start_timer() -> void:
-	timer.start(get_cycle_duration())
+func _reset_timer() -> void:
+	timer.wait_time = SaveFile.get_enemy_cycle_seconds()
+	timer.start()
 
 
 func _generate() -> void:
@@ -62,6 +52,7 @@ func _connect_signals() -> void:
 	timer.timeout.connect(_on_timeout)
 	SignalBus.deaths_door.connect(_on_deaths_door)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
+	SignalBus.substance_updated.connect(_on_substance_updated)
 
 
 func _on_timeout() -> void:
@@ -71,7 +62,7 @@ func _on_timeout() -> void:
 func _on_deaths_door(enemy_data: EnemyData, option: int) -> void:
 	if !enemy_data.is_last():
 		var substance_id: String = ("essence_" if option == 1 else "spirit_") + str(enemy_data.id)
-		SignalBus.substance_generated.emit(substance_id)
+		SignalBus.substance_generated.emit(substance_id, name)
 
 	SignalBus.deaths_door_decided.emit(enemy_data, option)
 
@@ -79,4 +70,9 @@ func _on_deaths_door(enemy_data: EnemyData, option: int) -> void:
 func _on_deaths_door_resolved(
 	_enemy_data: EnemyData, _new_enemy_data: EnemyData, _option: int
 ) -> void:
-	_start_timer()
+	_reset_timer()
+
+
+func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
+	if id == "the_chariot" and total_amount > 0:
+		_reset_timer()

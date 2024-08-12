@@ -21,6 +21,7 @@ var _color: Color = Color.WHITE
 
 func _ready() -> void:
 	_initialize()
+	_connect_signals()
 
 
 #############
@@ -86,3 +87,17 @@ func _initialize() -> void:
 
 func _clear_items() -> void:
 	NodeUtils.clear_children_of(screen_h_box_container, SubstanceItem)
+
+
+#############
+## signals ##
+#############
+
+
+func _connect_signals() -> void:
+	SignalBus.resource_updated.connect(_on_resource_updated)
+
+# edge case: hide charm category until first soulstone
+func _on_resource_updated(id: String, total: int, _amount: int, _source_id: String) -> void:
+	if get_id() == "charm" and id == "soulstone" and total > 0:
+		self.visible = true

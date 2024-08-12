@@ -9,6 +9,12 @@ var commands: Dictionary = {
 		"description": "Add player resource by ID",
 		"usage": "add [resource_id] [amount >= 0]"
 	},
+	&"set":
+	{
+		"func": _cmd_set_resource,
+		"description": "Set player resource by ID",
+		"usage": "set [resource_id] [amount >= 0]"
+	},
 	&"help":
 	{"func": _cmd_help, "description": "Display a list of helpful commands", "usage": "help"},
 	&"cls": {"func": _cmd_cls, "description": "Clear the console screen", "usage": "cls"},
@@ -154,6 +160,26 @@ func _cmd_add_resource(args: PackedStringArray) -> Error:
 
 	var amount: int = amount_string.to_int()
 	SignalBus.resource_generated.emit(resource_id, amount, name)
+	return OK
+
+
+func _cmd_set_resource(args: PackedStringArray) -> Error:
+	if args.size() != 2 or args[1].begins_with("-"):
+		return FAILED
+
+	var resource_id: String = args[0]
+	var amount_string: String = args[1]
+
+	if resource_id not in Resources.resource_generators.keys():
+		return FAILED
+
+	if not NumberUtils.is_valid_int_64(amount_string):
+		return FAILED
+
+	var amount: int = amount_string.to_int()
+	var current_amount: int = SaveFile.resources.get(resource_id, 0)
+	var delta: int = amount - current_amount
+	SignalBus.resource_generated.emit(resource_id, delta, name)
 	return OK
 
 

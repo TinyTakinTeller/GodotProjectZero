@@ -13,3 +13,7 @@ script = ExtResource("1_sms58")
 [node name="TypingTextTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_fxbux")]
 unique_name_in_owner = true
 target = NodePath("..")
+
+[node name="EndDelayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

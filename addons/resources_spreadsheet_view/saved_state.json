@@ -37,6 +37,10 @@
       "resource_local_to_scene": true,
       "resource_name": true
     },
+    "res://resources/game_data/substance_data/tres/charm/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://resources/game_data/tab_data/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -92,7 +96,8 @@
     "res://resources/worker_role/res/",
     "res://resources/game_data/tab_data/tres/",
     "res://resources/game_data/enemy_data/tres/",
-    "res://resources/game_data/event_data/res/"
+    "res://resources/game_data/event_data/res/",
+    "res://resources/game_data/substance_data/tres/charm/"
   ],
   "table_functions": {
     "filter": [

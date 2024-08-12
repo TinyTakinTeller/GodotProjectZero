@@ -1,3 +1,4 @@
+class_name TypingTextTween
 extends Node
 
 signal animation_end
@@ -7,6 +8,10 @@ signal animation_end
 var _tween: Tween
 var _duration: float
 var _loop: bool = false
+
+
+func set_loop(loop: bool) -> void:
+	_loop = loop
 
 
 func play_animation(duration: float, loop: bool = false) -> void:

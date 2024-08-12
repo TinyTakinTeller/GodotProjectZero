@@ -322,7 +322,7 @@ func _connect_signals() -> void:
 		_on_texture_pixel_explosion_finished
 	)
 
-	SignalBus.resource_generated.connect(_on_resource_generated)
+	SignalBus.resource_updated.connect(_on_resource_updated)
 
 
 func _on_resized() -> void:
@@ -399,6 +399,6 @@ func _on_texture_pixel_explosion_finished() -> void:
 	_handle_on_texture_pixel_explosion_finished()
 
 
-func _on_resource_generated(id: String, amount: int, _source_id: String) -> void:
-	if self.visible and id == "soulstone":
+func _on_resource_updated(id: String, _total: int, amount: int, _source_id: String) -> void:
+	if self.visible and id == "soulstone" and amount > 0:
 		_play_soulstone_effect(amount)

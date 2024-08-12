@@ -8,6 +8,7 @@ var prestige_dialog: bool = false
 
 var active_file_name: String = "default"
 var save_datas: Dictionary = {}
+var default_save_data: Dictionary = {}
 
 var resources: Dictionary = {}
 var workers: Dictionary = {}
@@ -42,6 +43,8 @@ var locale: String = "en"
 
 
 func _ready() -> void:
+	default_save_data = _export_save_data()
+
 	_load_save_files()
 	_connect_signals()
 
@@ -52,6 +55,61 @@ func _ready() -> void:
 #############
 ## getters ##
 #############
+
+
+func get_cycle_seconds() -> float:
+	var cycle_seconds: float = Game.PARAMS["cycle_seconds"]
+
+	var has_empress: bool = SaveFile.substances.get("the_empress", 0) > 0
+	if has_empress:
+		cycle_seconds *= 0.5
+
+	return cycle_seconds
+
+
+func get_enemy_cycle_seconds() -> float:
+	var cycle_seconds: float = Game.PARAMS["enemy_cycle_seconds"]
+
+	var has_chariot: bool = SaveFile.substances.get("the_chariot", 0) > 0
+	if has_chariot:
+		cycle_seconds *= 0.5
+
+	return cycle_seconds
+
+
+func get_house_workers() -> int:
+	var house_workers: int = Game.PARAMS["house_workers"]
+
+	var has_tower: bool = SaveFile.substances.get("the_tower", 0) > 0
+	if has_tower:
+		house_workers *= 2
+
+	return house_workers
+
+
+func get_shadow_percent() -> int:
+	var heart: int = SaveFile.substances.get("heart", 0)
+	var flesh: int = SaveFile.substances.get("flesh", 0)
+	var eye: int = SaveFile.substances.get("eye", 0)
+	var bone: int = SaveFile.substances.get("bone", 0)
+	return (heart * 100) + (flesh * 1) + (eye * 5) + (bone * 50)
+
+
+func scale_by_shadows(id: String, amount: int, percent: int = -1) -> int:
+	if amount <= 0:
+		return amount
+
+	if id not in ["singularity", "firepit", "experience"] and id not in Game.WORKER_ROLE_RESOURCE:
+		if percent < 0:
+			percent = SaveFile.get_shadow_percent() + 100
+		return max(
+			max(
+				Limits.safe_mult(amount, percent) / 100,
+				Limits.safe_mult(amount, max(1, percent / 10)) / 10
+			),
+			Limits.safe_mult(amount, max(1, percent / 100))
+		)
+	return amount
 
 
 func get_spirit_substance_count() -> int:
@@ -173,6 +231,58 @@ func set_metadata_name(save_file_name: String, value: String) -> void:
 	saved_metadata["save_file_name"] = value
 
 
+#############
+## methods ##
+#############
+
+
+func prestige(infinity_count: int) -> void:
+	if infinity_count <= 0:
+		push_error("[save_file]: PRESTIGE - Invalid infinity count " + str(infinity_count))
+		return
+
+	autosave_timer.stop()
+
+	# backup save file data
+	var utc_seconds: int = int(Time.get_unix_time_from_system())
+	var backup_file_name: String = active_file_name + ".BAK_" + str(utc_seconds)
+	_update_metadata()
+	_write(backup_file_name)
+
+	# prestige save file data
+	#
+	# keep immortal resources only & grant singularities
+	var keep_experience: int = resources.get("experience", 0) + 1
+	var keep_soulstone: int = resources.get("soulstone", 0)
+	var keep_singularity: int = resources.get("singularity", 0) + infinity_count
+	resources = {
+		"soulstone": keep_soulstone, "singularity": keep_singularity, "experience": keep_experience
+	}
+	#
+	# keep all substances & grant heart
+	substances["heart"] = substances.get("heart", 0) + 1
+	#
+	# keep settings, metadata
+	#
+	# clear else
+	workers = {}
+	events = {}
+	event_log = {}
+	resource_generator_unlocks = ["land"]
+	worker_role_unlocks = []
+	tab_unlocks = ["world", "settings"]
+	tab_levels = {"world": 0}
+	npc_events = {}
+	enemy = {"level": "rabbit", "rabbit": {"damage": 0}}
+
+	# write save file data
+	var file_name: String = active_file_name
+	_update_metadata()
+	_write(file_name)
+
+	# autosave_timer.start()
+
+
 ###########
 ## setup ##
 ###########
@@ -190,8 +300,13 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 		if save_data != null and !save_data.is_empty():
 			_import_save_data(save_data)
 	elif StringUtils.is_not_empty(metadata_name):
+		var save_data: Dictionary = default_save_data.duplicate()
+		_import_save_data(save_data)
 		metadata["save_file_name"] = metadata_name
 
+
+func post_initialize() -> void:
+	prestige_dialog = false
 	_connect_autosave_timer()
 
 
@@ -254,6 +369,8 @@ func _load_save_files() -> void:
 
 	for file_name: String in FileSystemUtils.get_user_files():
 		if !file_name.ends_with(SAVE_FILE_EXTENSION):
+			if Game.PARAMS["debug_logs"]:
+				print("__SKIP_SAVE_DATA: " + file_name)
 			continue
 		var save_data: Dictionary = _read(file_name)
 		_check_backward_compatibility(save_data)
@@ -405,9 +522,10 @@ func _check_backward_compatibility(save_data: Dictionary) -> void:
 	_check_backward_week_5(save_data)
 	_check_backward_week_7(save_data)
 	_check_backward_week_10(save_data)
-	_check_backward_corrupt_worker_role(save_data)
 	_check_backward_week_11(save_data)
 	_check_backward_week_15(save_data)
+
+	check_backward_corrupt_worker_role(save_data)
 
 
 ## migrating Substances from enemies to proper substances
@@ -440,7 +558,10 @@ func _check_backward_week_11(save_data: Dictionary) -> void:
 
 
 ## [WORKAROUND] for #ADF-27 | https://trello.com/c/7VNXK6xW
-func _check_backward_corrupt_worker_role(save_data: Dictionary) -> void:
+func check_backward_corrupt_worker_role(save_data: Dictionary) -> void:
+	if save_data == null or save_data.is_empty():
+		save_data = _export_save_data()
+
 	var max_worker_resource: int = (
 		Limits.GLOBAL_MAX_AMOUNT + save_data["resources"].get("swordsman", 0)
 	)
@@ -521,11 +642,13 @@ func _connect_signals() -> void:
 	SignalBus.main_ready.connect(_on_main_ready)
 	SignalBus.offline_progress_processed.connect(_on_offline_progress_processed)
 
+	# autosave_timer.stop()
+	autosave_timer.timeout.connect(_on_timeout)
+
 
 func _connect_autosave_timer() -> void:
 	if Game.PARAMS["autosave_enabled"]:
-		autosave_timer.wait_time = 0.1
-		autosave_timer.timeout.connect(_on_timeout)
+		autosave_timer.wait_time = 0.1  # timer interval, check autosave interval in timer event
 		autosave_timer.start()
 
 
@@ -554,7 +677,7 @@ func _on_offline_progress_processed(
 func _write(file_name: String) -> void:
 	var save_data: Dictionary = _export_save_data()
 
-	_check_backward_corrupt_worker_role(save_data)
+	check_backward_corrupt_worker_role(save_data)
 
 	var content: String = JSON.stringify(save_data)
 	content += SIGNATURE
@@ -563,6 +686,9 @@ func _write(file_name: String) -> void:
 	var save_file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
 	save_file.store_line(content)
 	save_file.close()
+
+	if Game.PARAMS["debug_logs"]:
+		print("[save_file] _write: '" + file_name + "'")
 
 
 func _read(file_name: String) -> Dictionary:

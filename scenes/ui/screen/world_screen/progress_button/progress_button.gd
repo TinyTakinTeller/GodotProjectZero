@@ -13,6 +13,7 @@ var _disabled: bool = false
 @onready var new_unlock_tween: Node = %NewUnlockTween
 @onready var line_effect: LineEffect = %LineEffect
 @onready var label_effect_queue: Node2D = %LabelEffectQueue
+@onready var substance_effect_queue: LabelEffectQueue = %SubstanceEffectQueue
 
 ###############
 ## overrides ##
@@ -69,6 +70,7 @@ func stop_unlock_animation() -> void:
 
 
 func _display_defaults() -> void:
+	substance_effect_queue.set_color_theme_override(ColorSwatches.BLUE)
 	visible = false
 	_propagate_theme_to_virtual_children()
 
@@ -77,6 +79,8 @@ func _propagate_theme_to_virtual_children() -> void:
 	var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
 	if label_effect_queue != null:
 		label_effect_queue.set_theme(inherited_theme)
+	if substance_effect_queue != null:
+		substance_effect_queue.set_theme(inherited_theme)
 
 
 func _set_info() -> void:
@@ -94,6 +98,8 @@ func _update_pivot() -> void:
 	self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
 	label_effect_queue.position.x = self.get_rect().size.x
 	label_effect_queue.position.y = self.get_rect().size.y / 2
+	substance_effect_queue.position.x = self.get_rect().size.x
+	substance_effect_queue.position.y = self.get_rect().size.y / 2
 
 
 ##############
@@ -145,6 +151,8 @@ func _connect_signals() -> void:
 	SignalBus.progress_button_unpaid.connect(_on_progress_button_unpaid)
 	SignalBus.resource_ui_updated.connect(_on_resource_ui_updated)
 	SignalBus.offline_progress_processed.connect(_on_offline_progress_processed)
+	SignalBus.substance_updated.connect(_on_substance_updated)
+	SignalBus.soul.connect(_on_soul)
 
 
 func _on_resized() -> void:
@@ -223,6 +231,27 @@ func _on_offline_progress_processed(
 
 func _on_cooldown_skip(skip: float) -> void:
 	progress_bar_simple_tween.progress_skip(skip)
+
+
+func _on_substance_updated(id: String, _total_amount: int, source_id: String) -> void:
+	if source_id != get_id():
+		return
+	var substance_data: SubstanceData = Resources.substance_datas.get(id, null)
+	if substance_data == null:
+		push_warning("id '" + id + "' does not have substance_data resource")
+		return
+	if substance_data.get_category_id() != "shadow":
+		return
+	var text: String = substance_data.get_display_increment()
+	substance_effect_queue.add_task(text)
+
+	Audio.play_sfx_id("flesh")
+
+
+func _on_soul() -> void:
+	if get_id() == "soul":
+		button.text = "Coming Soon"
+		button.modulate = ColorSwatches.YELLOW
 
 
 ############

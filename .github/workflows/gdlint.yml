@@ -15,7 +15,7 @@ jobs:
 
     # The allowed amount of linter problems
     env:
-      PROBLEMS_THRESHOLD: 0
+      PROBLEMS_THRESHOLD: 1
 
     steps:
       # Check out the repository

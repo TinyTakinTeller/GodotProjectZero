@@ -2,8 +2,6 @@ class_name WorkerController extends Node
 
 signal none
 
-const CYCLE_SECONDS: int = Game.PARAMS["cycle_seconds"]
-
 @onready var timer: Timer = $Timer
 
 ###############
@@ -31,7 +29,11 @@ func get_efficiencies() -> Dictionary:
 
 
 func _initialize() -> void:
-	timer.wait_time = CYCLE_SECONDS
+	_reset_timer()
+
+
+func _reset_timer() -> void:
+	timer.wait_time = SaveFile.get_cycle_seconds()
 	timer.start()
 
 
@@ -49,16 +51,21 @@ func _generate(generate: bool = true) -> void:
 			var amount: int = generated_workers[worker_id]
 			SignalBus.worker_generated.emit(worker_id, amount, name)
 
+		SaveFile.check_backward_corrupt_worker_role({})
+
 	SignalBus.worker_efficiency_set.emit(efficiencies, generate)
 
 
 func _calculate_generated_worker_resource_from_houses(resources: Dictionary) -> int:
-	var per_house: int = Game.PARAMS["house_workers"]
+	var house_workers: int = SaveFile.get_house_workers()
 	var resource_id: String = Game.WORKER_RESOURCE_ID
-	var max_workers: int = per_house * resources.get("house", 0) + resources.get("firepit", 0)
+	# [WORKAROUND] : safe_mult uses factor = 2 for reasons beyond your comprehension
+	var max_workers: int = (
+		Limits.safe_mult(house_workers, resources.get("house", 0), 2) + resources.get("firepit", 0)
+	)
 	var current_workers: int = resources.get(resource_id, 0)
 
-	var new_workers: int = 1 + int((max_workers - current_workers - 1) / per_house)
+	var new_workers: int = 1 + int((max_workers - current_workers - 1) / house_workers)
 	if current_workers + new_workers > max_workers:
 		new_workers = max_workers - current_workers
 	return new_workers
@@ -133,7 +140,7 @@ func _connect_signals() -> void:
 	timer.timeout.connect(_on_timeout)
 	owner.ready.connect(_on_owner_ready)
 	SignalBus.worker_updated.connect(_on_worker_updated)
-
+	SignalBus.substance_updated.connect(_on_substance_updated)
 
 func _on_timeout() -> void:
 	_generate()
@@ -147,6 +154,11 @@ func _on_owner_ready() -> void:
 
 func _on_worker_updated(_id: String, _total: int, _amount: int) -> void:
 	_generate(false)
+
+
+func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
+	if id == "the_empress" and total_amount > 0:
+		_reset_timer()
 
 
 ############

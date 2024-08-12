@@ -4,11 +4,13 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "week 15"
+const VERSION_MINOR: String = "week 16"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
 const PARAMS_DEBUG: Dictionary = {
+	"prestige_disabled": true,
+	"reborn_overlay_shader": true,
 	"heart_screen_shader": true,
 	"essence_bonus": 3,
 	"spirit_bonus": 2,
@@ -34,10 +36,13 @@ const PARAMS_DEBUG: Dictionary = {
 	"debug_free_resource_buttons": true,
 	"default_theme": "dark",
 	"resource_storage_info": false,
-	"deaths_door_no_info": true
+	"deaths_door_no_info": true,
+	"smart_assign_restrict_sergeant": false
 }
 
 const PARAMS_PROD: Dictionary = {
+	"prestige_disabled": true,
+	"reborn_overlay_shader": true,
 	"heart_screen_shader": true,
 	"essence_bonus": 3,
 	"spirit_bonus": 2,
@@ -63,5 +68,6 @@ const PARAMS_PROD: Dictionary = {
 	"debug_free_resource_buttons": false,
 	"default_theme": "dark",
 	"resource_storage_info": false,
-	"deaths_door_no_info": true
+	"deaths_door_no_info": true,
+	"smart_assign_restrict_sergeant": false
 }

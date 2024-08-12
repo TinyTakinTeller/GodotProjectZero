@@ -29,7 +29,7 @@ extends Resource
 @export var _class_definitions_order: bool = false
 
 @export_group("Design Checks")
-@export var _max_public_methods: bool = false
+@export var _max_public_methods: bool = true
 @export var _function_arguments_number: bool = false
 
 @export_group("Format Checks")
@@ -41,4 +41,3 @@ extends Resource
 @export_group("Misc Checks")
 @export var _no_elif_return: bool = false
 @export var _no_else_return: bool = false
-

@@ -99,6 +99,7 @@ func _connect_signals() -> void:
 	SignalBus.deaths_door_open.connect(_on_deaths_door_open)
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 	SignalBus.substance_updated.connect(_on_substance_updated)
+	SignalBus.event_saved.connect(_on_event_saved)
 
 
 func _on_resized() -> void:
@@ -139,8 +140,13 @@ func _on_deaths_door_resolved(
 		start_unlock_animation()
 
 
-func _on_substance_updated(_id: String, _total_amount: int) -> void:
-	if _tab_data != null and _tab_data.id == "substance":
+func _on_substance_updated(id: String, _total_amount: int, _source_id: String) -> void:
+	if _tab_data != null and _tab_data.id == "substance" and !_is_selected():
+		start_unlock_animation()
+
+
+func _on_event_saved(event_data: EventData, _vals: Array, _index: int) -> void:
+	if _tab_data != null and _tab_data.id == "substance" and event_data.id == "darkness_10":
 		start_unlock_animation()
 
 

@@ -28,10 +28,14 @@ const EN: Dictionary = {
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"watermark_title": "Official Game Page",
+	"watermark_info":
+	"For the latest version, please verify that you are playing at the official URL, the only one I maintain and update.",
 	"dark_forest_title": "The Dark Forest",
 	"dark_forest_info": "You have awakened once more. Be wary, The Dark Forest never sleeps...",
 	"spirit_effect": "swordsman passive damage",
 	"essence_effect": "swordsman as click damage",
+	"shadow_effect": "resource net income",
 	"tab_info_unknown": "",
 	"tab_info_offline": "",
 	"tab_info_settings": "",
@@ -87,9 +91,33 @@ const UI_LABEL: Dictionary = {
 	"craft": "Craft",
 	"normal_mode_button": "Local Autonomy",
 	"smart_mode_button": "Absolute Rule",
+	"auto_mode_button": "Freemasonry",
 	"normal_mode_button_info": "Increment individual population roles.",
 	"smart_mode_button_info":
-	"Incrementing a population role will also increment all required roles automatically."
+	"Incrementing a population role will also increment all required roles automatically.",
+	"auto_mode_button_info":
+	"While active, excess peasants will be automatically assigned to masons.",
+	"infinity_progress_1": "{0}% to Infinity ({1})",
+	"infinity_progress_2": "{1} of {2} Infinity collected",
+	"prestige_condition_info": "Need at least 1 Infinity to break through.",
+	"reborn_0_line_0": "  ",
+	"reborn_0_line_1": "Hello? ... Are you there?",
+	"reborn_0_line_2": " ",
+	"reborn_0_line_3": "Oh, it's you again.",
+	"reborn_0_line_4": " ",
+	"reborn_0_line_5": "You've... collapsed everything.",
+	"reborn_0_line_6": " ",
+	"reborn_0_line_7": "Well, lets get on with it, time to wipe the slate clean.",
+	"reborn_0_line_8": "You won't keep nor remember anything, as usual.",
+	"reborn_0_line_9": " ",
+	"reborn_0_line_10": "Just a... wait. This is new.",
+	"reborn_0_line_11": "You absorbed some...  Substances?",
+	"reborn_0_line_12": " ",
+	"reborn_0_line_13": "I... no... you... um... err...",
+	"reborn_0_line_14": "I DO NOT HAVE TIME FOR THIS, YOU FOOL.",
+	"reborn_0_line_15": " ",
+	"reborn_0_line_16": "OKAY. OKAY. OKAY.",
+	"reborn_0_line_17": "You can... keep them, for now."
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}
@@ -442,7 +470,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"house_1":
 	"Lost people emerge from the forest. They will work in exchange for a place to sleep.",
 	"house_100":
-	"Life flourishes even in absolute darkness as the number of people continues to grow. Children laugh and frolic, while the forest listens in.",
+	"Life flourishes even in absolute darkness as the number of people grows. Children laugh and frolic, while the forest listens in.",
 	"house_25": "This forest hamlet is far superior to our paltry camp.",
 	"house_4":
 	"I've left my mark deep within these trees, carving out a civilization. The brisk forest camp is getting more lively by the day.",
@@ -584,28 +612,29 @@ const NPC_EVENT_OPTIONS: Dictionary = {
 }
 
 const SCALE_SETTINGS_INFO: Dictionary = {
-	-1: "???",
-	1: "One by one.",
-	10: "Huh, that's quite the crowd. I have never seen these men in my life.",
-	100: "Three clicks for three hundred men. Children, gather round!",
-	1000: "Thousand, Kilo, K, ... Okay. But, don't forget to drink plenty of water.",
-	10000: "It's over 9000! There is no way...",
-	100000: "Hundred thousand years of war... wait, wrong game.",
-	1000000: "Who wants to be a million?",
-	10000000: "A small loan of a couple million...",
-	100000000: "Are you sure this is enough people? ¯\\_( ツ )_/¯",
-	1000000000: "They Are Billions! Can the humanity survive?",
-	10000000000: "Okay stop overplaying this game, please. YES YOU.",
-	100000000000: "We will, we will...",
-	1000000000000: "World's first trillionaire.",
-	10000000000000: "T... Ten... Ten Tr.. TEN TRILLION!?",
-	100000000000000: "I am speechless...",
-	1000000000000000: "... How did we get here?",
-	10000000000000000: "To the infinity and beyond!",
-	100000000000000000: " \\(∞_∞)/ ",
+	"-1": "???",
+	"1": "One by one.",
+	"10": "Huh, that's quite the crowd. I have never seen these men in my life.",
+	"100": "Three clicks for three hundred men. Children, gather round!",
+	"1000": "Thousand, Kilo, K, ... Okay. But, don't forget to drink plenty of water.",
+	"10000": "It's over 9000! There is no way...",
+	"100000": "Hundred thousand years of war... wait, wrong game.",
+	"1000000": "Who wants to be a million?",
+	"10000000": "A small loan of a couple million...",
+	"100000000": "Are you sure this is enough people? ¯\\_( ツ )_/¯",
+	"1000000000": "They Are Billions! Can the humanity survive?",
+	"10000000000": "Okay stop overplaying this game, please. YES YOU.",
+	"100000000000": "We will, we will...",
+	"1000000000000": "World's first trillionaire.",
+	"10000000000000": "T... Ten... Ten Tr.. TEN TRILLION!?",
+	"100000000000000": "I am speechless...",
+	"1000000000000000": "... How did we get here?",
+	"10000000000000000": "To the infinity and beyond!",
+	"100000000000000000": " \\(∞_∞)/ ",
 }
 
 const SUBSTANCE_TEXT: Dictionary = {
+	# spirit & essence
 	"spirit_rabbit_title": "Spirit of Child",
 	"spirit_bird_title": "Spirit of Messenger",
 	"spirit_wolf_title": "Spirit of Beast",
@@ -669,5 +698,110 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"spirit_angel_info":
 	"Celestial being, a conduit for everything that was and will be. It remainsSs silent.",
 	"essence_angel_info":
-	"Celestial being, a conduit for everything that was and will be. It remainsSs silent."
+	"Celestial being, a conduit for everything that was and will be. It remainsSs silent.",
+	# shadow "+x% mortal resources.",
+	"heart_title": "Heart Of The Dark Forest",
+	"heart_info":
+	"+100% - Umbral mist seeps through the severed veins, transmuting nearby matter...",
+	"flesh_title": "Flesh Of The Dark Forest",
+	"flesh_info":
+	"+1% - 1 in 10 - Pulses faintly under your touch, as if it carries the heartbeat of the woods themselves.",
+	"eye_title": "Eye Of The Dark Forest",
+	"eye_info":
+	"+5% - 1 in 100 - The eye peers into the abyss, unveiling hidden truths buried deep within the shadows.",
+	"bone_title": "Bones Of The Dark Forest",
+	"bone_info": "+50% - 1 in 1000 - The ancient bones of the unknown whisper of forgotten curses.",
+	# charm tier 1
+	"the_hermit_title": "The Hermit",
+	"the_hermit_info": 'Forest clicks scale with Experience. Unlocks "Strength" charm.',  # cost: 1
+	"the_emperor_title": "The Emperor",
+	"the_emperor_info": 'Unlocks cascading assignment in Population. Unlocks "Hierophant" charm.',  # cost: 1
+	"the_empress_title": "The Empress",
+	"the_empress_info": 'Population works twice as fast. Unlocks "The Chariot" charm.',  # cost: 10
+	"the_world_title": "The World",
+	"the_world_info":
+	'Forest clicks can drop new "Shadow" substances. Unlocks "Wheel of Fortune" charm.',  # cost: 4
+	"the_tower_title": "The Tower",
+	"the_tower_info": "Houses can hold twice as many people.",  # cost: 5
+	# charm tier 2
+	"strength_title": "Strength",
+	"strength_info": 'Forest clicks scale with Peasants. Unlocks "Temperance" charm.',  # cost : 5
+	"the_hierophant_title": "The Hierophant",
+	"the_hierophant_info": "Unlocks automated Mason assignment in Population.",  # cost: 15
+	"the_chariot_title": "The Chariot",
+	"the_chariot_info": "Swordsmen attack twice as fast.",  # cost: 5
+	"wheel_of_fortune_title": "Wheel of Fortune",
+	"wheel_of_fortune_info": '"Shadow" substances drop twice as often.',  # cost: 10
+	# charm tier 3
+	"temperance_title": "Temperance",
+	"temperance_info": "Cooldowns in the Forest are set to 1 second.",  # cost: 10
+	# not implemented charm(s)
+	"the_fool_title": "The Fool",
+	"the_fool_info": "The Fool",
+	"the_magician_title": "The Magician",
+	"the_magician_info": "The Magician",
+	"the_high_priestess_title": "The High Priestess",
+	"the_high_priestess_info": "The High Priestess",
+	"the_lovers_title": "The Lovers",
+	"the_lovers_info": "The Lovers",
+	"justice_title": "Justice",
+	"justice_info": "Justice",
+	"the_hanged_man_title": "The Hanged Man",
+	"the_hanged_man_info": "The Hanged Man",
+	"death_title": "Death",
+	"death_info": "Death",
+	"the_devil_title": "The Devil",
+	"the_devil_info": "The Devil",
+	"the_star_title": "The Star",
+	"the_star_info": "The Star",
+	"the_moon_title": "The Moon",
+	"the_moon_info": "The Moon",
+	"the_sun_title": "The Sun",
+	"the_sun_info": "The Sun",
+	"judgement_title": "Judgement",
+	"judgement_info": "Judgement",
+	# charm craft icons
+	"the_fool_craft_icon": "0",
+	"the_magician_craft_icon": "I",
+	"the_high_priestess_craft_icon": "II",
+	"the_empress_craft_icon": "III",
+	"the_emperor_craft_icon": "IV",
+	"the_hierophant_craft_icon": "V",
+	"the_lovers_craft_icon": "VI",
+	"the_chariot_craft_icon": "VII",
+	"strength_craft_icon": "VIII",
+	"the_hermit_craft_icon": "IX",
+	"wheel_of_fortune_craft_icon": "X",
+	"justice_craft_icon": "XI",
+	"the_hanged_man_craft_icon": "XII",
+	"death_craft_icon": "XIII",
+	"temperance_craft_icon": "XIV",
+	"the_devil_craft_icon": "XV",
+	"the_tower_craft_icon": "XVI",
+	"the_star_craft_icon": "XVII",
+	"the_moon_craft_icon": "XVIII",
+	"the_sun_craft_icon": "XIX",
+	"judgement_craft_icon": "XX",
+	"the_world_craft_icon": "XXI"
 }
+
+
+static func csv() -> String:
+	var output: String = ""
+
+	for dict_key: String in dicts():
+		var dict: Dictionary = dicts()[dict_key]
+		for key: String in dict:
+			var line: String = ""
+			var line_key: String = dict_key + ":" + key
+			line += line_key
+			line += "§ "
+			line += str(dict[key]).replace("\n", "\\n")
+			line += "\n"
+			output += line
+
+	return output
+
+
+static func dicts() -> Dictionary:
+	return EN

@@ -23,6 +23,7 @@ var _random_drops_sum: int = -1
 
 
 ## if idle production of this resource can be increasing, e.g. (mason -> house ->) worker -> food
+## currently, 'food' is the only such case with dynamic id 'worker'
 func is_dynamic_efficiency() -> bool:
 	return StringUtils.is_not_empty(dynamic_efficiency_id)
 
@@ -54,8 +55,9 @@ func get_display_name() -> String:
 
 
 func get_display_info(total: String, eff: String) -> String:
+	var cycle_seconds: String = "%1.1f" % SaveFile.get_cycle_seconds()
 	return "{total}, {eff} / {seconds} seconds".format(
-		{"total": total, "eff": eff, "seconds": Game.PARAMS["cycle_seconds"]}
+		{"total": total, "eff": eff, "seconds": cycle_seconds}
 	)
 
 
@@ -92,6 +94,11 @@ func get_amount() -> int:
 func get_cooldown() -> float:
 	if Game.PARAMS["debug_cooldown"] != 0:
 		return Game.PARAMS["debug_cooldown"]
+
+	var has_temperance: bool = SaveFile.substances.get("temperance", 0) > 0
+	if has_temperance:
+		return 1.0
+
 	return cooldown
 
 

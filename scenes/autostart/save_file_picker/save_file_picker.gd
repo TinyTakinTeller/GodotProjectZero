@@ -1,7 +1,5 @@
 extends Node
 
-@export var main_scene: PackedScene
-
 @onready var ui: Control = %UI
 @onready var save_file_tracker: SaveFileTracker = %SaveFileTracker
 
@@ -33,7 +31,7 @@ func _initialize() -> void:
 
 func _change_scene_to_main_scene(save_file_name: String, metadata_name: String = "") -> void:
 	SaveFile.initialize(save_file_name, metadata_name)
-	get_tree().change_scene_to_packed.call_deferred(main_scene)
+	Scene.change_scene("main_scene")
 
 
 func _force_unique_save_file_name(save_file_name: String) -> String:

@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_g47r6")
 substance_item_scene = ExtResource("1_1uicg")
 

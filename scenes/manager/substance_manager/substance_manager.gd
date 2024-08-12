@@ -15,9 +15,9 @@ func _ready() -> void:
 ##############
 
 
-func _handle_on_substance_generated(id: String) -> void:
+func _handle_on_substance_generated(id: String, source_id: String) -> void:
 	SaveFile.substances[id] = SaveFile.substances.get(id, 0) + 1
-	SignalBus.substance_updated.emit(id, SaveFile.substances[id])
+	SignalBus.substance_updated.emit(id, SaveFile.substances[id], source_id)
 
 
 #############
@@ -29,5 +29,5 @@ func _connect_signals() -> void:
 	SignalBus.substance_generated.connect(_on_substance_generated)
 
 
-func _on_substance_generated(id: String) -> void:
-	_handle_on_substance_generated(id)
+func _on_substance_generated(id: String, source_id: String) -> void:
+	_handle_on_substance_generated(id, source_id)

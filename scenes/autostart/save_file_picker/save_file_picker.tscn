@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1aukxlmjun2b"]
+[gd_scene load_steps=3 format=3 uid="uid://b1aukxlmjun2b"]
 
 [ext_resource type="Script" path="res://scenes/autostart/save_file_picker/save_file_picker.gd" id="1_kcqmi"]
-[ext_resource type="PackedScene" uid="uid://k0aqit1ex0lc" path="res://scenes/autostart/main/main.tscn" id="2_xpoda"]
 [ext_resource type="PackedScene" uid="uid://cacyvnvhq6xau" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_tracker.tscn" id="3_yhfy1"]
 
 [node name="SaveFilePicker" type="Node"]
 script = ExtResource("1_kcqmi")
-main_scene = ExtResource("2_xpoda")
 
 [node name="UI" type="Control" parent="."]
 unique_name_in_owner = true

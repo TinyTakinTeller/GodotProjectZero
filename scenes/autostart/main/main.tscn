@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=47 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -24,10 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://btrjtbe8ch6vy" path="res://scenes/controller/experience_controller/experience_controller.tscn" id="9_wl1uy"]
 [ext_resource type="PackedScene" uid="uid://bauwua6x5pgjh" path="res://scenes/ui/info_container/info_container.tscn" id="10_unxkl"]
 [ext_resource type="PackedScene" uid="uid://ixechckh2n74" path="res://scenes/controller/offline_controller/offline_controller.tscn" id="11_7wnoe"]
+[ext_resource type="PackedScene" uid="uid://bw1m1v1q01ix6" path="res://scenes/controller/prestige_controller/prestige_controller.tscn" id="13_ky45s"]
 [ext_resource type="PackedScene" uid="uid://o2s521j3hgp8" path="res://scenes/manager/setting_manager/setting_manager.tscn" id="13_yy02v"]
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="14_45bu4"]
 [ext_resource type="PackedScene" uid="uid://dt8uyfjegwwqf" path="res://scenes/manager/npc_manager/npc_manager.tscn" id="14_hfr4p"]
 [ext_resource type="PackedScene" uid="uid://wb81m2ajxuph" path="res://scenes/manager/substance_manager/substance_manager.tscn" id="14_xfgdc"]
+[ext_resource type="PackedScene" uid="uid://df1q2axgcf2yn" path="res://scenes/controller/substance_controller/substance_controller.tscn" id="14_yovas"]
 [ext_resource type="PackedScene" uid="uid://dv3bfta8ir0t" path="res://scenes/manager/enemy_manager/enemy_manager.tscn" id="16_6q8rb"]
 [ext_resource type="PackedScene" uid="uid://d1y5xyx63u3w0" path="res://scenes/ui/developer_console/developer_console.tscn" id="20_yijsf"]
 [ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/version_container/version_container.tscn" id="20_ynkq3"]
@@ -37,9 +39,11 @@
 [ext_resource type="PackedScene" uid="uid://b5cknmluch23j" path="res://scenes/ui/screen/offline_screen/offline_screen.tscn" id="29_mta8x"]
 [ext_resource type="PackedScene" uid="uid://c26sb3v1ws0t5" path="res://scenes/ui/screen/substance_screen/substance_screen.tscn" id="29_sp6yy"]
 [ext_resource type="PackedScene" uid="uid://w5y4su4adpf4" path="res://scenes/ui/screen/settings_screen/settings_screen.tscn" id="31_y1j6b"]
-[ext_resource type="PackedScene" uid="uid://b0iomctf5ruia" path="res://scenes/autostart/main/prestige/prestige_ui.tscn" id="36_64bep"]
 [ext_resource type="Shader" path="res://resources/shader/chromatic_abberation_radial/chromatic_abberation_radial.gdshader" id="37_xggnc"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="38_x6mfx"]
+[ext_resource type="PackedScene" uid="uid://b0iomctf5ruia" path="res://scenes/autostart/main/prestige_ui/prestige_ui.tscn" id="39_5hxeo"]
+[ext_resource type="PackedScene" uid="uid://b75kh4e41777c" path="res://scenes/autostart/main/reborn_ui/reborn_ui.tscn" id="40_cpuij"]
+[ext_resource type="Shader" path="res://resources/shader/cracked_glass/cracked_glass.gdshader" id="41_fakmo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pgw6q"]
 shader = ExtResource("37_xggnc")
@@ -47,12 +51,27 @@ shader_parameter/levels = 1
 shader_parameter/slice_factor = 1.0
 shader_parameter/amp = 0.002
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xrfi"]
+shader = ExtResource("41_fakmo")
+shader_parameter/animate_amp = true
+shader_parameter/crack_depth = 1.0
+shader_parameter/crack_scale = 10.0
+shader_parameter/crack_zebra_scale = 4.245
+shader_parameter/crack_zebra_amp = 4.279
+shader_parameter/crack_profile = 0.1
+shader_parameter/crack_slope = 45.8
+shader_parameter/crack_width = 0.001
+shader_parameter/refraction_offset = Vector2(25, 25)
+shader_parameter/reflection_offset = Vector2(1, 1)
+shader_parameter/reflection_color = Color(0.588, 0.588, 0.588, 0.5)
+
 [node name="Main" type="Node"]
 script = ExtResource("1_u1kx3")
 
 [node name="Controllers" type="Node" parent="."]
 
-[node name="ProgressButtonController" parent="Controllers" instance=ExtResource("2_fcqyg")]
+[node name="ProgressButtonController" parent="Controllers" node_paths=PackedStringArray("worker_controller") instance=ExtResource("2_fcqyg")]
+worker_controller = NodePath("../WorkerController")
 
 [node name="ManagerButtonController" parent="Controllers" node_paths=PackedStringArray("worker_controller") instance=ExtResource("3_h1qmp")]
 worker_controller = NodePath("../WorkerController")
@@ -72,9 +91,14 @@ sfx_unlock = ExtResource("7_lojif")
 
 [node name="ExperienceController" parent="Controllers" instance=ExtResource("9_wl1uy")]
 
-[node name="OfflineController" parent="Controllers" node_paths=PackedStringArray("worker_controller", "enemy_controller") instance=ExtResource("11_7wnoe")]
+[node name="OfflineController" parent="Controllers" node_paths=PackedStringArray("worker_controller", "enemy_controller", "manager_button_controller") instance=ExtResource("11_7wnoe")]
 worker_controller = NodePath("../WorkerController")
 enemy_controller = NodePath("../EnemyController")
+manager_button_controller = NodePath("../ManagerButtonController")
+
+[node name="PrestigeController" parent="Controllers" instance=ExtResource("13_ky45s")]
+
+[node name="SubstanceController" parent="Controllers" instance=ExtResource("14_yovas")]
 
 [node name="Managers" type="Node" parent="."]
 
@@ -108,7 +132,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="UI" type="Control" parent="CanvasLayer/MainControl"]
+[node name="MainUI" type="Control" parent="CanvasLayer/MainControl"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -119,7 +143,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("14_45bu4")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,94 +151,111 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainControl/UI/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TabTracker" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_vxtq8")]
+[node name="TabTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_vxtq8")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BodyMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="WatermarkMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/TabTracker"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 16
+
+[node name="WatermarkLabel" type="Label" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/TabTracker/WatermarkMarginContainer"]
+modulate = Color(1, 1, 1, 0.117647)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "tinytakinteller.itch.io"
+
+[node name="BodyMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer"]
 layout_mode = 2
 
-[node name="BorderMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+[node name="BorderMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="EventTracker" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
+[node name="EventTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="ScreenMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
+[node name="ScreenMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UnknownScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
+[node name="UnknownScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("6_1rr1e")]
 layout_mode = 2
 
-[node name="WorldScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
+[node name="WorldScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
 layout_mode = 2
 
-[node name="ManagmentScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
+[node name="ManagmentScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
 visible = false
 layout_mode = 2
 worker_controller = NodePath("../../../../../../../../../../Controllers/WorkerController")
 
-[node name="DarknessScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("21_324w1")]
+[node name="DarknessScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("21_324w1")]
 visible = false
 layout_mode = 2
 
-[node name="SoulScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("26_pehc6")]
+[node name="SoulScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("26_pehc6")]
 visible = false
 layout_mode = 2
 
-[node name="SubstanceScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_sp6yy")]
+[node name="SubstanceScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_sp6yy")]
 visible = false
 layout_mode = 2
 
-[node name="StarwayScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
+[node name="StarwayScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
 visible = false
 layout_mode = 2
 
-[node name="OfflineScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
+[node name="OfflineScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
 layout_mode = 2
 
-[node name="SettingsScreen" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("31_y1j6b")]
+[node name="SettingsScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("31_y1j6b")]
 layout_mode = 2
 
-[node name="ResourceTracker" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
+[node name="ResourceTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="InfoContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("10_unxkl")]
+[node name="InfoContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("10_unxkl")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_constants/margin_right = 0
 
-[node name="VersionContainer" parent="CanvasLayer/MainControl/UI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
+[node name="VersionContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 
-[node name="DeveloperConsole" parent="CanvasLayer/MainControl/UI" instance=ExtResource("20_yijsf")]
+[node name="DeveloperConsole" parent="CanvasLayer/MainControl/MainUI" instance=ExtResource("20_yijsf")]
 visible = false
 layout_mode = 1
 buffer_size = 16
 
-[node name="PrestigeUI" parent="CanvasLayer/MainControl" instance=ExtResource("36_64bep")]
+[node name="PrestigeUI" parent="CanvasLayer/MainControl" instance=ExtResource("39_5hxeo")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="RebornUI" parent="CanvasLayer/MainControl" instance=ExtResource("40_cpuij")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -223,6 +264,18 @@ layout_mode = 1
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_pgw6q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CrackOverlay" type="ColorRect" parent="CanvasLayer/MainControl"]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_1xrfi")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,3 +293,19 @@ call_method = "_switch_to_prestige"
 unique_name_in_owner = true
 target = NodePath("../../..")
 call_method = "_switch_from_prestige"
+
+[node name="PrestigeTransitionSimpleTween" parent="CanvasLayer/MainControl" node_paths=PackedStringArray("target") instance=ExtResource("38_x6mfx")]
+unique_name_in_owner = true
+target = NodePath("../../..")
+duration = 2.0
+call_method = "_prestige_transition"
+
+[node name="RebornTransitionSimpleTween" parent="CanvasLayer/MainControl" node_paths=PackedStringArray("target") instance=ExtResource("38_x6mfx")]
+unique_name_in_owner = true
+target = NodePath("../../..")
+call_method = "_reborn_transition"
+
+[node name="EnterSimpleTween" parent="CanvasLayer/MainControl" node_paths=PackedStringArray("target") instance=ExtResource("38_x6mfx")]
+unique_name_in_owner = true
+target = NodePath("../../..")
+call_method = "_enter_simple_tween"

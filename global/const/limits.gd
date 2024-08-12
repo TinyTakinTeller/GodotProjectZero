@@ -22,14 +22,14 @@ static func safe_add(a: int, b: int, extended_limit_quantity: int = 0) -> int:
 
 
 ## returns a * b except when it rounds to GLOBAL_MAX_AMOUNT (or negative sign) to prevent overflow
-static func safe_mult(a: int, b: int) -> int:
+static func safe_mult(a: int, b: int, over_limit_factor: int = 1) -> int:
 	var sgn: int = -1 if (a < 0 and b > 0) or (a > 0 and b < 0) else 1
 	a = abs(a)
 	b = abs(b)
-	var digits_limit: float = log(Limits.GLOBAL_MAX_AMOUNT)
+	var digits_limit: float = log(Limits.GLOBAL_MAX_AMOUNT * over_limit_factor)
 	var digits_a: float = log(a)
 	var digits_b: float = log(b)
 
 	if (digits_a + digits_b) < digits_limit:
 		return a * b * sgn
-	return Limits.GLOBAL_MAX_AMOUNT * sgn
+	return Limits.GLOBAL_MAX_AMOUNT * over_limit_factor * sgn

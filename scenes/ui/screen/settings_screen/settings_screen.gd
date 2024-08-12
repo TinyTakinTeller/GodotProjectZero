@@ -3,7 +3,6 @@ extends MarginContainer
 const TAB_DATA_ID: String = "settings"
 
 @export var shake_shader_component_scene: PackedScene
-@export var label_typing_scene: PackedScene
 
 @onready var master_settings_slider: SettingsSlider = %MasterSettingsSlider
 @onready var music_settings_slider: SettingsSlider = %MusicSettingsSlider
@@ -13,6 +12,7 @@ const TAB_DATA_ID: String = "settings"
 @onready var display_mode_button: Button = %DisplayModeButton
 @onready var display_resolution_button: Button = %DisplayResolutionButton
 @onready var display_language_button: Button = %DisplayLanguageButton
+@onready var watermark_button: Button = %WatermarkButton
 
 ###############
 ## overrides ##
@@ -59,7 +59,8 @@ func _apply_effects() -> void:
 	)
 	shake_settings_slider.get_title_label().add_child(shake_shader_component)
 
-	typing_settings_slider.get_title_label().play_typing_animation(true)
+	typing_settings_slider.get_title_label().set_end_delay(0.5)
+	typing_settings_slider.get_title_label().play_typing_animation(false)
 
 
 func _load_from_save_file() -> void:
@@ -108,6 +109,9 @@ func _connect_signals() -> void:
 	SignalBus.display_mode_settings_updated.connect(_on_display_mode_settings_updated)
 	SignalBus.display_resolution_settings_updated.connect(_on_display_resolution_settings_updated)
 
+	watermark_button.mouse_entered.connect(_on_watermark_mouse_entered)
+	watermark_button.button_down.connect(_on_watermark_button_down)
+
 
 func _on_tab_changed(tab_data: TabData) -> void:
 	if tab_data.id == TAB_DATA_ID:
@@ -149,3 +153,13 @@ func _on_display_resolution_settings_updated(width: int, height: int) -> void:
 
 func _on_display_language_updated() -> void:
 	pass  ## TODO: ADF-24 | Localization
+
+
+func _on_watermark_mouse_entered() -> void:
+	SignalBus.info_hover.emit(
+		Locale.get_ui_label("watermark_title"), Locale.get_ui_label("watermark_info")
+	)
+
+
+func _on_watermark_button_down() -> void:
+	OS.shell_open("https://tinytakinteller.itch.io/the-best-game-ever")

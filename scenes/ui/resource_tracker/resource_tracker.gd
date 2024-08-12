@@ -89,9 +89,9 @@ func _clear_items() -> void:
 ##############
 
 
-func _handle_on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
-	for resource_generator_id: String in resource_generator.costs:
-		var cost: int = resource_generator.costs[resource_generator_id]
+func _handle_on_resources_unpaid(costs: Dictionary) -> void:
+	for resource_generator_id: String in costs:
+		var cost: int = costs[resource_generator_id]
 		if SaveFile.resources.get(resource_generator_id, 0) < cost:
 			_play_blink_red_animation(resource_generator_id)
 
@@ -104,6 +104,7 @@ func _handle_on_progress_button_unpaid(resource_generator: ResourceGenerator) ->
 func _connect_signals() -> void:
 	SignalBus.resource_updated.connect(_on_resource_updated)
 	SignalBus.progress_button_unpaid.connect(_on_progress_button_unpaid)
+	SignalBus.substance_craft_button_unpaid.connect(_on_substance_craft_button_unpaid)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, source_id: String) -> void:
@@ -111,4 +112,8 @@ func _on_resource_updated(id: String, total: int, amount: int, source_id: String
 
 
 func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
-	_handle_on_progress_button_unpaid(resource_generator)
+	_handle_on_resources_unpaid(resource_generator.costs)
+
+
+func _on_substance_craft_button_unpaid(substance_data: SubstanceData) -> void:
+	_handle_on_resources_unpaid(substance_data.get_resource_costs())
