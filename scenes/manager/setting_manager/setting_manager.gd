@@ -35,7 +35,8 @@ func _on_toggle_scale(scale: int) -> void:
 
 func _on_toggle_manager_mode(mode: int) -> void:
 	SaveFile.settings["manager_mode"] = mode
-	
+
+
 func _on_toggle_darkness_mode(mode: int) -> void:
 	SaveFile.settings["darkness_mode"] = mode
 

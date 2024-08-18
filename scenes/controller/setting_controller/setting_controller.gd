@@ -52,11 +52,14 @@ func _on_toggle_button_pressed(id: String, toggle_id: String) -> void:
 func _on_toggle_scale_pressed(scale: int) -> void:
 	SignalBus.toggle_scale.emit(scale)
 
+
 func _on_toggle_manager_mode_pressed(mode: int) -> void:
 	SignalBus.toggle_manager_mode.emit(mode)
-	
+
+
 func _on_toggle_darkness_mode_pressed(mode: int) -> void:
 	SignalBus.toggle_darkness_mode.emit(mode)
+
 
 func _on_audio_settings_update(toggle: bool, value: float, id: String) -> void:
 	var bus_name: String = BUS_NAME_MAP[id]

@@ -240,7 +240,11 @@ func _on_resource_ui_updated(
 
 
 func _on_offline_progress_processed(
-	seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float,  _death_progress: Dictionary
+	seconds_delta: int,
+	_worker_progress: Dictionary,
+	_enemy_progress: Dictionary,
+	_factor: float,
+	_death_progress: Dictionary
 ) -> void:
 	_on_cooldown_skip(seconds_delta)
 

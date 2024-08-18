@@ -273,6 +273,10 @@ func _on_worker_efficiency_set(_efficiencies: Dictionary, generate: bool) -> voi
 
 
 func _on_offline_progress_processed(
-	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float,  _death_progress: Dictionary
+	_seconds_delta: int,
+	_worker_progress: Dictionary,
+	_enemy_progress: Dictionary,
+	_factor: float,
+	_death_progress: Dictionary
 ) -> void:
 	_on_worker_efficiency_set({}, true)
