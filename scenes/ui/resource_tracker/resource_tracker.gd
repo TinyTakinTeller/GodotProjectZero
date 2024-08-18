@@ -111,8 +111,9 @@ func _on_resource_updated(id: String, total: int, amount: int, source_id: String
 	_update_resource(id, total, amount, source_id)
 
 
-func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
-	_handle_on_resources_unpaid(resource_generator.costs)
+func _on_progress_button_unpaid(resource_generator: ResourceGenerator, source: String) -> void:
+	if source != "harvest_forest":
+		_handle_on_resources_unpaid(resource_generator.costs)
 
 
 func _on_substance_craft_button_unpaid(substance_data: SubstanceData) -> void:

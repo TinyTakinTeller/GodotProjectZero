@@ -5,6 +5,7 @@ const SAVE_FILE_EXTENSION = ".json"
 const AUTOSAVE_SECONDS: int = Game.PARAMS["autosave_seconds"]
 
 var prestige_dialog: bool = false
+var prestige_dialog_timestamp: Dictionary = {}
 
 var active_file_name: String = "default"
 var save_datas: Dictionary = {}
@@ -57,6 +58,14 @@ func _ready() -> void:
 #############
 
 
+func get_prestige_count() -> int:
+	return get_heart_substance_count()
+
+
+func get_heart_substance_count() -> int:
+	return SaveFile.substances.get("heart", 0)
+
+
 func get_cycle_seconds() -> float:
 	var cycle_seconds: float = Game.PARAMS["cycle_seconds"]
 
@@ -99,7 +108,13 @@ func scale_by_shadows(id: String, amount: int, percent: int = -1) -> int:
 	if amount <= 0:
 		return amount
 
-	if id not in ["singularity", "firepit", "experience"] and id not in Game.WORKER_ROLE_RESOURCE:
+	var resource_generator: ResourceGenerator = Resources.resource_generators.get(id, null)
+	var unique: bool = false if resource_generator == null else resource_generator.is_unique()
+	if (
+		id not in ["singularity", "experience"]
+		and id not in Game.WORKER_ROLE_RESOURCE
+		and not unique
+	):
 		if percent < 0:
 			percent = SaveFile.get_shadow_percent() + 100
 		return max(
@@ -161,6 +176,13 @@ func get_enemy_damage(enemy_id: String = "") -> int:
 	var enemy_progression: Dictionary = SaveFile.enemy.get(enemy_id, {})
 	var enemy_damage: int = enemy_progression.get("damage", 0)
 	return enemy_damage
+
+
+func get_enemy_data(enemy_id: String = "") -> EnemyData:
+	if enemy_id == "":
+		enemy_id = SaveFile.enemy.get("level", "NULL")
+
+	return Resources.enemy_datas.get(enemy_id, null)
 
 
 func get_settings_theme(save_file_name: String) -> Resource:
@@ -236,16 +258,44 @@ func set_metadata_name(save_file_name: String, value: String) -> void:
 #############
 
 
+func last_prestige_time() -> Dictionary:
+	var default_timestamp: Dictionary = metadata.get("first_utc_time", {})
+	var timestamp: Dictionary = metadata.get("last_prestige_timestamp", default_timestamp)
+	return timestamp
+
+
+func current_prestige_time(now: Dictionary = Time.get_datetime_dict_from_system(true)) -> String:
+	return DateTimeUtils.format_duration(last_prestige_time(), now, false)
+
+
+func best_prestige_time() -> String:
+	var result: String = DateTimeUtils.format_duration(
+		metadata.get("best_prestige_start_timestamp", {}),
+		metadata.get("best_prestige_end_timestamp", {}),
+		false
+	)
+	return result if result != "0s" else "NAN"
+
+
+func best_prestige_delta() -> int:
+	return DateTimeUtils.unix_delta(
+		metadata.get("best_prestige_start_timestamp", {}),
+		metadata.get("best_prestige_end_timestamp", {})
+	)
+
+
 func prestige(infinity_count: int) -> void:
+	var first_time: bool = SaveFile.get_prestige_count() == 0
 	if infinity_count <= 0:
 		push_error("[save_file]: PRESTIGE - Invalid infinity count " + str(infinity_count))
 		return
 
 	autosave_timer.stop()
 
-	# backup save file data
-	var utc_seconds: int = int(Time.get_unix_time_from_system())
-	var backup_file_name: String = active_file_name + ".BAK_" + str(utc_seconds)
+	# backup save file data (keep: before first prestige and before last prestige)
+	var backup_file_name: String = active_file_name + ".BAK_FIRST"
+	if not first_time:
+		backup_file_name = active_file_name + ".BAK_LAST"
 	_update_metadata()
 	_write(backup_file_name)
 
@@ -262,7 +312,20 @@ func prestige(infinity_count: int) -> void:
 	# keep all substances & grant heart
 	substances["heart"] = substances.get("heart", 0) + 1
 	#
-	# keep settings, metadata
+	# keep settings and metadata
+	# settings["population_scale"] = 1 # (except scale)
+	#
+	# save timestamp delta record
+	if prestige_dialog_timestamp.is_empty():
+		push_warning("prestige_dialog_timestamp was not set!")
+		prestige_dialog_timestamp = Time.get_datetime_dict_from_system(true)
+	var delta: int = DateTimeUtils.unix_delta(last_prestige_time(), prestige_dialog_timestamp)
+	var best_delta: int = best_prestige_delta()
+	var is_best: bool = first_time or delta < best_delta
+	if is_best:
+		metadata["best_prestige_start_timestamp"] = last_prestige_time()
+		metadata["best_prestige_end_timestamp"] = prestige_dialog_timestamp
+	metadata["last_prestige_timestamp"] = Time.get_datetime_dict_from_system(true)
 	#
 	# clear else
 	workers = {}
@@ -661,7 +724,11 @@ func _on_main_ready() -> void:
 
 
 func _on_offline_progress_processed(
-	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
+	_seconds_delta: int,
+	_worker_progress: Dictionary,
+	_enemy_progress: Dictionary,
+	_factor: float,
+	_death_progress: Dictionary
 ) -> void:
 	_autosave(true, true)
 	SignalBus.worker_updated.emit(

@@ -38,6 +38,7 @@ func _connect_signals() -> void:
 	SignalBus.toggle_button_pressed.connect(_on_toggle_button_pressed)
 	SignalBus.toggle_scale_pressed.connect(_on_toggle_scale_pressed)
 	SignalBus.toggle_manager_mode_pressed.connect(_on_toggle_manager_mode_pressed)
+	SignalBus.toggle_darkness_mode_pressed.connect(_on_toggle_darkness_mode_pressed)
 	SignalBus.audio_settings_update.connect(_on_audio_settings_update)
 	SignalBus.effect_settings_update.connect(_on_effect_settings_update)
 	SignalBus.display_mode_settings_toggle.connect(_on_display_mode_settings_toggle)
@@ -53,6 +54,9 @@ func _on_toggle_scale_pressed(scale: int) -> void:
 
 func _on_toggle_manager_mode_pressed(mode: int) -> void:
 	SignalBus.toggle_manager_mode.emit(mode)
+	
+func _on_toggle_darkness_mode_pressed(mode: int) -> void:
+	SignalBus.toggle_darkness_mode.emit(mode)
 
 func _on_audio_settings_update(toggle: bool, value: float, id: String) -> void:
 	var bus_name: String = BUS_NAME_MAP[id]

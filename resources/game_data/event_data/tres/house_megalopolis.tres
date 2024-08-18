@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_acggm")
 id = "house_megalopolis"
-text = "From the darkness, a massive megalopolis has risen."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

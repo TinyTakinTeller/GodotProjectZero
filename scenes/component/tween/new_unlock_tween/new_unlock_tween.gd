@@ -16,7 +16,8 @@ func _ready() -> void:
 		play_animation()
 
 
-func play_animation() -> void:
+func play_animation(set_loop: bool = true) -> void:
+	loop = set_loop
 	if _tween != null:
 		_tween.kill()
 	_tween = create_tween()

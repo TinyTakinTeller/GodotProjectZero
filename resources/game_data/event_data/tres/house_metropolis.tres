@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_tdnr2")
 id = "house_metropolis"
-text = "Millions of people are now sharing the urban citiyscape."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

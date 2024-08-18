@@ -19,6 +19,11 @@ func _ready() -> void:
 ##############
 
 
+func _handle_on_main_ready() -> void:
+	if SaveFile.get_prestige_count() > 0:
+		_unlock_tab_if("substance")
+
+
 func _handle_on_substance_updated(observed_id: String, total_amount: int) -> void:
 	if total_amount >= 1:
 		var substance_data: SubstanceData = Resources.substance_datas.get(observed_id)
@@ -90,8 +95,10 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 		pass
 
 
-func _handle_worker_updated(_observed_id: String, _observed_total: int) -> void:
-	pass  #_unlock_manager_button_if("recruiter", observed_id == "explorer", observed_total >= 1)
+func _handle_worker_updated(observed_id: String, observed_total: int) -> void:
+	if observed_total >= 1:
+		_unlock_worker_role_if(observed_id)
+		return
 
 
 func _handle_npc_event_interacted(npc_id: String, npc_event_id: String, option: int) -> void:
@@ -142,9 +149,9 @@ func _handle_land_event(observed_id: String) -> void:
 		_trigger_unique_unlock_event("land_7")
 		_unlock_resource_generator_if("spear")
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 1:
-		if _trigger_unique_unlock_event_values("gift_flint_fiber", ["2", "1", "5", "3"]):
-			_gift_resource("fiber", 2, name)
-			_gift_resource("flint", 1, name)
+		if _trigger_unique_unlock_event_values("gift_flint_fiber", ["4", "6", "5", "3"]):
+			_gift_resource("fiber", 4, name)
+			_gift_resource("flint", 6, name)
 			_gift_resource("wood", 5, name)
 			_gift_resource("stone", 3, name)
 	if ResourceManager.get_total_generated(observed_id) >= 8 + 2:
@@ -162,6 +169,9 @@ func _handle_land_event(observed_id: String) -> void:
 		_trigger_unique_unlock_event("land_11")
 		_unlock_worker_role_if("iron_miner")
 		_unlock_worker_role_if("iron_smelter")
+	if ResourceManager.get_total_generated(observed_id) >= 20:
+		_trigger_unique_unlock_event("land_spelunk")
+		_unlock_resource_generator_if("CAVE")
 
 
 func _handle_house_event(observed_total: int) -> void:
@@ -175,6 +185,7 @@ func _handle_house_event(observed_total: int) -> void:
 	if observed_total >= 25:
 		_trigger_unique_unlock_event("house_25")
 		_level_up_tab("world", 3)
+		_unlock_worker_role_if("mason")
 	if observed_total >= 100:
 		_trigger_unique_unlock_event("house_100")
 		_level_up_tab("world", 4)
@@ -206,7 +217,13 @@ func _handle_house_event(observed_total: int) -> void:
 
 func _handle_on_deaths_door_resolved(enemy_data: EnemyData, option: int) -> void:
 	_unlock_tab_if("substance")
-	_unlock_resource_generator_if("beacon")
+
+	if SaveFile.get_prestige_count() == 0:
+		_unlock_resource_generator_if("beacon")
+	elif enemy_data.is_last():
+		_unlock_resource_generator_if("beacon")
+		_unlock_resource_generator_if("soul")
+
 	if option == 0:
 		return
 	_deaths_door_event(option, enemy_data.order)
@@ -249,8 +266,9 @@ func _load_timers() -> void:
 
 
 func _level_up_tab(tab_id: String, level: int) -> void:
-	var tab_data: TabData = Resources.tab_datas[tab_id]
-	if tab_data.level < level:
+	var tab_data_level: int = SaveFile.tab_levels.get(tab_id, 0)
+	if tab_data_level < level:
+		var tab_data: TabData = Resources.tab_datas[tab_id]
 		SignalBus.tab_level_up.emit(tab_data)
 
 
@@ -327,20 +345,20 @@ func _gift_debug() -> void:
 func _gift_double() -> void:
 	if _trigger_unique_unlock_event("cat_gift"):
 		#_gift_resource("singularity", SaveFile.resources.get("singularity", 0), name)
-		_gift_resource("soulstone", SaveFile.resources.get("soulstone", 0), name)
-		_gift_resource("land", SaveFile.resources.get("land", 0), name)
-		_gift_resource("food", SaveFile.resources.get("food", 0), name)
-		_gift_resource("wood", SaveFile.resources.get("wood", 0), name)
-		_gift_resource("stone", SaveFile.resources.get("stone", 0), name)
-		_gift_resource("clay", SaveFile.resources.get("clay", 0), name)
-		_gift_resource("brick", SaveFile.resources.get("brick", 0), name)
-		_gift_resource("fur", SaveFile.resources.get("fur", 0), name)
-		_gift_resource("leather", SaveFile.resources.get("leather", 0), name)
-		_gift_resource("coal", SaveFile.resources.get("coal", 0), name)
-		_gift_resource("iron_ore", SaveFile.resources.get("iron_ore", 0), name)
-		_gift_resource("iron", SaveFile.resources.get("iron", 0), name)
-		_gift_resource("fiber", SaveFile.resources.get("fiber", 0), name)
-		_gift_resource("flint", SaveFile.resources.get("flint", 0), name)
+		_gift_resource("soulstone", SaveFile.resources.get("soulstone", 0), "NO_SHADOW")
+		_gift_resource("land", SaveFile.resources.get("land", 0), "NO_SHADOW")
+		_gift_resource("food", SaveFile.resources.get("food", 0), "NO_SHADOW")
+		_gift_resource("wood", SaveFile.resources.get("wood", 0), "NO_SHADOW")
+		_gift_resource("stone", SaveFile.resources.get("stone", 0), "NO_SHADOW")
+		_gift_resource("clay", SaveFile.resources.get("clay", 0), "NO_SHADOW")
+		_gift_resource("brick", SaveFile.resources.get("brick", 0), "NO_SHADOW")
+		_gift_resource("fur", SaveFile.resources.get("fur", 0), "NO_SHADOW")
+		_gift_resource("leather", SaveFile.resources.get("leather", 0), "NO_SHADOW")
+		_gift_resource("coal", SaveFile.resources.get("coal", 0), "NO_SHADOW")
+		_gift_resource("iron_ore", SaveFile.resources.get("iron_ore", 0), "NO_SHADOW")
+		_gift_resource("iron", SaveFile.resources.get("iron", 0), "NO_SHADOW")
+		_gift_resource("fiber", SaveFile.resources.get("fiber", 0), "NO_SHADOW")
+		_gift_resource("flint", SaveFile.resources.get("flint", 0), "NO_SHADOW")
 
 
 #############
@@ -360,6 +378,7 @@ func _connect_signals() -> void:
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
 	SignalBus.tab_changed.connect(_on_tab_changed)
+	SignalBus.main_ready.connect(_handle_on_main_ready)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, _source_id: String) -> void:
@@ -381,7 +400,13 @@ func _on_npc_event_interacted(npc_id: String, npc_event_id: String, option: int)
 
 func _on_timer_cat_timeout() -> void:
 	if SaveFile.events.get("cat_watching", 0) == 1:
-		_trigger_unique_unlock_npc_event("cat", "cat_intro")
+		var prestige: int = SaveFile.get_prestige_count()
+		if prestige == 0:
+			_trigger_unique_unlock_npc_event("cat", "cat_intro")
+		elif prestige == 1:
+			_trigger_unique_unlock_npc_event("cat", "cat_intro_1")
+		else:
+			_trigger_unique_unlock_npc_event("cat", "cat_intro_0")
 
 
 func _on_deaths_door_resolved(

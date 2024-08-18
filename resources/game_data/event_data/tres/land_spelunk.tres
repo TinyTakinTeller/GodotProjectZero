@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://hp10yfw25of7"]
+
+[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_jg26p"]
+
+[resource]
+script = ExtResource("1_jg26p")
+id = "land_spelunk"
+vars = []
+color = Color(0, 0, 0, 1)

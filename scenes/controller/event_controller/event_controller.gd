@@ -64,6 +64,5 @@ func _connect_signals() -> void:
 func _on_owner_ready() -> void:
 	_handle_on_owner_ready()
 
-
-func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
+func _on_progress_button_paid(resource_generator: ResourceGenerator, _source: String) -> void:
 	_handle_on_progress_button_paid(resource_generator)

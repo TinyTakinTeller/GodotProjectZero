@@ -4,7 +4,6 @@ extends Resource
 @export var id: String
 @export var sort_value: int = 0
 
-var level: int = 0
 var index: int = -1
 
 
@@ -13,6 +12,7 @@ func get_sort_value() -> int:
 
 
 func get_title() -> String:
+	var level: int = SaveFile.tab_levels.get(id, 0)
 	return Locale.get_tab_data_titles(id)[level]
 
 

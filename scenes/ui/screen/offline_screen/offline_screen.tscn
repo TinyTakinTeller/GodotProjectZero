@@ -71,3 +71,12 @@ Happy Welcome Back!
 Happy Welcome Back!
 Happy Welcome Back!"
 autowrap_mode = 2
+
+[node name="DeathMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DeathLabel" type="Label" parent="MarginContainer/VBoxContainer/DeathMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ 180 Singularity
++ 10 Heart"

@@ -1,6 +1,7 @@
 class_name ResourceGenerator
 extends Resource
 
+@export var order: int = 0
 @export var color: Color = Color.BLACK
 @export var sort_value: int = 0
 @export var sort_value_override: float = 0.0
@@ -20,6 +21,10 @@ extends Resource
 @export var sfx_button_success: AudioStream
 
 var _random_drops_sum: int = -1
+
+
+func is_unique() -> bool:
+	return max_amount == 1
 
 
 ## if idle production of this resource can be increasing, e.g. (mason -> house ->) worker -> food
@@ -43,8 +48,7 @@ func get_sort_value() -> float:
 
 
 func get_display_increment(display_amount: int) -> String:
-	var amount_string: String = NumberUtils.format_number_scientific(display_amount)
-	return " + {amount} {text} ".format({"amount": str(amount_string), "text": get_display_name()})
+	return ResourceGenerator.get_display_increment_of(display_amount, get_display_name())
 
 
 func get_display_name() -> String:
@@ -192,3 +196,8 @@ static func get_display_name_of(rid: String) -> String:
 
 static func get_display_names_of(ids: Array) -> Array:
 	return ids.map(func(rid: String) -> String: return ResourceGenerator.get_display_name_of(rid))
+
+
+static func get_display_increment_of(display_amount: int, display_name: String) -> String:
+	var amount_string: String = NumberUtils.format_number_scientific(display_amount)
+	return " + {amount} {text} ".format({"amount": str(amount_string), "text": display_name})

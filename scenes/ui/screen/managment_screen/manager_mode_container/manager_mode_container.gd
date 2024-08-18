@@ -29,8 +29,12 @@ func _initialize() -> void:
 
 func _load_from_save_file() -> void:
 	var has_emperor: bool = SaveFile.substances.get("the_emperor", 0) > 0
-	var unlocked: bool = has_emperor
-	self.visible = unlocked
+	smart_mode_button.visible = has_emperor
+
+	var has_the_hierophant: bool = SaveFile.substances.get("the_hierophant", 0) > 0
+	auto_mode_button.visible = has_the_hierophant
+
+	self.visible = smart_mode_button.visible or auto_mode_button.visible
 
 	var mode: int = SaveFile.settings.get("manager_mode", 0)
 	_toggle_mode(mode)
@@ -72,8 +76,8 @@ func _connect_signals() -> void:
 
 
 func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
-	if id == "the_emperor" and total_amount > 0:
-		self.visible = true
+	if (id == "the_emperor" or id == "the_hierophant") and total_amount > 0:
+		_load_from_save_file()
 
 
 func _on_normal_mode_button_hover() -> void:

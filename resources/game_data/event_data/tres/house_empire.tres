@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_454dj")
 id = "house_empire"
-text = "People of the world have bestowed me the title of their emperor."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

@@ -121,7 +121,6 @@ func stop_unlock_animation() -> void:
 ## helpers ##
 #############
 
-
 func _initialize() -> void:
 	_set_ui_labels()
 
@@ -143,7 +142,9 @@ func _update_pivot() -> void:
 
 func _connect_signals() -> void:
 	texture_button.mouse_exited.connect(_on_texture_button_unhover)
-	texture_button.mouse_entered.connect(_on_texture_button_hover)
+	texture_button.mouse_entered.connect(_on_texture_button_hover.bind(true))
+	label_margin_container.mouse_exited.connect(_on_texture_button_unhover)
+	label_margin_container.mouse_entered.connect(_on_texture_button_hover.bind(false))
 	craft_button.mouse_entered.connect(_on_craft_button_hover)
 	texture_button.button_down.connect(_on_texture_button_down)
 	craft_button.button_down.connect(_on_craft_button_down)
@@ -151,13 +152,14 @@ func _connect_signals() -> void:
 	SignalBus.event_saved.connect(_on_event_saved)
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.substance_craft_button_unpaid.connect(_on_substance_craft_button_unpaid)
+	SignalBus.substance_craft_button_paid.connect(_on_substance_craft_button_paid)
 
 
 func _on_texture_button_unhover() -> void:
 	pass  # panel.visible = false
 
 
-func _on_texture_button_hover() -> void:
+func _on_texture_button_hover(stop: bool = true) -> void:
 	if _substance_data == null:
 		return
 
@@ -165,8 +167,9 @@ func _on_texture_button_hover() -> void:
 		_substance_data.get_display_title(), _substance_data.get_display_info()
 	)
 
-	# panel.visible = true
-	stop_unlock_animation()
+	if stop:
+		# panel.visible = true
+		stop_unlock_animation()
 
 
 func _on_craft_button_hover() -> void:
@@ -215,6 +218,11 @@ func _on_substance_craft_button_unpaid(substance_data: SubstanceData) -> void:
 		red_color_rect_simple_tween.play_animation()
 
 		Audio.play_sfx_id("progress_button_fail")
+
+
+func _on_substance_craft_button_paid(substance_data: SubstanceData) -> void:
+	if get_id() == substance_data.get_id():
+		Audio.play_sfx_id("magic")
 
 
 ############

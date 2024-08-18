@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://dj262a5wao0t7"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/manager_mode_container/margin_mode_container.gd" id="1_e5vou"]
+[ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/manager_mode_container/manager_mode_container.gd" id="1_g4brk"]
 
-[node name="MarginModeContainer" type="MarginContainer"]
+[node name="ManagerModeContainer" type="MarginContainer"]
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_bottom = 16
-script = ExtResource("1_e5vou")
+script = ExtResource("1_g4brk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

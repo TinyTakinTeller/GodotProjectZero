@@ -24,6 +24,7 @@ func _ready() -> void:
 ## Workers must be "happy" to work while not observed (none of the resources are decreasing).
 func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dictionary:
 	var total_efficiency: Dictionary = efficiencies["total_efficiency"]
+	var storage: Dictionary = efficiencies["storage"]
 
 	# normalize "house -> worker" production
 	if total_efficiency.has("house"):
@@ -65,19 +66,38 @@ func _progress_worker_controller(efficiencies: Dictionary, cycles: int) -> Dicti
 	var mode: int = SaveFile.settings.get("manager_mode", 0)
 	var freemasonry: bool = has_the_hierophant and mode == 2
 	if freemasonry:
-		var storage: Dictionary = efficiencies["storage"]
 		var h: int = storage.get("house", 0)
-		var w: int = storage.get("worker")
-		var m: int = max(SaveFile.workers.get("mason", 0), 1)
-		var s: int = SaveFile.workers.get("sergeant", 0)
-		var mason_req: int = manager_button_controller.get_total_requirements_sum("mason")
-		var house_workers: int = SaveFile.get_house_workers()
-		var n: int = cycles
-		var per_cent: int = SaveFile.get_shadow_percent() + 100
-		auto_mason.clear_cache(h, m, house_workers, mason_req, w, s, per_cent)
-		var results: Dictionary = auto_mason.cycles(n)
-		nonzero_generated["house"] = max(results["h"], nonzero_generated.get("house", 0))
-		nonzero_generated["worker"] = max(results["p"], nonzero_generated.get("worker", 0))
+		var w: int = storage.get("worker", 0)
+		if h > 0 and w > 0 and h < Limits.GLOBAL_MAX_AMOUNT and w < Limits.GLOBAL_MAX_AMOUNT:
+			var m: int = max(SaveFile.workers.get("mason", 0), 1)
+			var s: int = SaveFile.workers.get("sergeant", 0)
+			var mason_req: int = manager_button_controller.get_total_requirements_sum("mason")
+			var house_workers: int = SaveFile.get_house_workers()
+			var n: int = cycles
+			var per_cent: int = SaveFile.get_shadow_percent() + 100
+			auto_mason.clear_cache(h, m, house_workers, mason_req, w, s, per_cent)
+			var results: Dictionary = auto_mason.cycles(n)
+
+			var gen_house: int = max(results["h"], nonzero_generated.get("house", 0))
+			if gen_house > 0:
+				nonzero_generated["house"] = gen_house
+			var gen_worker: int = max(results["p"], nonzero_generated.get("worker", 0))
+			if gen_worker > 0:
+				nonzero_generated["worker"] = gen_worker
+
+			# the_hanged_man effect
+			var has_the_hanged_man: bool = SaveFile.substances.get("the_hanged_man", 0) > 0
+			if has_the_hanged_man:
+				var maxed: bool = results.get("max", false)
+				var cycles_left: int = n - results.get("i", n)
+				if maxed and cycles_left > 0:
+					var max_swordsman_per_cycle: int = 16000000000000000  # 16q
+					var gen_swordsman: int = max(
+						Limits.safe_mult(cycles_left, max_swordsman_per_cycle),
+						nonzero_generated.get("swordsman", 0)
+					)
+					if gen_swordsman > 0:
+						nonzero_generated["swordsman"] = gen_swordsman
 
 	return {"decreasing_ids": [], "generated": nonzero_generated}
 
@@ -106,9 +126,12 @@ func _progress_enemy_controller(
 	var spirit_count: int = SaveFile.get_spirit_substance_count()
 
 	var enemy_health: int = enemy_data.health_points
-	var overkill_factor: float = MathUtils.dual_sum_normalized(
-		swordsman_storage, swordsman_eff, cycles, enemy_health
+	var overkill_factor: float = abs(
+		MathUtils.dual_sum_normalized(swordsman_storage, swordsman_eff, cycles, enemy_health)
 	)
+	if swordsman_storage >= Limits.GLOBAL_MAX_AMOUNT:  # WORKAROUND FOR ADF-64
+		overkill_factor = Limits.safe_mult(swordsman_storage / enemy_health, cycles)
+
 	var damage: int = MathUtils.safe_dual_sum(swordsman_storage, swordsman_eff, cycles)
 	damage = max(
 		Limits.safe_mult(damage, spirit_count + ratio) / ratio,
@@ -123,6 +146,14 @@ func _progress_enemy_controller(
 		)
 
 	return {"overkill_factor": overkill_factor, "damage": damage, "generated": generated}
+
+
+func progress_death_charm(death_cycles: int) -> Dictionary:
+	var has_death: bool = SaveFile.substances.get("death", 0) > 0
+	if not has_death:
+		return {}
+
+	return {"singularity": Limits.safe_mult(death_cycles, 18), "heart": death_cycles}
 
 
 ##############
@@ -166,8 +197,15 @@ func _handle_on_game_resumed(
 	if !enemy_data.is_last():
 		SignalBus.enemy_damage.emit(damage, name)
 
+	var death_cycle: float = float(SaveFile.best_prestige_delta())
+	var death_cycles: int = int(float(seconds_delta) / death_cycle)
+	var death_progress: Dictionary = progress_death_charm(death_cycles)
+	if not death_progress.is_empty():
+		SignalBus.substance_generated.emit("heart", name)
+		SignalBus.resource_generated.emit("singularity", death_progress.get("singularity", 0), name)
+
 	SignalBus.offline_progress_processed.emit(
-		seconds_delta, worker_progress, enemy_progress, factor
+		seconds_delta, worker_progress, enemy_progress, factor, death_progress
 	)
 
 	if Game.PARAMS["debug_logs"]:

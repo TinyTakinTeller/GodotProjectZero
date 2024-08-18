@@ -31,6 +31,12 @@ func _pay_resources(costs: Dictionary, id: String, factor: int = 1) -> void:
 
 
 func _can_pay_worker(worker_costs: Dictionary) -> bool:
+	if not worker_costs.is_empty() and SaveFile.workers.get(Game.WORKER_RESOURCE_ID, 0) <= 0:
+		return false
+	var house: int = SaveFile.resources.get("house", 0)
+	if house >= Limits.GLOBAL_MAX_AMOUNT:
+		return true  # QOL edge case dirty worakround, don't touch don't ask... ⚰️
+
 	for id: String in worker_costs:
 		var cost: int = worker_costs[id]
 		if SaveFile.workers.get(id, 0) < cost:
@@ -55,6 +61,12 @@ func _get_eff(costs: Dictionary, max_factor: int = Limits.GLOBAL_MAX_AMOUNT) -> 
 
 
 func _get_worker_eff(costs: Dictionary, max_factor: int = Limits.GLOBAL_MAX_AMOUNT) -> int:
+	if max_factor <= 0:
+		return 0
+	var house: int = SaveFile.resources.get("house", 0)
+	if house >= Limits.GLOBAL_MAX_AMOUNT:
+		return Limits.GLOBAL_MAX_AMOUNT  # QOL edge case dirty worakround, don't touch don't ask... ⚰️
+
 	var max_eff: int = max_factor
 	for id: String in costs:
 		var cost: int = costs[id]
@@ -69,7 +81,7 @@ func _get_worker_eff(costs: Dictionary, max_factor: int = Limits.GLOBAL_MAX_AMOU
 ##############
 
 
-func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> void:
+func _handle_progress_button_pressed(resource_generator: ResourceGenerator, source: String) -> void:
 	if resource_generator == null:
 		return
 
@@ -78,7 +90,7 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> v
 		var cost: Dictionary = resource_generator.get_costs()
 		if _can_pay(cost):
 			SignalBus.soul.emit()
-		SignalBus.progress_button_unpaid.emit(resource_generator)
+		SignalBus.progress_button_unpaid.emit(resource_generator, source)
 		return
 
 	var id: String = resource_generator.id
@@ -113,11 +125,11 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> v
 
 	if !Game.PARAMS["debug_free_resource_buttons"]:
 		if !_can_pay(resource_cost) or !_can_pay_worker(worker_cost):
-			SignalBus.progress_button_unpaid.emit(resource_generator)
+			SignalBus.progress_button_unpaid.emit(resource_generator, source)
 			return
 		_pay_resources(resource_cost, id, strenth_factor)
 		_pay_workers(worker_cost, id, strenth_factor)
-	SignalBus.progress_button_paid.emit(resource_generator)
+	SignalBus.progress_button_paid.emit(resource_generator, source)
 
 	var generate: Dictionary = resource_generator.generate()
 	for gen_id: String in generate:
@@ -125,6 +137,10 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator) -> v
 		if for_charm:
 			if has_hermit:
 				var experience: int = SaveFile.resources.get("experience", 1)
+				var house: int = SaveFile.resources.get("house", 0)
+				if id == "swordsman" and house < experience:  # workaround
+					var house_workers: int = SaveFile.get_house_workers()
+					experience = min(experience, Limits.safe_mult(house_workers, house))
 				amount = Limits.safe_mult(experience, amount)
 			if has_strength:
 				amount = Limits.safe_add(strenth_factor, amount)
@@ -140,5 +156,5 @@ func _connect_signals() -> void:
 	SignalBus.progress_button_pressed.connect(_on_progress_button_pressed)
 
 
-func _on_progress_button_pressed(resource_generator: ResourceGenerator) -> void:
-	_handle_progress_button_pressed(resource_generator)
+func _on_progress_button_pressed(resource_generator: ResourceGenerator, source: String) -> void:
+	_handle_progress_button_pressed(resource_generator, source)

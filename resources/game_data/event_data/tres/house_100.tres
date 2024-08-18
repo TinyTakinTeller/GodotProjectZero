@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_3h35j")
 id = "house_100"
-text = "The forest village is brewing with life, as the number of people continues to grow."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

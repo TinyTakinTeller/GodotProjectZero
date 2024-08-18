@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_y6tdw")
 id = "house_capital"
-text = "I hereby declare this settlement the capital of the forest."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

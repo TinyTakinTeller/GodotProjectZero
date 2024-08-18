@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://1p0hdhylnmii"]
+
+[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_x7kgv"]
+[ext_resource type="AudioStream" uid="uid://bwcciiuewww0g" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/rock_moving_1_5.wav" id="2_72yd8"]
+
+[resource]
+script = ExtResource("1_x7kgv")
+order = 0
+color = Color(0, 0, 0, 1)
+sort_value = 11
+sort_value_override = 0.0
+id = "CAVE"
+amount = 5
+cooldown = 30.0
+costs = {}
+cost_scales = {}
+worker_costs = {}
+random_drops = {
+"coal": 30,
+"iron": 40,
+"iron_ore": 20,
+"torch": 10
+}
+hidden = false
+max_amount = -1
+column = 0
+dynamic_efficiency_id = ""
+sfx_button_success = ExtResource("2_72yd8")

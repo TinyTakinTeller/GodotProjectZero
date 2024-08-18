@@ -14,6 +14,10 @@ func random_string(length: int, chars: String = COMMON) -> String:
 	return result
 
 
+static func is_empty(string: String) -> bool:
+	return not is_not_empty(string)
+
+
 static func is_not_empty(string: String) -> bool:
 	return string != null and string.length() != 0
 

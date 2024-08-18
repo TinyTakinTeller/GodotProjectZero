@@ -2,11 +2,31 @@ class_name StarwayScreen extends MarginContainer
 
 const TAB_DATA_ID: String = "starway"
 
+@export var substance_controller: SubstanceController
+
+var particle_id: String = "resource_acquired_particle"  # "enemy_damage_particle"
+var singularity_color: Color = ColorSwatches.YELLOW
+var heart_color: Color = ColorSwatches.BLUE
+
 @onready var progress_bar_margin_container: BasicProgressBar = %ProgressBarMarginContainer
+@onready var top_label: Label = %TopLabel
+
+@onready var label_effect_queue_1: LabelEffectQueue = %LabelEffectQueue1
+@onready var label_effect_queue_2: LabelEffectQueue = %LabelEffectQueue2
 
 ###############
 ## overrides ##
 ###############
+
+
+func _process(_delta: float) -> void:
+	if is_visible_in_tree():
+		_set_top_label()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_THEME_CHANGED:
+		_propagate_theme_to_virtual_children()
 
 
 func _ready() -> void:
@@ -22,10 +42,31 @@ func _ready() -> void:
 
 func _initialize() -> void:
 	_set_infinity_progress()
+	_propagate_theme_to_virtual_children()
+	label_effect_queue_1.set_particle(particle_id)
+	label_effect_queue_2.set_particle(particle_id)
 
 
 func _load_from_save_file() -> void:
-	pass
+	top_label.visible = SaveFile.get_prestige_count() > 0
+
+
+func _set_top_label() -> void:
+	if top_label.visible:
+		var current: String = SaveFile.current_prestige_time()
+		var best: String = SaveFile.best_prestige_time()
+		var l0: String = Locale.get_ui_label("current")
+		var l1: String = Locale.get_ui_label("best")
+		top_label.text = "{l0}: {0} | {l1}: {1}".format(
+			{"0": current, "1": best, "l0": l0, "l1": l1}
+		)
+
+		var has_death: bool = SaveFile.substances.get("death", 0) > 0
+		if has_death:
+			var elapsed: int = int(substance_controller.death_timer.time_left)
+			var death: String = DateTimeUtils.format_seconds(elapsed, false)
+			var l2: String = Locale.get_ui_label("death")
+			top_label.text += " | {l2}: {0}".format({"0": death, "l2": l2})
 
 
 func _set_infinity_progress() -> void:
@@ -60,14 +101,38 @@ func _set_infinity_progress() -> void:
 	progress_bar_margin_container.set_display(progress, progress_label, ColorSwatches.BLUE)
 
 
+func _update_pivot() -> void:
+	self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
+	label_effect_queue_1.position.x = (self.get_rect().size.x / 2)
+	label_effect_queue_1.position.y = (self.get_rect().size.y / 2)
+	label_effect_queue_2.position.x = (self.get_rect().size.x / 2)
+	label_effect_queue_2.position.y = (self.get_rect().size.y / 2)
+
+
+func _propagate_theme_to_virtual_children() -> void:
+	var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
+	if label_effect_queue_1 != null:
+		label_effect_queue_1.set_theme(inherited_theme)
+		label_effect_queue_1.set_color_theme_override(heart_color)
+	if label_effect_queue_2 != null:
+		label_effect_queue_2.set_theme(inherited_theme)
+		label_effect_queue_2.set_color_theme_override(singularity_color)
+
+
 #############
 ## signals ##
 #############
 
 
 func _connect_signals() -> void:
+	self.resized.connect(_on_resized)
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.resource_updated.connect(_on_resource_updated)
+	SignalBus.substance_updated.connect(_on_substance_updated)
+
+
+func _on_resized() -> void:
+	_update_pivot()
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -77,5 +142,19 @@ func _on_tab_changed(tab_data: TabData) -> void:
 		visible = false
 
 
-func _on_resource_updated(_id: String, _total: int, _amount: int, _source_id: String) -> void:
+func _on_resource_updated(id: String, _total: int, amount: int, source_id: String) -> void:
 	_set_infinity_progress()
+
+	if is_visible_in_tree():
+		if id == "singularity" and source_id == "SubstanceController":
+			var singularity: ResourceGenerator = Resources.resource_generators[id]
+			label_effect_queue_2.add_task(singularity.get_display_increment(amount))
+
+
+func _on_substance_updated(id: String, _total_amount: int, source_id: String) -> void:
+	if is_visible_in_tree():
+		if id == "heart" and source_id == "SubstanceController":
+			var display_name: String = Locale.get_ui_label("heart")
+			label_effect_queue_1.add_task(
+				ResourceGenerator.get_display_increment_of(1, display_name)
+			)

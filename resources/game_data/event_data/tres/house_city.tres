@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_axgdu")
 id = "house_city"
-text = "The forest town has gotten quite large, I might need help in managing all this."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

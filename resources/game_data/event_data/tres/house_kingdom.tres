@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_3d5r7")
 id = "house_kingdom"
-text = "I declare myself the king of these vast lands. Let us conquer and grow together."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

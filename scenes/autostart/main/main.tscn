@@ -217,9 +217,10 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="StarwayScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("27_d2ak1")]
+[node name="StarwayScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("substance_controller") instance=ExtResource("27_d2ak1")]
 visible = false
 layout_mode = 2
+substance_controller = NodePath("../../../../../../../../../../Controllers/SubstanceController")
 
 [node name="OfflineScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
 layout_mode = 2
@@ -248,7 +249,6 @@ theme_override_constants/margin_left = 0
 [node name="DeveloperConsole" parent="CanvasLayer/MainControl/MainUI" instance=ExtResource("20_yijsf")]
 visible = false
 layout_mode = 1
-buffer_size = 16
 
 [node name="PrestigeUI" parent="CanvasLayer/MainControl" instance=ExtResource("39_5hxeo")]
 unique_name_in_owner = true

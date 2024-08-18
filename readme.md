@@ -6,7 +6,7 @@ PLAY THE GAME : https://tinytakinteller.itch.io/the-best-game-ever
 
 READ WEEKLY DEVLOG'S : https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
-Current Version - [ PROTOTYPE : WEEK 16 ]
+Current Version - [ PROTOTYPE : WEEK 17 ]
 
 **My first Godot game from scratch.**
 

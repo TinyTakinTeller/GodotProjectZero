@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_w12dh")
+order = 0
 color = Color(0, 0, 0, 1)
 sort_value = 4
 sort_value_override = 0.0

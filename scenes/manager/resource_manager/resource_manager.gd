@@ -16,7 +16,8 @@ func _ready() -> void:
 
 
 func _handle_on_resource_generated(id: String, amount: int, source_id: String) -> void:
-	amount = SaveFile.scale_by_shadows(id, amount)
+	if source_id != "NO_SHADOW":
+		amount = SaveFile.scale_by_shadows(id, amount)
 
 	# [WORKAROUND]
 	# worker resource represents total population, we want to apply the limit on peasant's instead
@@ -27,6 +28,10 @@ func _handle_on_resource_generated(id: String, amount: int, source_id: String) -
 	amount = Limits.safe_add_factor(total, amount)
 
 	SaveFile.resources[id] = SaveFile.resources.get(id, 0) + amount
+	if SaveFile.resources[id] < 0:
+		push_warning("[WARN] Resource", id, "went negative:", SaveFile.resources[id])
+		SaveFile.resources[id] = 0
+
 	if amount < 0:
 		var spent_id: String = ResourceManager.make_spent_id(id)
 		SaveFile.resources[spent_id] = SaveFile.resources.get(spent_id, 0) - amount

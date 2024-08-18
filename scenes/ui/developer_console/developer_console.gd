@@ -7,13 +7,13 @@ var commands: Dictionary = {
 	{
 		"func": _cmd_add_resource,
 		"description": "Add player resource by ID",
-		"usage": "add [resource_id] [amount >= 0]"
+		"usage": 'add [resource_id] [amount >= 0 | "max" keyword]'
 	},
 	&"set":
 	{
 		"func": _cmd_set_resource,
 		"description": "Set player resource by ID",
-		"usage": "set [resource_id] [amount >= 0]"
+		"usage": 'set [resource_id] [amount >= 0 | "max" keyword]'
 	},
 	&"help":
 	{"func": _cmd_help, "description": "Display a list of helpful commands", "usage": "help"},
@@ -155,10 +155,15 @@ func _cmd_add_resource(args: PackedStringArray) -> Error:
 	if resource_id not in Resources.resource_generators.keys():
 		return FAILED
 
-	if not NumberUtils.is_valid_int_64(amount_string):
+	if not NumberUtils.is_valid_int_64(amount_string) and not amount_string in ["max", "MAX"]:
 		return FAILED
 
-	var amount: int = amount_string.to_int()
+	var amount: int = 0
+	if not amount_string in ["max", "MAX"]:
+		amount = amount_string.to_int()
+	else:
+		amount = Limits.GLOBAL_MAX_AMOUNT
+
 	SignalBus.resource_generated.emit(resource_id, amount, name)
 	return OK
 
@@ -173,10 +178,15 @@ func _cmd_set_resource(args: PackedStringArray) -> Error:
 	if resource_id not in Resources.resource_generators.keys():
 		return FAILED
 
-	if not NumberUtils.is_valid_int_64(amount_string):
+	if not NumberUtils.is_valid_int_64(amount_string) and not amount_string in ["max", "MAX"]:
 		return FAILED
 
-	var amount: int = amount_string.to_int()
+	var amount: int = 0
+	if not amount_string in ["max", "MAX"]:
+		amount = amount_string.to_int()
+	else:
+		amount = Limits.GLOBAL_MAX_AMOUNT
+
 	var current_amount: int = SaveFile.resources.get(resource_id, 0)
 	var delta: int = amount - current_amount
 	SignalBus.resource_generated.emit(resource_id, delta, name)

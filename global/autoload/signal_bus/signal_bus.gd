@@ -1,9 +1,11 @@
 extends Node
 
 ## UI
+signal harvest_forest(order: int)
 signal progress_button_hover(resource_generator: ResourceGenerator)
 signal progress_button_unhover(resource_generator: ResourceGenerator)
-signal progress_button_pressed(resource_generator: ResourceGenerator)
+signal progress_button_pressed(resource_generator: ResourceGenerator, source: String)
+signal progress_button_cooldown_end(resource_generator: ResourceGenerator)
 signal substance_craft_button_pressed(substance_data: SubstanceData)
 signal progress_button_disabled(id: String)
 signal manager_button_hover(worker_role: WorkerRole, node: Node)
@@ -19,6 +21,7 @@ signal tab_changed(tab_data: TabData)
 signal toggle_button_pressed(id: String, toggle_id: String)
 signal toggle_scale_pressed(scale_: int)
 signal toggle_manager_mode_pressed(mode: int)
+signal toggle_darkness_mode_pressed(mode: int)
 signal resource_ui_updated(
 	resource_tracker_item: ResourceTrackerItem, amount: int, change: int, source_id: String
 )
@@ -41,8 +44,8 @@ signal prestige_reborn
 
 ## CONTROLLER
 signal main_ready
-signal progress_button_paid(resource_generator: ResourceGenerator)
-signal progress_button_unpaid(resource_generator: ResourceGenerator)
+signal progress_button_paid(resource_generator: ResourceGenerator, source: String)
+signal progress_button_unpaid(resource_generator: ResourceGenerator, source: String)
 signal substance_craft_button_paid(substance_data: SubstanceData)
 signal substance_craft_button_unpaid(substance_data: SubstanceData)
 signal resource_generated(id: String, amount: int, source_id: String)
@@ -62,6 +65,7 @@ signal set_ui_theme(theme: Resource)
 signal toggle_button(id: String, toggle_id: String)
 signal toggle_scale(scale_: int)
 signal toggle_manager_mode(mode: int)
+signal toggle_darkness_mode(mode: int)
 signal deaths_door_decided(enemy_data: EnemyData, option: int)
 signal save_entered(seconds_delta: int, seconds_delta_expected: int)
 signal autosave(seconds_delta: int, seconds_delta_expected: int)

@@ -74,3 +74,17 @@ _npc_id = "cat"
 
 [node name="ExperienceMarginContainer" parent="." instance=ExtResource("4_p5w24")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="AllButton" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 74)
+layout_mode = 2
+text = "Harvest
+Forest"

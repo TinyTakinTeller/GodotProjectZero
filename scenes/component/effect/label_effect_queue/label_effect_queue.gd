@@ -4,6 +4,7 @@ extends Node2D
 @export var label_effect_scene: PackedScene
 @export var delay: float = 0.5
 @export var lifetime: float = 2
+@export var force_delay: bool = false
 
 var _theme: Resource
 var _color_theme_override: Color
@@ -45,7 +46,10 @@ func set_color_theme_override(color: Color) -> void:
 
 
 func add_task(text: String) -> void:
-	if _last_task == "":
+	if force_delay:
+		_tasks.append(text)
+		timer.start(delay)
+	elif _last_task == "":
 		_last_task = text
 		trigger_label_effect(text)
 		timer.start(delay)

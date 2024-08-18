@@ -1,4 +1,7 @@
+class_name SubstanceController
 extends Node
+
+@onready var death_timer: Timer = %DeathTimer
 
 ###############
 ## overrides ##
@@ -7,11 +10,18 @@ extends Node
 
 func _ready() -> void:
 	_connect_signals()
+	_initialize()
 
 
 #############
 ## helpers ##
 #############
+
+
+func _initialize() -> void:
+	if SaveFile.get_prestige_count() > 1:
+		var time: float = max(1.0, SaveFile.best_prestige_delta())
+		death_timer.start(time)
 
 
 func _can_pay(costs: Dictionary) -> bool:
@@ -55,13 +65,14 @@ func _handle_substance_craft_button_pressed(substance_data: SubstanceData) -> vo
 func _connect_signals() -> void:
 	SignalBus.substance_craft_button_pressed.connect(_on_substance_craft_button_pressed)
 	SignalBus.progress_button_paid.connect(_on_progress_button_paid)
+	death_timer.timeout.connect(_on_death_timer)
 
 
 func _on_substance_craft_button_pressed(substance_data: SubstanceData) -> void:
 	_handle_substance_craft_button_pressed(substance_data)
 
 
-func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
+func _on_progress_button_paid(resource_generator: ResourceGenerator, _source: String) -> void:
 	var has_world: bool = SaveFile.substances.get("the_world", 0) > 0
 	var has_wheel: bool = SaveFile.substances.get("wheel_of_fortune", 0) > 0
 	if not has_world:
@@ -75,3 +86,12 @@ func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
 		SignalBus.substance_generated.emit("eye", id)
 	if (randi() % (1000 / boost)) == 0:
 		SignalBus.substance_generated.emit("bone", id)
+
+
+func _on_death_timer() -> void:
+	var has_death: bool = SaveFile.substances.get("death", 0) > 0
+	if not has_death:
+		return
+
+	SignalBus.substance_generated.emit("heart", name)
+	SignalBus.resource_generated.emit("singularity", 18, name)

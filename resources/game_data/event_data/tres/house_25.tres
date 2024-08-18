@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_6510x")
 id = "house_25"
-text = "The camp grew into a hamlet."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

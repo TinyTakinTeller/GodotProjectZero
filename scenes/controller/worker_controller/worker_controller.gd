@@ -58,15 +58,17 @@ func _generate(generate: bool = true) -> void:
 
 func _calculate_generated_worker_resource_from_houses(resources: Dictionary) -> int:
 	var house_workers: int = SaveFile.get_house_workers()
+	var house: int = resources.get("house", 0)
 	var resource_id: String = Game.WORKER_RESOURCE_ID
 	# [WORKAROUND] : safe_mult uses factor = 2 for reasons beyond your comprehension
-	var max_workers: int = (
-		Limits.safe_mult(house_workers, resources.get("house", 0), 2) + resources.get("firepit", 0)
-	)
+	var max_workers: int = Limits.safe_mult(house_workers, house, 2) + resources.get("firepit", 0)
 	var current_workers: int = resources.get(resource_id, 0)
 
 	var new_workers: int = 1 + int((max_workers - current_workers - 1) / house_workers)
-	if current_workers + new_workers > max_workers:
+	var is_infinite_house: bool = house >= Limits.GLOBAL_MAX_AMOUNT
+	if is_infinite_house:
+		new_workers = max_workers
+	elif current_workers + new_workers > max_workers:
 		new_workers = max_workers - current_workers
 	return new_workers
 
@@ -89,6 +91,11 @@ func _calculate_generated_amounts() -> Dictionary:
 		var r_consume: Dictionary = worker_role.get_consume()
 		var w_consume: Dictionary = worker_role.get_worker_consume()
 		var produces: Dictionary = worker_role.get_produce()
+
+		#for pid: String in produces: # handle near "Infinity" edge case ?
+		#	var produce: int = produces[pid]
+		#	var room_left: int = max(0, Limits.GLOBAL_MAX_AMOUNT - resources.get(pid, 0))
+		#	count = min(count, room_left)
 
 		var resources_eff: int = WorkerController.get_efficiency(count, r_consume, resources)
 		var workers_eff: int = WorkerController.get_efficiency(count, w_consume, SaveFile.workers)
@@ -141,6 +148,7 @@ func _connect_signals() -> void:
 	owner.ready.connect(_on_owner_ready)
 	SignalBus.worker_updated.connect(_on_worker_updated)
 	SignalBus.substance_updated.connect(_on_substance_updated)
+
 
 func _on_timeout() -> void:
 	_generate()

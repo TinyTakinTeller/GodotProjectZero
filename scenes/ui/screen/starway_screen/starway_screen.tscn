@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://br1a46uikyubt"]
+[gd_scene load_steps=4 format=3 uid="uid://br1a46uikyubt"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/starway_screen/starway_screen.gd" id="1_tsvyl"]
 [ext_resource type="PackedScene" uid="uid://3vcjyu7tgdii" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.tscn" id="2_73ey0"]
+[ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="3_v7344"]
 
 [node name="StarwayScreen" type="MarginContainer"]
 anchors_preset = 15
@@ -26,3 +27,24 @@ theme_override_constants/margin_bottom = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 8
+
+[node name="TopLabel" type="Label" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Current: 00:12:34.56 | Fastest: 00:00:09.56"
+
+[node name="LabelEffectQueue2" parent="." instance=ExtResource("3_v7344")]
+unique_name_in_owner = true
+lifetime = 2.5
+force_delay = true
+
+[node name="LabelEffectQueue1" parent="." instance=ExtResource("3_v7344")]
+unique_name_in_owner = true
+delay = 0.1
+lifetime = 2.5

@@ -9,6 +9,7 @@ var offlline_tab_data: TabData = Resources.tab_datas[TAB_DATA_ID]
 @onready var label_head: Label = %LabelHead
 @onready var margin_container_1: MarginContainer = %MarginContainer1
 @onready var margin_container_2: MarginContainer = %MarginContainer2
+@onready var death_label: Label = %DeathLabel
 
 ###############
 ## overrides ##
@@ -52,7 +53,11 @@ func _on_tab_changed(tab_data: TabData) -> void:
 
 
 func _on_offline_progress_processed(
-	seconds_delta: int, worker_progress: Dictionary, enemy_progress: Dictionary, factor: float
+	seconds_delta: int,
+	worker_progress: Dictionary,
+	enemy_progress: Dictionary,
+	factor: float,
+	death_progress: Dictionary
 ) -> void:
 	if worker_progress.is_empty() or enemy_progress.is_empty():
 		return
@@ -98,7 +103,7 @@ func _on_offline_progress_processed(
 		for resource_id: String in generated:
 			var resource: ResourceGenerator = Resources.resource_generators[resource_id]
 			var generated_amount: String = NumberUtils.format_number_scientific(
-				generated[resource_id]
+				SaveFile.scale_by_shadows(resource_id, generated[resource_id])
 			)
 
 			var generated_info: String = "+{amount} {name} \n".format(
@@ -116,6 +121,15 @@ func _on_offline_progress_processed(
 		label2.modulate = ColorSwatches.GREEN
 		margin_container_1.visible = true
 		margin_container_2.visible = true
+
+		if not death_progress.is_empty() and death_progress.get("heart", 0) > 0:
+			var singularity: int = death_progress.get("singularity", 0)
+			var heart: int = death_progress.get("heart", 0)
+			death_label.modulate = ColorSwatches.BLUE
+			death_label.text = ""
+			death_label.text += "+" + str(singularity) + " " + Locale.get_ui_label("singularity")
+			death_label.text += "\n"
+			death_label.text += "+" + str(heart) + " " + Locale.get_ui_label("heart")
 
 	if not SaveFile.prestige_dialog:
 		SignalBus.tab_clicked.emit(offlline_tab_data)

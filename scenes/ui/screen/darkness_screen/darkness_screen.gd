@@ -33,6 +33,9 @@ var _death: bool = false
 @onready var enemy_texture: EnemyTexture = %EnemyTexture
 @onready var enemy_progress_bar: EnemyProgressBar = %EnemyProgressBar
 
+@onready var darkness_mode_container: DarknessModeContainer = %DarknessModeContainer
+@onready var v_box_container: VBoxContainer = %VBoxContainer
+
 ###############
 ## overrides ##
 ###############
@@ -63,6 +66,10 @@ func _initialize() -> void:
 	soul_label_effect_queue.set_particle(particle_id)
 	click_damage_buffer_timer.wait_time = damage_buffer_time
 	click_damage_buffer_timer.start()
+
+	var has_judgement: bool = SaveFile.substances.get("judgement", 0) > 0
+	darkness_mode_container.visible = has_judgement
+	v_box_container.visible = not has_judgement
 
 
 func _load_enemy() -> void:
@@ -119,6 +126,7 @@ func _deaths_door_enabled() -> void:
 	enemy_progress_bar.visible = false
 	choice_h_box_container.visible = true
 	title_label.text = Locale.get_ui_label("deaths_door")
+
 	if _enemy_data.is_last():
 		_deaths_door_option = -1
 		if _death:
@@ -128,6 +136,19 @@ func _deaths_door_enabled() -> void:
 			enemy_progress_bar.set_display(0, 0)
 		else:
 			_handle_choice_button(0)
+
+	_check_judgement()
+
+
+func _check_judgement() -> void:
+	if _enemy_data.is_last():
+		return
+
+	var has_judgement: bool = SaveFile.substances.get("judgement", 0) > 0
+	if has_judgement:
+		var mode: int = SaveFile.settings.get("darkness_mode", 0)
+		if mode != 0:
+			_handle_choice_button(mode)
 
 
 func _deaths_door_disabled() -> void:
@@ -323,6 +344,9 @@ func _connect_signals() -> void:
 	)
 
 	SignalBus.resource_updated.connect(_on_resource_updated)
+	SignalBus.substance_updated.connect(_on_substance_updated)
+
+	SignalBus.toggle_darkness_mode_pressed.connect(_on_toggle_darkness_mode_pressed)
 
 
 func _on_resized() -> void:
@@ -402,3 +426,14 @@ func _on_texture_pixel_explosion_finished() -> void:
 func _on_resource_updated(id: String, _total: int, amount: int, _source_id: String) -> void:
 	if self.visible and id == "soulstone" and amount > 0:
 		_play_soulstone_effect(amount)
+
+
+func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
+	if id == "judgement" and total_amount > 0:
+		darkness_mode_container.visible = true
+		v_box_container.visible = false
+
+
+func _on_toggle_darkness_mode_pressed(_mode: int) -> void:
+	_check_judgement()
+	enemy_texture.set_fast_mode(_enemy_data.is_last())

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://depe0hvgcbpoj"]
+
+[ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/darkness_mode_container/darkness_mode_container.gd" id="1_g47fy"]
+
+[node name="DarknessModeContainer" type="MarginContainer"]
+theme_override_constants/margin_top = 8
+script = ExtResource("1_g47fy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ExeMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="ExecuteButton" type="Button" parent="HBoxContainer/ExeMarginContainer"]
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Execute"
+
+[node name="ManMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="ManualButton" type="Button" parent="HBoxContainer/ManMarginContainer"]
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Manual"
+
+[node name="AbsMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="AbsolveButton" type="Button" parent="HBoxContainer/AbsMarginContainer"]
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Absolve"

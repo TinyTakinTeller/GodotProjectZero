@@ -4,7 +4,7 @@ extends TextureRect
 ## tween params
 var death_animation_duration: float = 1.0
 var death_animation_end_delay: float = 0.3
-var death_animation_duration_fast: float = 0.8
+var death_animation_duration_fast: float = 0.5
 var death_animation_end_delay_fast: float = 0.2
 
 @onready var simple_tween: SimpleTween = %SimpleTween
@@ -24,7 +24,12 @@ func _ready() -> void:
 
 
 func set_fast_mode(fast: bool) -> void:
-	if fast:
+	var has_judgement: bool = SaveFile.substances.get("judgement", 0) > 0
+	var option: int = SaveFile.settings.get("darkness_mode", 0)
+	if has_judgement and option > 0 and not fast:
+		simple_tween.duration = 0.01
+		simple_tween.end_delay = 0.01
+	elif fast:
 		simple_tween.duration = death_animation_duration_fast
 		simple_tween.end_delay = death_animation_end_delay_fast
 	else:

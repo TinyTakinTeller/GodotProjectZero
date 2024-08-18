@@ -30,6 +30,7 @@ func clear_cache(h: int, m: int, a: int, b: int, p: int, s: int, w: int) -> void
 
 
 func cycles(n: int) -> Dictionary:
+	var maxed: bool = false
 	var i: int = 0
 	while i <= n:
 		i += 1
@@ -39,8 +40,9 @@ func cycles(n: int) -> Dictionary:
 			or m_total >= Limits.GLOBAL_MAX_AMOUNT
 			or p_now + p_extra >= Limits.GLOBAL_MAX_AMOUNT
 		):
+			maxed = true
 			break
-	return {"n": i, "h": h_extra, "p": p_extra, "m_total": m_total}
+	return {"max": maxed, "i": i, "h": h_extra, "p": p_extra, "m_total": m_total}
 
 
 func _cycle() -> void:

@@ -40,6 +40,7 @@ func _enter_fast_mode() -> void:
 	SignalBus.heart_click.emit()
 	_clicked = true
 	SaveFile.prestige_dialog = true
+	SaveFile.prestige_dialog_timestamp = Time.get_datetime_dict_from_system(true)
 
 
 #############

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch7uxqklej1h6"]
+[gd_scene load_steps=9 format=3 uid="uid://ch7uxqklej1h6"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/darkness_screen.gd" id="1_1yww0"]
+[ext_resource type="PackedScene" uid="uid://depe0hvgcbpoj" path="res://scenes/ui/screen/darkness_screen/darkness_mode_container/darkness_mode_container.tscn" id="2_0tk50"]
 [ext_resource type="PackedScene" uid="uid://ccpod48fjrcy1" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_juuhi"]
 [ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_pwkjq"]
 [ext_resource type="PackedScene" uid="uid://d02um03stnk8y" path="res://scenes/ui/screen/darkness_screen/enemy/enemy_texture/enemy_texture.tscn" id="3_hlysm"]
@@ -39,7 +40,15 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_top = 16
 
+[node name="DarknessModeContainer" parent="ScreenMarginContainer/TitleMarginContainer" instance=ExtResource("2_0tk50")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="VBoxContainer" type="VBoxContainer" parent="ScreenMarginContainer/TitleMarginContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="TitleLabel" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer" instance=ExtResource("2_juuhi")]

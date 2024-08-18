@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_t0567")
+order = 1
 color = Color(0, 0, 0, 1)
 sort_value = 1001
 sort_value_override = 0.0

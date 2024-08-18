@@ -32,13 +32,10 @@ func _load_from_save_file() -> void:
 
 func _load_tab_tracker_item(tab_data_id: String) -> void:
 	var tab_data: TabData = Resources.tab_datas[tab_data_id]
-	tab_data.level = SaveFile.tab_levels.get(tab_data_id, 0)
 	_add_tab_tracker_item(tab_data)
 
 
 func _update_tab_tracker_item(tab_data: TabData) -> void:
-	var tab_data_id: String = tab_data.id
-	tab_data.level = SaveFile.tab_levels[tab_data_id]
 	var tab_tracker_item: TabTrackerItem = tabs.get(tab_data.index, null)
 	if tab_tracker_item != null:
 		tab_tracker_item.refresh_title()

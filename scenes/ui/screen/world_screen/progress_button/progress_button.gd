@@ -107,19 +107,19 @@ func _update_pivot() -> void:
 ##############
 
 
-func _handle_button_up() -> void:
+func _handle_button_up(source: String = "") -> void:
 	button.disabled = true
-	SignalBus.progress_button_pressed.emit(_resource_generator)
+	SignalBus.progress_button_pressed.emit(_resource_generator, source)
 	button.release_focus()
 
 
-func _handle_button_down() -> void:
+func _handle_button_down(sound: bool = true) -> void:
 	if _resource_generator == null:
 		return
 
 	if _resource_generator.sfx_button_down:
 		Audio.play_sfx(_resource_generator.id, _resource_generator.sfx_button_down)
-	else:
+	elif sound:
 		Audio.play_sfx_id("progress_button_down")
 
 
@@ -153,16 +153,27 @@ func _connect_signals() -> void:
 	SignalBus.offline_progress_processed.connect(_on_offline_progress_processed)
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.soul.connect(_on_soul)
+	SignalBus.harvest_forest.connect(_on_harvest_forest)
 
 
 func _on_resized() -> void:
 	_update_pivot()
 
 
+func _is_on_cooldown() -> bool:
+	return progress_bar.value != 0.0
+
+
 ## calling _on_mouse_entered() here because mobile users don't have mouse_entered signal
-func _on_button_up() -> void:
-	_on_mouse_entered()
-	_handle_button_up()
+func _on_button_up(source: String = "") -> void:
+	if _is_on_cooldown() or button.disabled:
+		return
+
+	if source != "harvest_forest":
+		_on_mouse_entered()
+	else:
+		stop_unlock_animation()
+	_handle_button_up(source)
 
 
 func _on_button_down() -> void:
@@ -181,6 +192,7 @@ func _on_mouse_exited() -> void:
 func _on_progress_bar_simple_tween_animation_end() -> void:
 	button.disabled = _disabled or _is_max_amount_reached()
 	progress_bar.value = 0.0
+	SignalBus.progress_button_cooldown_end.emit(_resource_generator)
 
 
 func _on_red_color_rect_simple_tween_animation_end() -> void:
@@ -193,24 +205,28 @@ func _on_progress_button_disabled(id: String) -> void:
 		button.disabled = true
 
 
-func _on_progress_button_paid(resource_generator: ResourceGenerator) -> void:
+func _on_progress_button_paid(resource_generator: ResourceGenerator, source: String) -> void:
 	if _resource_generator == null:
 		return
 
 	if get_id() == resource_generator.id:
 		progress_bar_simple_tween.play_animation_during(_resource_generator.get_cooldown())
 
-		if _resource_generator.sfx_button_success:
-			Audio.play_sfx(_resource_generator.id, _resource_generator.sfx_button_success)
-		else:
-			Audio.play_sfx_id("progress_button_success")
+		if source != "harvest_forest":
+			if _resource_generator.sfx_button_success:
+				Audio.play_sfx(_resource_generator.id, _resource_generator.sfx_button_success)
+			else:
+				Audio.play_sfx_id("progress_button_success")
 
 
-func _on_progress_button_unpaid(resource_generator: ResourceGenerator) -> void:
+func _on_progress_button_unpaid(resource_generator: ResourceGenerator, source: String) -> void:
 	if get_id() == resource_generator.id:
-		red_color_rect_simple_tween.play_animation()
+		if source == "harvest_forest":
+			_on_red_color_rect_simple_tween_animation_end()
+		else:
+			red_color_rect_simple_tween.play_animation()
 
-		Audio.play_sfx_id("progress_button_fail")
+			Audio.play_sfx_id("progress_button_fail")
 
 
 func _on_resource_ui_updated(
@@ -224,7 +240,7 @@ func _on_resource_ui_updated(
 
 
 func _on_offline_progress_processed(
-	seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
+	seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float,  _death_progress: Dictionary
 ) -> void:
 	_on_cooldown_skip(seconds_delta)
 
@@ -252,6 +268,12 @@ func _on_soul() -> void:
 	if get_id() == "soul":
 		button.text = "Coming Soon"
 		button.modulate = ColorSwatches.YELLOW
+
+
+func _on_harvest_forest(order: int) -> void:
+	if _resource_generator != null and _resource_generator.order == order:
+		#and not _resource_generator.is_unique()
+		_on_button_up("harvest_forest")
 
 
 ############

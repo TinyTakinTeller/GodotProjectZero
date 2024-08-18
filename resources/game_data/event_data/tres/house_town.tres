@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_xsanl")
 id = "house_town"
-text = "Taking a stroll through the streets, thousands of people greet my presence."
 vars = []
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.662745)

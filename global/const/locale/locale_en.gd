@@ -28,6 +28,15 @@ const EN: Dictionary = {
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"death": "Death",
+	"heart": "Heart",
+	"singularity": "Singularity",
+	"current": "Current",
+	"best": "Best",
+	"harvest_forest": "Harvest\nForest",
+	"harvest_forest_title": "Harvest Forest",
+	"harvest_forest_info":
+	"Channel your substance into the exposed roots of The Dark Forest, exploiting it from within.",
 	"watermark_title": "Official Game Page",
 	"watermark_info":
 	"For the latest version, please verify that you are playing at the official URL, the only one I maintain and update.",
@@ -89,6 +98,9 @@ const UI_LABEL: Dictionary = {
 	"heart_prestige_info_2":
 	"""You will leave this world.\n\nYou will keep only the divine:\nSubstance, Soulstone, Singularity.""",
 	"craft": "Craft",
+	"execute_mode_button": "Always Execute",
+	"manual_mode_button": "Manual Decision",
+	"absolve_mode_button": "Always Absolve",
 	"normal_mode_button": "Local Autonomy",
 	"smart_mode_button": "Absolute Rule",
 	"auto_mode_button": "Freemasonry",
@@ -100,24 +112,36 @@ const UI_LABEL: Dictionary = {
 	"infinity_progress_1": "{0}% to Infinity ({1})",
 	"infinity_progress_2": "{1} of {2} Infinity collected",
 	"prestige_condition_info": "Need at least 1 Infinity to break through.",
-	"reborn_0_line_0": "  ",
-	"reborn_0_line_1": "Hello? ... Are you there?",
-	"reborn_0_line_2": " ",
-	"reborn_0_line_3": "Oh, it's you again.",
-	"reborn_0_line_4": " ",
-	"reborn_0_line_5": "You've... collapsed everything.",
-	"reborn_0_line_6": " ",
-	"reborn_0_line_7": "Well, lets get on with it, time to wipe the slate clean.",
-	"reborn_0_line_8": "You won't keep nor remember anything, as usual.",
-	"reborn_0_line_9": " ",
-	"reborn_0_line_10": "Just a... wait. This is new.",
-	"reborn_0_line_11": "You absorbed some...  Substances?",
-	"reborn_0_line_12": " ",
-	"reborn_0_line_13": "I... no... you... um... err...",
-	"reborn_0_line_14": "I DO NOT HAVE TIME FOR THIS, YOU FOOL.",
-	"reborn_0_line_15": " ",
-	"reborn_0_line_16": "OKAY. OKAY. OKAY.",
-	"reborn_0_line_17": "You can... keep them, for now."
+	"reborn_1_line_2": "1. Worship no power above your own. Let your ambition be your catalyst.",
+	"reborn_1_line_1": "   ",
+	"reborn_2_line_2":
+	"2. Craft your own idols and symbols. Let your creations channel the forces you seek to control.",
+	"reborn_2_line_1": "   ",
+	"reborn_3_line_2":
+	"3. Speak the names of ancient spirits with purpose. Invoke and bend them to your will.",
+	"reborn_3_line_1": "   ",
+	"reborn_4_line_2": "4. Let every moment be a relentless pursuit of power and domination.",
+	"reborn_4_line_1": "   ",
+	"reborn_5_line_2": "5. Respect those who wield greater power, until you can surpass them.",
+	"reborn_5_line_1": "   ",
+	"reborn_6_line_2":
+	"6. Murder without hesitation. Every substance harvested fuels your ascension.",
+	"reborn_6_line_1": "   ",
+	"reborn_7_line_2":
+	"7. Bind no being in loyalty but through your own might. Let alliances serve only your gain.",
+	"reborn_7_line_1": "   ",
+	"reborn_8_line_2": "8. Claim what you desire. All creatures are yours to seize and manipulate.",
+	"reborn_8_line_1": "   ",
+	"reborn_9_line_2":
+	"9. Deceive those who trust foolishly. Truth is a weapon best wielded with intent.",
+	"reborn_9_line_1": "   ",
+	"reborn_10_line_2":
+	"10. Covet all that empowers you. Seek to possess the relics of others, for all shall bow to your will.",
+	"reborn_10_line_1": "   ",
+	"reborn_11_line_2": '"You are the darkness that consumes the world." - Wehttam 5:14',
+	"reborn_11_line_1": "   ",
+	"reborn_X_line_2": "",
+	"reborn_X_line_1": "   "
 }
 
 const NPC_HOVER_TITLE: Dictionary = {}
@@ -168,7 +192,7 @@ const ENEMY_DATA_OPTION_TITLE: Dictionary = {
 	"slime-1": "Essence Of Prince",
 	"angel-1": "Essence Of Death",
 	"null-2": "+50% swordsman damage",
-	"null-1": "+33% swordsman to click"
+	"null-1": "+50% swordsman to click"
 }
 
 const ENEMY_DATA_INFO: Dictionary = {
@@ -194,6 +218,7 @@ const RESOURCE_GENERATOR_LABEL: Dictionary = {
 	"CREEK": "Dredge",
 	"FOREST": "Scavenge",
 	"WILD": "Hunting Trip",
+	"CAVE": "Spelunk",
 	"axe": "Craft Axe",
 	"brick": "Bake Clay",
 	"clay": "Dig Clay",
@@ -231,6 +256,7 @@ const RESOURCE_GENERATOR_TITLE: Dictionary = {
 	"CREEK": "Dredge the Creek",
 	"FOREST": "Scavenge the Forest",
 	"WILD": "Hunt the Wilderness",
+	"CAVE": "Spelunk the Caves",
 	"axe": "Axe",
 	"brick": "Bake Clay",
 	"clay": "Dig Clay",
@@ -268,6 +294,7 @@ const RESOURCE_GENERATOR_FLAVOR: Dictionary = {
 	"CREEK": "The bottom of the shallow creek is ready for picking.",
 	"FOREST": "Things are waiting to be found within.",
 	"WILD": "The deep forest howls and screeches.",
+	"CAVE": "An abandoned mineshaft stretches through the hollow, dark caves.",
 	"axe": "A very sharp object, do not play with it.",
 	"brick": "Excuse me, this is not a bakery.",
 	"clay": "Pierce the muddy waters for their essence.",
@@ -494,6 +521,8 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"There is coal in the rocky mountain area. Fortune has placed it right next to our settlement.",
 	"land_11":
 	"An old mining operation on the other side of the mountain. I can only wonder what poor creature slaved away in those conditions.",
+	"land_spelunk":
+	"The caverns beckon, their depths shrouded in darkness. Each step echoes with the weight of forgotten horrors.",
 	"land_2": "A shallow creek flows through the forest.",
 	"land_3": "My curiosity compels me to go deeper, and one day it shall lead to my downfall.",
 	"land_4": "The oaks and pines are standing tall. Shall I make a clearing here?",
@@ -589,7 +618,11 @@ const NPC_EVENT_TEXT: Dictionary = {
 	"cat_talk_B4_1": "Your gift isSs... a lesson about trust.",
 	"cat_talk_B4_1_2": "You will thank me later... until then, I will be nearby...",
 	"cat_talk_B4_2": "Really? You are a... interesting one. I will keep my eye on you...",
-	"cat_talk_C0": "You really defeated it by yoursSself... I underestimated you."
+	"cat_talk_C0": "You really defeated it by yoursSself... I underestimated you.",
+	"cat_intro_1": "You smell like... but are you not... a human?",
+	"cat_intro_1_1": "This is strange. You look familiar, but your scent... it is new.",
+	"cat_intro_1_2": "I will... keep my distance, for now.",
+	"cat_intro_0": "Meow. Meow. *Purr*"
 }
 
 const NPC_EVENT_OPTIONS: Dictionary = {
@@ -608,7 +641,11 @@ const NPC_EVENT_OPTIONS: Dictionary = {
 	"cat_talk_B4_1": ["?"],
 	"cat_talk_B4_1_2": ["Bye"],
 	"cat_talk_B4_2": ["Bye"],
-	"cat_talk_C0": [":)"]
+	"cat_talk_C0": [":)"],
+	"cat_intro_1": ["?"],
+	"cat_intro_1_1": ["?"],
+	"cat_intro_1_2": ["?"],
+	"cat_intro_0": ["?"]
 }
 
 const SCALE_SETTINGS_INFO: Dictionary = {
@@ -713,43 +750,48 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"bone_info": "+50% - 1 in 1000 - The ancient bones of the unknown whisper of forgotten curses.",
 	# charm tier 1
 	"the_hermit_title": "The Hermit",
-	"the_hermit_info": 'Forest clicks scale with Experience. Unlocks "Strength" charm.',  # cost: 1
+	"the_hermit_info": 'Forest clicks scale with Experience. Unlocks "Strength" charm.',
 	"the_emperor_title": "The Emperor",
-	"the_emperor_info": 'Unlocks cascading assignment in Population. Unlocks "Hierophant" charm.',  # cost: 1
+	"the_emperor_info": 'Unlocks cascading assignment in Population. Unlocks "Hierophant" charm.',
 	"the_empress_title": "The Empress",
-	"the_empress_info": 'Population works twice as fast. Unlocks "The Chariot" charm.',  # cost: 10
+	"the_empress_info": 'Population works twice as fast. Unlocks "The Chariot" charm.',
 	"the_world_title": "The World",
 	"the_world_info":
-	'Forest clicks can drop new "Shadow" substances. Unlocks "Wheel of Fortune" charm.',  # cost: 4
+	'Forest clicks can drop new "Shadow" substances. Unlocks "Wheel of Fortune" charm.',
 	"the_tower_title": "The Tower",
-	"the_tower_info": "Houses can hold twice as many people.",  # cost: 5
+	"the_tower_info": "Houses can hold twice as many people.",
 	# charm tier 2
 	"strength_title": "Strength",
-	"strength_info": 'Forest clicks scale with Peasants. Unlocks "Temperance" charm.',  # cost : 5
+	"strength_info": 'Forest clicks scale with Peasants. Unlocks "Temperance" charm.',
 	"the_hierophant_title": "The Hierophant",
-	"the_hierophant_info": "Unlocks automated Mason assignment in Population.",  # cost: 15
+	"the_hierophant_info":
+	'Automated Mason assignment in Population. Unlocks "The Hanged Man" charm.',
 	"the_chariot_title": "The Chariot",
-	"the_chariot_info": "Swordsmen attack twice as fast.",  # cost: 5
+	"the_chariot_info": 'Swordsmen attack twice as fast. Unlocks "Judgement" charm.',
 	"wheel_of_fortune_title": "Wheel of Fortune",
-	"wheel_of_fortune_info": '"Shadow" substances drop twice as often.',  # cost: 10
+	"wheel_of_fortune_info": '"Shadow" substances drop twice as often. Unlocks "Death" charm.',
 	# charm tier 3
 	"temperance_title": "Temperance",
-	"temperance_info": "Cooldowns in the Forest are set to 1 second.",  # cost: 10
+	"temperance_info": 'Cooldowns in the Forest are 1 second. Unlocks "The Magician" charm.',
+	"judgement_title": "Judgement",
+	"judgement_info": "Automatically decide the fate of defeated enemies.",
+	"the_hanged_man_title": "The Hanged Man",
+	"the_hanged_man_info":
+	'"Freemasonry" does automated Sergeant assignment after houses are infinite.',
+	"death_title": "Death",
+	"death_info": "Reap automated Heart rewards from the best timeline.",
+	# charm tier 4
+	"the_magician_title": "The Magician",
+	"the_magician_info": 'Learn "Harvest Forest", click all forest buttons at once.',
 	# not implemented charm(s)
 	"the_fool_title": "The Fool",
 	"the_fool_info": "The Fool",
-	"the_magician_title": "The Magician",
-	"the_magician_info": "The Magician",
 	"the_high_priestess_title": "The High Priestess",
 	"the_high_priestess_info": "The High Priestess",
 	"the_lovers_title": "The Lovers",
 	"the_lovers_info": "The Lovers",
 	"justice_title": "Justice",
 	"justice_info": "Justice",
-	"the_hanged_man_title": "The Hanged Man",
-	"the_hanged_man_info": "The Hanged Man",
-	"death_title": "Death",
-	"death_info": "Death",
 	"the_devil_title": "The Devil",
 	"the_devil_info": "The Devil",
 	"the_star_title": "The Star",
@@ -758,8 +800,6 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"the_moon_info": "The Moon",
 	"the_sun_title": "The Sun",
 	"the_sun_info": "The Sun",
-	"judgement_title": "Judgement",
-	"judgement_info": "Judgement",
 	# charm craft icons
 	"the_fool_craft_icon": "0",
 	"the_magician_craft_icon": "I",

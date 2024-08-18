@@ -22,7 +22,8 @@ const SFX_ID: Dictionary = {
 	"diary_entry_2": WRITING_1_4,
 	"cat_click": PIANO_1,
 	"cat_talking": KEYBOARD_TYPING,
-	"flesh": BLOOD_GORE_2_1
+	"flesh": BLOOD_GORE_2_1,
+	"magic": MAGICAL_INTERFACE_3_2_CUT
 }
 
 # we're expecting long file paths here, so don't check for line length
@@ -116,4 +117,7 @@ const WHOOSH_METAL_3_1 = preload(
 
 const BLOOD_GORE_2_1 = preload(
 	"res://assets/audio/indie_friendly_sounds_survival/_resource/blood_&_gore_2_1.wav"
+)
+const MAGICAL_INTERFACE_3_2_CUT = preload(
+	"res://assets/audio/indie_friendly_sounds_survival/_edited/magical_interface_3_2_cut.wav"
 )

@@ -142,7 +142,13 @@ func _get_max_mult(id: String, mult: int) -> int:
 
 
 ## add all required roles automatically (auto-add ONLY FOR resources ... sergeant requires peasants)
-func _handle_smart_add(worker_role: WorkerRole, override_factor: int = -1) -> void:
+func _handle_smart_add(
+	worker_role: WorkerRole, override_factor: int = -1, sound: bool = true
+) -> void:
+	var source: String = name
+	if not sound:
+		source = "NO_SOUND"
+
 	var id: String = worker_role.id
 	var required: Dictionary = requirements_map[id]
 
@@ -151,15 +157,16 @@ func _handle_smart_add(worker_role: WorkerRole, override_factor: int = -1) -> vo
 		factor = SaveFile.get_settings_population_scale()
 	var mult: int = _get_max_mult(id, factor)
 	if mult <= 0:
-		SignalBus.worker_allocated.emit(id, 0, name)
+		SignalBus.worker_allocated.emit(id, 0, source)
 		return
 
 	# workaround for rounding errors near 10^18
 	var q: int = 1000000000000000000  # (1000q = 10^18)
 	var workers: int = SaveFile.workers.get(id, 0)
 	var result: int = workers + mult
-	for round_level: int in range(10):
+	while q >= 10000:
 		if result >= q:
+			q /= 1000
 			var max_mult: int = _get_max_mult(id, Limits.GLOBAL_MAX_AMOUNT)
 			var max_result: int = workers + max_mult
 			var max_n: int = max_result / q
@@ -169,22 +176,29 @@ func _handle_smart_add(worker_role: WorkerRole, override_factor: int = -1) -> vo
 				if mult <= 0:
 					SignalBus.worker_allocated.emit(id, 0, "NO_SOUND")
 					return
-		else:
-			q /= 10000
-			if q <= 1000:
-				break
+			break
+		q /= 10
 
 	for req: String in required:
 		var amount: int = Limits.safe_mult(required[req], mult)
 		SignalBus.worker_allocated.emit(req, amount, "NO_SOUND")
-	SignalBus.worker_allocated.emit(id, mult, name)
+	SignalBus.worker_allocated.emit(id, mult, source)
 
 
-func _handle_smart_del(worker_role: WorkerRole) -> void:
+func _handle_smart_del(
+	worker_role: WorkerRole, override_factor: int = -1, sound: bool = true
+) -> void:
+	var source: String = name
+	if not sound:
+		source = "NO_SOUND"
+
 	var id: String = worker_role.id
 	var required: Dictionary = requirements_map[id]
 
-	var mult: int = SaveFile.get_settings_population_scale()
+	var factor: int = override_factor
+	if factor < 0:
+		factor = SaveFile.get_settings_population_scale()
+	var mult: int = factor
 
 	# cannot del more than required by other roles
 	var produce_resource_id: String = worker_role.get_first_produce()
@@ -193,7 +207,7 @@ func _handle_smart_del(worker_role: WorkerRole) -> void:
 			produce_resource_id, 0
 		)
 		if role_eff < 0:
-			SignalBus.worker_allocated.emit(id, 0, name)
+			SignalBus.worker_allocated.emit(id, 0, source)
 			return
 		mult = min(mult, role_eff)
 
@@ -202,7 +216,7 @@ func _handle_smart_del(worker_role: WorkerRole) -> void:
 	mult = min(mult, workers)
 
 	if mult <= 0:
-		SignalBus.worker_allocated.emit(id, 0, name)
+		SignalBus.worker_allocated.emit(id, 0, source)
 		return
 
 	for req: String in required:
@@ -210,7 +224,7 @@ func _handle_smart_del(worker_role: WorkerRole) -> void:
 		var req_workers: int = SaveFile.workers.get(req, 0)
 		amount = min(amount, req_workers)
 		SignalBus.worker_allocated.emit(req, -amount, "NO_SOUND")
-	SignalBus.worker_allocated.emit(id, -mult, name)
+	SignalBus.worker_allocated.emit(id, -mult, source)
 
 
 #############
@@ -248,10 +262,17 @@ func _on_worker_efficiency_set(_efficiencies: Dictionary, generate: bool) -> voi
 	var mode: int = SaveFile.settings.get("manager_mode", 0)
 	if generate and has_the_hierophant and mode == 2:
 		var mason_worker_role: WorkerRole = Resources.worker_roles.get("mason")
-		_handle_smart_add(mason_worker_role, Limits.GLOBAL_MAX_AMOUNT)
+		var house: int = SaveFile.resources.get("house", 0)
+		var has_hanged_man: bool = SaveFile.substances.get("the_hanged_man", 0) > 0
+		if has_hanged_man and house >= Limits.GLOBAL_MAX_AMOUNT:
+			var sergeant_worker_role: WorkerRole = Resources.worker_roles.get("sergeant")
+			_handle_smart_del(mason_worker_role, Limits.GLOBAL_MAX_AMOUNT, false)
+			_handle_smart_add(sergeant_worker_role, Limits.GLOBAL_MAX_AMOUNT, false)
+		else:
+			_handle_smart_add(mason_worker_role, Limits.GLOBAL_MAX_AMOUNT, false)
 
 
 func _on_offline_progress_processed(
-	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float
+	_seconds_delta: int, _worker_progress: Dictionary, _enemy_progress: Dictionary, _factor: float,  _death_progress: Dictionary
 ) -> void:
 	_on_worker_efficiency_set({}, true)

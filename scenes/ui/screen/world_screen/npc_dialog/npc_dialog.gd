@@ -187,6 +187,14 @@ func _on_npc_event_saved(npc_event: NpcEvent) -> void:
 	if !is_event_active():
 		_next_text = npc_event.get_text()
 		_target_id = npc_event.get_id()
+
+		if npc_event.is_interactable():
+			yes_button.text = npc_event.get_options(0)
+			if npc_event.get_options_size() > 1:
+				no_button.text = npc_event.get_options(1)
+			else:
+				no_button.text = ""
+
 		play_typing_animation()
 
 

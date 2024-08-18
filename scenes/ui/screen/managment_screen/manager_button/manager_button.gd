@@ -105,6 +105,7 @@ func _display_defaults() -> void:
 	_update_pivot()
 	_propagate_theme_to_virtual_children()
 	label_effect_queue.set_particle(particle_id)
+	_set_amount(SaveFile.workers.get(get_id(), 0))
 
 
 func _propagate_theme_to_virtual_children() -> void:

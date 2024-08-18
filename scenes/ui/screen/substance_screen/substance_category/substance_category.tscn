@@ -25,6 +25,16 @@ theme_override_constants/margin_bottom = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Category1VBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="Category1VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="ToggleButton" type="Button" parent="Category1VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+text = "-"
+
 [node name="MarginContainer1" type="MarginContainer" parent="Category1VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 2

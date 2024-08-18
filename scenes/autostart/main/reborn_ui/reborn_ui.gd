@@ -1,11 +1,12 @@
 class_name RebornUI
 extends Control
 
+const FORCE_CLEAR: bool = true
+
 @export var label_typing_scene: PackedScene
 
-var _index: int = -1
+var _index: int = 0
 var _text: String = ""
-var _next_text: String = ""
 var _is_last_text: bool = false
 
 @onready var label_v_box_container: VBoxContainer = %LabelVBoxContainer
@@ -27,17 +28,24 @@ func _ready() -> void:
 
 
 func push_next_label() -> void:
-	var reborn: int = SaveFile.substances.get("heart", 0)
+	if FORCE_CLEAR:
+		NodeUtils.clear_children_of(label_v_box_container, LabelTyping)
+
+	var reborn: int = SaveFile.substances.get("heart", 0) + 1
 
 	_index += 1
-	_text = Locale.get_ui_label("reborn_" + str(reborn) + "_line_" + str(_index))
-	_next_text = Locale.get_ui_label("reborn_" + str(reborn) + "_line_" + str(_index + 1))
-	_is_last_text = not StringUtils.is_not_empty(_next_text)
+	var key: String = "reborn_" + str(reborn) + "_line_" + str(_index)
+	_text = Locale.get_ui_label(key)
+	if StringUtils.is_empty(_text) and not _is_last_text:
+		_text = "..."
+		_is_last_text = true
+	if not _is_last_text:
+		var next_key: String = "reborn_" + str(reborn) + "_line_" + str(_index + 1)
+		var next_text: String = Locale.get_ui_label(next_key)
+		if StringUtils.is_empty(next_text):
+			_is_last_text = true
 
 	button.visible = true
-	if _is_last_text:
-		button.text = "???"
-
 	if _text == " ":
 		_on_typing_animation_end()
 	elif StringUtils.is_not_empty(_text):
@@ -65,10 +73,10 @@ func _add_label_typing(text: String) -> void:
 	label_typing.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label_typing.autowrap_mode = TextServer.AUTOWRAP_OFF
 
+	Audio.play_sfx_id("cat_talking", 0.0)
+
 	label_typing.typing_animation_end.connect(_on_typing_animation_end)
 	label_typing.play_typing_animation()
-
-	Audio.play_sfx_id("cat_talking", 0.0)
 
 
 #############
