@@ -130,6 +130,9 @@ func _on_offline_progress_processed(
 			death_label.text += "+" + str(singularity) + " " + Locale.get_ui_label("singularity")
 			death_label.text += "\n"
 			death_label.text += "+" + str(heart) + " " + Locale.get_ui_label("heart")
+			death_label.visible = true
+		else:
+			death_label.visible = false
 
 	if not SaveFile.prestige_dialog:
 		SignalBus.tab_clicked.emit(offlline_tab_data)
