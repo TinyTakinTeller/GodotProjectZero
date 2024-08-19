@@ -197,21 +197,22 @@ const ENEMY_DATA_OPTION_TITLE: Dictionary = {
 
 const ENEMY_DATA_INFO: Dictionary = {
 	"ambassador": "This ancient colossal beast blocks the way. It refuses to budge before you.",
-	"rabbit":
-	"Innocent at a glance, it wishes not to be perceived.",
+	"rabbit": "Innocent at a glance, it wishes not to be perceived.",
 	"bird":
-	'The shadow-touched bird admonishes you: “Stop your crusade at once, human,” it cries out.',
-	"wolf": "Advanced in age and without family, this silver-haired beast fights to protect the secrets of oak and moon.",
-	"void": "The trespassers turned ontologically unstable. Now all that remains are aimless amalgamates drifting desolately through reality.",
-	"spider":
-	"The architect of boundaries, her webs help keep light intrusions at bay.",
+	'The shadow-touched bird admonishes you: "Stop your crusade at once, human," it cries out.',
+	"wolf":
+	"Advanced in age and without family, this silver-haired beast fights to protect the secrets of oak and moon.",
+	"void":
+	"The trespassers turned ontologically unstable... aimlessly drifting through desolated reality.",
+	"spider": "The architect of boundaries, her webs help keep light intrusions at bay.",
 	"dragon":
-	"Of shimmering scales and fiery eyes, the Dragon stands proud before the gates. The castle is a prison, the Dragon its guard.",
+	"Of shimmering scales and fiery eyes, the Dragon stands proud before the castle gates.",
 	"dino":
 	"The primordial behemoth offers an alliance, provided you step no further; it knows it does so in vain.",
 	"skeleton": "Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
 	"slime": "Vile ooze, rapid in movement and momentum, unwilling to talk.",
-	"angel": ‘Gray flames surround the angel, its face covered by a silver mask. It shakes its head, as if saying “After this, we both shall be failures.”’
+	"angel":
+	"Gray flames surround the celestial being, its face covered by a silver mask... It remains silent."
 }
 
 const RESOURCE_GENERATOR_LABEL: Dictionary = {
@@ -695,13 +696,13 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"spirit_ambassador_info":
 	"This ancient colossal beast blocks the way towards the edge of the forest.",
 	"essence_ambassador_info":
-	"It stands alone by the forest’s edge. Nobody leaves, nobody enters.",
+	"It stands alone by the forest's edge. Nobody leaves, nobody enters.",
 	"spirit_rabbit_info":
 	"Though sickly and on the brink of death, there is a faint smile forming on the face of the rabbit.",
 	"essence_rabbit_info":
 	"Once an innocent heart, now forevermore tainted by but a drop of the abyss.",
 	"spirit_bird_info":
-	"Battered yet unbroken, the beast finally sends out the message it longed to spread: a warning. It echoes out deep into the forest.”,
+	"Battered yet unbroken, the beast sends out the message of a warning. It echoes out deep into the forest.",
 	"essence_bird_info":
 	"Its distant warbles spell tale of doom that can oft be heard from lands beyond this accursed forest.",
 	"spirit_wolf_info":
@@ -710,10 +711,9 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"It wanders mindlessly, peering into the darkness for someone… or something…",
 	"spirit_void_info":
 	"The amalgamation wails no longer, floating relaxedly by your side, humming a playful nursery rhyme.",
-	"essence_void_info":
-	"Creatio ex nihilo, it wails in remembrance of sweet inexistence.",
+	"essence_void_info": "Creatio ex nihilo, it wails in remembrance of sweet inexistence.",
 	"spirit_spider_info":
-	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provide pleasant dreams to the ill-fated and children alike.",
+	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provide pleasant dreams.",
 	"essence_spider_info":
 	"She weaves webs of miracles and dreams, but coincidentally, has lost her own…",
 	"spirit_dragon_info":
@@ -721,19 +721,18 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"essence_dragon_info":
 	"A feral beast it stood in life, and yet still leashed by the darkness itself.",
 	"spirit_dino_info":
-	"The predecessor to all life stands among you, no different than the millions of other wandering spirits that have wandered these planes…",
+	"The predecessor to all life stands among you, no different than the other wandering spirits...",
 	"essence_dino_info":
-	"The origin of life remains a mystery to many, grinding away at their sanity, yet the beings beyond us claim to know the answer… as does this behemoth.",
+	"The origin of life remains a mystery to many, yet this one claims to know the answers...",
 	"spirit_skeleton_info":
-	"Echoing whispers whimpering about hope surround this reanimated saint. The Celestial Acolyte now gives you advice on the outcomes of all things.",
+	'Echoing whispers whimpering about hope surround it: "The outcomes of all things are written in the bones..."',
 	"essence_skeleton_info":
-	"It trudged upon the winding dirt path, begging and praying for mercy to the stars above. Some voices are too insignificant to be heard.",
+	"It trudged upon the winding dirt path, begging and praying for mercy to the stars above...",
 	"spirit_slime_info":
-	“Despite the countless failures, this slime tries still to regain its royal form”,
+	"Despite the countless failures, this slime tries still to regain its royal form.",
 	"essence_slime_info":
-	“Even in death, its shapeless form pulsates softly. Beseeching you for true death.”,
-	"spirit_angel_info":
-	‘“This one,” they point towards themselves, “was not worthy of mercy.”’,
+	"Even in death, its shapeless form pulsates softly. Beseeching you for true death.",
+	"spirit_angel_info": '"This one," they point towards themselves, "was not worthy of mercy."',
 	"essence_angel_info":
 	"Death arrives to all equally, a truth that brings comfort to some and fear to others.",
 	# shadow "+x% mortal resources.",
