@@ -196,22 +196,23 @@ const ENEMY_DATA_OPTION_TITLE: Dictionary = {
 }
 
 const ENEMY_DATA_INFO: Dictionary = {
-	"ambassador": "This ancient colossal beast blocks the way towards the edge of the forest.",
-	"rabbit":
-	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
+	"ambassador": "This ancient colossal beast blocks the way. It refuses to budge before you.",
+	"rabbit": "Innocent at a glance, it wishes not to be perceived.",
 	"bird":
-	'An ominous bird with inky black feathers, echoing haunting cries: "Stop thisSs cruSsade at once... human."',
-	"wolf": "A ferocious guardian with a sleek, silver coat... protecting the forest's secrets.",
-	"void": "Ethereal entities drifting aimlessly, fused remnants of those who dared to trespass.",
-	"spider":
-	"Humongous spider weaving the forest walls, ensuring no light intrudes upon these eternal dark lands.",
+	'The shadow-touched bird admonishes you: "Stop your crusade at once, human," it cries out.',
+	"wolf":
+	"Advanced in age and without family, this silver-haired beast fights to protect the secrets of oak and moon.",
+	"void":
+	"The trespassers turned ontologically unstable... aimlessly drifting through desolated reality.",
+	"spider": "The architect of boundaries, her webs help keep light intrusions at bay.",
 	"dragon":
-	"Majestic and terrifying beast, shimmering scales. Protects the high keep castle gates.",
+	"Of shimmering scales and fiery eyes, the Dragon stands proud before the castle gates.",
 	"dino":
-	"Towering, colossal behemoth. It comes offering a dark alliance if you step NO further...",
+	"The primordial behemoth offers an alliance, provided you step no further; it knows it does so in vain.",
 	"skeleton": "Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
-	"slime": 'Gelatinous entity with a fluid, changing form. - "LetsSs dance... my friend."',
-	"angel": "Celestial being, a conduit for everything that was and will be. It remainsSs silent."
+	"slime": "Vile ooze, rapid in movement and momentum, unwilling to talk.",
+	"angel":
+	"Gray flames surround the celestial being, its face covered by a silver mask... It remains silent."
 }
 
 const RESOURCE_GENERATOR_LABEL: Dictionary = {
@@ -672,70 +673,68 @@ const SCALE_SETTINGS_INFO: Dictionary = {
 
 const SUBSTANCE_TEXT: Dictionary = {
 	# spirit & essence
-	"spirit_rabbit_title": "Spirit of Child",
-	"spirit_bird_title": "Spirit of Messenger",
-	"spirit_wolf_title": "Spirit of Beast",
-	"spirit_void_title": "Spirit of Void",
-	"spirit_spider_title": "Spirit of Warden",
-	"spirit_dragon_title": "Spirit of Guardian",
-	"spirit_dino_title": "Spirit of Ambassador",
-	"spirit_skeleton_title": "Spirit of Acolyte",
-	"spirit_slime_title": "Spirit of Prince",
-	"spirit_angel_title": "Spirit of Death",
-	"essence_rabbit_title": "Essence Of Child",
-	"essence_bird_title": "Essence Of Messenger",
-	"essence_wolf_title": "Essence Of Beast",
-	"essence_void_title": "Essence Of Void",
-	"essence_spider_title": "Essence of Warden",
-	"essence_dragon_title": "Essence of Guardian",
-	"essence_dino_title": "Essence Of Ambassador",
-	"essence_skeleton_title": "Essence Of Acolyte",
-	"essence_slime_title": "Essence Of Prince",
-	"essence_angel_title": "Essence Of Death",
+	"spirit_rabbit_title": "Spirit of a purified child",
+	"spirit_bird_title": "Spirit of a swift courier",
+	"spirit_wolf_title": "Spirit of a valiant defender",
+	"spirit_void_title": "Spirit of misshapen void",
+	"spirit_spider_title": "Spirit of a dreamweaving warden",
+	"spirit_dragon_title": "Spirit of a graceful guardian",
+	"spirit_dino_title": "Spirit of a volatile ambassador",
+	"spirit_skeleton_title": "Spirit of the Celestial Acolyte",
+	"spirit_slime_title": "Spirit of a wondrous and cursed prince",
+	"spirit_angel_title": "Spirit of temperate death",
+	"essence_rabbit_title": "Essence of an innocuous child",
+	"essence_bird_title": "Essence of a hopeless courier",
+	"essence_wolf_title": "Essence of a guilt-ridden defender",
+	"essence_void_title": "Essence of the shrieking void",
+	"essence_spider_title": "Essence of a forgotten warden",
+	"essence_dragon_title": "Essence of a fallen guardian",
+	"essence_dino_title": "Essence of a doomed ambassador",
+	"essence_skeleton_title": "Essence of the ghastly Acolyte",
+	"essence_slime_title": "Essence of a mad prince",
+	"essence_angel_title": "Essence of pointless death",
 	"spirit_ambassador_info":
 	"This ancient colossal beast blocks the way towards the edge of the forest.",
 	"essence_ambassador_info":
-	"This ancient colossal beast blocks the way towards the edge of the forest.",
+	"It stands alone by the forest's edge. Nobody leaves, nobody enters.",
 	"spirit_rabbit_info":
-	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
+	"Though sickly and on the brink of death, there is a faint smile forming on the face of the rabbit.",
 	"essence_rabbit_info":
-	"Seemingly innocent creature, moving silently through the forest. It does not want to be clicked.",
+	"Once an innocent heart, now forevermore tainted by but a drop of the abyss.",
 	"spirit_bird_info":
-	'An ominous bird with inky black feathers, echoing haunting cries: "Stop thisSs cruSsade at once... human."',
+	"Battered yet unbroken, the beast sends out the message of a warning. It echoes out deep into the forest.",
 	"essence_bird_info":
-	'An ominous bird with inky black feathers, echoing haunting cries: "Stop thisSs cruSsade at once... human."',
+	"Its distant warbles spell tale of doom that can oft be heard from lands beyond this accursed forest.",
 	"spirit_wolf_info":
-	"A ferocious guardian with a sleek, silver coat... protecting the forest's secrets.",
+	"The once melancholic wolf found a new purpose under your care. Do not let it down.",
 	"essence_wolf_info":
-	"A ferocious guardian with a sleek, silver coat... protecting the forest's secrets.",
+	"It wanders mindlessly, peering into the darkness for someone… or something…",
 	"spirit_void_info":
-	"Ethereal entities drifting aimlessly, fused remnants of those who dared to trespass.",
-	"essence_void_info":
-	"Ethereal entities drifting aimlessly, fused remnants of those who dared to trespass.",
+	"The amalgamation wails no longer, floating relaxedly by your side, humming a playful nursery rhyme.",
+	"essence_void_info": "Creatio ex nihilo, it wails in remembrance of sweet inexistence.",
 	"spirit_spider_info":
-	"Humongous spider weaving the forest walls, ensuring no light intrudes upon these eternal dark lands.",
+	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provide pleasant dreams.",
 	"essence_spider_info":
-	"Humongous spider weaving the forest walls, ensuring no light intrudes upon these eternal dark lands.",
+	"She weaves webs of miracles and dreams, but coincidentally, has lost her own…",
 	"spirit_dragon_info":
-	"Majestic and terrifying beast, shimmering scales. Protects the high keep castle gates.",
+	"Jailor-turned-custodian, its scales shimmer under the night sky, illuminating the path ahead with its radiant glow.",
 	"essence_dragon_info":
-	"Majestic and terrifying beast, shimmering scales. Protects the high keep castle gates.",
+	"A feral beast it stood in life, and yet still leashed by the darkness itself.",
 	"spirit_dino_info":
-	"Towering, colossal behemoth. It comes offering a dark alliance if you step NO further...",
+	"The predecessor to all life stands among you, no different than the other wandering spirits...",
 	"essence_dino_info":
-	"Towering, colossal behemoth. It comes offering a dark alliance if you step NO further...",
+	"The origin of life remains a mystery to many, yet this one claims to know the answers...",
 	"spirit_skeleton_info":
-	"Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
+	'Echoing whispers whimpering about hope surround it: "The outcomes of all things are written in the bones..."',
 	"essence_skeleton_info":
-	"Reanimated relic with glowing bones, surrounded by infinitely echoing whispers.",
+	"It trudged upon the winding dirt path, begging and praying for mercy to the stars above...",
 	"spirit_slime_info":
-	'Gelatinous entity with a fluid, changing form. - "LetsSs dance... my friend."',
+	"Despite the countless failures, this slime tries still to regain its royal form.",
 	"essence_slime_info":
-	'Gelatinous entity with a fluid, changing form. - "LetsSs dance... my friend."',
-	"spirit_angel_info":
-	"Celestial being, a conduit for everything that was and will be. It remainsSs silent.",
+	"Even in death, its shapeless form pulsates softly. Beseeching you for true death.",
+	"spirit_angel_info": '"This one," they point towards themselves, "was not worthy of mercy."',
 	"essence_angel_info":
-	"Celestial being, a conduit for everything that was and will be. It remainsSs silent.",
+	"Death arrives to all equally, a truth that brings comfort to some and fear to others.",
 	# shadow "+x% mortal resources.",
 	"heart_title": "Heart Of The Dark Forest",
 	"heart_info":
