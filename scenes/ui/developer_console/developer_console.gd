@@ -15,11 +15,15 @@ var commands: Dictionary = {
 		"description": "Set player resource by ID",
 		"usage": 'set [resource_id] [amount >= 0 | "max" keyword]'
 	},
-	&"help":
-	{"func": _cmd_help, "description": "Display a list of helpful commands", "usage": "help"},
-	&"cls": {"func": _cmd_cls, "description": "Clear the console screen", "usage": "cls"},
-	&"env":
-	{"func": _cmd_env, "description": "Displays the current build environment", "usage": "env"}
+	&"timetravel":
+	{
+		"func": _cmd_time_travel,
+		"description": "Add seconds to offline controller",
+		"usage": "timetravel [cycles >= 0]"
+	},
+	&"help": {"func": _cmd_help, "description": "Display a list of helpful commands", "usage": ""},
+	&"cls": {"func": _cmd_cls, "description": "Clear the console screen", "usage": ""},
+	&"env": {"func": _cmd_env, "description": "Displays the current build environment", "usage": ""}
 }
 
 var input_buffer: Array[String] = []
@@ -141,7 +145,9 @@ func _cmd_help(args: PackedStringArray) -> Error:
 	for command: StringName in commands:
 		_write_line("\t%s" % command)
 		_write_line("\t\tDescription: %s" % [commands[command]["description"]])
-		_write_line("\t\tUsage: %s" % [commands[command]["usage"]])
+		var usage: String = commands[command]["usage"]
+		if StringUtils.is_not_empty(usage):
+			_write_line("\t\tUsage: %s" % [usage])
 	return OK
 
 
@@ -190,6 +196,21 @@ func _cmd_set_resource(args: PackedStringArray) -> Error:
 	var current_amount: int = SaveFile.resources.get(resource_id, 0)
 	var delta: int = amount - current_amount
 	SignalBus.resource_generated.emit(resource_id, delta, name)
+	return OK
+
+
+func _cmd_time_travel(args: PackedStringArray) -> Error:
+	if args.size() != 1 or args[0].begins_with("-"):
+		return FAILED
+
+	var amount_string: String = args[0]
+
+	if not NumberUtils.is_valid_int_64(amount_string) and not amount_string in ["max", "MAX"]:
+		return FAILED
+
+	var amount: int = amount_string.to_int()
+
+	SignalBus.save_entered.emit(amount, 0)
 	return OK
 
 
