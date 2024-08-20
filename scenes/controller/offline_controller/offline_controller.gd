@@ -168,6 +168,14 @@ func _handle_on_game_resumed(
 	if seconds_delta < threshold:
 		return
 
+	# handle death charm before everything else
+	var death_cycle: float = float(SaveFile.best_prestige_delta())
+	var death_cycles: int = int(float(seconds_delta) / death_cycle)
+	var death_progress: Dictionary = progress_death_charm(death_cycles)
+	if not death_progress.is_empty():
+		SignalBus.substance_multiple_generated.emit("heart", death_progress.get("heart", 0), name)
+		SignalBus.resource_generated.emit("singularity", death_progress.get("singularity", 0), name)
+
 	var efficiencies: Dictionary = worker_controller.get_efficiencies()
 	var worker_controller_cycle: float = SaveFile.get_cycle_seconds()
 	var worker_controller_cycles: int = int(float(seconds_delta) / worker_controller_cycle)
@@ -196,13 +204,6 @@ func _handle_on_game_resumed(
 	_generate_resources(generated)
 	if !enemy_data.is_last():
 		SignalBus.enemy_damage.emit(damage, name)
-
-	var death_cycle: float = float(SaveFile.best_prestige_delta())
-	var death_cycles: int = int(float(seconds_delta) / death_cycle)
-	var death_progress: Dictionary = progress_death_charm(death_cycles)
-	if not death_progress.is_empty():
-		SignalBus.substance_generated.emit("heart", name)
-		SignalBus.resource_generated.emit("singularity", death_progress.get("singularity", 0), name)
 
 	SignalBus.offline_progress_processed.emit(
 		seconds_delta, worker_progress, enemy_progress, factor, death_progress
