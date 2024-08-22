@@ -657,7 +657,7 @@ const SCALE_SETTINGS_INFO: Dictionary = {
 	"1000": "A thousand lives, now at your beck and call.",
 	"10000": "Ten thousand shadow-born wake.",
 	"100000": "A hundred thousand listen.",
-	"1000000": "A million submit to your hearbeat.",
+	"1000000": "A million submit to your heartbeat.",
 	"10000000": "Ten million; by now the humans flow like rivers.",
 	"100000000": "A hundred million drone along.",
 	"1000000000": "A billion, dominated all at once.",
