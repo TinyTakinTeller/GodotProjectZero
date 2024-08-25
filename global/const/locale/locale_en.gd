@@ -544,7 +544,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"darkness_3":
 	"That wolf wasn't the first, and it won't be the last. Conquering it was exhausting, but I must go on.",
 	"darkness_4":
-	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things, afraid?",
+	"Countless spirits swarm around the fallen abomination, yet none lay a hand on me. Could they be... afraid?",
 	"darkness_5":
 	"My head twists and churns, my sight expands and contracts. The dark forest paths lead me in circles. What, or who, is this maze keeping lost in here?",
 	"darkness_6":
