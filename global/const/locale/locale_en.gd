@@ -719,7 +719,7 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"spirit_dragon_info":
 	"Jailor-turned-custodian, its scales shimmer under the night sky, illuminating the path ahead with its radiant glow.",
 	"essence_dragon_info":
-	"A feral beast it stood in life, and yet still leashed by the darkness itself.",
+	"A feral beast it stood in life, now leashed by the darkness itself nevertheless.",
 	"spirit_dino_info":
 	"The predecessor to all life stands among you, no different than the other wandering spirits...",
 	"essence_dino_info":
