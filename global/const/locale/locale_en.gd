@@ -562,11 +562,11 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"execute_2":
 	"I devoured the essence of the messenger. Bitter, chewy and somewhat rotten, it granted me flight nevertheless.",
 	"execute_3":
-	"That blasted essence, of the wicked beast, granted me great speed. I can cover more ground, but always end up at the same place.",
+	"That wicked beast\'s blasted essence granted me great speed. No matter how far I run, I always end up at the same place.",
 	"execute_4":
 	"I absorbed countless spirits into my essence. They wail inside me, their droning echoes drowning out my thoughts.",
 	"execute_5":
-	"The Warden falls, and I take what's rightfully mine. Consuming this essence gave me more limbs than fingers.",
+	"The Warden falls. I take what's rightfully mine. Consuming this essence gave me more limbs than fingers.",
 	"execute_6":
 	"The essence of the dragon may singe the tongue with the flames of an inferno, but for its razing power, it's a worthy sacrifice.",
 	"execute_7":
