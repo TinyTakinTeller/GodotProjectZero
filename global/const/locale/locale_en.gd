@@ -552,7 +552,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"darkness_7":
 	"This has been too easy. No. There's something wrong, there must be. You...You are still here, aren't you?",
 	"darkness_8":
-	"Countless creatures gather along as I move towards the throne room. They seem, to recognize me? The throne room awaits, my heart is about to burst.",
+	"Countless entities gather along as I move towards the throne room. They seem to recognize me. The throne room awaits, my heart pounds.",
 	"darkness_9":
 	'The defeated slime smiles: "You don\'t remember? Too long, you have been stuck... in this... form."',
 	"darkness_10":
