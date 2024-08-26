@@ -115,7 +115,7 @@ theme_override_constants/margin_bottom = 2
 
 [node name="ImportButton" type="Button" parent="HBoxContainer/ImportMarginContainer"]
 unique_name_in_owner = true
-modulate = Color(0.110884, 0.492636, 0.821255, 1)
+modulate = Color(0.878431, 0.878431, 0.392157, 1)
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_type_variation = &"ProgressButton"

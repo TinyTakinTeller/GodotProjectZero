@@ -4,10 +4,12 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "week 18.1"
+const VERSION_MINOR: String = "week 18.2"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
-const WEB_EXPORT_WORKAROUNDS: bool = false  ## BEFORE EXPORTING TO WEB, SET TO TRUE
+
+## BEFORE EXPORTING TO WEB (that uses iframe like e.g. itch.io), SET TO true
+const WEB_EXPORT_WORKAROUNDS: bool = false
 
 const PARAMS_DEBUG: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,

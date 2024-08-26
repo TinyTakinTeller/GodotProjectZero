@@ -208,6 +208,7 @@ overlay.style.top = "0";
 overlay.style.left = "0";
 overlay.style.width = "100%";
 overlay.style.height = "100%";
+overlay.style.overflow = "auto";
 overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
 overlay.style.zIndex = "9999"; // Ensure it's on top of other content
 
@@ -223,10 +224,11 @@ modal.style.padding = "20px";
 modal.style.borderRadius = "8px";
 modal.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
 modal.style.zIndex = "10000"; // Above the overlay
-modal.style.minWidth = "500px"; // Set minimum width for the modal
+modal.style.minWidth = "50px"; // Set minimum width for the modal
 modal.style.maxWidth = "80%"; // Limit modal width to a percentage of the viewport
 modal.style.maxHeight = "80%"; // Limit modal height to a percentage of the viewport
 modal.style.overflowY = "auto"; // Scroll if content is too long
+modal.style.overflow = "auto";
 
 // Create the title element
 var modalTitle = document.createElement("h2");
@@ -246,7 +248,8 @@ modalSubtitle.style.color = "lightgray"; // Light gray text color for the subtit
 var textArea = document.createElement("textarea");
 textArea.value = "{input}"
 textArea.style.width = "100%"; // Make textarea full width
-textArea.style.height = "275px"; // Set a fixed height for the textarea
+textArea.style.height = "100%"; // Make textarea full width
+textArea.style.minHeight = "50px"; // Set a fixed height for the textarea
 textArea.style.backgroundColor = "#444"; // Darker gray background for textarea
 textArea.style.color = "white"; // White text color
 textArea.style.border = "2px solid #666"; // Add a default border color
