@@ -66,8 +66,7 @@ const UI_LABEL: Dictionary = {
 	"produce": "Produce",
 	"deaths_door": "DEATH'S DOOR",
 	"deaths_door_title": "Knocking on Death's Door",
-	"deaths_door_info":
-	"The entity falls, its life hangs by a thread. Make your choice.",
+	"deaths_door_info": "The entity falls, its life hangs by a thread. Make your choice.",
 	"deaths_door_first": "Execute",
 	"deaths_door_second": "Absolve",
 	"deaths_door_first_title": "Execution",
@@ -322,8 +321,8 @@ const RESOURCE_GENERATOR_FLAVOR: Dictionary = {
 	"shovel": "Digs up clay and corpses alike.",
 	"spear": "Go hunting into the wilderness.",
 	"stone": "Shatter monoliths of old; build a new world.",
-	"sword": "Barbaric and crude, deadly nevertheless.",
-	"swordsman": "Will fight against The Darkness for you.",
+	"sword": "Barbaric and crude, deadly nevertheless..",
+	"swordsman": "No match for the black swordsman, but will fight against The Darkness for you.",
 	"torch": "Will guide the way during the night.",
 	"wood": "Eventually, all humans shall die, and all trees shall be felled.",
 	"worker": ""
@@ -620,7 +619,8 @@ const NPC_EVENT_TEXT: Dictionary = {
 	"cat_talk_B4_1_2": "You will thank me later... until then, I will be nearby...",
 	"cat_talk_B4_2": "Forsooth? How quaint you are. I will keep my eye on you...",
 	"cat_talk_C0": "You struck it down, all on your own... I underestimated you.",
-	"cat_intro_1": "Your smell betrays your identity... You couldn't possibly be wholly human, now could you?",
+	"cat_intro_1":
+	"Your smell betrays your identity... You couldn't possibly be wholly human, now could you?",
 	"cat_intro_1_1": "How curious. You look familiar, yet your scent... Unrecognizable.",
 	"cat_intro_1_2": "I will... keep my distance, for now.",
 	"cat_intro_0": "Meow. Meow. *Purr*"
