@@ -713,7 +713,7 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"The amalgamation wails no longer, floating relaxedly by your side, humming a playful nursery rhyme.",
 	"essence_void_info": "Creatio ex nihilo, it wails in remembrance of sweet inexistence.",
 	"spirit_spider_info":
-	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provide pleasant dreams.",
+	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provides pleasant dreams.",
 	"essence_spider_info":
 	"She weaves webs of miracles and dreams, but coincidentally, has lost her own…",
 	"spirit_dragon_info":
