@@ -351,23 +351,31 @@ func prestige(infinity_count: int) -> void:
 
 
 func export_as_string(save_file_name: String) -> String:
-	var encoded_save_file: String = Marshalls.variant_to_base64(save_datas[save_file_name])
+	var target_data: Dictionary = save_datas[save_file_name]
+	var json_string: String = JSON.stringify(target_data)
+	var encoded_save_file: String = Marshalls.utf8_to_base64(json_string)
 	return encoded_save_file
 
 
 func import_from_string(encoded_string: String) -> bool:
-	var decoded_save_file: Variant = Marshalls.base64_to_variant(encoded_string)
-	if decoded_save_file == null or not decoded_save_file is Dictionary:
+	var decoded_save_file: String = Marshalls.base64_to_utf8(encoded_string)
+	if decoded_save_file == null:
 		return false
+	var json_object: JSON = _parse(decoded_save_file)
+	if json_object == null:
+		if Game.PARAMS["debug_logs"]:
+			prints("__IMPORT_READ_PARSE_FAILED", decoded_save_file)
+		return false
+	var import_save_data: Dictionary = json_object.get_data()
 
-	var save_file_name: String = decoded_save_file.get("metadata", {}).get("save_file_name")
+	var save_file_name: String = import_save_data.get("metadata", {}).get("save_file_name")
 	if save_file_name:
 		while SaveFile.save_datas.has(save_file_name):
 			save_file_name = StringUtils.increment_int_suffix(
 				save_file_name, SaveFile.save_datas.keys()
 			)
-			decoded_save_file["metadata"]["save_file_name"] = save_file_name
-		save_datas[save_file_name] = decoded_save_file
+			import_save_data["metadata"]["save_file_name"] = save_file_name
+		save_datas[save_file_name] = import_save_data
 		save_file_imported.emit(save_file_name)
 		return true
 
