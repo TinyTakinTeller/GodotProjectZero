@@ -11,4 +11,3 @@ TLDR:
 asset "Chromatic Aberration Vignette" (chromatic_vignette.gdshader)
 by ructoon (https://godotshaders.com/author/ructoon/) licensed under CC0 1.0
 ---
-

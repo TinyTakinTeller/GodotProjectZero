@@ -11,4 +11,3 @@ TLDR:
 asset "Cracked Glass" (cracked_glass.gdshader)
 by rupti (https://godotshaders.com/author/rupti/) licensed under CC0 1.0
 ---
-

@@ -11,4 +11,3 @@ TLDR:
 asset "2D Radial Distortion – Fisheye/Barrel" (radial_distortion.gdshader)
 by jamesfrize (https://godotshaders.com/author/jamesfrize/) licensed under CC0 1.0
 ---
-

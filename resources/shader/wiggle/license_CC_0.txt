@@ -11,4 +11,3 @@ TLDR:
 asset "Wiggle 2D" (wiggle.gdshader)
 by tanders (https://godotshaders.com/author/tanders/) licensed under CC0 1.0
 ---
-

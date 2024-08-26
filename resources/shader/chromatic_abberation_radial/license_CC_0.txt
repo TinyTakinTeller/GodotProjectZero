@@ -13,4 +13,3 @@ TLDR:
 asset "Chromatic Aberration" (chromatic_abberation_radial.gdshader)
 by hayden (https://godotshaders.com/author/hayden/) licensed under CC0 1.0
 ---
-

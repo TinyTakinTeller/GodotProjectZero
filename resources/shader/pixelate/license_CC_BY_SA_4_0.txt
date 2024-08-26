@@ -11,4 +11,3 @@ TLDR:
 asset "Pixelate" (pixelate.gdshader)
 by Theraot (https://gamedev.stackexchange.com/users/10408/theraot) licensed under CCBYSA4
 ---
-

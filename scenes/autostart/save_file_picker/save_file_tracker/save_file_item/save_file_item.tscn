@@ -82,7 +82,7 @@ theme_override_constants/margin_bottom = 2
 
 [node name="NewButton" type="Button" parent="HBoxContainer/NewMarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(136, 0)
 layout_mode = 2
 theme_type_variation = &"ProgressButton"
 text = "New Game"
