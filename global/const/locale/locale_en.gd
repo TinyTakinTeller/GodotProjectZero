@@ -590,7 +590,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"absolve_7":
 	"I made peace with that towering beast. The newly gentle giant lifts me toward the throne room.",
 	"absolve_8":
-	"That thing... the Acolyte... it wants... to play? Why does it feel so familiar? Why? Why? Why?",
+	"The entity... the Acolyte... it wishes to talk? How come it feels so familiar? Why? Why? Why?",
 	"absolve_9":
 	"The prince snickers at my mercy, though it agrees to entertain my folly and follow along.",
 	"lore_beacon":
