@@ -584,7 +584,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"absolve_4":
 	"The spirits wail no longer, as reflections of them form upon patches of water. Children...",
 	"absolve_5":
-	"The absolved spider spirit follows me forward, it's shimmering string lacing the path forward.",
+	"The absolved spider spirit follows me forward, its shimmering string lacing the path forward.",
 	"absolve_6":
 	"The great dragon repays my mercy in kindness every day. It burns the dark path, its arcane breath enriching the soil. Lush greenery rises amongst the smoke and mist.",
 	"absolve_7":
