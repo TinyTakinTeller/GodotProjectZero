@@ -717,7 +717,7 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"essence_spider_info":
 	"She weaves webs of miracles and dreams, but coincidentally, has lost her own…",
 	"spirit_dragon_info":
-	"Jailor-turned-custodian, its scales shimmer under the night sky, illuminating the path ahead with its radiant glow.",
+	"Jailor-turned-custodian, its scales shimmer under the night sky, bathing the path ahead in their radiant glow.",
 	"essence_dragon_info":
 	"A feral beast it stood in life, now leashed by the darkness itself nevertheless.",
 	"spirit_dino_info":
