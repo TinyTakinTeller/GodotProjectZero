@@ -41,6 +41,8 @@ signal heart_unclick
 signal prestige_cancel
 signal prestige_yes
 signal prestige_reborn
+signal open_import_modal
+signal open_export_modal(save_file_name: String)
 
 ## CONTROLLER
 signal main_ready

@@ -1,5 +1,7 @@
 extends Node
 
+signal save_file_imported(save_file_name: String)
+
 const SIGNATURE = "$$$"
 const SAVE_FILE_EXTENSION = ".json"
 const AUTOSAVE_SECONDS: int = Game.PARAMS["autosave_seconds"]
@@ -297,7 +299,8 @@ func prestige(infinity_count: int) -> void:
 	if not first_time:
 		backup_file_name = active_file_name + ".BAK_LAST"
 	_update_metadata()
-	_write(backup_file_name)
+	var save_data: Dictionary = _export_save_data()
+	_write(backup_file_name, save_data)
 
 	# prestige save file data
 	#
@@ -341,9 +344,34 @@ func prestige(infinity_count: int) -> void:
 	# write save file data
 	var file_name: String = active_file_name
 	_update_metadata()
-	_write(file_name)
+	save_data = _export_save_data()
+	_write(file_name, save_data)
 
 	# autosave_timer.start()
+
+
+func export_as_string(save_file_name: String) -> String:
+	var encoded_save_file: String = Marshalls.variant_to_base64(save_datas[save_file_name])
+	return encoded_save_file
+
+
+func import_from_string(encoded_string: String) -> bool:
+	var decoded_save_file: Variant = Marshalls.base64_to_variant(encoded_string)
+	if decoded_save_file == null or not decoded_save_file is Dictionary:
+		return false
+
+	var save_file_name: String = decoded_save_file.get("metadata", {}).get("save_file_name")
+	if save_file_name:
+		while SaveFile.save_datas.has(save_file_name):
+			save_file_name = StringUtils.increment_int_suffix(
+				save_file_name, SaveFile.save_datas.keys()
+			)
+			decoded_save_file["metadata"]["save_file_name"] = save_file_name
+		save_datas[save_file_name] = decoded_save_file
+		save_file_imported.emit(save_file_name)
+		return true
+
+	return false
 
 
 ###########
@@ -413,7 +441,8 @@ func _autosave(force: bool = false, silent: bool = false) -> void:
 
 	var file_name: String = active_file_name
 	_update_metadata()
-	_write(file_name)
+	var save_data: Dictionary = _export_save_data()
+	_write(file_name, save_data)
 
 
 func _get_seconds_since_last_autosave() -> int:
@@ -741,12 +770,10 @@ func _on_offline_progress_processed(
 ##############
 
 
-func _write(file_name: String) -> void:
-	var save_data: Dictionary = _export_save_data()
+func _write(file_name: String, data: Dictionary) -> void:
+	check_backward_corrupt_worker_role(data)
 
-	check_backward_corrupt_worker_role(save_data)
-
-	var content: String = JSON.stringify(save_data)
+	var content: String = JSON.stringify(data)
 	content += SIGNATURE
 
 	var path: String = FileSystemUtils.USER_PATH + file_name
