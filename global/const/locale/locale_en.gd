@@ -66,8 +66,7 @@ const UI_LABEL: Dictionary = {
 	"produce": "Produce",
 	"deaths_door": "DEATH'S DOOR",
 	"deaths_door_title": "Knocking on Death's Door",
-	"deaths_door_info":
-	"The creature was overpowered, its life hangs by a thread. You have a choice to make.",
+	"deaths_door_info": "The entity falls, its life hangs by a thread. Make your choice.",
 	"deaths_door_first": "Execute",
 	"deaths_door_second": "Absolve",
 	"deaths_door_first_title": "Execution",
@@ -153,7 +152,7 @@ const NPC_HOVER_INFO: Dictionary = {
 const NPC_CLICK_TITLE: Dictionary = {"cat": "Click The Cat ??"}
 
 const NPC_CLICK_INFO: Dictionary = {
-	"cat": "I do not want to do that... all my senses, are screaming... Do. Not. Click. Her."
+	"cat": "I shiver at the thought of seeking it out. I. Will. Not. Seek. It. Out."
 }
 
 const ENEMY_DATA_TITLE: Dictionary = {
@@ -218,7 +217,7 @@ const ENEMY_DATA_INFO: Dictionary = {
 const RESOURCE_GENERATOR_LABEL: Dictionary = {
 	"CREEK": "Dredge",
 	"FOREST": "Scavenge",
-	"WILD": "Hunting Trip",
+	"WILD": "Hunt",
 	"CAVE": "Spelunk",
 	"axe": "Craft Axe",
 	"brick": "Bake Clay",
@@ -256,7 +255,7 @@ const RESOURCE_GENERATOR_LABEL: Dictionary = {
 const RESOURCE_GENERATOR_TITLE: Dictionary = {
 	"CREEK": "Dredge the Creek",
 	"FOREST": "Scavenge the Forest",
-	"WILD": "Hunt the Wilderness",
+	"WILD": "Hunt Beasts",
 	"CAVE": "Spelunk the Caves",
 	"axe": "Axe",
 	"brick": "Bake Clay",
@@ -296,36 +295,36 @@ const RESOURCE_GENERATOR_FLAVOR: Dictionary = {
 	"FOREST": "Things are waiting to be found within.",
 	"WILD": "The deep forest howls and screeches.",
 	"CAVE": "An abandoned mineshaft stretches through the hollow, dark caves.",
-	"axe": "A very sharp object, do not play with it.",
-	"brick": "Excuse me, this is not a bakery.",
+	"axe": "Sharp and loved, yet stained by blood.",
+	"brick": "Brick by brick, humanity removes itself from nature.",
 	"clay": "Pierce the muddy waters for their essence.",
 	"coal": "",
 	"common": "Go on an adventure for common resources.",
-	"compass": "Navigate beyond the forest, the world awaits.",
-	"beacon": "Blueprints emerge from the mist of memory. This needs... a soulstone?",
+	"compass": "Navigate the umbral mists; new madness awaits.",
+	"beacon": "Blueprints emerge from the mist of your memory. This needs... a soulstone?",
 	"soul": "",
 	"experience": "",
 	"fiber": "",
-	"firepit": "Warm and safe, must be nice to have.",
+	"firepit": "Warm, bright, soothing; like a parents caress.",
 	"flint": "",
 	"food": "",
 	"fur": "",
-	"house": "A simple house can hold quite a few extra people.",
+	"house": "Simple housing of squalid conditions. Safe.",
 	"iron": "",
 	"iron_ore": "",
-	"land": "Discover lands of new opportunities.",
+	"land": "Experience your new reality.",
 	"leather": "",
 	"null": "",
-	"pickaxe": "Pointy scary spooky tool, but useful.",
+	"pickaxe": "Leads to riches and resentment alike.",
 	"power": "",
 	"rare": "Explore the world for rare resources.",
-	"shovel": "Never enough clay, better start digging.",
+	"shovel": "Digs up clay and corpses alike.",
 	"spear": "Go hunting into the wilderness.",
-	"stone": "Pick off rocks from the rocky zones, just a couple.",
-	"sword": "Not as good as the one held by the black swordsman, but it will do.",
-	"swordsman": "Will fight against The Darkness for you.",
+	"stone": "Shatter monoliths of old; build a new world.",
+	"sword": "Barbaric and crude, deadly nevertheless..",
+	"swordsman": "No match for the black swordsman, but will fight against The Darkness for you.",
 	"torch": "Will guide the way during the night.",
-	"wood": "Deforestation is a small price to pay for a few extra wood.",
+	"wood": "Eventually, all humans shall die, and all trees shall be felled.",
 	"worker": ""
 }
 
@@ -333,12 +332,12 @@ const RESOURCE_GENERATOR_MAX_FLAVOR: Dictionary = {
 	"CREEK": "",
 	"FOREST": "",
 	"WILD": "",
-	"axe": "Trees are in hiding now, fearing for their life.",
+	"axe": "Something wails amongst the trees.",
 	"brick": "",
 	"clay": "",
 	"coal": "",
 	"common": "",
-	"compass": "Navigate beyond the forest... beyond? The Darkness envelops the edgesSs...",
+	"compass": "Navigate past the forest... Into further darkness",
 	"beacon":
 	"Emitting radiant light, it cuts through the gloom. Seems to unveil the forbidden parts of the forest...",
 	"soul": "I am... ready to be reborn.",
@@ -354,10 +353,10 @@ const RESOURCE_GENERATOR_MAX_FLAVOR: Dictionary = {
 	"land": "",
 	"leather": "",
 	"null": "",
-	"pickaxe": "Do not dig too deep, dwarves won't be happy.",
+	"pickaxe": "Do not dig too deep. They who dwell below won't be happy.",
 	"power": "",
 	"rare": "",
-	"shovel": "Now we just need a knight.",
+	"shovel": "",
 	"spear": "It is dangerous to go alone, take this.",
 	"stone": "",
 	"sword": "",
@@ -453,8 +452,8 @@ const WORKER_ROLE_FLAVOR: Dictionary = {
 const TAB_DATA_TITLES: Dictionary = {
 	"world":
 	[
-		" World ",
-		" Forest ",
+		" Wilderness ",
+		" Forest Hovel ",
 		" Forest Camp ",
 		" Forest Hamlet ",
 		" Forest Village ",
@@ -481,18 +480,18 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"cat_gift":
 	"The frail cat wrought havoc in the storage. Somehow, after cleanup, we had a surplus of raw resources... twice as much.",
 	"cat_no_gift":
-	"The cat's offer seemed too suspicious. I dread to imagine what might have happened if I had accepted.",
+	"The cat's offer seemed too suspicious. I dread to imagine what might have happened had I accepted.",
 	"cat_intro_no":
 	"Though this twisted forest is all I know; I dare to call it home? Am I deceiving myself? The cat meows mockingly at my response.",
 	"cat_intro_yes":
 	"I must admit that I am lost. The cat grinned before returning to its monotone face.",
 	"cat_scam": "Did that creature fool me? I-I'm speechless. Perhaps trust is a fickle resource.",
 	"cat_watching":
-	"There is a cat figure lurking in the shadows. It brings me great unease to gaze upon it.",
+	"A cat-like thing lurks in the shadows. It brings me great unease to gaze upon it.",
 	"enemy_screen":
 	"Suspicious eyes emerge from the darkness. Their stare brings fear to my people.",
 	"firepit_worker":
-	"A quaint stranger finds solace in the fire's warmth. The lost peasant wanted shelter and offered to work in return.",
+	"I met a quaint stranger, who found solace in my company. Together, we lit the fire. Its blaze revealed his faceless features, as he offered work for shelter.",
 	"gift_flint_fiber":
 	"Stumbled upon a long extinguished campfire. A remanent of life, which inspires hope. The debris contained: {0} fiber, {1} flint, {2} wood and {3} stone.",
 	"house_1":
@@ -544,7 +543,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"darkness_3":
 	"That wolf wasn't the first, and it won't be the last. Conquering it was exhausting, but I must go on.",
 	"darkness_4":
-	"Countless spirits swarm around the fallen abomination, yet nothing ever lays a hand on me. Are these things, afraid?",
+	"Countless spirits swarm around the fallen abomination, yet none lay a hand on me. Could they be... afraid?",
 	"darkness_5":
 	"My head twists and churns, my sight expands and contracts. The dark forest paths lead me in circles. What, or who, is this maze keeping lost in here?",
 	"darkness_6":
@@ -552,7 +551,7 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"darkness_7":
 	"This has been too easy. No. There's something wrong, there must be. You...You are still here, aren't you?",
 	"darkness_8":
-	"Countless creatures gather along as I move towards the throne room. They seem, to recognize me? The throne room awaits, my heart is about to burst.",
+	"Countless entities gather along as I move towards the throne room. They seem to recognize me. The throne room awaits, my heart pounds.",
 	"darkness_9":
 	'The defeated slime smiles: "You don\'t remember? Too long, you have been stuck... in this... form."',
 	"darkness_10":
@@ -562,11 +561,11 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"execute_2":
 	"I devoured the essence of the messenger. Bitter, chewy and somewhat rotten, it granted me flight nevertheless.",
 	"execute_3":
-	"That blasted essence, of the wicked beast, granted me great speed. I can cover more ground, but always end up at the same place.",
+	"That wicked beast\'s blasted essence granted me great speed. No matter how far I run, I always end up at the same place.",
 	"execute_4":
 	"I absorbed countless spirits into my essence. They wail inside me, their droning echoes drowning out my thoughts.",
 	"execute_5":
-	"The Warden falls, and I take what's rightfully mine. Consuming this essence gave me more limbs than fingers.",
+	"The Warden falls. I take what's rightfully mine. Consuming this essence gave me more limbs than fingers.",
 	"execute_6":
 	"The essence of the dragon may singe the tongue with the flames of an inferno, but for its razing power, it's a worthy sacrifice.",
 	"execute_7":
@@ -584,13 +583,13 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"absolve_4":
 	"The spirits wail no longer, as reflections of them form upon patches of water. Children...",
 	"absolve_5":
-	"The absolved spider spirit follows me forward, it's shimmering string lacing the path forward.",
+	"The absolved spider spirit follows me forward, its shimmering string lacing the path forward.",
 	"absolve_6":
 	"The great dragon repays my mercy in kindness every day. It burns the dark path, its arcane breath enriching the soil. Lush greenery rises amongst the smoke and mist.",
 	"absolve_7":
 	"I made peace with that towering beast. The newly gentle giant lifts me toward the throne room.",
 	"absolve_8":
-	"That thing... the Acolyte... it wants... to play? Why does it feel so familiar? Why? Why? Why?",
+	"The entity... the Acolyte... it wishes to talk? How come it feels so familiar? Why? Why? Why?",
 	"absolve_9":
 	"The prince snickers at my mercy, though it agrees to entertain my folly and follow along.",
 	"lore_beacon":
@@ -606,22 +605,23 @@ const EVENT_DATA_TEXT: Dictionary = {
 const NPC_EVENT_TEXT: Dictionary = {
 	"cat_intro": "I smell you from afar. Are you lost?",
 	"cat_peek": "",
-	"cat_talk_A1": "I thought so. You are different... not from the ForesSst.",
-	"cat_talk_A2": "It has been a long time since we had something like... thisSs.",
-	"cat_talk_A3": "We must not waste thisSs. I will help you, jusSst this one time.",
+	"cat_talk_A1": "I thought so. You are different... An unusual outsider.",
+	"cat_talk_A2": "It has been a long time since we had something like... your case.",
+	"cat_talk_A3": "We must not waste this. I will help you. Just this once.",
 	"cat_talk_A4": "I shall double your raw resources, say when. Do not wait too long...",
-	"cat_talk_A4_1": "Enjoy... use these wisely. I plan to... see you soon.",
-	"cat_talk_A4_2": "Huh, really? Suit yourself. I'll be watching you...",
-	"cat_talk_B1": "You are a bold one, becausSse you are lying.",
+	"cat_talk_A4_1": "Enjoy... use these wisely. I plan to... keep watch.",
+	"cat_talk_A4_2": "Forsooth? Suit yourself. I'll be watching you...",
+	"cat_talk_B1": "Lying? How bold. Were you attempting to trick me, or yourself?",
 	"cat_talk_B2": "The ForesSst... does not give rise to creatures like you.",
-	"cat_talk_B3": "Since you are so confident... I will make you a proposSsition.",
-	"cat_talk_B4": "Give me all your raw resources in exchange for a... gift.",
-	"cat_talk_B4_1": "Your gift isSs... a lesson about trust.",
+	"cat_talk_B3": "Since you are so vain... I shall propose a deal.",
+	"cat_talk_B4": "Give me all your raw resources in exchange for a... blessing.",
+	"cat_talk_B4_1": "Your gift is... a lesson about trust.",
 	"cat_talk_B4_1_2": "You will thank me later... until then, I will be nearby...",
-	"cat_talk_B4_2": "Really? You are a... interesting one. I will keep my eye on you...",
-	"cat_talk_C0": "You really defeated it by yoursSself... I underestimated you.",
-	"cat_intro_1": "You smell like... but are you not... a human?",
-	"cat_intro_1_1": "This is strange. You look familiar, but your scent... it is new.",
+	"cat_talk_B4_2": "Forsooth? How quaint you are. I will keep my eye on you...",
+	"cat_talk_C0": "You struck it down, all on your own... I underestimated you.",
+	"cat_intro_1":
+	"Your smell betrays your identity... You couldn't possibly be wholly human, now could you?",
+	"cat_intro_1_1": "How curious. You look familiar, yet your scent... Unrecognizable.",
 	"cat_intro_1_2": "I will... keep my distance, for now.",
 	"cat_intro_0": "Meow. Meow. *Purr*"
 }
@@ -713,13 +713,13 @@ const SUBSTANCE_TEXT: Dictionary = {
 	"The amalgamation wails no longer, floating relaxedly by your side, humming a playful nursery rhyme.",
 	"essence_void_info": "Creatio ex nihilo, it wails in remembrance of sweet inexistence.",
 	"spirit_spider_info":
-	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provide pleasant dreams.",
+	"She twirls her webs, blocking the infinite void ahead. The reflection on the strings provides pleasant dreams.",
 	"essence_spider_info":
 	"She weaves webs of miracles and dreams, but coincidentally, has lost her own…",
 	"spirit_dragon_info":
-	"Jailor-turned-custodian, its scales shimmer under the night sky, illuminating the path ahead with its radiant glow.",
+	"Jailor-turned-custodian, its scales shimmer under the night sky, bathing the path ahead in their radiant glow.",
 	"essence_dragon_info":
-	"A feral beast it stood in life, and yet still leashed by the darkness itself.",
+	"A feral beast it stood in life, now leashed by the darkness itself nevertheless.",
 	"spirit_dino_info":
 	"The predecessor to all life stands among you, no different than the other wandering spirits...",
 	"essence_dino_info":
