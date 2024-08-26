@@ -67,7 +67,7 @@ const UI_LABEL: Dictionary = {
 	"deaths_door": "DEATH'S DOOR",
 	"deaths_door_title": "Knocking on Death's Door",
 	"deaths_door_info":
-	"The creature was overpowered, its life hangs by a thread. You have a choice to make.",
+	"The entity falls, its life hangs by a thread. Make your choice.",
 	"deaths_door_first": "Execute",
 	"deaths_door_second": "Absolve",
 	"deaths_door_first_title": "Execution",
