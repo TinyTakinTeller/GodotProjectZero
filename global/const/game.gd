@@ -4,7 +4,7 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "week 18"
+const VERSION_MINOR: String = "week 18.1"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 const WEB_EXPORT_WORKAROUNDS: bool = false  ## BEFORE EXPORTING TO WEB, SET TO TRUE

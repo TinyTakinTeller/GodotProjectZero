@@ -25,6 +25,7 @@ config/version="0.0.week-3"
 run/main_scene="res://scenes/autostart/save_file_picker/save_file_picker.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://assets/image/icon/icon.svg"
 
 [audio]
