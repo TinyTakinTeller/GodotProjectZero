@@ -22,9 +22,13 @@ var _delete_counter: int = 0
 @onready var load_button: Button = %LoadButton
 @onready var delete_button: Button = %DeleteButton
 @onready var new_button: Button = %NewButton
+@onready var import_button: Button = %ImportButton
+@onready var export_button: Button = %ExportButton
 @onready var load_margin_container: MarginContainer = %LoadMarginContainer
 @onready var delete_margin_container: MarginContainer = %DeleteMarginContainer
 @onready var new_margin_container: MarginContainer = %NewMarginContainer
+@onready var import_margin_container: MarginContainer = %ImportMarginContainer
+@onready var export_margin_container: MarginContainer = %ExportMarginContainer
 @onready var section_h_box_container: HBoxContainer = %SectionHBoxContainer
 
 ###############
@@ -99,9 +103,13 @@ func _set_ui_labels() -> void:
 	var ui_load: String = Locale.get_ui_label("load")
 	var ui_delete: String = Locale.get_ui_label("delete")
 	var ui_new_game: String = Locale.get_ui_label("new_game")
+	var ui_import: String = Locale.get_ui_label("import")
+	var ui_export: String = Locale.get_ui_label("export")
 	load_button.text = ui_load
 	delete_button.text = ui_delete
 	new_button.text = ui_new_game
+	import_button.text = ui_import
+	export_button.text = ui_export
 
 
 func _add_section(
@@ -125,10 +133,14 @@ func _display_new(new: bool) -> void:
 		load_margin_container.visible = false
 		delete_margin_container.visible = false
 		new_margin_container.visible = true
+		import_margin_container.visible = true
+		export_margin_container.visible = false
 	else:
 		load_margin_container.visible = true
 		delete_margin_container.visible = true
 		new_margin_container.visible = false
+		import_margin_container.visible = false
+		export_margin_container.visible = true
 
 
 func _display_delete_counter() -> void:
@@ -164,6 +176,8 @@ func _connect_signals() -> void:
 	new_button.button_up.connect(_on_new_button)
 	delete_button.button_up.connect(_on_delete_button)
 	delete_button.mouse_exited.connect(_on_delete_reset)
+	import_button.button_up.connect(_on_import_button)
+	export_button.button_up.connect(_on_export_button)
 
 
 func _on_load_button() -> void:
@@ -176,6 +190,14 @@ func _on_new_button() -> void:
 
 func _on_delete_button() -> void:
 	_handle_on_delete_button()
+
+
+func _on_import_button() -> void:
+	SignalBus.open_import_modal.emit()
+
+
+func _on_export_button() -> void:
+	SignalBus.open_export_modal.emit(_save_file_name)
 
 
 func _on_delete_reset() -> void:

@@ -21,6 +21,7 @@ func _ready() -> void:
 	_clear_items()
 	_load_save_files()
 	owner.ready.connect(_on_ready)
+	SaveFile.save_file_imported.connect(_on_save_file_imported)
 
 
 ###########
@@ -48,6 +49,12 @@ func _load_save_files() -> void:
 		var save_data: Dictionary = save_datas[save_file_name]
 		var metadata: Dictionary = save_data.get("metadata", {})
 		_add_item(metadata, save_file_name, false)
+
+
+func add_item_from_file_name(save_file_name: String, new: bool) -> SaveFileItem:
+	var save_file_data: Dictionary = SaveFile.save_datas[save_file_name]
+	var metadata: Dictionary = save_file_data.get("metadata", {})
+	return _add_item(metadata, save_file_name, new)
 
 
 func _add_item(metadata: Dictionary, save_file_name: String, new: bool) -> SaveFileItem:
@@ -94,3 +101,8 @@ func _on_delete_button_click(save_file_name: String) -> void:
 
 func _on_new_input_set(save_file_name: String, new_text: String, old_text: String) -> void:
 	new_input_set.emit(save_file_name, new_text, old_text)
+
+
+func _on_save_file_imported(save_file_name: String) -> void:
+	add_item_from_file_name(save_file_name, false)
+	load_save_file.emit(save_file_name)
