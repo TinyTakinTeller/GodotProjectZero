@@ -7,8 +7,10 @@ const VERSION_MAJOR: String = "prototype"
 const VERSION_MINOR: String = "week 18"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
+const WEB_EXPORT_WORKAROUNDS: bool = false  ## BEFORE EXPORTING TO WEB, SET TO TRUE
 
 const PARAMS_DEBUG: Dictionary = {
+	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,
 	"heart_screen_shader": true,
@@ -41,6 +43,7 @@ const PARAMS_DEBUG: Dictionary = {
 }
 
 const PARAMS_PROD: Dictionary = {
+	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,
 	"heart_screen_shader": true,

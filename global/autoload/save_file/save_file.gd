@@ -358,6 +358,8 @@ func export_as_string(save_file_name: String) -> String:
 
 
 func import_from_string(encoded_string: String) -> bool:
+	if Game.PARAMS["debug_logs"]:
+		prints("Try import...", encoded_string)
 	var decoded_save_file: String = Marshalls.base64_to_utf8(encoded_string)
 	if decoded_save_file == null:
 		return false
