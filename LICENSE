@@ -1,8 +1,16 @@
+## Project License(s)
+
+Mixed (see various licenses listed in this file)
+
+
+
 ## Code License (MIT)
+
+- all files except those listed alongside another license (see licenses listed below, in this file "LICENSE") are licensed under MIT License (https://mit-license.org/)
 
 MIT License
 
-Copyright (c) 2024 TinyTakinTeller
+Copyright (c) 2024 by (GitHub Contributors): @TinyTakinTeller, @alexmunoz502, @mielifica, @BurkeZerk, @AlexTheAbyssalNovelist, @debris, @Reed-lzy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +33,6 @@ SOFTWARE.
 
 
 ## Godot License
-
-SEE
 - https://godotengine.org/license/
 
 
@@ -49,11 +55,12 @@ SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "resources/" 
 SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "assets/" :
 - audio music track "Corpse Rot" (corpse_rot.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 - audio music track "Criminal District" (criminal_district.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
-- audio music tracks ["Forest Song 1", "20 Axes to a Bed", "There's a Strong Chill in the Air", "Lacrimosa (Requiem Abridged)"] by BurkeZerk licensed under  CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- audio music tracks ["Forest Song 1", "20 Axes to a Bed", "There's a Strong Chill in the Air", "Lacrimosa (Requiem Abridged)"] by BurkeZerk licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - audio SFX sounds "Indie Friendly Sounds Survival" & "Indie Friendly Sounds RPG Sounds Pack" by Place Holder Assets licensed under "for-purchasing-individuals" (contact creator for licensing)
 - audio SFX sound "Keyboard Typing" by Trollarch2 licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
 - audio SFX sound "Short, definite fart" by ycbcr licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
 - audio "heartbeat-80bpm.wav" by loudernoises licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
+- art "res://assets/image/" : Placeholders / WIP
 
 
 
@@ -66,6 +73,8 @@ SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "addons/" :
 
 
 
-## Writing and Narrative Design Licenses
+## Writing and Narrative Design License(s)
 
-- All writing and narrative design in the game currently is authored by the duo of Abyssal_Novelist and Reed, under the creative control and leadership of project lead TinyTakinTeller, who chose to share rights and license in the form of CC BY-NC-SA 4.0
+- res://global/const/locale/locale_en.gd by Abyssal_Novelist, Reed, TinyTakinTeller licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+

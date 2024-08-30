@@ -1,3 +1,4 @@
+## Currently, contains all in-game text's (narrative).
 class_name LocaleEn
 
 const EN: Dictionary = {

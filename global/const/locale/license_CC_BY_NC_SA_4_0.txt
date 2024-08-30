@@ -1,0 +1,9 @@
+All writing and narrative design in the game currently is authored by the duo of 
+Abyssal_Novelist and Reed, under the creative control and leadership of project 
+lead TinyTakinTeller, who chose to share rights and license in the form of 
+CC BY-NC-SA 4.0
+
+Works currently licensed in this directory under this license:
+* "locale_en.gd"
+
+Last License Update: 30/08/2024 (ddmmYYY)
