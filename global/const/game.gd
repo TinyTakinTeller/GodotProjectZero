@@ -9,7 +9,7 @@ const VERSION_MINOR: String = "week 18.2"
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
 ## BEFORE EXPORTING TO WEB (that uses iframe like e.g. itch.io), SET TO true
-const WEB_EXPORT_WORKAROUNDS: bool = true
+const WEB_EXPORT_WORKAROUNDS: bool = false
 
 const PARAMS_DEBUG: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
