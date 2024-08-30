@@ -6,4 +6,4 @@ CC BY-NC-SA 4.0
 Works currently licensed in this directory under this license:
 * "locale_en.gd"
 
-Last License Update: 30/08/2024 (ddmmYYY)
+Last License Update: 30/08/2024 (ddmmYYYY)
