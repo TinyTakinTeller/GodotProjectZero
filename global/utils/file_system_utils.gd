@@ -5,6 +5,15 @@ const RESOURCES_PATH: String = "res://resources/"
 const IMAGE_RESOURCES_PATH: String = "res://assets/image/"
 
 
+static func read_text_from(path: String) -> String:
+	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return ""
+	var content: String = file.get_as_text()
+	file.close()
+	return content
+
+
 static func get_files_at(path: String) -> PackedStringArray:
 	var files: PackedStringArray = DirAccess.get_files_at(path)
 	if Game.PARAMS["debug_logs"]:
