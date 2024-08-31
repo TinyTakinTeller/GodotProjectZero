@@ -1,8 +1,8 @@
 # Godot Project Zero: A Dark Forest
 
 CONTRIBUTE:
-- see "Issues" section on Github for working on project enhancements
-- join us in Discord (add `tiny_takin_teller` for invites) and Trello board for working on game content and mechanics
+- see "Issues" section on Github for working on **project (enhancements)**
+- join Discord (add `tiny_takin_teller` for invites) and Trello for working on **game (content, mechanics, design)**
 
 PLAY THE GAME: 
 - Itch https://tinytakinteller.itch.io/the-best-game-ever
