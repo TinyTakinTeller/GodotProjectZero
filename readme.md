@@ -12,6 +12,10 @@ READ WEEKLY DEVLOG'S:
 
 Current Version - [ PROTOTYPE : WEEK 18 ]
 
+**Milestones**
+- 29/04/2024 [`prototype.week.01`] **First version shared on Itch** 👀
+- 24/06/2024 [`prototype.week.09`] **Created Discord & Trello for the community** ❤️
+- 26/08/2024 [`prototype.week.18`] **Project featured on front page of Itch "New & Popular"** 🚀
 
 ## Overview
 
