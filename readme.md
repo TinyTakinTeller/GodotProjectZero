@@ -1,14 +1,19 @@
 # Godot Project Zero: A Dark Forest
 
-If you wish to contribute, join us in Trello and Discord (add `tiny_takin_teller` for invites).
+CONTRIBUTE:
+- see "Issues" section on Github for working on project enhancements
+- join us in Discord (add `tiny_takin_teller` for invites) and Trello board for working on game content and mechanics
 
-PLAY THE GAME : https://tinytakinteller.itch.io/the-best-game-ever
+PLAY THE GAME: 
+- Itch https://tinytakinteller.itch.io/the-best-game-ever
 
-READ WEEKLY DEVLOG'S : https://tinytakinteller.itch.io/the-best-game-ever/devlog
+READ WEEKLY DEVLOG'S:
+- Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
 Current Version - [ PROTOTYPE : WEEK 18 ]
 
-**My first Godot game from scratch.**
+
+## Overview
 
 *Gather Resources...*
 
