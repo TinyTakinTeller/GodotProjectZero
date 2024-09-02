@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjroqyyfrvx70"]
+[gd_scene load_steps=7 format=3 uid="uid://bjroqyyfrvx70"]
 
+[ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="2_genxb"]
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_gumta"]
 [ext_resource type="Script" path="res://scenes/ui/screen/world_screen/progress_button/progress_button.gd" id="2_rp5nm"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_v7ecv"]
@@ -19,6 +20,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 script = ExtResource("2_rp5nm")
+shake_shader_component_scene = ExtResource("2_genxb")
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
@@ -74,3 +76,6 @@ unique_name_in_owner = true
 [node name="SubstanceEffectQueue" parent="Effect" instance=ExtResource("4_ybk84")]
 unique_name_in_owner = true
 lifetime = 3.0
+
+[node name="SoulEffectQueue" parent="Effect" instance=ExtResource("4_ybk84")]
+unique_name_in_owner = true

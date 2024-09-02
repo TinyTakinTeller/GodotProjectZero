@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl41mo1e3hnlo"]
+
+[ext_resource type="Script" path="res://scenes/autostart/soul_screen/soul_screen.gd" id="1_fyd6i"]
+[ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="2_ey0j8"]
+[ext_resource type="PackedScene" uid="uid://dfrws6lo2o7d0" path="res://scenes/autostart/soul_screen/soul/soul_sprite.tscn" id="2_rspx0"]
+[ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="2_whm7q"]
+[ext_resource type="Texture2D" uid="uid://cpwmy667e4xpa" path="res://assets/image/npc/cat/cat_90_100.png" id="2_xltfu"]
+
+[node name="Soul" type="Node"]
+script = ExtResource("1_fyd6i")
+shake_shader_component_scene = ExtResource("2_whm7q")
+
+[node name="Node2D" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="SoulSprite" parent="Node2D" instance=ExtResource("2_rspx0")]
+unique_name_in_owner = true
+
+[node name="CatSprite2D" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+position = Vector2(-45, -50)
+texture = ExtResource("2_xltfu")
+
+[node name="Control" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ey0j8")
+
+[node name="Label" type="Label" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Coming Soon"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfrws6lo2o7d0"]
+
+[ext_resource type="Texture2D" uid="uid://cfm5va8l2ai3y" path="res://assets/image/soul/soul_16_16.png" id="1_lonsv"]
+[ext_resource type="Script" path="res://scenes/autostart/soul_screen/soul/soul_sprite.gd" id="2_wa4lx"]
+
+[node name="SoulSprite" type="CharacterBody2D"]
+z_index = 4096
+script = ExtResource("2_wa4lx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_lonsv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -5, -8, -5, -8, -1, 0, 7, 8, -1, 8, -5, 7, -5, 5, -7, 5, -8, 2, -8, 2, -7, 0, -6, -2, -7, -2, -8, -5, -8, -5, -7)

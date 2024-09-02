@@ -1,4 +1,5 @@
-class_name NpcDialog extends MarginContainer
+class_name NpcDialog
+extends MarginContainer
 
 const PEEK_ALPHA: Array[float] = [0, 0.1, 1.0]
 
@@ -150,6 +151,7 @@ func _connect_signals() -> void:
 	npc_button.mouse_entered.connect(_on_npc_hover)
 	npc_button.mouse_exited.connect(_on_npc_hover_stop)
 	npc_button.pressed.connect(_on_npc_button_pressed)
+	SignalBus.clear_npc_event.connect(_on_clear_npc_event)
 
 
 func _on_typing_animation_end() -> void:
@@ -205,10 +207,16 @@ func _on_npc_hover() -> void:
 
 
 func _on_npc_hover_stop() -> void:
+	if SaveFile.resources.get("soul", 0) > 0:
+		return
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _on_npc_button_pressed() -> void:
+	if SaveFile.resources.get("soul", 0) > 0:
+		return
+
 	SignalBus.info_hover_shader.emit(
 		Locale.get_npc_click_title(_npc_id), Locale.get_npc_click_info(_npc_id)
 	)
@@ -216,6 +224,12 @@ func _on_npc_button_pressed() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 		Audio.play_sfx_id("cat_click", 0.5, 2.0)
+
+
+func _on_clear_npc_event() -> void:
+	_hide_ui()
+	SignalBus.npc_event_interacted.emit(_npc_id, _target_id, 9)
+	_load_next_active_event()
 
 
 ############

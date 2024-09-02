@@ -5,20 +5,19 @@
 [resource]
 script = ExtResource("1_bo5cl")
 order = 0
-color = Color(0.878431, 0.878431, 0.392157, 1)
-sort_value = 107
-sort_value_override = 0.0
+color = Color(0.392157, 0.392157, 0.878431, 1)
+sort_value = -999
+sort_value_override = 999.0
 id = "soul"
 amount = 1
 cooldown = 100.0
 costs = {
-"singularity": 9,
 "soulstone": 1000000000000000000
 }
 cost_scales = {}
 worker_costs = {}
 random_drops = {}
-hidden = true
+hidden = false
 max_amount = 1
 column = 1
 dynamic_efficiency_id = ""

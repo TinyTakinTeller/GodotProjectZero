@@ -609,7 +609,8 @@ const EVENT_DATA_TEXT: Dictionary = {
 	"first_spirit":
 	"The unshackled spirit merges with the swordsmen, infusing them with dark power.",
 	"first_essence":
-	"The devoured essence allows me to siphon the lifeforce of my swordsmen, enhancing my own lethal prowess."
+	"The devoured essence allows me to siphon the lifeforce of my swordsmen, enhancing my own lethal prowess.",
+	"soul_crafted": "Is this... the end?"
 }
 
 const NPC_EVENT_TEXT: Dictionary = {
@@ -633,7 +634,9 @@ const NPC_EVENT_TEXT: Dictionary = {
 	"Your smell betrays your identity... You couldn't possibly be wholly human, now could you?",
 	"cat_intro_1_1": "How curious. You look familiar, yet your scent... Unrecognizable.",
 	"cat_intro_1_2": "I will... keep my distance, for now.",
-	"cat_intro_0": "Meow. Meow. *Purr*"
+	"cat_intro_0": "Meow. Meow. *Purr*",
+	"cat_soul_crafted": "I knew you could do it...",
+	"cat_soul_crafted_1": "I will be taking that now."
 }
 
 const NPC_EVENT_OPTIONS: Dictionary = {
@@ -656,7 +659,9 @@ const NPC_EVENT_OPTIONS: Dictionary = {
 	"cat_intro_1": ["?"],
 	"cat_intro_1_1": ["?"],
 	"cat_intro_1_2": ["?"],
-	"cat_intro_0": ["?"]
+	"cat_intro_0": ["?"],
+	"cat_soul_crafted": ["?"],
+	"cat_soul_crafted_1": ["No"]
 }
 
 const SCALE_SETTINGS_INFO: Dictionary = {

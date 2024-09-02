@@ -8,6 +8,7 @@ const AUTOSAVE_SECONDS: int = Game.PARAMS["autosave_seconds"]
 
 var prestige_dialog: bool = false
 var prestige_dialog_timestamp: Dictionary = {}
+var cat_sprite_2d_position: Vector2 = Vector2.ZERO
 
 var active_file_name: String = "default"
 var save_datas: Dictionary = {}

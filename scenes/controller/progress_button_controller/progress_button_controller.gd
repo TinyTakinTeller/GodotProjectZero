@@ -85,8 +85,7 @@ func _handle_progress_button_pressed(resource_generator: ResourceGenerator, sour
 	if resource_generator == null:
 		return
 
-	## TODO: game ending
-	if resource_generator.id == "soul":
+	if resource_generator.id == "soul" and Game.PARAMS["soul_disabled"]:
 		var cost: Dictionary = resource_generator.get_costs()
 		if _can_pay(cost):
 			SignalBus.soul.emit()

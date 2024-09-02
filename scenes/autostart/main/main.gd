@@ -14,6 +14,14 @@ var _infinity_count: int = -1
 @onready var prestige_transition_simple_tween: SimpleTween = %PrestigeTransitionSimpleTween
 @onready var reborn_transition_simple_tween: SimpleTween = %RebornTransitionSimpleTween
 @onready var enter_simple_tween: SimpleTween = %EnterSimpleTween
+@onready var enter_soul_simple_tween: SimpleTween = %EnterSoulSimpleTween
+@onready var footer_h_box_container: HBoxContainer = %FooterHBoxContainer
+@onready var event_tracker: MarginContainer = %EventTracker
+@onready var resource_tracker: ResourceTracker = %ResourceTracker
+@onready var body_margin_container: MarginContainer = %BodyMarginContainer
+@onready var cat_sprite_2d: Sprite2D = %CatSprite2D
+@onready var world_screen: WorldScreen = %WorldScreen
+@onready var soul_sprite: SoulSprite = %SoulSprite
 
 ###############
 ## overrides ##
@@ -47,6 +55,9 @@ func _initialize() -> void:
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
+	cat_sprite_2d.visible = false
+	soul_sprite.visible = false
+
 
 func _reset_prestige_ui() -> void:
 	main_ui.visible = true
@@ -74,6 +85,9 @@ func _connect_signals() -> void:
 	prestige_transition_simple_tween.animation_end.connect(_on_prestige_transition_end)
 	SignalBus.prestige_reborn.connect(_on_prestige_reborn)
 	reborn_transition_simple_tween.animation_end.connect(_on_reborn_transition_end)
+	SignalBus.soul.connect(_on_soul)
+	SignalBus.npc_event_interacted.connect(_on_npc_event_interacted)
+	enter_soul_simple_tween.animation_end.connect(_on_enter_soul_simple_tween_end)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -138,6 +152,24 @@ func _on_reborn_transition_end() -> void:
 	Scene.change_scene("main_scene")
 
 
+func _on_soul() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	soul_sprite.position = main_control.get_global_mouse_position()
+	soul_sprite.visible = true
+
+
+func _on_npc_event_interacted(npc_id: String, npc_event_id: String, _option: int) -> void:
+	if npc_id == "cat" and npc_event_id == "cat_soul_crafted_1":
+		cat_sprite_2d.visible = true
+		var target: TextureRect = world_screen.npc_dialog.npc_texture_rect
+		cat_sprite_2d.position = target.get_screen_position()
+		cat_sprite_2d.position.x += target.get_rect().size.x / 2
+		cat_sprite_2d.position.y += target.get_rect().size.y / 2
+		SaveFile.cat_sprite_2d_position = cat_sprite_2d.position
+
+		enter_soul_simple_tween.play_animation()
+
+
 ############
 ## export ##
 ############
@@ -165,3 +197,16 @@ func _reborn_transition(animation_percent: float) -> void:
 
 func _enter_simple_tween(animation_percent: float) -> void:
 	main_control.modulate.a = animation_percent
+
+
+func _enter_soul_simple_tween(animation_percent: float) -> void:
+	var alpha: float = 1.0 - animation_percent
+	tab_tracker.modulate.a = alpha
+	footer_h_box_container.modulate.a = alpha
+	event_tracker.modulate.a = alpha
+	resource_tracker.modulate.a = alpha
+	body_margin_container.modulate.a = alpha
+
+
+func _on_enter_soul_simple_tween_end() -> void:
+	Scene.change_scene("soul_scene")

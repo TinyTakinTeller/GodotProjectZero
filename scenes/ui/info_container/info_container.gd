@@ -7,6 +7,7 @@ var info_type: String
 @onready var info_label_shake: Label = %InfoLabelShake
 @onready var title_label: Label = %TitleLabel
 @onready var info_label: Label = %InfoLabel
+@onready var v_box_container: VBoxContainer = %VBoxContainer
 
 ###############
 ## overrides ##
@@ -75,6 +76,7 @@ func _connect_signals() -> void:
 	SignalBus.info_hover_shader.connect(_on_info_hover_shader)
 	SignalBus.info_hover_tab.connect(_on_info_hover_tab)
 	SignalBus.resource_updated.connect(_on_resource_updated)
+	SignalBus.soul.connect(_on_soul)
 
 
 func _on_progress_button_hover(resource_generator: ResourceGenerator) -> void:
@@ -121,3 +123,7 @@ func _on_resource_updated(id: String, _total: int, _amount: int, _source_id: Str
 	if info_type == "resource" and id == info_id:
 		var resource_generator: ResourceGenerator = Resources.resource_generators[id]
 		_on_progress_button_hover(resource_generator)
+
+
+func _on_soul() -> void:
+	v_box_container.modulate = ColorSwatches.PURPLE

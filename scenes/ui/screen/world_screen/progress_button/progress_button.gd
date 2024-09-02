@@ -2,6 +2,8 @@ class_name ProgressButton extends MarginContainer
 
 const UNPAID_ANIMATION_LENGTH: float = 0.3
 
+@export var shake_shader_component_scene: PackedScene
+
 var _resource_generator: ResourceGenerator
 var _disabled: bool = false
 
@@ -14,6 +16,7 @@ var _disabled: bool = false
 @onready var line_effect: LineEffect = %LineEffect
 @onready var label_effect_queue: Node2D = %LabelEffectQueue
 @onready var substance_effect_queue: LabelEffectQueue = %SubstanceEffectQueue
+@onready var soul_effect_queue: LabelEffectQueue = %SoulEffectQueue
 
 ###############
 ## overrides ##
@@ -64,6 +67,13 @@ func stop_unlock_animation() -> void:
 	new_unlock_tween.loop = false
 
 
+func _apply_shake_effect() -> void:
+	var shake_shader_component: ShakeShaderComponent = (
+		shake_shader_component_scene.instantiate() as ShakeShaderComponent
+	)
+	button.add_child(shake_shader_component)
+
+
 #############
 ## helpers ##
 #############
@@ -81,6 +91,9 @@ func _propagate_theme_to_virtual_children() -> void:
 		label_effect_queue.set_theme(inherited_theme)
 	if substance_effect_queue != null:
 		substance_effect_queue.set_theme(inherited_theme)
+	if soul_effect_queue != null:
+		soul_effect_queue.set_theme(inherited_theme)
+		soul_effect_queue.set_color_theme_override(ColorSwatches.PURPLE)
 
 
 func _set_info() -> void:
@@ -100,6 +113,8 @@ func _update_pivot() -> void:
 	label_effect_queue.position.y = self.get_rect().size.y / 2
 	substance_effect_queue.position.x = self.get_rect().size.x
 	substance_effect_queue.position.y = self.get_rect().size.y / 2
+	soul_effect_queue.position.x = self.get_rect().size.x
+	soul_effect_queue.position.y = self.get_rect().size.y / 2
 
 
 ##############
@@ -130,7 +145,11 @@ func _handle_resource_ui_updated(resource_tracker_item: ResourceTrackerItem, amo
 		line_effect.target_b = resource_tracker_item
 		line_effect.play_animation()
 	var text: String = resource_tracker_item._resource_generator.get_display_increment(amount)
-	label_effect_queue.add_task(text)
+	var id: String = resource_tracker_item.get_id()
+	if id == "soul":
+		soul_effect_queue.add_task(text)
+	else:
+		label_effect_queue.add_task(text)
 
 
 #############
@@ -269,12 +288,20 @@ func _on_substance_updated(id: String, _total_amount: int, source_id: String) ->
 
 
 func _on_soul() -> void:
-	if get_id() == "soul":
+	if get_id() == "soul" and Game.PARAMS["soul_disabled"]:
 		button.text = "Coming Soon"
 		button.modulate = ColorSwatches.YELLOW
+		return
+
+	button.modulate = ColorSwatches.PURPLE
+	button.disabled = true
+	_apply_shake_effect()
 
 
 func _on_harvest_forest(order: int) -> void:
+	if get_id() == "soul":
+		return
+
 	if _resource_generator != null and _resource_generator.order == order:
 		#and not _resource_generator.is_unique()
 		_on_button_up("harvest_forest")

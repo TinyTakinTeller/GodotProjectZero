@@ -77,6 +77,8 @@ func _on_progress_button_paid(resource_generator: ResourceGenerator, _source: St
 	var has_wheel: bool = SaveFile.substances.get("wheel_of_fortune", 0) > 0
 	if not has_world:
 		return
+	if resource_generator == null or resource_generator.id == "soul":
+		return
 
 	var boost: int = 2 if has_wheel else 1
 	var id: String = resource_generator.id

@@ -379,6 +379,7 @@ func _connect_signals() -> void:
 	SignalBus.tab_unlocked.connect(_on_tab_unlocked)
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.main_ready.connect(_handle_on_main_ready)
+	SignalBus.soul.connect(_on_soul)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, _source_id: String) -> void:
@@ -433,3 +434,12 @@ func _on_tab_unlocked(_tab_data: TabData) -> void:
 
 func _on_tab_changed(tab_data: TabData) -> void:
 	_handle_on_tab_changed(tab_data)
+
+
+func _on_soul() -> void:
+	if Game.PARAMS["soul_disabled"]:
+		return
+
+	SignalBus.clear_npc_event.emit()
+	_trigger_unique_unlock_event("soul_crafted")
+	_trigger_unique_unlock_npc_event("cat", "cat_soul_crafted")

@@ -83,6 +83,7 @@ signal prestige_condition_fail
 signal prestige_condition_disabled
 signal prestige_condition_pass(infinity_count: int)
 signal soul
+signal clear_npc_event
 
 ## MANAGER
 signal resource_updated(id: String, total: int, amount: int, source_id: String)

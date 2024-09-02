@@ -2,6 +2,8 @@ class_name TabTrackerItem extends MarginContainer
 
 signal click(tab_data: TabData)
 
+@export var shake_shader_component_scene: PackedScene
+
 var _tab_data: TabData
 var _tab_tracker: TabTracker
 
@@ -55,6 +57,13 @@ func stop_unlock_animation() -> void:
 	new_unlock_tween.loop = false
 
 
+func _apply_shake_effect() -> void:
+	var shake_shader_component: ShakeShaderComponent = (
+		shake_shader_component_scene.instantiate() as ShakeShaderComponent
+	)
+	button.add_child(shake_shader_component)
+
+
 #############
 ## helpers ##
 #############
@@ -103,6 +112,7 @@ func _connect_signals() -> void:
 	SignalBus.deaths_door_resolved.connect(_on_deaths_door_resolved)
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.event_saved.connect(_on_event_saved)
+	SignalBus.soul.connect(_on_soul)
 
 
 #func _on_deaths_door_decided(_enemy_data: EnemyData, _option: int) -> void:
@@ -156,6 +166,15 @@ func _on_substance_updated(_id: String, _total_amount: int, _source_id: String) 
 func _on_event_saved(event_data: EventData, _vals: Array, _index: int) -> void:
 	if _tab_data != null and get_id() == "substance" and event_data.id == "darkness_10":
 		start_unlock_animation()
+
+
+func _on_soul() -> void:
+	if Game.PARAMS["soul_disabled"]:
+		return
+
+	button.modulate = ColorSwatches.PURPLE
+	button.disabled = true
+	_apply_shake_effect()
 
 
 ############

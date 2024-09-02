@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=49 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://d1y5xyx63u3w0" path="res://scenes/ui/developer_console/developer_console.tscn" id="20_yijsf"]
 [ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/version_container/version_container.tscn" id="20_ynkq3"]
 [ext_resource type="PackedScene" uid="uid://ch7uxqklej1h6" path="res://scenes/ui/screen/darkness_screen/darkness_screen.tscn" id="21_324w1"]
+[ext_resource type="PackedScene" uid="uid://dfrws6lo2o7d0" path="res://scenes/autostart/soul_screen/soul/soul_sprite.tscn" id="25_jo8o4"]
 [ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
 [ext_resource type="PackedScene" uid="uid://br1a46uikyubt" path="res://scenes/ui/screen/starway_screen/starway_screen.tscn" id="27_d2ak1"]
 [ext_resource type="PackedScene" uid="uid://b5cknmluch23j" path="res://scenes/ui/screen/offline_screen/offline_screen.tscn" id="29_mta8x"]
@@ -44,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://b0iomctf5ruia" path="res://scenes/autostart/main/prestige_ui/prestige_ui.tscn" id="39_5hxeo"]
 [ext_resource type="PackedScene" uid="uid://b75kh4e41777c" path="res://scenes/autostart/main/reborn_ui/reborn_ui.tscn" id="40_cpuij"]
 [ext_resource type="Shader" path="res://resources/shader/cracked_glass/cracked_glass.gdshader" id="41_fakmo"]
+[ext_resource type="Texture2D" uid="uid://cpwmy667e4xpa" path="res://assets/image/npc/cat/cat_90_100.png" id="42_xhf8o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pgw6q"]
 shader = ExtResource("37_xggnc")
@@ -132,6 +134,23 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="SoulUI" type="Control" parent="CanvasLayer/MainControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CatSprite2D" type="Sprite2D" parent="CanvasLayer/MainControl/SoulUI"]
+unique_name_in_owner = true
+z_index = 4096
+position = Vector2(475, 617)
+texture = ExtResource("42_xhf8o")
+
+[node name="SoulSprite" parent="CanvasLayer/MainControl/SoulUI" instance=ExtResource("25_jo8o4")]
+unique_name_in_owner = true
+
 [node name="MainUI" type="Control" parent="CanvasLayer/MainControl"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -177,6 +196,7 @@ size_flags_horizontal = 0
 text = "tinytakinteller.itch.io"
 
 [node name="BodyMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -187,6 +207,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="EventTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -198,6 +219,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="WorldScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("4_xbehd")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ManagmentScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" node_paths=PackedStringArray("worker_controller") instance=ExtResource("5_oa073")]
@@ -223,26 +245,30 @@ layout_mode = 2
 substance_controller = NodePath("../../../../../../../../../../Controllers/SubstanceController")
 
 [node name="OfflineScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("29_mta8x")]
+visible = false
 layout_mode = 2
 
 [node name="SettingsScreen" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer/ScreenMarginContainer" instance=ExtResource("31_y1j6b")]
+visible = false
 layout_mode = 2
 
 [node name="ResourceTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="FooterHBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="InfoContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("10_unxkl")]
+[node name="InfoContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/FooterHBoxContainer" instance=ExtResource("10_unxkl")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_constants/margin_right = 0
 
-[node name="VersionContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("20_ynkq3")]
+[node name="VersionContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/FooterHBoxContainer" instance=ExtResource("20_ynkq3")]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 
@@ -309,3 +335,8 @@ call_method = "_reborn_transition"
 unique_name_in_owner = true
 target = NodePath("../../..")
 call_method = "_enter_simple_tween"
+
+[node name="EnterSoulSimpleTween" parent="CanvasLayer/MainControl" node_paths=PackedStringArray("target") instance=ExtResource("38_x6mfx")]
+unique_name_in_owner = true
+target = NodePath("../../..")
+call_method = "_enter_soul_simple_tween"

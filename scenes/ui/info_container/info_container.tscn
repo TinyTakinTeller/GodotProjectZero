@@ -20,10 +20,12 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TitleLabelShake" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/outline_size = 1
@@ -31,6 +33,7 @@ text = "Rare Title"
 
 [node name="InfoLabelShake" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Venture on a hunt for some rare resources!"
 

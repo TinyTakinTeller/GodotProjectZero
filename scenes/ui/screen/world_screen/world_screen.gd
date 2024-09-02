@@ -1,3 +1,4 @@
+class_name WorldScreen
 extends MarginContainer
 
 const TAB_DATA_ID: String = "world"
@@ -5,9 +6,12 @@ const TAB_DATA_ID: String = "world"
 @export var progress_button_scene: PackedScene
 
 var grid_containers: Array[GridContainer] = []
+var is_soul: bool = false
 
 @onready var h_box_container: HBoxContainer = %HBoxContainer
 @onready var all_button: Button = %AllButton
+@onready var experience_margin_container: ExperienceTracker = %ExperienceMarginContainer
+@onready var npc_dialog: NpcDialog = %NpcDialog
 
 ###############
 ## overrides ##
@@ -75,6 +79,7 @@ func _connect_signals() -> void:
 	all_button.mouse_entered.connect(_on_all_button_hover)
 	SignalBus.progress_button_cooldown_end.connect(_on_progress_button_cooldown_end)
 	SignalBus.substance_updated.connect(_on_substance_updated)
+	SignalBus.soul.connect(_on_soul)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -109,10 +114,22 @@ func _on_all_button_hover() -> void:
 
 
 func _on_progress_button_cooldown_end(_resource_generator: ResourceGenerator) -> void:
-	all_button.disabled = false
-	all_button.release_focus()
+	if not is_soul:
+		all_button.disabled = false
+		all_button.release_focus()
 
 
 func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
 	if id == "the_magician" and total_amount > 0:
 		all_button.visible = true
+
+
+func _on_soul() -> void:
+	if Game.PARAMS["soul_disabled"]:
+		return
+	is_soul = true
+
+	all_button.modulate = ColorSwatches.PURPLE
+	all_button.disabled = true
+
+	experience_margin_container.experience_label.modulate = ColorSwatches.PURPLE

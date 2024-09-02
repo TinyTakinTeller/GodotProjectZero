@@ -4,7 +4,7 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "week 18.2"
+const VERSION_MINOR: String = "week 19"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
@@ -13,6 +13,7 @@ const WEB_EXPORT_WORKAROUNDS: bool = false
 
 const PARAMS_DEBUG: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
+	"soul_disabled": false,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,
 	"heart_screen_shader": true,
@@ -46,6 +47,7 @@ const PARAMS_DEBUG: Dictionary = {
 
 const PARAMS_PROD: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
+	"soul_disabled": false,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,
 	"heart_screen_shader": true,
