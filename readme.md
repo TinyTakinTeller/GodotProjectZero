@@ -10,7 +10,7 @@ PLAY THE GAME:
 READ WEEKLY DEVLOG'S:
 - Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
-Current Version - [ PROTOTYPE : WEEK 18 ]
+Current Version - [ PROTOTYPE : WEEK 19 ]
 
 **Milestones**
 - 29/04/2024 [`prototype.week.01`] **First version shared on Itch** 👀
