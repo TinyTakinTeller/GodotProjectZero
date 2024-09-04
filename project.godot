@@ -40,6 +40,7 @@ Locale="*res://global/autoload/locale/locale.tscn"
 Audio="*res://global/autoload/audio/audio.tscn"
 SignalBus="*res://global/autoload/signal_bus/signal_bus.tscn"
 Scene="*res://global/autoload/scene/scene.tscn"
+Spawning="*res://addons/BulletUpHell/Spawning.tscn"
 
 [debug]
 
@@ -61,7 +62,7 @@ project/assembly_name="The Best Game Ever"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg", "res://addons/gdLinter/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg", "res://addons/format_on_save/plugin.cfg", "res://addons/gdLinter/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [input]
 
