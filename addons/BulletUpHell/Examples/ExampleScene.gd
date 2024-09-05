@@ -1,8 +1,5 @@
 extends Node2D
 
-@onready var spawn_point_1: Node2D = $Circle1/SpawnPoint
-@onready var spawn_point_2: Node2D = $Circle2/SpawnPoint
-
 
 func _process(_delta):
 	$FPS.text = str(Engine.get_frames_per_second()) + " FPS\n" + str(Spawning.poolBullets.size())

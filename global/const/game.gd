@@ -13,6 +13,7 @@ const WEB_EXPORT_WORKAROUNDS: bool = false
 
 const PARAMS_DEBUG: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
+	"cat_boss_battle_fps": true,
 	"soul_disabled": false,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,
@@ -47,6 +48,7 @@ const PARAMS_DEBUG: Dictionary = {
 
 const PARAMS_PROD: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
+	"cat_boss_battle_fps": true,
 	"soul_disabled": false,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,

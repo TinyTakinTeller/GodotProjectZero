@@ -3,12 +3,13 @@ extends Node
 @export var shake_shader_component_scene: PackedScene
 
 @onready var node_2d: Node2D = %Node2D
-@onready var cat_sprite_2d: Sprite2D = %CatSprite2D
+@onready var pattern_master: PatternMaster = $Node2D/PatternMaster
 @onready var soul_sprite: SoulSprite = %SoulSprite
-@onready var control: Control = %Control
-@onready var label: Label = %Label
+@onready var cat_sprite_2d: Sprite2D = %CatSprite2D
 
-@onready var main_pattern: Node2D = %MainPattern
+@onready var control: Control = %Control
+@onready var label: Label = $Control/Label
+
 
 ###############
 ## overrides ##
@@ -16,13 +17,7 @@ extends Node
 
 
 func _physics_process(_delta: float) -> void:
-	#main_pattern.spawn_point_1.active = true
-	#main_pattern.spawn_point_2.active = true
-
-	main_pattern.spawn_point_1.position = (
-		cat_sprite_2d.position - cat_sprite_2d.get_rect().size / 4 + Vector2(8, -16.0)
-	)
-	main_pattern.spawn_point_2.position = (
+	pattern_master.align_patterns(
 		cat_sprite_2d.position - cat_sprite_2d.get_rect().size / 4 + Vector2(8, -16.0)
 	)
 
@@ -32,9 +27,9 @@ func _ready() -> void:
 	_intro_animation()
 
 
-func _intro_animation_end() -> void:
-	_add_shake_effect_to_cat()
-	label.visible = true
+#############
+## helpers ##
+#############
 
 
 func _intro_animation() -> void:
@@ -64,3 +59,14 @@ func _initialize() -> void:
 	cat_sprite_2d.position = SaveFile.cat_sprite_2d_position
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	soul_sprite.position = node_2d.get_global_mouse_position()
+
+
+#############
+## signals ##
+#############
+
+
+func _intro_animation_end() -> void:
+	_add_shake_effect_to_cat()
+	# label.visible = true
+	pattern_master.start_pattern(0)

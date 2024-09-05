@@ -1,25 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp27xbynyqp65"]
+[gd_scene load_steps=18 format=3 uid="uid://dp27xbynyqp65"]
 
-[ext_resource type="Script" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_aknba"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_owqfl"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="3_qchcn"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_eldcv"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_h13t5"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_s2cyv"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="7_lhkna"]
+[ext_resource type="Script" path="res://scenes/bullet_up_hell/pattern_master/pattern_master.gd" id="1_lkn8h"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_rai8q"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="3_molhr"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_vu88i"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_gfkum"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_4oi1y"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="7_va6hm"]
 
 [sub_resource type="Curve2D" id="Curve2D_2blpc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xvgbi"]
 resource_name = "PatternCircle"
-script = ExtResource("4_eldcv")
+script = ExtResource("4_vu88i")
 radius = 0
 angle_total = 6.28319
 angle_decal = 0.0
 symmetric = true
 center = 0
 symmetry_type = 0
-bullet = "circle"
+bullet = "circle0"
 nbr = 10
 iterations = -1
 pattern_angle = 0.0
@@ -44,9 +44,14 @@ wait_tween_time = 0.0
 
 [sub_resource type="Curve" id="Curve_ghta3"]
 
+[sub_resource type="Gradient" id="Gradient_yqb8c"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.999999, 0.984398, 0.669782, 1)
+
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_f8sif"]
-script = ExtResource("7_lhkna")
-anim_more = Array[ExtResource("6_s2cyv")]([])
+script = ExtResource("7_va6hm")
+anim_more = Array[ExtResource("6_4oi1y")]([])
 damage = 1.0
 speed = 100.0
 scale = 1.0
@@ -54,6 +59,7 @@ angle = 0.0
 groups = PackedStringArray()
 spec_bounces = 0
 spec_no_collision = false
+spec_modulate = SubResource("Gradient_yqb8c")
 spec_modulate_loop = 0.0
 spec_trail_length = 0.0
 spec_trail_width = 0.0
@@ -118,14 +124,14 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d7c6k"]
 resource_name = "PatternCircle"
-script = ExtResource("4_eldcv")
+script = ExtResource("4_vu88i")
 radius = 0
 angle_total = 6.28319
 angle_decal = 1.5708
 symmetric = true
 center = 5
 symmetry_type = 0
-bullet = "circle2"
+bullet = "circle1"
 nbr = 10
 iterations = -1
 pattern_angle = 0.0
@@ -144,18 +150,100 @@ wait_tween_momentum = 0
 wait_tween_length = 0.0
 wait_tween_time = 0.0
 
-[node name="MainPattern" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_f3isc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.952344, 0.952151, 1)
+
+[sub_resource type="PackedDataContainer" id="PackedDataContainer_5y4sb"]
+script = ExtResource("7_va6hm")
+anim_more = Array[ExtResource("6_4oi1y")]([])
+damage = 1.0
+speed = 100.0
+scale = 1.0
+angle = 0.0
+groups = PackedStringArray()
+spec_bounces = 0
+spec_no_collision = false
+spec_modulate = SubResource("Gradient_f3isc")
+spec_modulate_loop = 0.0
+spec_trail_length = 0.0
+spec_trail_width = 0.0
+spec_trail_modulate = Color(1, 1, 1, 1)
+spec_rotating_speed = 0.0
+death_after_time = 30.0
+death_outside_box = Rect2(0, 0, 0, 0)
+death_from_collision = true
+a_direction_equation = ""
+a_curve_movement = 0
+a_speed_multiplier = SubResource("Curve_ymaju")
+a_speed_multi_iterations = 0
+a_speed_multi_scale = 0.0
+trigger_container = ""
+trigger_wait_for_shot = true
+homing_type = 0
+homing_target = NodePath("")
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
+scale_multi_iterations = 0
+scale_multiplier = SubResource("Curve_ghta3")
+scale_multi_scale = 1.0
+r_randomisation_chances = 1.0
+r_speed_choice = PackedFloat32Array()
+r_speed_variation = Vector3(0, 0, 0)
+r_scale_choice = PackedFloat32Array()
+r_scale_variation = Vector3(0, 0, 0)
+r_angle_choice = PackedFloat32Array()
+r_angle_variation = Vector3(0, 0, 0)
+r_group_choice = []
+r_bounce_choice = PackedInt32Array()
+r_bounce_variation = Vector3(0, 0, 0)
+r_no_coll_chances = 0.0
+r_modulate_variation = Vector3(0, 0, 0)
+r_trail_length_variation = Vector3(0, 0, 0)
+r_trail_color_variation = Vector3(0, 0, 0)
+r_rotating_variation = Vector3(0, 0, 0)
+r_death_after_choice = PackedFloat32Array()
+r_death_after_variation = Vector3(0, 0, 0)
+r_death_outside_chances = 0.0
+r_dir_equation_choice = PackedStringArray()
+r_curve_choice = []
+r_speed_multi_curve_choice = []
+r_speed_multi_iter_variation = Vector3(0, 0, 0)
+r_speed_multi_scale_variation = Vector3(0, 0, 0)
+r_trigger_choice = PackedStringArray()
+r_wait_for_shot_chances = 0.0
+r_homing_target_choice = []
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
+r_steer_variation = Vector3(0, 0, 0)
+r_homing_delay_choice = PackedFloat32Array()
+r_homing_delay_variation = Vector3(0, 0, 0)
+r_homing_dur_choice = PackedFloat32Array()
+r_homing_dur_variation = Vector3(0, 0, 0)
+r_scale_multi_curve_choice = []
+r_scale_multi_iter_variation = Vector3(0, 0, 0)
+r_scale_multi_scale_variation = Vector3(0, 0, 0)
+
+[node name="PatternMaster" type="Node2D"]
 position = Vector2(11, 50)
 rotation = 6.28319
-script = ExtResource("1_aknba")
+script = ExtResource("1_lkn8h")
 
-[node name="Circle1" type="Node2D" parent="."]
+[node name="Patterns" type="Node2D" parent="."]
 
-[node name="SpawnPoint" type="Node2D" parent="Circle1"]
+[node name="Pattern0" type="Node2D" parent="Patterns"]
+
+[node name="Circle0" type="Node2D" parent="Patterns/Pattern0"]
+
+[node name="SpawnPoint" type="Node2D" parent="Patterns/Pattern0/Circle0"]
 position = Vector2(453, 22.998)
-script = ExtResource("2_owqfl")
+script = ExtResource("2_rai8q")
 active = false
-auto_pattern_id = "circle"
+auto_pattern_id = "circle0"
 shared_area_name = "0"
 rotating_speed = 0.0
 pool_amount = 200
@@ -165,25 +253,25 @@ auto_start_at_distance = 5.0
 auto_distance_from = NodePath("")
 trigger_container = NodePath("")
 
-[node name="SpawnPattern" type="Path2D" parent="Circle1"]
+[node name="SpawnPattern" type="Path2D" parent="Patterns/Pattern0/Circle0"]
 curve = SubResource("Curve2D_2blpc")
-script = ExtResource("3_qchcn")
-id = "circle"
+script = ExtResource("3_molhr")
+id = "circle0"
 pattern = SubResource("NavigationPolygon_xvgbi")
 
-[node name="BulletPattern" type="Path2D" parent="Circle1"]
+[node name="BulletPattern" type="Path2D" parent="Patterns/Pattern0/Circle0"]
 curve = SubResource("Curve2D_4yvwo")
-script = ExtResource("5_h13t5")
-id = "circle"
+script = ExtResource("5_gfkum")
+id = "circle0"
 props = SubResource("PackedDataContainer_f8sif")
 
-[node name="Circle2" type="Node2D" parent="."]
+[node name="Circle1" type="Node2D" parent="Patterns/Pattern0"]
 
-[node name="SpawnPoint" type="Node2D" parent="Circle2"]
+[node name="SpawnPoint" type="Node2D" parent="Patterns/Pattern0/Circle1"]
 position = Vector2(454, 21.998)
-script = ExtResource("2_owqfl")
+script = ExtResource("2_rai8q")
 active = false
-auto_pattern_id = "circle2"
+auto_pattern_id = "circle1"
 shared_area_name = "0"
 rotating_speed = 0.0
 pool_amount = 200
@@ -193,17 +281,17 @@ auto_start_at_distance = 5.0
 auto_distance_from = NodePath("")
 trigger_container = NodePath("")
 
-[node name="SpawnPattern" type="Path2D" parent="Circle2"]
+[node name="SpawnPattern" type="Path2D" parent="Patterns/Pattern0/Circle1"]
 curve = SubResource("Curve2D_2blpc")
-script = ExtResource("3_qchcn")
-id = "circle2"
+script = ExtResource("3_molhr")
+id = "circle1"
 pattern = SubResource("NavigationPolygon_d7c6k")
 
-[node name="BulletPattern" type="Path2D" parent="Circle2"]
+[node name="BulletPattern" type="Path2D" parent="Patterns/Pattern0/Circle1"]
 curve = SubResource("Curve2D_4yvwo")
-script = ExtResource("5_h13t5")
-id = "circle2"
-props = SubResource("PackedDataContainer_f8sif")
+script = ExtResource("5_gfkum")
+id = "circle1"
+props = SubResource("PackedDataContainer_5y4sb")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 collision_layer = 17

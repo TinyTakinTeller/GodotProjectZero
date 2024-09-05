@@ -35,4 +35,3 @@ enum MOMENTUM{None, TRANS_LINEAR,TRANS_SINE,TRANS_QUINT,TRANS_QUART,TRANS_QUAD,T
 
 var has_random
 var node_target:Node2D
-

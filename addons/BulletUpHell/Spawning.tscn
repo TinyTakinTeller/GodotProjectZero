@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://gixop20d1d75"]
+[gd_scene load_steps=16 format=3 uid="uid://gixop20d1d75"]
 
 [ext_resource type="Script" path="res://addons/BulletUpHell/BuHSpawner.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdvaddoryit2u" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_3.png" id="2_3slxn"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="2_4dc5c"]
 [ext_resource type="Texture2D" uid="uid://4qgfs5h6pqtg" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_06.png" id="3_6fafs"]
+[ext_resource type="Texture2D" uid="uid://lqqd05fstex1" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_B&W.png" id="3_8cgs3"]
 [ext_resource type="Texture2D" uid="uid://cwlu40lwdvh0m" path="res://addons/BulletUpHell/Bullet/Sprites/Bullet_11.png" id="4_gntuv"]
 [ext_resource type="AudioStream" uid="uid://nh2ipkhrxyq6" path="res://addons/BulletUpHell/Bullet/Hit Hurt.wav" id="5_rada6"]
 
@@ -61,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3slxn")
+"texture": ExtResource("3_8cgs3")
 }],
 "loop": true,
 "name": &"0",
@@ -102,8 +103,7 @@ default_delete = SubResource("Resource_tl1ht")
 [node name="ShapeManager" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("1")
-animation = &"Example"
-frame_progress = 0.608517
+animation = &"0"
 
 [node name="0" type="CollisionShape2D" parent="ShapeManager"]
 shape = SubResource("2")

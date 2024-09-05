@@ -1,7 +1,7 @@
 class_name SoulSprite
 extends CharacterBody2D
 
-const DELAY: float = 0.16
+const DELAY: float = 0.1
 
 var min_speed: float = 100
 
