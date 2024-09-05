@@ -154,7 +154,7 @@ script = ExtResource("1_aknba")
 [node name="SpawnPoint" type="Node2D" parent="Circle1"]
 position = Vector2(453, 22.998)
 script = ExtResource("2_owqfl")
-active = true
+active = false
 auto_pattern_id = "circle"
 shared_area_name = "0"
 rotating_speed = 0.0
@@ -182,7 +182,7 @@ props = SubResource("PackedDataContainer_f8sif")
 [node name="SpawnPoint" type="Node2D" parent="Circle2"]
 position = Vector2(454, 21.998)
 script = ExtResource("2_owqfl")
-active = true
+active = false
 auto_pattern_id = "circle2"
 shared_area_name = "0"
 rotating_speed = 0.0

@@ -16,6 +16,9 @@ extends Node
 
 
 func _physics_process(_delta: float) -> void:
+	#main_pattern.spawn_point_1.active = true
+	#main_pattern.spawn_point_2.active = true
+
 	main_pattern.spawn_point_1.position = (
 		cat_sprite_2d.position - cat_sprite_2d.get_rect().size / 4 + Vector2(8, -16.0)
 	)
