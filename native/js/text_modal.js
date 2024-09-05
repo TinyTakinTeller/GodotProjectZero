@@ -59,6 +59,7 @@ textArea.style.border = "2px solid #666"; // Add a default border color
 textArea.style.borderRadius = "4px"; // Rounded corners
 textArea.style.resize = "none"; // Prevent resizing
 textArea.style.boxShadow = "0 0 5px rgba(255, 255, 255, 0.3)"; // Subtle shadow for unfocused state
+textArea.onclick = "this.select()"; // Mark everything on click for easy save text copy
 
 // Add hover effect for the textarea
 textArea.addEventListener('mouseover', function() {
