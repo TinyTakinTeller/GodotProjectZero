@@ -8,9 +8,20 @@ extends Node
 @onready var control: Control = %Control
 @onready var label: Label = %Label
 
+@onready var main_pattern: Node2D = %MainPattern
+
 ###############
 ## overrides ##
 ###############
+
+
+func _physics_process(_delta: float) -> void:
+	main_pattern.spawn_point_1.position = (
+		cat_sprite_2d.position - cat_sprite_2d.get_rect().size / 4 + Vector2(8, -16.0)
+	)
+	main_pattern.spawn_point_2.position = (
+		cat_sprite_2d.position - cat_sprite_2d.get_rect().size / 4 + Vector2(8, -16.0)
+	)
 
 
 func _ready() -> void:

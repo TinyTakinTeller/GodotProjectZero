@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl41mo1e3hnlo"]
+[gd_scene load_steps=7 format=3 uid="uid://dl41mo1e3hnlo"]
 
 [ext_resource type="Script" path="res://scenes/autostart/soul_screen/soul_screen.gd" id="1_fyd6i"]
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="2_ey0j8"]
 [ext_resource type="PackedScene" uid="uid://dfrws6lo2o7d0" path="res://scenes/autostart/soul_screen/soul/soul_sprite.tscn" id="2_rspx0"]
 [ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="2_whm7q"]
 [ext_resource type="Texture2D" uid="uid://cpwmy667e4xpa" path="res://assets/image/npc/cat/cat_90_100.png" id="2_xltfu"]
+[ext_resource type="PackedScene" uid="uid://dp27xbynyqp65" path="res://scenes/bullet_up_hell/main_pattern/MainPattern.tscn" id="5_742rc"]
 
 [node name="Soul" type="Node"]
 script = ExtResource("1_fyd6i")
@@ -13,12 +14,16 @@ shake_shader_component_scene = ExtResource("2_whm7q")
 [node name="Node2D" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="MainPattern" parent="Node2D" instance=ExtResource("5_742rc")]
+unique_name_in_owner = true
+rotation = 4.46638e-06
+
 [node name="SoulSprite" parent="Node2D" instance=ExtResource("2_rspx0")]
 unique_name_in_owner = true
 
 [node name="CatSprite2D" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
-position = Vector2(-45, -50)
+position = Vector2(470, 79)
 texture = ExtResource("2_xltfu")
 
 [node name="Control" type="Control" parent="."]

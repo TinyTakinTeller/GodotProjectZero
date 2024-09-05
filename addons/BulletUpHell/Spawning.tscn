@@ -88,7 +88,6 @@ animations = [{
 points = PackedVector2Array(0, 0)
 
 [node name="BulletHellManager" type="Node2D"]
-z_index = 999
 script = ExtResource("1")
 default_idle = SubResource("Resource_uhb1j")
 default_spawn = SubResource("Resource_f2r10")

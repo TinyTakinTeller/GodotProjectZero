@@ -11,5 +11,12 @@ script = ExtResource("2_wa4lx")
 unique_name_in_owner = true
 texture = ExtResource("1_lonsv")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="HitboxCollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-7, -5, -8, -5, -8, -1, 0, 7, 8, -1, 8, -5, 7, -5, 5, -7, 5, -8, 2, -8, 2, -7, 0, -6, -2, -7, -2, -8, -5, -8, -5, -7)
+
+[node name="HurtboxArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtboxArea2D"]
 polygon = PackedVector2Array(-7, -5, -8, -5, -8, -1, 0, 7, 8, -1, 8, -5, 7, -5, 5, -7, 5, -8, 2, -8, 2, -7, 0, -6, -2, -7, -2, -8, -5, -8, -5, -7)
