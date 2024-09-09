@@ -201,6 +201,7 @@ func start() -> void:
 	can_respawn = true
 	active = true
 	_start_spawning()
+	call_deferred("set_pool")
 
 
 func stop() -> void:

@@ -7,6 +7,8 @@ var min_speed: float = 100
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var hurtbox_area_2d: Area2D = %HurtboxArea2D
+@onready var damage_timer: Timer = %DamageTimer
+@onready var damage_tween: SimpleTween = %DamageTween
 
 ###############
 ## overrides ##
@@ -30,6 +32,12 @@ func _physics_process(_delta: float) -> void:
 
 func _ready() -> void:
 	_connect_signals()
+	_initialize()
+
+
+func _initialize() -> void:
+	damage_timer.wait_time = Game.PARAMS["BuH_damage_timer"]
+	damage_tween.duration = Game.PARAMS["BuH_damage_timer"]
 
 
 #############
@@ -42,4 +50,16 @@ func _connect_signals() -> void:
 
 
 func _on_hurtbox_area_entered(_area: Area2D) -> void:
-	pass
+	if damage_timer.is_stopped():
+		damage_timer.start()
+		damage_tween.play_animation()
+		SignalBus.player_damaged.emit()
+
+
+#############
+## exports ##
+#############
+
+
+func _damage_tween_method(percent: float) -> void:
+	self.modulate.a = percent

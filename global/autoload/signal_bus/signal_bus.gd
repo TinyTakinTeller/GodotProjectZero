@@ -100,6 +100,9 @@ signal worker_efficiency_updated(efficiencies: Dictionary, generate: bool)
 signal enemy_damaged(total_damage: int, damage: int, source_id: String)
 signal deaths_door_resolved(enemy_data: EnemyData, new_enemy_data: EnemyData, option: int)
 
+# BuH Scene
+signal player_damaged
+
 
 func _ready() -> void:
 	if Game.PARAMS["debug_logs"]:

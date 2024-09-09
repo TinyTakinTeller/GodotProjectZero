@@ -10,16 +10,13 @@ extends Node
 @onready var control: Control = %Control
 @onready var label: Label = $Control/Label
 
-
 ###############
 ## overrides ##
 ###############
 
 
 func _physics_process(_delta: float) -> void:
-	pattern_master.align_patterns(
-		cat_sprite_2d.position - cat_sprite_2d.get_rect().size / 4 + Vector2(8, -16.0)
-	)
+	pattern_master.align_patterns(cat_sprite_2d.position)
 
 
 func _ready() -> void:
@@ -68,5 +65,5 @@ func _initialize() -> void:
 
 func _intro_animation_end() -> void:
 	_add_shake_effect_to_cat()
-	# label.visible = true
 	pattern_master.start_pattern(0)
+	pattern_master.start_pattern(1)

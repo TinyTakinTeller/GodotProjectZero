@@ -4,7 +4,7 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "week 19"
+const VERSION_MINOR: String = "week 20"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
@@ -13,7 +13,9 @@ const WEB_EXPORT_WORKAROUNDS: bool = false
 
 const PARAMS_DEBUG: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
-	"cat_boss_battle_fps": true,
+	"BuH_wall_disabled": false,
+	"BuH_damage_timer": 0.4,
+	"BuH_cat_boss_battle_fps": false,
 	"soul_disabled": false,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,
@@ -48,7 +50,9 @@ const PARAMS_DEBUG: Dictionary = {
 
 const PARAMS_PROD: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
-	"cat_boss_battle_fps": true,
+	"BuH_damage_timer": 0.4,
+	"BuH_wall_disabled": false,
+	"BuH_cat_boss_battle_fps": false,
 	"soul_disabled": false,
 	"prestige_disabled": false,
 	"reborn_overlay_shader": true,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dp27xbynyqp65"]
+[gd_scene load_steps=25 format=3 uid="uid://dp27xbynyqp65"]
 
 [ext_resource type="Script" path="res://scenes/bullet_up_hell/pattern_master/pattern_master.gd" id="1_lkn8h"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_rai8q"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_gfkum"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_4oi1y"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="7_va6hm"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="8_k40hp"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd" id="8_dfg27"]
 
 [sub_resource type="Curve2D" id="Curve2D_2blpc"]
 
@@ -231,21 +231,24 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Curve2D" id="Curve2D_n8v2j"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_3s7m1"]
-resource_name = "PatternOne"
-script = ExtResource("8_k40hp")
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_eo4yu"]
+resource_name = "PatternLine"
+script = ExtResource("8_dfg27")
+offset = Vector2(0, 0)
+center = 1
+symmetric = false
 bullet = "custom0"
-nbr = 1
-iterations = -1
+nbr = 7
+iterations = 1
 pattern_angle = 0.0
 pattern_angle_target = NodePath("")
 pattern_angle_mouse = false
 forced_angle = 0.0
-forced_target = NodePath("")
-forced_lookat_mouse = true
+forced_target = NodePath("../../../../Target")
+forced_lookat_mouse = false
 forced_pattern_lookat = true
 cooldown_stasis = false
-cooldown_spawn = 0.5
+cooldown_spawn = 1.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
@@ -259,22 +262,16 @@ wait_tween_time = 0.0
 
 [sub_resource type="Curve" id="Curve_xanmy"]
 
-[sub_resource type="Gradient" id="Gradient_5qvoy"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.607408, 1, 0.823537, 1)
-
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_e02lq"]
 script = ExtResource("7_va6hm")
 anim_more = Array[ExtResource("6_4oi1y")]([])
 damage = 1.0
-speed = 200.0
-scale = 2.0
+speed = 300.0
+scale = 1.0
 angle = 0.0
 groups = PackedStringArray()
 spec_bounces = 0
 spec_no_collision = false
-spec_modulate = SubResource("Gradient_5qvoy")
 spec_modulate_loop = 0.0
 spec_trail_length = 0.0
 spec_trail_width = 0.0
@@ -338,6 +335,7 @@ r_scale_multi_iter_variation = Vector3(0, 0, 0)
 r_scale_multi_scale_variation = Vector3(0, 0, 0)
 
 [node name="PatternMaster" type="Node2D"]
+position = Vector2(11, 50)
 rotation = 6.28319
 script = ExtResource("1_lkn8h")
 
@@ -348,12 +346,13 @@ script = ExtResource("1_lkn8h")
 [node name="Circle0" type="Node2D" parent="Patterns/Pattern0"]
 
 [node name="SpawnPoint" type="Node2D" parent="Patterns/Pattern0/Circle0"]
+position = Vector2(453, 22.998)
 script = ExtResource("2_rai8q")
 active = false
 auto_pattern_id = "circle0"
 shared_area_name = "0"
 rotating_speed = 0.0
-pool_amount = 300
+pool_amount = 200
 auto_start_on_cam = true
 auto_start_after_time = 0.0
 auto_start_at_distance = 5.0
@@ -375,12 +374,13 @@ props = SubResource("PackedDataContainer_f8sif")
 [node name="Circle1" type="Node2D" parent="Patterns/Pattern0"]
 
 [node name="SpawnPoint" type="Node2D" parent="Patterns/Pattern0/Circle1"]
+position = Vector2(454, 21.998)
 script = ExtResource("2_rai8q")
 active = false
 auto_pattern_id = "circle1"
 shared_area_name = "0"
 rotating_speed = 0.0
-pool_amount = 300
+pool_amount = 200
 auto_start_on_cam = true
 auto_start_after_time = 0.5
 auto_start_at_distance = 5.0
@@ -405,11 +405,11 @@ props = SubResource("PackedDataContainer_5y4sb")
 
 [node name="SpawnPoint" type="Node2D" parent="Patterns/Pattern1/Custom0"]
 script = ExtResource("2_rai8q")
-active = false
+active = true
 auto_pattern_id = "custom0"
 shared_area_name = "0"
 rotating_speed = 0.0
-pool_amount = 200
+pool_amount = 50
 auto_start_on_cam = true
 auto_start_after_time = 0.0
 auto_start_at_distance = 5.0
@@ -420,7 +420,7 @@ trigger_container = NodePath("")
 curve = SubResource("Curve2D_n8v2j")
 script = ExtResource("3_molhr")
 id = "custom0"
-pattern = SubResource("NavigationPolygon_3s7m1")
+pattern = SubResource("NavigationPolygon_eo4yu")
 
 [node name="BulletPattern" type="Path2D" parent="Patterns/Pattern1/Custom0"]
 curve = SubResource("Curve2D_7xdn8")
@@ -432,12 +432,15 @@ props = SubResource("PackedDataContainer_e02lq")
 collision_layer = 17
 collision_mask = 33
 
-[node name="WallCollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-29.0002, -37.9999)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(-45.0003, -73.9998)
 polygon = PackedVector2Array(1024, -8, 1024, 600, 0, 600, 0, 0, -56, 0, -48, 656, 1072, 640, 1056, -64, 0, -64, 8, 0)
 
+[node name="Target" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="FPS" type="Label" parent="."]
-offset_left = 9.00003
-offset_top = 6.99996
-offset_right = 57.0
-offset_bottom = 36.0
+offset_left = -8.0
+offset_top = -48.0
+offset_right = 40.0
+offset_bottom = -19.0

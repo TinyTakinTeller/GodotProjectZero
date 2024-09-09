@@ -1,5 +1,7 @@
 # Godot Project Zero: A Dark Forest
 
+Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic game project.
+
 CONTRIBUTE:
 - see "Issues" section on Github for working on **project (enhancements)**
 - join Discord (add `tiny_takin_teller` for invites) and Trello for working on **game (content, mechanics, design)**
@@ -10,7 +12,7 @@ PLAY THE GAME:
 READ WEEKLY DEVLOG'S:
 - Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
-Current Version - [ PROTOTYPE : WEEK 19 ]
+Current Version - [ PROTOTYPE : WEEK 20 ]
 
 **Milestones**
 - 29/04/2024 [`prototype.week.01`] **First version shared on Itch** 👀

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl41mo1e3hnlo"]
+[gd_scene load_steps=8 format=3 uid="uid://dl41mo1e3hnlo"]
 
 [ext_resource type="Script" path="res://scenes/autostart/soul_screen/soul_screen.gd" id="1_fyd6i"]
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="2_ey0j8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="2_whm7q"]
 [ext_resource type="PackedScene" uid="uid://dp27xbynyqp65" path="res://scenes/bullet_up_hell/pattern_master/pattern_master.tscn" id="5_742rc"]
 [ext_resource type="Texture2D" uid="uid://b4wqq3rdroryo" path="res://assets/image/npc/cat/cat_90_100_shadow.png" id="5_ary8y"]
+[ext_resource type="PackedScene" uid="uid://dmyeg6ldx2orv" path="res://scenes/bullet_up_hell/vignette/vignette.tscn" id="7_1mte2"]
 
 [node name="Soul" type="Node"]
 script = ExtResource("1_fyd6i")
@@ -27,6 +28,7 @@ texture = ExtResource("5_ary8y")
 
 [node name="Control" type="Control" parent="."]
 unique_name_in_owner = true
+modulate = Color(0.392157, 0.392157, 0.878431, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,17 +38,18 @@ grow_vertical = 2
 theme = ExtResource("2_ey0j8")
 
 [node name="Label" type="Label" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -476.0
+offset_top = 245.0
+offset_right = -217.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Coming Soon"
+text = "[ Work In Progress - Coming Soon ]"
+
+[node name="Vignette" parent="." instance=ExtResource("7_1mte2")]
