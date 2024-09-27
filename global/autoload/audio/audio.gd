@@ -4,11 +4,8 @@ extends Node
 	set(value):
 		default_sfx_pitch_variance = clampf(value, 0.0, 1.0)
 
-var _track: int = 0
-
 @onready var sfx_queue: AudioQueue = %SfxQueue
 @onready var sfx_map: Node = %SfxMap
-@onready var music_tracks: Node = %MusicTracks
 
 @onready var music_track_2_heart: MusicTrack = %MusicTrack2Heart
 
@@ -16,47 +13,40 @@ var _track: int = 0
 ## overrides ##
 ###############
 
-
-func _ready() -> void:
-	_initalize()
-	_connect_signals()
-
+# func _ready() -> void:
+# _initalize()
+# _connect_signals()
 
 #############
 ## helpers ##
 #############
 
-
-func _initalize() -> void:
-	music_tracks.get_child(_track).fade_in()
-
+# func _initalize() -> void:
+# 	music_tracks.get_child(_track).fade_in()
 
 #############
 ## methods ##
 #############
 
+# func swap_crossfade_music_next() -> void:
+# var track: int = (_track + 1) % music_tracks.get_child_count()
+# swap_crossfade_music_new(track, null)
 
-func swap_crossfade_music_next() -> void:
-	var track: int = (_track + 1) % music_tracks.get_child_count()
-	swap_crossfade_music_new(track, null)
+# func swap_crossfade_music(track: int) -> void:
+# 	swap_crossfade_music_new(track, null)
 
+# func swap_crossfade_music_new(track: int, song_stream: AudioStream) -> void:
+# 	if _track == track:
+# 		return
 
-func swap_crossfade_music(track: int) -> void:
-	swap_crossfade_music_new(track, null)
+# 	var music_track_next: MusicTrack = music_tracks.get_child(track)
+# 	var music_track_previous: MusicTrack = music_tracks.get_child(_track)
+# 	_track = track
 
-
-func swap_crossfade_music_new(track: int, song_stream: AudioStream) -> void:
-	if _track == track:
-		return
-
-	var music_track_next: MusicTrack = music_tracks.get_child(track)
-	var music_track_previous: MusicTrack = music_tracks.get_child(_track)
-	_track = track
-
-	music_track_previous.fade_out()
-	music_track_next.fade_in()
-	if song_stream != null:
-		music_track_next.swap(song_stream)
+# 	music_track_previous.fade_out()
+# 	music_track_next.fade_in()
+# 	if song_stream != null:
+# 		music_track_next.swap(song_stream)
 
 
 func play_sfx(

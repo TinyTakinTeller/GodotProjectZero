@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckapo5gkwp0wk"
+path="res://.godot/imported/Lacrimosa Arr MSTR LOOP.mp3-0ac175e535c1b60e74a118d3d3a9b73f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Lacrimosa Arr MSTR LOOP.mp3"
+dest_files=["res://.godot/imported/Lacrimosa Arr MSTR LOOP.mp3-0ac175e535c1b60e74a118d3d3a9b73f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
