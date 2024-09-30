@@ -3,7 +3,11 @@ class_name StateMachine extends Node
 @export var default_state: StateMachineState
 
 var states: Dictionary
-var current_state: StateMachineState
+var current: StateMachineState
+
+###############
+## overrides ##
+###############
 
 
 func _ready() -> void:
@@ -16,19 +20,24 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	current_state._on_input(event)
+	current._on_input(event)
 
 
 func _process(delta: float) -> void:
-	current_state._on_process(delta)
+	current._on_process(delta)
 
 
 func _physics_process(delta: float) -> void:
-	current_state._on_physics_process(delta)
+	current._on_physics_process(delta)
+
+
+#############
+## methods ##
+#############
 
 
 func transition_to(state_name: StringName) -> void:
-	if current_state:
-		current_state._on_state_exit()
-	current_state = states[state_name]
-	current_state._on_state_enter()
+	if current:
+		current._on_state_exit()
+	current = states[state_name]
+	current._on_state_enter()
