@@ -12,6 +12,7 @@ const TWEEN_FADE_AUDIO_DURATION: float = 2.0
 @export var is_looping: bool = false
 
 var master_volume: float = max_volume
+
 var _current_audio: Resource
 var _fade_tween: Tween
 var _idle_playback_position: float = 0.0

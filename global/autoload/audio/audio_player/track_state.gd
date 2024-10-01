@@ -1,12 +1,12 @@
 extends StateMachineState
 
-@onready var audio_player: AudioPlayer = owner
-
 const TWEEN_TRANSITION_TIME: float = 1.0
 
 var track: AudioStreamPlayer
 var _transition_tween: Tween
 var _is_active: bool = false
+
+@onready var audio_player: AudioPlayer = owner
 
 ###############
 ## overrides ##
