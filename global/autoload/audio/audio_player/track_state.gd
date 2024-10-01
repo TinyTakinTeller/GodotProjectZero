@@ -21,7 +21,8 @@ func on_ready() -> void:
 
 
 func on_state_enter() -> void:
-	print("entered state: %s" % self.name)
+	if Game.PARAMS["debug_logs"]:
+		print("entered state: %s" % self.name)
 	_is_active = true
 	var from_volume: float = 0.0
 	var to_volume: float = audio_player.master_volume
@@ -29,7 +30,8 @@ func on_state_enter() -> void:
 
 
 func on_state_exit() -> void:
-	print("exited state: %s" % self.name)
+	if Game.PARAMS["debug_logs"]:
+		print("exited state: %s" % self.name)
 	_is_active = false
 	var from_volume: float = audio_player.master_volume
 	var to_volume: float = 0.0

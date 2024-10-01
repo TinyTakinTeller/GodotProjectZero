@@ -37,7 +37,7 @@ func set_data(toggle: bool, value: float) -> void:
 
 func get_title_label() -> LabelTyping:
 	return title_label
-
+	
 
 #############
 ## helpers ##

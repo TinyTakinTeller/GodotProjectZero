@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Song" load_steps=4 format=3 uid="uid://cuwcu7njbtvqn"]
 
-[ext_resource type="AudioStream" uid="uid://tksoficve1me" path="res://assets/audio/Forest Arr MSTR LOOP.mp3" id="1_ngt8i"]
+[ext_resource type="AudioStream" uid="uid://b44xi3ebx4ju3" path="res://assets/audio/freemusicarchive_org/universfield/corpse_rot/corpse_rot.mp3" id="1_6v402"]
 [ext_resource type="Script" path="res://resources/songs/song.gd" id="1_rw51e"]
-[ext_resource type="AudioStream" uid="uid://b5ad2ujlpx4s8" path="res://assets/audio/joseph_philip_burke/forest_song_compressed.mp3" id="2_6gcgk"]
+[ext_resource type="AudioStream" uid="uid://blrw2u3jb1fbm" path="res://assets/audio/freemusicarchive_org/universfield/criminal_district/criminal_district.mp3" id="2_26588"]
 
 [resource]
 script = ExtResource("1_rw51e")
-idle_audio_stream = ExtResource("2_6gcgk")
-combat_audio_stream = ExtResource("1_ngt8i")
+idle_audio_stream = ExtResource("2_26588")
+combat_audio_stream = ExtResource("1_6v402")

@@ -1,0 +1,16 @@
+All of the recordings in this directory are the exclusive copyrighted work of the composer Skyler Newsome, 
+also known under the names "Skyler" and "circlesinthesky" and is licensed for use under the CC BY-NC-SA 4.0 license terms. 
+(https://creativecommons.org/licenses/by-nc-sa/4.0/). Skyler Newsome reserves the right to license to any entity more permissive 
+rights than this license for the works licensed under it in the future. All songs were composed by Skyler Newsome, 
+except where otherwise noted, and he owns all compositions he has written, and all those compositions are licensed
+under the same license as the recordings.
+
+Note, these works are based on Joseph Philip Burke works (see directory joseph_philip_burke), who granted the rights to do so.
+
+Works currently licensed in this directory under this license:
+* "axes_arr_mstr_loop.mp3"
+* "forest_arr_mstr_loop.mp3"
+* "strong_chill_arr_mstr_loop.mp3"
+* "lacrimosa_arr_mstr_loop.mp3" [Originally Composed by W.A. Mozart, Public Domain Composition]
+
+Last License Update: 10/1/2024 (mmddYYYY)

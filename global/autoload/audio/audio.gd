@@ -19,6 +19,11 @@ var _current_audio_player: AudioPlayer
 ###############
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("swap_music_next"):
+		swap_crossfade_music_next()
+
+
 func _ready() -> void:
 	_initalize()
 	_connect_signals()
@@ -32,6 +37,7 @@ func _ready() -> void:
 
 
 func _initalize() -> void:
+	_track = randi() % music_tracks.get_child_count()
 	_current_audio_player = music_tracks.get_child(_track)
 	_current_audio_player.fade_in()
 
@@ -44,6 +50,8 @@ func _initalize() -> void:
 func swap_crossfade_music_next() -> void:
 	_track = (_track + 1) % music_tracks.get_child_count()
 	swap_crossfade_audio(music_tracks.get_child(_track))
+	if Game.PARAMS_DEBUG["debug_logs"]:
+		prints("track", _track)
 
 
 func swap_crossfade_audio(audio_player: AudioPlayer) -> void:

@@ -8,10 +8,11 @@ const TWEEN_FADE_AUDIO_DURATION: float = 2.0
 @export_enum(&"Master", &"Music", &"SFX") var default_bus: String = &"Music"
 @export var default_audio: Resource  # AudioStream | Song, can't union type in gdscript :(
 @export var autoplay: bool = false
-@export var max_volume: float = 1.0
+@export var max_volume_idle: float = 1.0
+@export var max_volume_combat: float = 1.0
 @export var is_looping: bool = false
 
-var master_volume: float = max_volume
+var master_volume: float = _idle_playback_position
 
 var _current_audio: Resource
 var _fade_tween: Tween
@@ -40,6 +41,10 @@ func _ready() -> void:
 ## methods ##
 #############
 
+func get_max_volume() -> float:
+	if states.current.name == "Combat":
+		return max_volume_combat
+	return max_volume_idle
 
 func set_bus(bus: StringName) -> void:
 	idle_track.bus = bus
@@ -93,7 +98,7 @@ func _fade_out_callback(pause: bool) -> void:
 
 
 func fade_out(pause: bool = true) -> void:
-	var from_volume: float = max_volume
+	var from_volume: float = get_max_volume()
 	var to_volume: float = 0.0
 	transition_master_volume(from_volume, to_volume)
 	_fade_tween.tween_callback(_fade_out_callback.bind(pause))
@@ -101,7 +106,7 @@ func fade_out(pause: bool = true) -> void:
 
 func fade_in(restart: bool = false) -> void:
 	var from_volume: float = 0.0
-	var to_volume: float = max_volume
+	var to_volume: float = get_max_volume()
 	transition_master_volume(from_volume, to_volume)
 	play(restart)
 
