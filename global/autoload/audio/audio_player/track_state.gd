@@ -13,14 +13,14 @@ var _is_active: bool = false
 ###############
 
 
-func _on_ready() -> void:
+func on_ready() -> void:
 	await audio_player.ready
 	track = audio_player.tracks.get_node(NodePath(self.name))
 	track.volume_db = linear_to_db(0.0)
 	audio_player.master_volume_changed.connect(_on_master_volume_changed)
 
 
-func _on_state_enter() -> void:
+func on_state_enter() -> void:
 	print("entered state: %s" % self.name)
 	_is_active = true
 	var from_volume: float = 0.0
@@ -28,7 +28,7 @@ func _on_state_enter() -> void:
 	transition_volume(from_volume, to_volume)
 
 
-func _on_state_exit() -> void:
+func on_state_exit() -> void:
 	print("exited state: %s" % self.name)
 	_is_active = false
 	var from_volume: float = audio_player.master_volume

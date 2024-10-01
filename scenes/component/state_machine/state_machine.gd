@@ -13,22 +13,22 @@ var current: StateMachineState
 func _ready() -> void:
 	for child in get_children():
 		states[child.name] = child
-		child._on_ready()
+		child.on_ready()
 
 	await owner.ready
 	transition_to(default_state.name)
 
 
 func _input(event: InputEvent) -> void:
-	current._on_input(event)
+	current.on_input(event)
 
 
 func _process(delta: float) -> void:
-	current._on_process(delta)
+	current.on_process(delta)
 
 
 func _physics_process(delta: float) -> void:
-	current._on_physics_process(delta)
+	current.on_physics_process(delta)
 
 
 #############
@@ -38,6 +38,6 @@ func _physics_process(delta: float) -> void:
 
 func transition_to(state_name: StringName) -> void:
 	if current:
-		current._on_state_exit()
+		current.on_state_exit()
 	current = states[state_name]
-	current._on_state_enter()
+	current.on_state_enter()
