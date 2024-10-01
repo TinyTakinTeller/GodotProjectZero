@@ -91,6 +91,8 @@ func _connect_signals() -> void:
 	SignalBus.heart_unclick.connect(_on_heart_unclick)
 	SignalBus.prestige_condition_pass.connect(_on_prestige_condition_pass)
 	SignalBus.soul.connect(_on_soul)
+	SignalBus.boss_start.connect(_on_boss_start)
+	SignalBus.boss_end.connect(_on_boss_end)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -117,4 +119,12 @@ func _on_prestige_condition_pass(_infinity_count: int) -> void:
 
 
 func _on_soul() -> void:
+	Audio.swap_crossfade_music(3)
+
+
+func _on_boss_start() -> void:
+	Audio.swap_crossfade_music(4)
+
+
+func _on_boss_end() -> void:
 	Audio.swap_crossfade_music(3)

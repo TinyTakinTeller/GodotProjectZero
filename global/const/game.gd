@@ -11,8 +11,11 @@ const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 ## BEFORE EXPORTING TO WEB (that uses iframe like e.g. itch.io), SET TO true
 const WEB_EXPORT_WORKAROUNDS: bool = false
 
+const SKIP_BOSS: bool = false
+
 const PARAMS_DEBUG: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
+	"BuH_skip_boss": SKIP_BOSS,
 	"BuH_wall_disabled": false,
 	"BuH_damage_timer": 0.4,
 	"BuH_cat_boss_battle_fps": false,
@@ -50,6 +53,7 @@ const PARAMS_DEBUG: Dictionary = {
 
 const PARAMS_PROD: Dictionary = {
 	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
+	"BuH_skip_boss": SKIP_BOSS,
 	"BuH_damage_timer": 0.4,
 	"BuH_wall_disabled": false,
 	"BuH_cat_boss_battle_fps": false,

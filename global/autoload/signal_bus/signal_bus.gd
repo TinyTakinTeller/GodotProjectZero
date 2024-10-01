@@ -102,6 +102,11 @@ signal deaths_door_resolved(enemy_data: EnemyData, new_enemy_data: EnemyData, op
 
 # BuH Scene
 signal player_damaged
+signal player_death
+signal boss_start
+signal boss_click
+signal boss_cycle
+signal boss_end
 
 
 func _ready() -> void:

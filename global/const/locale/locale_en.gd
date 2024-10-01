@@ -29,6 +29,8 @@ const EN: Dictionary = {
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"game_over_text": "Terminated",
+	"soul_button": "Fight Back",
 	"death": "Death",
 	"heart": "Heart",
 	"singularity": "Singularity",

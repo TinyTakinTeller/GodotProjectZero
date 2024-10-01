@@ -23,7 +23,8 @@ const SFX_ID: Dictionary = {
 	"cat_click": PIANO_1,
 	"cat_talking": KEYBOARD_TYPING,
 	"flesh": BLOOD_GORE_2_1,
-	"magic": MAGICAL_INTERFACE_3_2_CUT
+	"magic": MAGICAL_INTERFACE_3_2_CUT,
+	"buh_hit_hurt": BUH_HIT_HURT
 }
 
 # we're expecting long file paths here, so don't check for line length
@@ -121,3 +122,6 @@ const BLOOD_GORE_2_1 = preload(
 const MAGICAL_INTERFACE_3_2_CUT = preload(
 	"res://assets/audio/indie_friendly_sounds_survival/_edited/magical_interface_3_2_cut.wav"
 )
+
+# BuH sfx
+const BUH_HIT_HURT = preload("res://addons/BulletUpHell/Bullet/Hit Hurt.wav")
