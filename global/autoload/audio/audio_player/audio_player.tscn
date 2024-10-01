@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cragwwd3j3bqt"]
+
+[ext_resource type="Script" path="res://global/autoload/audio/audio_player/audio_player.gd" id="1_3cuwr"]
+[ext_resource type="Script" path="res://scenes/component/state_machine/state_machine.gd" id="2_pwrmv"]
+[ext_resource type="Script" path="res://global/autoload/audio/audio_player/track_state.gd" id="3_tvnd0"]
+
+[node name="AudioPlayer" type="Node"]
+script = ExtResource("1_3cuwr")
+
+[node name="Tracks" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Idle" type="AudioStreamPlayer" parent="Tracks"]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="Combat" type="AudioStreamPlayer" parent="Tracks"]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="States" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+unique_name_in_owner = true
+script = ExtResource("2_pwrmv")
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("3_tvnd0")
+
+[node name="Combat" type="Node" parent="States"]
+script = ExtResource("3_tvnd0")

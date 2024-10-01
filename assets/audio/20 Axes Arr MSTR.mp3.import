@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://esxco7hisjn4"
+path="res://.godot/imported/20 Axes Arr MSTR.mp3-8052d34821ab7d75e7c36c2068bba6f9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/20 Axes Arr MSTR.mp3"
+dest_files=["res://.godot/imported/20 Axes Arr MSTR.mp3-8052d34821ab7d75e7c36c2068bba6f9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beueo2bfr8fkt"
+path="res://.godot/imported/Strong Chill Arr MSTR.mp3-c53599ff540cd575897c08b8775607c2.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Strong Chill Arr MSTR.mp3"
+dest_files=["res://.godot/imported/Strong Chill Arr MSTR.mp3-c53599ff540cd575897c08b8775607c2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
