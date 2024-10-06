@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bp61l7vkkscuw"]
+[gd_scene load_steps=15 format=3 uid="uid://bp61l7vkkscuw"]
 
 [ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
 [ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://b5ad2ujlpx4s8" path="res://assets/audio/joseph_philip_burke/forest_song_compressed.mp3" id="7_ompd1"]
 [ext_resource type="AudioStream" uid="uid://cjhw543r57cxo" path="res://assets/audio/pixabay/junipersona/to_the_death.mp3" id="8_2pugy"]
 [ext_resource type="Script" path="res://resources/songs/song.gd" id="8_tgyec"]
+[ext_resource type="AudioStream" uid="uid://b44xi3ebx4ju3" path="res://assets/audio/freemusicarchive_org/universfield/corpse_rot/corpse_rot.mp3" id="9_86iap"]
+[ext_resource type="AudioStream" uid="uid://blrw2u3jb1fbm" path="res://assets/audio/freemusicarchive_org/universfield/criminal_district/criminal_district.mp3" id="10_5odgy"]
 
 [sub_resource type="Resource" id="Resource_gc3pj"]
 script = ExtResource("8_tgyec")
@@ -18,8 +20,8 @@ combat_audio_stream = ExtResource("6_egdi5")
 
 [sub_resource type="Resource" id="Resource_e4642"]
 script = ExtResource("8_tgyec")
-idle_audio_stream = ExtResource("8_2pugy")
-combat_audio_stream = ExtResource("8_2pugy")
+idle_audio_stream = ExtResource("10_5odgy")
+combat_audio_stream = ExtResource("9_86iap")
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_7i6rq")
