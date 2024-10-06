@@ -107,6 +107,7 @@ signal boss_start
 signal boss_click
 signal boss_cycle
 signal boss_end
+signal game_end(ending: int)
 
 
 func _ready() -> void:

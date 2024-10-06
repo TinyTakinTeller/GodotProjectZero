@@ -54,6 +54,7 @@ SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "resources/" 
 - resource "2D Radial Distortion – Fisheye/Barrel" (radial_distortion.gdshader) by jamesfrize licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
 - resource "Chromatic Aberration" (chromatic_abberation_radial.gdshader) by hayden licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
 - resource "Cracked Glass" (cracked_glass.gdshader) by rupti licensed under CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+- resource "Starry Sky" (starry_sky.gdshader) by breadpack licensed under MIT (https://opensource.org/license/mit)
 
 
 

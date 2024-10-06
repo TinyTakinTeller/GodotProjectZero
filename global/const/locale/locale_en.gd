@@ -29,6 +29,7 @@ const EN: Dictionary = {
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"thank_you": "Thank you for playing.",
 	"game_over_text": "Terminated",
 	"soul_button": "Fight Back",
 	"death": "Death",

@@ -8,7 +8,7 @@ const VERSION_MINOR: String = "week 20"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
-## BEFORE EXPORTING TO WEB (that uses iframe like e.g. itch.io), SET TO true
+## TOGGLE BEFORE EXPORTING TO WEB
 const WEB_EXPORT_WORKAROUNDS: bool = false
 
 const SKIP_BOSS: bool = false

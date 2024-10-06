@@ -15,22 +15,26 @@
 script = ExtResource("1_fyd6i")
 shake_shader_component_scene = ExtResource("2_whm7q")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="PatternMaster" parent="Node2D" instance=ExtResource("5_742rc")]
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[node name="PatternMaster" parent="CanvasLayer/Node2D" instance=ExtResource("5_742rc")]
+unique_name_in_owner = true
 rotation = 4.46638e-06
 
-[node name="SoulSprite" parent="Node2D" instance=ExtResource("2_rspx0")]
+[node name="SoulSprite" parent="CanvasLayer/Node2D" instance=ExtResource("2_rspx0")]
 unique_name_in_owner = true
 z_index = 4095
 
-[node name="CatSprite2D" type="Sprite2D" parent="Node2D"]
+[node name="CatSprite2D" type="Sprite2D" parent="CanvasLayer/Node2D"]
 unique_name_in_owner = true
-position = Vector2(470, 79)
+position = Vector2(482, 252)
 texture = ExtResource("5_ary8y")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -40,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ey0j8")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="InfoMarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -53,13 +57,55 @@ offset_right = 21.5
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="Control/MarginContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/InfoMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "HP : 9"
 horizontal_alignment = 1
 
-[node name="SoulButton" parent="Control" instance=ExtResource("7_mmi8j")]
+[node name="EndMarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -32.0
+offset_right = 134.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/EndMarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer1" type="MarginContainer" parent="CanvasLayer/Control/EndMarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 128
+
+[node name="ExecuteButton" type="Button" parent="CanvasLayer/Control/EndMarginContainer/HBoxContainer/MarginContainer1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+text = "Execute"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/EndMarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 8
+
+[node name="AbsolveButton" type="Button" parent="CanvasLayer/Control/EndMarginContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+text = "Absolve"
+
+[node name="SoulButton" parent="CanvasLayer/Control" instance=ExtResource("7_mmi8j")]
 z_index = -4096
 layout_mode = 1
 offset_left = -40.0
@@ -67,7 +113,7 @@ offset_top = 204.0
 offset_right = 38.0
 offset_bottom = 229.0
 
-[node name="BlackFade" parent="Control" instance=ExtResource("7_pbbxw")]
+[node name="BlackFade" parent="CanvasLayer/Control" instance=ExtResource("7_pbbxw")]
 visible = false
 layout_mode = 1
 
