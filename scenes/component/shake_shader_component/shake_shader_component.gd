@@ -66,8 +66,13 @@ func update_shake_effect(toggle: bool, value: float) -> void:
 
 func _connect_signals() -> void:
 	SignalBus.effect_settings_updated.connect(_on_effect_settings_updated)
+	SignalBus.player_death.connect(_on_player_death)
 
 
 func _on_effect_settings_updated(toggle: bool, value: float, id: String) -> void:
 	if id == "shake":
 		update_shake_effect(toggle, value)
+
+
+func _on_player_death() -> void:
+	update_shake_effect(false, 0)

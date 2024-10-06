@@ -1,0 +1,13 @@
+Folder "res://resources/shader/starry_sky/" contents attribution file.
+---
+Title: Starry Sky
+Author: https://godotshaders.com/author/breadpack/
+Source: https://godotshaders.com/shader/starry-sky/
+License: https://opensource.org/license/MIT
+---
+The original contents were modified by: https://tinytakinteller.itch.io/
+---
+TLDR:
+asset "Starry Sky" (starry_sky.gdshader)
+by breadpack (https://godotshaders.com/author/breadpack/) licensed under MIT
+---

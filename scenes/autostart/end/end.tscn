@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://cq687fuy5ye8w"]
+
+[ext_resource type="Script" path="res://scenes/autostart/end/end.gd" id="1_f8l81"]
+[ext_resource type="PackedScene" uid="uid://ixafbm8gbppq" path="res://scenes/autostart/end/player/player_character_body_3d.tscn" id="2_0xs4o"]
+[ext_resource type="Shader" path="res://resources/shader/starry_sky/starry_sky.gdshader" id="2_fybr7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uic"]
+shader = ExtResource("2_fybr7")
+shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
+shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
+shader_parameter/star_hue_offset = 0.6
+shader_parameter/star_intensity = 0.08
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_v7o0e"]
+sky_material = SubResource("ShaderMaterial_r0uic")
+
+[sub_resource type="Environment" id="Environment_ni2qq"]
+background_mode = 2
+sky = SubResource("Sky_v7o0e")
+ambient_light_source = 1
+reflected_light_source = 2
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wvoox"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a0fvl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wju2q"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_au4ll"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_whpyo"]
+size = Vector3(2, 2, 2)
+
+[node name="End" type="Node3D"]
+script = ExtResource("1_f8l81")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ni2qq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="PlayerCharacterBody3D" parent="." instance=ExtResource("2_0xs4o")]
+
+[node name="Label3D" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -3.7)
+text = "Thank you for playing"
+
+[node name="TestDebugObjects3D" type="Node3D" parent="."]
+visible = false
+
+[node name="FloorMeshInstance3D" type="MeshInstance3D" parent="TestDebugObjects3D"]
+mesh = SubResource("PlaneMesh_wvoox")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TestDebugObjects3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+mesh = SubResource("BoxMesh_a0fvl")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TestDebugObjects3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0)
+mesh = SubResource("BoxMesh_wju2q")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="TestDebugObjects3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 0)
+mesh = SubResource("BoxMesh_au4ll")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="TestDebugObjects3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+mesh = SubResource("BoxMesh_whpyo")
+skeleton = NodePath("../..")

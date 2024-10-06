@@ -1,12 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bidoct2paqcxh"]
+[gd_scene load_steps=2 format=3 uid="uid://bidoct2paqcxh"]
 
 [ext_resource type="Script" path="res://global/autoload/scene/scene.gd" id="1_e2kro"]
-[ext_resource type="PackedScene" uid="uid://k0aqit1ex0lc" path="res://scenes/autostart/main/main.tscn" id="2_xj068"]
-[ext_resource type="PackedScene" uid="uid://b1aukxlmjun2b" path="res://scenes/autostart/save_file_picker/save_file_picker.tscn" id="3_lad7l"]
-[ext_resource type="PackedScene" uid="uid://dl41mo1e3hnlo" path="res://scenes/autostart/soul_screen/soul_screen.tscn" id="4_l47ud"]
 
 [node name="Scene" type="Node"]
 script = ExtResource("1_e2kro")
-main_scene = ExtResource("2_xj068")
-save_file_picker_scene = ExtResource("3_lad7l")
-soul_scene = ExtResource("4_l47ud")

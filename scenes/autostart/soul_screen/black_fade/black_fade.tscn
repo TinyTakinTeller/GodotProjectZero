@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dia4fb2p2xioq"]
+
+[ext_resource type="Script" path="res://scenes/autostart/soul_screen/black_fade/black_fade.gd" id="1_v8eqh"]
+[ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_jsig5"]
+
+[node name="BlackFade" type="MarginContainer"]
+process_mode = 2
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v8eqh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FadeInTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_jsig5")]
+unique_name_in_owner = true
+target = NodePath("..")
+duration = 3.0
+call_method = "_fade_in_tween"
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0, 0.392157, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Existence Terminated"
