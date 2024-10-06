@@ -29,6 +29,7 @@ const EN: Dictionary = {
 # gdlint:disable = max-line-length
 
 const UI_LABEL: Dictionary = {
+	"shortcuts_label": "Ctrl+N changes soundtrack",
 	"death": "Death",
 	"heart": "Heart",
 	"singularity": "Singularity",

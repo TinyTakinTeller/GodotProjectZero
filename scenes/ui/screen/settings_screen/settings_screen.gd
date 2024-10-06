@@ -4,6 +4,8 @@ const TAB_DATA_ID: String = "settings"
 
 @export var shake_shader_component_scene: PackedScene
 
+@onready var shortcuts_label: Label = %ShortcutsLabel
+
 @onready var master_settings_slider: SettingsSlider = %MasterSettingsSlider
 @onready var music_settings_slider: SettingsSlider = %MusicSettingsSlider
 @onready var sfx_settings_slider: SettingsSlider = %SFXSettingsSlider
@@ -17,6 +19,11 @@ const TAB_DATA_ID: String = "settings"
 ###############
 ## overrides ##
 ###############
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("master_music_toggle"):
+		pass  # TODO toggle master music setting and update UI
 
 
 func _ready() -> void:
@@ -36,6 +43,8 @@ func _initialize() -> void:
 
 
 func _set_ui_labels() -> void:
+	shortcuts_label.text = Locale.get_ui_label("shortcuts_label")
+
 	master_settings_slider.get_title_label().text = Locale.get_ui_label("master")
 	music_settings_slider.get_title_label().text = Locale.get_ui_label("music")
 	sfx_settings_slider.get_title_label().text = Locale.get_ui_label("sfx")
