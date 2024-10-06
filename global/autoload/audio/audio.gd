@@ -1,5 +1,8 @@
 extends Node
 
+const MAIN_MUSIC_TRACKS: int = 3
+const BOSS_MUSIC_TRACK: int = 3
+
 @export var default_sfx_pitch_variance: float = 0.5:
 	set(value):
 		default_sfx_pitch_variance = clampf(value, 0.0, 1.0)
@@ -37,7 +40,7 @@ func _ready() -> void:
 
 
 func _initalize() -> void:
-	_track = randi() % music_tracks.get_child_count()
+	_track = randi() % MAIN_MUSIC_TRACKS
 	_current_audio_player = music_tracks.get_child(_track)
 	_current_audio_player.fade_in()
 
@@ -48,7 +51,7 @@ func _initalize() -> void:
 
 
 func swap_crossfade_music_next() -> void:
-	_track = (_track + 1) % music_tracks.get_child_count()
+	_track = (_track + 1) % MAIN_MUSIC_TRACKS
 	swap_crossfade_audio(music_tracks.get_child(_track))
 	if Game.PARAMS_DEBUG["debug_logs"]:
 		prints("track", _track)
@@ -130,7 +133,7 @@ func _on_soul() -> void:
 
 
 func _on_boss_start() -> void:
-	pass ## TODO boss music sountrack
+	swap_crossfade_audio(music_tracks.get_child(BOSS_MUSIC_TRACK))
 
 
 func _on_boss_end() -> void:
