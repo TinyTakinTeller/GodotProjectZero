@@ -11,4 +11,4 @@ Works currently licensed in this directory under this license:
 * "There's a Strong Chill in the Air"
 * "Lacrimosa (Requiem Abridged)" [Originally Composed by W.A. Mozart, Public Domain Composition]
 
-Last License Update: 7/6/2024 (mmddYYYY)
+Last License Update: 07/06/2024 (mmddYYYY)

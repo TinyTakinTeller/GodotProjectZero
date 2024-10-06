@@ -2,21 +2,22 @@
 
 Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic game project.
 
+THE GAME: (current version is `prototype.release.1.0`)
+- PLAY ON Itch https://tinytakinteller.itch.io/the-best-game-ever
+- DEVLOGS ON Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
+
 CONTRIBUTE:
-- see "Issues" section on Github for working on **project (enhancements)**
-- join Discord (add `tiny_takin_teller` for invites) and Trello for working on **game (content, mechanics, design)**
-
-PLAY THE GAME: 
-- Itch https://tinytakinteller.itch.io/the-best-game-ever
-
-Current Version - [ PROTOTYPE : WEEK 20 ]
-- first 20 weekly devlogs on Itch : https://tinytakinteller.itch.io/the-best-game-ever/devlog
-- weeks without an update counter : 3
+- A) **enhancements** by checking out "Issues" section on Github
+- B) **content, mechanics, design** by joining Discord (add `tiny_takin_teller` for invites) and Trello board
+- C) **???** by forking the project *(note that code is MIT licensed, but assets are owned by respective contributors)*
 
 **Milestones**
 - 29/04/2024 [`prototype.week.01`] **First version shared on Itch** 👀
 - 24/06/2024 [`prototype.week.09`] **Created Discord & Trello for the community** ❤️
 - 26/08/2024 [`prototype.week.18`] **Project featured on front page of Itch "New & Popular"** 🚀
+- 09/09/2024 [`prototype.week.20`] **Discontinuing weekly updates going forward.** ⚰️
+- 07/10/2024 [`prototype.release.1.0`] **Added final boss fight, a short minigame ending.** ⭐
+
 
 ## Overview
 

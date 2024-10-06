@@ -3,11 +3,11 @@ Folder "res://resources/shader/cracked_glass/" contents attribution file.
 Title: Cracked Glass
 Author: https://godotshaders.com/author/rupti/
 Source: https://godotshaders.com/shader/cracked-glass/
-License: https://creativecommons.org/publicdomain/zero/1.0/
+License: https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en
 ---
 The original contents were modified by: https://tinytakinteller.itch.io/
 ---
 TLDR:
 asset "Cracked Glass" (cracked_glass.gdshader)
-by rupti (https://godotshaders.com/author/rupti/) licensed under CC0 1.0
+by rupti (https://godotshaders.com/author/rupti/) licensed under CC-BY-NC-SA 3.0 UNPORTED
 ---
