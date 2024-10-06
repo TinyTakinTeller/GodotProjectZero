@@ -1,6 +1,8 @@
-## Project License(s)
+## Project License(s) (MIXED)
 
-Mixed: see various licenses listed in this file. See details of individual licenses in their respective *.txt files (see project files).
+See various licenses listed in this file.
+
+See details of individual licenses in their respective *.txt files (see project files).
 
 TLDR: Code (*.gd files) are licensed under MIT, but assets (shaders, music, art, writing) are licensed under various CC licenses by respective creators.
 
@@ -65,6 +67,7 @@ SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "assets/" :
 - audio music track "Corpse Rot" (corpse_rot.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 - audio music track "Criminal District" (criminal_district.mp3) by UNIVERSFIELD licensed under CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 - audio music tracks ["Forest Song 1", "20 Axes to a Bed", "There's a Strong Chill in the Air", "Lacrimosa (Requiem Abridged)"] by BurkeZerk licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+audio music tracks ["axes_arr_mstr_loop.mp3", "forest_arr_mstr_loop.mp3", "strong_chill_arr_mstr_loop.mp3", "lacrimosa_arr_mstr_loop.mp3"] by Skyler licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - audio SFX sounds "Indie Friendly Sounds Survival" & "Indie Friendly Sounds RPG Sounds Pack" by Place Holder Assets licensed under "for-purchasing-individuals" (contact creator for licensing)
 - audio SFX sound "Keyboard Typing" by Trollarch2 licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
 - audio SFX sound "Short, definite fart" by ycbcr licensed under CC0 (https://creativecommons.org/public-domain/cc0/)
@@ -88,5 +91,6 @@ SEE VARIOUS LICENSES CONTAINED WITHIN RESPECTIVE DIRECTORIES UNDER "assets/" :
 ## Godot License(s)
 
 - https://godotengine.org/license/
+
 
 

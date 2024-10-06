@@ -5,21 +5,30 @@ extends Node
 		default_sfx_pitch_variance = clampf(value, 0.0, 1.0)
 
 var _track: int = 0
+var _current_audio_player: AudioPlayer
 
 @onready var sfx_queue: AudioQueue = %SfxQueue
 @onready var sfx_map: Node = %SfxMap
-@onready var music_tracks: Node = %MusicTracks
 
-@onready var music_track_2_heart: MusicTrack = %MusicTrack2Heart
+@onready var music_tracks: Node = %Music
+
+@onready var heartbeat_ambience: AudioPlayer = %Heartbeat
 
 ###############
 ## overrides ##
 ###############
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("swap_music_next"):
+		swap_crossfade_music_next()
+
+
 func _ready() -> void:
 	_initalize()
 	_connect_signals()
+	for audio_player: AudioPlayer in music_tracks.get_children():
+		audio_player.finished.connect(_on_music_track_finished)
 
 
 #############
@@ -28,7 +37,9 @@ func _ready() -> void:
 
 
 func _initalize() -> void:
-	music_tracks.get_child(_track).fade_in()
+	_track = randi() % music_tracks.get_child_count()
+	_current_audio_player = music_tracks.get_child(_track)
+	_current_audio_player.fade_in()
 
 
 #############
@@ -37,26 +48,19 @@ func _initalize() -> void:
 
 
 func swap_crossfade_music_next() -> void:
-	var track: int = (_track + 1) % music_tracks.get_child_count()
-	swap_crossfade_music_new(track, null)
+	_track = (_track + 1) % music_tracks.get_child_count()
+	swap_crossfade_audio(music_tracks.get_child(_track))
+	if Game.PARAMS_DEBUG["debug_logs"]:
+		prints("track", _track)
 
 
-func swap_crossfade_music(track: int) -> void:
-	swap_crossfade_music_new(track, null)
-
-
-func swap_crossfade_music_new(track: int, song_stream: AudioStream) -> void:
-	if _track == track:
+func swap_crossfade_audio(audio_player: AudioPlayer) -> void:
+	if _current_audio_player == audio_player:
 		return
 
-	var music_track_next: MusicTrack = music_tracks.get_child(track)
-	var music_track_previous: MusicTrack = music_tracks.get_child(_track)
-	_track = track
-
-	music_track_previous.fade_out()
-	music_track_next.fade_in()
-	if song_stream != null:
-		music_track_next.swap(song_stream)
+	_current_audio_player.fade_out()
+	_current_audio_player = audio_player
+	_current_audio_player.fade_in()
 
 
 func play_sfx(
@@ -96,35 +100,38 @@ func _connect_signals() -> void:
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
-	if tab_data.id == DarknessScreen.TAB_DATA_ID:
-		Audio.swap_crossfade_music(1)
-	elif tab_data.id == StarwayScreen.TAB_DATA_ID:
-		Audio.swap_crossfade_music(2)
+	if tab_data.id == StarwayScreen.TAB_DATA_ID:
+		swap_crossfade_audio(heartbeat_ambience)
 	elif tab_data.id == "unknown":
-		Audio.swap_crossfade_music(3)
+		_current_audio_player.fade_out()
 	else:
-		Audio.swap_crossfade_music(0)
+		var music_player: AudioPlayer = music_tracks.get_child(_track)
+		swap_crossfade_audio(music_player)
+
+
+func _on_music_track_finished() -> void:
+	swap_crossfade_music_next()
 
 
 func _on_heart_click() -> void:
-	music_track_2_heart.audio_stream_player.pitch_scale = 2.0
+	heartbeat_ambience.idle_track.pitch_scale = 2.0
 
 
 func _on_heart_unclick() -> void:
-	music_track_2_heart.audio_stream_player.pitch_scale = 1.0
+	heartbeat_ambience.idle_track.pitch_scale = 1.0
 
 
 func _on_prestige_condition_pass(_infinity_count: int) -> void:
-	Audio.swap_crossfade_music(3)
+	_current_audio_player.fade_out()
 
 
 func _on_soul() -> void:
-	Audio.swap_crossfade_music(3)
+	_current_audio_player.fade_out()
 
 
 func _on_boss_start() -> void:
-	Audio.swap_crossfade_music(4)
+	pass ## TODO boss music sountrack
 
 
 func _on_boss_end() -> void:
-	Audio.swap_crossfade_music(3)
+	_current_audio_player.fade_out()
