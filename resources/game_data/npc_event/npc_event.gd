@@ -20,7 +20,10 @@ func get_id() -> String:
 
 
 func get_options(n: int) -> String:
-	return Locale.get_npc_event_options(id)[n]
+	var options: Array = Locale.get_npc_event_options(id)
+	if options.is_empty():
+		return ""
+	return options[n]
 
 
 func get_options_size() -> int:
@@ -33,5 +36,8 @@ func get_text() -> String:
 
 
 func is_interactable() -> bool:
+	var options: Array = Locale.get_npc_event_options(id)
+	if options.is_empty():
+		return false
 	var text: String = Locale.get_npc_event_text(id)
 	return StringUtils.is_not_empty(text)

@@ -20,6 +20,7 @@ var is_soul: bool = false
 
 func _ready() -> void:
 	_initialize()
+	_refresh_labels()
 	_connect_signals()
 	_load_from_save_file()
 
@@ -34,6 +35,8 @@ func _initialize() -> void:
 		if is_instance_of(node, GridContainer):
 			grid_containers.append(node as GridContainer)
 
+
+func _refresh_labels() -> void:
 	all_button.text = Locale.get_ui_label("harvest_forest")
 
 
@@ -80,6 +83,7 @@ func _connect_signals() -> void:
 	SignalBus.progress_button_cooldown_end.connect(_on_progress_button_cooldown_end)
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.soul.connect(_on_soul)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -133,3 +137,7 @@ func _on_soul() -> void:
 	all_button.disabled = true
 
 	experience_margin_container.experience_label.modulate = ColorSwatches.PURPLE
+
+
+func _on_display_language_updated() -> void:
+	_refresh_labels()

@@ -5,14 +5,13 @@ extends MarginContainer
 @onready var manual_button: Button = $HBoxContainer/ManMarginContainer/ManualButton
 @onready var absolve_button: Button = $HBoxContainer/AbsMarginContainer/AbsolveButton
 
-
 ###############
 ## overrides ##
 ###############
 
 
 func _ready() -> void:
-	_initialize()
+	_set_ui_labels()
 	_load_from_save_file()
 	_connect_signals()
 
@@ -22,10 +21,11 @@ func _ready() -> void:
 #############
 
 
-func _initialize() -> void:
+func _set_ui_labels() -> void:
 	execute_button.text = Locale.get_ui_label("execute_mode_button")
 	manual_button.text = Locale.get_ui_label("manual_mode_button")
 	absolve_button.text = Locale.get_ui_label("absolve_mode_button")
+
 
 func _load_from_save_file() -> void:
 	var has_judgement: bool = SaveFile.substances.get("judgement", 0) > 0
@@ -68,6 +68,8 @@ func _connect_signals() -> void:
 	manual_button.button_up.connect(_on_manual_button_up)
 	execute_button.button_up.connect(_on_execute_button_up)
 	absolve_button.button_up.connect(_on_absolve_button_up)
+
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
@@ -124,3 +126,7 @@ func _on_absolve_button_up() -> void:
 	_toggle_mode(2)
 	SignalBus.toggle_darkness_mode_pressed.emit(2)
 	Audio.play_sfx_id("generic_click")
+
+
+func _on_display_language_updated() -> void:
+	_set_ui_labels()

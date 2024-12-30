@@ -86,6 +86,9 @@ audio music tracks ["axes_arr_mstr_loop.mp3", "forest_arr_mstr_loop.mp3", "stron
 
 - res://global/const/locale/locale_en.gd by Abyssal_Novelist, Reed, TinyTakinTeller licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+## Localization (res://assets/i18n/)
+- "zh" CHINESE (SC) by vikky2604 and gloria_1023 licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- "fr" FRENCH by erya_ licensed under CC-BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 
 ## Godot License(s)

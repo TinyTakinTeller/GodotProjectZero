@@ -119,7 +119,7 @@ func _connect_signals() -> void:
 func _on_open_import_modal() -> void:
 	open(Mode.IMPORT)
 
-	if Game.PARAMS["CLIPBOARD_WEB_WORKAROUND"]:
+	if OS.has_feature("web"):
 		visible = false
 		import_button.visible = false
 		text_area.editable = false
@@ -143,7 +143,7 @@ func _on_open_import_modal() -> void:
 func _on_open_export_modal(save_file_name: String) -> void:
 	open(Mode.EXPORT, save_file_name)
 
-	if Game.PARAMS["CLIPBOARD_WEB_WORKAROUND"]:
+	if OS.has_feature("web"):
 		visible = false
 		prints("JavaScriptBridge...")
 		## truncated by ellipsis "..." if too long :/

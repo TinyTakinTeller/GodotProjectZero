@@ -1,3 +1,4 @@
+## DEPRECATED
 class_name SubstanceButton extends MarginContainer
 
 var _enemy_data: EnemyData

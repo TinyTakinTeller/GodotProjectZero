@@ -52,6 +52,9 @@ func _ready() -> void:
 	_load_save_files()
 	_connect_signals()
 
+	locale = get_locale_from_newest_save_file()
+	TranslationServer.set_locale(locale)
+
 	if Game.PARAMS["debug_logs"]:
 		print("_AUTOLOAD _READY: " + self.get_name())
 
@@ -59,6 +62,24 @@ func _ready() -> void:
 #############
 ## getters ##
 #############
+
+
+func get_locale_from_newest_save_file() -> String:
+	var max_unix_time: int = 0
+	var max_save_file_name: String = ""
+	for save_file_name: String in save_datas:
+		var save_data: Dictionary = save_datas[save_file_name]
+		var save_metadata: Dictionary = _get_metadata(save_data)
+		var metadata_last_utc_time: Dictionary = save_metadata.get("last_utc_time", null)
+		if metadata_last_utc_time != null:
+			var unix_time: int = Time.get_unix_time_from_datetime_dict(metadata_last_utc_time)
+			if unix_time > max_unix_time:
+				max_unix_time = unix_time
+				max_save_file_name = save_file_name
+	if max_save_file_name != "":
+		var default_locale: String = save_datas[max_save_file_name].get("LOCALE", "en")
+		return default_locale
+	return "en"
 
 
 func get_prestige_count() -> int:
@@ -524,6 +545,11 @@ func _import_save_data(save_data: Dictionary) -> void:
 	enemy = _get_enemy(save_data)
 	metadata = _get_metadata(save_data)
 	locale = _get_locale(save_data)
+
+	if not locale in TranslationServer.get_loaded_locales():
+		push_warning("Unsupported locale in save file: %s" % [locale])
+		locale = "en"
+	TranslationServer.set_locale(locale)
 
 
 func _get_resources(save_data: Dictionary) -> Dictionary:

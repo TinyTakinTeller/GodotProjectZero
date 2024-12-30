@@ -13,7 +13,10 @@ func get_sort_value() -> int:
 
 func get_title() -> String:
 	var level: int = SaveFile.tab_levels.get(id, 0)
-	return Locale.get_tab_data_titles(id)[level]
+	var options: Array = Locale.get_tab_data_titles(id)
+	if options.is_empty():
+		return "?"
+	return options[level]
 
 
 func get_info() -> String:

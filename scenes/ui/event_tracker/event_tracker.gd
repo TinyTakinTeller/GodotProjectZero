@@ -76,7 +76,12 @@ func _clear_items() -> void:
 
 func _connect_signals() -> void:
 	SignalBus.event_saved.connect(_on_event_saved)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_event_saved(event_data: EventData, vals: Array, index: int) -> void:
 	_add_event(event_data, vals, index, true)
+
+
+func _on_display_language_updated() -> void:
+	_set_ui_labels()

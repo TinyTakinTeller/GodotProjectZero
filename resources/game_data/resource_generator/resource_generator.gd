@@ -52,10 +52,7 @@ func get_display_increment(display_amount: int) -> String:
 
 
 func get_display_name() -> String:
-	var display_name: String = Locale.get_resource_generator_display_name(id)
-	if StringUtils.is_not_empty(display_name):
-		return display_name
-	return StringUtils.humanify_string(id)
+	return Locale.get_resource_generator_display_name(id)
 
 
 func get_display_info(total: String, eff: String) -> String:
@@ -190,7 +187,7 @@ func _cache_random_is_empty() -> bool:
 static func get_display_name_of(rid: String) -> String:
 	var resource_generator: ResourceGenerator = Resources.resource_generators.get(rid, null)
 	if resource_generator == null:
-		return StringUtils.humanify_string(rid)
+		return "NULL"
 	return resource_generator.get_display_name()
 
 

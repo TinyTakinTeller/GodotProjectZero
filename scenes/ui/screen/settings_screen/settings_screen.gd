@@ -2,6 +2,8 @@ extends MarginContainer
 
 const TAB_DATA_ID: String = "settings"
 
+const WATERMARK_URL: String = "https://tinytakinteller.itch.io/the-best-game-ever"
+
 @export var shake_shader_component_scene: PackedScene
 
 @onready var shortcuts_label: Label = %ShortcutsLabel
@@ -15,6 +17,11 @@ const TAB_DATA_ID: String = "settings"
 @onready var display_resolution_button: Button = %DisplayResolutionButton
 @onready var display_language_button: Button = %DisplayLanguageButton
 @onready var watermark_button: Button = %WatermarkButton
+
+@onready var audio_title_label: Label = %AudioTitleLabel
+@onready var effects_title_label: Label = %EffectsTitleLabel
+@onready var display_title_label: Label = %DisplayTitleLabel
+@onready var watermark_label: Label = %WatermarkLabel
 
 ###############
 ## overrides ##
@@ -42,6 +49,11 @@ func _initialize() -> void:
 	_set_ui_labels()
 
 
+func _reload() -> void:
+	_set_ui_labels()
+	_load_from_save_file()
+
+
 func _set_ui_labels() -> void:
 	shortcuts_label.text = Locale.get_ui_label("shortcuts_label")
 
@@ -58,8 +70,11 @@ func _set_ui_labels() -> void:
 	display_resolution_button.disabled = true
 
 	display_language_button.text = Locale.LOCALE_NAME[SaveFile.locale]
-	## TODO: ADF-24 | Localization
-	display_language_button.disabled = true
+
+	audio_title_label.text = Locale.get_ui_label("audio_title")
+	effects_title_label.text = Locale.get_ui_label("effects_title")
+	display_title_label.text = Locale.get_ui_label("display_title")
+	watermark_label.text = "%s : %s" % [Locale.get_ui_label("watermark_title"), WATERMARK_URL]
 
 
 func _apply_effects() -> void:
@@ -121,6 +136,8 @@ func _connect_signals() -> void:
 	watermark_button.mouse_entered.connect(_on_watermark_mouse_entered)
 	watermark_button.button_down.connect(_on_watermark_button_down)
 
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
+
 
 func _on_tab_changed(tab_data: TabData) -> void:
 	if tab_data.id == TAB_DATA_ID:
@@ -148,7 +165,16 @@ func _on_display_resolution_button_up() -> void:
 
 
 func _on_display_language_button_up() -> void:
-	pass  ## TODO: ADF-24 | Localization
+	var index: int = Locale.LOCALES.find(SaveFile.locale)
+	var new_index: int = (index + 1) % Locale.LOCALES.size()
+	var new_locale: String = Locale.LOCALES[new_index]
+	if not new_locale in TranslationServer.get_loaded_locales():
+		push_error("Locale not found: %s" % [new_locale])
+		return
+	TranslationServer.set_locale(new_locale)
+	SaveFile.locale = new_locale
+	display_language_button.release_focus()
+	SignalBus.display_language_updated.emit()
 
 
 func _on_display_mode_settings_updated(display_mode: String) -> void:
@@ -160,10 +186,6 @@ func _on_display_resolution_settings_updated(width: int, height: int) -> void:
 	display_resolution_button.text = "{a} x {b}".format({"a": width, "b": height})
 
 
-func _on_display_language_updated() -> void:
-	pass  ## TODO: ADF-24 | Localization
-
-
 func _on_watermark_mouse_entered() -> void:
 	SignalBus.info_hover.emit(
 		Locale.get_ui_label("watermark_title"), Locale.get_ui_label("watermark_info")
@@ -172,3 +194,7 @@ func _on_watermark_mouse_entered() -> void:
 
 func _on_watermark_button_down() -> void:
 	OS.shell_open("https://tinytakinteller.itch.io/the-best-game-ever")
+
+
+func _on_display_language_updated() -> void:
+	_reload()

@@ -96,8 +96,12 @@ func _propagate_theme_to_virtual_children() -> void:
 		soul_effect_queue.set_color_theme_override(ColorSwatches.PURPLE)
 
 
-func _set_info() -> void:
+func _set_label() -> void:
 	button.text = _resource_generator.get_label()
+
+
+func _set_info() -> void:
+	_set_label()
 	button.disabled = _disabled or _is_max_amount_reached()
 	progress_bar.value = 0
 	red_color_rect.modulate.a = 0
@@ -173,6 +177,7 @@ func _connect_signals() -> void:
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.soul.connect(_on_soul)
 	SignalBus.harvest_forest.connect(_on_harvest_forest)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_resized() -> void:
@@ -305,6 +310,10 @@ func _on_harvest_forest(order: int) -> void:
 	if _resource_generator != null and _resource_generator.order == order:
 		#and not _resource_generator.is_unique()
 		_on_button_up("harvest_forest")
+
+
+func _on_display_language_updated() -> void:
+	_set_label()
 
 
 ############

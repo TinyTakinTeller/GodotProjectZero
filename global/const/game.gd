@@ -8,13 +8,9 @@ const VERSION_MINOR: String = "release 1.0"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
-## TOGGLE BEFORE EXPORTING TO WEB
-const WEB_EXPORT_WORKAROUNDS: bool = false
-
 const SKIP_BOSS: bool = false
 
 const PARAMS_DEBUG: Dictionary = {
-	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
 	"BuH_skip_boss": SKIP_BOSS,
 	"BuH_wall_disabled": false,
 	"BuH_damage_timer": 0.4,
@@ -52,7 +48,6 @@ const PARAMS_DEBUG: Dictionary = {
 }
 
 const PARAMS_PROD: Dictionary = {
-	"CLIPBOARD_WEB_WORKAROUND": WEB_EXPORT_WORKAROUNDS,
 	"BuH_skip_boss": SKIP_BOSS,
 	"BuH_damage_timer": 0.4,
 	"BuH_wall_disabled": false,

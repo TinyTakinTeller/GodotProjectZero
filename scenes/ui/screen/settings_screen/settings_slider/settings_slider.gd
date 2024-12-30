@@ -54,7 +54,9 @@ func _initialize() -> void:
 
 
 func _update_toggle_ui(user_input: bool = true) -> void:
-	toggle_button.text = "On" if _toggle else "Off"
+	var on_label: String = Locale.get_ui_label("on")
+	var off_label: String = Locale.get_ui_label("off")
+	toggle_button.text = on_label if _toggle else off_label
 
 	if user_input:
 		data_changed.emit(_toggle, _value)

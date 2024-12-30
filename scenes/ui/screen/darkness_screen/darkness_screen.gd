@@ -348,6 +348,8 @@ func _connect_signals() -> void:
 
 	SignalBus.toggle_darkness_mode_pressed.connect(_on_toggle_darkness_mode_pressed)
 
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
+
 
 func _on_resized() -> void:
 	_update_pivot()
@@ -437,3 +439,7 @@ func _on_substance_updated(id: String, total_amount: int, _source_id: String) ->
 func _on_toggle_darkness_mode_pressed(_mode: int) -> void:
 	_check_judgement()
 	enemy_texture.set_fast_mode(_enemy_data.is_last())
+
+
+func _on_display_language_updated() -> void:
+	_set_ui_labels()

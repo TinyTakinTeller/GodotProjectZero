@@ -1,118 +1,124 @@
 #gdlint:ignore = max-public-methods
 extends Node
 
-const LOCALE: Dictionary = {"en": LocaleEn.EN}
-const LOCALE_NAME: Dictionary = {"en": "English"}
+const LOCALES: Array[String] = ["en", "zh"]
+const LOCALE_NAME: Dictionary = {"en": "English", "zh": "中文"}
 
 
-## export csv(s)
-## TODO: part 1: function for importing csv(s) # or just ignore this todo and solve part 2 directly
-## TODO: part 2: refactor these nodes and use csv(s) directly with Godot out of the box localization
 func _ready() -> void:
-	if false:
-		var csv: String = LocaleEn.csv()
+	pass
 
-		var my_file := FileAccess.open("res://csv_en.txt", FileAccess.WRITE)
-		assert(my_file.is_open())
-		my_file.store_string(csv)
-		my_file.close()
+
+func get_key(prefix: String, id: String) -> String:
+	return prefix + ":" + id
+
+
+func get_localized_text(category: String, id: String) -> String:
+	var key: String = get_key(category, id)
+	var translation: String = tr(key)
+	if translation == key:
+		translation = ""
+	if StringUtils.is_empty(translation):
+		return "?"
+	return translation
+
+
+func get_localized_array(category: String, id: String) -> Array:
+	var json: JSON = JSON.new()
+	var key: String = get_key(category, id)
+	var raw_string: String = tr(key)
+	var result: Error = json.parse(raw_string)
+
+	if result == Error.OK:
+		var result_data: Variant = json.data
+		return result_data
+	push_warning("Failed to fetch localized array for: %s" % [key])
+	return []
 
 
 func get_ui_label(id: String) -> String:
-	return LOCALE[SaveFile.locale]["ui_label"].get(id, "")
+	return get_localized_text("ui_label", id)
 
 
 func get_npc_hover_info(npc_id: String) -> String:
-	return LOCALE[SaveFile.locale]["npc_hover_info"].get(npc_id, "")
+	return get_localized_text("npc_hover_info", npc_id)
 
 
 func get_npc_hover_title(npc_id: String) -> String:
-	return LOCALE[SaveFile.locale]["npc_hover_title"].get(
-		npc_id, StringUtils.humanify_string(npc_id)
-	)
+	return get_localized_text("npc_hover_title", npc_id)
 
 
 func get_npc_click_info(npc_id: String) -> String:
-	return LOCALE[SaveFile.locale]["npc_click_info"].get(npc_id, "")
+	return get_localized_text("npc_click_info", npc_id)
 
 
 func get_npc_click_title(npc_id: String) -> String:
-	return LOCALE[SaveFile.locale]["npc_click_title"].get(
-		npc_id, StringUtils.humanify_string(npc_id)
-	)
+	return get_localized_text("npc_click_title", npc_id)
 
 
 func get_scale_settings_info(scale: int) -> String:
-	return LOCALE[SaveFile.locale]["scale_settings_info"].get(
-		str(scale), LOCALE[SaveFile.locale]["scale_settings_info"]["-1"]
-	)
+	return get_localized_text("scale_settings_info", str(scale))
 
 
 func get_enemy_data_info(enemy_id: String) -> String:
-	return LOCALE[SaveFile.locale]["enemy_data_info"].get(enemy_id, "")
+	return get_localized_text("enemy_data_info", enemy_id)
 
 
 func get_enemy_data_option_title(enemy_id: String, option: int) -> String:
-	return LOCALE[SaveFile.locale]["enemy_data_option_title"].get(enemy_id + "-" + str(option), "?")
+	return get_localized_text("enemy_data_option_title", enemy_id + "-" + str(option))
 
 
 func get_enemy_data_title(enemy_id: String) -> String:
-	return LOCALE[SaveFile.locale]["enemy_data_title"].get(
-		enemy_id, StringUtils.humanify_string(enemy_id)
-	)
+	return get_localized_text("enemy_data_title", enemy_id)
 
 
 func get_resource_generator_label(resource_id: String) -> String:
-	return LOCALE[SaveFile.locale]["resource_generator_label"].get(
-		resource_id, StringUtils.humanify_string(resource_id)
-	)
+	return get_localized_text("resource_generator_label", resource_id)
 
 
 func get_resource_generator_title(resource_id: String) -> String:
-	return LOCALE[SaveFile.locale]["resource_generator_title"].get(
-		resource_id, StringUtils.humanify_string(resource_id)
-	)
+	return get_localized_text("resource_generator_title", resource_id)
 
 
 func get_resource_generator_flavor(resource_id: String) -> String:
-	return LOCALE[SaveFile.locale]["resource_generator_flavor"].get(resource_id, "")
+	return get_localized_text("resource_generator_flavor", resource_id)
 
 
 func get_resource_generator_max_flavor(resource_id: String) -> String:
-	return LOCALE[SaveFile.locale]["resource_generator_max_flavor"].get(resource_id, "")
+	return get_localized_text("resource_generator_max_flavor", resource_id)
 
 
 func get_resource_generator_display_name(resource_id: String) -> String:
-	return LOCALE[SaveFile.locale]["resource_generator_display_name"].get(
-		resource_id, StringUtils.humanify_string(resource_id)
-	)
+	return get_localized_text("resource_generator_display_name", resource_id)
 
 
 func get_worker_role_title(role_id: String) -> String:
-	return LOCALE[SaveFile.locale]["worker_role_title"].get(
-		role_id, StringUtils.humanify_string(role_id)
-	)
+	return get_localized_text("worker_role_title", role_id)
 
 
 func get_worker_role_flavor(role_id: String) -> String:
-	return LOCALE[SaveFile.locale]["worker_role_flavor"].get(role_id, "")
+	return get_localized_text("worker_role_flavor", role_id)
 
 
 func get_tab_data_titles(tab_id: String) -> Array:
-	return LOCALE[SaveFile.locale]["tab_data_titles"].get(tab_id, [])
+	return get_localized_array("tab_data_titles", tab_id)
 
 
 func get_event_data_text(event_id: String) -> String:
-	return LOCALE[SaveFile.locale]["event_data_text"].get(event_id, "")
+	return get_localized_text("event_data_text", event_id)
 
 
 func get_npc_event_text(event_id: String) -> String:
-	return LOCALE[SaveFile.locale]["npc_event_text"].get(event_id, "")
+	return get_localized_text("npc_event_text", event_id)
 
 
 func get_npc_event_options(event_id: String) -> Array:
-	return LOCALE[SaveFile.locale]["npc_event_options"].get(event_id, [])
+	return get_localized_array("npc_event_options", event_id)
 
 
 func get_substance_text(id: String) -> String:
-	return LOCALE[SaveFile.locale]["substance_text"].get(id, "")
+	return get_localized_text("substance_text", id)
+
+
+func get_substance_category_text(id: String) -> String:
+	return get_localized_text("substance_category_text", id)
