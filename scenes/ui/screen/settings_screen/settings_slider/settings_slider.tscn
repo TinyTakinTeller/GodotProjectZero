@@ -27,10 +27,11 @@ layout_mode = 2
 
 [node name="TitleLabel" parent="HBoxContainer/TitleMarginContainer" instance=ExtResource("2_vnjch")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Audio"
+horizontal_alignment = 1
 autowrap_mode = 0
 
 [node name="ValueMarginContainer" type="MarginContainer" parent="HBoxContainer"]

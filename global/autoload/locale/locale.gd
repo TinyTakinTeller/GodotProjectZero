@@ -1,8 +1,8 @@
 #gdlint:ignore = max-public-methods
 extends Node
 
-const LOCALES: Array[String] = ["en", "zh"]
-const LOCALE_NAME: Dictionary = {"en": "English", "zh": "中文"}
+const LOCALES: Array[String] = ["en", "fr", "zh"]
+const LOCALE_NAME: Dictionary = {"en": "English", "fr": "Français", "zh": "中文"}
 
 
 func _ready() -> void:

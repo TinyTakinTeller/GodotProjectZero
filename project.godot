@@ -63,7 +63,7 @@ project/assembly_name="The Best Game Ever"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg", "res://addons/format_on_save/plugin.cfg", "res://addons/gdLinter/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg", "res://addons/format_on_save/plugin.cfg", "res://addons/gdLinter/plugin.cfg", "res://addons/label_font_auto_sizer/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [input]
 
@@ -100,7 +100,7 @@ master_music_toggle={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/i18n/localization.en.translation", "res://assets/i18n/localization.zh.translation")
+locale/translations=PackedStringArray("res://assets/i18n/localization.en.translation", "res://assets/i18n/localization.zh.translation", "res://assets/i18n/localization.fr.translation")
 
 [rendering]
 

@@ -18,7 +18,7 @@ mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_bottom = 3
 script = ExtResource("2_rp5nm")
 shake_shader_component_scene = ExtResource("2_genxb")
 
@@ -26,6 +26,7 @@ shake_shader_component_scene = ExtResource("2_genxb")
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"ProgressButton"
+theme_override_font_sizes/font_size = 16
 text = "Button
 "
 

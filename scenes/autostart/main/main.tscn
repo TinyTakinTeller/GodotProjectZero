@@ -209,7 +209,7 @@ layout_mode = 2
 [node name="EventTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("4_cyhi7")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 
 [node name="ScreenMarginContainer" type="MarginContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -264,8 +264,6 @@ layout_mode = 2
 
 [node name="InfoContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/FooterHBoxContainer" instance=ExtResource("10_unxkl")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
 theme_override_constants/margin_right = 0
 
 [node name="VersionContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/FooterHBoxContainer" instance=ExtResource("20_ynkq3")]

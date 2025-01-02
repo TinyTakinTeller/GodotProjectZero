@@ -29,5 +29,6 @@ text = "[001]"
 
 [node name="EventLabel" parent="HBoxContainer" instance=ExtResource("2_h3nnf")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12

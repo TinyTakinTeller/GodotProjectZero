@@ -39,9 +39,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_constants/margin_top = 6
 
-[node name="PaddingMarginContainer" type="MarginContainer" parent="VBoxContainer/ButtonMarginContainer/HBoxContainer"]
-layout_mode = 2
-
 [node name="GridContainer2" type="GridContainer" parent="VBoxContainer/ButtonMarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
