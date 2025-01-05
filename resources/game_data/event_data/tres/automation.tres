@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_0bdy5")
 id = "automation"
-text = "Passive production of all resources is increasing! The age of automation is upon us."
 vars = []
-color = Color(0.878431, 0, 0.392157, 1)
+color = Color(0, 0.392, 0.878, 1)

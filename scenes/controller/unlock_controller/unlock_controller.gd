@@ -96,6 +96,9 @@ func _handle_on_resource_increased(observed_id: String, observed_total: int) -> 
 
 
 func _handle_worker_updated(observed_id: String, observed_total: int) -> void:
+	if SaveFile.workers.get("mason", 0) >= 1:
+		_trigger_unique_unlock_event("automation")
+
 	if observed_total >= 1:
 		_unlock_worker_role_if(observed_id)
 		return

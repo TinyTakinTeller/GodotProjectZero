@@ -17,6 +17,7 @@ CONTRIBUTE:
 - 26/08/2024 [`prototype.week.18`] **Project featured on front page of Itch "New & Popular"** 🚀
 - 09/09/2024 [`prototype.week.20`] **Discontinuing weekly updates going forward.** ⚰️
 - 07/10/2024 [`prototype.release.1.0`] **Added final boss fight, a short minigame ending.** ⭐
+- 05/01/2025 [`prototype.release.1.1`] **Localization Update for French and Chinese (SC).** 🌎
 
 
 ## Overview
