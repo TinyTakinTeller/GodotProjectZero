@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=83 format=4 uid="uid://d276arnrjws3i"]
+[gd_resource type="Theme" load_steps=84 format=4 uid="uid://d276arnrjws3i"]
 
+[ext_resource type="FontFile" uid="uid://q32pdsh1f0q8" path="res://assets/font/noto_sans/woff/noto_sans.woff" id="2_mxpaq"]
 [ext_resource type="Texture2D" uid="uid://bvpjbal72ck7r" path="res://resources/theme/dark/icons.svg" id="2_plspm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ymaf"]
@@ -1479,6 +1480,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [resource]
+default_font = ExtResource("2_mxpaq")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
 Button/colors/font_color_hover = Color(0.94, 0.94, 0.94, 1)

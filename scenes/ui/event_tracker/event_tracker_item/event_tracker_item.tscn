@@ -26,9 +26,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 10
 text = "[001]"
+autowrap_mode = 1
 
 [node name="EventLabel" parent="HBoxContainer" instance=ExtResource("2_h3nnf")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
+autowrap_mode = 1

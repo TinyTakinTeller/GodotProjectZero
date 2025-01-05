@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://be30ymqku7twp"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://be30ymqku7twp"]
+
+[ext_resource type="FontFile" uid="uid://q32pdsh1f0q8" path="res://assets/font/noto_sans/woff/noto_sans.woff" id="1_f3vby"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds5vx"]
 content_margin_left = 4.0
@@ -125,6 +127,7 @@ bg_color = Color(1, 1, 1, 0.501961)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncl5g"]
 
 [resource]
+default_font = ExtResource("1_f3vby")
 Button/styles/disabled = SubResource("StyleBoxFlat_ds5vx")
 Button/styles/focus = SubResource("StyleBoxFlat_20i00")
 Button/styles/hover = SubResource("StyleBoxFlat_onb88")
