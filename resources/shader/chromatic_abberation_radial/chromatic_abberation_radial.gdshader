@@ -13,7 +13,7 @@ vec3 chromatic_slice(float t){
 
 void fragment(){
 	float spread = sin(TIME * 4.161) * amp;
-	
+
 	vec3 sum = vec3(0.0);
 	COLOR.rgb = vec3(0.0,0.0,0.0);
 	vec2 offset = (UV - vec2(0.5))*vec2(1,-1);

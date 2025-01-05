@@ -10,7 +10,7 @@ ui_label:current,"automated prestige timer ""Current: 47s | Best: 20s | Death:17
 ui_label:best,"automated prestige timer ""Current: 47s | Best: 20s | Death:17s""",Best,最佳,Meilleur
 ui_label:harvest_forest,button text,Harvest\nForest,收获\n森林,Exploiter\nla forêt
 ui_label:harvest_forest_title,button on hover infobox title,Harvest Forest,收获森林,Exploiter la forêt
-ui_label:harvest_forest_info,button on hover infobox description,"Channel your substance into the exposed roots of The Dark Forest, exploiting it from within.",与暗黑森林的裸露根系直接相连，从内部开发资源。,"Canalisez votre substance dans les racines mises à nue de la Forêt des Ténèbres, et drainez-la de l’intérieur."
+ui_label:harvest_forest_info,button on hover infobox description,"Channel your substance into the exposed roots of The Dark Forest, exploiting it from within.",与暗黑森林的裸露根系直接相连，从内部开发资源。,"Canalisez votre substance dans les racines mises à nu de la Forêt des Ténèbres, et drainez-la de l’intérieur."
 ui_label:watermark_title,WATERMARK,Official Game Page,官方游戏页面,Page officielle du jeu
 ui_label:watermark_info,WATERMARK,"For the latest version, please verify that you are playing at the official URL, the only one I maintain and update.",为了获取最新版本，请确认您在我维护和更新的官方网页进行游戏。,"Pour profiter de la dernière version, assurez-vous de jouer à l’URL officielle, celle-ci étant la seule que je tiens à jour."
 ui_label:dark_forest_title,infobox on reopen game,The Dark Forest,暗黑森林,La Forêt des Ténèbres
@@ -37,11 +37,11 @@ ui_label:import_tooltip,save file text,Restore your progress from a previous ses
 ui_label:import_placeholder,save file text,Paste save file code here.,请在此粘贴文件保存码,Collez votre code de sauvegarde.
 ui_label:import_error,save file text,Import failed. Please check your save file code and try again.,导入失败。请检查您的文件保存码，然后再试一次。,Impossible d’importer. Vérifiez votre code de sauvegarde et essayez à nouveau.
 ui_label:export,save file text,Export,导出,Exporter
-ui_label:export_tooltip,save file text,Copy and save this code to restore your progress later.,请复制并记住此文件保存码，以便以后恢复您的进度。,Copiez et conservez ce code pour pouvoir restaurer vos progrès plus tard.
+ui_label:export_tooltip,save file text,Copy and save this code to restore your progress later.,请复制并记住此文件保存码，以便以后恢复您的进度。,Copiez et conservez ce code pour pouvoir restaurer votre sauvegarde plus tard.
 ui_label:import_title,save file text,Import Save,导入存档,Importer une sauvegarde
 ui_label:export_title,save file text,Export Save,导出存档,Exporter une sauvegarde
 ui_label:accept,save file text,Accept,接受,Confirmer
-ui_label:dear_diary,title of diary dialog,Dear Diary,亲爱的日记,Cher journal
+ui_label:dear_diary,title of diary dialog,Dear Diary,亲爱的日记,"Cher journal,"
 ui_label:resource_storage,title or resource list dialog,Resource Storage,资源存量,Ressources
 ui_label:upgrade,label for upgrade button,Upgrade,升级,Améliorer
 ui_label:cost,"label for price of buying, crafting or upgrading something (""Cost: 100 wood, 20 brick"")",Cost,成本,Coût
@@ -54,14 +54,14 @@ ui_label:deaths_door_second,"button text on ""defeated enemy"" choice dialog (2)
 ui_label:deaths_door_first_title,button hover infobox title (1),Execution,处死,Mise à mort
 ui_label:deaths_door_second_title,button hover infobox title (2),Absolution,赦免,Clémence
 ui_label:deaths_door_first_info,button hover infobox description (1),"Destroy the creature, consuming the tormented spirit into your own essence.",摧毁该生命体，将其痛苦的灵魂吸收进你的本质。,Anéantissez la créature et nourrissez votre essence de son esprit tourmenté.
-ui_label:deaths_door_second_info,button hover infobox description (2),"Free the creature, releasing the spirit from the corrupted flesh prison.",释放该生命体，将其灵魂从腐败的肉体监狱中释放。,Libérez la créature et délivrez l’esprit de cette prison de chair corrompue.
+ui_label:deaths_door_second_info,button hover infobox description (2),"Free the creature, releasing the spirit from the corrupted flesh prison.",释放该生命体，将其灵魂从腐败的肉体监狱中释放。,Libérez la créature et délivrez l’esprit qui l’habite de cette prison de chair corrompue.
 ui_label:offline_1,re-open game dialog info text #1,You were away for {0}. \n\n,您离开了{0}。\n\n,Vous vous êtes absenté pendant {0}. \n\n
 ui_label:offline_2,re-open game dialog info text #2,Unhappy population will refuse to work while not observed.,不快乐的属民将拒绝在无人监管时工作。,Une population mécontente refusera de travailler en l’absence de surveillance.
 ui_label:offline_3,re-open game dialog info text #3,Make sure your resources are not decreasing to keep your population happy:,保证资源不在减少，以保持属民快乐：,"Afin de maintenir une population heureuse, assurez-vous que vos ressources ne diminuent pas :"
 ui_label:offline_4,re-open game dialog info text #4,"Since your last activity, population generated:",自您上次活动以来，属民生产了：,"Pendant votre absence, la population a généré :"
 ui_label:master,options menu settings label (slider for volume),Master,主音量,Général
 ui_label:music,options menu settings label (slider for volume),Music,背景音乐,Musique
-ui_label:sfx,options menu settings label (slider for volume),SFX,音效,EFFETS
+ui_label:sfx,options menu settings label (slider for volume),SFX,音效,Effets
 ui_label:shake,options menu settings label (slider for effect strength; shake animation strength),Shake,抖动效果,Tremblement
 ui_label:typing,options menu settings label (slider for effect strength; typing animation speed) ,Typing,打字效果,Débit
 ui_label:windowed,options menu settings label (window mode),Windowed,窗口模式,Fenêtré
@@ -85,7 +85,7 @@ ui_label:smart_mode_button_info,on hover infobox description (2),Incrementing a 
 ui_label:auto_mode_button_info,on hover infobox description (3),"While active, excess peasants will be automatically assigned to masons.",激活时，过剩的农民将自动分配给石匠。,"Lorsque ce mode est actif, les paysans excédentaires seront affectés au rôle de maçon."
 ui_label:infinity_progress_1,"e.g. ""50% to Infinity (Wood)"" - progress counter towards infinite amount of a resource",{0}% to Infinity ({1}),{0}% 至无限 ({1}),{0}% avant l’Infini ({1})
 ui_label:infinity_progress_2,"e.g. ""4 of 16 Infinity collected"" - progress towards making all amounts of all resources infinite",{1} of {2} Infinity collected,已收集{1}/{2}个无限。,{1} de {2} Infinités collectées
-ui_label:prestige_condition_info,prestige info #3,Need at least 1 Infinity to break through.,需要至少1个无限才能突破。,Au moins 1 Infinité est requise pour transcender.
+ui_label:prestige_condition_info,prestige info #3,Need at least 1 Infinity to break through.,需要至少1个无限才能突破。,Au moins 1 ressource infinie est requise pour transcender.
 ui_label:reborn_1_line_2,prestige rebirth line - iteration 1. (inverse christian commandment),1. Worship no power above your own. Let your ambition be your catalyst.,1. 不要崇拜任何高于你的权力。让野心成为你的催化剂。,1. Votre pouvoir doit être l’unique objet de votre dévotion. Laissez-vous guider par votre ambition.
 ui_label:reborn_1_line_1,[EMPTY],,,
 ui_label:reborn_2_line_2,prestige rebirth line - iteration 2. (inverse christian commandment),2. Craft your own idols and symbols. Let your creations channel the forces you seek to control.,2. 制作你自己的偶像和符号。让它们引导你控制所需的力量。,2. Façonnez vos propres idoles et symboles. Que vos créations canalisent les forces que vous cherchez à contrôler.
@@ -175,41 +175,41 @@ enemy_data_option_title:dino-1,hover infobox title for enemy (killed variation),
 enemy_data_option_title:skeleton-1,hover infobox title for enemy (killed variation),Essence Of Acolyte,侍僧的本质,Essence de l’Acolyte
 enemy_data_option_title:slime-1,hover infobox title for enemy (killed variation),Essence Of Prince,王子的本质,Essence du Prince
 enemy_data_option_title:angel-1,hover infobox title for enemy (killed variation),Essence Of Death,死亡的本质,Essence de la Mort
-enemy_data_option_title:null-2,[DEPRECATED],+50% swordsman damage,+50% 剑士伤害,50 % de dégâts des soldats
-enemy_data_option_title:null-1,[DEPRECATED],+50% swordsman to click,+50% 剑士点击效果,50 % des soldats en dégâts de clic
+enemy_data_option_title:null-2,[DEPRECATED],+50% swordsman damage,+50% 剑士伤害,=+50 % de dégâts des soldats
+enemy_data_option_title:null-1,[DEPRECATED],+50% swordsman to click,+50% 剑士点击效果,=+50 % des soldats en dégâts de clic
 resource_generator_label:CREEK,[verb] button action,Dredge,疏浚,Sonder
 resource_generator_label:FOREST,[verb] button action,Scavenge,清理,Fouiller
 resource_generator_label:WILD,[verb] button action,Hunt,狩猎,Chasser
 resource_generator_label:CAVE,[verb] button action,Spelunk,探洞,Parcourir la grotte
-resource_generator_label:axe,button interaction,Craft Axe,制作斧头,Fabriquer une hache
+resource_generator_label:axe,button interaction,Craft Axe,制作斧头,Fabriquer : Hache
 resource_generator_label:brick,button interaction,Bake Clay,烧制粘土,Cuire de l’argile
 resource_generator_label:clay,button interaction,Dig Clay,挖掘粘土,Extraire de l’argile
 resource_generator_label:coal,[EMPTY],,,
 resource_generator_label:common,[EMPTY],,,
-resource_generator_label:compass,button interaction,Craft Compass,制作指南针,Fabriquer une boussole
-resource_generator_label:beacon,button interaction // source of divine light (crafted with soul fragments aka soulstone),Craft Beacon,制作信标,Fabriquer une balise
-resource_generator_label:soul,button interaction,Craft Soul,制作灵魂,Fabriquer une âme
+resource_generator_label:compass,button interaction,Craft Compass,制作指南针,Fabriquer : Boussole
+resource_generator_label:beacon,button interaction // source of divine light (crafted with soul fragments aka soulstone),Craft Beacon,制作信标,Fabriquer : Balise
+resource_generator_label:soul,button interaction,Craft Soul,制作灵魂,Fabriquer : Âme
 resource_generator_label:experience,[EMPTY],,,
 resource_generator_label:fiber,[EMPTY],,,
-resource_generator_label:firepit,button interaction,Craft Firepit,制作火坑,Faire un feu de camp
+resource_generator_label:firepit,button interaction,Craft Firepit,制作火坑,Faire un feu
 resource_generator_label:flint,[EMPTY],,,
 resource_generator_label:food,[EMPTY],,,
 resource_generator_label:fur,[EMPTY],,,
-resource_generator_label:house,button interaction,Build a House,建造房屋,Construire une maison
+resource_generator_label:house,button interaction,Build a House,建造房屋,Bâtir une maison
 resource_generator_label:iron,[EMPTY],,,
 resource_generator_label:iron_ore,[EMPTY],,,
 resource_generator_label:land,[verb] button action,Explore,探索,Explorer
 resource_generator_label:leather,[EMPTY],,,
 resource_generator_label:null,[EMPTY],,,
-resource_generator_label:pickaxe,button interaction,Craft Pickaxe,制作镐,Fabriquer une pioche
+resource_generator_label:pickaxe,button interaction,Craft Pickaxe,制作镐,Fabriquer : Pioche
 resource_generator_label:power,[EMPTY],,,
 resource_generator_label:rare,[EMPTY],,,
-resource_generator_label:shovel,button interaction,Craft Shovel,制作铲子,Fabriquer une pelle
-resource_generator_label:spear,button interaction,Craft Spear,制作矛,Fabriquer une lance
+resource_generator_label:shovel,button interaction,Craft Shovel,制作铲子,Fabriquer : Pelle
+resource_generator_label:spear,button interaction,Craft Spear,制作矛,Fabriquer : Lance
 resource_generator_label:stone,button interaction,Mine Stone,开采石头,Extraire de la pierre
 resource_generator_label:sword,button interaction,Make a Sword,制作剑,Forger une épée
 resource_generator_label:swordsman,button interaction,Train a Swordsman,训练剑士,Entrainer un soldat
-resource_generator_label:torch,button interaction,Make a Torch,制作火把,Fabriquer une torche
+resource_generator_label:torch,button interaction,Make a Torch,制作火把,Faire une torche
 resource_generator_label:wood,button interaction,Chop Wood,砍伐木头,Couper du bois
 resource_generator_label:worker,[EMPTY],,,
 resource_generator_title:CREEK,button on hover infobox title,Dredge the Creek,疏浚小溪,Sonder le ruisseau
@@ -351,8 +351,8 @@ resource_generator_display_name:worker,[noun] an in-game resource,Peasant,农民
 resource_generator_display_name:soulstone,[noun] an in-game resource,Soulstone,灵魂石,Pierre d’âme
 resource_generator_display_name:singularity,[noun] an in-game resource,Singularity,奇点,Singularité
 resource_generator_display_name:soul,[noun] an in-game resource,Soul,灵魂,Âme
-worker_role_title:clay_digger,work profession / in-game job category,Clay Digger,挖粘土工,Producteur d’argile
-worker_role_title:coal_miner,work profession / in-game job category,Coal Miner,煤矿工,Piqueur de charbon
+worker_role_title:clay_digger,work profession / in-game job category,Clay Digger,挖粘土工,Mineur d’argile
+worker_role_title:coal_miner,work profession / in-game job category,Coal Miner,煤矿工,Houilleur
 worker_role_title:experience,work profession / in-game job category,Experience,经验,Expérience
 worker_role_title:explorer,work profession / in-game job category,Explorer,探险家,Explorateur
 worker_role_title:explorerer,[DEPRECATED],Explorerer,探险家,
@@ -363,13 +363,13 @@ worker_role_title:lumberjack,work profession / in-game job category,Lumberjack,�
 worker_role_title:mason,work profession / in-game job category,Mason,石匠,Maçon
 worker_role_title:recruiter,[DEPRECATED],Recruiter,招募官,Recruteur
 worker_role_title:sergeant,work profession / in-game job category,Sergeant,军士长,Sergent
-worker_role_title:smelter,work profession / in-game job category,Clay Baker,陶土烘焙师,Producteur de briques
-worker_role_title:stone_miner,work profession / in-game job category,Stone Miner,采石工,Ouvrier des carrières
+worker_role_title:smelter,work profession / in-game job category,Clay Baker,陶土烘焙师,Briquetier
+worker_role_title:stone_miner,work profession / in-game job category,Stone Miner,采石工,Tailleur de pierre
 worker_role_title:swordsman,work profession / in-game job category,Swordsman,剑士,Soldat
 worker_role_title:swordsmith,work profession / in-game job category,Swordsmith,铸剑师,Forgeron
 worker_role_title:tailor,[DEPRECATED],Tailor,裁缝,Tailleur
 worker_role_title:tanner,work profession / in-game job category,Tanner,制革工,Tanneur
-worker_role_title:torch_man,work profession / in-game job category,Torch Man,火把手,Fabriquant de torches
+worker_role_title:torch_man,work profession / in-game job category,Torch Man,火把手,Maître des torches
 worker_role_title:wanderer,[DEPRECATED],Wanderer,流浪者,Vagabond
 worker_role_title:worker,work profession / in-game job category,Peasant,农民,Paysan
 worker_role_flavor:clay_digger,on hover infobox description,"The muddy lake keeps her secrets, for now.",泥泞的湖泊暂时保守着她的秘密。,"Le lac vaseux garde ses secrets, pour l’instant."
@@ -445,7 +445,7 @@ event_data_text:darkness_4,diary entry text,"Countless spirits swarm around the 
 event_data_text:darkness_5,diary entry text,"My head twists and churns, my sight expands and contracts. The dark forest paths lead me in circles. What, or who, is this maze keeping lost in here?",我的脑海中翻腾不断，视野扩张收缩。黑暗森林的路径将我带入循环。这个迷宫到底想让谁迷失在这里？,"J’ai la tête qui tourne et qui bouillonne, ma vue se dilate et se rétracte. Les chemins de la Forêt des Ténèbres me font tourner en ronds. Quoi, ou qui, ce labyrinthe tente-t-il de retenir ?"
 event_data_text:darkness_6,diary entry text,"The mighty dragon was acting as a guard dog of the castle gates. In the great hall, a colossal beast stretches into the infinite ceiling void.",强大的龙曾是城堡大门看守。在大厅中，一头巨大的野兽直冲到无尽的天花板空隙中。,"Le puissant dragon n’était qu’un chien de garde aux portes du château. Dans l’immense vestibule, une créature titanesque s’élève vers le néant d’une voûte infinie."
 event_data_text:darkness_7,diary entry text,"This has been too easy. No. There's something wrong, there must be. You...You are still here, aren't you?",这一切太容易了。不。一定有什么不对。你...你还在这里，对吧？,"C’est beaucoup trop simple. Non. Quelque chose cloche, c’est sur. Vous... Vous êtes encore là, n’est-ce pas ?"
-event_data_text:darkness_8,diary entry text,"Countless entities gather along as I move towards the throne room. They seem to recognize me. The throne room awaits, my heart pounds.",走向王座室时，无数生命体聚集在一起。他们似乎认识我。王座室就在前方，我的心跳加速。,"Alors que je m’avance vers la salle du trône, une myriade d’entités gravite autour de moi. Elles semblent me reconnaître. La salle du trône m’attend, mon cœur bat à tout rompre."
+event_data_text:darkness_8,diary entry text,"Countless entities gather along as I move towards the throne room. They seem to recognize me. The throne room awaits, my heart pounds.",走向王座室时，无数生命体聚集在一起。他们似乎认识我。王座室就在前方，我的心跳加速。,"Alors que je m’avance vers la salle du trône, une myriade d’entités gravite autour de moi. Elles semblent me reconnaître. Le sanctuaire royal m’attend, mon cœur bat à tout rompre."
 event_data_text:darkness_9,diary entry text,"The defeated slime smiles: ""You don't remember? Too long, you have been stuck... in this... form.""",被打败的史莱姆微笑说：“你不记得了吗？你已经困在这个...形态...太久了。”,"Le slime, vaincu, sourit : « Tu ne te souviens pas ? Cela fait trop longtemps que tu es... prisonnier... de cette forme. »"
 event_data_text:darkness_10,diary entry text,"I struck down Death itself, witnessing its ethereal form regenerate right before my eyes. It left behind a shimmering... Soulstone? I need... more.",我击败了死神本身，目睹它的灵魂形态就在我的眼前重生。它留下了一个闪闪发光的...灵魂？我需要...更多。,"J’ai terrassé la mort elle-même, pour voir sa forme éthérée renaître devant mes yeux. Elle a laissé tomber quelque chose de brillant... Une pierre d’âme ? Il... Il m’en faut d’autres."
 event_data_text:execute_1,diary entry text,I feel a power rush flowing through my body as I absorb the dark essence... it sears my flesh.,吸收黑暗精华时，我感受到一股力量冲刷我的身体...灼烧我的肉体。,Je sens un flot de puissance envahir mon corps en absorbant l’essence sombre... Elle consume ma chair.
@@ -558,13 +558,13 @@ substance_text:essence_slime_info,infobox description (after kill option),"Even 
 substance_text:spirit_angel_info,infobox description (after spare option),"This one, they point towards themselves, ""was not worthy of mercy.""",“这个人，”他指向自己，“不配蒙受怜悯。”,"« Cet être, dit-il en se pointant du doigt, n’était pas digne de miséricorde. »"
 substance_text:essence_angel_info,infobox description (after kill option),"Death arrives to all equally, a truth that brings comfort to some and fear to others.",死亡平等地降临于所有人。这一真理给一些人带来安慰，给另一些人带来恐惧。,"La mort n’épargne personne, une vérité qui réconforte certains et en effraie d’autres."
 substance_text:heart_title,infobox title,Heart Of The Dark Forest,黑暗森林之心,Cœur de la Forêt des Ténèbres
-substance_text:heart_info,infobox description,"+100% - Umbral mist seeps through the severed veins, transmuting nearby matter...",+100% - 阴影迷雾通过切断的静脉渗透，转化附近的物质……,100 % - De la brume ombrale s’infiltre dans les veines sectionnées et transmute la matière environnante...
+substance_text:heart_info,infobox description,"+100% - Umbral mist seeps through the severed veins, transmuting nearby matter...",+100% - 阴影迷雾通过切断的静脉渗透，转化附近的物质……,=+100 % - De la brume ombrale s’infiltre dans les veines sectionnées et transmute la matière environnante...
 substance_text:flesh_title,infobox title,Flesh Of The Dark Forest,黑暗森林之肉,Chair de la Forêt des Ténèbres
-substance_text:flesh_info,infobox description,"+1% - 1 in 10 - Pulses faintly under your touch, as if it carries the heartbeat of the woods themselves.",+1% - 1/10 - 在你的触摸下微弱地跳动，仿佛它承载着森林本身的心跳。,"1 % - 1 sur 10 - Palpite légèrement au toucher, comme si elle portait le pouls de la forêt elle-même."
+substance_text:flesh_info,infobox description,"+1% - 1 in 10 - Pulses faintly under your touch, as if it carries the heartbeat of the woods themselves.",+1% - 1/10 - 在你的触摸下微弱地跳动，仿佛它承载着森林本身的心跳。,"=+1 % - 1 sur 10 - Palpite légèrement au toucher, comme si elle portait le pouls de la forêt elle-même."
 substance_text:eye_title,infobox title,Eye Of The Dark Forest,黑暗森林之眼,Œil de la Forêt des Ténèbres
-substance_text:eye_info,infobox description,"+5% - 1 in 100 - The eye peers into the abyss, unveiling hidden truths buried deep within the shadows.",+5% - 1/100 - 这只眼睛凝视深渊，揭示了隐藏在阴影深处的隐藏真相。,"5 % - 1 sur 100 - L’œil sonde l’abîme, révélant des vérités cachées dans la profondeur des ombres."
+substance_text:eye_info,infobox description,"+5% - 1 in 100 - The eye peers into the abyss, unveiling hidden truths buried deep within the shadows.",+5% - 1/100 - 这只眼睛凝视深渊，揭示了隐藏在阴影深处的隐藏真相。,"=+5 % - 1 sur 100 - L’œil sonde l’abîme, révélant des vérités cachées dans la profondeur des ombres."
 substance_text:bone_title,infobox title,Bones Of The Dark Forest,黑暗森林之骨,Os de la Forêt des Ténèbres
-substance_text:bone_info,infobox description,+50% - 1 in 1000 - The ancient bones of the unknown whisper of forgotten curses.,+50% - 1/1000 - 未知的古老骨头低语着被遗忘的诅咒。,50 % - 1 sur 1000 - Les ossements anciens de l’inconnu murmurent des malédictions oubliées.
+substance_text:bone_info,infobox description,+50% - 1 in 1000 - The ancient bones of the unknown whisper of forgotten curses.,+50% - 1/1000 - 未知的古老骨头低语着被遗忘的诅咒。,=+50 % - 1 sur 1000 - Les ossements anciens de l’inconnu murmurent des malédictions oubliées.
 substance_text:the_hermit_title,tarot card title,The Hermit,隐士,L’Ermite
 substance_text:the_hermit_info,tarot card infobox description,"Forest clicks scale with Experience. Unlocks ""Strength"" charm.",森林点击随经验而变化。解锁“力量”魅力。,Les ressources collectées dans la forêt augmentent avec l’expérience. Débloque le talisman de la Force.
 substance_text:the_emperor_title,tarot card title,The Emperor,皇帝,L’Empereur
@@ -635,7 +635,7 @@ substance_category_text:charm,items category title - grant in-game bonus effects
 substance_category_text:shadow,items category title - grant in-game bonus effects (random drops),Shadow,本质,Ombres
 substance_category_text:spirit,items category title - grant in-game bonus effects (enemy drops),Spirit,灵,Esprits
 substance_category_text:essence,items category title - grant in-game bonus effects (enemy drops),Essence,影,Essences
-ui_label:audio_title,options menu options category label,Audio,音频设置,Son
+ui_label:audio_title,options menu options category label,Audio,音频设置,Volume
 ui_label:effects_title,options menu options category label,Effects,效果设置,Effets
 ui_label:display_title,options menu options category label,Display,显示设置,Affichage
 ui_label:infinity,"max amount quanity (1) e.g. ""Wood: Infinity""",Infinity,无穷大,Infini
