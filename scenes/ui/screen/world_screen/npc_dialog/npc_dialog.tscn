@@ -46,6 +46,7 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 1
 text = "I smelled you from a far. You look lost... "
+autowrap_mode = 3
 
 [node name="ShakeShaderComponent" parent="MarginContainer/VBoxContainer/DialogMarginContainer/DialogLabel" instance=ExtResource("3_uxbm3")]
 
