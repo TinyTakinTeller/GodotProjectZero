@@ -12,6 +12,10 @@ var is_soul: bool = false
 @onready var all_button: Button = %AllButton
 @onready var experience_margin_container: ExperienceTracker = %ExperienceMarginContainer
 @onready var npc_dialog: NpcDialog = %NpcDialog
+@onready var padding_margin_container_1: MarginContainer = %PaddingMarginContainer1
+@onready var padding_margin_container_2: MarginContainer = %PaddingMarginContainer2
+@onready var grid_container_2: GridContainer = %GridContainer2
+@onready var all_button_margin_container: MarginContainer = %AllButtonMarginContainer
 
 ###############
 ## overrides ##
@@ -20,8 +24,10 @@ var is_soul: bool = false
 
 func _ready() -> void:
 	_initialize()
+	_refresh_labels()
 	_connect_signals()
 	_load_from_save_file()
+	_on_display_language_updated()
 
 
 #############
@@ -34,6 +40,8 @@ func _initialize() -> void:
 		if is_instance_of(node, GridContainer):
 			grid_containers.append(node as GridContainer)
 
+
+func _refresh_labels() -> void:
 	all_button.text = Locale.get_ui_label("harvest_forest")
 
 
@@ -80,6 +88,7 @@ func _connect_signals() -> void:
 	SignalBus.progress_button_cooldown_end.connect(_on_progress_button_cooldown_end)
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.soul.connect(_on_soul)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -133,3 +142,25 @@ func _on_soul() -> void:
 	all_button.disabled = true
 
 	experience_margin_container.experience_label.modulate = ColorSwatches.PURPLE
+
+
+func _on_display_language_updated() -> void:
+	_refresh_labels()
+	match TranslationServer.get_locale():
+		"en":
+			_set_padding_margin_left(8)
+			all_button.reparent(all_button_margin_container)
+		"fr":
+			_set_padding_margin_left(0)
+			all_button.reparent(grid_container_2)
+		"zh":
+			_set_padding_margin_left(32)
+			all_button.reparent(all_button_margin_container)
+		_:
+			_set_padding_margin_left(8)
+			all_button.reparent(all_button_margin_container)
+
+
+func _set_padding_margin_left(margin_value: int) -> void:
+	for node: Control in [padding_margin_container_1, padding_margin_container_2]:
+		node.add_theme_constant_override("margin_left", margin_value)

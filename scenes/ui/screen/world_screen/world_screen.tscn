@@ -38,11 +38,13 @@ size_flags_vertical = 4
 [node name="ProgressButton2" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer1" instance=ExtResource("2_74b0p")]
 layout_mode = 2
 
-[node name="MarginContainer1" type="MarginContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
+[node name="PaddingMarginContainer1" type="MarginContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 0
 
 [node name="GridContainer2" type="GridContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="ProgressButton1" parent="ProgressButtonMarginContainer/HBoxContainer/GridContainer2" instance=ExtResource("2_74b0p")]
@@ -53,9 +55,10 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
+[node name="PaddingMarginContainer2" type="MarginContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 0
 
 [node name="GridContainer3" type="GridContainer" parent="ProgressButtonMarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -76,17 +79,25 @@ _npc_id = "cat"
 [node name="ExperienceMarginContainer" parent="." instance=ExtResource("4_p5w24")]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="AllButtonMarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 
-[node name="AllButton" type="Button" parent="MarginContainer"]
+[node name="AllButton" type="Button" parent="AllButtonMarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 74)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 text = "Harvest
 Forest"

@@ -23,10 +23,7 @@ func get_enemy_icon_texture() -> Resource:
 
 
 func get_title() -> String:
-	var title: String = Locale.get_enemy_data_title(id)
-	if StringUtils.is_not_empty(title):
-		return title
-	return StringUtils.humanify_string(id)
+	return Locale.get_enemy_data_title(id)
 
 
 func get_enemy_data_option_title(option: int) -> String:

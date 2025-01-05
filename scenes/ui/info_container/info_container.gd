@@ -77,6 +77,7 @@ func _connect_signals() -> void:
 	SignalBus.info_hover_tab.connect(_on_info_hover_tab)
 	SignalBus.resource_updated.connect(_on_resource_updated)
 	SignalBus.soul.connect(_on_soul)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_progress_button_hover(resource_generator: ResourceGenerator) -> void:
@@ -127,3 +128,7 @@ func _on_resource_updated(id: String, _total: int, _amount: int, _source_id: Str
 
 func _on_soul() -> void:
 	v_box_container.modulate = ColorSwatches.PURPLE
+
+
+func _on_display_language_updated() -> void:
+	_initialize()

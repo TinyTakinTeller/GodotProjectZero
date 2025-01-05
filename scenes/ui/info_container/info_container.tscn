@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bauwua6x5pgjh"]
+[gd_scene load_steps=4 format=3 uid="uid://bauwua6x5pgjh"]
 
 [ext_resource type="Script" path="res://scenes/ui/info_container/info_container.gd" id="1_6ywel"]
 [ext_resource type="PackedScene" uid="uid://ccpod48fjrcy1" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_rsr25"]
+[ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_5af5u"]
 
 [node name="InfoContainer" type="MarginContainer"]
-size_flags_vertical = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_bottom = 4
 script = ExtResource("1_6ywel")
@@ -27,24 +29,43 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-size_flags_horizontal = 2
 theme_override_constants/outline_size = 1
 text = "Rare Title"
 
 [node name="InfoLabelShake" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(850, 30)
 layout_mode = 2
-text = "Venture on a hunt for some rare resources!"
+theme_override_font_sizes/font_size = 13
+text = "Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!"
+autowrap_mode = 3
+_current_font_size = 13
+_size_just_modified_by_autosizer = true
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
 text = "Rare Title"
+script = ExtResource("3_5af5u")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(850, 30)
 layout_mode = 2
-text = "Venture on a hunt for some rare resources!"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 13
+text = "Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!"
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_5af5u")
+_max_size = 16
+_current_font_size = 13
+_editor_defaults_set = true

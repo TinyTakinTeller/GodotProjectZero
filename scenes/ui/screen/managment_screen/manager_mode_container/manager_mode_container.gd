@@ -74,6 +74,8 @@ func _connect_signals() -> void:
 	smart_mode_button.button_up.connect(_on_smart_mode_button_up)
 	auto_mode_button.button_up.connect(_on_auto_mode_button_up)
 
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
+
 
 func _on_substance_updated(id: String, total_amount: int, _source_id: String) -> void:
 	if (id == "the_emperor" or id == "the_hierophant") and total_amount > 0:
@@ -129,3 +131,7 @@ func _on_auto_mode_button_up() -> void:
 	_toggle_mode(2)
 	SignalBus.toggle_manager_mode_pressed.emit(2)
 	Audio.play_sfx_id("generic_click")
+
+
+func _on_display_language_updated() -> void:
+	_initialize()

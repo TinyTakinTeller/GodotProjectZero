@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bauwua6x5pgjh"]
+
+[ext_resource type="Script" path="res://scenes/ui/info_container/info_container.gd" id="1_6ywel"]
+[ext_resource type="PackedScene" uid="uid://ccpod48fjrcy1" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_rsr25"]
+
+[node name="InfoContainer" type="MarginContainer"]
+size_flags_vertical = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_6ywel")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TitleLabelShake" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/outline_size = 1
+text = "Rare Title"
+
+[node name="InfoLabelShake" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Venture on a hunt for some rare resources!"
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/outline_size = 1
+text = "Rare Title"
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Venture on a hunt for some rare resources!"

@@ -25,12 +25,21 @@ func _initialize() -> void:
 
 
 func _set_experience(total: int) -> void:
-	experience_label.text = "Experience: " + NumberUtils.format_number(total)
+	experience_label.text = (
+		Locale.get_resource_generator_display_name("experience")
+		+ ": "
+		+ NumberUtils.format_number(total)
+	)
 
 
 #############
 ## signals ##
 #############
+
+
+func _connect_signals() -> void:
+	SignalBus.resource_updated.connect(_on_resource_updated)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_resource_updated(id: String, total: int, _amount: int, _source_id: String) -> void:
@@ -39,8 +48,8 @@ func _on_resource_updated(id: String, total: int, _amount: int, _source_id: Stri
 		updated_simple_tween.play_animation()
 
 
-func _connect_signals() -> void:
-	SignalBus.resource_updated.connect(_on_resource_updated)
+func _on_display_language_updated() -> void:
+	_initialize()
 
 
 ############

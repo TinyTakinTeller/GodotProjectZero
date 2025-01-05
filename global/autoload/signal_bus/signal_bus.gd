@@ -1,5 +1,8 @@
 extends Node
 
+## Configuration
+signal display_language_updated
+
 ## UI
 signal harvest_forest(order: int)
 signal progress_button_hover(resource_generator: ResourceGenerator)

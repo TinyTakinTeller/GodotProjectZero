@@ -32,10 +32,7 @@ func get_worker_consume() -> Dictionary:
 
 
 func get_title() -> String:
-	var title: String = Locale.get_worker_role_title(id)
-	if StringUtils.is_not_empty(title):
-		return title
-	return StringUtils.humanify_string(id)
+	return Locale.get_worker_role_title(id)
 
 
 func get_info() -> String:
@@ -65,7 +62,7 @@ func get_info() -> String:
 static func get_display_name_of(wid: String) -> String:
 	var worker_role: WorkerRole = Resources.worker_roles.get(wid, null)
 	if worker_role == null:
-		return StringUtils.humanify_string(wid)
+		return "NULL"
 	return Locale.get_worker_role_title(wid)
 
 

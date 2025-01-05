@@ -3,6 +3,8 @@ extends MarginContainer
 
 var _resource_generator: ResourceGenerator
 var _hovering: bool = false
+var _last_amount: int = 0
+var _last_passive_amount: int = 0
 
 @onready var amount_label: Label = %AmountLabel
 @onready var income_label: Label = %IncomeLabel
@@ -64,6 +66,8 @@ func get_default_color() -> Color:
 
 
 func display_resource(amount: int = 0) -> void:
+	_last_amount = amount
+
 	var id: String = get_id()
 	if Game.WORKER_ROLE_RESOURCE.has(id):
 		amount = SaveFile.workers.get(id, 0)
@@ -77,9 +81,11 @@ func display_resource(amount: int = 0) -> void:
 
 
 func _set_passive(amount: int) -> void:
+	_last_passive_amount = amount
+
 	var total_amount: int = SaveFile.resources.get(get_id(), 0)
 	if not (amount < 0) and total_amount >= Limits.GLOBAL_MAX_AMOUNT:
-		income_label.text = "MAX"
+		income_label.text = Locale.get_ui_label("max")
 		income_label.modulate = get_default_color()
 	else:
 		var amount_string: String = NumberUtils.format_number_scientific(amount)
@@ -124,6 +130,7 @@ func _connect_signals() -> void:
 	self.mouse_exited.connect(_on_mouse_exited)
 	SignalBus.manager_button_hover.connect(_on_manager_button_hover)
 	SignalBus.manager_button_unhover.connect(_on_manager_button_unhover)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_worker_efficiency_updated(efficiencies: Dictionary, _generated: bool) -> void:
@@ -167,6 +174,11 @@ func _on_manager_button_unhover(_worker_role: WorkerRole, node: Node) -> void:
 		return
 	_hovering = false
 	amount_label.modulate = get_default_color()
+
+
+func _on_display_language_updated() -> void:
+	display_resource(_last_amount)
+	_set_passive(_last_passive_amount)
 
 
 ############

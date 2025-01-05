@@ -105,6 +105,7 @@ func _connect_signals() -> void:
 	SignalBus.resource_updated.connect(_on_resource_updated)
 	SignalBus.progress_button_unpaid.connect(_on_progress_button_unpaid)
 	SignalBus.substance_craft_button_unpaid.connect(_on_substance_craft_button_unpaid)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_resource_updated(id: String, total: int, amount: int, source_id: String) -> void:
@@ -118,3 +119,7 @@ func _on_progress_button_unpaid(resource_generator: ResourceGenerator, source: S
 
 func _on_substance_craft_button_unpaid(substance_data: SubstanceData) -> void:
 	_handle_on_resources_unpaid(substance_data.get_resource_costs())
+
+
+func _on_display_language_updated() -> void:
+	_set_ui_labels()

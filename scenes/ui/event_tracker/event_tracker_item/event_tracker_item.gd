@@ -9,7 +9,7 @@ var _index: int
 
 
 func _ready() -> void:
-	pass
+	_connect_signals()
 
 
 func set_content(event_data: EventData, vals: Array, index: int, type_out: bool) -> void:
@@ -30,3 +30,11 @@ func _refresh_content() -> void:
 
 func play_typing_animation() -> void:
 	event_label.play_typing_animation()
+
+
+func _connect_signals() -> void:
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
+
+
+func _on_display_language_updated() -> void:
+	_refresh_content()

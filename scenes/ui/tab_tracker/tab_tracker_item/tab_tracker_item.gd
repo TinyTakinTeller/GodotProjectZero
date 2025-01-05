@@ -113,6 +113,7 @@ func _connect_signals() -> void:
 	SignalBus.substance_updated.connect(_on_substance_updated)
 	SignalBus.event_saved.connect(_on_event_saved)
 	SignalBus.soul.connect(_on_soul)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 #func _on_deaths_door_decided(_enemy_data: EnemyData, _option: int) -> void:
@@ -175,6 +176,10 @@ func _on_soul() -> void:
 	button.modulate = ColorSwatches.PURPLE
 	button.disabled = true
 	_apply_shake_effect()
+
+
+func _on_display_language_updated() -> void:
+	refresh_title()
 
 
 ############

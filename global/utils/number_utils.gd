@@ -35,9 +35,9 @@ static func format_zero_padding(number: int, length: int) -> String:
 ## example: convers number 123456789 to "123,456,789" if group_size is 3
 static func format_number(number: int, separator: String = ",", group_size: int = 3) -> String:
 	if number >= Limits.GLOBAL_MAX_AMOUNT:
-		return "Infinity"
+		return Locale.get_ui_label("infinity")
 	if number <= -Limits.GLOBAL_MAX_AMOUNT:
-		return "-Infinity"
+		return "-" + Locale.get_ui_label("infinity")
 
 	var is_negative: bool = number < 0
 	if is_negative:
@@ -62,9 +62,9 @@ static func format_number(number: int, separator: String = ",", group_size: int 
 ## example: converts number 123456 to "123.4K" if length is 4 or "123.456K" if length is 6 or more
 static func format_number_scientific(number: int, length: int = 4) -> String:
 	if number >= Limits.GLOBAL_MAX_AMOUNT:
-		return "Infinity"
+		return Locale.get_ui_label("infinity")
 	if number <= -Limits.GLOBAL_MAX_AMOUNT:
-		return "-Infinity"
+		return "-" + Locale.get_ui_label("infinity")
 
 	var is_negative: bool = number < 0
 	if is_negative:

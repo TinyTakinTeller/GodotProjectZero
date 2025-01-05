@@ -44,10 +44,7 @@ func is_craftable() -> bool:
 
 
 func get_display_title() -> String:
-	var title: String = Locale.get_substance_text(id + "_title")
-	if StringUtils.is_not_empty(title):
-		return title
-	return StringUtils.humanify_string(id)
+	return Locale.get_substance_text(id + "_title")
 
 
 func get_display_info() -> String:
@@ -105,5 +102,5 @@ func get_craft_icon() -> String:
 func get_display_increment(display_amount: int = 1) -> String:
 	var amount_string: String = NumberUtils.format_number_scientific(display_amount)
 	return " + {amount} {text} ".format(
-		{"amount": str(amount_string), "text": StringUtils.humanify_string(id)}
+		{"amount": str(amount_string), "text": Locale.get_ui_label(id)}
 	)

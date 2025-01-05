@@ -30,14 +30,18 @@ func _notification(what: int) -> void:
 
 
 func _ready() -> void:
-	_initialize()
 	_connect_signals()
-	_load_from_save_file()
+	_reload()
 
 
 #############
 ## helpers ##
 #############
+
+
+func _reload() -> void:
+	_initialize()
+	_load_from_save_file()
 
 
 func _initialize() -> void:
@@ -85,7 +89,7 @@ func _set_infinity_progress() -> void:
 	var progress: float
 	var progress_label: String
 	if infinity_count >= max_infinity_count:
-		progress_label = "MAX"
+		progress_label = Locale.get_ui_label("max")
 		progress = 1.0
 	elif infinity_count <= 0:
 		progress = log(max_amount) / log(Limits.GLOBAL_MAX_AMOUNT)
@@ -129,6 +133,7 @@ func _connect_signals() -> void:
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.resource_updated.connect(_on_resource_updated)
 	SignalBus.substance_updated.connect(_on_substance_updated)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_resized() -> void:
@@ -158,3 +163,7 @@ func _on_substance_updated(id: String, _total_amount: int, source_id: String) ->
 			label_effect_queue_1.add_task(
 				ResourceGenerator.get_display_increment_of(1, display_name)
 			)
+
+
+func _on_display_language_updated() -> void:
+	_reload()

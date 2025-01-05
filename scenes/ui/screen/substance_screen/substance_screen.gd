@@ -21,14 +21,22 @@ var substance_categories: Dictionary = {}
 
 
 func _ready() -> void:
-	_initialize()
 	_connect_signals()
-	_load_from_save_file()
+	_reload()
+
+
+func get_title(category_id: String) -> String:
+	return Locale.get_substance_category_text(category_id)
 
 
 #############
 ## helpers ##
 #############
+
+
+func _reload() -> void:
+	_initialize()
+	_load_from_save_file()
 
 
 func _initialize() -> void:
@@ -61,7 +69,7 @@ func _add_substance_category(category_id: String) -> void:
 	)
 
 	var count: int = SaveFile.get_substance_count_by_category(category_id)
-	var title_label: String = StringUtils.humanify_string(category_id)
+	var title_label: String = get_title(category_id)
 	var count_label: String = "x" + NumberUtils.format_number_scientific(count)
 	var effect_label: String = _get_category_effect_label(category_id)
 
@@ -78,7 +86,7 @@ func _update_substance_category(substance_category: SubstanceCategory) -> void:
 	var category_id: String = substance_category.get_id()
 
 	var count: int = SaveFile.get_substance_count_by_category(category_id)
-	var title_label: String = StringUtils.humanify_string(category_id)
+	var title_label: String = get_title(category_id)
 	var count_label: String = _get_category_count_label(category_id, count)
 	var effect_label: String = _get_category_effect_label(category_id)
 
@@ -138,6 +146,7 @@ func _get_category_effect_label(category_id: String) -> String:
 func _connect_signals() -> void:
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.substance_updated.connect(_on_substance_updated)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -149,3 +158,7 @@ func _on_tab_changed(tab_data: TabData) -> void:
 
 func _on_substance_updated(id: String, _total_amount: int, _source_id: String) -> void:
 	_update_substance(id)
+
+
+func _on_display_language_updated() -> void:
+	_reload()

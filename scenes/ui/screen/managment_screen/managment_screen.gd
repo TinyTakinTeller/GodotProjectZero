@@ -22,14 +22,18 @@ func _process(_delta: float) -> void:
 
 
 func _ready() -> void:
-	_initialize()
 	_connect_signals()
-	_load_from_save_file()
+	_reload()
 
 
 #############
 ## helpers ##
 #############
+
+
+func _reload() -> void:
+	_initialize()
+	_load_from_save_file()
 
 
 func _load_from_save_file() -> void:
@@ -74,6 +78,7 @@ func _connect_signals() -> void:
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.manager_button_unlocked.connect(_on_manager_button_unlocked)
 	SignalBus.worker_efficiency_updated.connect(_on_worker_efficiency_updated)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_tab_changed(tab_data: TabData) -> void:
@@ -93,3 +98,7 @@ func _on_worker_efficiency_updated(_efficiencies: Dictionary, generate: bool) ->
 		return
 	if generate:
 		Audio.play_sfx_id("managment_screen_cycle")
+
+
+func _on_display_language_updated() -> void:
+	_reload()
