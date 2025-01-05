@@ -336,7 +336,9 @@ func _red_color_rect_simple_tween_method(animation_percent: float) -> void:
 ############
 
 
-static func before_than(a: ProgressButton, b: ProgressButton) -> bool:
+static func before_than(a: Node, b: Node) -> bool:
+	if not is_instance_of(a, ProgressButton) or not is_instance_of(b, ProgressButton):
+		return false
 	var sort_a: ResourceGenerator = Resources.resource_generators.get(a.get_id(), null)
 	var sort_b: ResourceGenerator = Resources.resource_generators.get(b.get_id(), null)
 	if sort_a == null:

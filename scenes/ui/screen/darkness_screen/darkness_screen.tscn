@@ -53,22 +53,26 @@ layout_mode = 2
 
 [node name="TitleLabel" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer" instance=ExtResource("2_juuhi")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 1
 size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "The Ambassador Of Darkness"
+horizontal_alignment = 1
 
 [node name="LevelLabel" parent="ScreenMarginContainer/TitleMarginContainer/VBoxContainer" instance=ExtResource("2_juuhi")]
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_6dwjo")
+custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "DCCCXXXVIII"
+horizontal_alignment = 1
 
 [node name="EnemyTexture" parent="ScreenMarginContainer" instance=ExtResource("3_hlysm")]
 unique_name_in_owner = true

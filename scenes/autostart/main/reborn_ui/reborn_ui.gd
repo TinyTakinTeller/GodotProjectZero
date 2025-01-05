@@ -48,7 +48,7 @@ func push_next_label() -> void:
 	button.visible = true
 	if _text == " ":
 		_on_typing_animation_end()
-	elif StringUtils.is_not_empty(_text):
+	elif StringUtils.is_not_empty(_text) and not _text == "?":
 		_add_label_typing(_text)
 	else:
 		SignalBus.prestige_reborn.emit()

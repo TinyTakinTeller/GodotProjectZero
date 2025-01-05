@@ -67,6 +67,7 @@ func _connect_signals() -> void:
 	SignalBus.prestige_condition_fail.connect(_on_prestige_condition_fail)
 	SignalBus.prestige_condition_disabled.connect(_on_prestige_condition_disabled)
 	SignalBus.prestige_condition_pass.connect(_on_prestige_condition_pass)
+	SignalBus.display_language_updated.connect(_on_display_language_updated)
 
 
 func _on_dialog_heart_button() -> void:
@@ -103,3 +104,7 @@ func _on_prestige_condition_disabled() -> void:
 func _on_prestige_condition_pass(_infinity_count: int) -> void:
 	heart_yes_button.disabled = true
 	heart_no_button.disabled = true
+
+
+func _on_display_language_updated() -> void:
+	_initialize()

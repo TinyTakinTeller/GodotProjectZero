@@ -35,10 +35,21 @@ layout_mode = 2
 
 [node name="DialogMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/DialogMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/DialogMarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="DialogLabel" parent="MarginContainer/VBoxContainer/DialogMarginContainer" instance=ExtResource("2_55et7")]
 unique_name_in_owner = true

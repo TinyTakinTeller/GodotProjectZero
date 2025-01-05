@@ -75,7 +75,7 @@ layout_mode = 2
 
 [node name="InfoLabel" type="Label" parent="HBoxContainer/InfoMarginContainer/InfoLabelMarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 26)
+custom_minimum_size = Vector2(100, 26)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
