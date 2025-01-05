@@ -16,7 +16,7 @@ func set_content(event_data: EventData, vals: Array, index: int, type_out: bool)
 	_event_data = event_data
 	_vals = vals
 	_index = index
-	_refresh_content()
+	_on_display_language_updated()
 	if type_out:
 		play_typing_animation()
 
@@ -38,3 +38,12 @@ func _connect_signals() -> void:
 
 func _on_display_language_updated() -> void:
 	_refresh_content()
+	match TranslationServer.get_locale():
+		"en":
+			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD
+		"fr":
+			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD
+		"zh":
+			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_ARBITRARY
+		_:
+			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD
