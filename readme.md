@@ -2,7 +2,7 @@
 
 Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic game project.
 
-THE GAME: (current version is `prototype.release.1.0`)
+THE GAME: (current version is `prototype.release.1.1`)
 - PLAY ON Itch https://tinytakinteller.itch.io/the-best-game-ever
 - DEVLOGS ON Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
