@@ -153,6 +153,9 @@ func _on_display_language_updated() -> void:
 		"fr":
 			_set_padding_margin_left(0)
 			all_button.reparent(grid_container_2)
+		"pt":
+			_set_padding_margin_left(0)
+			all_button.reparent(grid_container_2)
 		"zh":
 			_set_padding_margin_left(32)
 			all_button.reparent(all_button_margin_container)

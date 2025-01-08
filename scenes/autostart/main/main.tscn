@@ -255,6 +255,7 @@ layout_mode = 2
 
 [node name="ResourceTracker" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/BodyMarginContainer/HBoxContainer" instance=ExtResource("5_y2bgo")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_right = 4

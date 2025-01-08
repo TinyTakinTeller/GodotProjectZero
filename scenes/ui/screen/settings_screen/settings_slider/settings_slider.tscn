@@ -27,7 +27,7 @@ layout_mode = 2
 
 [node name="TitleLabel" parent="HBoxContainer/TitleMarginContainer" instance=ExtResource("2_vnjch")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Audio"
@@ -55,7 +55,7 @@ layout_mode = 2
 text = "-"
 
 [node name="SliderMarginContainer" type="MarginContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer/SliderMarginContainer"]

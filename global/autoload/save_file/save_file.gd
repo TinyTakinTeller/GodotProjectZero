@@ -38,6 +38,7 @@ var npc_events: Dictionary = {}
 var enemy: Dictionary = {"level": "rabbit", "rabbit": {"damage": 0}}
 var metadata: Dictionary = {}
 var locale: String = "en"
+var _last_locale: String = "en"
 
 @onready var autosave_timer: Timer = %AutosaveTimer
 
@@ -54,6 +55,7 @@ func _ready() -> void:
 
 	locale = get_locale_from_newest_save_file()
 	TranslationServer.set_locale(locale)
+	_last_locale = locale
 
 	if Game.PARAMS["debug_logs"]:
 		print("_AUTOLOAD _READY: " + self.get_name())
@@ -426,6 +428,11 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 		var save_data: Dictionary = default_save_data.duplicate()
 		_import_save_data(save_data)
 		metadata["save_file_name"] = metadata_name
+
+		if _last_locale != locale:
+			TranslationServer.set_locale(_last_locale)
+			SaveFile.locale = _last_locale
+			SignalBus.display_language_updated.emit()
 
 
 func post_initialize() -> void:

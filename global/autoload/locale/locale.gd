@@ -1,8 +1,10 @@
 #gdlint:ignore = max-public-methods
 extends Node
 
-const LOCALES: Array[String] = ["en", "fr", "zh"]
-const LOCALE_NAME: Dictionary = {"en": "English", "fr": "Français", "zh": "中文"}
+const LOCALES: Array[String] = ["en", "fr", "pt", "zh"]
+const LOCALE_NAME: Dictionary = {
+	"en": "English", "fr": "Français", "pt": "Português (BR)", "zh": "中文"
+}
 
 
 func _ready() -> void:
@@ -32,7 +34,7 @@ func get_localized_array(category: String, id: String) -> Array:
 	if result == Error.OK:
 		var result_data: Variant = json.data
 		return result_data
-	push_warning("Failed to fetch localized array for: %s" % [key])
+	push_warning("Failed to fetch localized array for '%s' as: " % [key], raw_string)
 	return []
 
 

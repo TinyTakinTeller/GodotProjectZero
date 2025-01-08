@@ -34,7 +34,11 @@ func _ready() -> void:
 
 
 func is_event_active() -> bool:
-	return StringUtils.is_not_empty(_target_id) and StringUtils.is_not_empty(_next_text)
+	return (
+		StringUtils.is_not_empty(_target_id)
+		and StringUtils.is_not_empty(_next_text)
+		and len(_next_text) > 1
+	)
 
 
 func peek(peek_state: int) -> void:
