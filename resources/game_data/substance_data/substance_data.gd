@@ -52,7 +52,7 @@ func get_display_info() -> String:
 
 
 func get_craft_title() -> String:
-	var craft_title: String = Locale.get_substance_text(id + "_craft_title")
+	var craft_title: String = Locale.get_ui_label("craft") + " : " + get_display_title()
 	if StringUtils.is_not_empty(craft_title):
 		return craft_title
 	return "Craft " + get_display_title()

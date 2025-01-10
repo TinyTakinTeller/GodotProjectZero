@@ -35,13 +35,12 @@ text = "Rare Title"
 [node name="InfoLabelShake" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_rsr25")]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(850, 30)
+custom_minimum_size = Vector2(845, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!"
 autowrap_mode = 3
-_current_font_size = 13
-_size_just_modified_by_autosizer = true
+_current_font_size = 14
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -57,7 +56,7 @@ _editor_defaults_set = true
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(850, 30)
+custom_minimum_size = Vector2(845, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

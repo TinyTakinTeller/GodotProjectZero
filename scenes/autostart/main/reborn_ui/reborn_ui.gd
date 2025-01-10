@@ -36,7 +36,7 @@ func push_next_label() -> void:
 	_index += 1
 	var key: String = "reborn_" + str(reborn) + "_line_" + str(_index)
 	_text = Locale.get_ui_label(key)
-	if StringUtils.is_empty(_text) and not _is_last_text:
+	if (StringUtils.is_empty(_text) or _text == "?") and not _is_last_text:
 		_text = "..."
 		_is_last_text = true
 	if not _is_last_text:
@@ -46,9 +46,9 @@ func push_next_label() -> void:
 			_is_last_text = true
 
 	button.visible = true
-	if _text == " ":
-		_on_typing_animation_end()
-	elif StringUtils.is_not_empty(_text) and not _text == "?":
+	#if _text == " ":
+	#	_on_typing_animation_end()
+	if StringUtils.is_not_empty(_text) and not _text == "?":
 		_add_label_typing(_text)
 	else:
 		SignalBus.prestige_reborn.emit()
