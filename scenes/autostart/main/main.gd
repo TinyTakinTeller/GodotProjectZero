@@ -1,5 +1,19 @@
 extends Node
 
+const SHORTCUTS_1: Array = [KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]
+const SHORTCUTS_2: Array = [
+	KEY_KP_0,
+	KEY_KP_1,
+	KEY_KP_2,
+	KEY_KP_3,
+	KEY_KP_4,
+	KEY_KP_5,
+	KEY_KP_6,
+	KEY_KP_7,
+	KEY_KP_8,
+	KEY_KP_9
+]
+
 var _infinity_count: int = -1
 
 @onready var main_control: Control = %MainControl
@@ -22,10 +36,25 @@ var _infinity_count: int = -1
 @onready var cat_sprite_2d: Sprite2D = %CatSprite2D
 @onready var world_screen: WorldScreen = %WorldScreen
 @onready var soul_sprite: SoulSprite = %SoulSprite
+@onready var developer_console: DeveloperConsole = %DeveloperConsole
 
 ###############
 ## overrides ##
 ###############
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and not developer_console.visible:
+		var tab_shortcut: int = -1
+		for key_shortcut: int in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
+			for shortcuts: Array in [SHORTCUTS_1, SHORTCUTS_2]:
+				var key: Key = shortcuts[key_shortcut]
+				if Input.is_key_pressed(key) or Input.is_physical_key_pressed(key):
+					tab_shortcut = key_shortcut
+					if Game.PARAMS["debug_logs"]:
+						prints("Shortcut input: ", key, key_shortcut)
+		if tab_shortcut != -1:
+			tab_tracker.change_tab_shortcut(tab_shortcut)
 
 
 func _ready() -> void:

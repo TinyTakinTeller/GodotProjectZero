@@ -73,12 +73,21 @@ func change_tab(index: int) -> void:
 		_handle_tab_clicked(tab_tracker_item._tab_data)
 
 
+func change_tab_shortcut(number: int) -> void:
+	if number >= h_box_container.get_child_count():
+		return
+	var tab_tracker_item: TabTrackerItem = h_box_container.get_child(number)
+	_handle_tab_clicked(tab_tracker_item._tab_data)
+
+
 ##############
 ## handlers ##
 ##############
 
 
 func _handle_tab_clicked(tab_data: TabData) -> void:
+	if tab_data == null:
+		return
 	for tab_tracker_item: TabTrackerItem in h_box_container.get_children():
 		if tab_tracker_item._tab_data.id == tab_data.id:
 			tab_tracker_item.button.disabled = true

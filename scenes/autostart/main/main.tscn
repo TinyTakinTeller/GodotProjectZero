@@ -272,6 +272,7 @@ theme_override_constants/margin_right = 0
 layout_mode = 2
 
 [node name="DeveloperConsole" parent="CanvasLayer/MainControl/MainUI" instance=ExtResource("20_yijsf")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
