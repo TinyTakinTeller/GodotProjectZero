@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2qt1kqlusfe1"
-path="res://.godot/imported/the_high_priestes_64_64.png-3acac6badd19c45408b85b091739308a.ctex"
+path="res://.godot/imported/the_high_priestess_64_64.png-c870fa7501feff810ab36f4197ace1cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/substance/charm/the_high_priestes_64_64.png"
-dest_files=["res://.godot/imported/the_high_priestes_64_64.png-3acac6badd19c45408b85b091739308a.ctex"]
+source_file="res://assets/image/substance/charm/the_high_priestess_64_64.png"
+dest_files=["res://.godot/imported/the_high_priestess_64_64.png-c870fa7501feff810ab36f4197ace1cf.ctex"]
 
 [params]
 

@@ -490,9 +490,9 @@ npc_event_text:cat_talk_C0,dialogue line (cat npc),"You struck it down, all on y
 npc_event_text:cat_intro_1,dialogue line (cat npc),"Your smell betrays your identity... You couldn't possibly be wholly human, now could you?",气味出卖了你的身份...你不可能完全是人类，对吧？,"Ton odeur trahie ton identité... Il parait peu probable que tu sois entièrement humain, n’est-ce pas ?","O seu cheiro revela sua identidade... Você não poderia ser humano por inteiro, poderia?"
 npc_event_text:cat_intro_1_1,dialogue line (cat npc),"How curious. You look familiar, yet your scent... Unrecognizable.",真奇怪。你看起来很熟悉，但你的气味...我不认识。,"Comme c’est étrange. Tu semble familier, pourtant ton odeur... m’échappe.","Quão curioso. Você parece familiar, mas seu cheiro... Irreconhecível."
 npc_event_text:cat_intro_1_2,dialogue line (cat npc),"I will... keep my distance, for now.",我会...暂时保持距离。,"Je vais... garder mes distances, pour le moment.","Eu vou... manter minha distância, por agora."
-npc_event_text:cat_intro_0,dialogue line (cat npc),Meow. Meow. *Purr*,喵。喵。*呼噜*,Miaou. Miaou. *Ronron*,Miau. Miau.*Ronron*
+npc_event_text:cat_intro_0,dialogue line (cat npc),Meow. Meow. *Purr*,喵。喵。*呼噜*,Miaou. Miaou. *Ronron*,Miaou. Miaou. *Ronron*
 npc_event_text:cat_soul_crafted,dialogue line (cat npc),I knew you could do it...,我知道你能做到...,Je savais que tu en étais capable...,Eu sabia que você conseguiria.
-npc_event_text:cat_soul_crafted_1,dialogue line (cat npc),I will be taking that now.,我现在会拿走它。,"Si tu le permets, je vais la prendre maintenant.",Eu vou ficar com isso agora.
+npc_event_text:cat_soul_crafted_1,dialogue line (cat npc),I will be taking that now.,我现在会拿走它。,"Si tu le permets, je vais la prendre maintenant.","Eu vou ficar com isso agora."
 npc_event_options:cat_intro,dialogue response options (cat npc),"[""Yes"", ""No""]","[""是"", ""否""]","[""Oui"", ""Non""]","[""Sim"", ""Não""]"
 npc_event_options:cat_peek,dialogue response options (cat npc),[],[],[],[]
 npc_event_options:cat_talk_A1,dialogue response options (cat npc),"[""?""]","[""?""]","[""?""]","[""?""]"
@@ -595,8 +595,8 @@ substance_text:the_magician_title,tarot card title,The Magician,魔术师,Le Mag
 substance_text:the_magician_info,tarot card infobox description,"Learn ""Harvest Forest"", click all forest buttons at once.",学会“收获森林”，一次点击所有森林按钮。,Débloque le bouton « Exploiter la forêt » qui vous permet de cliquer l’ensemble des boutons d’un coup.,"Aprenda “Colher a Floresta”, clique em todos os botões da floresta de uma vez."
 substance_text:the_fool_title,[DEPRECATED],The Fool,愚者,Le Fou,
 substance_text:the_fool_info,[DEPRECATED],The Fool,愚者,Le Fou,
-substance_text:the_high_priestess_title,[DEPRECATED],The High Priestess,女祭司,,
-substance_text:the_high_priestess_info,[DEPRECATED],The High Priestess,女祭司,,
+substance_text:the_high_priestess_title,prototype release 1.3,The High Priestess,女祭司,La Grande Prêtresse aussi,A Grande Sacerdotisa também
+substance_text:the_high_priestess_info,prototype release 1.3,Soulstone harvest is multiplied by total number of collected singularities.,灵魂石收获会乘以收集到的奇点总数。,La récolte de pierres d'âme est multipliée par le nombre total de singularités collectées.,A quantidade de Pedra da Alma coletada é multiplicada por singularidades.
 substance_text:the_lovers_title,[DEPRECATED],The Lovers,恋人,,
 substance_text:the_lovers_info,[DEPRECATED],The Lovers,恋人,,
 substance_text:justice_title,[DEPRECATED],Justice,正义,,

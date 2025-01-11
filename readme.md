@@ -2,7 +2,7 @@
 
 Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic game project.
 
-THE GAME: (current version is `prototype.release.1.2`)
+THE GAME: (current version is `prototype.release.1.3`)
 - PLAY ON Itch https://tinytakinteller.itch.io/the-best-game-ever
 - DEVLOGS ON Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
 
@@ -19,6 +19,7 @@ CONTRIBUTE:
 - 07/10/2024 [`prototype.release.1.0`] **Added final boss fight, a short minigame ending.** ⭐
 - 05/01/2025 [`prototype.release.1.1`] **Localization Update for French and Chinese (SC).** 🌎
 - 08/01/2025 [`prototype.release.1.2`] **Localization Update for Portuguese (Brazilian).** 🌎
+- 11/01/2025 [`prototype.release.1.3`] **Soulstone Patch: Added 15th Charm to fix endgame grind.** ⚡
 
 
 

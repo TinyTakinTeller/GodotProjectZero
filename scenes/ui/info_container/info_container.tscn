@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_5af5u"]
 
 [node name="InfoContainer" type="MarginContainer"]
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_bottom = 4
@@ -37,10 +37,10 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(845, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!Venture on a hunt for some rare resources!"
 autowrap_mode = 3
-_current_font_size = 14
+_current_font_size = 13
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

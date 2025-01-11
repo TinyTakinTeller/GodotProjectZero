@@ -270,7 +270,6 @@ theme_override_constants/margin_right = 0
 
 [node name="VersionContainer" parent="CanvasLayer/MainControl/MainUI/MarginContainer/ScrollContainer/VBoxContainer/FooterHBoxContainer" instance=ExtResource("20_ynkq3")]
 layout_mode = 2
-theme_override_constants/margin_left = 0
 
 [node name="DeveloperConsole" parent="CanvasLayer/MainControl/MainUI" instance=ExtResource("20_yijsf")]
 visible = false

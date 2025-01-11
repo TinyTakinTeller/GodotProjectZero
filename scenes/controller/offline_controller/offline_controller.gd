@@ -145,6 +145,11 @@ func _progress_enemy_controller(
 			Limits.safe_mult(int(overkill_factor), max(1, (spirit_count + ratio) / ratio)),
 		)
 
+	var has_mult: bool = SaveFile.substances.get("the_high_priestess", 0) > 0
+	if has_mult:
+		var mult: int = SaveFile.resources.get("singularity", 0)
+		generated["soulstone"] = Limits.safe_mult(generated["soulstone"], mult)
+
 	return {"overkill_factor": overkill_factor, "damage": damage, "generated": generated}
 
 
