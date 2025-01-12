@@ -95,7 +95,7 @@ theme_override_constants/margin_right = 8
 
 [node name="AllButton" type="Button" parent="AllButtonMarginContainer"]
 unique_name_in_owner = true
-z_index = -4096
+z_as_relative = false
 custom_minimum_size = Vector2(80, 74)
 layout_mode = 2
 size_flags_horizontal = 0

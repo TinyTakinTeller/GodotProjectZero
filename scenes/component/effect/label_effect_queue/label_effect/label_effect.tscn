@@ -7,7 +7,8 @@
 viewport_path = NodePath("SubViewport")
 
 [node name="LabelEffect" type="Node2D"]
-z_index = 1000
+z_index = 4096
+z_as_relative = false
 script = ExtResource("1_1mfsl")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -28,6 +29,8 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="SubViewport/CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
+z_index = 4096
+z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"label_shadow"
