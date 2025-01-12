@@ -4,7 +4,7 @@ const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "release 1.3"
+const VERSION_MINOR: String = "release 1.3.1"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 
