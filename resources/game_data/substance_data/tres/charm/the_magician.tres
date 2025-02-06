@@ -7,7 +7,7 @@ script = ExtResource("1_ih5nf")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 11
 id = "the_magician"
-image_id = "the_magician_64_64"
+image_id = "the_magician"
 resource_costs = {
 "singularity": 30
 }

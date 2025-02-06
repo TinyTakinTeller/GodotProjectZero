@@ -30,8 +30,6 @@ mouse_filter = 2
 [node name="TextureHeart" parent="MarginContainer" instance=ExtResource("2_t2e72")]
 layout_mode = 2
 mouse_filter = 0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_bottom = 32
 
 [node name="HeartContent" type="MarginContainer" parent="MarginContainer"]
 unique_name_in_owner = true

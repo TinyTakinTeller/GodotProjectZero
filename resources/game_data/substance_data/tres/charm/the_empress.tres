@@ -7,9 +7,10 @@ script = ExtResource("1_bvxbl")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 3
 id = "the_empress"
-image_id = "the_empress_64_64"
+image_id = "the_empress"
 resource_costs = {
 "singularity": 10
 }
 category_id = "charm"
 hidden = true
+unlocked_by = ""

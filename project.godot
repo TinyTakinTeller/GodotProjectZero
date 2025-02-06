@@ -111,11 +111,17 @@ locale/translations=PackedStringArray("res://assets/i18n/localization.en.transla
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=2
 textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/default_filters/anisotropic_filtering_level=4
+textures/decals/filter=5
+textures/light_projectors/filter=5
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/use_debanding=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
 renderer/rendering_method.macos="forward_plus"

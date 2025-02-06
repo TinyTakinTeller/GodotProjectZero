@@ -7,7 +7,7 @@ script = ExtResource("1_utle8")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 7
 id = "the_hierophant"
-image_id = "the_hierophant_64_64"
+image_id = "the_hierophant"
 resource_costs = {
 "singularity": 15
 }

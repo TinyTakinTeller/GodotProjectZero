@@ -7,7 +7,7 @@ script = ExtResource("1_kl5pw")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 12
 id = "the_hanged_man"
-image_id = "the_hanged_man_64_64"
+image_id = "the_hanged_man"
 resource_costs = {
 "singularity": 15
 }

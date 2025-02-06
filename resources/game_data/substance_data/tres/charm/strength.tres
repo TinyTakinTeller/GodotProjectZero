@@ -7,7 +7,7 @@ script = ExtResource("1_nxwmp")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 6
 id = "strength"
-image_id = "strength_64_64"
+image_id = "strength"
 resource_costs = {
 "singularity": 5
 }

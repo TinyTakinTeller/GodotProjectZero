@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crps6q62tt20h" path="res://scenes/component/control/texture/texture_pixel_explosion/texture_pixel_explosion.tscn" id="4_7rtxw"]
 
 [node name="EnemyTexture" type="MarginContainer"]
+custom_minimum_size = Vector2(256, 256)
 size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_odbx0")
@@ -13,14 +14,24 @@ script = ExtResource("1_odbx0")
 [node name="TextureRect" parent="." instance=ExtResource("2_4vkcw")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+expand_mode = 3
+stretch_mode = 4
 
 [node name="TextureRgbOffset" parent="." instance=ExtResource("3_mnpv7")]
 unique_name_in_owner = true
 layout_mode = 2
+expand_mode = 3
+stretch_mode = 4
 
 [node name="TexturePixelExplosion" parent="." instance=ExtResource("4_7rtxw")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+expand_mode = 3
+stretch_mode = 4
 
 [node name="TextureButton" type="Button" parent="."]
 unique_name_in_owner = true

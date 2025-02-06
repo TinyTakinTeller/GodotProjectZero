@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://yopnoeejc2om"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/substance_screen/substance_category/substance_item/substance_item.gd" id="1_etpxj"]
-[ext_resource type="Texture2D" uid="uid://610j6b8vfw8n" path="res://assets/image/substance/enemy/rabbit_64_64.png" id="2_50s2x"]
+[ext_resource type="Texture2D" uid="uid://ba3fuq18t7tiq" path="res://assets/image/art/rabbit.png" id="2_74x44"]
 [ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="3_q3wpk"]
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="4_ivx1y"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="5_kj2mx"]
@@ -56,11 +56,16 @@ theme_type_variation = &"PanelHighlight"
 [node name="TextureMarginContainer" type="MarginContainer" parent="VBoxContainer/IconMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/IconMarginContainer/TextureMarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 72)
 layout_mode = 2
-texture = ExtResource("2_50s2x")
+texture = ExtResource("2_74x44")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="ShakeShaderComponent" parent="VBoxContainer/IconMarginContainer/TextureMarginContainer/TextureRect" instance=ExtResource("3_q3wpk")]
 unique_name_in_owner = true

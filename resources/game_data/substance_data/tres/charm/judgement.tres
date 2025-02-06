@@ -7,7 +7,7 @@ script = ExtResource("1_lkdkv")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 13
 id = "judgement"
-image_id = "judgement_64_64"
+image_id = "judgement"
 resource_costs = {
 "singularity": 20
 }

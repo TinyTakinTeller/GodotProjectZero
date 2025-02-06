@@ -7,7 +7,7 @@ script = ExtResource("1_ikoi5")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 10
 id = "temperance"
-image_id = "temperance_64_64"
+image_id = "temperance"
 resource_costs = {
 "singularity": 10
 }

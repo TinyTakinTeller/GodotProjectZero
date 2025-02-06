@@ -7,7 +7,7 @@ script = ExtResource("1_pdg8w")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 8
 id = "the_chariot"
-image_id = "the_chariot_64_64"
+image_id = "the_chariot"
 resource_costs = {
 "singularity": 5
 }

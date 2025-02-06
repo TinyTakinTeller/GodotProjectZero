@@ -7,7 +7,7 @@ script = ExtResource("1_dpird")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 9
 id = "wheel_of_fortune"
-image_id = "wheel_of_fortune_64_64"
+image_id = "wheel_of_fortune"
 resource_costs = {
 "singularity": 10
 }

@@ -7,7 +7,7 @@ script = ExtResource("1_684me")
 color = Color(0.878431, 0.878431, 0.392157, 1)
 order = 14
 id = "death"
-image_id = "death_64_64"
+image_id = "death"
 resource_costs = {
 "singularity": 144
 }
