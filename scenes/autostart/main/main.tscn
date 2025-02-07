@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://d1y5xyx63u3w0" path="res://scenes/ui/developer_console/developer_console.tscn" id="20_yijsf"]
 [ext_resource type="PackedScene" uid="uid://dn6hcp4hfxyic" path="res://scenes/ui/version_container/version_container.tscn" id="20_ynkq3"]
 [ext_resource type="PackedScene" uid="uid://ch7uxqklej1h6" path="res://scenes/ui/screen/darkness_screen/darkness_screen.tscn" id="21_324w1"]
+[ext_resource type="Texture2D" uid="uid://b4wqq3rdroryo" path="res://assets/image/art/cat.png" id="24_msvnv"]
 [ext_resource type="PackedScene" uid="uid://dfrws6lo2o7d0" path="res://scenes/autostart/soul_screen/soul_sprite/soul_sprite.tscn" id="25_jo8o4"]
 [ext_resource type="PackedScene" uid="uid://cnh5vhg0xefn6" path="res://scenes/ui/screen/soul_screen/soul_screen.tscn" id="26_pehc6"]
 [ext_resource type="PackedScene" uid="uid://br1a46uikyubt" path="res://scenes/ui/screen/starway_screen/starway_screen.tscn" id="27_d2ak1"]
@@ -45,7 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://b0iomctf5ruia" path="res://scenes/autostart/main/prestige_ui/prestige_ui.tscn" id="39_5hxeo"]
 [ext_resource type="PackedScene" uid="uid://b75kh4e41777c" path="res://scenes/autostart/main/reborn_ui/reborn_ui.tscn" id="40_cpuij"]
 [ext_resource type="Shader" path="res://resources/shader/cracked_glass/cracked_glass.gdshader" id="41_fakmo"]
-[ext_resource type="Texture2D" uid="uid://cpwmy667e4xpa" path="res://assets/image/npc/cat/cat_90_100.png" id="42_xhf8o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pgw6q"]
 shader = ExtResource("37_xggnc")
@@ -146,7 +146,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 z_index = 4096
 position = Vector2(475, 617)
-texture = ExtResource("42_xhf8o")
+texture = ExtResource("24_msvnv")
 
 [node name="SoulSprite" parent="CanvasLayer/MainControl/SoulUI" instance=ExtResource("25_jo8o4")]
 unique_name_in_owner = true
