@@ -32,6 +32,7 @@ z_index = 4095
 [node name="CatSprite2D" type="Sprite2D" parent="CanvasLayer/Node2D"]
 unique_name_in_owner = true
 position = Vector2(482, 252)
+scale = Vector2(0.176, 0.195)
 texture = ExtResource("5_ary8y")
 
 [node name="Control" type="Control" parent="CanvasLayer"]

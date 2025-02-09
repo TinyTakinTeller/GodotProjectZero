@@ -16,7 +16,7 @@ var _target_id: String = ""
 @onready var npc_texture_rect: TextureRect = %NpcTextureRect
 @onready var npc_button: Button = %NpcButton
 @onready var enter_simple_tween: SimpleTween = %EnterSimpleTween
-@onready var panel: Panel = %Panel
+#@onready var panel: Panel = %Panel
 
 ###############
 ## overrides ##
@@ -262,10 +262,9 @@ func _enter_simple_tween_method(animation_percent: float) -> void:
 	else:
 		npc_margin_container.add_theme_constant_override("margin_bottom", 25)
 
-
 # workaround
-func _process(_delta: float) -> void:
-	panel.visible = dialog_label.visible
-	panel.modulate = dialog_label.modulate
-	if dialog_label.text.length() <= 1:
-		panel.visible = false
+#func _process(_delta: float) -> void:
+#panel.visible = dialog_label.visible
+#panel.modulate = dialog_label.modulate
+#if dialog_label.text.length() <= 1:
+#	panel.visible = false

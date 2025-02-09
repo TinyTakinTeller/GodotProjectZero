@@ -146,6 +146,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 z_index = 4096
 position = Vector2(475, 617)
+scale = Vector2(0.176, 0.195)
 texture = ExtResource("24_msvnv")
 
 [node name="SoulSprite" parent="CanvasLayer/MainControl/SoulUI" instance=ExtResource("25_jo8o4")]

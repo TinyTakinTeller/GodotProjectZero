@@ -1,5 +1,9 @@
 extends Node
 
+const CAT_X: int = 90
+const CAT_Y: int = 100
+const CAT_SIZE: Vector2 = Vector2(CAT_X, CAT_Y)
+
 const SHORTCUTS_1: Array = [KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]
 const SHORTCUTS_2: Array = [
 	KEY_KP_0,
@@ -58,6 +62,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	cat_sprite_2d.scale.x = CAT_X / cat_sprite_2d.texture.get_size().x
+	cat_sprite_2d.scale.y = CAT_Y / cat_sprite_2d.texture.get_size().y
+
 	_connect_signals()
 	_initialize()
 

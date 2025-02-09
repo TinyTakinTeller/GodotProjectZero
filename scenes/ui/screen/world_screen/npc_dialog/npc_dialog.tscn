@@ -48,14 +48,17 @@ theme_override_constants/margin_right = -8
 theme_override_constants/margin_bottom = -8
 
 [node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/DialogMarginContainer/MarginContainer"]
-unique_name_in_owner = true
+visible = false
 layout_mode = 2
+theme_type_variation = &"TextPanel"
 
 [node name="DialogLabel" parent="MarginContainer/VBoxContainer/DialogMarginContainer" instance=ExtResource("2_55et7")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
 text = "I smelled you from a far. You look lost... "
 autowrap_mode = 3
 

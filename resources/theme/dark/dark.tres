@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=84 format=4 uid="uid://d276arnrjws3i"]
+[gd_resource type="Theme" load_steps=85 format=4 uid="uid://d276arnrjws3i"]
 
 [ext_resource type="FontFile" uid="uid://q32pdsh1f0q8" path="res://assets/font/noto_sans/woff/noto_sans.woff" id="2_mxpaq"]
 [ext_resource type="Texture2D" uid="uid://bvpjbal72ck7r" path="res://resources/theme/dark/icons.svg" id="2_plspm"]
@@ -1406,6 +1406,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.282353, 0.282353, 0.282353, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sawul"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="45"]
 content_margin_left = 5.0
 content_margin_top = 5.0
@@ -1670,6 +1678,8 @@ TextEdit/styles/completion = null
 TextEdit/styles/focus = SubResource("27")
 TextEdit/styles/normal = SubResource("34")
 TextEdit/styles/read_only = SubResource("29")
+TextPanel/base_type = &"Panel"
+TextPanel/styles/panel = SubResource("StyleBoxFlat_sawul")
 Tree/colors/custom_button_font_highlight = Color(0.94, 0.94, 0.94, 1)
 Tree/colors/drop_position_color = Color(1, 0.3, 0.2, 1)
 Tree/colors/font_color = Color(0.69, 0.69, 0.69, 1)

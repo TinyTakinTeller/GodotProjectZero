@@ -1,5 +1,9 @@
 extends Node
 
+const CAT_X: int = 90
+const CAT_Y: int = 100
+const CAT_SIZE: Vector2 = Vector2(CAT_X, CAT_Y)
+
 @export var shake_shader_component_scene: PackedScene
 
 var hp: int = 9
@@ -7,6 +11,8 @@ var clicks: int = 0
 var boss_cycle: int = 0
 var boss_pattern: int = 0
 var max_boss_pattern: int = 3
+
+var cat_size: float = 0
 
 @onready var canvas_layer: CanvasLayer = %CanvasLayer
 
@@ -34,6 +40,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func _ready() -> void:
+	cat_sprite_2d.scale.x = CAT_X / cat_sprite_2d.texture.get_size().x
+	cat_sprite_2d.scale.y = CAT_Y / cat_sprite_2d.texture.get_size().y
+
 	_connect_signals()
 	_initialize()
 	_intro_animation()
@@ -74,7 +83,7 @@ func _update_clicks(delta: int) -> void:
 
 
 func _intro_animation() -> void:
-	var cat_sprite_2d_size: Vector2 = cat_sprite_2d.get_rect().size
+	var cat_sprite_2d_size: Vector2 = CAT_SIZE
 	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
 	var target_position: Vector2 = viewport_size / 2
 	target_position.y = cat_sprite_2d_size.y + 16
