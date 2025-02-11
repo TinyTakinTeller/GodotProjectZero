@@ -62,6 +62,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	ProjectSettings.set("application/boot_splash/image", null)
+
 	cat_sprite_2d.scale.x = CAT_X / cat_sprite_2d.texture.get_size().x
 	cat_sprite_2d.scale.y = CAT_Y / cat_sprite_2d.texture.get_size().y
 

@@ -21,12 +21,12 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 [application]
 
 config/name="The Best Game Ever"
-config/version="1.1"
+config/version="1.4"
 run/main_scene="res://scenes/autostart/save_file_picker/save_file_picker.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/show_image=false
-config/icon="res://assets/image/icon/icon.svg"
+boot_splash/image="res://assets/image/boot/godot_boot_cover.png"
+config/icon="res://assets/image/icon/project_icon.png"
 
 [audio]
 
@@ -107,14 +107,13 @@ master_music_toggle={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/i18n/localization.en.translation", "res://assets/i18n/localization.zh.translation", "res://assets/i18n/localization.fr.translation", "res://assets/i18n/localization.pt.translation")
+locale/translations=PackedStringArray("res://assets/i18n/localization.en.translation", "res://assets/i18n/localization.zh.translation", "res://assets/i18n/localization.fr.translation", "res://assets/i18n/localization.pt.translation", "res://assets/i18n/localization.pl.translation")
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=2
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
-anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_taa=true
 anti_aliasing/quality/use_debanding=true

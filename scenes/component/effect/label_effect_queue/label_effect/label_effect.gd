@@ -9,6 +9,7 @@ var task: String
 @onready var sub_viewport: SubViewport = $SubViewport
 @onready var label: Label = %Label
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+@onready var margin_container: MarginContainer = $SubViewport/CanvasLayer/MarginContainer
 
 
 func _process(_delta: float) -> void:
@@ -36,14 +37,22 @@ func restart(text: String) -> void:
 	task = text
 	finished = false
 	label.text = text
-	label.visible = true
 	gpu_particles_2d.emitting = true
 	gpu_particles_2d.restart()
+
+	show_particle.call_deferred()
+
+
+func show_particle() -> void:
+	label.visible = true
+	margin_container.visible = true
 
 
 func stop() -> void:
 	gpu_particles_2d.emitting = false
+
 	label.visible = false
+	margin_container.visible = false
 
 
 func set_theme(theme: Resource) -> void:

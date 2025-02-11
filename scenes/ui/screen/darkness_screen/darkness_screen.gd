@@ -274,7 +274,7 @@ func _generate_soulstone(total_damage: int, source_id: String) -> void:
 		if soulstone > 0:
 			var has_mult: bool = SaveFile.substances.get("the_high_priestess", 0) > 0
 			if has_mult:
-				var mult: int = SaveFile.resources.get("singularity", 0)
+				var mult: int = max(1, SaveFile.resources.get("singularity", 0))
 				soulstone = Limits.safe_mult(soulstone, mult)
 			SignalBus.resource_generated.emit("soulstone", soulstone, self.name)
 

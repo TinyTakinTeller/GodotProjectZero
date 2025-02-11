@@ -1,6 +1,8 @@
 class_name SoulSprite
 extends CharacterBody2D
 
+const SOUL_SIZE: Vector2 = Vector2(24, 24)  #Vector2(16, 16)
+
 const DELAY: float = 0.1
 
 var min_speed: float = 100
@@ -21,12 +23,16 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var target_position: Vector2 = get_global_mouse_position()
-	var sprite_size: Vector2 = sprite_2d.get_rect().size
-	target_position += sprite_2d.get_rect().size / 2
+	var sprite_size: Vector2 = SOUL_SIZE  #sprite_2d.get_rect().size
+	target_position += SOUL_SIZE  #sprite_2d.get_rect().size / 2
 
 	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
-	target_position.x = min(max(target_position.x, sprite_size.x), viewport_size.x - sprite_size.x)
-	target_position.y = min(max(target_position.y, sprite_size.y), viewport_size.y - sprite_size.y)
+	target_position.x = (
+		min(max(target_position.x, sprite_size.x), viewport_size.x - sprite_size.x) - (SOUL_SIZE.x)
+	)
+	target_position.y = (
+		min(max(target_position.y, sprite_size.y), viewport_size.y - sprite_size.y) - (SOUL_SIZE.y)
+	)
 
 	create_tween().tween_property(self, "position", target_position, DELAY)
 
@@ -34,6 +40,8 @@ func _physics_process(_delta: float) -> void:
 func _ready() -> void:
 	_connect_signals()
 	_initialize()
+
+	sprite_2d.scale = SOUL_SIZE / sprite_2d.get_rect().size
 
 
 func _initialize() -> void:

@@ -103,8 +103,8 @@ text = "Execute"
 [node name="PaddingMarginContainer" type="MarginContainer" parent="ScreenMarginContainer/ChoiceHBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 160
-theme_override_constants/margin_right = 160
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
 
 [node name="SecondMarginContainer" type="MarginContainer" parent="ScreenMarginContainer/ChoiceHBoxContainer"]
 layout_mode = 2

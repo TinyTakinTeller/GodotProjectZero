@@ -31,7 +31,12 @@ func _initialize() -> void:
 func _load_from_save_file() -> void:
 	var value: float = SaveFile.effect_settings["shake"]["value"]
 	var toggle: float = SaveFile.effect_settings["shake"]["toggle"]
+
+	if get_parent().name == "CatSprite2D":
+		value *= 1 / get_parent().scale.y
+
 	update_shake_effect(toggle, value)
+	prints(get_parent().name, value, toggle)
 
 
 func _normalize_shake_effect(value: float) -> float:
@@ -44,11 +49,17 @@ func _normalize_shake_effect(value: float) -> float:
 
 
 func enable() -> void:
-	get_parent().material = shake_shader
+	if "material" in get_parent():
+		get_parent().material = shake_shader
+	else:
+		push_warning("could not enable shake shader")
 
 
 func disable() -> void:
-	get_parent().material = null
+	if "material" in get_parent():
+		get_parent().material = null
+	else:
+		push_warning("could not disable shake shader")
 
 
 func update_shake_effect(toggle: bool, value: float) -> void:

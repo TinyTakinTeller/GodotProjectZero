@@ -1,9 +1,9 @@
 #gdlint:ignore = max-public-methods
 extends Node
 
-const LOCALES: Array[String] = ["en", "fr", "pt", "zh"]
+const LOCALES: Array[String] = ["en", "fr", "pt", "pl", "zh"]
 const LOCALE_NAME: Dictionary = {
-	"en": "English", "fr": "Français", "pt": "Português (BR)", "zh": "中文"
+	"en": "English", "fr": "Français", "pt": "Português (BR)", "pl": "polski", "zh": "中文"
 }
 
 

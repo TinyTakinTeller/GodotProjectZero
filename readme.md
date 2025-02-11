@@ -1,15 +1,16 @@
 # Godot Project Zero: A Dark Forest
 
-Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic game project.
+Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic idle game project.
 
-THE GAME: (current version is `prototype.release.1.3`)
-- PLAY ON Itch https://tinytakinteller.itch.io/the-best-game-ever
-- DEVLOGS ON Itch https://tinytakinteller.itch.io/the-best-game-ever/devlog
+Started as my first game project to learn Godot, now a community project with 10+ contributors!
+
+THE GAME:
+- PLAY ON Itch: https://tinytakinteller.itch.io/the-best-game-ever
 
 CONTRIBUTE:
-- A) **enhancements** by checking out "Issues" section on Github
-- B) **content, mechanics, design** by joining Discord (add `tiny_takin_teller` for invites) and Trello board
-- C) **???** by forking the project *(note that code is MIT licensed, but assets are owned by respective contributors)*
+- A) **Enhancements** by checking out "Issues" section on Github
+- B) **Content, Mechanics, Design** by joining Discord (add `tiny_takin_teller` for invites)
+- C) **???** by forking the project *(code is MIT licensed, **assets are licensed by respective contributors**)*
 
 **Milestones**
 - 29/04/2024 [`prototype.week.01`] **First version shared on Itch** 👀
@@ -20,6 +21,7 @@ CONTRIBUTE:
 - 05/01/2025 [`prototype.release.1.1`] **Localization Update for French and Chinese (SC).** 🌎
 - 08/01/2025 [`prototype.release.1.2`] **Localization Update for Portuguese (Brazilian).** 🌎
 - 11/01/2025 [`prototype.release.1.3`] **Soulstone Patch: Added 15th Charm to fix endgame grind.** ⚡
+- 11/02/2025 [`prototype.release.1.4`] **🎨The Art Update & 🔮The Future & 🌍Polish Localization**
 
 
 
@@ -27,17 +29,20 @@ CONTRIBUTE:
 
 *Gather Resources...*
 
-![image](https://github.com/TinyTakinTeller/GodotProjectZero/assets/155020210/09a90a5c-b271-4623-ae7b-e0c439c6546a)
+![](https://github.com/TinyTakinTeller/GodotProjectZero/blob/master/.github/docs/sc14_1.png)
 
 *Generate Passive Resources...*
 
-![image](https://github.com/TinyTakinTeller/GodotProjectZero/assets/155020210/e9805710-b03b-4b6f-ade8-f7c85461d46c)
+![](https://github.com/TinyTakinTeller/GodotProjectZero/blob/master/.github/docs/sc14_2.png)
 
 *Fight Ancient Colossals...*
 
-![image](https://github.com/TinyTakinTeller/GodotProjectZero/assets/155020210/9b62ac2a-db9b-470e-9178-d85e1c033ca4)
+![](https://github.com/TinyTakinTeller/GodotProjectZero/blob/master/.github/docs/sc14_3.png)
 
 *And More...*
+
+![](https://github.com/TinyTakinTeller/GodotProjectZero/blob/master/.github/docs/sc14_4.png)
+
 
 
 ## Development setup
