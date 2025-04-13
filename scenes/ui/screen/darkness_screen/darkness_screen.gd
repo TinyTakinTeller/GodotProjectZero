@@ -20,10 +20,15 @@ var _death: bool = false
 @onready var title_label: Label = %TitleLabel
 @onready var level_label: Label = %LevelLabel
 
+@onready var click_damage_buffer_timer: Timer = %ClickDamageBufferTimer
+
 @onready var passive_label_effect_queue: LabelEffectQueue = %PassiveLabelEffectQueue
 @onready var click_label_effect_queue: LabelEffectQueue = %ClickLabelEffectQueue
-@onready var click_damage_buffer_timer: Timer = %ClickDamageBufferTimer
 @onready var soul_label_effect_queue: LabelEffectQueue = %SoulLabelEffectQueue
+#
+@onready var spawner_buffer_particles: Node2D = %SpawnerBufferParticles
+@onready var spawner_buffer_damage: SpawnerBuffer = %SpawnerBufferDamage
+@onready var spawner_buffer_soul: SpawnerBuffer = %SpawnerBufferSoul
 
 @onready var choice_h_box_container: HBoxContainer = %ChoiceHBoxContainer
 @onready var first_choice_button: Button = %FirstChoiceButton
@@ -39,6 +44,12 @@ var _death: bool = false
 ###############
 ## overrides ##
 ###############
+
+
+func _process(_delta: float) -> void:
+	if Game.USE_TWEENS_OVER_PARTICLES:
+		spawner_buffer_particles.position.x = self.get_rect().size.x / 2
+		spawner_buffer_particles.position.y = self.get_rect().size.y / 2
 
 
 func _notification(what: int) -> void:
@@ -61,9 +72,11 @@ func _initialize() -> void:
 	_propagate_theme_to_virtual_children()
 	_load_enemy()
 
-	passive_label_effect_queue.set_particle(particle_id)
-	click_label_effect_queue.set_particle(particle_id)
-	soul_label_effect_queue.set_particle(particle_id)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		passive_label_effect_queue.set_particle(particle_id)
+		click_label_effect_queue.set_particle(particle_id)
+		soul_label_effect_queue.set_particle(particle_id)
+
 	click_damage_buffer_timer.wait_time = damage_buffer_time
 	click_damage_buffer_timer.start()
 
@@ -158,30 +171,32 @@ func _deaths_door_disabled() -> void:
 
 
 func _update_pivot() -> void:
-	self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
-	passive_label_effect_queue.position.x = (
-		self.get_rect().size.x / 2 + enemy_texture.get_rect().size.x / 4
-	)
-	passive_label_effect_queue.position.y = (
-		self.get_rect().size.y / 2 - enemy_texture.get_rect().size.y / 4
-	)
-	click_label_effect_queue.position.x = (self.get_rect().size.x / 2)
-	click_label_effect_queue.position.y = (self.get_rect().size.y / 2)
-	soul_label_effect_queue.position.x = (self.get_rect().size.x / 2)
-	soul_label_effect_queue.position.y = (self.get_rect().size.y / 2)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
+		passive_label_effect_queue.position.x = (
+			self.get_rect().size.x / 2 + enemy_texture.get_rect().size.x / 4
+		)
+		passive_label_effect_queue.position.y = (
+			self.get_rect().size.y / 2 - enemy_texture.get_rect().size.y / 4
+		)
+		click_label_effect_queue.position.x = (self.get_rect().size.x / 2)
+		click_label_effect_queue.position.y = (self.get_rect().size.y / 2)
+		soul_label_effect_queue.position.x = (self.get_rect().size.x / 2)
+		soul_label_effect_queue.position.y = (self.get_rect().size.y / 2)
 
 
 func _propagate_theme_to_virtual_children() -> void:
-	var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
-	if passive_label_effect_queue != null:
-		passive_label_effect_queue.set_theme(inherited_theme)
-		passive_label_effect_queue.set_color_theme_override(label_color)
-	if click_label_effect_queue != null:
-		click_label_effect_queue.set_theme(inherited_theme)
-		click_label_effect_queue.set_color_theme_override(label_color)
-	if soul_label_effect_queue != null:
-		soul_label_effect_queue.set_theme(inherited_theme)
-		soul_label_effect_queue.set_color_theme_override(soul_color)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
+		if passive_label_effect_queue != null:
+			passive_label_effect_queue.set_theme(inherited_theme)
+			passive_label_effect_queue.set_color_theme_override(label_color)
+		if click_label_effect_queue != null:
+			click_label_effect_queue.set_theme(inherited_theme)
+			click_label_effect_queue.set_color_theme_override(label_color)
+		if soul_label_effect_queue != null:
+			soul_label_effect_queue.set_theme(inherited_theme)
+			soul_label_effect_queue.set_color_theme_override(soul_color)
 
 
 #############
@@ -191,15 +206,24 @@ func _propagate_theme_to_virtual_children() -> void:
 
 func _play_soulstone_effect(amount: int) -> void:
 	var soulstone: ResourceGenerator = Resources.resource_generators["soulstone"]
-	soul_label_effect_queue.add_task(soulstone.get_display_increment(amount))
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		soul_label_effect_queue.add_task(soulstone.get_display_increment(amount))
+	else:
+		spawner_buffer_soul.process([amount, soulstone.get_display_name()])
 
 
 func _play_click_damage_effect(damage: int) -> void:
-	click_label_effect_queue.add_task("- %s" % NumberUtils.format_number_scientific(damage))
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		click_label_effect_queue.add_task("- %s" % NumberUtils.format_number_scientific(damage))
+	else:
+		spawner_buffer_damage.process([damage, ""])
 
 
 func _play_damage_effect(damage: int) -> void:
-	passive_label_effect_queue.add_task("- %s" % NumberUtils.format_number_scientific(damage))
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		passive_label_effect_queue.add_task("- %s" % NumberUtils.format_number_scientific(damage))
+	else:
+		spawner_buffer_damage.process([damage, ""])
 
 
 func _play_burst_damage_effect(damage: int, burst: int) -> void:

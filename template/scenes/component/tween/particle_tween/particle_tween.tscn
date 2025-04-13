@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6hkdnclxtdfq"]
+
+[ext_resource type="Script" path="res://template/scenes/component/tween/particle_tween/particle_tween.gd" id="1_dl1c5"]
+
+[node name="ParticleTween" type="Node"]
+script = ExtResource("1_dl1c5")

@@ -1,10 +1,12 @@
 class_name Game
 
+const USE_TWEENS_OVER_PARTICLES: bool = true
+
 const WORKER_RESOURCE_ID: String = "worker"
 const WORKER_ROLE_RESOURCE: Array[String] = [WORKER_RESOURCE_ID, "swordsman"]
 
 const VERSION_MAJOR: String = "prototype"
-const VERSION_MINOR: String = "release 1.4"
+const VERSION_MINOR: String = "release 1.4.1"
 
 const PARAMS: Dictionary = PARAMS_PROD  #PARAMS_PROD  #PARAMS_DEBUG
 

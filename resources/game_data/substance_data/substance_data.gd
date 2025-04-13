@@ -101,6 +101,8 @@ func get_craft_icon() -> String:
 
 func get_display_increment(display_amount: int = 1) -> String:
 	var amount_string: String = NumberUtils.format_number_scientific(display_amount)
-	return " + {amount} {text} ".format(
-		{"amount": str(amount_string), "text": Locale.get_ui_label(id)}
-	)
+	return " + {amount} {text} ".format({"amount": str(amount_string), "text": get_display_name()})
+
+
+func get_display_name() -> String:
+	return Locale.get_ui_label(id)

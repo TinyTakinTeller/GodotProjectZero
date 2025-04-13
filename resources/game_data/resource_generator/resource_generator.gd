@@ -50,7 +50,6 @@ func get_sort_value() -> float:
 func get_display_increment(display_amount: int) -> String:
 	return ResourceGenerator.get_display_increment_of(display_amount, get_display_name())
 
-
 func get_display_name() -> String:
 	return Locale.get_resource_generator_display_name(id)
 

@@ -7,6 +7,8 @@ const UNPAID_ANIMATION_LENGTH: float = 0.3
 var _resource_generator: ResourceGenerator
 var _disabled: bool = false
 
+var _resource_queue: Array = []
+
 @onready var button: Button = %Button
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var progress_bar_simple_tween: SimpleTween = %ProgressBarSimpleTween
@@ -14,13 +16,26 @@ var _disabled: bool = false
 @onready var red_color_rect_simple_tween: SimpleTween = %RedColorRectSimpleTween
 @onready var new_unlock_tween: Node = %NewUnlockTween
 @onready var line_effect: LineEffect = %LineEffect
+
 @onready var label_effect_queue: Node2D = %LabelEffectQueue
 @onready var substance_effect_queue: LabelEffectQueue = %SubstanceEffectQueue
 @onready var soul_effect_queue: LabelEffectQueue = %SoulEffectQueue
+#
+@onready var spawner_buffer_particles: Node2D = %SpawnerBufferParticles
+@onready var spawner_buffer_substance: SpawnerBuffer = %SpawnerBufferSubstance
+@onready var spawner_buffer_resource: SpawnerBuffer = %SpawnerBufferResource
+@onready var spawner_buffer_soul: SpawnerBuffer = %SpawnerBufferSoul
+@onready var resource_queue_timer: Timer = %ResourceQueueTimer
 
 ###############
 ## overrides ##
 ###############
+
+
+func _process(_delta: float) -> void:
+	if Game.USE_TWEENS_OVER_PARTICLES:
+		spawner_buffer_particles.position.x = self.get_rect().size.x
+		spawner_buffer_particles.position.y = self.get_rect().size.y / 2
 
 
 func _notification(what: int) -> void:
@@ -80,20 +95,22 @@ func _apply_shake_effect() -> void:
 
 
 func _display_defaults() -> void:
-	substance_effect_queue.set_color_theme_override(ColorSwatches.BLUE)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		substance_effect_queue.set_color_theme_override(ColorSwatches.BLUE)
 	visible = false
 	_propagate_theme_to_virtual_children()
 
 
 func _propagate_theme_to_virtual_children() -> void:
 	var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
-	if label_effect_queue != null:
-		label_effect_queue.set_theme(inherited_theme)
-	if substance_effect_queue != null:
-		substance_effect_queue.set_theme(inherited_theme)
-	if soul_effect_queue != null:
-		soul_effect_queue.set_theme(inherited_theme)
-		soul_effect_queue.set_color_theme_override(ColorSwatches.PURPLE)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		if label_effect_queue != null:
+			label_effect_queue.set_theme(inherited_theme)
+		if substance_effect_queue != null:
+			substance_effect_queue.set_theme(inherited_theme)
+		if soul_effect_queue != null:
+			soul_effect_queue.set_theme(inherited_theme)
+			soul_effect_queue.set_color_theme_override(ColorSwatches.PURPLE)
 
 
 func _set_label() -> void:
@@ -113,12 +130,13 @@ func _is_max_amount_reached() -> bool:
 
 func _update_pivot() -> void:
 	self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
-	label_effect_queue.position.x = self.get_rect().size.x
-	label_effect_queue.position.y = self.get_rect().size.y / 2
-	substance_effect_queue.position.x = self.get_rect().size.x
-	substance_effect_queue.position.y = self.get_rect().size.y / 2
-	soul_effect_queue.position.x = self.get_rect().size.x
-	soul_effect_queue.position.y = self.get_rect().size.y / 2
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		label_effect_queue.position.x = self.get_rect().size.x
+		label_effect_queue.position.y = self.get_rect().size.y / 2
+		substance_effect_queue.position.x = self.get_rect().size.x
+		substance_effect_queue.position.y = self.get_rect().size.y / 2
+		soul_effect_queue.position.x = self.get_rect().size.x
+		soul_effect_queue.position.y = self.get_rect().size.y / 2
 
 
 ##############
@@ -149,11 +167,23 @@ func _handle_resource_ui_updated(resource_tracker_item: ResourceTrackerItem, amo
 		line_effect.target_b = resource_tracker_item
 		line_effect.play_animation()
 	var text: String = resource_tracker_item._resource_generator.get_display_increment(amount)
+	var name_text: String = resource_tracker_item._resource_generator.get_display_name()
 	var id: String = resource_tracker_item.get_id()
-	if id == "soul":
-		soul_effect_queue.add_task(text)
+
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		if id == "soul":
+			soul_effect_queue.add_task(text)
+		else:
+			label_effect_queue.add_task(text)
 	else:
-		label_effect_queue.add_task(text)
+		if id == "soul":
+			spawner_buffer_soul.process([amount, name_text])
+		else:
+			_push_resource_queue([amount, name_text])
+
+
+func _push_resource_queue(args: Array) -> void:
+	_resource_queue.push_back(args)
 
 
 #############
@@ -178,6 +208,9 @@ func _connect_signals() -> void:
 	SignalBus.soul.connect(_on_soul)
 	SignalBus.harvest_forest.connect(_on_harvest_forest)
 	SignalBus.display_language_updated.connect(_on_display_language_updated)
+
+	if Game.USE_TWEENS_OVER_PARTICLES:
+		resource_queue_timer.timeout.connect(_on_resource_queue_timer_timeout)
 
 
 func _on_resized() -> void:
@@ -286,8 +319,12 @@ func _on_substance_updated(id: String, _total_amount: int, source_id: String) ->
 		return
 	if substance_data.get_category_id() != "shadow":
 		return
+	var name_text: String = substance_data.get_display_name()
 	var text: String = substance_data.get_display_increment()
-	substance_effect_queue.add_task(text)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		substance_effect_queue.add_task(text)
+	else:
+		spawner_buffer_substance.process([1, name_text])
 
 	Audio.play_sfx_id("flesh")
 
@@ -314,6 +351,14 @@ func _on_harvest_forest(order: int) -> void:
 
 func _on_display_language_updated() -> void:
 	_set_label()
+
+
+func _on_resource_queue_timer_timeout() -> void:
+	if _resource_queue.is_empty():
+		return
+
+	var args: Array = _resource_queue.pop_front()
+	spawner_buffer_resource.process(args)
 
 
 ############

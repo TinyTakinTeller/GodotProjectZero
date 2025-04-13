@@ -65,6 +65,12 @@ project/assembly_name="The Best Game Ever"
 
 enabled=PackedStringArray("res://addons/BulletUpHell/plugin.cfg", "res://addons/format_on_save/plugin.cfg", "res://addons/gdLinter/plugin.cfg", "res://addons/label_font_auto_sizer/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://template/": "purple"
+}
+
 [gui]
 
 theme/custom_font="res://assets/font/noto_sans/woff/noto_sans.woff"

@@ -11,11 +11,21 @@ var _worker_role: WorkerRole
 @onready var info_label: Label = %InfoLabel
 @onready var amount_label: Label = %AmountLabel
 @onready var new_unlock_tween: Node = %NewUnlockTween
+
 @onready var label_effect_queue: LabelEffectQueue = %LabelEffectQueue
+#
+@onready var spawner_buffer_particles: Node2D = %SpawnerBufferParticles
+@onready var spawner_buffer_passive: SpawnerBuffer = %SpawnerBufferPassive
 
 ###############
 ## overrides ##
 ###############
+
+
+func _process(_delta: float) -> void:
+	if Game.USE_TWEENS_OVER_PARTICLES:
+		spawner_buffer_particles.position.x = self.get_rect().size.x / 2
+		spawner_buffer_particles.position.y = self.get_rect().size.y / 2
 
 
 func _notification(what: int) -> void:
@@ -71,7 +81,11 @@ func stop_unlock_animation() -> void:
 func _emit_label_effect_particle(resource_id: String, amount: int) -> void:
 	var resource_generator: ResourceGenerator = Resources.resource_generators[resource_id]
 	var text: String = resource_generator.get_display_increment(amount)
-	label_effect_queue.add_task(text)
+	var name_text: String = resource_generator.get_display_name()
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		label_effect_queue.add_task(text)
+	else:
+		spawner_buffer_passive.process([amount, name_text])
 
 
 #############
@@ -104,15 +118,17 @@ func _display_defaults() -> void:
 	visible = false
 	_update_pivot()
 	_propagate_theme_to_virtual_children()
-	label_effect_queue.set_particle(particle_id)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		label_effect_queue.set_particle(particle_id)
 	_set_amount(SaveFile.workers.get(get_id(), 0))
 
 
 func _propagate_theme_to_virtual_children() -> void:
-	var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
-	if label_effect_queue != null:
-		label_effect_queue.set_theme(inherited_theme)
-		label_effect_queue.set_color_theme_override(label_color)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
+		if label_effect_queue != null:
+			label_effect_queue.set_theme(inherited_theme)
+			label_effect_queue.set_color_theme_override(label_color)
 
 
 func _set_info() -> void:
@@ -128,9 +144,10 @@ func _set_amount(amount: int) -> void:
 
 
 func _update_pivot() -> void:
-	self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
-	label_effect_queue.position.x = self.get_rect().size.x / 2
-	label_effect_queue.position.y = self.get_rect().size.y / 2
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
+		label_effect_queue.position.x = self.get_rect().size.x / 2
+		label_effect_queue.position.y = self.get_rect().size.y / 2
 
 
 func _clear_hints() -> void:

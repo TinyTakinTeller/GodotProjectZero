@@ -76,6 +76,10 @@ func _set_ui_labels() -> void:
 	display_title_label.text = Locale.get_ui_label("display_title")
 	watermark_label.text = "%s : %s" % [Locale.get_ui_label("watermark_title"), WATERMARK_URL]
 
+	if not OS.has_feature("web"):
+		watermark_label.visible = false
+		shortcuts_label.visible = false
+
 
 func _apply_effects() -> void:
 	var shake_shader_component: ShakeShaderComponent = (

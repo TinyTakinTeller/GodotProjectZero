@@ -1,0 +1,3 @@
+Files in template folder are based on: https://github.com/TinyTakinTeller/TakinGodotTemplate
+
+Licensed under MIT.
