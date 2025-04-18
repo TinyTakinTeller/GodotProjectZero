@@ -13,6 +13,11 @@ var heart_color: Color = ColorSwatches.BLUE
 
 @onready var label_effect_queue_1: LabelEffectQueue = %LabelEffectQueue1
 @onready var label_effect_queue_2: LabelEffectQueue = %LabelEffectQueue2
+#
+@onready var spawner_buffer_particles: Node2D = %SpawnerBufferParticles
+@onready var spawner_buffer_substance: SpawnerBuffer = %SpawnerBufferSubstance
+@onready var spawner_buffer_singularity: SpawnerBuffer = %SpawnerBufferSingularity
+@onready var resource_queue_timer: Timer = %ResourceQueueTimer
 
 ###############
 ## overrides ##
@@ -22,6 +27,10 @@ var heart_color: Color = ColorSwatches.BLUE
 func _process(_delta: float) -> void:
 	if is_visible_in_tree():
 		_set_top_label()
+
+	if Game.USE_TWEENS_OVER_PARTICLES:
+		spawner_buffer_particles.position.x = self.get_rect().size.x / 2
+		spawner_buffer_particles.position.y = self.get_rect().size.y / 2
 
 
 func _notification(what: int) -> void:
@@ -47,8 +56,9 @@ func _reload() -> void:
 func _initialize() -> void:
 	_set_infinity_progress()
 	_propagate_theme_to_virtual_children()
-	label_effect_queue_1.set_particle(particle_id)
-	label_effect_queue_2.set_particle(particle_id)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		label_effect_queue_1.set_particle(particle_id)
+		label_effect_queue_2.set_particle(particle_id)
 
 
 func _load_from_save_file() -> void:
@@ -107,20 +117,22 @@ func _set_infinity_progress() -> void:
 
 func _update_pivot() -> void:
 	self.set_pivot_offset(Vector2(self.size.x / 2, self.size.y / 2))
-	label_effect_queue_1.position.x = (self.get_rect().size.x / 2)
-	label_effect_queue_1.position.y = (self.get_rect().size.y / 2)
-	label_effect_queue_2.position.x = (self.get_rect().size.x / 2)
-	label_effect_queue_2.position.y = (self.get_rect().size.y / 2)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		label_effect_queue_1.position.x = (self.get_rect().size.x / 2)
+		label_effect_queue_1.position.y = (self.get_rect().size.y / 2)
+		label_effect_queue_2.position.x = (self.get_rect().size.x / 2)
+		label_effect_queue_2.position.y = (self.get_rect().size.y / 2)
 
 
 func _propagate_theme_to_virtual_children() -> void:
-	var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
-	if label_effect_queue_1 != null:
-		label_effect_queue_1.set_theme(inherited_theme)
-		label_effect_queue_1.set_color_theme_override(heart_color)
-	if label_effect_queue_2 != null:
-		label_effect_queue_2.set_theme(inherited_theme)
-		label_effect_queue_2.set_color_theme_override(singularity_color)
+	if not Game.USE_TWEENS_OVER_PARTICLES:
+		var inherited_theme: Resource = NodeUtils.get_inherited_theme(self)
+		if label_effect_queue_1 != null:
+			label_effect_queue_1.set_theme(inherited_theme)
+			label_effect_queue_1.set_color_theme_override(heart_color)
+		if label_effect_queue_2 != null:
+			label_effect_queue_2.set_theme(inherited_theme)
+			label_effect_queue_2.set_color_theme_override(singularity_color)
 
 
 #############
@@ -149,20 +161,28 @@ func _on_tab_changed(tab_data: TabData) -> void:
 
 func _on_resource_updated(id: String, _total: int, amount: int, source_id: String) -> void:
 	_set_infinity_progress()
-
 	if is_visible_in_tree():
 		if id == "singularity" and source_id == "SubstanceController":
 			var singularity: ResourceGenerator = Resources.resource_generators[id]
-			label_effect_queue_2.add_task(singularity.get_display_increment(amount))
+			if Game.USE_TWEENS_OVER_PARTICLES:
+				var name_text: String = singularity.get_display_name()
+				spawner_buffer_singularity.process([amount, name_text])
+			else:
+				var text: String = singularity.get_display_increment(amount)
+				label_effect_queue_2.add_task(text)
 
 
 func _on_substance_updated(id: String, _total_amount: int, source_id: String) -> void:
 	if is_visible_in_tree():
 		if id == "heart" and source_id == "SubstanceController":
 			var display_name: String = Locale.get_ui_label("heart")
-			label_effect_queue_1.add_task(
-				ResourceGenerator.get_display_increment_of(1, display_name)
-			)
+			if Game.USE_TWEENS_OVER_PARTICLES:
+				var substance_data: SubstanceData = Resources.substance_datas.get(id, null)
+				var name_text: String = substance_data.get_display_name()
+				spawner_buffer_substance.process([1, name_text])
+			else:
+				var text: String = ResourceGenerator.get_display_increment_of(1, display_name)
+				label_effect_queue_1.add_task(text)
 
 
 func _on_display_language_updated() -> void:

@@ -29,6 +29,10 @@ func _ready() -> void:
 #############
 
 
+func get_toggle() -> bool:
+	return _toggle
+
+
 func set_data(toggle: bool, value: float) -> void:
 	_toggle = toggle
 	_value = value

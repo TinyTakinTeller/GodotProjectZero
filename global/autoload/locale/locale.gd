@@ -38,6 +38,14 @@ func get_localized_array(category: String, id: String) -> Array:
 	return []
 
 
+func get_credit_label(id: String) -> String:
+	return get_localized_text("credit", id)
+
+
+func get_role_label(id: String) -> String:
+	return get_localized_text("role", id)
+
+
 func get_ui_label(id: String) -> String:
 	return get_localized_text("ui_label", id)
 

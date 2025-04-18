@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://br1a46uikyubt"]
+[gd_scene load_steps=7 format=3 uid="uid://br1a46uikyubt"]
 
 [ext_resource type="Script" path="res://scenes/ui/screen/starway_screen/starway_screen.gd" id="1_tsvyl"]
 [ext_resource type="PackedScene" uid="uid://3vcjyu7tgdii" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.tscn" id="2_73ey0"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="3_v7344"]
+[ext_resource type="PackedScene" uid="uid://vlsdtpdj5gw0" path="res://template/scenes/node/game/spawner_buffer/spawner_buffer.tscn" id="4_i3pep"]
+[ext_resource type="PackedScene" uid="uid://cjscoqpiciat8" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_substance/label_particle_tween_substance.tscn" id="5_056bl"]
+[ext_resource type="PackedScene" uid="uid://suojpe3fsjng" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_singularity/label_particle_tween_singularity.tscn" id="6_n3say"]
 
 [node name="StarwayScreen" type="MarginContainer"]
 anchors_preset = 15
@@ -48,3 +51,22 @@ force_delay = true
 unique_name_in_owner = true
 delay = 0.1
 lifetime = 2.5
+
+[node name="SpawnerBufferParticles" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(34, 24)
+
+[node name="SpawnerBufferSubstance" parent="SpawnerBufferParticles" node_paths=PackedStringArray("entity_parent") instance=ExtResource("4_i3pep")]
+unique_name_in_owner = true
+entity_pck = ExtResource("5_056bl")
+entity_parent = NodePath("..")
+
+[node name="SpawnerBufferSingularity" parent="SpawnerBufferParticles" node_paths=PackedStringArray("entity_parent") instance=ExtResource("4_i3pep")]
+unique_name_in_owner = true
+entity_pck = ExtResource("6_n3say")
+entity_parent = NodePath("..")
+
+[node name="ResourceQueueTimer" type="Timer" parent="SpawnerBufferParticles"]
+unique_name_in_owner = true
+wait_time = 0.25
+autostart = true

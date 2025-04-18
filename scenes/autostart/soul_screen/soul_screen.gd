@@ -30,6 +30,8 @@ var cat_size: float = 0
 @onready var execute_button: Button = %ExecuteButton
 @onready var absolve_button: Button = %AbsolveButton
 
+@onready var black_fade: TerminatedOverlay = %BlackFade
+
 ###############
 ## overrides ##
 ###############
@@ -138,6 +140,7 @@ func _connect_signals() -> void:
 	SignalBus.boss_end.connect(_on_boss_end)
 	execute_button.button_down.connect(_on_end_execute)
 	absolve_button.button_down.connect(_on_end_absolve)
+	black_fade.terminated.connect(_on_terminated)
 
 
 func _intro_animation_end() -> void:
@@ -154,6 +157,8 @@ func _on_player_damaged() -> void:
 	if hp <= 0:
 		SignalBus.player_death.emit()
 		get_tree().paused = true
+		# soul_sprite.queue_free.call_deferred()
+		Spawning.force_stop_bullets()
 
 
 func _on_boss_click() -> void:
@@ -193,6 +198,13 @@ func _on_end_execute() -> void:
 
 func _on_end_absolve() -> void:
 	_end_game(1)
+
+
+func _on_terminated() -> void:
+	# Spawning.force_stop_bullets()
+	# await get_tree().create_timer(0.1).timeout
+	get_tree().paused = false
+	Scene.change_scene("save_file_picker_scene")
 
 
 ############

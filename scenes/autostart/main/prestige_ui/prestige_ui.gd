@@ -13,6 +13,7 @@ extends Control
 @onready var label_prestige_info_right: Label = %LabelPrestigeInfoRight
 @onready var condition_info: MarginContainer = %ConditionInfo
 @onready var condition_info_label: Label = %ConditionInfoLabel
+@onready var texture_heart: TextureHeartClass = %TextureHeart
 
 ###############
 ## overrides ##

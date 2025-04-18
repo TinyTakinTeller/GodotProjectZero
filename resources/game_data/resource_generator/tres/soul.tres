@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_bo5cl")
 order = 0
-color = Color(0.392157, 0.392157, 0.878431, 1)
+color = Color(0.878431, 0.878431, 0.392157, 1)
 sort_value = -999
 sort_value_override = 999.0
 id = "soul"

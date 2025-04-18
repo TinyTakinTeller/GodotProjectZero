@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/axes_to_a_bed_compressed.mp3-e2fa333d1f969a94
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

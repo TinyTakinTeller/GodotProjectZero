@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://suojpe3fsjng"]
+
+[ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_dttkh"]
+[ext_resource type="Script" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_singularity/label_particle_tween_singularity.gd" id="2_7if8o"]
+[ext_resource type="PackedScene" uid="uid://b6hkdnclxtdfq" path="res://template/scenes/component/tween/particle_tween/particle_tween.tscn" id="3_oxvsa"]
+
+[node name="LabelParticleTweenSingularity" type="Label"]
+modulate = Color(0.878431, 0.878431, 0.392157, 1)
+z_index = 4096
+z_as_relative = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -12.0
+offset_right = 33.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_dttkh")
+theme_type_variation = &"label_shadow"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+text = "  +1 Love"
+script = ExtResource("2_7if8o")
+
+[node name="ParticleTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_oxvsa")]
+target = NodePath("..")
+duration = 4.0
+speed = 200.0

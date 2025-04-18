@@ -153,6 +153,9 @@ func _progress_enemy_controller(
 		var mult: int = max(1, SaveFile.resources.get("singularity", 0))
 		generated["soulstone"] = Limits.safe_mult(generated["soulstone"], mult)
 
+	if generated.has("soulstone") and generated.get("soulstone", 0) == 0:
+		generated.erase("soulstone")
+
 	return {"overkill_factor": overkill_factor, "damage": damage, "generated": generated}
 
 
@@ -191,7 +194,9 @@ func _handle_on_game_resumed(
 	var worker_progress: Dictionary = _progress_worker_controller(
 		efficiencies, worker_controller_cycles
 	)
+
 	var generated: Dictionary = worker_progress["generated"]
+
 	# var decreasing_ids: Array = worker_progress["decreasing_ids"]
 	# var workers_are_happy: bool = decreasing_ids.is_empty()
 

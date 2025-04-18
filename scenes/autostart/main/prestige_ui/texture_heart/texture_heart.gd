@@ -1,3 +1,4 @@
+class_name TextureHeartClass
 extends MarginContainer
 
 var unknown_tab_data: TabData = Resources.tab_datas["unknown"]
@@ -15,6 +16,15 @@ var _clicked: bool = false
 func _ready() -> void:
 	_connect_signals()
 	_initialize()
+
+
+#############
+## methods ##
+#############
+
+
+func enter_normal_mode() -> void:
+	_enter_normal_mode()
 
 
 #############

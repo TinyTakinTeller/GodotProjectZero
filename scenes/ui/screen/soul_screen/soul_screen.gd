@@ -13,7 +13,6 @@ var vbox_containers: Array[VBoxContainer] = []
 ## overrides ##
 ###############
 
-
 func _ready() -> void:
 	_initialize()
 	_connect_signals()

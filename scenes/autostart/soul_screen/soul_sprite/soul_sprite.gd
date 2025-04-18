@@ -24,14 +24,16 @@ func _physics_process(_delta: float) -> void:
 
 	var target_position: Vector2 = get_global_mouse_position()
 	var sprite_size: Vector2 = SOUL_SIZE  #sprite_2d.get_rect().size
-	target_position += SOUL_SIZE  #sprite_2d.get_rect().size / 2
+	#target_position += SOUL_SIZE  #sprite_2d.get_rect().size / 2
 
 	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
 	target_position.x = (
-		min(max(target_position.x, sprite_size.x), viewport_size.x - sprite_size.x) - (SOUL_SIZE.x)
+		min(max(target_position.x, sprite_size.x), viewport_size.x - sprite_size.x)
+		- (SOUL_SIZE.x) * 0
 	)
 	target_position.y = (
-		min(max(target_position.y, sprite_size.y), viewport_size.y - sprite_size.y) - (SOUL_SIZE.y)
+		min(max(target_position.y, sprite_size.y), viewport_size.y - sprite_size.y)
+		- (SOUL_SIZE.y) * 0
 	)
 
 	create_tween().tween_property(self, "position", target_position, DELAY)

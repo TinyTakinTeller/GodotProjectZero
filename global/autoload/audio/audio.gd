@@ -28,7 +28,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	_initalize()
+	_randomize_track()
 	_connect_signals()
 	for audio_player: AudioPlayer in music_tracks.get_children():
 		audio_player.finished.connect(_on_music_track_finished)
@@ -39,7 +39,7 @@ func _ready() -> void:
 #############
 
 
-func _initalize() -> void:
+func _randomize_track() -> void:
 	_track = randi() % MAIN_MUSIC_TRACKS
 	_current_audio_player = music_tracks.get_child(_track)
 	_current_audio_player.fade_in()
@@ -88,11 +88,12 @@ func stop_sfx_id(sfx_id: String) -> void:
 
 
 ###############
-## signals ##
+##  signals  ##
 ###############
 
 
 func _connect_signals() -> void:
+	SignalBus.main_ready.connect(_on_main_ready)
 	SignalBus.tab_changed.connect(_on_tab_changed)
 	SignalBus.heart_click.connect(_on_heart_click)
 	SignalBus.heart_unclick.connect(_on_heart_unclick)
@@ -100,6 +101,10 @@ func _connect_signals() -> void:
 	SignalBus.soul.connect(_on_soul)
 	SignalBus.boss_start.connect(_on_boss_start)
 	SignalBus.boss_end.connect(_on_boss_end)
+
+
+func _on_main_ready() -> void:
+	swap_crossfade_music_next()
 
 
 func _on_tab_changed(tab_data: TabData) -> void:

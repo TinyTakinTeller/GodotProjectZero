@@ -83,7 +83,7 @@ func _on_display_mode_settings_toggle() -> void:
 	else:
 		display_mode = "windowed"
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)  #WINDOW_MODE_WINDOWED)
 
 	SignalBus.display_mode_settings_updated.emit(display_mode)
 

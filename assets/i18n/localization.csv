@@ -1,4 +1,28 @@
 key,description,en,zh,fr,pt,pl
+role:programming,credits category title,Programming,编程,Programmation,Programação,Programowanie
+role:art,credits category title,Art,美术,Art,Arte,Sztuka
+role:music,credits category title,Music,音乐,Musique,Música,Muzyka
+role:localization,credits category title,Localization,本地化,Localisation,Localização,Lokalizacja
+role:writing_narrative,credits category title,Writing & Narrative,剧情与写作,Écriture et narration,Roteiro e narrativa,Pisanie i fabuła
+role:publishing_management,credits category title,Publishing & Management,发行与管理,Publication et gestion,Publicação e gestão,Publikacja i zarządzanie
+credit:lead,credit role descriptor,Lead,主导,Principal,Líder,Prowadzący
+credit:help,credit role descriptor,Help,协助,Aide,Ajuda,Pomoc
+credit:bugfix,credit role descriptor,Fix,修复,Correction,Correção,Naprawa
+credit:tracks,credit role descriptor,tracks,首曲子,morceaux,faixas,utwory
+credit:polish,localization language descriptor,Polish,波兰语,Polonais,Polonês,Polski
+credit:portuguese,localization language descriptor,Portuguese,葡萄牙语,Portugais,Português,Portugalski
+credit:french,localization language descriptor,French,法语,Français,Francês,Francuski
+credit:chinese,localization language descriptor,Chinese,中文,Chinois,Chinês,Chiński
+credit:review,credit role descriptor,Review,审阅,Relecture,Revisão,Recenzja
+credit:steam,publishing platform,Steam,Steam,Steam,Steam,Steam
+credit:itch,publishing platform,Itch,Itch,Itch,Itch,Itch
+credit:theme,game theme,Theme,主题,Thème,Tema,Motyw
+credit:shader,game shader script,Shader,着色器,Shader,Sombreador,Cieńnik
+credit:writing,credit role descriptor,Writing,写作,Écriture,Escrita,Pisanie
+credit:external,describing free assets usually with cc license,External,外部,Externe,Externo,Zewnętrzny
+ui_label:settings,in-game options tab label,Settings,设置,Paramètres,Configurações,Ustawienia
+ui_label:credits,in-game credits tab label,Credits,鸣谢,Crédits,Créditos,Twórcy
+ui_label:license,credit role descriptor,License,许可证,Licence,Licença,Licencja
 ui_label:thank_you,win screen (bullet hell boss fight),Thank you for playing.,感谢参与游戏,Merci d’avoir joué.,Obrigado por jogar.,Dziękujemy za granie w naszą grę.
 ui_label:game_over_text,game over screen (bullet hell boss fight),Terminated,您已死亡,Vous avez succombé.,Finalizado,Czeka cię unicestwienie
 ui_label:soul_button,button text (bullet hell boss fight),Fight Back,反击,Continuer de se battre,Lute,Odwet!
@@ -399,7 +423,7 @@ tab_data_titles:enemy,in-game tab title,"["" Darkness ""]","["" 黑暗 ""]","[""
 tab_data_titles:unknown,in-game tab title,"["" Unknown ""]","["" 未知 ""]","["" Mystère ""]","["" Desconhecido ""]","["" Nieznane ""]"
 tab_data_titles:soul,in-game tab title,"["" Substance ""]","["" 灵魂 ""]","["" Substances ""]","["" Substância ""]","["" Substancje ""]"
 tab_data_titles:starway,in-game tab title,"["" ??? "", "" Heart ""]","["" ??? "", "" 心脏 ""]","["" ??? "", "" Cœur ""]","["" ??? "", "" Coração ""]","["" ??? "", "" Serce ""]"
-tab_data_titles:settings,in-game tab title (options shortcut),"["" @ ""]","["" 设置 ""]","["" @ ""]","["" @ ""]","["" @ ""]"
+tab_data_titles:settings,in-game tab title (options shortcut),"["" # ""]","["" 设置 ""]","["" # ""]","["" # ""]","["" # ""]"
 tab_data_titles:substance,in-game tab title,"["" Substance ""]","["" 物质 ""]","["" Substances ""]","["" Substância ""]","["" Substancje ""]"
 event_data_text:automation,diary entry text,"Today, we herald the dawn of a new era... the age of automation!",我们宣布，今天将是一个新时代的开始...自动化时代正式诞生！,"En ce jour, nous saluons l’avènement d’une ère nouvelle... L’ère de l’automatisation !","Hoje, anunciamos o início de uma nova era... a era da automação!",Dziś nastaje dzień nowej ery... Wieku automacji!
 event_data_text:cat_gift,diary entry text,"The frail cat wrought havoc in the storage. Somehow, after cleanup, we had a surplus of raw resources... twice as much.",那只纤弱的猫在储藏室制造了一场大混乱。不知怎的，清理后我们的原材料多了一倍。,"Le chat chétif a semé la pagaille dans les réserves. Après avoir rangé, nous nous sommes rendu compte que nous avions un surplus de ressources bruts... Deux fois plus.","O gato tão frágil andou causando estragos no depósito. E ainda assim, depois da limpeza, nós tivemos um excedente de recursos brutos... o dobro.","Wątłe kocisko wzniosło zamęt w magazynie. Posprzątawszy wszystko odkryliśmy, że jakimś cudem podwoiły się nasze zasoby."

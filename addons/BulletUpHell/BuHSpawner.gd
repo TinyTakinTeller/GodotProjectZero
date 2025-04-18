@@ -212,6 +212,11 @@ func reset_bullets():
 	clear_all_bullets()
 
 
+func force_stop_bullets() -> void:
+	force_stop = true
+	clear_all_bullets()
+
+
 #§§§§§§§§§§§§§ RESOURCES §§§§§§§§§§§§§
 
 
@@ -521,12 +526,13 @@ func set_spawn_data(
 
 ### TRIGGER SPAWN ###
 
+var force_stop: bool = false
+
 
 func spawn(spawner, id: String, shared_area: String = "0"):
-	#spawn_thread.start(_thread_spawn.bind(spawner, id, shared_area))
-	#_thread_spawn(spawner, id, shared_area)
+	if force_stop:
+		return
 
-#func _thread_spawn(spawner, id:String, shared_area:String="0"):
 	assert(arrayPatterns.has(id))
 	var local_reset_counter: int = global_reset_counter
 	var bullets: Array
@@ -543,6 +549,9 @@ func spawn(spawner, id: String, shared_area: String = "0"):
 	var is_bullet_node: bool
 	var tw_endpos: Vector2
 	while iter != 0 and spawner.active:
+		if force_stop:
+			return
+
 		if spawner == null:
 			return
 		if spawner is Node2D:

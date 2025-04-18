@@ -16,146 +16,281 @@ shake_shader_component_scene = ExtResource("2_1nimh")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="RootMarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="RootVBoxContainer" type="VBoxContainer" parent="RootMarginContainer"]
 layout_mode = 2
 
-[node name="TitleMarginContainerAudio" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TabsMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 8
+
+[node name="TabsHBoxContainer" type="HBoxContainer" parent="RootMarginContainer/RootVBoxContainer/TabsMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SettingsTabButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/TabsMarginContainer/TabsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Settings"
+
+[node name="CreditsTabButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/TabsMarginContainer/TabsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Credits"
+
+[node name="LicenseTabButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/TabsMarginContainer/TabsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TabButton"
+text = "Credits"
+
+[node name="SettingsMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SettingsVBoxContainer" type="VBoxContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer"]
+layout_mode = 2
+
+[node name="TitleMarginContainerAudio" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TitleMarginContainerAudio"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TitleMarginContainerAudio"]
 layout_mode = 2
 
-[node name="AudioTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TitleMarginContainerAudio/VBoxContainer"]
+[node name="AudioTitleLabel" type="Label" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TitleMarginContainerAudio/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="ShortcutsLabel" type="Label" parent="MarginContainer/VBoxContainer/TitleMarginContainerAudio/VBoxContainer"]
+[node name="ShortcutsLabel" type="Label" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TitleMarginContainerAudio/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
-[node name="MasterSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+[node name="MasterSettingsSlider" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer" instance=ExtResource("2_usuby")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MusicSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+[node name="MusicSettingsSlider" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer" instance=ExtResource("2_usuby")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SFXSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+[node name="SFXSettingsSlider" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer" instance=ExtResource("2_usuby")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TODOMusicTracksMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TODOMusicTracksMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TODOMusicTracksMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TODOMusicTracksMarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TODOMusicTracksMarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TODOMusicTracksMarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Music Tracks"
 
-[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/TODOMusicTracksMarginContainer/HBoxContainer"]
+[node name="Button1" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TODOMusicTracksMarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "A"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/TODOMusicTracksMarginContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TODOMusicTracksMarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "B"
 
-[node name="TitleMarginContainerEffects" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TitleMarginContainerEffects" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 8
 
-[node name="EffectsTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TitleMarginContainerEffects"]
+[node name="EffectsTitleLabel" type="Label" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TitleMarginContainerEffects"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Effects"
 
-[node name="ShakeSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+[node name="ShakeSettingsSlider" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer" instance=ExtResource("2_usuby")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TypingSettingsSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_usuby")]
+[node name="TypingSettingsSlider" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer" instance=ExtResource("2_usuby")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TitleMarginContainerDisplay" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TitleMarginContainerDisplay" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 8
 
-[node name="DisplayTitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TitleMarginContainerDisplay"]
+[node name="DisplayTitleLabel" type="Label" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TitleMarginContainerDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Display"
 
-[node name="DisplaySettingsMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="DisplaySettingsMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/DisplaySettingsMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/DisplaySettingsMarginContainer"]
 layout_mode = 2
 
-[node name="DisplayModeButton" type="Button" parent="MarginContainer/VBoxContainer/DisplaySettingsMarginContainer/HBoxContainer"]
+[node name="DisplayModeButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/DisplaySettingsMarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 36)
 layout_mode = 2
 text = "Windowed"
 
-[node name="DisplayResolutionButton" type="Button" parent="MarginContainer/VBoxContainer/DisplaySettingsMarginContainer/HBoxContainer"]
+[node name="DisplayResolutionButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/DisplaySettingsMarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 36)
 layout_mode = 2
 text = "960 x 540"
 
-[node name="DisplayLanguageButton" type="Button" parent="MarginContainer/VBoxContainer/DisplaySettingsMarginContainer/HBoxContainer"]
+[node name="DisplayLanguageButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/DisplaySettingsMarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 36)
 layout_mode = 2
 text = "English"
 
-[node name="Watermark" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Watermark" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
+visible = false
 modulate = Color(1, 0, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="WatermarkLabel" type="Label" parent="MarginContainer/VBoxContainer/Watermark"]
+[node name="WatermarkLabel" type="Label" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/Watermark"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 14
 text = "OFFICIAL GAME PAGE: https://tinytakinteller.itch.io/the-best-game-ever"
 
-[node name="WatermarkButton" type="Button" parent="MarginContainer/VBoxContainer/Watermark"]
+[node name="WatermarkButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/Watermark"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+
+[node name="CreditsMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="CreditsHBoxContainer" type="HBoxContainer" parent="RootMarginContainer/RootVBoxContainer/CreditsMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichTextLabel1" type="RichTextLabel" parent="RootMarginContainer/RootVBoxContainer/CreditsMarginContainer/CreditsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[color=#e0e064][b]Programming[/b][/color] 
+[url=https://github.com/TinyTakinTeller]TinyTakinTeller[/url] - Lead 
+[url=https://github.com/alexmunoz502]Alex Munoz[/url] - Help 
+[url=https://github.com/mielifica]Mellifica[/url] - Help 
+[url=https://github.com/debris]Marek Kotewicz[/url] - Bugfix 
+[url=https://github.com/mhvejs]Mhvejs[/url] - Bugfix 
+
+[color=#e0e064][b]Art[/b][/color] 
+[url=https://instagram.com/navy.raccoon]Navy_Raccoon[/url] - Lead 
+
+[color=#e0e064][b]Writing & Narrative[/b][/color] 
+[url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - Lead 
+[url=https://github.com/Reed-lzy]Reed[/url] - Help 
+[url=https://github.com/TinyTakinTeller]TinyTakinTeller[/url] - Review"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="RootMarginContainer/RootVBoxContainer/CreditsMarginContainer/CreditsHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.1
+bbcode_enabled = true
+text = "[color=#e0e064][b]Music[/b][/color] 
+[url=https://www.youtube.com/@JoeBurkeZerk]Joe Burke[/url] - 4 Tracks 
+[url=https://circlesinthesky.com/]Skyler Newsome[/url] - 4 Tracks 
+
+[color=#e0e064][b]Localization[/b][/color] 
+[url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - Polish 
+[url=NA:Maria Oliveira]Maria Oliveira[/url] - Portuguese 
+[url=https://www.linkedin.com/in/marion-veber-838279342/]Marion Veber[/url] - French 
+[url=https://www.linkedin.com/in/xiaofei-shen/]Xiaofei Shen[/url] & [url=https://www.middlebury.edu/institute/]Gloria[/url] - Chinese 
+
+
+[color=#e0e064][b]Publishing & Management[/b][/color] 
+[url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - Steam 
+[url=https://github.com/TinyTakinTeller]TinyTakinTeller[/url] - Itch  "
+
+[node name="LicenseMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/LicenseMarginContainer"]
+layout_mode = 2
+
+[node name="LicenseHBoxContainer" type="HBoxContainer" parent="RootMarginContainer/RootVBoxContainer/LicenseMarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="RootMarginContainer/RootVBoxContainer/LicenseMarginContainer/MarginContainer/LicenseHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[color=#0064e0][b]Credits[/b][/color]
+[color=#ffffff]Code[/color] : [url=https://github.com/TinyTakinTeller/GodotProjectZero]Github[/url], [url=https://godotengine.org/license/]Godot Engine[/url] - [color=#e00064][url=https://opensource.org/license/mit]MIT[/url][/color] 
+[color=#ffffff]Art, Music, Writing, Localization[/color] - [color=#e00064][url=https://creativecommons.org/licenses/by-nc-sa/4.0/]CC-BY-NC-SA 4.0[/url][/color] 
+
+[color=#0064e0][b]External[/b][/color] 
+Music : [url=https://freemusicarchive.org/music/universfield/dark-music/corpse-rot/]Corpse Rot[/url], [url=https://freemusicarchive.org/music/universfield/dark-music/criminal-district/]Criminal District[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by-sa/4.0/]CC-BY-SA 4.0[/url][/color]  
+Music : [url=https://pixabay.com/music/video-games-to-the-death-159171/]To The Death[/url] - [color=#e00064][url=https://pixabay.com/service/license-summary/]Pixabay License[/url][/color]
+SFX : [url=https://placeholder-assets.itch.io/indie-friendly-sounds-survival]Survival Sounds[/url], [url=https://placeholder-assets.itch.io/indie-friendly-sounds-rpg-sounds-pack]RPG Sounds[/url] - [color=#e00064][url=https://en.wikipedia.org/wiki/Licence_to_use]LTU[/url][/color]
+SFX : [url=https://freesound.org/s/331656/]Keyboard Typing[/url], [url=https://freesound.org/s/249583/]Fart[/url], [url=https://freesound.org/s/332820/]Heartbeat[/url] - [color=#e00064][url=https://creativecommons.org/public-domain/cc0/]CC0[/url][/color] 
+Theme : [url=https://azagaya.itch.io/minimalistic-ui]Minimalistic UI Theme[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by/4.0/]CC-BY 4.0[/url][/color] 
+Shader : [url=https://godotshaders.com/shader/chromatic-aberration-vignette/]Vignette[/url], [url=https://godotshaders.com/shader/wiggle-2d/]Wiggle[/url], [url=https://godotshaders.com/shader/chromatic-abberation/]Aberration[/url], [url=https://godotshaders.com/shader/2d-radial-distortion-fisheye-barrel/]Fisheye[/url] - [color=#e00064][url=https://creativecommons.org/publicdomain/zero/1.0/]CC0[/url][/color]  
+Shader : [url=https://godotshaders.com/shader/starry-sky/]Starry Sky[/url] - [color=#e00064][url=https://opensource.org/license/mit/]MIT[/url][/color] 
+Shader : [url=https://gamedev.stackexchange.com/a/207351]Pixel Explosion Shader[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by-sa/4.0/]CC-BY-SA 4.0[/url][/color] 
+Shader : [url=https://godotshaders.com/shader/cracked-glass/]Cracked Glass[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by-nc-sa/3.0/]CC-BY-NC-SA 3.0[/url][/color] "

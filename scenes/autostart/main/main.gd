@@ -42,13 +42,68 @@ var _infinity_count: int = -1
 @onready var soul_sprite: SoulSprite = %SoulSprite
 @onready var developer_console: DeveloperConsole = %DeveloperConsole
 
+
+func _is_paused_by_animations() -> bool:
+	return (
+		!switch_from_prestige_simple_tween.finished
+		or !switch_to_prestige_simple_tween.finished
+		or !reborn_transition_simple_tween.finished
+		or !prestige_transition_simple_tween.finished
+		or !enter_simple_tween.finished
+		or !enter_soul_simple_tween.finished
+	)
+
+
 ###############
 ## overrides ##
 ###############
 
 
+func _process(_delta: float) -> void:
+	if _is_paused_by_animations() or soul_sprite.visible:
+		return
+
+	if Input.is_action_just_pressed("escape_game"):
+		if developer_console.visible:
+			developer_console.visible = false
+		elif tab_tracker.tab_selected_id == "settings":
+			Scene.change_scene("save_file_picker_scene")
+		else:
+			tab_tracker.change_tab_shortcut(0)
+		Audio.play_sfx_id("generic_click")
+		return
+
+	if developer_console.visible:
+		return
+
+	if Input.is_action_just_pressed("window_mode_toggle"):
+		SignalBus.display_mode_settings_toggle.emit()
+		Audio.play_sfx_id("generic_click")
+		return
+
+	if Input.is_action_just_pressed("language_toggle"):
+		Scene.change_language()
+		Audio.play_sfx_id("generic_click")
+		return
+
+	if Input.is_action_just_pressed("master_music_toggle"):
+		if !Input.is_action_just_pressed("swap_music_next"):
+			var id: String = "master"
+			var toggle: bool = SaveFile.audio_settings[id]["toggle"]
+			var value: float = SaveFile.audio_settings[id]["value"]
+			SignalBus.audio_settings_update.emit(not toggle, value, id)
+			Audio.play_sfx_id("generic_click")
+			return
+
+
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and not developer_console.visible:
+	if developer_console.visible:
+		return
+
+	if _is_paused_by_animations() or soul_sprite.visible:
+		return
+
+	if event is InputEventKey:
 		var tab_shortcut: int = -1
 		for key_shortcut: int in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
 			for shortcuts: Array in [SHORTCUTS_1, SHORTCUTS_2]:
@@ -56,9 +111,11 @@ func _input(event: InputEvent) -> void:
 				if Input.is_key_pressed(key) or Input.is_physical_key_pressed(key):
 					tab_shortcut = key_shortcut
 					if Game.PARAMS["debug_logs"]:
-						prints("Shortcut input: ", key, key_shortcut)
+						prints("Shortcut input: ", key, key_shortcut, tab_shortcut)
 		if tab_shortcut != -1:
 			tab_tracker.change_tab_shortcut(tab_shortcut)
+			Audio.play_sfx_id("generic_click")
+			return
 
 
 func _ready() -> void:
@@ -91,7 +148,7 @@ func _initialize() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)  #WINDOW_MODE_WINDOWED)
 
 	cat_sprite_2d.visible = false
 	soul_sprite.visible = false
@@ -134,8 +191,15 @@ func _on_tab_changed(tab_data: TabData) -> void:
 		if Game.PARAMS["heart_screen_shader"]:
 			heart_overlay.visible = true
 	else:
+		if !switch_from_prestige_simple_tween.finished or !switch_to_prestige_simple_tween.finished:
+			return
+
+		prestige_ui.texture_heart.enter_normal_mode()
+		_reset_prestige_ui()
 		prestige_ui.visible = false
 		heart_overlay.visible = false
+		main_ui.visible = true
+		main_ui.modulate.a = 1.0
 
 
 func _on_set_ui_theme(theme: Resource) -> void:
@@ -161,6 +225,7 @@ func _on_switch_from_prestige_simple_tween_end() -> void:
 
 func _on_prestige_cancel() -> void:
 	_reset_prestige_ui()
+
 	prestige_ui.visible = true
 	if Game.PARAMS["heart_screen_shader"]:
 		heart_overlay.visible = true

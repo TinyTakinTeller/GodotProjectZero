@@ -166,7 +166,12 @@ func get_substance_count_by_category(category: String) -> int:
 	for substance_id: String in Resources.substance_datas:
 		var spirit_data: SubstanceData = Resources.substance_datas[substance_id]
 		if spirit_data.get_category_id() == category:
-			count += substances.get(substance_id, 0)
+			var add: int = substances.get(substance_id, 0)
+			if add < 0:
+				push_warning(("Invalid '%s' substance count: " % substance_id) + str(add))
+				add = 0
+				substances[substance_id] = 0
+			count += add
 	return count
 
 
@@ -189,9 +194,8 @@ func get_enemy_ids(save_file_enemy: Dictionary = enemy) -> Array:
 
 func get_enemy_ids_for_option(option: int, save_file_enemy: Dictionary = enemy) -> Array:
 	return save_file_enemy.keys().filter(
-		func(id: String) -> bool: return (
-			id != "level" and get_enemy_option(id, save_file_enemy) == option
-		)
+		func(id: String) -> bool:
+			return id != "level" and get_enemy_option(id, save_file_enemy) == option
 	)
 
 
@@ -304,10 +308,11 @@ func best_prestige_time() -> String:
 
 
 func best_prestige_delta() -> int:
-	return DateTimeUtils.unix_delta(
+	var delta: int = DateTimeUtils.unix_delta(
 		metadata.get("best_prestige_start_timestamp", {}),
 		metadata.get("best_prestige_end_timestamp", {})
 	)
+	return max(1, delta)  # minimum is 1 second
 
 
 func prestige(infinity_count: int) -> void:
@@ -421,7 +426,7 @@ func initialize(save_file_name: String, metadata_name: String) -> void:
 	active_file_name = file_name
 
 	if save_datas.has(save_file_name):
-		var save_data: Dictionary = save_datas[save_file_name]
+		var save_data: Dictionary = (save_datas[save_file_name] as Dictionary).duplicate(true)
 		if save_data != null and !save_data.is_empty():
 			_import_save_data(save_data)
 	elif StringUtils.is_not_empty(metadata_name):
@@ -474,6 +479,16 @@ func _autosave(force: bool = false, silent: bool = false) -> void:
 	var seconds_delta: int = _get_seconds_since_last_autosave()
 	if not force and seconds_delta < AUTOSAVE_SECONDS:
 		return
+
+	var is_main_scene_loaded: bool = false
+	for c in get_tree().get_root().get_children():
+		if c.name.to_lower() == "main":
+			is_main_scene_loaded = true
+	if not is_main_scene_loaded:
+		return
+
+	if resources.get("soul", 0) > 0:
+		return  # stop autosave if in final cutscene
 
 	if not silent:
 		SignalBus.autosave.emit(seconds_delta, AUTOSAVE_SECONDS)

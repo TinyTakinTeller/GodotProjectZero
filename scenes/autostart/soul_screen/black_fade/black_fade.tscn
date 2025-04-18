@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dia4fb2p2xioq"]
+[gd_scene load_steps=5 format=3 uid="uid://dia4fb2p2xioq"]
 
 [ext_resource type="Script" path="res://scenes/autostart/soul_screen/black_fade/black_fade.gd" id="1_v8eqh"]
+[ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_xdrf7"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_jsig5"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32d3w"]
+
 [node name="BlackFade" type="MarginContainer"]
-process_mode = 2
+process_mode = 3
 z_index = 4096
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_xdrf7")
 script = ExtResource("1_v8eqh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -18,15 +22,35 @@ unique_name_in_owner = true
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FadeInTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_jsig5")]
-unique_name_in_owner = true
-target = NodePath("..")
-duration = 3.0
-call_method = "_fade_in_tween"
+[node name="CenterMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="CenterMarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(0.878431, 0, 0.392157, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Existence Terminated"
+
+[node name="Button" type="Button" parent="CenterMarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.878431, 0, 0.392157, 1)
+material = SubResource("ShaderMaterial_32d3w")
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ProgressButton"
+text = "?"
+
+[node name="FadeInTween" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_jsig5")]
+unique_name_in_owner = true
+target = NodePath("..")
+duration = 3.0
+call_method = "_fade_in_tween"

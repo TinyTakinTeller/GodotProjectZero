@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/lacrimosa_arr_mstr_loop.mp3-c3a092e97928ba5f1
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

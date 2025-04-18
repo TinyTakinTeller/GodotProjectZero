@@ -115,7 +115,7 @@ offset_right = 38.0
 offset_bottom = 229.0
 
 [node name="BlackFade" parent="CanvasLayer/Control" instance=ExtResource("7_pbbxw")]
-visible = false
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="Vignette" parent="." instance=ExtResource("7_1mte2")]
