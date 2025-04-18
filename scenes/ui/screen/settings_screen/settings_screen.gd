@@ -98,13 +98,15 @@ func _set_ui_labels() -> void:
 	display_title_label.text = Locale.get_ui_label("display_title")
 	watermark_label.text = "%s : %s" % [Locale.get_ui_label("watermark_title"), WATERMARK_URL]
 
-	#if not OS.has_feature("web"):
-	watermark_label.visible = false
+	watermark_label.visible = OS.has_feature("web")
 	shortcuts_label.visible = false
 
 	rich_text_label_1.text = _get_credits_1()
 	rich_text_label_2.text = _get_credits_2()
 	rich_text_label_3.text = _get_license_1()
+
+	if not OS.has_feature("web"):
+		%TitleMarginContainerAudio.add_theme_constant_override("margin_top", 20)
 
 
 func _apply_effects() -> void:

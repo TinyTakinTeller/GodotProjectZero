@@ -68,10 +68,11 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="TitleMarginContainerAudio" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/TitleMarginContainerAudio"]
 layout_mode = 2
@@ -182,7 +183,6 @@ layout_mode = 2
 text = "English"
 
 [node name="Watermark" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer"]
-visible = false
 modulate = Color(1, 0, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -192,7 +192,7 @@ size_flags_vertical = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "OFFICIAL GAME PAGE: https://tinytakinteller.itch.io/the-best-game-ever"
 
 [node name="WatermarkButton" type="Button" parent="RootMarginContainer/RootVBoxContainer/SettingsMarginContainer/SettingsVBoxContainer/Watermark"]
