@@ -1535,6 +1535,7 @@ CheckButton/styles/hover = SubResource("49")
 CheckButton/styles/hover_pressed = SubResource("49")
 CheckButton/styles/normal = SubResource("49")
 CheckButton/styles/pressed = SubResource("49")
+FlagButton/base_type = &"ProgressButton"
 HScrollBar/icons/decrement = null
 HScrollBar/icons/decrement_highlight = null
 HScrollBar/icons/increment = null

@@ -14,17 +14,20 @@ const SCENE_MAP: Dictionary = {
 	"end_scene": END_SCENE
 }
 
-
-func change_language() -> void:
-	var index: int = Locale.LOCALES.find(SaveFile.locale)
-	var new_index: int = (index + 1) % Locale.LOCALES.size()
-	var new_locale: String = Locale.LOCALES[new_index]
+func change_language_to(new_locale: String) -> void:
 	if not new_locale in TranslationServer.get_loaded_locales():
 		push_error("Locale not found: %s" % [new_locale])
 		return
 	TranslationServer.set_locale(new_locale)
 	SaveFile.locale = new_locale
 	SignalBus.display_language_updated.emit()
+
+
+func change_language() -> void:
+	var index: int = Locale.LOCALES.find(SaveFile.locale)
+	var new_index: int = (index + 1) % Locale.LOCALES.size()
+	var new_locale: String = Locale.LOCALES[new_index]
+	change_language_to(new_locale)
 
 
 func change_scene(scene_id: String) -> void:

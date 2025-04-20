@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://3lomrkxmxwi2"]
+
+[ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_7024g"]
+[ext_resource type="Script" path="res://scenes/language_selection/language_buttons/language_button_pt/language_button_pt.gd" id="2_it0hf"]
+[ext_resource type="Texture2D" uid="uid://dc3mxx08fk1xt" path="res://assets/flag/pt.png" id="3_38kuy"]
+
+[node name="LanguageButtonPt" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_7024g")
+script = ExtResource("2_it0hf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 4096
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+texture = ExtResource("3_38kuy")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_type_variation = &"ProgressButton"
+theme_override_font_sizes/font_size = 16
+text = "Button
+"

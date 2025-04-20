@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://d4a6sfsyw5jie" path="res://scenes/component/effect/line_effect/line_effect.tscn" id="3_aqdv6"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="4_ybk84"]
 [ext_resource type="PackedScene" uid="uid://vlsdtpdj5gw0" path="res://template/scenes/node/game/spawner_buffer/spawner_buffer.tscn" id="7_b3i14"]
-[ext_resource type="PackedScene" uid="uid://cjscoqpiciat8" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_substance/label_particle_tween_substance.tscn" id="8_n02sk"]
-[ext_resource type="PackedScene" uid="uid://b07gshean130y" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_resource/label_particle_tween_resource.tscn" id="9_rb8lw"]
-[ext_resource type="PackedScene" uid="uid://c1speq0v1dhx2" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_soul/label_particle_tween_soul.tscn" id="10_1ta1j"]
+[ext_resource type="PackedScene" uid="uid://cjscoqpiciat8" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_substance/label_particle_tween_substance.tscn" id="8_n02sk"]
+[ext_resource type="PackedScene" uid="uid://b07gshean130y" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_resource/label_particle_tween_resource.tscn" id="9_rb8lw"]
+[ext_resource type="PackedScene" uid="uid://c1speq0v1dhx2" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_soul/label_particle_tween_soul.tscn" id="10_1ta1j"]
 
 [node name="ProgressButton" type="MarginContainer"]
 anchors_preset = -1

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://3vcjyu7tgdii" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.tscn" id="2_73ey0"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="3_v7344"]
 [ext_resource type="PackedScene" uid="uid://vlsdtpdj5gw0" path="res://template/scenes/node/game/spawner_buffer/spawner_buffer.tscn" id="4_i3pep"]
-[ext_resource type="PackedScene" uid="uid://cjscoqpiciat8" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_substance/label_particle_tween_substance.tscn" id="5_056bl"]
-[ext_resource type="PackedScene" uid="uid://suojpe3fsjng" path="res://template/scenes/node/game/label_particle_tween/label_particle_tween_singularity/label_particle_tween_singularity.tscn" id="6_n3say"]
+[ext_resource type="PackedScene" uid="uid://cjscoqpiciat8" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_substance/label_particle_tween_substance.tscn" id="5_056bl"]
+[ext_resource type="PackedScene" uid="uid://suojpe3fsjng" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_singularity/label_particle_tween_singularity.tscn" id="6_n3say"]
 
 [node name="StarwayScreen" type="MarginContainer"]
 anchors_preset = 15

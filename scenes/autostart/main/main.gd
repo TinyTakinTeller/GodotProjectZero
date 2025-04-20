@@ -42,6 +42,8 @@ var _infinity_count: int = -1
 @onready var soul_sprite: SoulSprite = %SoulSprite
 @onready var developer_console: DeveloperConsole = %DeveloperConsole
 
+@onready var first_time_language_selection: Control = %FirstTimeLanguageSelection
+
 
 func _is_paused_by_animations() -> bool:
 	return (

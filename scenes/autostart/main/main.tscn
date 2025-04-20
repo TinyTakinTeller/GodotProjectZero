@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://k0aqit1ex0lc"]
+[gd_scene load_steps=50 format=3 uid="uid://k0aqit1ex0lc"]
 
 [ext_resource type="Script" path="res://scenes/autostart/main/main.gd" id="1_u1kx3"]
 [ext_resource type="PackedScene" uid="uid://25a0pw7b7nky" path="res://scenes/controller/progress_button_controller/progress_button_controller.tscn" id="2_fcqyg"]
@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://b0iomctf5ruia" path="res://scenes/autostart/main/prestige_ui/prestige_ui.tscn" id="39_5hxeo"]
 [ext_resource type="PackedScene" uid="uid://b75kh4e41777c" path="res://scenes/autostart/main/reborn_ui/reborn_ui.tscn" id="40_cpuij"]
 [ext_resource type="Shader" path="res://resources/shader/cracked_glass/cracked_glass.gdshader" id="41_fakmo"]
+[ext_resource type="PackedScene" uid="uid://cm6aqijuc5f8t" path="res://scenes/language_selection/first_time_language_selection/first_time_language_selection.tscn" id="47_rkebu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pgw6q"]
 shader = ExtResource("37_xggnc")
@@ -341,3 +342,7 @@ call_method = "_enter_simple_tween"
 unique_name_in_owner = true
 target = NodePath("../../..")
 call_method = "_enter_soul_simple_tween"
+
+[node name="FirstTimeLanguageSelection" parent="CanvasLayer" instance=ExtResource("47_rkebu")]
+unique_name_in_owner = true
+visible = false
