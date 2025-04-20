@@ -20,7 +20,8 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 
 [application]
 
-config/name="The Best Game Ever"
+config/name="A Dark Forest"
+config/description="A Dark Forest: Incremental idle horror game"
 config/version="1.4.3"
 run/main_scene="res://scenes/autostart/save_file_picker/save_file_picker.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
