@@ -12,7 +12,6 @@ extends MarginContainer
 
 
 func _ready() -> void:
-	_connect_signals()
 	_load_from_save_file()
 
 
@@ -37,14 +36,5 @@ func _load_from_save_file() -> void:
 #############
 
 
-func _connect_signals() -> void:
-	owner.ready.connect(_on_owner_ready)
-	version_button.button_down.connect(_on_version_button_down)
-
-
 func _on_owner_ready() -> void:
 	theme_toggle_button.toggle()
-
-
-func _on_version_button_down() -> void:
-	Audio.play_sfx("fart", sfx_fart)
