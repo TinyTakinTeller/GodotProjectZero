@@ -24,6 +24,7 @@ idle_audio_stream = ExtResource("10_5odgy")
 combat_audio_stream = ExtResource("9_86iap")
 
 [node name="Audio" type="Node"]
+process_mode = 3
 script = ExtResource("1_7i6rq")
 
 [node name="SfxQueue" parent="." instance=ExtResource("2_bb4fe")]

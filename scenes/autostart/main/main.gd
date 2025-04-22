@@ -62,10 +62,10 @@ func _is_paused_by_animations() -> bool:
 
 
 func _process(_delta: float) -> void:
-	if _is_paused_by_animations() or soul_sprite.visible:
-		return
-
 	if Input.is_action_just_pressed("escape_game"):
+		if _is_paused_by_animations() or soul_sprite.visible:
+			return
+
 		if developer_console.visible:
 			developer_console.visible = false
 		elif tab_tracker.tab_selected_id == "settings":
@@ -154,6 +154,7 @@ func _initialize() -> void:
 
 	cat_sprite_2d.visible = false
 	soul_sprite.visible = false
+	Spawning.force_stop = false  # workaround for changing scene while bullets are presents
 
 
 func _reset_prestige_ui() -> void:
