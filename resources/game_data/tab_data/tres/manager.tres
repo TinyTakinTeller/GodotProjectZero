@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TabData" load_steps=2 format=3 uid="uid://s5dr4mlpfld3"]
 
-[ext_resource type="Script" path="res://resources/game_data/tab_data/tab_data.gd" id="1_gkdxq"]
+[ext_resource type="Script" uid="uid://5cpl6ogd7fnw" path="res://resources/game_data/tab_data/tab_data.gd" id="1_gkdxq"]
 
 [resource]
 script = ExtResource("1_gkdxq")

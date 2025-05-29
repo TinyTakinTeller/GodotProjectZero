@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://cn14p4cnj8jwj"]
 
-[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_2376x"]
+[ext_resource type="Script" uid="uid://d31d78niuw0hh" path="res://resources/game_data/npc_event/npc_event.gd" id="1_2376x"]
 
 [resource]
 script = ExtResource("1_2376x")
 sort_value = 0
 npc_id = "cat"
 id = "cat_talk_A4"
-text = "I shall double your raw resources, say when. Do not wait too long..."
-options = Array[String](["Now", "Never"])
 next_npc_event_id = Array[String](["cat_talk_A4_1", "cat_talk_A4_2"])

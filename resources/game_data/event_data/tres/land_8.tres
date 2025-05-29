@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://cx60is3dctwy1"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_obmfx"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_obmfx"]
 
 [resource]
 script = ExtResource("1_obmfx")
 id = "land_8"
-text = "Vast lands stretch beyond the forest, but I will need a way to navigate them."
 vars = []
 color = Color(0, 0, 0, 1)

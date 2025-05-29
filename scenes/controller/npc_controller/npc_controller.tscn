@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnnw7tt0fonnw"]
 
-[ext_resource type="Script" path="res://scenes/controller/npc_controller/npc_controller.gd" id="1_61e4e"]
+[ext_resource type="Script" uid="uid://c8lo3qxk15yoq" path="res://scenes/controller/npc_controller/npc_controller.gd" id="1_61e4e"]
 
 [node name="NpcController" type="Node"]
 script = ExtResource("1_61e4e")

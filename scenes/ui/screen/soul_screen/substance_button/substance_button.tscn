@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dawlpy0isv1rv"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/soul_screen/substance_button/substance_button.gd" id="1_5rglu"]
+[ext_resource type="Script" uid="uid://b24ssqxemjwtn" path="res://scenes/ui/screen/soul_screen/substance_button/substance_button.gd" id="1_5rglu"]
 
 [node name="SubstanceButton" type="MarginContainer"]
 custom_minimum_size = Vector2(230, 0)

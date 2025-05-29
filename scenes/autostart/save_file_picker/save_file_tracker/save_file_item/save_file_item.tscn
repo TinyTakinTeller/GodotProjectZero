@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn5m0e406mpe"]
 
-[ext_resource type="Script" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_item/save_file_item.gd" id="1_1rx2f"]
+[ext_resource type="Script" uid="uid://bhlpbiutowdtf" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_item/save_file_item.gd" id="1_1rx2f"]
 [ext_resource type="PackedScene" uid="uid://deb5cv2ckp6lg" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_item/save_file_item_section/save_file_item_section.tscn" id="2_yn2ry"]
 
 [node name="SaveFileItem" type="MarginContainer"]

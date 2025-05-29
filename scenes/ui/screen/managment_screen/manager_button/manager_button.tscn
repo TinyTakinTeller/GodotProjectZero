@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://84qyu2m2h55y"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/manager_button/manager_button.gd" id="1_w1awn"]
-[ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="2_7uthi"]
+[ext_resource type="Script" uid="uid://64r8yxuai1tn" path="res://scenes/ui/screen/managment_screen/manager_button/manager_button.gd" id="1_w1awn"]
+[ext_resource type="Script" uid="uid://cnxydj4ti3cow" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="2_7uthi"]
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_fy4is"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="3_1dmc5"]
 [ext_resource type="PackedScene" uid="uid://vlsdtpdj5gw0" path="res://template/scenes/node/game/spawner_buffer/spawner_buffer.tscn" id="5_ftar4"]

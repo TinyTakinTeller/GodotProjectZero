@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://dqa8sm75so6wt"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_xwdtg"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_xwdtg"]
 
 [resource]
 script = ExtResource("1_xwdtg")
 id = "land_4"
-text = "The oaks and pines are standing tall. I should clear an area here."
 vars = []
 color = Color(0, 0, 0, 1)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bauwua6x5pgjh"]
 
-[ext_resource type="Script" path="res://scenes/ui/info_container/info_container.gd" id="1_6ywel"]
+[ext_resource type="Script" uid="uid://cl5e1mu2fvwfn" path="res://scenes/ui/info_container/info_container.gd" id="1_6ywel"]
 [ext_resource type="PackedScene" uid="uid://ccpod48fjrcy1" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_rsr25"]
-[ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_5af5u"]
+[ext_resource type="Script" uid="uid://cnxydj4ti3cow" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_5af5u"]
 
 [node name="InfoContainer" type="MarginContainer"]
 size_flags_horizontal = 3

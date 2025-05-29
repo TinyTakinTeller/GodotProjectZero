@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm6aqijuc5f8t"]
+[gd_scene load_steps=8 format=3 uid="uid://cm6aqijuc5f8t"]
 
 [ext_resource type="PackedScene" uid="uid://dcxp8xufmfab8" path="res://scenes/language_selection/language_buttons/language_button_fr/language_button_fr.tscn" id="1_5r684"]
-[ext_resource type="Script" path="res://scenes/language_selection/first_time_language_selection/first_time_language_selection.gd" id="1_xi5un"]
+[ext_resource type="Script" uid="uid://ccxatpeeptoqt" path="res://scenes/language_selection/first_time_language_selection/first_time_language_selection.gd" id="1_xi5un"]
 [ext_resource type="PackedScene" uid="uid://bn3nhhy3oavfx" path="res://scenes/language_selection/language_buttons/language_button_pl/language_button_pl.tscn" id="2_xgub0"]
 [ext_resource type="PackedScene" uid="uid://3lomrkxmxwi2" path="res://scenes/language_selection/language_buttons/language_button_pt/language_button_pt.tscn" id="3_e07qo"]
 [ext_resource type="PackedScene" uid="uid://d1flyjv0cwjvo" path="res://scenes/language_selection/language_buttons/language_button_zh/language_button_zh.tscn" id="4_hccpw"]
+[ext_resource type="PackedScene" uid="uid://bhm1eo4ya0rwi" path="res://scenes/language_selection/language_buttons/language_button_ru/language_button_ru.tscn" id="4_hu3iq"]
 [ext_resource type="PackedScene" uid="uid://bfomibdox8gt6" path="res://scenes/language_selection/language_buttons/language_button_en/language_button_en.tscn" id="5_vtfv6"]
 
 [node name="FirstTimeLanguageSelection" type="Control"]
@@ -60,6 +61,10 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="LanguageButtonRu" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer1" instance=ExtResource("4_hu3iq")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
@@ -72,6 +77,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LanguageButtonEn" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_vtfv6")]
+[node name="LanguageButtonEn" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_vtfv6")]
 unique_name_in_owner = true
 layout_mode = 2

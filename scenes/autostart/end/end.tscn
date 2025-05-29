@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://cq687fuy5ye8w"]
 
-[ext_resource type="Script" path="res://scenes/autostart/end/end.gd" id="1_f8l81"]
+[ext_resource type="Script" uid="uid://f2caqcvo40na" path="res://scenes/autostart/end/end.gd" id="1_f8l81"]
 [ext_resource type="PackedScene" uid="uid://ixafbm8gbppq" path="res://scenes/autostart/end/player/player_character_body_3d.tscn" id="2_0xs4o"]
-[ext_resource type="Shader" path="res://resources/shader/starry_sky/starry_sky.gdshader" id="2_fybr7"]
+[ext_resource type="Shader" uid="uid://c3mv8dwans70s" path="res://resources/shader/starry_sky/starry_sky.gdshader" id="2_fybr7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0uic"]
 shader = ExtResource("2_fybr7")

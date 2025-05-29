@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SubstanceData" load_steps=2 format=3 uid="uid://k0a44dala0t0"]
 
-[ext_resource type="Script" path="res://resources/game_data/substance_data/substance_data.gd" id="1_ik4mg"]
+[ext_resource type="Script" uid="uid://bkyyyja1ydl03" path="res://resources/game_data/substance_data/substance_data.gd" id="1_ik4mg"]
 
 [resource]
 script = ExtResource("1_ik4mg")

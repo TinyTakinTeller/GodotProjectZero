@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc1dbypa7wkta"]
 
-[ext_resource type="Script" path="res://scenes/ui/tab_tracker/tab_tracker_item/tab_tracker_item.gd" id="1_wf3dl"]
+[ext_resource type="Script" uid="uid://cafii7kadqi7s" path="res://scenes/ui/tab_tracker/tab_tracker_item/tab_tracker_item.gd" id="1_wf3dl"]
 [ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="2_00ksq"]
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_4406c"]
 

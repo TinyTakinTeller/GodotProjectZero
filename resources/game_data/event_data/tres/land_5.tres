@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://ddheuvetlyvtp"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_dl7e6"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_dl7e6"]
 
 [resource]
 script = ExtResource("1_dl7e6")
 id = "land_5"
-text = "A mountain range stretches near the forest. I wonder if I can exploit that."
 vars = []
 color = Color(0, 0, 0, 1)

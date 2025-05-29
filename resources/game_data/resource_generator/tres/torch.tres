@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://fup8ux1itksr"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_emro8"]
+[ext_resource type="Script" uid="uid://dnrrcueojft5i" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_emro8"]
 [ext_resource type="AudioStream" uid="uid://dq4qasvmgc4lp" path="res://assets/audio/indie_friendly_sounds_survival/_resource/fire_burning_1_6.wav" id="2_ck1wq"]
 
 [resource]

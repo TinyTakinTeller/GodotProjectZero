@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://c6dbmnrtj7nr7"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qto8u"]
+[ext_resource type="Script" uid="uid://dnrrcueojft5i" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qto8u"]
 [ext_resource type="AudioStream" uid="uid://cqxgeasmdb2o0" path="res://assets/audio/indie_friendly_sounds_survival/_resource/water_splash_1_1.wav" id="2_h2auj"]
 [ext_resource type="AudioStream" uid="uid://c83k2tsvr8050" path="res://assets/audio/indie_friendly_sounds_survival/_resource/water_drop_01.wav" id="3_vhuw2"]
 

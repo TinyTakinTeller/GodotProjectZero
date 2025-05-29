@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1y5xyx63u3w0"]
 
-[ext_resource type="Script" path="res://scenes/ui/developer_console/developer_console.gd" id="1_26111"]
+[ext_resource type="Script" uid="uid://cqhimmwflb3nh" path="res://scenes/ui/developer_console/developer_console.gd" id="1_26111"]
 
 [node name="DeveloperConsole" type="Control"]
 layout_mode = 3

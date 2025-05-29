@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2qho5dskl5rr"]
 
-[ext_resource type="Script" path="res://scenes/autostart/soul_screen/soul_button/soul_button.gd" id="1_6vxxt"]
+[ext_resource type="Script" uid="uid://bd608av4q7cev" path="res://scenes/autostart/soul_screen/soul_button/soul_button.gd" id="1_6vxxt"]
 
 [node name="SoulButton" type="MarginContainer"]
 anchors_preset = 8

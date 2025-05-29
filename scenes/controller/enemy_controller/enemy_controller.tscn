@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bltskwx6etd24"]
 
-[ext_resource type="Script" path="res://scenes/controller/enemy_controller/enemy_controller.gd" id="1_76p5f"]
+[ext_resource type="Script" uid="uid://42wix4g0id4" path="res://scenes/controller/enemy_controller/enemy_controller.gd" id="1_76p5f"]
 
 [node name="EnemyController" type="Node"]
 script = ExtResource("1_76p5f")

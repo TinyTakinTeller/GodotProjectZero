@@ -1,14 +1,12 @@
 [gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://bjcfj30qqyoj"]
 
-[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_uxfkx"]
+[ext_resource type="Script" uid="uid://yn8lterr725j" path="res://resources/game_data/worker_role/worker_role.gd" id="1_uxfkx"]
 
 [resource]
 script = ExtResource("1_uxfkx")
 order = 3
 sort_value = 14
 id = "iron_miner"
-title = ""
-flavor = "Deep down in the caverns are sparkly rocks."
 produce = {
 "iron_ore": 1
 }

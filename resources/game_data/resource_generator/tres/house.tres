@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://bs8c8it6f6cs8"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_t0567"]
+[ext_resource type="Script" uid="uid://dnrrcueojft5i" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_t0567"]
 [ext_resource type="AudioStream" uid="uid://b5bpgo7pkycuj" path="res://assets/audio/indie_friendly_sounds_survival/_resource/gate_close_3_2.wav" id="2_1btfv"]
 
 [resource]

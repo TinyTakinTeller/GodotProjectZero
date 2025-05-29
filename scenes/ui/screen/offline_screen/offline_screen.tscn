@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5cknmluch23j"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/offline_screen/offline_screen.gd" id="1_m7kv1"]
+[ext_resource type="Script" uid="uid://dgb1njfrxsfw3" path="res://scenes/ui/screen/offline_screen/offline_screen.gd" id="1_m7kv1"]
 
 [node name="OfflineScreen" type="MarginContainer"]
 anchors_preset = 15

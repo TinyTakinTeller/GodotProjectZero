@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://42merho5y8ch"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_ly330"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_ly330"]
 
 [resource]
 script = ExtResource("1_ly330")
 id = "land_9"
-text = "It is exhausting to explore on my own. Sending some people instead sounds like an idea."
 vars = []
 color = Color(0, 0, 0, 1)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cy8l70tvpbis8"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/world_screen/experience_tracker/experience_tracker.gd" id="1_ummuh"]
+[ext_resource type="Script" uid="uid://cp8wpuih7m6v8" path="res://scenes/ui/screen/world_screen/experience_tracker/experience_tracker.gd" id="1_ummuh"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_dnavx"]
 
 [node name="ExperienceTracker" type="MarginContainer"]

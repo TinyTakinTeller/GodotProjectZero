@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://25a0pw7b7nky"]
 
-[ext_resource type="Script" path="res://scenes/controller/progress_button_controller/progress_button_controller.gd" id="1_blr8q"]
+[ext_resource type="Script" uid="uid://cdiemkt6yadnp" path="res://scenes/controller/progress_button_controller/progress_button_controller.gd" id="1_blr8q"]
 
 [node name="ProgressButtonController" type="Node"]
 script = ExtResource("1_blr8q")

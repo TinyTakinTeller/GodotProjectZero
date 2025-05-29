@@ -1,15 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://djoa5uwqiadsi"]
+[gd_scene load_steps=25 format=3 uid="uid://djoa5uwqiadsi"]
 
-[ext_resource type="Script" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_y1qmf"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_hxj8a"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="3_7xpys"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="4_03jl0"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="4_g86m3"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/ObjectProps.gd" id="5_f3tc5"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletNodeProps.gd" id="6_2khcu"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHInstanceLister.gd" id="8_cv4tu"]
-[ext_resource type="Texture2D" path="res://icon.png" id="9_o8nap"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletNode.gd" id="10_ld65i"]
+[ext_resource type="Script" uid="uid://ceu0t1o8rlpfg" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_y1qmf"]
+[ext_resource type="Script" uid="uid://ofygcdppyabw" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_hxj8a"]
+[ext_resource type="Script" uid="uid://ylxissqqg68t" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="3_7xpys"]
+[ext_resource type="Script" uid="uid://dn1blson5fe0w" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="4_03jl0"]
+[ext_resource type="Script" uid="uid://b1qa8ohdkpad1" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="4_g86m3"]
+[ext_resource type="Script" uid="uid://ddtwgi6c3ygam" path="res://addons/BulletUpHell/Bullet/ObjectProps.gd" id="5_f3tc5"]
+[ext_resource type="Script" uid="uid://dhl31orloyc83" path="res://addons/BulletUpHell/Bullet/BulletNodeProps.gd" id="6_2khcu"]
+[ext_resource type="Script" uid="uid://85xfujuo061u" path="res://addons/BulletUpHell/Nodes/BuHInstanceLister.gd" id="8_cv4tu"]
+[ext_resource type="Script" uid="uid://ctletcbiw67tx" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="8_lthas"]
+[ext_resource type="Script" uid="uid://dod0xpcvhx66x" path="res://addons/BulletUpHell/Nodes/BuHBulletNode.gd" id="10_ld65i"]
+
+[sub_resource type="Resource" id="Resource_siapc"]
+metadata/__load_path__ = "res://icon.png"
 
 [sub_resource type="Animation" id="Animation_pse3a"]
 resource_name = "Despawn"
@@ -43,131 +46,72 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b0f8f"]
 _data = {
-"Despawn": SubResource("Animation_pse3a")
+&"Despawn": SubResource("Animation_pse3a")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byy2k"]
 radius = 20.78
+
+[sub_resource type="Resource" id="Resource_70bc3"]
+metadata/__load_path__ = "res://icon.png"
 
 [sub_resource type="Curve2D" id="Curve2D_dvw8h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1ifpe"]
 resource_name = "PatternCircle"
 script = ExtResource("3_7xpys")
-bullet = "1"
-nbr = 5
 radius = 100.0
 angle_total = 6.28319
-angle_decal = 0
-pattern_angle = 0.0
+angle_decal = 0.0
 symmetric = false
 center = 0
+symmetry_type = 0
+bullet = "1"
+nbr = 5
 iterations = -1
-follows_parent = false
+pattern_angle = 0.0
+pattern_angle_target = NodePath("")
+pattern_angle_mouse = false
 forced_angle = 0.0
 forced_target = NodePath("")
+forced_lookat_mouse = false
 forced_pattern_lookat = true
 cooldown_stasis = false
 cooldown_spawn = 5.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
-wait_latence = 0
 wait_tween_momentum = 0
 wait_tween_length = 0.0
 wait_tween_time = 0.0
-layer_nbr = 1
-layer_cooldown_spawn = 0.0
-layer_pos_offset = 0.0
-layer_speed_offset = 0.0
-layer_angle_offset = 0.0
-r_randomisation_chances = 1.0
-r_radius_choice = ""
-r_radius_variation = Vector3(0, 0, 0)
-r_angle_total_choice = ""
-r_angle_total_variation = Vector3(0, 0, 0)
-r_angle_decal_choice = ""
-r_angle_decal_variation = Vector3(0, 0, 0)
-r_symmetry_chances = 0.0
-r_bullet_choice = ""
-r_bullet_nbr_choice = ""
-r_bullet_nbr_variation = Vector3(0, 0, 0)
-r_pattern_angle_choice = ""
-r_pattern_angle_variation = Vector3(0, 0, 0)
-r_infinite_iter_chances = 0.0
-r_iterations_choice = ""
-r_iterations_variation = Vector3(0, 0, 0)
-r_forced_angle_choice = ""
-r_forced_angle_variation = Vector3(0, 0, 0)
-r_forced_target_choice = []
-r_stasis_chances = 0.0
-r_cooldown_spawn_choice = ""
-r_cooldown_spawn_variation = Vector3(0, 0, 0)
-r_cooldown_shoot_choice = ""
-r_cooldown_shoot_variation = Vector3(0, 0, 0)
-r_cooldown_n_spawn_choice = ""
-r_cooldown_n_spawn_variation = Vector3(0, 0, 0)
-r_cooldown_n_shoot_choice = ""
-r_cooldown_n_shoot_variation = Vector3(0, 0, 0)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_agnmt"]
 resource_name = "PatternCircle"
 script = ExtResource("3_7xpys")
-bullet = "2"
-nbr = 30
 radius = 100.0
 angle_total = 6.28319
-angle_decal = 0
-pattern_angle = 0.0
+angle_decal = 0.0
 symmetric = false
 center = 0
+symmetry_type = 0
+bullet = "2"
+nbr = 30
 iterations = -1
-follows_parent = false
+pattern_angle = 0.0
+pattern_angle_target = NodePath("")
+pattern_angle_mouse = false
 forced_angle = 0.0
 forced_target = NodePath("")
+forced_lookat_mouse = false
 forced_pattern_lookat = true
 cooldown_stasis = false
 cooldown_spawn = 5.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
-wait_latence = 0
 wait_tween_momentum = 0
 wait_tween_length = 0.0
 wait_tween_time = 0.0
-layer_nbr = 1
-layer_cooldown_spawn = 0.0
-layer_pos_offset = 0.0
-layer_speed_offset = 0.0
-layer_angle_offset = 0.0
-r_randomisation_chances = 1.0
-r_radius_choice = ""
-r_radius_variation = Vector3(0, 0, 0)
-r_angle_total_choice = ""
-r_angle_total_variation = Vector3(0, 0, 0)
-r_angle_decal_choice = ""
-r_angle_decal_variation = Vector3(0, 0, 0)
-r_symmetry_chances = 0.0
-r_bullet_choice = ""
-r_bullet_nbr_choice = ""
-r_bullet_nbr_variation = Vector3(0, 0, 0)
-r_pattern_angle_choice = ""
-r_pattern_angle_variation = Vector3(0, 0, 0)
-r_infinite_iter_chances = 0.0
-r_iterations_choice = ""
-r_iterations_variation = Vector3(0, 0, 0)
-r_forced_angle_choice = ""
-r_forced_angle_variation = Vector3(0, 0, 0)
-r_forced_target_choice = []
-r_stasis_chances = 0.0
-r_cooldown_spawn_choice = ""
-r_cooldown_spawn_variation = Vector3(0, 0, 0)
-r_cooldown_shoot_choice = ""
-r_cooldown_shoot_variation = Vector3(0, 0, 0)
-r_cooldown_n_spawn_choice = ""
-r_cooldown_n_spawn_variation = Vector3(0, 0, 0)
-r_cooldown_n_shoot_choice = ""
-r_cooldown_n_shoot_variation = Vector3(0, 0, 0)
 
 [sub_resource type="Curve2D" id="Curve2D_qwdmn"]
 
@@ -180,7 +124,6 @@ groups = PackedStringArray()
 overwrite_groups = false
 trigger_container = ""
 trigger_wait_for_shot = true
-r_trigger_choice = ""
 
 [sub_resource type="Curve" id="Curve_8bvm8"]
 
@@ -191,15 +134,13 @@ r_trigger_choice = ""
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_gqvqb"]
 script = ExtResource("6_2khcu")
 instance_id = "BulletNode"
+overwrite_groups = false
+anim_more = Array[ExtResource("8_lthas")]([])
+damage = 1.0
 speed = 100.0
 scale = 0.5
 angle = -0.5286
-groups = []
-overwrite_groups = false
-anim_idle_sfx = -1
-anim_spawn_sfx = -1
-anim_waiting_sfx = -1
-anim_delete_sfx = -1
+groups = PackedStringArray()
 spec_bounces = 0
 spec_no_collision = false
 spec_modulate = SubResource("Gradient_jx7uk")
@@ -220,46 +161,46 @@ trigger_container = ""
 trigger_wait_for_shot = true
 homing_type = 0
 homing_target = NodePath("")
-homing_steer = 0
-homing_time_start = 0
-homing_duration = 999
+homing_steer = 0.0
+homing_time_start = 0.0
+homing_duration = 999.0
 scale_multi_iterations = 0
 scale_multiplier = SubResource("Curve_2uh4i")
-scale_multi_scale = 1
+scale_multi_scale = 1.0
 r_randomisation_chances = 1.0
-r_speed_choice = ""
+r_speed_choice = PackedFloat32Array()
 r_speed_variation = Vector3(0, 0, 0)
-r_scale_choice = ""
+r_scale_choice = PackedFloat32Array()
 r_scale_variation = Vector3(0, 0, 0)
-r_angle_choice = ""
+r_angle_choice = PackedFloat32Array()
 r_angle_variation = Vector3(0, 0, 0)
 r_group_choice = []
-r_bounce_choice = ""
+r_bounce_choice = PackedInt32Array()
 r_bounce_variation = Vector3(0, 0, 0)
 r_no_coll_chances = 0.0
 r_modulate_variation = Vector3(0, 0, 0)
 r_trail_length_variation = Vector3(0, 0, 0)
 r_trail_color_variation = Vector3(0, 0, 0)
 r_rotating_variation = Vector3(0, 0, 0)
-r_death_after_choice = ""
+r_death_after_choice = PackedFloat32Array()
 r_death_after_variation = Vector3(0, 0, 0)
 r_death_outside_chances = 0.0
-r_dir_equation_choice = ""
+r_dir_equation_choice = PackedStringArray()
 r_curve_choice = []
 r_speed_multi_curve_choice = []
 r_speed_multi_iter_variation = Vector3(0, 0, 0)
 r_speed_multi_scale_variation = Vector3(0, 0, 0)
-r_trigger_choice = ""
+r_trigger_choice = PackedStringArray()
 r_wait_for_shot_chances = 0.0
 r_homing_target_choice = []
-r_special_target_choice = ""
-r_group_target_choice = ""
-r_pos_target_choice = ""
-r_steer_choice = ""
+r_special_target_choice = PackedStringArray()
+r_group_target_choice = PackedStringArray()
+r_pos_target_choice = PackedVector2Array()
+r_steer_choice = PackedFloat32Array()
 r_steer_variation = Vector3(0, 0, 0)
-r_homing_delay_choice = ""
+r_homing_delay_choice = PackedFloat32Array()
 r_homing_delay_variation = Vector3(0, 0, 0)
-r_homing_dur_choice = ""
+r_homing_dur_choice = PackedFloat32Array()
 r_homing_dur_variation = Vector3(0, 0, 0)
 r_scale_multi_curve_choice = []
 r_scale_multi_iter_variation = Vector3(0, 0, 0)
@@ -272,7 +213,7 @@ script = ExtResource("1_y1qmf")
 script = ExtResource("8_cv4tu")
 
 [node name="InstanceExample" type="Sprite2D" parent="InstanceLister"]
-texture = ExtResource("9_o8nap")
+texture = SubResource("Resource_siapc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InstanceLister/InstanceExample"]
 autoplay = "Despawn"
@@ -290,7 +231,7 @@ shape = SubResource("CircleShape2D_byy2k")
 
 [node name="Icon" type="Sprite2D" parent="InstanceLister/BulletNode"]
 position = Vector2(-1, 3)
-texture = ExtResource("9_o8nap")
+texture = SubResource("Resource_70bc3")
 
 [node name="Patterns" type="Node2D" parent="."]
 

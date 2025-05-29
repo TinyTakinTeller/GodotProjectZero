@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://kjw20p0tptq0"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_sg8el"]
+[ext_resource type="Script" uid="uid://dnrrcueojft5i" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_sg8el"]
 
 [resource]
 script = ExtResource("1_sg8el")
+order = 0
+color = Color(0, 0, 0, 1)
 sort_value = 103
+sort_value_override = 0.0
 id = "shovel"
 amount = 1
 cooldown = 100.0
@@ -14,12 +17,9 @@ costs = {
 "wood": 4
 }
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
-label = "Craft Shovel"
-title = "Shovel"
-flavor = "Never enough clay, better start digging."
 hidden = true
 max_amount = 1
-max_flavor = "Now we just need a knight."
 column = 1
-display_name = ""
+dynamic_efficiency_id = ""

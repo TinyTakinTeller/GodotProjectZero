@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://cgy7hkdoog7iq"]
 
-[ext_resource type="Script" path="res://resources/game_data/cost_function/exponential/exponential.gd" id="1_16b4s"]
+[ext_resource type="Script" uid="uid://lq7m5nh1y1hb" path="res://resources/game_data/cost_function/exponential/exponential.gd" id="1_16b4s"]
 
 [resource]
 script = ExtResource("1_16b4s")

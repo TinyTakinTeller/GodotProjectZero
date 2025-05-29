@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dic246sx4xjf6"]
 
-[ext_resource type="Script" path="res://scenes/ui/version_container/toggle_button/toggle_button.gd" id="1_eogsc"]
+[ext_resource type="Script" uid="uid://7yta0jbwqdsy" path="res://scenes/ui/version_container/toggle_button/toggle_button.gd" id="1_eogsc"]
 
 [node name="ToggleButton" type="MarginContainer"]
 size_flags_horizontal = 4

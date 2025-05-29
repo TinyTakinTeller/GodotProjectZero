@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bp61l7vkkscuw"]
 
-[ext_resource type="Script" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
+[ext_resource type="Script" uid="uid://c0iqykur7f3bf" path="res://global/autoload/audio/audio.gd" id="1_7i6rq"]
 [ext_resource type="PackedScene" uid="uid://f1stqtkpi6rl" path="res://global/autoload/audio/audio_queue/audio_queue.tscn" id="2_bb4fe"]
 [ext_resource type="PackedScene" uid="uid://bu2l4l0jhesyw" path="res://global/autoload/audio/sfx_map/sfx_map.tscn" id="3_4nox4"]
 [ext_resource type="PackedScene" uid="uid://cragwwd3j3bqt" path="res://global/autoload/audio/audio_player/audio_player.tscn" id="4_gols3"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://tksoficve1me" path="res://assets/audio/skyler_newsome/forest_arr_mstr_loop.mp3" id="6_egdi5"]
 [ext_resource type="AudioStream" uid="uid://b5ad2ujlpx4s8" path="res://assets/audio/joseph_philip_burke/forest_song_compressed.mp3" id="7_ompd1"]
 [ext_resource type="AudioStream" uid="uid://cjhw543r57cxo" path="res://assets/audio/pixabay/junipersona/to_the_death.mp3" id="8_2pugy"]
-[ext_resource type="Script" path="res://resources/songs/song.gd" id="8_tgyec"]
+[ext_resource type="Script" uid="uid://dww2fx4bd66wa" path="res://resources/songs/song.gd" id="8_tgyec"]
 [ext_resource type="AudioStream" uid="uid://b44xi3ebx4ju3" path="res://assets/audio/freemusicarchive_org/universfield/corpse_rot/corpse_rot.mp3" id="9_86iap"]
 [ext_resource type="AudioStream" uid="uid://blrw2u3jb1fbm" path="res://assets/audio/freemusicarchive_org/universfield/criminal_district/criminal_district.mp3" id="10_5odgy"]
 

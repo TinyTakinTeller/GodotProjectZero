@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://r4yg2jm7x4qq"]
 
-[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_8m2lv"]
+[ext_resource type="Script" uid="uid://d31d78niuw0hh" path="res://resources/game_data/npc_event/npc_event.gd" id="1_8m2lv"]
 
 [resource]
 script = ExtResource("1_8m2lv")
 sort_value = 0
 npc_id = "cat"
 id = "cat_peek"
-text = ""
-options = Array[String]([])
-next_npc_event_id = ""
+next_npc_event_id = Array[String]([])

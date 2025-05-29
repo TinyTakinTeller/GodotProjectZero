@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://de62ku6qpkfgg"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_eskfw"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_eskfw"]
 
 [resource]
 script = ExtResource("1_eskfw")
 id = "zero"
-text = "The world is dark and empty..."
 vars = []
 color = Color(0.878431, 0, 0.392157, 1)

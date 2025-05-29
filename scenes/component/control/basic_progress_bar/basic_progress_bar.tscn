@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3vcjyu7tgdii"]
 
-[ext_resource type="Script" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.gd" id="1_r6l1i"]
+[ext_resource type="Script" uid="uid://cny30akw5llir" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.gd" id="1_r6l1i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ogm0g"]
 

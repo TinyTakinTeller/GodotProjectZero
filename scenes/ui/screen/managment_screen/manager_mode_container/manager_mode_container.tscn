@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dj262a5wao0t7"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/manager_mode_container/manager_mode_container.gd" id="1_g4brk"]
+[ext_resource type="Script" uid="uid://cp5ujwum0d06x" path="res://scenes/ui/screen/managment_screen/manager_mode_container/manager_mode_container.gd" id="1_g4brk"]
 
 [node name="ManagerModeContainer" type="MarginContainer"]
 size_flags_horizontal = 4

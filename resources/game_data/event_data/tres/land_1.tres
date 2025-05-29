@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://8i6fe4fikh0v"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_yv87u"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_yv87u"]
 
 [resource]
 script = ExtResource("1_yv87u")
 id = "land_1"
-text = "There is a pleasant forest nearby, it smells like pine."
 vars = []
 color = Color(0, 0, 0, 1)

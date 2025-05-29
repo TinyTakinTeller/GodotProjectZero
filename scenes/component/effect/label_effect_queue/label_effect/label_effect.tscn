@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://7jxqko2b2kal"]
 
-[ext_resource type="Script" path="res://scenes/component/effect/label_effect_queue/label_effect/label_effect.gd" id="1_1mfsl"]
+[ext_resource type="Script" uid="uid://bj3d202b4y48b" path="res://scenes/component/effect/label_effect_queue/label_effect/label_effect.gd" id="1_1mfsl"]
 [ext_resource type="Material" uid="uid://bipuwgonuukev" path="res://resources/particle/resource_acquired_particle.tres" id="2_kw0de"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fgbql"]

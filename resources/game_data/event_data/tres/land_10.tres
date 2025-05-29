@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://bo0jl3ecuj3s4"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_4uahv"]
+[ext_resource type="Script" uid="uid://choh5utt53rqj" path="res://resources/game_data/event_data/event_data.gd" id="1_4uahv"]
 
 [resource]
 script = ExtResource("1_4uahv")
 id = "land_10"
-text = "There is coal in the rocky mountain area. Fortune has placed it right next to our settlement."
 vars = []
 color = Color(0, 0, 0, 1)

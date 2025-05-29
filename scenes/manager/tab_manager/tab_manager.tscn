@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctmnwgwxqwhd4"]
 
-[ext_resource type="Script" path="res://scenes/manager/tab_manager/tab_manager.gd" id="1_5pq0v"]
+[ext_resource type="Script" uid="uid://c7m6bn0dac34a" path="res://scenes/manager/tab_manager/tab_manager.gd" id="1_5pq0v"]
 
 [node name="TabManager" type="Node"]
 script = ExtResource("1_5pq0v")

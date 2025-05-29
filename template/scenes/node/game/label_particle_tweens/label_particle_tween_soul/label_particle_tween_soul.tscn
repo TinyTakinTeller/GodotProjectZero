@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1speq0v1dhx2"]
 
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_8d8mm"]
-[ext_resource type="Script" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_soul/label_particle_tween_soul.gd" id="2_nxs5m"]
+[ext_resource type="Script" uid="uid://e7n7n60n3u7g" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_soul/label_particle_tween_soul.gd" id="2_nxs5m"]
 [ext_resource type="PackedScene" uid="uid://b6hkdnclxtdfq" path="res://template/scenes/component/tween/particle_tween/particle_tween.tscn" id="3_6aeeq"]
 
 [node name="LabelParticleTweenSoul" type="Label"]

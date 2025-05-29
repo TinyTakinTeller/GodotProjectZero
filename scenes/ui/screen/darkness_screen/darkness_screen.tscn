@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://ch7uxqklej1h6"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/darkness_screen.gd" id="1_1yww0"]
+[ext_resource type="Script" uid="uid://cfd61t1kd27g3" path="res://scenes/ui/screen/darkness_screen/darkness_screen.gd" id="1_1yww0"]
 [ext_resource type="PackedScene" uid="uid://depe0hvgcbpoj" path="res://scenes/ui/screen/darkness_screen/darkness_mode_container/darkness_mode_container.tscn" id="2_0tk50"]
 [ext_resource type="PackedScene" uid="uid://ccpod48fjrcy1" path="res://scenes/component/control/label/label_shake/label_shake.tscn" id="2_juuhi"]
-[ext_resource type="Shader" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_pwkjq"]
+[ext_resource type="Shader" uid="uid://din5fy28m72b4" path="res://resources/shader/wiggle/wiggle.gdshader" id="2_pwkjq"]
 [ext_resource type="PackedScene" uid="uid://d02um03stnk8y" path="res://scenes/ui/screen/darkness_screen/enemy/enemy_texture/enemy_texture.tscn" id="3_hlysm"]
 [ext_resource type="PackedScene" uid="uid://j5lcc7v7q03g" path="res://scenes/ui/screen/darkness_screen/enemy/enemy_progress_bar/enemy_progress_bar.tscn" id="4_jk10o"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="6_q4ifr"]

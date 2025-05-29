@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct7wm7cco1cpm"]
 
-[ext_resource type="Script" path="res://scenes/ui/event_tracker/event_tracker.gd" id="1_ig3bo"]
+[ext_resource type="Script" uid="uid://buyhapgwnp75f" path="res://scenes/ui/event_tracker/event_tracker.gd" id="1_ig3bo"]
 [ext_resource type="PackedScene" uid="uid://d362a3u5u0np5" path="res://scenes/ui/event_tracker/event_tracker_item/event_tracker_item.tscn" id="1_sxvwh"]
 
 [node name="EventTracker" type="MarginContainer"]

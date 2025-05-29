@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1aukxlmjun2b"]
 
-[ext_resource type="Script" path="res://scenes/autostart/save_file_picker/save_file_picker.gd" id="1_kcqmi"]
+[ext_resource type="Script" uid="uid://djql56ot1m6hc" path="res://scenes/autostart/save_file_picker/save_file_picker.gd" id="1_kcqmi"]
 [ext_resource type="PackedScene" uid="uid://c7vond3ba2425" path="res://scenes/ui/save_file_modal/save_file_modal.tscn" id="3_wirjs"]
 [ext_resource type="PackedScene" uid="uid://cacyvnvhq6xau" path="res://scenes/autostart/save_file_picker/save_file_tracker/save_file_tracker.tscn" id="3_yhfy1"]
 

@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://ceswj5mrcbhti"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_2gmhq"]
+[ext_resource type="Script" uid="uid://dnrrcueojft5i" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_2gmhq"]
 
 [resource]
 script = ExtResource("1_2gmhq")
+order = 0
+color = Color(0, 0, 0, 1)
 sort_value = 0
+sort_value_override = 0.0
 id = "worker"
 amount = 1
 cooldown = 0.0
@@ -12,11 +15,7 @@ costs = {}
 cost_scales = {}
 worker_costs = {}
 random_drops = {}
-label = "-"
-title = "-"
-flavor = "-"
 hidden = false
 max_amount = -1
-max_flavor = ""
 column = 0
-display_name = "Peasant"
+dynamic_efficiency_id = ""

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dia4fb2p2xioq"]
 
-[ext_resource type="Script" path="res://scenes/autostart/soul_screen/black_fade/black_fade.gd" id="1_v8eqh"]
+[ext_resource type="Script" uid="uid://b27ih3s67xf21" path="res://scenes/autostart/soul_screen/black_fade/black_fade.gd" id="1_v8eqh"]
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_xdrf7"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="2_jsig5"]
 

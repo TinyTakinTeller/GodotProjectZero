@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d02um03stnk8y"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/enemy/enemy_texture/enemy_texture.gd" id="1_odbx0"]
+[ext_resource type="Script" uid="uid://dhq8dbevxhx0g" path="res://scenes/ui/screen/darkness_screen/enemy/enemy_texture/enemy_texture.gd" id="1_odbx0"]
 [ext_resource type="PackedScene" uid="uid://dfvvkc01me6hk" path="res://scenes/component/control/texture/texture_shake/texture_shake.tscn" id="2_4vkcw"]
 [ext_resource type="PackedScene" uid="uid://3aw0ib2j5hx5" path="res://scenes/component/control/texture/texture_rgb_offset/texture_rgb_offset.tscn" id="3_mnpv7"]
 [ext_resource type="PackedScene" uid="uid://crps6q62tt20h" path="res://scenes/component/control/texture/texture_pixel_explosion/texture_pixel_explosion.tscn" id="4_7rtxw"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://bi672vq7s2a5f"]
 
-[ext_resource type="Script" path="res://resources/game_data/cost_function/linear/linear.gd" id="1_ffcwo"]
+[ext_resource type="Script" uid="uid://b4ea14po5qsj0" path="res://resources/game_data/cost_function/linear/linear.gd" id="1_ffcwo"]
 
 [resource]
 script = ExtResource("1_ffcwo")
