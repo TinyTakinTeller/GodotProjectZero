@@ -338,9 +338,9 @@ static func _get_credits_2() -> String:
 [url=https://www.linkedin.com/in/marion-veber-838279342/]Marion Veber[/url] - {French}
 [url=https://www.linkedin.com/in/xiaofei-shen/]Xiaofei Shen[/url] & [url=https://www.middlebury.edu/institute/]Gloria[/url] - {Chinese}
 
-
 [color=#e0e064][b]{Publishing & Management}[/b][/color]
 [url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - {Steam}
+[url=https://circlesinthesky.com/]Skyler Newsome[/url] - {Trailer}
 [url=https://github.com/TinyTakinTeller]TinyTakinTeller[/url] - {Itch}"""
 	return _localize_credits(template)
 
@@ -353,9 +353,9 @@ static func _get_license_1() -> String:
 [color=#0064e0][b]{External}[/b][/color]
 {Music} : [url=https://freemusicarchive.org/music/universfield/dark-music/corpse-rot/]Corpse Rot[/url], [url=https://freemusicarchive.org/music/universfield/dark-music/criminal-district/]Criminal District[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by-sa/4.0/]CC-BY-SA 4.0[/url][/color]
 {Music} : [url=https://pixabay.com/music/video-games-to-the-death-159171/]To The Death[/url] - [color=#e00064][url=https://pixabay.com/service/license-summary/]Pixabay License[/url][/color]
-{SFX} : [url=https://placeholder-assets.itch.io/indie-friendly-sounds-survival]Survival Sounds[/url], [url=https://placeholder-assets.itch.io/indie-friendly-sounds-rpg-sounds-pack]RPG Sounds[/url] - [color=#e00064][url=https://en.wikipedia.org/wiki/Licence_to_use]LTU[/url][/color]
+{SFX} : Sound Packs (by PlaceHolderAssets) - [color=#e00064][url=https://en.wikipedia.org/wiki/Licence_to_use]LTU[/url][/color]
 {SFX} : [url=https://freesound.org/s/331656/]Keyboard Typing[/url], [url=https://freesound.org/s/249583/]Fart[/url], [url=https://freesound.org/s/332820/]Heartbeat[/url] - [color=#e00064][url=https://creativecommons.org/public-domain/cc0/]CC0[/url][/color]
-{Theme} : [url=https://azagaya.itch.io/minimalistic-ui]Minimalistic UI Theme[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by/4.0/]CC-BY 4.0[/url][/color]
+{Theme} : Minimalistic UI Theme (by Azagaya) - [color=#e00064][url=https://creativecommons.org/licenses/by/4.0/]CC-BY 4.0[/url][/color]
 {Shader} : [url=https://godotshaders.com/shader/chromatic-aberration-vignette/]Vignette[/url], [url=https://godotshaders.com/shader/wiggle-2d/]Wiggle[/url], [url=https://godotshaders.com/shader/chromatic-abberation/]Aberration[/url], [url=https://godotshaders.com/shader/2d-radial-distortion-fisheye-barrel/]Fisheye[/url] - [color=#e00064][url=https://creativecommons.org/publicdomain/zero/1.0/]CC0[/url][/color]
 {Shader} : [url=https://godotshaders.com/shader/starry-sky/]Starry Sky[/url] - [color=#e00064][url=https://opensource.org/license/mit/]MIT[/url][/color]
 {Shader} : [url=https://gamedev.stackexchange.com/a/207351]Pixel Explosion Shader[/url] - [color=#e00064][url=https://creativecommons.org/licenses/by-sa/4.0/]CC-BY-SA 4.0[/url][/color]
@@ -376,6 +376,7 @@ static func _localize_credits(template: String) -> String:
 		. replace("{Chinese}", Locale.get_credit_label("chinese"))
 		. replace("{Review}", Locale.get_credit_label("review"))
 		. replace("{Steam}", Locale.get_credit_label("steam"))
+		. replace("{Trailer}", Locale.get_credit_label("trailer"))
 		. replace("{Itch}", Locale.get_credit_label("itch"))
 		. replace("{Programming}", Locale.get_role_label("programming"))
 		. replace("{Art}", Locale.get_role_label("art"))
