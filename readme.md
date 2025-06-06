@@ -5,6 +5,7 @@ Inspired by A Dark Room, the Dark Forest is an incremental experimental minimali
 Started as my first game project to learn Godot, now a community project with 10+ contributors!
 
 THE GAME:
+- PLAY ON Steam: https://store.steampowered.com/app/3314970/A_Dark_Forest/
 - PLAY ON Itch: https://tinytakinteller.itch.io/the-best-game-ever
 
 CONTRIBUTE:
