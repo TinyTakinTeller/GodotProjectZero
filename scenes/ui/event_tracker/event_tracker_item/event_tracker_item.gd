@@ -49,5 +49,7 @@ func _on_display_language_updated() -> void:
 			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD
 		"zh":
 			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_ARBITRARY
+		"th":
+			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD
 		_:
 			event_label.autowrap_mode = TextServer.AutowrapMode.AUTOWRAP_WORD

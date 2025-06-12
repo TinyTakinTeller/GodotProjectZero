@@ -1,6 +1,6 @@
-class_name LanguageButtonTh
+class_name LanguageButtonEn
 extends LanguageButton
 
 
 func set_vars() -> void:
-	locale = "en"
+	locale = "th"

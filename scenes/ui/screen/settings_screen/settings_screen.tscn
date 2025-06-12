@@ -58,6 +58,7 @@ text = "Credits"
 
 [node name="SettingsMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 0
@@ -202,7 +203,6 @@ layout_mode = 2
 
 [node name="CreditsMarginContainer" type="MarginContainer" parent="RootMarginContainer/RootVBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
@@ -219,6 +219,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[color=#e0e064][b]Programming[/b][/color] 
 [url=https://github.com/TinyTakinTeller]TinyTakinTeller[/url] - Lead 
@@ -241,6 +242,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.1
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[color=#e0e064][b]Music[/b][/color] 
 [url=https://www.youtube.com/@JoeBurkeZerk]Joe Burke[/url] - 4 Tracks 
@@ -279,6 +281,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[color=#0064e0][b]Credits[/b][/color]
 [color=#ffffff]Code[/color] : [url=https://github.com/TinyTakinTeller/GodotProjectZero]Github[/url], [url=https://godotengine.org/license/]Godot Engine[/url] - [color=#e00064][url=https://opensource.org/license/mit]MIT[/url][/color] 
