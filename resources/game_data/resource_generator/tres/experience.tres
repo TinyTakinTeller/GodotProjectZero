@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://5lvxlcl1egdm"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_knyu8"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_knyu8"]
 
 [resource]
 script = ExtResource("1_knyu8")
+order = 0
+color = Color(0, 0, 0, 1)
 sort_value = -10
+sort_value_override = 0.0
 id = "experience"
 amount = 0
 cooldown = 0.0
@@ -12,11 +15,7 @@ costs = {}
 cost_scales = {}
 worker_costs = {}
 random_drops = {}
-label = "-"
-title = "-"
-flavor = "-"
 hidden = true
 max_amount = -1
-max_flavor = ""
 column = -1
-display_name = ""
+dynamic_efficiency_id = ""

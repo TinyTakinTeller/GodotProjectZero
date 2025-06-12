@@ -1,13 +1,13 @@
 [gd_scene load_steps=34 format=3 uid="uid://dp27xbynyqp65"]
 
-[ext_resource type="Script" path="res://scenes/bullet_up_hell/pattern_master/pattern_master.gd" id="1_lkn8h"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_rai8q"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="3_molhr"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_vu88i"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_gfkum"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_4oi1y"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="7_va6hm"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="8_k40hp"]
+[ext_resource type="Script" uid="uid://ceycm2prnn5g8" path="res://scenes/bullet_up_hell/pattern_master/pattern_master.gd" id="1_lkn8h"]
+[ext_resource type="Script" uid="uid://sfj5k5tpy3hy" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="2_rai8q"]
+[ext_resource type="Script" uid="uid://03lv5s31uh6w" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="3_molhr"]
+[ext_resource type="Script" uid="uid://dehuf8nobqgbg" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_vu88i"]
+[ext_resource type="Script" uid="uid://ggk4whifn3jp" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_gfkum"]
+[ext_resource type="Script" uid="uid://cufi7olk60hxc" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_4oi1y"]
+[ext_resource type="Script" uid="uid://bf0tkrvr363up" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="7_va6hm"]
+[ext_resource type="Script" uid="uid://clwgnubfjhx1" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="8_k40hp"]
 
 [sub_resource type="Curve2D" id="Curve2D_n8v2j"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ixechckh2n74"]
 
-[ext_resource type="Script" path="res://scenes/controller/offline_controller/offline_controller.gd" id="1_3y1i1"]
+[ext_resource type="Script" uid="uid://c77ehs60gg087" path="res://scenes/controller/offline_controller/offline_controller.gd" id="1_3y1i1"]
 [ext_resource type="PackedScene" uid="uid://sd1n3by7pn57" path="res://scenes/controller/offline_controller/auto_mason/auto_mason.tscn" id="2_3whef"]
 
 [node name="OfflineController" type="Node"]

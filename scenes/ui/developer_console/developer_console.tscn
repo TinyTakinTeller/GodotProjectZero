@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1y5xyx63u3w0"]
 
-[ext_resource type="Script" path="res://scenes/ui/developer_console/developer_console.gd" id="1_26111"]
+[ext_resource type="Script" uid="uid://bwkpx6oitpld1" path="res://scenes/ui/developer_console/developer_console.gd" id="1_26111"]
 
 [node name="DeveloperConsole" type="Control"]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

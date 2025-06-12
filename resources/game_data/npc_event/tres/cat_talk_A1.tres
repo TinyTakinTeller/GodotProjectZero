@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://chwcuaismcnf1"]
 
-[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_n0r3d"]
+[ext_resource type="Script" uid="uid://dymb10asiygbj" path="res://resources/game_data/npc_event/npc_event.gd" id="1_n0r3d"]
 
 [resource]
 script = ExtResource("1_n0r3d")
 sort_value = 0
 npc_id = "cat"
 id = "cat_talk_A1"
-text = "I thought so. You are different... not from the ForesSst."
-options = Array[String](["?"])
 next_npc_event_id = Array[String](["cat_talk_A2"])

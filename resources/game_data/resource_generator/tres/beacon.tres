@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://cd7knby30thnp"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_txtvd"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_txtvd"]
 
 [resource]
 script = ExtResource("1_txtvd")
+order = 0
 color = Color(0, 0, 0, 1)
 sort_value = 106
 sort_value_override = 0.0
@@ -20,3 +21,4 @@ random_drops = {}
 hidden = true
 max_amount = 1
 column = 1
+dynamic_efficiency_id = ""

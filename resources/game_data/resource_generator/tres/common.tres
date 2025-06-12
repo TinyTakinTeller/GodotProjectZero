@@ -1,21 +1,21 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://cwi6vc07ew5xr"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_e4tkj"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_e4tkj"]
 
 [resource]
 script = ExtResource("1_e4tkj")
+order = 0
+color = Color(0, 0, 0, 1)
 sort_value = -100
+sort_value_override = 0.0
 id = "common"
 amount = 2
 cooldown = 0.5
 costs = {}
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
-label = "Button1"
-title = "Button One"
-flavor = "Go on an adventure for common resources."
 hidden = false
 max_amount = -1
-max_flavor = ""
 column = 0
-display_name = ""
+dynamic_efficiency_id = ""

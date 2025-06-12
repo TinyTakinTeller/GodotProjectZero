@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjmn4owp4lhaj"]
 
-[ext_resource type="Script" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.gd" id="1_xntr3"]
+[ext_resource type="Script" uid="uid://dqqrju71pr6b5" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.gd" id="1_xntr3"]
 
 [node name="NewUnlockTween" type="Node"]
 script = ExtResource("1_xntr3")

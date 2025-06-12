@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btrjtbe8ch6vy"]
 
-[ext_resource type="Script" path="res://scenes/controller/experience_controller/experience_controller.gd" id="1_488pp"]
+[ext_resource type="Script" uid="uid://gj3m0uqp1bm2" path="res://scenes/controller/experience_controller/experience_controller.gd" id="1_488pp"]
 
 [node name="ExperienceController" type="Node"]
 script = ExtResource("1_488pp")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://w5y4su4adpf4"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/settings_screen/settings_screen.gd" id="1_xqlsa"]
+[ext_resource type="Script" uid="uid://bxv5qk07c2stq" path="res://scenes/ui/screen/settings_screen/settings_screen.gd" id="1_xqlsa"]
 [ext_resource type="PackedScene" uid="uid://bpq246h5ihhck" path="res://scenes/component/shake_shader_component/shake_shader_component.tscn" id="2_1nimh"]
 [ext_resource type="PackedScene" uid="uid://cshtvp7cn4ns1" path="res://scenes/ui/screen/settings_screen/settings_slider/settings_slider.tscn" id="2_usuby"]
 

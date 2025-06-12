@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bu2l4l0jhesyw"]
 
-[ext_resource type="Script" path="res://global/autoload/audio/sfx_map/sfx_map.gd" id="1_ytfoh"]
+[ext_resource type="Script" uid="uid://dtjo6uy03hexb" path="res://global/autoload/audio/sfx_map/sfx_map.gd" id="1_ytfoh"]
 
 [node name="SfxMap" type="Node"]
 script = ExtResource("1_ytfoh")

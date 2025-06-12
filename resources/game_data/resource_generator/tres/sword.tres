@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://c13qt2v558c84"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_2ikhk"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_2ikhk"]
 [ext_resource type="AudioStream" uid="uid://chnlm5qq8ko2k" path="res://assets/audio/indie_friendly_sounds_survival/_resource/blacksmith_2_1.wav" id="2_84hvo"]
 
 [resource]

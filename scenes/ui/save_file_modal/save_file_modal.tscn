@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7vond3ba2425"]
 
-[ext_resource type="Script" path="res://scenes/ui/save_file_modal/save_file_modal.gd" id="1_x3o5k"]
+[ext_resource type="Script" uid="uid://bkm3ts5p0fd5d" path="res://scenes/ui/save_file_modal/save_file_modal.gd" id="1_x3o5k"]
 
 [node name="SaveFileModal" type="Control"]
 layout_mode = 3
