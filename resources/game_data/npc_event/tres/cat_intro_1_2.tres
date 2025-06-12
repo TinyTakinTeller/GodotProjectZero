@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://c5800s8jio43e"]
 
-[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_rbbin"]
+[ext_resource type="Script" uid="uid://dymb10asiygbj" path="res://resources/game_data/npc_event/npc_event.gd" id="1_rbbin"]
 
 [resource]
 script = ExtResource("1_rbbin")

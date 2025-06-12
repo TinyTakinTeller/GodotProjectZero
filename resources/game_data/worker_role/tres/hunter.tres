@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="WorkerRole" load_steps=2 format=3 uid="uid://c7vhgnv252hho"]
 
-[ext_resource type="Script" path="res://resources/game_data/worker_role/worker_role.gd" id="1_73ch8"]
+[ext_resource type="Script" uid="uid://cfnoetnx508g5" path="res://resources/game_data/worker_role/worker_role.gd" id="1_73ch8"]
 
 [resource]
 script = ExtResource("1_73ch8")
+order = 0
 sort_value = 10
 id = "hunter"
-title = ""
-flavor = "Will keep the food, but pay you back in fur."
 produce = {
 "fur": 1
 }
 consume = {}
+worker_consume = {}
 default = false
+column = 0

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://1p0hdhylnmii"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_x7kgv"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_x7kgv"]
 [ext_resource type="AudioStream" uid="uid://bwcciiuewww0g" path="res://assets/audio/indie_friendly_sounds_survival/indie_friendly_survival_sounds/rock_moving_1_5.wav" id="2_72yd8"]
 
 [resource]

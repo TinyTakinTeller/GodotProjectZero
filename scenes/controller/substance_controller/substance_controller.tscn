@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://df1q2axgcf2yn"]
 
-[ext_resource type="Script" path="res://scenes/controller/substance_controller/substance_controller.gd" id="1_sqa8q"]
+[ext_resource type="Script" uid="uid://6ufpaao2ilu2" path="res://scenes/controller/substance_controller/substance_controller.gd" id="1_sqa8q"]
 
 [node name="SubstanceController" type="Node"]
 script = ExtResource("1_sqa8q")

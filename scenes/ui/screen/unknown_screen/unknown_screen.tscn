@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkkan07rftdv8"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/unknown_screen/unknown_screen.gd" id="1_cwm6a"]
+[ext_resource type="Script" uid="uid://pl5fdu0qsmjt" path="res://scenes/ui/screen/unknown_screen/unknown_screen.gd" id="1_cwm6a"]
 
 [node name="UnknownScreen" type="MarginContainer"]
 anchors_preset = 15

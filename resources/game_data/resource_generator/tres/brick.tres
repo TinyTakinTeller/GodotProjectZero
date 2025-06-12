@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://u17dgp1383fs"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_m14yy"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_m14yy"]
 
 [resource]
 script = ExtResource("1_m14yy")
+order = 0
+color = Color(0, 0, 0, 1)
 sort_value = 6
 sort_value_override = 0.0
 id = "brick"
@@ -15,11 +17,7 @@ costs = {
 cost_scales = {}
 worker_costs = {}
 random_drops = {}
-label = "Bake Clay"
-title = "Bake Clay"
-flavor = "Excuse me, this is not a bakery."
 hidden = false
 max_amount = -1
-max_flavor = ""
 column = 0
-display_name = ""
+dynamic_efficiency_id = ""

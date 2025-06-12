@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmyeg6ldx2orv"]
 
-[ext_resource type="Shader" path="res://scenes/bullet_up_hell/vignette/vignette.gdshader" id="1_28ta1"]
-[ext_resource type="Script" path="res://scenes/bullet_up_hell/vignette/vignette.gd" id="1_55ahl"]
+[ext_resource type="Shader" uid="uid://boknyqkq40dp2" path="res://scenes/bullet_up_hell/vignette/vignette.gdshader" id="1_28ta1"]
+[ext_resource type="Script" uid="uid://2hitledo1xow" path="res://scenes/bullet_up_hell/vignette/vignette.gd" id="1_55ahl"]
 
 [sub_resource type="Animation" id="Animation_v6348"]
 length = 0.001
@@ -85,8 +85,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww4dk"]
 _data = {
-"RESET": SubResource("Animation_v6348"),
-"hit": SubResource("Animation_kyjek")
+&"RESET": SubResource("Animation_v6348"),
+&"hit": SubResource("Animation_kyjek")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5pqrm"]

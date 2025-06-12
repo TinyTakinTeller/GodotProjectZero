@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://dknpjeevrmcso"]
 
-[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_xp1j6"]
+[ext_resource type="Script" uid="uid://dymb10asiygbj" path="res://resources/game_data/npc_event/npc_event.gd" id="1_xp1j6"]
 
 [resource]
 script = ExtResource("1_xp1j6")
 sort_value = 0
 npc_id = "cat"
 id = "cat_talk_B4_1_2"
-text = "You will thank me later... until then, I will be nearby..."
-options = Array[String](["Bye"])
-next_npc_event_id = ""
+next_npc_event_id = Array[String]([])

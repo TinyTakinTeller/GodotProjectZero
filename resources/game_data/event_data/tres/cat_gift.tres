@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://brryxtqvhcty5"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_je3rs"]
+[ext_resource type="Script" uid="uid://bs1ge4pn1w5yn" path="res://resources/game_data/event_data/event_data.gd" id="1_je3rs"]
 
 [resource]
 script = ExtResource("1_je3rs")
 id = "cat_gift"
-text = "The cat ran through the storage. It was a mess, but the quantity of the raw resources has doubled!"
 vars = []
 color = Color(0.392157, 0.878431, 0, 1)

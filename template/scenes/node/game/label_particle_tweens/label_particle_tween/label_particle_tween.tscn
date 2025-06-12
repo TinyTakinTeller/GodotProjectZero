@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsp81vca8h8r"]
 
-[ext_resource type="Script" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween/label_particle_tween.gd" id="1_b5n2i"]
+[ext_resource type="Script" uid="uid://dnr788udvwibn" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween/label_particle_tween.gd" id="1_b5n2i"]
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_t4ip6"]
 [ext_resource type="PackedScene" uid="uid://b6hkdnclxtdfq" path="res://template/scenes/component/tween/particle_tween/particle_tween.tscn" id="2_jnp2s"]
 

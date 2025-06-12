@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://depe0hvgcbpoj"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/darkness_screen/darkness_mode_container/darkness_mode_container.gd" id="1_g47fy"]
+[ext_resource type="Script" uid="uid://c0b5ac3vtfead" path="res://scenes/ui/screen/darkness_screen/darkness_mode_container/darkness_mode_container.gd" id="1_g47fy"]
 
 [node name="DarknessModeContainer" type="MarginContainer"]
 theme_override_constants/margin_top = 8

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b75kh4e41777c"]
 
-[ext_resource type="Script" path="res://scenes/autostart/main/reborn_ui/reborn_ui.gd" id="1_3pt5o"]
+[ext_resource type="Script" uid="uid://8pab1cv0cqgh" path="res://scenes/autostart/main/reborn_ui/reborn_ui.gd" id="1_3pt5o"]
 [ext_resource type="PackedScene" uid="uid://ccm0lefdpacby" path="res://scenes/component/control/label/label_typing/label_typing.tscn" id="1_molhh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_32d3w"]

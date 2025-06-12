@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://g4bgd3axw7dv"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_ecqht"]
+[ext_resource type="Script" uid="uid://bs1ge4pn1w5yn" path="res://resources/game_data/event_data/event_data.gd" id="1_ecqht"]
 
 [resource]
 script = ExtResource("1_ecqht")
 id = "cat_intro_yes"
-text = "I must admit that I am lost and afraid. I feel the cat will remember that answer..."
 vars = []
 color = Color(0.878431, 0, 0.392157, 1)

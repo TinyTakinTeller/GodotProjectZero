@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4xkxivqhae3h"]
 
-[ext_resource type="Script" path="res://scenes/ui/resource_tracker/resource_tracker.gd" id="1_llbdt"]
+[ext_resource type="Script" uid="uid://b6s5iw8q8kgtb" path="res://scenes/ui/resource_tracker/resource_tracker.gd" id="1_llbdt"]
 [ext_resource type="PackedScene" uid="uid://cpbn8h60hhit6" path="res://scenes/ui/resource_tracker/resource_tracker_item/resource_tracker_item.tscn" id="1_tjr5p"]
 
 [node name="ResourceTracker" type="MarginContainer"]

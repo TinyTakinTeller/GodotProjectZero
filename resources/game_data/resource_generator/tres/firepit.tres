@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=2 format=3 uid="uid://bpfjhcuseuwwj"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_56wys"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_56wys"]
 
 [resource]
 script = ExtResource("1_56wys")
+order = 0
+color = Color(0, 0, 0, 1)
 sort_value = 100
+sort_value_override = 0.0
 id = "firepit"
 amount = 1
 cooldown = 100.0
@@ -16,12 +19,9 @@ costs = {
 "wood": 3
 }
 cost_scales = {}
+worker_costs = {}
 random_drops = {}
-label = "Craft Firepit"
-title = "Firepit"
-flavor = "Warm and safe, must be nice to have."
 hidden = true
 max_amount = 1
-max_flavor = "It burns nice and warm, a light in the darkness."
 column = 1
-display_name = ""
+dynamic_efficiency_id = ""

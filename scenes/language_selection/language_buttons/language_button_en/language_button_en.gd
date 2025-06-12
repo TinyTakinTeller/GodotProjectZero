@@ -1,4 +1,4 @@
-class_name LanguageButtonEn
+class_name LanguageButtonTh
 extends LanguageButton
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gxqgvpbi2jx7"]
 
-[ext_resource type="Shader" path="res://resources/shader/radial_distortion/radial_distortion.gdshader" id="1_oex4w"]
-[ext_resource type="Script" path="res://scenes/autostart/main/prestige_ui/texture_heart/texture_heart.gd" id="1_r458w"]
+[ext_resource type="Shader" uid="uid://b4rhcgin1bido" path="res://resources/shader/radial_distortion/radial_distortion.gdshader" id="1_oex4w"]
+[ext_resource type="Script" uid="uid://buqscrqch7e7t" path="res://scenes/autostart/main/prestige_ui/texture_heart/texture_heart.gd" id="1_r458w"]
 [ext_resource type="Texture2D" uid="uid://x0uaxjbfb55b" path="res://assets/image/art/heart.png" id="2_tt4yi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wv8it"]

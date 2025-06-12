@@ -21,9 +21,9 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 [application]
 
 config/name="The Best Game Ever"
-config/version="1.4.3"
+config/version="1.4.5"
 run/main_scene="res://scenes/autostart/save_file_picker/save_file_picker.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://assets/image/boot/godot_boot_cover.png"
 config/icon="res://assets/image/icon/project_icon.png"
@@ -140,7 +140,8 @@ language_toggle={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/i18n/localization.en.translation", "res://assets/i18n/localization.zh.translation", "res://assets/i18n/localization.fr.translation", "res://assets/i18n/localization.pt.translation", "res://assets/i18n/localization.pl.translation")
+locale/translations=PackedStringArray("res://assets/i18n/localization.en.translation", "res://assets/i18n/localization.zh.translation", "res://assets/i18n/localization.fr.translation", "res://assets/i18n/localization.pt.translation", "res://assets/i18n/localization.pl.translation", "res://assets/i18n/localization.th.translation")
+locale/include_text_server_data=true
 
 [rendering]
 

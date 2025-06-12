@@ -1,12 +1,12 @@
 [gd_scene load_steps=38 format=3 uid="uid://cy823nswtu3v3"]
 
-[ext_resource type="Script" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_f4dyt"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_w35i7"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="3_ra0lu"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_8b00n"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="9_uqn31"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="10_rdmci"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="11_ormf1"]
+[ext_resource type="Script" uid="uid://blpcvv1u2atgx" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_f4dyt"]
+[ext_resource type="Script" uid="uid://03lv5s31uh6w" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_w35i7"]
+[ext_resource type="Script" uid="uid://clwgnubfjhx1" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="3_ra0lu"]
+[ext_resource type="Script" uid="uid://cufi7olk60hxc" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="5_8b00n"]
+[ext_resource type="Script" uid="uid://ggk4whifn3jp" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="9_uqn31"]
+[ext_resource type="Script" uid="uid://bf0tkrvr363up" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="10_rdmci"]
+[ext_resource type="Script" uid="uid://sfj5k5tpy3hy" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="11_ormf1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f1ld7"]
 resource_name = "PatternOne"
@@ -167,7 +167,7 @@ wait_tween_time = 0.0
 [sub_resource type="Curve" id="Curve_yoer3"]
 
 [sub_resource type="Curve" id="Curve_3idnv"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0.545455), 0.0, 14.0147, 0, 1, Vector2(0.175141, 3), -5.12898, -5.12898, 0, 0, Vector2(0.977401, 1.47273), -1.90371, 0.0, 1, 0]
 point_count = 3
 
@@ -328,8 +328,7 @@ r_scale_multi_scale_variation = Vector3(0, 0, 0)
 [sub_resource type="Curve2D" id="Curve2D_m46g8"]
 
 [sub_resource type="Curve" id="Curve_l4fjm"]
-min_value = -50.0
-max_value = 300.0
+_limits = [-50.0, 300.0, 0.0, 1.0]
 _data = [Vector2(0, 96.3636), 0.0, 0.0, 0, 0, Vector2(0.306749, 226.818), 0.0, 0.0, 0, 0, Vector2(0.937173, -50), 0.0, 0.0, 0, 0, Vector2(1, 105.909), 0.0, 0.0, 0, 0]
 point_count = 4
 

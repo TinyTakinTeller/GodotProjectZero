@@ -1,12 +1,10 @@
 [gd_resource type="Resource" script_class="NpcEvent" load_steps=2 format=3 uid="uid://dg0tr8r1h83sb"]
 
-[ext_resource type="Script" path="res://resources/game_data/npc_event/npc_event.gd" id="1_4buif"]
+[ext_resource type="Script" uid="uid://dymb10asiygbj" path="res://resources/game_data/npc_event/npc_event.gd" id="1_4buif"]
 
 [resource]
 script = ExtResource("1_4buif")
 sort_value = 0
 npc_id = "cat"
 id = "cat_intro"
-text = "I smell you from afar. Are you lost?"
-options = Array[String](["Yes", "No"])
 next_npc_event_id = Array[String](["cat_talk_A1", "cat_talk_B1"])

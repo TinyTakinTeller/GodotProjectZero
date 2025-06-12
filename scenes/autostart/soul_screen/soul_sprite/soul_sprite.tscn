@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfrws6lo2o7d0"]
 
 [ext_resource type="Texture2D" uid="uid://53i0fjjlp6vg" path="res://assets/image/soul/soul.png" id="2_mnn2d"]
-[ext_resource type="Script" path="res://scenes/autostart/soul_screen/soul_sprite/soul_sprite.gd" id="2_wa4lx"]
+[ext_resource type="Script" uid="uid://c1qby52vqfhx" path="res://scenes/autostart/soul_screen/soul_sprite/soul_sprite.gd" id="2_wa4lx"]
 [ext_resource type="PackedScene" uid="uid://b3awft3ugc6q3" path="res://scenes/component/tween/simple_tween/simple_tween.tscn" id="3_g474e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7hs7"]

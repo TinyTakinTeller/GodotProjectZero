@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GDLinterIgnore" load_steps=2 format=3 uid="uid://6ip8eigu30by"]
 
-[ext_resource type="Script" path="res://addons/gdLinter/Settings/ignore.gd" id="1_8j37n"]
+[ext_resource type="Script" uid="uid://bbtdajisv8jf5" path="res://addons/gdLinter/Settings/ignore.gd" id="1_8j37n"]
 
 [resource]
 script = ExtResource("1_8j37n")

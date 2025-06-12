@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cragwwd3j3bqt"]
 
-[ext_resource type="Script" path="res://global/autoload/audio/audio_player/audio_player.gd" id="1_3cuwr"]
-[ext_resource type="Script" path="res://scenes/component/state_machine/state_machine.gd" id="2_pwrmv"]
-[ext_resource type="Script" path="res://global/autoload/audio/audio_player/track_state.gd" id="3_tvnd0"]
+[ext_resource type="Script" uid="uid://b3uqo6xbo0h4f" path="res://global/autoload/audio/audio_player/audio_player.gd" id="1_3cuwr"]
+[ext_resource type="Script" uid="uid://6ayfj8fc401r" path="res://scenes/component/state_machine/state_machine.gd" id="2_pwrmv"]
+[ext_resource type="Script" uid="uid://c4o875kyq0rch" path="res://global/autoload/audio/audio_player/track_state.gd" id="3_tvnd0"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_3cuwr")
