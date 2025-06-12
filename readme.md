@@ -22,7 +22,7 @@ CONTRIBUTE:
 - 05/01/2025 [`prototype.release.1.1`] **Localization Update for French and Chinese (SC).** 🌎
 - 08/01/2025 [`prototype.release.1.2`] **Localization Update for Portuguese (Brazilian).** 🌎
 - 11/01/2025 [`prototype.release.1.3`] **Soulstone Patch: Added 15th Charm to fix endgame grind.** ⚡
-- 11/02/2025 [`prototype.release.1.4`] **🎨The Art Update & 🔮The Future & 🌍 Polish Localization**
+- 11/02/2025 [`prototype.release.1.4`] **The Art Update 🎨 & The Future 🔮 & Polish Localization 🌍**
 - 06/06/2025 [`prototype.release.1.4.4`] **Steam Demo Release & Next Fest 2025**
 - 12/06/2025 [`prototype.release.1.4.5`] **Localization Update for Thai** 🌎
 
