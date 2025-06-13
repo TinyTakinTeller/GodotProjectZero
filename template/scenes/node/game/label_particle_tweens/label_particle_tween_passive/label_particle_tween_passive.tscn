@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dctar6t4dughe"]
 
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_0h4ck"]
-[ext_resource type="Script" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_passive/label_particle_tween_passive.gd" id="2_tw1vy"]
+[ext_resource type="Script" uid="uid://br0hbdydhkfxs" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_passive/label_particle_tween_passive.gd" id="2_tw1vy"]
 [ext_resource type="PackedScene" uid="uid://b6hkdnclxtdfq" path="res://template/scenes/component/tween/particle_tween/particle_tween.tscn" id="3_voivk"]
 
 [node name="LabelParticleTweenDamage" type="Label"]

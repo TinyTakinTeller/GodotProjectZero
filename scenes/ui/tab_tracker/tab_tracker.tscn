@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c70gtxukmaco6"]
 
-[ext_resource type="Script" path="res://scenes/ui/tab_tracker/tab_tracker.gd" id="1_fqp6t"]
+[ext_resource type="Script" uid="uid://csfouie67u0k" path="res://scenes/ui/tab_tracker/tab_tracker.gd" id="1_fqp6t"]
 [ext_resource type="PackedScene" uid="uid://dc1dbypa7wkta" path="res://scenes/ui/tab_tracker/tab_tracker_item/tab_tracker_item.tscn" id="2_6i4ca"]
 
 [node name="TabTracker" type="MarginContainer"]

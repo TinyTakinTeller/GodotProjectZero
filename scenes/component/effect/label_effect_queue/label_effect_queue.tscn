@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://k6nmnw4kjwjq"]
 
-[ext_resource type="Script" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.gd" id="1_f44et"]
+[ext_resource type="Script" uid="uid://bqn3y6kqd0jna" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.gd" id="1_f44et"]
 [ext_resource type="PackedScene" uid="uid://7jxqko2b2kal" path="res://scenes/component/effect/label_effect_queue/label_effect/label_effect.tscn" id="2_tt3yr"]
 
 [node name="LabelEffectQueue" type="Node2D"]

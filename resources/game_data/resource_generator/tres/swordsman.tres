@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=3 format=3 uid="uid://3qv8owwmpsj1"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_eyud3"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_eyud3"]
 [ext_resource type="AudioStream" uid="uid://plbtyfaaxfj7" path="res://assets/audio/indie_friendly_sounds_survival/_resource/mining_1_1.wav" id="2_uiagb"]
 
 [resource]

@@ -5,6 +5,7 @@ Inspired by A Dark Room, the Dark Forest is an incremental experimental minimali
 Started as my first game project to learn Godot, now a community project with 10+ contributors!
 
 THE GAME:
+- PLAY ON Steam: https://store.steampowered.com/app/3314970/A_Dark_Forest/
 - PLAY ON Itch: https://tinytakinteller.itch.io/the-best-game-ever
 
 CONTRIBUTE:
@@ -21,7 +22,9 @@ CONTRIBUTE:
 - 05/01/2025 [`prototype.release.1.1`] **Localization Update for French and Chinese (SC).** 🌎
 - 08/01/2025 [`prototype.release.1.2`] **Localization Update for Portuguese (Brazilian).** 🌎
 - 11/01/2025 [`prototype.release.1.3`] **Soulstone Patch: Added 15th Charm to fix endgame grind.** ⚡
-- 11/02/2025 [`prototype.release.1.4`] **🎨The Art Update & 🔮The Future & 🌍Polish Localization**
+- 11/02/2025 [`prototype.release.1.4`] **The Art Update 🎨 & The Future 🔮 & Polish Localization 🌍**
+- 06/06/2025 [`prototype.release.1.4.4`] **Steam Demo Release & Next Fest 2025**
+- 12/06/2025 [`prototype.release.1.4.5`] **Localization Update for Thai** 🌎
 
 
 

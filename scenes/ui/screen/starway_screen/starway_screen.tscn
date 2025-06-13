@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://br1a46uikyubt"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/starway_screen/starway_screen.gd" id="1_tsvyl"]
+[ext_resource type="Script" uid="uid://l31thiqnc0e3" path="res://scenes/ui/screen/starway_screen/starway_screen.gd" id="1_tsvyl"]
 [ext_resource type="PackedScene" uid="uid://3vcjyu7tgdii" path="res://scenes/component/control/basic_progress_bar/basic_progress_bar.tscn" id="2_73ey0"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="3_v7344"]
 [ext_resource type="PackedScene" uid="uid://vlsdtpdj5gw0" path="res://template/scenes/node/game/spawner_buffer/spawner_buffer.tscn" id="4_i3pep"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://suojpe3fsjng"]
 
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_dttkh"]
-[ext_resource type="Script" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_singularity/label_particle_tween_singularity.gd" id="2_7if8o"]
+[ext_resource type="Script" uid="uid://k8sys8lb4rk7" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_singularity/label_particle_tween_singularity.gd" id="2_7if8o"]
 [ext_resource type="PackedScene" uid="uid://b6hkdnclxtdfq" path="res://template/scenes/component/tween/particle_tween/particle_tween.tscn" id="3_oxvsa"]
 
 [node name="LabelParticleTweenSingularity" type="Label"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=3 uid="uid://catsnsqlktbgj"]
 
-[ext_resource type="Script" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_8luw8"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_4wqim"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="3_kdwy4"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_espee"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd" id="5_aeave"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="7_tocbs"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="9_1v31q"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="10_taw2s"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="11_2iydo"]
+[ext_resource type="Script" uid="uid://blpcvv1u2atgx" path="res://addons/BulletUpHell/Examples/ExampleScene.gd" id="1_8luw8"]
+[ext_resource type="Script" uid="uid://03lv5s31uh6w" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_4wqim"]
+[ext_resource type="Script" uid="uid://clwgnubfjhx1" path="res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd" id="3_kdwy4"]
+[ext_resource type="Script" uid="uid://dehuf8nobqgbg" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_espee"]
+[ext_resource type="Script" uid="uid://chpjk2bp7dnn3" path="res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd" id="5_aeave"]
+[ext_resource type="Script" uid="uid://cufi7olk60hxc" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="7_tocbs"]
+[ext_resource type="Script" uid="uid://ggk4whifn3jp" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="9_1v31q"]
+[ext_resource type="Script" uid="uid://bf0tkrvr363up" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="10_taw2s"]
+[ext_resource type="Script" uid="uid://sfj5k5tpy3hy" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="11_2iydo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kt31x"]
 resource_name = "PatternOne"

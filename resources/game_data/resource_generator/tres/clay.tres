@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="ResourceGenerator" load_steps=4 format=3 uid="uid://cl32v5i25kgls"]
 
-[ext_resource type="Script" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qn7uo"]
+[ext_resource type="Script" uid="uid://sqm6vhjh30fj" path="res://resources/game_data/resource_generator/resource_generator.gd" id="1_qn7uo"]
 [ext_resource type="AudioStream" uid="uid://b6hvwuonx5eby" path="res://assets/audio/indie_friendly_sounds_survival/_resource/matches_handle_1_1.wav" id="2_7mcfp"]
 [ext_resource type="AudioStream" uid="uid://bodr20c42can4" path="res://assets/audio/indie_friendly_sounds_survival/_resource/matches_handle_1_11.wav" id="3_5ut7v"]
 
 [resource]
 script = ExtResource("1_qn7uo")
+order = 0
 color = Color(0, 0, 0, 1)
 sort_value = 5
 sort_value_override = 0.0

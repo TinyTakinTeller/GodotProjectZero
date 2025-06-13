@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cshtvp7cn4ns1"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/settings_screen/settings_slider/settings_slider.gd" id="1_k8bx2"]
+[ext_resource type="Script" uid="uid://cxsxcjdbhkrq2" path="res://scenes/ui/screen/settings_screen/settings_slider/settings_slider.gd" id="1_k8bx2"]
 [ext_resource type="PackedScene" uid="uid://ccm0lefdpacby" path="res://scenes/component/control/label/label_typing/label_typing.tscn" id="2_vnjch"]
 
 [node name="SettingsSlider" type="MarginContainer"]

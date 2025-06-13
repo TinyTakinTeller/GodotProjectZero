@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://qrf0gntbrbnl"]
 
-[ext_resource type="Script" path="res://resources/game_data/event_data/event_data.gd" id="1_fx110"]
+[ext_resource type="Script" uid="uid://bs1ge4pn1w5yn" path="res://resources/game_data/event_data/event_data.gd" id="1_fx110"]
 
 [resource]
 script = ExtResource("1_fx110")
 id = "land_7"
-text = "Growling sounds emerge from the deep dense parts of the forest."
 vars = []
 color = Color(0, 0, 0, 1)

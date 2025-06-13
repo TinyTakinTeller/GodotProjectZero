@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bw1m1v1q01ix6"]
 
-[ext_resource type="Script" path="res://scenes/controller/prestige_controller/prestige_controller.gd" id="1_0288s"]
+[ext_resource type="Script" uid="uid://dsvvsafs7mt6x" path="res://scenes/controller/prestige_controller/prestige_controller.gd" id="1_0288s"]
 
 [node name="PrestigeController" type="Node"]
 script = ExtResource("1_0288s")

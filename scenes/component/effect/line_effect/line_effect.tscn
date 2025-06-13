@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4a6sfsyw5jie"]
 
-[ext_resource type="Script" path="res://scenes/component/effect/line_effect/line_effect.gd" id="1_oifrd"]
+[ext_resource type="Script" uid="uid://1g5awknvn2n8" path="res://scenes/component/effect/line_effect/line_effect.gd" id="1_oifrd"]
 
 [node name="LineEffect" type="Line2D"]
 visible = false

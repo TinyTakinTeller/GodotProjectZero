@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://sd1n3by7pn57"]
 
-[ext_resource type="Script" path="res://scenes/controller/offline_controller/auto_mason/auto_mason.gd" id="1_8fdg5"]
+[ext_resource type="Script" uid="uid://1y67g5oquv7" path="res://scenes/controller/offline_controller/auto_mason/auto_mason.gd" id="1_8fdg5"]
 
 [node name="AutoMason" type="Node"]
 script = ExtResource("1_8fdg5")

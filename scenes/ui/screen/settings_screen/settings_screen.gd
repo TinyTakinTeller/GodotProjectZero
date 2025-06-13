@@ -337,6 +337,7 @@ static func _get_credits_2() -> String:
 [url=NA:Maria Oliveira]Maria Oliveira[/url] - {Portuguese}
 [url=https://www.linkedin.com/in/marion-veber-838279342/]Marion Veber[/url] - {French}
 [url=https://www.linkedin.com/in/xiaofei-shen/]Xiaofei Shen[/url] & [url=https://www.middlebury.edu/institute/]Gloria[/url] - {Chinese}
+[url=https://www.linkedin.com/in/punnasiri-wongsricha-16442536b]Punnasiri Wongsricha[/url] - {Thai}
 
 [color=#e0e064][b]{Publishing & Management}[/b][/color]
 [url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - {Steam}
@@ -374,6 +375,7 @@ static func _localize_credits(template: String) -> String:
 		. replace("{Portuguese}", Locale.get_credit_label("portuguese"))
 		. replace("{French}", Locale.get_credit_label("french"))
 		. replace("{Chinese}", Locale.get_credit_label("chinese"))
+		. replace("{Thai}", Locale.get_credit_label("thai"))
 		. replace("{Review}", Locale.get_credit_label("review"))
 		. replace("{Steam}", Locale.get_credit_label("steam"))
 		. replace("{Trailer}", Locale.get_credit_label("trailer"))

@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://84qyu2m2h55y"]
 
-[ext_resource type="Script" path="res://scenes/ui/screen/managment_screen/manager_button/manager_button.gd" id="1_w1awn"]
-[ext_resource type="Script" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="2_7uthi"]
+[ext_resource type="Script" uid="uid://dne3khkbipqim" path="res://scenes/ui/screen/managment_screen/manager_button/manager_button.gd" id="1_w1awn"]
+[ext_resource type="Script" uid="uid://8vaebov4pswg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="2_7uthi"]
 [ext_resource type="PackedScene" uid="uid://bjmn4owp4lhaj" path="res://scenes/component/tween/new_unlock_tween/new_unlock_tween.tscn" id="2_fy4is"]
 [ext_resource type="PackedScene" uid="uid://k6nmnw4kjwjq" path="res://scenes/component/effect/label_effect_queue/label_effect_queue.tscn" id="3_1dmc5"]
 [ext_resource type="PackedScene" uid="uid://vlsdtpdj5gw0" path="res://template/scenes/node/game/spawner_buffer/spawner_buffer.tscn" id="5_ftar4"]
 [ext_resource type="PackedScene" uid="uid://dctar6t4dughe" path="res://template/scenes/node/game/label_particle_tweens/label_particle_tween_passive/label_particle_tween_passive.tscn" id="6_qk52n"]
 
 [node name="ManagerButton" type="MarginContainer"]
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 2
 theme_override_constants/margin_bottom = 2
 script = ExtResource("1_w1awn")
 
