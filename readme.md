@@ -1,6 +1,6 @@
 # Godot Project Zero: A Dark Forest
 
-Inspired by A Dark Room, the Dark Forest is an incremental experimental minimalistic idle game project.
+Inspired by [A Dark Room](https://adarkroom.doublespeakgames.com/) game, the Dark Forest is an incremental experimental minimalistic idle game project.
 
 Started as my first game project to learn Godot, now a community project with 10+ contributors!
 
