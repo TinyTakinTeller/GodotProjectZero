@@ -1,5 +1,7 @@
 # Godot Project Zero: A Dark Forest
 
+Uses Godot 4.4 game engine.
+
 Inspired by [A Dark Room](https://adarkroom.doublespeakgames.com/) game, the Dark Forest is an incremental experimental minimalistic idle game project.
 
 Started as my first game project to learn Godot, now a community project with 10+ contributors!
@@ -25,6 +27,7 @@ CONTRIBUTE:
 - 11/02/2025 [`prototype.release.1.4`] **The Art Update 🎨 & The Future 🔮 & Polish Localization 🌍**
 - 06/06/2025 [`prototype.release.1.4.4`] **Steam Demo Release & Next Fest 2025**
 - 12/06/2025 [`prototype.release.1.4.5`] **Localization Update for Thai** 🌎
+- 04/05/2026 [`prototype.release.1.4.6`] **Localization Update for Spanish** 🌎
 
 
 
