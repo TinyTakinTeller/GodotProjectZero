@@ -6,7 +6,7 @@ const LOCALE_NAME: Dictionary = {
 	"en": "English",
 	"fr": "Français",
 	"pt": "Português (BR)",
-	"es": "Español",
+	"es": "Español (LATAM)",
 	"pl": "polski",
 	"zh": "中文",
 	"th": "ไทย"
