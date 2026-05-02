@@ -319,6 +319,7 @@ static func _get_credits_1() -> String:
 
 [color=#e0e064][b]{Art}[/b][/color]
 [url=https://instagram.com/navy.raccoon]Navy_Raccoon[/url] - {Lead}
+[url=https://circlesinthesky.com/]Skyler Newsome[/url] - {Trailer}
 
 [color=#e0e064][b]{Writing & Narrative}[/b][/color]
 [url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - {Lead}
@@ -338,10 +339,10 @@ static func _get_credits_2() -> String:
 [url=https://www.linkedin.com/in/marion-veber-838279342/]Marion Veber[/url] - {French}
 [url=https://www.linkedin.com/in/xiaofei-shen/]Xiaofei Shen[/url] & [url=https://www.middlebury.edu/institute/]Gloria[/url] - {Chinese}
 [url=https://www.linkedin.com/in/punnasiri-wongsricha-16442536b]Punnasiri Wongsricha[/url] - {Thai}
+[url=https://www.linkedin.com/in/danielwilsonpe/]Daniel Wilson Gonzalez[/url] - {Spanish}
 
 [color=#e0e064][b]{Publishing & Management}[/b][/color]
 [url=https://abyssalnovelist.carrd.co/]Abyssal Novelist[/url] - {Steam}
-[url=https://circlesinthesky.com/]Skyler Newsome[/url] - {Trailer}
 [url=https://github.com/TinyTakinTeller]TinyTakinTeller[/url] - {Itch}"""
 	return _localize_credits(template)
 
@@ -376,6 +377,7 @@ static func _localize_credits(template: String) -> String:
 		. replace("{French}", Locale.get_credit_label("french"))
 		. replace("{Chinese}", Locale.get_credit_label("chinese"))
 		. replace("{Thai}", Locale.get_credit_label("thai"))
+		. replace("{Spanish}", Locale.get_credit_label("spanish"))
 		. replace("{Review}", Locale.get_credit_label("review"))
 		. replace("{Steam}", Locale.get_credit_label("steam"))
 		. replace("{Trailer}", Locale.get_credit_label("trailer"))

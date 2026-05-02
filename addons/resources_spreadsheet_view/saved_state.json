@@ -1,110 +1,110 @@
 {
   "hidden_columns": {
-	"res://resources/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/enemy_data/tres/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/event_data/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/event_data/res/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/event_data/tres/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/npc_event/tres/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/resource_generator/": {
-	  "id": true,
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/resource_generator/cost_function/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/resource_generator/tres/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/substance_data/tres/charm/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/tab_data/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/tab_data/tres/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/worker_role/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/game_data/worker_role/tres/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/resource_generator/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/resource_generator/res/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/theme/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/worker_role/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	},
-	"res://resources/worker_role/res/": {
-	  "resource_local_to_scene": true,
-	  "resource_name": true
-	}
+    "res://resources/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/enemy_data/tres/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/event_data/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/event_data/res/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/event_data/tres/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/npc_event/tres/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/resource_generator/": {
+      "id": true,
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/resource_generator/cost_function/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/resource_generator/tres/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/substance_data/tres/charm/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/tab_data/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/tab_data/tres/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/worker_role/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/game_data/worker_role/tres/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/resource_generator/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/resource_generator/res/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/theme/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/worker_role/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://resources/worker_role/res/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    }
   },
   "recent_paths": [
-	"res://resources/theme/",
-	"res://resources/worker_role/",
-	"res://resources/resource_generator/",
-	"res://resources/",
-	"res://resources/game_data/resource_generator/cost_function/",
-	"res://resources/game_data/tab_data/",
-	"res://resources/game_data/event_data/",
-	"res://resources/game_data/resource_generator/",
-	"res://resources/game_data/worker_role/",
-	"res://resources/game_data/event_data/tres/",
-	"res://resources/game_data/npc_event/tres/",
-	"res://resources/resource_generator/res/",
-	"res://resources/game_data/resource_generator/tres/",
-	"res://resources/game_data/worker_role/tres/",
-	"res://resources/worker_role/res/",
-	"res://resources/game_data/tab_data/tres/",
-	"res://resources/game_data/enemy_data/tres/",
-	"res://resources/game_data/event_data/res/",
-	"res://resources/game_data/substance_data/tres/charm/"
+    "res://resources/theme/",
+    "res://resources/worker_role/",
+    "res://resources/resource_generator/",
+    "res://resources/",
+    "res://resources/game_data/resource_generator/cost_function/",
+    "res://resources/game_data/tab_data/",
+    "res://resources/game_data/event_data/",
+    "res://resources/game_data/resource_generator/",
+    "res://resources/game_data/worker_role/",
+    "res://resources/game_data/event_data/tres/",
+    "res://resources/game_data/npc_event/tres/",
+    "res://resources/resource_generator/res/",
+    "res://resources/game_data/resource_generator/tres/",
+    "res://resources/game_data/worker_role/tres/",
+    "res://resources/worker_role/res/",
+    "res://resources/game_data/tab_data/tres/",
+    "res://resources/game_data/enemy_data/tres/",
+    "res://resources/game_data/event_data/res/",
+    "res://resources/game_data/substance_data/tres/charm/"
   ],
   "table_functions": {
-	"filter": [
-	  "return true"
-	],
-	"process": [
-	  "return value"
-	]
+    "filter": [
+      "return true"
+    ],
+    "process": [
+      "return value"
+    ]
   }
 }
