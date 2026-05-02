@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://d276arnrjws3i" path="res://resources/theme/dark/dark.tres" id="1_mrrb0"]
 [ext_resource type="Script" uid="uid://jwr8m8akb50c" path="res://scenes/language_selection/language_buttons/language_button_es/language_button_es.gd" id="2_jh3ag"]
-[ext_resource type="Texture2D" uid="uid://bvt2ffeht0k3l" path="res://assets/flag/es.png" id="3_mrrb0"]
+[ext_resource type="Texture2D" uid="uid://cds8pjuo7psa2" path="res://assets/flag/es_419.png" id="3_mrrb0"]
 
 [node name="LanguageButtonEs" type="MarginContainer"]
 anchors_preset = 8
