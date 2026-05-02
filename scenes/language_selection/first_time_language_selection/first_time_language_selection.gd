@@ -15,9 +15,10 @@ func _ready() -> void:
 		%LanguageButtonFr,
 		%LanguageButtonPl,
 		%LanguageButtonPt,
-		%LanguageButtonZh,
+		%LanguageButtonEs,
 		%LanguageButtonEn,
-		%LanguageButtonTh
+		%LanguageButtonTh,
+		%LanguageButtonZh
 	]
 	for button: LanguageButton in buttons:
 		button.clicked.connect(_on_button_clicked)
